@@ -1,0 +1,19 @@
+*.backup
+*.zip
+~*
+.fuse_hidden*
+*.log
+*.dvi
+*.aux
+*.bbl
+*.blg
+*.toc
+*.out
+*.xref
+*.lof
+*.log
+*.lot
+*.brf
+*~ *.tmp
+*.pdf
+*.ps
