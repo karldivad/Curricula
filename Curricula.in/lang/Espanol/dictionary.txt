@@ -90,7 +90,7 @@ CB => Ciencias<ENTER>Básicas
 SE => Ingeniería<ENTER>de Software
 HW => Hardware y<ENTER>Arquitectura
 IT => Tecnología<ENTER>de Información
-IS => Sistemas de<ENTER>Información
+IS => Sistemas de<ENTER>Información 
 BM => Contenido<ENTER>Empresarial
 FG => Formación<ENTER>General
 </HASH>
