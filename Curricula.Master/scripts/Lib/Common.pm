@@ -504,6 +504,7 @@ sub set_initial_paths()
 	$path_map{"in-description-foreach-prefix-file"}   = $path_map{InTexDir}."/description-foreach-prefix.tex";
 	$path_map{"out-description-foreach-prefix-file"}  = $path_map{OutputTexDir}."/prefix-description.tex";
 
+	$path_map{"in-sumilla-template-file"}		= $path_map{InInstDir}."/sumilla-template.tex";
 	$path_map{"in-syllabus-template-file"}		= $path_map{InInstDir}."/syllabus-template.tex";
 	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
 	$path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/extra/additional-info $config{Semester}.txt";
@@ -568,7 +569,8 @@ sub set_initial_paths()
  	$path_map{"discipline-config"}		   	= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
  	$path_map{"in-area-all-config-file"}		= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
  	$path_map{"in-area-config-file"}		= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
- 	$path_map{"in-country-info-file"}		= GetInCountryBaseDir($config{country_without_accents})."/country.config";
+ 	$path_map{"in-country-config-file"}		= GetInCountryBaseDir($config{country_without_accents})."/country.config";
+	$path_map{"in-institution-config-file"}		= $path_map{InInstDir}."/institution.config";
         $path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
  	$path_map{"dictionary"}				= $path_map{InLangDir}."/dictionary.txt";
 	$path_map{SpiderChartInfoDir}			= $path_map{InDisciplineDir}."/SpiderChartInfo";
@@ -1329,10 +1331,18 @@ sub set_initial_configuration($)
 	%{$config{dictionary}} = read_config_file("dictionary");
 
 	# Read specific config for its country
-	my %countryvars = read_config_file("in-country-info-file");
+	my %countryvars = read_config_file("in-country-config-file");
 	while ( my ($key, $value) = each(%countryvars) ) 
 	{	$config{dictionary}{$key} = $value; 	}
 
+	# Read customize vars for this institution (optional)
+	my $inst_config_file = get_template("in-institution-config-file");
+	if( -e $inst_config_file )
+	{
+	    my %instvars = read_config_file("in-institution-config-file");
+	    while ( my ($key, $value) = each(%instvars) ) 
+	    {	$config{dictionary}{$key} = $value; 	}
+	}
 	$config{"country-environments-to-insert"} = "";
 	my $file_to_insert = Common::get_template("in-country-environments-to-insert-file");
 	if(-e $file_to_insert)
@@ -2402,17 +2412,17 @@ sub parse_courses()
 	my $active_semester = 0;
 	while(<IN>)
 	{
-		if( m/^\\course\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}%(.*)\n/)
+		if( m/^\\course\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}%(.*)\n/)
 		{
-		      # \course{sem}{course_type}{area}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
-			my ($semester, $course_type, $area, $codcour, $codcour_alias, $course_name) = ($1, $2, $3, $4, $5, $6);
-			my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($7, $8, $9, $10, $11, $12, $13);
-			my $prerequisites                       = $14;
-			my $recommended                         = $15;
-			my $coreq		                = $16;
-			my $group				= $17;
-			my $axes				= $18;
-			my $inst_wildcard			= $19;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
+		      # \course{sem}{course_type}{area}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
+			my ($semester, $course_type, $area, $department, $codcour, $codcour_alias, $course_name) = ($1, $2, $3, $4, $5, $6, $7);
+			my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($8, $9, $10, $11, $12, $13, $14);
+			my $prerequisites                       = $15;
+			my $recommended                         = $16;
+			my $coreq		                = $17;
+			my $group				= $18;
+			my $axes				= $19;
+			my $inst_wildcard			= $20;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
 			my @inst_array                          = split(",", $inst_wildcard);
 			my $count                               = 0;
 			my $priority = 0;
@@ -2464,10 +2474,10 @@ sub parse_courses()
 			$course_info{$codcour}{short_type}	= $config{dictionary}{ElectiveShort} if($course_info{$codcour}{course_type} eq $Common::config{dictionary}{Elective});
 			if($codcour_alias eq "") {	$codcour_alias = $codcour 	}
 			else		{  $antialias_info{$codcour_alias} 	= $codcour;	}
-			$course_info{$codcour}{alias}			= $codcour_alias;
+			$course_info{$codcour}{alias}		= $codcour_alias;
 			
 			$course_info{$codcour}{axes}           	= $axes;
-			$course_info{$codcour}{naxes}			= 0;
+			$course_info{$codcour}{naxes}		= 0;
 
 			my $prefix = get_prefix($codcour);
 			$course_info{$codcour}{prefix}		= $prefix;
@@ -2478,6 +2488,7 @@ sub parse_courses()
 			$course_info{$codcour}{bgcolor}		= $config{colors}{$prefix}{bgcolor};
 			$course_info{$codcour}{course_name}	= $course_name;
 			$course_info{$codcour}{area}		= $area;
+			$course_info{$codcour}{department}	= $department;
 
 			$course_info{$codcour}{cr}             	= $credits;
 			($course_info{$codcour}{th}, $course_info{$codcour}{ph}, $course_info{$codcour}{lh})		= (0, 0, 0);

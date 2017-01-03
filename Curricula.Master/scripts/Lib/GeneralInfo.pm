@@ -37,10 +37,11 @@ sub generate_course_tables()
 		$this_sem_text .= "\\multicolumn{$n_columns}{|l|}{\\textbf{$caption}} \\\\ \\hline \n";
 
 # 		$this_sem_text .= "Code & Course & Area & HT & HP & HL & Cr & T & Prerequisites             \\\\ \\hline\n";
- 		my $course_fields= $Common::config{dictionary}{course_fields};
-		$course_fields =~ s/$begin_tag/{\\bf $begin_tag/g;
-		$course_fields =~ s/$end_tag/$end_tag}/g;
- 		$this_sem_text .= Common::replace_tags($course_fields, $begin_tag, $end_tag, %{$Common::config{dictionary}});
+ 		my $course_headers= $Common::config{dictionary}{course_fields};
+		$course_headers =~ s/$begin_tag/{\\bf $begin_tag/g;
+		$course_headers =~ s/$end_tag/$end_tag}/g;
+ 		$this_sem_text .= Common::replace_tags($course_headers, $begin_tag, $end_tag, %{$Common::config{dictionary}});
+		
 		$this_sem_text .= "\n";
 
 		# 2nd Write the info for this course
@@ -90,7 +91,8 @@ sub generate_course_tables()
 			}
 			$this_course_info{COURSENAME} .= " ($Common::config{dictionary}{Pag}~\\pageref{sec:$codcour})~$pdflink";
 			$this_course_info{COURSEAREA} .= "$Common::course_info{$codcour}{area}";
-			
+			$this_course_info{DPTO}       .= "$Common::course_info{$codcour}{department}";
+
 			if($Common::course_info{$codcour}{th} > 0)
 			{	$this_course_info{THEORY} = "$Common::course_info{$codcour}{th}";	}
 			else{	$this_course_info{THEORY}      = "~";	}
@@ -123,7 +125,11 @@ sub generate_course_tables()
 			$this_course_info{PREREQ} = "~";
 			if( not $Common::course_info{$codcour}{code_and_sem_prerequisites} eq "" )
 			{	$this_course_info{PREREQ} = $Common::course_info{$codcour}{code_and_sem_prerequisites};		}
-			$this_sem_text .= Common::replace_tags($this_line, $begin_tag, $end_tag, %this_course_info);
+
+			$this_line 	= Common::replace_tags($this_line, $begin_tag, $end_tag, %this_course_info);
+			$this_line 	=~ s/$begin_tag(.*?)$end_tag/~/g;
+
+			$this_sem_text .= $this_line;
 			$this_sem_text .= "\n";
 			$ncourses++;
 		}
@@ -1653,20 +1659,22 @@ sub generate_equivalence_old2new($)
 	                   #{1}{CS105}{Discretas I}{5}{CS1D1}%Estructuras Discretas I,5
 	while($in_txt =~ m/\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}(.*)/g)
 	{
-		my $semester		= $1;
-		my $old_course_codcour	= $2;
-		my $old_course_name	= $3;
-		my $old_course_cr	= $4;
-		my $codcour		= $5;
+		my ($semester, $old_course_codcour, $old_course_name, $old_course_cr, $codcour) = ($1, $2, $3, $4, $5);
 		
 		$Common::general_info{equivalences}{$old_curricula}{$semester}{$old_course_codcour}{old_course_name} 	= $old_course_name;
 		$Common::general_info{equivalences}{$old_curricula}{$semester}{$old_course_codcour}{old_course_cr} 	= $old_course_cr;
 		$Common::general_info{equivalences}{$old_curricula}{$semester}{$old_course_codcour}{codcour} 		= $codcour; # into the new curricula
 		
-		my $old_course_semester_label = Common::format_semester_label($semester);
-		if( $old_course_semester_label eq "" )
-		{	$Common::course_info{$codcour}{equivalences}{$old_curricula} = "{}{}{}{}";		}
-		else{   $Common::course_info{$codcour}{equivalences}{$old_curricula} = "{$semester}{$old_course_codcour}{$old_course_name}{$old_course_cr}";		}
+		if( $semester eq "" )
+		{
+		    Util::print_message("Wrong equivalence format? {$semester}{$old_course_codcour}{$old_course_name}{$old_course_cr}{$codcour}");
+		}
+		else
+		{   my $old_course_semester_label = Common::format_semester_label($semester);
+		    if( $old_course_semester_label eq "" )
+		    {	$Common::course_info{$codcour}{equivalences}{$old_curricula}     = "{}{}{}{}";		}
+		    else{   $Common::course_info{$codcour}{equivalences}{$old_curricula} = "{$semester}{$old_course_codcour}{$old_course_name}{$old_course_cr}";		}
+		}
 	}
 	my $endtable = "\\end{tabularx}\n";
 	$endtable   .= "\n";

@@ -1,4 +1,4 @@
-\chapter{Malla curricular \YYYY}\label{chap:GeneralInfo}
+\chapter{Plan de estudios \YYYY}\label{chap:GeneralInfo}
 
 \section{Clasificación de los cursos por niveles}
 De acuerdo a la \textit{Computing Curricula}, los cursos son clasificados en 3 niveles: Introductorios (Códigos 100), 
@@ -35,11 +35,16 @@ Al mismo tiempo, y de acuerdo a la ley universitaria vigente, los cursos están c
 % Table of courses by semesters
 \input{\InTexDir/CoursesBySemesters}
 
-\section{Distribución de cursos en la carrera}
-\input{\InTexDir/distribution-of-courses} %Graphics by level, by area, etc
+% \begin{landscape}
+% \input{\InTexDir/topics-by-course}
+% \end{landscape}
 
 \begin{landscape}
-\section{Visión gráfica de la Malla curricular}\label{sec:vision-grafica}
+\input{\InTexDir/outcomes-by-course}
+\end{landscape}
+
+\begin{landscape}
+\section{Malla curricular}\label{sec:vision-grafica}
 \vspace{-0.3cm}Este documento también puede ser analizado desde el punto de vista de los prerequisitos de forma gráfica.
 \begin{figure}[h!]
       \includegraphics[width=23cm]{\OutputFigDir/small-graph-curricula.ps}
@@ -47,7 +52,10 @@ Al mismo tiempo, y de acuerdo a la ley universitaria vigente, los cursos están c
       \caption{Malla curricular \SchoolFullName}
 \end{figure}
 \end{landscape}
-% 
+
+\section{Distribución de cursos en la carrera}
+\input{\InTexDir/distribution-of-courses} %Graphics by level, by area, etc
+
 % \section{Compatibilidad de la carrera con relación a estandares internacionales}
 % En esta sección presentamos la distribución de cursos por áreas de concentración en 
 % contraste con las propuestas internacionales de las carreras de la \textit{Computing Curricula} 
@@ -66,11 +74,3 @@ Al mismo tiempo, y de acuerdo a la ley universitaria vigente, los cursos están c
 % nos permiten tener una visión gráfica de esta malla curricular frente a las propuestas de 
 % carreras presentadas por \htmladdnormallink{IEEE-CS}{http://www.computer.org}/\htmladdnormallink{ACM}{http://www.acm.org} en la \textit{Computing Curricula}
 % \input{\OutputTexDir/comparing-with-standards}
-% 
-% \begin{landscape}
-% \input{\InTexDir/topics-by-course}
-% \end{landscape}
-
-\begin{landscape}
-\input{\InTexDir/outcomes-by-course}
-\end{landscape}

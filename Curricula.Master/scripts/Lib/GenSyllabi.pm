@@ -64,7 +64,8 @@ sub process_syllabus_units($$$)
 		$unit_count++;
 		$Common::course_info{$codcour}{n_units}++;
 		my ($unit_caption, $alternative_caption, $unit_bibitems, $unit_hours, $level_of_competence, $unit_body) = ($1, $2, $3, $4, $5, $6);
-				
+		$unit_bibitems =~ s/ //g;
+		
 		push(@{$Common::course_info{$codcour}{units}{unit_caption}}, $unit_caption);
 		push(@{$Common::course_info{$codcour}{units}{alternative_caption}}, $alternative_caption);
 		push(@{$Common::course_info{$codcour}{units}{bib_items}}   , $unit_bibitems);
@@ -75,6 +76,8 @@ sub process_syllabus_units($$$)
 		$unit_captions   .= "\\item $unit_caption\n";
 		my %map = ();
 		$map{UNIT_TITLE}  	= $unit_caption;
+		$map{UNIT_BIBITEMS}	= $unit_bibitems;
+		
 		$map{LEVEL_OF_COMPETENCE}	= $level_of_competence;
 		if($unit_caption =~ m/\\(.*)/) 
 		{
@@ -110,7 +113,8 @@ sub process_syllabus_units($$$)
 		push(@{$Common::course_info{$codcour}{units}{unitgoals}}, $unitgoals);
 
 		my $thisunit            = $unit_struct;
-		$map{HOURS}		= "$unit_hours $Common::config{dictionary}{hours}";
+		$map{HOURS}		= "$unit_hours";
+		$map{FULL_HOURS}	= "$unit_hours $Common::config{dictionary}{hours}";
 		$map{UNIT_GOAL}		= $unitgoals;
 		$map{UNIT_CONTENT}	= $topics;
 
@@ -195,9 +199,16 @@ sub read_syllabus_info($$)
 	$map{SEMESTER}         .= "$Common::config{dictionary}{Semester}.";
 	$map{CREDITS}		= $Common::course_info{$codcour}{cr};
 	$map{JUSTIFICATION}	= $Common::course_info{$codcour}{justification};
-	$map{GOAL}		= "\\begin{itemize}\n$Common::course_info{$codcour}{goals}\n\\end{itemize}";
-	$map{OUTCOMES}		= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{itemized}\\end{description}";
-	$map{COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{itemized}\\end{description}";
+	
+	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{goals}\n\\end{itemize}";
+	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{goals};
+	
+	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{itemized}\\end{description}";
+	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{itemized};
+	
+	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{itemized}\\end{description}";
+	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{itemized};
+	
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
 
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
@@ -259,12 +270,20 @@ sub read_syllabus_info($$)
 	else
 	{	$map{PREREQUISITES_JUST_CODES}	= $Common::course_info{$codcour}{prerequisites_just_codes};		}
 
+
 	my $syllabus_template = $Common::config{syllabus_template};
-	
 	my $unit_struct = "";
 	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 	{	$unit_struct = $1;	}
-	($map{UNITS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($syllabus_in, $unit_struct, $codcour);
+	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($syllabus_in, $unit_struct, $codcour);
+	
+	my $sumilla_template = $Common::config{sumilla_template};
+	$unit_struct = "";
+	if($sumilla_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
+	{	$unit_struct = $1;	}
+	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($syllabus_in, $unit_struct, $codcour);
+	
+	
 	$map{SHORT_DESCRIPTION} = "\\begin{inparaenum}\n$map{SHORT_DESCRIPTION}\\end{inparaenum}";
 
 	my ($bibfile_in, $bibfile_out) = ("", "");
@@ -286,26 +305,33 @@ sub read_syllabus_info($$)
 	return %map;
 }
 
-sub genenerate_tex_syllabus_file($$%)
+sub genenerate_tex_syllabus_file($$$$%)
 {
-	my ($codcour, $output_file, %map)   = (@_);
+	my ($codcour, $file_template, $units_field, $output_file, %map)   = (@_);
 
-	my $syllabus_template = $Common::config{syllabus_template};
-	my $unit_struct = "";
-	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
-	{	$unit_struct = $1;	}
-	$syllabus_template =~ s/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/--UNITS--/g;
+# 	my $unit_struct = "";
+# 	if($file_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
+# 	{	$unit_struct = $1;	}
+	$file_template =~ s/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/$map{$units_field}/g;
+	
+	$file_template =~ s/\\newcommand\{\\INST\}\{\}/\\newcommand\{\\INST\}\{$Common::institution\}/g;
+	$file_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
 
-	$syllabus_template =~ s/\\newcommand\{\\INST\}\{\}/\\newcommand\{\\INST\}\{$Common::institution\}/g;
-	$syllabus_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
-
-	$syllabus_template = Common::replace_tags($syllabus_template, "--", "--", %map);
-        $syllabus_template =~ s/--.*?--//g;
+	$file_template = Common::replace_tags($file_template, "--", "--", %map);
+        $file_template =~ s/--.*?--//g;
         system("rm $output_file");
-	Util::write_file($output_file, $syllabus_template);
+	Util::write_file($output_file, $file_template);
 
 # 	Util::print_message("Syllabi $output_file ... generated ok!");
 # 	Util::print_message($output_file);      exit;
+}
+
+sub read_sumilla_template()
+{
+	my $template_file = Common::get_template("in-sumilla-template-file");
+	if(not -e $template_file)
+	{	Util::halt("It seems that you forgot the template sumilla file ... verify \"$template_file\"");		}
+	$Common::config{sumilla_template} = Util::read_file($template_file);
 }
 
 sub read_syllabus_template()
@@ -337,9 +363,10 @@ sub process_syllabi()
 	Common::read_aditional_info_for_silabos(); # Days, time for each class, etc.
 
 	# It generates all the sillabi
-	read_syllabus_template();  # 1st  Read the syllabus template
-	gen_course_general_info(); # 2nd Generate files containing Prerequisites, etc
-	gen_prerequisites_map();   # 3th Generate dot files 
+	read_sumilla_template();   # 1st Read template for sumilla
+	read_syllabus_template();  # 2nd Read the syllabus template
+	gen_course_general_info(); # 3th Generate files containing Prerequisites, etc
+	gen_prerequisites_map();   # 4th Generate dot files 
 	
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
@@ -370,7 +397,8 @@ sub generate_tex_syllabi_files()
                                          @{$Common::courses_by_semester{$semester}})
 		{
 			my %map = read_syllabus_info($codcour, $semester);
-			genenerate_tex_syllabus_file($codcour, "$OutputTexDir/$codcour.tex", %map);
+			genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", "$OutputTexDir/$codcour.tex"        , %map);
+			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 
 			# Copy bib files
 			my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
@@ -648,7 +676,7 @@ sub generate_syllabi_include()
                 {
 			my $course_path = Common::get_syllabus_full_path($codcour, $semester);
 			$course_path =~ s/(.*)\.tex/$1/g;
-			$output_tex .= "$newpage\\input{$course_path}";
+			$output_tex .= "$newpage\\input{".Common::get_template("OutputTexDir")."/$codcour-sumilla}";
                         $output_tex .= "% $Common::course_info{$codcour}{course_name}\n";
                         $ncourses++;
 			$newpage = "\\newpage";
