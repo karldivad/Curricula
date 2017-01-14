@@ -366,7 +366,8 @@ sub set_global_variables()
 	$config{OutputScriptsDir}	= "$config{OutputInstDir}/scripts";
 	system("mkdir -p $config{OutputScriptsDir}");
 	
-	$config{InLangDir}	 	= "$config{in}/lang/$config{language_without_accents}";
+	$config{InLangBaseDir}	 	= "$config{in}/lang";
+	$config{InLangDir}	 	= "$config{InLangBaseDir}/$config{language_without_accents}";
 	#$config{in_html_dir}      	= $config{InLangDir}."/templates";
 
 	$config{InPeopleDir}		= $config{in}."/people";
@@ -393,6 +394,7 @@ sub set_initial_paths()
 ################################################################################################################
 # InputsDirs
 	$path_map{InLangDir}				= $config{InLangDir};
+	$path_map{InLangBaseDir}			= $config{InLangBaseDir};
 	$path_map{InAllTexDir}				= $path_map{InDir}."/All.tex";
 	$path_map{InTexDir}				= $path_map{InLangDir}."/$config{area}.tex";
 	$path_map{InStyDir}				= $path_map{InLangDir}."/$config{area}.sty";
@@ -659,11 +661,9 @@ sub get_template($)
 	Util::halt("get_template: Template not recognized ($acro), Did you define it?");
 }
 
-# ok
-sub read_config_file($)
+sub read_config_file_details($)
 {
-	my ($tpl) 		= (@_);
- 	my $filename 		= get_template($tpl);
+	my ($filename) 		= (@_);
 	my %map 		= ();
  	Util::print_message("Reading config file: \"$filename\"");
 	my $txt = Util::read_file($filename);
@@ -697,6 +697,21 @@ sub read_config_file($)
 }
 
 # ok
+sub read_config_file($)
+{
+	my ($tpl) 		= (@_);
+ 	my $filename 		= get_template($tpl);
+	return read_config_file_details($filename);
+}
+
+sub read_dictionary_file($)
+{
+	my ($lang) = (@_);
+	my $filename = get_template("InLangBaseDir")."/$lang/dictionary.txt";
+	return read_config_file_details($filename);
+}
+
+# ok
 sub read_config($)
 {
 	my ($tpl) = (@_);
@@ -708,6 +723,12 @@ sub read_config($)
 # 		if( $key eq "SyllabusListOfDirs" )
 #  		{	Util::print_message("$config{$key} = $value"); exit; 	}
 	}
+}
+
+sub get_dictionary_term($)
+{
+    my ($word) = (@_);
+    return $config{dictionary}{language_without_accents}{$word};
 }
 
 sub sort_macros()
@@ -1135,6 +1156,16 @@ sub read_institution_info($)
 	else
 	{	Util::print_error("read_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
 
+	# Read the dictionary
+	if($txt =~ m/\\newcommand\{\\SyllabusLangs\}\{(.*?)\}/)
+	{	$this_inst_info{SllabusLangs} 			= $1;
+		$this_inst_info{SllabusLangs} 			=~ s/ //g;
+		$this_inst_info{SyllabusLangs_without_accents} 	= no_accents($this_inst_info{SllabusLangs});
+		@{$this_inst_info{SyllabusLangsList}} 		= split(",", $this_inst_info{SyllabusLangs_without_accents})
+	}
+	else
+	{	Util::print_error("read_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
+
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
 	{
@@ -1295,6 +1326,8 @@ sub set_initial_configuration($)
 	my %inst_vars = read_institution_info( get_template("this-institutions-info-file") );
 	foreach my $key (keys %inst_vars)
 	{	$config{$key} = $inst_vars{$key};	}
+# 	print Dumper(\%config); exit;
+
 	$config{equivalences} =~ s/ //g;
 # 	Util::print_message("config{equivalences} = \"$config{equivalences}\""); exit;
 	
@@ -1328,7 +1361,14 @@ sub set_initial_configuration($)
 	%{$config{temp_colors}} = read_config_file("colors");
 
 	# Read dictionary for this language
+	
 	%{$config{dictionary}} = read_config_file("dictionary");
+	foreach my $lang (@{$config{SyllabusLangsList}})
+	{	%{$config{dictionaries}{$lang}} = read_dictionary_file($lang);
+	}
+# 	print Dumper(\%{$config{dictionary}});	
+# 	print Dumper(\%{$config{dictionaries}{Espanol}});
+# 	print Dumper(\%{$config{dictionaries}{English}}); 
 
 	# Read specific config for its country
 	my %countryvars = read_config_file("in-country-config-file");

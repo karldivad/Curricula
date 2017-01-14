@@ -1,0 +1,140 @@
+COURSEAREA= Area
+COURSECODE= Code
+COURSENAME= Course name
+THEORY    = THEORY
+Theory    = Theory
+PRACTICE  = PRACTICE
+Practice  = Practice
+LABORATORY= LAB
+Laboratory= Laboratory
+CREDITS   = Cr
+cr        = cr
+Credits   = Credits
+TYPE      = T
+PREREQ    = Prerequisites
+Prerequisites=Prerrequisites
+DPTO	  = Department
+TOTALHOURS= TH
+Syllabus  = Sillabus
+SyllabusOf= Sillabus de
+Syllabi   = Syllabi
+Plan	  = Plan
+BloomLevel= Bloom Level
+
+Semester	   =Semester
+Sem		   =Sem
+Semesters	   =Semesters
+Mandatory	   =Mandatory
+MandatoryShort	   =M
+Core-Tier1	   =Core Tier1
+Core-Tier2	   =Core Tier2
+Elective	   =Elective
+Electives          =Electives
+ElectiveShort	   =E
+None		   =None
+hours		   =hourss
+hrs		   =hr(s)
+hour		   =hour
+HoursOfThisCourse  =Hour of this course
+Total		   =Total
+Pag                =Pg.
+TeamTitle          =Team
+FinalReport	   =Final Report
+LastModification   =Last change
+Justification	   = Justification
+GeneralGoals	   = Generales Goals
+ContributionToOutcomes=Contribution to Outcomes
+ContributionToSkills=Contribution to Computer Science Skills (IEEE)
+Skills		   = Skills
+Units		   =Units
+Topics             =Topics
+UnitGoals          =Goals
+LearningOutcomes   =Learning Outcomes
+LearningObjectives
+UnitNotDefined     =Unit Not Defined
+BibliographySection=Bibliography
+
+nocorehours        =No core hours
+corehours	   =Core Hours
+ThisSchool	   =This School
+
+AdviceRecCourses		=Se recomienda que el alumno haya llevado
+FreeCreditsAdvice		=More courses (<NFREECREDITS> <CREDITS>) may be added here
+TotalNumberOfCreditsMsg		=Total credits
+DistributionCreditsByArea	=Distribution by areas
+TableOfTopicByCourseCaption	=Topics by course from <BEGIN_SEM> to <END_SEM> <SEMESTER>
+TableOfOutcomesByCourseCaption  =Outcomes by course <BEGIN_SEM> to <END_SEM> <SEMESTER>
+Skill				=Skill
+ComparisonWithStandardCaption=Comparing <AREA>-\siglas~Vs. <STANDARD> of <STANDARD_REF_INSTITUTION>.
+InstitutionToCompareWith=IEEE-CS/ACM
+Yes 	= Yes
+No 	= No
+
+<HASH name=standards_long_name>
+CE=>Computer Engineering
+CS=>Computer Science
+IS=>Information Systems
+IT=>Information Technology
+SE=>Software Engineering
+</HASH>
+
+% Labels for spider charts
+<HASH name=all_areas>
+CS => Computer<ENTER>Science
+MC => Mathematics<ENTER>for Computing
+CB => Basic<ENTER>Sciences
+SE => Software<ENTER>Engineering
+HW => Hardware and<ENTER>Architecture
+IT => Information<ENTER>Technology
+IS => Information<ENTER>Systems 
+BM => Business
+FG => General<ENTER>Knowledge
+</HASH>
+
+<HASH name=semester_ordinal>
+1=>First
+2=>Second
+3=>Third
+4=>Fourth
+5=>Fifth
+6=>Sixth
+7=>Seventh
+8=>Eighth
+9=>Ninth
+10=>Tenth
+</HASH>
+
+<HASH name=ordinal_postfix>
+1=>st
+2=>nd
+3=>rd
+4=>th
+5=>th
+6=>th
+7=>th
+8=>th
+9=>th
+10=>th
+</HASH>
+
+<HASH name=learning_outcomes>
+Familiarity=>Familiarity
+Usage=>Usage
+Assessment=>Assessment
+</HASH>
+
+<HASH name=labels_per_level>
+1=>Introductory
+2=>Intermediate
+3=>>Advanced
+4=>Capstone project
+</HASH>
+
+<HASH name=Acronyms>
+SI=>Information Systems
+TI=>Information Technology
+BD=>Data Bases
+POO=>Object Oriented Programming
+ADS=>Systems Analysis and Design
+ADA=>Algorithms Analysis and Design
+</HASH>
