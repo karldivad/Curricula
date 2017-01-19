@@ -1,51 +1,145 @@
-\begin{syllabus}
+\documentclass[final]{article}
+\input{current-institution}
+\usepackage{\InStyAllDir/syllabus-final}
 
-\course{--COURSE_CODE--. --COURSE_NAME--}{--COURSE_TYPE--}{--COURSE_CODE--}
+\newcommand{\INST}{}
+\newcommand{\AREA}{}
 
-\begin{outcomes}
---OUTCOMES_ITEMS--
-\end{outcomes}
+\begin{document}
 
-\begin{competences}
---COMPETENCES_ITEMS--
-\end{competences}
+\begin{tabularx}{\textwidth}{p{3cm}cX}
+\includegraphics[width=3cm]{\InLogosDir/\INST} 
+&
+\begin{minipage}{0.75\textwidth}
+\begin{center}
+{\noindent\Large\bf\University\\ \SchoolFullNameBreak \\SILABO}
+\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+\addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
+\end{center}
+\end{minipage}
+\end{tabularx}
 
-% \begin{justification}
-% JUSTIFICATION--
-% \end{justification}
+\addtocounter{SyllabiSectionCount}{1}
 
-% \begin{goals}
-% GOALS_ITEMS
-% \end{goals}
+\noindent \Semester
+\begin{center}
+\begin{tabularx}{\textwidth}{|p{5cm}cX|}\hline
+\multicolumn{3}{|l|}{{\bf \arabic{SyllabiSectionCount}. DATOS GENERALES}}                \\ \hline
+\arabic{SyllabiSectionCount}.1 CARRERA PROFESIONAL     & : & \SchoolShortName           \\
+\arabic{SyllabiSectionCount}.2 ASIGNATURA              & : & --COURSE_CODE--. --COURSE_NAME-- \\
+\arabic{SyllabiSectionCount}.3 SEMESTRE ACADÉMICO      & : & --SEMESTER--          \\
+\arabic{SyllabiSectionCount}.4 PREREQUISITO(S)         & : & --PREREQUISITES--     \\
+\arabic{SyllabiSectionCount}.5 CARÁCTER                & : & --COURSE_TYPE--              \\
+\arabic{SyllabiSectionCount}.6 HORAS                   & : & --HOURS--          \\ 
+\arabic{SyllabiSectionCount}.7 CRÉDITOS                & : & --CREDITS--          \\ \hline
+\end{tabularx}
+\end{center}
 
-%  \begin{unit}{\DSSetsRelationsandFunctions}{}{Grimaldi03,Rosen2007}{13}{C1,C20}
-%    \begin{topics}
-%         \item \DSSetsRelationsandFunctionsTopicSets
-%         \item \DSSetsRelationsandFunctionsTopicRelations
-%         \item \DSSetsRelationsandFunctionsTopicFunctions
-%    \end{topics}
-%    \begin{learningoutcomes}
-% 	\item \DSSetsRelationsandFunctionsLOExplainWith [\Assessment]
-% 	\item \DSSetsRelationsandFunctionsLOPerformThe [\Assessment]
-% 	\item \DSSetsRelationsandFunctionsLORelate [\Assessment]
-%    \end{learningoutcomes}
-%  \end{unit}
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. DOCENTE}\\ \hline
+--PROFESSOR_SHORT_CVS--
+\\ \hline
+\end{tabularx}
+\end{center}
 
-\begin{syllabus-section}{Unidades didácticas y contenido}%
-\end{syllabus-section}%
- 
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. FUNDAMENTACIÓN DEL CURSO}        \\ \hline
+--JUSTIFICATION--                  \\ \hline
+\end{tabularx}
+\end{center}
+
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. SUMILLA}                         \\ \hline
+--SHORT_DESCRIPTION--                         \\ \hline
+\end{tabularx}
+\end{center}
+
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. OBJETIVO GENERAL}                \\ \hline
+--GOAL--                 \\ \hline
+\end{tabularx}
+\end{center}
+
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. CONTRIBUCIÓN A LA FORMACIÓN PROFESIONAL Y FORMACIÓN GENERAL} \\ \hline
+\ContribInitMsg:
+--OUTCOMES--\\ \hline
+\end{tabularx}
+\end{center}
+
+
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. CONTENIDOS}                      \\ \hline
+\end{tabularx}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{SyllabiUnitCount}{0}
 --BEGINUNIT--
-\begin{unit}{--UNIT_TITLE--}{}{--UNIT_BIBITEMS--}{--HOURS--}{--LEVEL_OF_COMPETENCE--}
---UNIT_CONTENT--
+% A new unit begins here
+\addtocounter{SyllabiUnitCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|}                 \hline
+\multicolumn{2}{|l|}{{\bf UNIDAD \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
+\multicolumn{2}{|l|}{{\bf Nivel Bloom: --BLOOM_LEVEL--}} \\ \hline
+{\bf OBJETIVO GENERAL}  & {\bf CONTENIDO}                    \\ \hline
 --UNIT_GOAL--
-\end{unit}
+& 
+--UNIT_CONTENT--
+\\ \hline
+\multicolumn{2}{|l|}
+{\begin{minipage}{0.95\textwidth}
+{\bf Lecturas:} --CITATIONS--
+\end{minipage}
+}
+\\ \hline
+\end{tabularx}
+\end{center}
 
 --ENDUNIT--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{coursebibliography}
-\bibfile{--BIBFILE--}
-\end{coursebibliography}
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+\arabic{SyllabiSectionCount}. METODOLOGÍA  \\ \hline
+\begin{evaluation}
+	\item El profesor del curso presentará clases teóricas de los temas señalados en el programa propiciando la intervención de los alumnos. 
+	\item El profesor del curso presentará demostraciones para fundamentar clases teóricas.
+	\item El profesor y los alumnos realizarán prácticas
+	\item Los alumnos deberán asistir a clase habiendo leído lo que el profesor va a presentar. 
+	De esta manera se facilitará la comprensión y los estudiantes estarán en mejores condiciones de hacer consultas en clase.
+\end{evaluation}
+\\ \hline
+\end{tabularx}
+\end{center}
 
-\end{syllabus}
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+\arabic{SyllabiSectionCount}. EVALUACIONES  \\ \hline
+\begin{evaluation}
+	\item[Evaluación Permanente 1] : 20 \%
+	\item[Examen Parcial] : 30 \%
+	\item[Evaluación Permanente 2] : 20 \%
+	\item[Examen Final] : 30 \%
+\end{evaluation}
+\\ \hline
+\end{tabularx}
+\end{center}
 
-%\end{document}
+\bibliographystyle{apalike}
+\bibliography{--BIBFILE--}
+\end{document}
