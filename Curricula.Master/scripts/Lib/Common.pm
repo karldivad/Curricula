@@ -1364,7 +1364,13 @@ sub set_initial_configuration($)
 	
 	%{$config{dictionary}} = read_config_file("dictionary");
 	foreach my $lang (@{$config{SyllabusLangsList}})
-	{	%{$config{dictionaries}{$lang}} = read_dictionary_file($lang);
+	{
+	      my $lan_prefix = "";
+	      if( $lang =~ m/(..)/g )
+	      {		$lan_prefix = uc($1);	      }
+	      %{$config{dictionaries}{$lang}} = read_dictionary_file($lang);
+	      $config{dictionaries}{$lang}{lang_prefix} = $lan_prefix;
+	      #Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
 	}
 # 	print Dumper(\%{$config{dictionary}});	
 # 	print Dumper(\%{$config{dictionaries}{Espanol}});

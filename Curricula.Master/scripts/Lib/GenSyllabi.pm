@@ -397,8 +397,15 @@ sub generate_tex_syllabi_files()
                                          @{$Common::courses_by_semester{$semester}})
 		{
 			my %map = read_syllabus_info($codcour, $semester);
-			genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", "$OutputTexDir/$codcour.tex"        , %map);
-			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
+			
+			foreach my $lang (@{$Common::config{SyllabusLangsList}})
+			{
+			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
+			      Util::print_message("Generating Syllabus: $output_file");
+ 			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, %map);
+			}
+			
+# 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 
 			# Copy bib files
 			my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
