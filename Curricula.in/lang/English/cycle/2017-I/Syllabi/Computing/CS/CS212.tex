@@ -3,141 +3,131 @@
 \course{CS212. Análisis y Diseño de Algoritmos}{Obligatorio}{CS212}
 
 \begin{justification}
-Un algoritmo es, esencialmente, un conjunto bien definido de reglas o instrucciones
-que permitan resolver un problema computacional. El estudio teórico del desempeño
-de los algoritmos y los recursos utilizados por estos, generalmente tiempo y espacio, 
-nos permite evaluar si un algoritmo es adecuado para un resolver un problema 
-específico, compararlo con otros algoritmos para el mismo problema o incluso
-delimitar la frontera entre lo viable y lo imposible.
-
-Esta materia es tan importante que incluso Donald E. Knuth definió a
-Ciencia de la Computación como el estudio de algoritmos.
-
-En este curso serán presentadas las técnicas más comunes utilizadas en el análisis y diseño de 
-algoritmos eficientes, con el propósito de aprender los principios fundamentales
-del diseño, implementación y análisis de algoritmos para la solución de problemas
-computacionales.
+An algorithm is, essentially, a well-defined set of rules or instructions that allow solving a computational problem.
+The theoretical study of the performance of the algorithms and the resources used by them, usually time and space, allows us to evaluate if an algorithm is suitable for solving a specific problem, comparing it with other algorithms for the same problem or even delimiting the boundary between Viable and impossible.
+This matter is so important that even Donald E. Knuth defined Computer Science as the study of algorithms.
+This course will present the most common techniques used in the analysis and design of efficient algorithms,
+with the purpose of learning the fundamental principles of the design, implementation and analysis of algorithms for the solution of computational problems
 \end{justification}
 
 \begin{goals} 
-\item Desarrollar la capacidad para evaluar la complejidad y calidad de algoritmos propuestos para un determinado problema.
-\item Estudiar los algoritmos más representativos, introductorios de las clases más importantes de problemas tratados en computación.
-\item Desarrollar la capacidad de resolución de problemas algorítmicos utilizando los principios fundamentales de diseño de algoritmos aprendidos.
-\item Ser capaz de responder a las siguientes preguntas cuando le sea presentado un nuevo algoritmo: ?`Cuán buen desempeño tiene?, ?`Existe una mejor forma de resolver el problema?
+\item Develop the ability to evaluate the complexity and quality of algorithms proposed for a given problem.
+\item Study the most representative, introductory algorithms of the most important classes of problems treated in computation.
+\item Develop the ability to solve algorithmic problems using the fundamental principles of algorithm design learneds.
+\item Be able to answer the following questions when a new algorithm is presented: How good is the performance ?, Is there a better way to solve the problem?
 \end{goals}
 
 \begin{outcomes}
-    \item \ShowOutcome{a}{3} % Aplicar conocimientos de computación y de matemáticas apropiadas para la disciplina. 
-    \item \ShowOutcome{b}{3} % Analizar problemas e identificar y definir los requerimientos computacionales apropiados para su solución.
-    \item \ShowOutcome{h}{2} % Incorporarse a un proceso de aprendizaje profesional continuo.
-    \item \ShowOutcome{i}{2} % Utilizar técnicas y herramientas actuales necesarias para la práctica de la computación.
+    \item \ShowOutcome{a}{3} % Apply computational and math skills appropriate to the discipline. 
+    \item \ShowOutcome{b}{3} % Analyze problems and identify and define the appropriate computational requirements for their solution.
+    \item \ShowOutcome{h}{2} % Joining a process of continuous professional learning.
+    \item \ShowOutcome{i}{2} % Use current techniques and tools necessary for the practice of computing.
 \end{outcomes}
 
 \begin{competences}
-    \item \ShowCompetence{C1}{a} % La comprensión intelectual y la capacidad de aplicar las bases matemáticas y la teoría de la informática (computer science).
-    \item \ShowCompetence{C2}{b} % Capacidad para tener una perspectiva crítica y creativa para identificar y resolver problemas utilizando el pensamiento computacional.
-    \item \ShowCompetence{C3}{b} % Una comprensión intelectual de, y el aprecio por el papel central de los algoritmos y estructuras de datos.
-    \item \ShowCompetence{C5}{i} % Capacidad para implementar algoritmos y estructuras de datos en el software.
-    \item \ShowCompetence{C6}{i} % Capacidad para diseñar y poner en práctica las unidades estructurales mayores que utilizan algoritmos y estructuras de datos y las interfaces a través del cual estas unidades se comunican.
-    \item \ShowCompetence{C9}{a} % Comprensión de las limitaciones de la computación, incluyendo la diferencia entre lo que la computación es inherentemente incapaz de hacer frente a lo que puede lograrse a través de un futuro de ciencia y tecnología.
-    \item \ShowCompetence{C16}{h} % Capacidad para identificar temas avanzados de computación y de la comprensión de las fronteras de la disciplina.
+    \item \ShowCompetence{C1}{a} % Intellectual understanding and the ability to apply mathematical bases and computer science .
+    \item \ShowCompetence{C2}{b} % Ability to have a critical and creative perspective to identify and solve problems using computational thinking.
+    \item \ShowCompetence{C3}{b} % An intellectual understanding of, and appreciation for, the central role of algorithms and data structures.
+    \item \ShowCompetence{C5}{i} % Ability to implement algorithms and data structures in software.
+    \item \ShowCompetence{C6}{i} % Ability to design and implement larger structural units that use algorithms and data structures and interfaces through which these units communicate
+    \item \ShowCompetence{C9}{a} % Understanding the limitations of computing, including the difference between what computing is inherently unable to cope with what can be achieved through a future of science and technology.
+    \item \ShowCompetence{C16}{h} % Ability to identify advanced computing topics and understanding the boundaries of the discipline.
 \end{competences}
 
 \begin{unit}{\ALBasicAnalysis}{}{KT2005, DPV2006, CLRS2009, S2013, K1997}{10}{C1}
 \begin{topics}%
-    \item \ALBasicAnalysisTopicDifferences % Diferencias entre el mejor, el esperado y el peor caso de un algoritmo.
-    \item \ALBasicAnalysisTopicAsymptotic % Análisis asintótico de complejidad de cotas superior y esperada.
-    \item \ALBasicAnalysisTopicBig % Definición formal de la Notación Big O.
-    \item \ALBasicAnalysisTopicComplexity % Clases de complejidad como constante, logarítmica, lineal, cuadrática y exponencial.
-    \item \ALBasicAnalysisTopicBigO % Uso de la notación Big O.
-    \item \ALBasicAnalysisTopicRecurrence % Relaciones recurrentes.
-    \item \ALBasicAnalysisTopicAnalysis % Análisis de algoritmos iterativos y recursivos.
-    \item \ALBasicAnalysisTopicSome % Algunas versiones del Teorema Maestro.
+    \item \ALBasicAnalysisTopicDifferences % Differences between the best, the expected and the worst case of an algorithm.
+    \item \ALBasicAnalysisTopicAsymptotic % Asymptotic analysis of upper and expected complexity of dimensions.
+    \item \ALBasicAnalysisTopicBig % Formal definition of notation Big O.
+    \item \ALBasicAnalysisTopicComplexity % Complexity classes such as constant, logarithmic, linear, quadratic, and exponential.
+    \item \ALBasicAnalysisTopicBigO % Use of notation Big O.
+    \item \ALBasicAnalysisTopicRecurrence % Concurrent relations.
+    \item \ALBasicAnalysisTopicAnalysis % Analysis of iterative and recursive algorithms.
+    \item \ALBasicAnalysisTopicSome % Some versions of the Master Theorem.
 \end{topics}
 \begin{learningoutcomes}
-    \item \ALBasicAnalysisLOExplain [\Assessment] % Explique a que se refiere con ``mejor", ``esperado" y ``peor" caso de comportamiento de un algoritmo.
-    \item \ALBasicAnalysisLOIn [\Assessment] % En el contexto de a algoritmos específicos, identifique las características de data y/o otras condiciones o suposiciones que lleven a diferentes comportamientos.
-    \item \ALBasicAnalysisLODetermine [\Assessment] % Determine informalmente el tiempo y el espacio de complejidad de simples algoritmos.
-    \item \ALBasicAnalysisLOState [\Assessment] % Indique la definición formal de Big O.
-    \item \ALBasicAnalysisLOList [\Assessment] % Lista y contraste de clases estándares de complejidad.
-    \item \ALBasicAnalysisLOUse [\Assessment] % Use la notación formal de la Big O para dar límites superiores asintóticos en la complejidad de tiempo y espacio de los algoritmos.
-    \item \ALBasicAnalysisLOUseBig [\Assessment] % Usar la notación formal Big O para dar límites de casos esperados en el tiempo de complejidad de los algoritmos
-    \item \ALBasicAnalysisLOExplainThe [\Assessment] % Explicar el uso de la notación theta grande, omega grande y o pequeña para describir la cantidad de trabajo hecho por un algoritmo.
-    \item \ALBasicAnalysisLOUseRecurrence [\Assessment] % Usar relaciones recurrentes para determinar el tiempo de complejidad de algoritmos recursivamente definidos.
-    \item \ALBasicAnalysisLOSolve [\Assessment] % Resuelve relaciones de recurrencia básicas, por ejemplo. usando alguna forma del Teorema Maestro.
+    \item \ALBasicAnalysisLOExplain [\Assessment] % Explain to refer to "better", "expected" and "worse" behavioral case of an algorithm.
+    \item \ALBasicAnalysisLOIn [\Assessment] % In the context of specific algorithms, identify the characteristics of data and / or other conditions or assumptions that lead to different behaviors.
+    \item \ALBasicAnalysisLODetermine [\Assessment] % Informally determine the time and complexity space of simple algorithms.
+    \item \ALBasicAnalysisLOState [\Assessment] % Indicate the formal definition of Big O.
+    \item \ALBasicAnalysisLOList [\Assessment] % List and contrast of standard classes of complexity.
+    \item \ALBasicAnalysisLOUse [\Assessment] % Use the formal notation of the Big O to give asymptotic upper bounds on the time and space complexity of the algorithms.
+    \item \ALBasicAnalysisLOUseBig [\Assessment] % Use formal notation Big O to give boundaries of expected cases in the time complexity of algorithms.
+    \item \ALBasicAnalysisLOExplainThe [\Assessment] % Explain the use of the big, large, and small omega notation to describe the amount of work done by an algorithm.
+    \item \ALBasicAnalysisLOUseRecurrence [\Assessment] % Use recurring relations to determine the complexity time of recursively defined algorithms.
+    \item \ALBasicAnalysisLOSolve [\Assessment] % Solve basic recurrence relations, for example. Using some form of the Master Theorem
 \end{learningoutcomes}
 \end{unit}
 
 \begin{unit}{\ALAlgorithmicStrategies}{}{KT2005, DPV2006, CLRS2009, A1999}{30}{C2}
 \begin{topics}%
-    \item \ALAlgorithmicStrategiesTopicBrute % Algoritmos de fuerza bruta.
-    \item \ALAlgorithmicStrategiesTopicGreedy % Algoritmos voraces.
-    \item \ALAlgorithmicStrategiesTopicDivide % Divide y vencerás.
-    \item \ALAlgorithmicStrategiesTopicDynamic % Programación Dinámica.
+    \item \ALAlgorithmicStrategiesTopicBrute % Brute force algorithms
+    \item \ALAlgorithmicStrategiesTopicGreedy % Voracious Algorithms.
+    \item \ALAlgorithmicStrategiesTopicDivide % Divide and conquer
+    \item \ALAlgorithmicStrategiesTopicDynamic % Dynamic Programming.
 \end{topics}
 \begin{learningoutcomes}
-    \item \ALAlgorithmicStrategiesLOFor [\Assessment] % Para cada una de las estrategias (fuerza bruta, algoritmo goloso, divide y vencerás, recursividad en reversa y programación dinámica), identifica un ejemplo práctico en el cual se pueda aplicar.
-    \item \ALAlgorithmicStrategiesLOUseA [\Assessment] % Utiliza un enfoque voraz para resolver un problema específico y determina si la regla escogida lo guía a una solución óptima.
-    \item \ALAlgorithmicStrategiesLOUseAConquer [\Assessment] % Usa un algoritmo de divide-y-vencerás para resolver un determinado problema.
-    \item \ALAlgorithmicStrategiesLOUseDynamic [\Assessment] % Usa programación dinámica para resolver un problema determinado.
-    \item \ALAlgorithmicStrategiesLODetermineAn [\Assessment] % Determina el enfoque algorítmico adecuado para un problema.
+    \item \ALAlgorithmicStrategiesLOFor [\Assessment] % For each of the strategies (brute force, greedy algorithm, divide and conquer, reverse recursion and dynamic programming), it identifies a practical example in which it can be applied.
+    \item \ALAlgorithmicStrategiesLOUseA [\Assessment] % It uses a voracious approach to solve a specific problem and determines if the chosen rule guides it to an optimal solution.
+    \item \ALAlgorithmicStrategiesLOUseAConquer [\Assessment] % Use a divide and solve algorithm to solve a given problem
+    \item \ALAlgorithmicStrategiesLOUseDynamic [\Assessment] % Use dynamic programming to solve a given problem
+    \item \ALAlgorithmicStrategiesLODetermineAn [\Assessment] % Determines the right algorithmic approach for a problem.
 \end{learningoutcomes}
 \end{unit}
 
 \begin{unit}{\ALFundamentalDataStructuresandAlgorithms}{}{KT2005, DPV2006, CLRS2009, S2011, GT2009}{10}{C6}
 \begin{topics}%
-    \item \ALFundamentalDataStructuresandAlgorithmsTopicSimple % Algoritmos numéricos simples, tales como el cálculo de la media de una lista de números, encontrar el mínimo y máximo.
-    \item \ALFundamentalDataStructuresandAlgorithmsTopicSequential % Algoritmos de búsqueda secuencial y binaria.
-    \item \ALFundamentalDataStructuresandAlgorithmsTopicWorst % Algoritmos de ordenamiento de peor caso cuadrático (selección, inserción)
-    \item \ALFundamentalDataStructuresandAlgorithmsTopicWorstOr % Algoritmos de ordenamiento con peor caso o caso promedio en O(N lg N) (Quicksort, Heapsort, Mergesort)
-    \item \ALFundamentalDataStructuresandAlgorithmsTopicGraphs % "Grafos y algoritmos en grafos:
+    \item \ALFundamentalDataStructuresandAlgorithmsTopicSimple % Simple numerical algorithms, such as calculating the mean of a list of numbers, find the minimum and maximum..
+    \item \ALFundamentalDataStructuresandAlgorithmsTopicSequential % Sequential and binary search algorithms.
+    \item \ALFundamentalDataStructuresandAlgorithmsTopicWorst % Algorithms of order of worst case quadratic (selection, insertion)
+    \item \ALFundamentalDataStructuresandAlgorithmsTopicWorstOr % Ordering algorithms with worst case or average case in O (Ng N) (Quicksort, Heapsort, Mergesort)
+    \item \ALFundamentalDataStructuresandAlgorithmsTopicGraphs % "Graphs and algorithms in graphs:
 							    % begin{subtopic} 
-							    % \item Representación de grafos (ej., lista de adyacencia, matriz de adyacencia) 
-							    % \item Recorrido en profundidad y amplitud
+							    % \item Representation of graphs (in., Adjacency list, adjacency matrix) 
+							    % \item 
 							    % end{subtopic}"
     \item \ALFundamentalDataStructuresandAlgorithmsTopicHeaps %Montículos (Heaps)
-    \item \ALFundamentalDataStructuresandAlgorithmsTopicGraphsAnd % "Grafos y algoritmos en grafos:
+    \item \ALFundamentalDataStructuresandAlgorithmsTopicGraphsAnd % "Graphs and algorithms in graphs:
 									      % begin{subtopic} 
-										  % \item Algoritmos de la ruta más corta (algoritmos de Dijkstra y Floyd)
-										  % \item Árbol de expansión mínima (algoritmos de Prim y Kruskal) 
+										  % \item Shortest Path Algorithms (Dijkstra and Floyd Algorithms)
+										  % \item Minimum expansion tree (Prim and Kruskal algorithm)
 										    % end{subtopic}"
 \end{topics}
 \begin{learningoutcomes}
-    \item \ALFundamentalDataStructuresandAlgorithmsLOImplement [\Assessment] % Implementar algoritmos numéricos básicos.
-    \item \ALFundamentalDataStructuresandAlgorithmsLOImplementSimple [\Assessment] % Implementar algoritmos de busqueda simple y explicar las diferencias en sus tiempos de complejidad.
-    \item \ALFundamentalDataStructuresandAlgorithmsLOBe [\Assessment] % Ser capaz de implementar algoritmos de ordenamiento comunes cuádraticos y O(N log N).
-    \item \ALFundamentalDataStructuresandAlgorithmsLODiscuss [\Usage] % Discutir el tiempo de ejecución y eficiencia de memoria de los principales algoritmos de ordenamiento, busqueda y hashing.
-    \item \ALFundamentalDataStructuresandAlgorithmsLODiscussFactors [\Familiarity] % Discutir factores otros que no sean eficiencia computacional que influyan en la elección de algoritmos, tales como tiempo de programación, mantenibilidad, y el uso de patrones específicos de la aplicación en los datos de entrada.
-    \item \ALFundamentalDataStructuresandAlgorithmsLOSolveProblems [\Assessment] % Resolver problemas usando algoritmos básicos de grafos, incluyendo busqueda por profundidad y busqueda por amplitud.
-    \item \ALFundamentalDataStructuresandAlgorithmsLODemonstrate [\Assessment] % Demostrar habilidad para evaluar algoritmos, para seleccionar de un rango de posibles opciones, para proveer una  justificación por esa selección,y para implementar el algoritmo en un contexto en específico.
-    \item \ALFundamentalDataStructuresandAlgorithmsLODescribeTheAnd [\Assessment] % Describir la propiedad del heap y el uso de heaps como una implementación de colas de prioridad.
-    \item \ALFundamentalDataStructuresandAlgorithmsLOSolveProblemsAlgorithms [\Assessment] % Resolver problemas usando algoritmos de grafos, incluyendo camino más corto de una sola fuente y camino más corto de todos los pares, y como mínimo un algoritmo de arbol de expansion minima.
+    \item \ALFundamentalDataStructuresandAlgorithmsLOImplement [\Assessment] % Implement basic numerical algorithms.
+    \item \ALFundamentalDataStructuresandAlgorithmsLOImplementSimple [\Assessment] % Implement simple search algorithms and explain the differences in their complexity times.
+    \item \ALFundamentalDataStructuresandAlgorithmsLOBe [\Assessment] % Be able to implement common quadratic ordering algorithms and O (N log N).
+    \item \ALFundamentalDataStructuresandAlgorithmsLODiscuss [\Usage] % Discuss the execution time and memory efficiency of the main algorithms for sorting, searching and hashing..
+    \item \ALFundamentalDataStructuresandAlgorithmsLODiscussFactors [\Familiarity] % Discuss factors other than computational efficiency that influence the choice of algorithms, such as programming time, maintainability, and the use of application-specific patterns in the input data.
+    \item \ALFundamentalDataStructuresandAlgorithmsLOSolveProblems [\Assessment] % Solve problems using basic algorithms of graphs, including search by depth and search by amplitude.
+    \item \ALFundamentalDataStructuresandAlgorithmsLODemonstrate [\Assessment] % Demonstrate ability to evaluate algorithms, to select from a range of possible options, to provide a justification for that selection, and to implement the algorithm in a specific context.
+    \item \ALFundamentalDataStructuresandAlgorithmsLODescribeTheAnd [\Assessment] % Describe the property of heap and the use of heaps as a priority queue implementation
+    \item \ALFundamentalDataStructuresandAlgorithmsLOSolveProblemsAlgorithms [\Assessment] % Solve problems using graph algorithms, including shorter single source path and shorter path of all pairs,and at least a minimal expansion tree algorithm..
 \end{learningoutcomes}
 \end{unit}
 
 \begin{unit}{\ALBasicAutomataComputabilityandComplexity}{}{KT2005, DPV2006, CLRS2009}{2}{C9}
 \begin{topics}%
-    \item \ALBasicAutomataComputabilityandComplexityTopicIntroduction % Introducción a las clases P y NP y al problema P vs. NP.
-    \item \ALBasicAutomataComputabilityandComplexityTopicIntroductionTo % Introducción y ejemplos de problemas NP- Completos y a clases NP-Completos.
+    \item \ALBasicAutomataComputabilityandComplexityTopicIntroduction % Introduction to the classes P and NP and the problem P vs. NP.
+    \item \ALBasicAutomataComputabilityandComplexityTopicIntroductionTo % Introduction and examples of problems NP- Complete and NP-Complete classes.
 \end{topics}
 \begin{learningoutcomes}
-    \item \ALBasicAutomataComputabilityandComplexityLODefine [\Familiarity] % Define las clases P y NP
-    \item \ALBasicAutomataComputabilityandComplexityLOExplainTheNp [\Familiarity] % Explique el significado de NP-Completitud
+    \item \ALBasicAutomataComputabilityandComplexityLODefine [\Familiarity] % Define the classes P and NP
+    \item \ALBasicAutomataComputabilityandComplexityLOExplainTheNp [\Familiarity] % Explain the meaning of NP-Completitud
 \end{learningoutcomes}
 \end{unit}
 
 \begin{unit}{\ALAdvancedDataStructuresAlgorithmsandAnalysis}{}{KT2005, DPV2006, CLRS2009, T1983, R1992}{8}{C16}
 \begin{topics}%
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicGraphs % Grafos (ej. Ordenamiento Topológico, encontrando componentes puertemente conectados)
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicNumber % Algoritmos Teórico-Numéricos (Aritmética Modular, Prueba del Número Primo, Factorización Entera)
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicRandomized % Algoritmos aleatorios.
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicAmortized % Análisis amortizado.
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicProbabilistic % Análisis Probabilístico.
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicGraphs % Graphs (eg topological ordering, finding strongly connected components)
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicNumber % Theoretical-Numeric Algorithms (Modular Arithmetic, Primal Number Test, Integer Factorization)
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicRandomized % Random algorithms.
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicAmortized % Amortized analysis.
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisTopicProbabilistic % Probabilistic Analysis.
 \end{topics}
 \begin{learningoutcomes}
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisLOUnderstand [\Familiarity]% Entender el mapeamento de problemas del mundo real a soluciones algorítmicas (ejemplo, problemas de grafos, programas lineares,etc)
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisLOSelect [\Usage] % Seleccionar y aplicar técnicas de algoritmos avanzadas (ejemplo, randonmización, aproximación) para resolver problemas reales.
-    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisLOSelectAnd [\Usage] % Seleccionar y aplicar técnicas avanzadas de análisis (ejemplo, amortizado, probabilistico,etc) para algoritmos.
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisLOUnderstand [\Familiarity]% Understand the mapping of real-world problems to algorithmic solutions (eg, gran) to solve real problems.
+    \item \ALAdvancedDataStructuresAlgorithmsandAnalysisLOSelectAnd [\Usage] % Select and apply advanced techniques of analysis (example, amortized, probabilistic, etc.) for algorithms.
 \end{learningoutcomes}
 \end{unit}
 
