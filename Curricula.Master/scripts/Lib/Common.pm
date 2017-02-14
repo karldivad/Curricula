@@ -1164,7 +1164,7 @@ sub read_institution_info($)
 		@{$this_inst_info{SyllabusLangsList}} 		= split(",", $this_inst_info{SyllabusLangs_without_accents})
 	}
 	else
-	{	Util::print_error("read_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
+	{	Util::print_error("read_institution_info: there is not \\SyllabusLang defined in \"$file\"\n");	}
 
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
@@ -2499,7 +2499,7 @@ sub parse_courses()
 			}
                         if($axes eq "")
                         {
-                                Util::halt("Course $codcour has not area defined, see dependencies");
+                                Util::halt("Course $codcour (Sem: $semester)has not area defined, see dependencies");
                         }
 			$config{n_semesters} = $semester if($semester > $config{n_semesters});
 			$courses_count++;
