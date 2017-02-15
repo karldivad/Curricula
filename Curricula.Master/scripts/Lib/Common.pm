@@ -635,12 +635,14 @@ sub get_syllabus_full_path($$$)
 {
 	my ($codcour, $semester, $lang) = (@_);
 	my $syllabus_base_dir = get_template("InSyllabiContainerDir");
-	if($lang eq "English")
-	{	Util::print_message("$syllabus_base_dir");
-		$syllabus_base_dir =~ s/$config{language_without_accents}/$lang/;
-		Util::print_message("$syllabus_base_dir");
-		exit;
-	}
+	$syllabus_base_dir =~ s/$config{language_without_accents}/$lang/;
+
+# 	if($lang eq "English")
+# 	{	Util::print_message("$syllabus_base_dir");
+#		$syllabus_base_dir =~ s/$config{language_without_accents}/$lang/;
+# 		Util::print_message("$syllabus_base_dir");
+# 		exit;
+# 	}
 	foreach my $dir (@{$config{SyllabiDirs}})
 	{
 		my $file = "$syllabus_base_dir/$dir/$codcour";
