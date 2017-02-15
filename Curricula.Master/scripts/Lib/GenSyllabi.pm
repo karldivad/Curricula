@@ -136,11 +136,11 @@ sub process_syllabus_units($$$)
 	return ($all_units_txt, $unit_captions);
 }
 
-sub read_syllabus_info($$)
+sub read_syllabus_info($$$)
 {
-	my ($codcour, $semester)   = (@_);
+	my ($codcour, $semester, $lang)   = (@_);
 	my $count       = 0;
-	my $fullname 	= Common::get_syllabus_full_path($codcour, $semester);
+	my $fullname 	= Common::get_syllabus_full_path($codcour, $semester, $lang);
 	my $syllabus_in	= Util::read_file($fullname);
 # 	Util::print_message("GenSyllabi::read_syllabus_info $codcour ...");
 	$syllabus_in =~ s/\\ExpandOutcome\{/\\ShowOutcome\{/g;
@@ -397,22 +397,21 @@ sub generate_tex_syllabi_files()
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}} 
                                          @{$Common::courses_by_semester{$semester}})
 		{
-			my %map = read_syllabus_info($codcour, $semester);
-			
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
+			      my %map = read_syllabus_info($codcour, $semester, $lang);
 			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      Util::print_message("Generating Syllabus: $output_file");
  			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
+ 			      
+			      # Copy bib files
+			      my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
+			      #Util::print_message("cp $syllabus_bib $OutputTexDir");
+			      system("cp $syllabus_bib $OutputTexDir");
 			}
 			#print Dumper(\%{$Common::config{dictionaries}{English}}); exit;
 			
 # 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
-
-			# Copy bib files
-			my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
-			#Util::print_message("cp $syllabus_bib $OutputTexDir");
-			system("cp $syllabus_bib $OutputTexDir");
 		}
 	}
 	Util::check_point("generate_tex_syllabi_files");
