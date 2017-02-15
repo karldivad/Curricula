@@ -480,7 +480,10 @@ sub gen_batch_to_compile_syllabi()
                                 }
  				#Util::print_message("$syllabus_container_dir/$_");
 			}
-			$gen_syllabi .= "$scripts_dir/gen-syllabus.sh $codcour $OutputInstDir$parallel_sep\n";
+			foreach my $lang (@{$Common::config{SyllabusLangsList}})
+			{
+				$gen_syllabi .= "$scripts_dir/gen-syllabus.sh $codcour-$Common::config{dictionaries}{$lang}{lang_prefix} $OutputInstDir$parallel_sep\n";
+			}
 # 			if( $Common::config{flags}{DeliveryControl} == 1 )
 # 			{	$gen_syllabi .= "$scripts_dir/compile-latex.sh $codcour-delivery-control $OutputInstDir$parallel_sep\n";	}
 # 			else
