@@ -305,9 +305,9 @@ sub read_syllabus_info($$)
 	return %map;
 }
 
-sub genenerate_tex_syllabus_file($$$$%)
+sub genenerate_tex_syllabus_file($$$$$%)
 {
-	my ($codcour, $file_template, $units_field, $output_file, %map)   = (@_);
+	my ($codcour, $file_template, $units_field, $output_file, $lang, %map)   = (@_);
 
 # 	my $unit_struct = "";
 # 	if($file_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
@@ -318,6 +318,7 @@ sub genenerate_tex_syllabus_file($$$$%)
 	$file_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
 
 	$file_template = Common::replace_tags($file_template, "--", "--", %map);
+	$file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
         $file_template =~ s/--.*?--//g;
         system("rm $output_file");
 	Util::write_file($output_file, $file_template);
@@ -402,8 +403,9 @@ sub generate_tex_syllabi_files()
 			{
 			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      Util::print_message("Generating Syllabus: $output_file");
- 			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, %map);
+ 			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
 			}
+			#print Dumper(\%{$Common::config{dictionaries}{English}}); exit;
 			
 # 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 
