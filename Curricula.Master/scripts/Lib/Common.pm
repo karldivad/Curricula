@@ -368,6 +368,7 @@ sub set_global_variables()
 	
 	$config{InLangBaseDir}	 	= "$config{in}/lang";
 	$config{InLangDir}	 	= "$config{InLangBaseDir}/$config{language_without_accents}";
+
 	#$config{in_html_dir}      	= $config{InLangDir}."/templates";
 
 	$config{InPeopleDir}		= $config{in}."/people";
@@ -400,6 +401,7 @@ sub set_initial_paths()
 	$path_map{InStyDir}				= $path_map{InLangDir}."/$config{area}.sty";
 	$path_map{InStyAllDir}				= $path_map{InDir}."/All.sty";
 	$path_map{InSyllabiContainerDir}		= $path_map{InLangDir}."/cycle/$config{Semester}/Syllabi";
+      
         $path_map{InFigDir}                             = $path_map{InLangDir}."/figs";
 	$path_map{InOthersDir}				= $path_map{InLangDir}."/$config{area}.others";
 	$path_map{InHtmlDir}				= $path_map{InLangDir}."/All.html";
@@ -629,11 +631,18 @@ sub get_syllabus_dir($)
 }
 
 # ok
-sub get_syllabus_full_path($$)
+sub get_syllabus_full_path($$$)
 {
-	my ($codcour, $semester) = (@_);
+	my ($codcour, $semester, $lang) = (@_);
 	my $syllabus_base_dir = get_template("InSyllabiContainerDir");
-	
+	$syllabus_base_dir =~ s/$config{language_without_accents}/$lang/;
+
+# 	if($lang eq "English")
+# 	{	Util::print_message("$syllabus_base_dir");
+#		$syllabus_base_dir =~ s/$config{language_without_accents}/$lang/;
+# 		Util::print_message("$syllabus_base_dir");
+# 		exit;
+# 	}
 	foreach my $dir (@{$config{SyllabiDirs}})
 	{
 		my $file = "$syllabus_base_dir/$dir/$codcour";
@@ -1164,7 +1173,7 @@ sub read_institution_info($)
 		@{$this_inst_info{SyllabusLangsList}} 		= split(",", $this_inst_info{SyllabusLangs_without_accents})
 	}
 	else
-	{	Util::print_error("read_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
+	{	Util::print_error("read_institution_info: there is not \\SyllabusLang defined in \"$file\"\n");	}
 
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
@@ -2499,7 +2508,7 @@ sub parse_courses()
 			}
                         if($axes eq "")
                         {
-                                Util::halt("Course $codcour has not area defined, see dependencies");
+                                Util::halt("Course $codcour (Sem: $semester)has not area defined, see dependencies");
                         }
 			$config{n_semesters} = $semester if($semester > $config{n_semesters});
 			$courses_count++;
