@@ -48,7 +48,7 @@ set OutputScriptsDir=<OUTPUT_SCRIPTS_DIR>
 set OutputHtmlDir=<OUTPUT_HTML_DIR>
 
 ./clean
-# ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g' 
+# ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g'
 
 mkdir -p <OUT_LOG_DIR>
 ./scripts/process-curricula.pl <AREA>-<INST> ;
@@ -59,7 +59,7 @@ if($pdf == 1) then
       # latex -interaction=nonstopmode <MAIN_FILE>
       latex <MAIN_FILE>;
       bibtex <MAIN_FILE>1;
-      
+
       ./scripts/compbib.sh <MAIN_FILE> > <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-errors-bib.txt;
 
       latex <MAIN_FILE>;
@@ -69,14 +69,14 @@ if($pdf == 1) then
       dvips <MAIN_FILE>.dvi -o <AREA>-<INST>.ps;
       echo <AREA>-<INST>;
       ps2pdf <AREA>-<INST>.ps <AREA>-<INST>.pdf;
-      
+
 #     Generate the first page and place it at html dir
       pdftk A=<AREA>-<INST>.pdf cat A1-1 output <AREA>-<INST>-P1.pdf;
       convert <AREA>-<INST>-P1.pdf <AREA>-<INST>-P1.png;
       rm <AREA>-<INST>-P1.pdf;
       mv <AREA>-<INST>-P1.png <OUTPUT_HTML_DIR>/CurriculaMain-P1.png;
       cp <AREA>-<INST>.pdf <OUTPUT_HTML_DIR>/CurriculaMain.pdf;
-      
+
       mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST> Plan<PLAN>.pdf";
       rm -rf <AREA>-<INST>.ps;
 endif
@@ -125,7 +125,7 @@ convert <OUTPUT_DIR>/pdfs/<AREA>-<INST>-poster.pdf <OUTPUT_HTML_DIR>/<AREA>-<INS
 # Generate Books
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi       	pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions  	pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography  	pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";   
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography  	pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 
@@ -140,4 +140,3 @@ more <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-time.txt;
 #./scripts/testenv.pl
 beep;
 beep;
-
