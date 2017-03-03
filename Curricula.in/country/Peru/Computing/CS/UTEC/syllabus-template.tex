@@ -1,6 +1,10 @@
 \documentclass[final]{article}
 \input{current-institution}
 \usepackage{\InStyAllDir/syllabus-final}
+\usepackage{enumitem} 
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+% \bibliographystyle{apalike}
+\addbibresource{--BIBFILE--}
 
 \newcommand{\INST}{}
 \newcommand{\AREA}{}
@@ -12,104 +16,95 @@
 &
 \begin{minipage}{0.75\textwidth}
 \begin{center}
-{\noindent\Large\bf\University\\ \SchoolFullNameBreak \\SILABO}
-\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+{\noindent\Large\bf\University\\
+\SchoolFullNameBreak \\
+<<SYLLABUSOFCOURSE>> -- <<PERIOD>> \Semester}
+
+% \section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+\section*{}\label{sec:--COURSE_CODE--}%
 \addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 \end{center}
 \end{minipage}
 \end{tabularx}
 
 \addtocounter{SyllabiSectionCount}{1}
-
-\noindent \Semester
-\begin{center}
-\begin{tabularx}{\textwidth}{|p{5cm}cX|}\hline
-\multicolumn{3}{|l|}{{\bf \arabic{SyllabiSectionCount}. DATOS GENERALES}}                \\ \hline
-\arabic{SyllabiSectionCount}.1 <<SCHOOL>>     	& : & \SchoolShortName           \\
-\arabic{SyllabiSectionCount}.2 <<COURSE>>       & : & --COURSE_CODE--. --COURSE_NAME-- \\
-\arabic{SyllabiSectionCount}.3 <<SEMESTER>>     & : & --SEMESTER--          \\
-\arabic{SyllabiSectionCount}.4 <<PREREQUISITES>>& : & --PREREQUISITES--     \\
-\arabic{SyllabiSectionCount}.5 <<TYPE>>         & : & --COURSE_TYPE--              \\
-\arabic{SyllabiSectionCount}.6 <<HOURS>>        & : & --HOURS--          \\ 
-\arabic{SyllabiSectionCount}.7 <<CREDITS>>      & : & --CREDITS--          \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<CourseCodeandName>>:} --COURSE_CODE--. --COURSE_NAME-- \label{sec:--COURSE_CODE--}
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. DOCENTE}\\ \hline
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Credits>>:} --CREDITS--
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<HoursTheoryAndLab>>:} --HOURS--
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Professor>>}
 --PROFESSOR_SHORT_CVS--
-\\ \hline
-\end{tabularx}
-\end{center}
+<<AttentionwithAppointment>>
+
+\addtocounter{SyllabiSectionCount}{1} {\noindent\bf \arabic{SyllabiSectionCount}. <<Bibliography>>}
+\defbibheading{bibliography}[\bibname]{}
+\printbibliography
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. FUNDAMENTACIÓN DEL CURSO}        \\ \hline
---JUSTIFICATION--                  \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<InformationAbouttheCourse>>}
+\begin{enumerate}[label=(\alph*)]
+\item {\bf <<BriefDescription>>}
+--JUSTIFICATION--
+ 
+\item {\bf <<Prerequisites>>:}
+--PREREQUISITES--
+ 
+\item {\bf <<TypeOfCourse>>:} --COURSE_TYPE--
+\end{enumerate}
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. SUMILLA}                         \\ \hline
---SHORT_DESCRIPTION--                         \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Competences>>}
+--FULL_GOALS--
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. OBJETIVO GENERAL}                \\ \hline
---GOAL--                 \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<ContributionToOutcomes>>}
+--FULL_OUTCOMES--
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. CONTRIBUCIÓN A LA FORMACIÓN PROFESIONAL Y FORMACIÓN GENERAL} \\ \hline
-\ContribInitMsg:
---OUTCOMES--\\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<ListOfTopics>>}
+\begin{enumerate}
+--LIST_OF_TOPICS--
+\end{enumerate}
 
 
-\addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. CONTENIDOS}                      \\ \hline
-\end{tabularx}
-\end{center}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{SyllabiUnitCount}{0}
---BEGINUNIT--
-% A new unit begins here
-\addtocounter{SyllabiUnitCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|X|}                 \hline
-\multicolumn{2}{|l|}{{\bf <<UNIT>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
-\multicolumn{2}{|l|}{{\bf Nivel Bloom: --BLOOM_LEVEL--}} \\ \hline
-{\bf OBJETIVO GENERAL}  & {\bf CONTENIDO}                    \\ \hline
---UNIT_GOAL--
-& 
---UNIT_CONTENT--
-\\ \hline
-\multicolumn{2}{|l|}
-{\begin{minipage}{0.95\textwidth}
-{\bf Lecturas:} --CITATIONS--
-\end{minipage}
-}
-\\ \hline
-\end{tabularx}
-\end{center}
-
---ENDUNIT--
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \addtocounter{SyllabiSectionCount}{1}
+% \begin{center}
+% \begin{tabularx}{\textwidth}{|X|}      \hline
+% {\bf \arabic{SyllabiSectionCount}. <<CONTENTS>>}                      \\ \hline
+% \end{tabularx}
+% \end{center}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \setcounter{SyllabiUnitCount}{0}
+% BEGINUNIT--
+% % A new unit begins here
+% \addtocounter{SyllabiUnitCount}{1}
+% \begin{center}
+% \begin{tabularx}{\textwidth}{|X|X|}                 \hline
+% \multicolumn{2}{|l|}{{\bf <<UNIT>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
+% \multicolumn{2}{|l|}{{\bf Nivel Bloom: --BLOOM_LEVEL--}} \\ \hline
+% {\bf GENERAL OBJECTIVE}  & {\bf CONTENT}                    \\ \hline
+% UNIT_GOAL--
+% & 
+% UNIT_CONTENT--
+% \\ \hline
+% \multicolumn{2}{|l|}
+% {\begin{minipage}{0.95\textwidth}
+% {\bf Lecturas:} --CITATIONS--
+% \end{minipage}
+% }
+% \\ \hline
+% \end{tabularx}
+% \end{center}
+% 
+% --ENDUNIT--
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addtocounter{SyllabiSectionCount}{1}
 \begin{center}
@@ -140,6 +135,5 @@
 \end{tabularx}
 \end{center}
 
-\bibliographystyle{apalike}
-\bibliography{--BIBFILE--}
+
 \end{document}
