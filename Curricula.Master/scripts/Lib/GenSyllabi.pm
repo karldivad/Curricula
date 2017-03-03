@@ -156,13 +156,16 @@ sub read_syllabus_info($$$)
 	my %map = ();
 	# 1st: Get general information from this syllabus
 	$Common::course_info{$codcour}{unitcount}	= 0;
-	$Common::course_info{$codcour}{justification}	= get_environment($codcour, $syllabus_in, "justification");
-	$Common::course_info{$codcour}{goals}         	= get_environment($codcour, $syllabus_in, "goals");
-	
+# 	$Common::course_info{$codcour}{justification}	= get_environment($codcour, $syllabus_in, "justification");
+# 	$Common::course_info{$codcour}{goals}         	= get_environment($codcour, $syllabus_in, "goals");
+	foreach my $env ("outcomes", "competences", "justification", "goals")
+	{
+	      $Common::course_info{$codcour}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
+	}
+
 	# 2nd: Process its outcomes and learningoutcomes
 	foreach my $env ("outcomes", "competences")
 	{
-	      $Common::course_info{$codcour}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
 	      $Common::course_info{$codcour}{$env}{itemized}	= "";
 	      $Common::course_info{$codcour}{$env}{array}	= [];
 	      $Common::course_info{$codcour}{$env}{count}     	= 0;
@@ -198,10 +201,10 @@ sub read_syllabus_info($$$)
 	$map{SEMESTER}         .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester}}\$ ";
 	$map{SEMESTER}         .= "$Common::config{dictionary}{Semester}.";
 	$map{CREDITS}		= $Common::course_info{$codcour}{cr};
-	$map{JUSTIFICATION}	= $Common::course_info{$codcour}{justification};
+	$map{JUSTIFICATION}	= $Common::course_info{$codcour}{justification}{txt};
 	
-	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{goals}\n\\end{itemize}";
-	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{goals};
+	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{goals}{txt}\n\\end{itemize}";
+	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{goals}{txt};
 	
 	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{itemized}\\end{description}";
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{itemized};
@@ -284,6 +287,7 @@ sub read_syllabus_info($$$)
 	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($syllabus_in, $unit_struct, $codcour);
 	
 	
+	$map{LIST_OF_TOPICS} = $map{SHORT_DESCRIPTION};
 	$map{SHORT_DESCRIPTION} = "\\begin{inparaenum}\n$map{SHORT_DESCRIPTION}\\end{inparaenum}";
 
 	my ($bibfile_in, $bibfile_out) = ("", "");
