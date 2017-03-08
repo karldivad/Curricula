@@ -328,9 +328,12 @@ sub genenerate_tex_syllabus_file($$$$$%)
 	$file_template =~ s/\\newcommand\{\\INST\}\{\}/\\newcommand\{\\INST\}\{$Common::institution\}/g;
 	$file_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
 
+	Util::print_message("genenerate_tex_syllabus_file $codcour: $output_file ...");
 	$file_template = Common::replace_tags($file_template, "--", "--", %map);
+	#Util::print_message("2");
 	$file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
-        $file_template =~ s/--.*?--//g;
+	#Util::print_message("");
+        #$file_template =~ s/--.*?--//g;
         system("rm $output_file");
 	Util::write_file($output_file, $file_template);
 
@@ -352,13 +355,11 @@ sub read_syllabus_template()
 	if(not -e $template_file)
 	{	Util::halt("It seems that you forgot the syllabus template file ... verify \"$template_file\"");		}
 	$Common::config{syllabus_template} = Util::read_file($template_file);
-	
-	
-	if( $Common::config{syllabus_template} =~ m/(\\begin\{evaluation\}\s*\n(?:.|\n)*?\n\\end\{evaluation\})/g )
+
+	if( $Common::config{syllabus_template} =~ m/\\begin\{evaluation\}\s*\n((?:.|\n)*?)\n\\end\{evaluation\}/g )
 	{
 	      $Common::config{general_evaluation} = $1;
-	      my $evaluation_replaced = Common::replace_special_chars($Common::config{general_evaluation});
-	      $Common::config{syllabus_template}  =~ s/$evaluation_replaced/--EVALUATION--/;
+	      $Common::config{syllabus_template}  =~ s/\\begin\{evaluation\}\s*\n(?:.|\n)*?\n\\end\{evaluation\}/--EVALUATION--/;
 	      Util::print_message("File General Evaluation detected ok!");
 	}
 	else
@@ -414,7 +415,7 @@ sub generate_tex_syllabi_files()
 			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      Util::print_message("Generating Syllabus: $output_file");
  			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
- 			      
+      
 			      # Copy bib files
 			      my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
 			      #Util::print_message("cp $syllabus_bib $OutputTexDir");

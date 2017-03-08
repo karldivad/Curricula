@@ -101,19 +101,16 @@ LearningObjectives
 UnitNotDefined     =Unidad no definida
 BibliographySection=Referencias Bibliográficas
 
-THEORYSESSIONS     =SESIONES TEORICAS 
-THEORYSESSIONSCONTENT =El desarrollo de las sesiones teóricas está focalizado en el estudiante, a través de su participación activa, resolviendo problemas relacionados al curso con los aportes individuales y discutiendo casos reales de la industria. Los alumnos desarrollarán a lo largo del curso un proyecto de aplicación de las herramientas recibidas en una empresa.
-LABSESSIONS           =SESIONES DE LABORATORIO 
-LABSESSIONSCONTENT    =Las sesiones prácticas se desarrollan en laboratorio. Las prácticas de laboratorio se realizan en equipos para fortalecer su comunicación. Al inicio de cada laboratorio se explica el desarrollo de la práctica y al término se destaca las principales conclusiones de la actividad en forma grupal.
-ORALPRESENTATIONS    =EXPOSICIONES INDIVIDUALES O GRUPALES 
-ORALPRESENTATIONSCONTENT =Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso.
+THEORY-SESSIONS     =SESIONES TEORICAS 
+THEORY-SESSIONS-CONTENT =El desarrollo de las sesiones teóricas está focalizado en el estudiante, a través de su participación activa, resolviendo problemas relacionados al curso con los aportes individuales y discutiendo casos reales de la industria. Los alumnos desarrollarán a lo largo del curso un proyecto de aplicación de las herramientas recibidas en una empresa.
+LAB-SESSIONS           =SESIONES DE LABORATORIO 
+LAB-SESSIONS-CONTENT    =Las sesiones prácticas se desarrollan en laboratorio. Las prácticas de laboratorio se realizan en equipos para fortalecer su comunicación. Al inicio de cada laboratorio se explica el desarrollo de la práctica y al término se destaca las principales conclusiones de la actividad en forma grupal.
+ORAL-PRESENTATIONS    =EXPOSICIONES INDIVIDUALES O GRUPALES 
+ORAL-PRESENTATIONS-CONTENT =Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso.
 READING               =LECTURAS
-READINGCONTENT       =A lo largo del curso se proporcionan diferentes lecturas, las cuales son evaluadas. El promedio de las notas de las lecturas es considerado como la nota de una práctica calificada. El uso del campus virtual UTEC Online permite a cada estudiante acceder a la información del curso, e interactuar fuera de aula con el profesor y con los otros estudiantes.
-EVALUATION            =SISTEMA DE EVALUACIÓN
-EVALUATIONCONTENT    =
-
-
-
+READING-CONTENT       =A lo largo del curso se proporcionan diferentes lecturas, las cuales son evaluadas. El promedio de las notas de las lecturas es considerado como la nota de una práctica calificada. El uso del campus virtual UTEC Online permite a cada estudiante acceder a la información del curso, e interactuar fuera de aula con el profesor y con los otros estudiantes.
+EVALUATION-SYSTEM            =SISTEMA DE EVALUACIÓN
+EVALUATION-CONTENT    =.
 
 nocorehours        =Sin mínimo de horas
 corehours	   =horas como mínimo

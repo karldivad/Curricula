@@ -1964,18 +1964,31 @@ sub wrap_label($)
 sub replace_tags($$$%)
 {
  	my ($txt, $before, $after, %map) = (@_);
- 	while($txt =~ m/$before(.*?)$after/g)
+	my $count = 1;
+	
+	while($txt =~ m/$before(.*?)$after/g)
 	{
 		my $tag=$1;
-# 		print "tag=$tag\n";
+  # 		print "tag=$tag\n";
 		if(defined($map{$tag}))
-		{	$txt =~ s/$before$tag$after/$map{$tag}/g;
-# 			Util::print_warning("$before$tag$after => $map{$tag}");
+		{
+		      $txt =~ s/$before$tag$after/$map{$tag}/g;
+		      if($map{$tag} =~ m/$before$tag$after/g)
+		      {
+			    Util::print_error("Recursive tag ! $map{$tag} contains \"$before$tag$after\"");
+		      }
+		      #Util::print_warning("($count) $before$tag$after => $map{$tag}");
+		      $count++;
 		}
 		else
 		{
-			#Util::print_warning("(replace_tags) There is no translation for tag \"$before$tag$after\"");
+# 		      $txt =~ s/$before$tag$after/** $tag **/g;
+		      #Util::print_warning("(replace_tags: $count) There is no translation for tag \"$before$tag$after\"");
 		}
+# 		if( $count > 50 )
+# 		{
+# 			print Dumper (\$txt);
+# 		}
 	}
 	return $txt;
 }

@@ -24,6 +24,6 @@
 ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh CS1D1;
 
-# cp ../Curricula.in/lang/Espanol/cycle/2017-I/Syllabi/Computing/CS/CS1D1.bib ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/tex
-# ./scripts/gen-syllabus.sh CS1D1-EN ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
-# ./scripts/gen-syllabus.sh CS1D1-ES ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
+cp ../Curricula.in/lang/Espanol/cycle/2017-I/Syllabi/Computing/CS/CS1D1.bib ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/tex
+./scripts/gen-syllabus.sh CS1D1-EN ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
+./scripts/gen-syllabus.sh CS1D1-ES ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
