@@ -513,7 +513,9 @@ sub set_initial_paths()
 	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
 	$path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/extra/additional-info $config{Semester}.txt";
 	$path_map{"in-distribution-dir"}		= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+	$path_map{"in-this-semester-dir"}		= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
 	$path_map{"in-distribution-file"}		= $path_map{"in-distribution-dir"}."/distribution.txt";
+	$path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
 	$path_map{"in-specific-evaluation-file"}	= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
 	$path_map{"out-only-macros-file"}		= $path_map{OutputTexDir}."/macros-only.tex";
 	
@@ -1374,11 +1376,11 @@ sub set_initial_configuration($)
 	%{$config{dictionary}} = read_config_file("dictionary");
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
-	      my $lan_prefix = "";
+	      my $lang_prefix = "";
 	      if( $lang =~ m/(..)/g )
-	      {		$lan_prefix = uc($1);	      }
+	      {		$lang_prefix = uc($1);	      }
 	      %{$config{dictionaries}{$lang}} = read_dictionary_file($lang);
-	      $config{dictionaries}{$lang}{lang_prefix} = $lan_prefix;
+	      $config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
 	      #Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
 	}
 # 	print Dumper(\%{$config{dictionary}});	

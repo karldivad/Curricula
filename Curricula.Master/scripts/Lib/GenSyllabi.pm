@@ -143,6 +143,7 @@ sub read_syllabus_info($$$)
 	my $fullname 	= Common::get_syllabus_full_path($codcour, $semester, $lang);
 	my $syllabus_in	= Util::read_file($fullname);
 # 	Util::print_message("GenSyllabi::read_syllabus_info $codcour ...");
+
 	$syllabus_in =~ s/\\ExpandOutcome\{/\\ShowOutcome\{/g;
 	$syllabus_in =~ s/\\Competence\{/\\ShowCompetence\{/g;
 	$syllabus_in =~ s/\{unitgoals\}/\{learningoutcomes\}/g;
@@ -154,6 +155,8 @@ sub read_syllabus_info($$$)
 # 	Util::print_message("Replaced $count_old_macros old macros in file: \"$fullname\"") if($count_old_macros > 0);
 
 	my %map = ();
+	
+	$map{SOURCE_FILE_NAME} = $fullname;
 	# 1st: Get general information from this syllabus
 	$Common::course_info{$codcour}{unitcount}	= 0;
 # 	$Common::course_info{$codcour}{justification}	= get_environment($codcour, $syllabus_in, "justification");
@@ -306,6 +309,10 @@ sub read_syllabus_info($$$)
 	foreach (keys %{$Common::course_info{$codcour}{extra_tags}})
 	{	$map{$_} = $Common::course_info{$codcour}{extra_tags}{$_};		}
 	# TEXT TO CUT
+# 	if( $codcour eq "FG170" )
+# 	{	print Dumper(\%map);	exit;
+# 	    exit;
+# 	}
 	return %map;
 }
 
@@ -346,12 +353,12 @@ sub read_syllabus_template()
 	{	Util::halt("It seems that you forgot the syllabus template file ... verify \"$template_file\"");		}
 	$Common::config{syllabus_template} = Util::read_file($template_file);
 	
+	
 	if( $Common::config{syllabus_template} =~ m/(\\begin\{evaluation\}\s*\n(?:.|\n)*?\n\\end\{evaluation\})/g )
 	{
-	      my $evaluation = $1;
-	      my $evaluation_replaced = Common::replace_special_chars($evaluation);
+	      $Common::config{general_evaluation} = $1;
+	      my $evaluation_replaced = Common::replace_special_chars($Common::config{general_evaluation});
 	      $Common::config{syllabus_template}  =~ s/$evaluation_replaced/--EVALUATION--/;
-	      $Common::config{general_evaluation} = $evaluation;
 	      Util::print_message("File General Evaluation detected ok!");
 	}
 	else

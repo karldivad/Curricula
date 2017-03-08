@@ -1,8 +1,10 @@
 \documentclass[final]{article}
+% This file was generated based on: --SOURCE_FILE_NAME--
 \input{current-institution}
 \usepackage{\InStyAllDir/syllabus-final}
 \usepackage{enumitem} 
-\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+% \usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\usepackage[style=alphabetic]{biblatex}
 % \bibliographystyle{apalike}
 \addbibresource{--BIBFILE--}
 
@@ -70,6 +72,25 @@
 \begin{enumerate}
 --LIST_OF_TOPICS--
 \end{enumerate}
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Evaluation>>}
+\begin{evaluation}
+--THEORY-SESSIONS--
+--THEORY-SESSIONS-CONTENT--
+
+--LAB-SESSIONS--
+--LAB-SESSIONS-CONTENT--
+
+--ORAL-PRESENTATIONS--
+--ORAL-PRESENTATIONS-CONTENT--
+
+--READING--
+--READING-CONTENT--
+
+--EVALUATION--
+--EVALUATION-CONTENT--
+\end{evaluation}
 
 
 
