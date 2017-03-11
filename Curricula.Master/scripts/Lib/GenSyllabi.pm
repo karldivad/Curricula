@@ -303,7 +303,7 @@ sub read_syllabus_info($$$)
 		$Common::course_info{$codcour}{short_bibfiles} = $1;
 	}
 	$map{IN_BIBFILE} 	= $bibfile_in;
-	$map{BIBFILE} 		= $bibfile_out;
+	$map{BIBFILE} 		= $bibfile_out.".bib";
 	$Common::course_info{$codcour}{bibfiles} = $bibfile_in;
 
 	foreach (keys %{$Common::course_info{$codcour}{extra_tags}})
@@ -414,7 +414,7 @@ sub generate_tex_syllabi_files()
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
 			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      Util::print_message("Generating Syllabus: $output_file");
- 			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
+			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
       
 			      # Copy bib files
 			      my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
@@ -422,7 +422,6 @@ sub generate_tex_syllabi_files()
 			      system("cp $syllabus_bib $OutputTexDir");
 			}
 			#print Dumper(\%{$Common::config{dictionaries}{English}}); exit;
-			
 # 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 		}
 	}

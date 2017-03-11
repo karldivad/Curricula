@@ -2,6 +2,9 @@
 % This file was generated based on: --SOURCE_FILE_NAME--
 \input{current-institution}
 \usepackage{\InStyAllDir/syllabus-final}
+% \usepackage{\InDir/lang/--LANG--/--AREA--.sty/bok-macros} 				% Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
+\usepackage{\InStyDir/bok-macros} 				% Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
+
 \usepackage{enumitem} 
 % \usepackage[backend=bibtex,style=alphabetic]{biblatex}
 \usepackage[style=alphabetic]{biblatex}
@@ -20,7 +23,7 @@
 \begin{center}
 {\noindent\Large\bf\University\\
 \SchoolFullNameBreak \\
-<<SYLLABUSOFCOURSE>> -- <<PERIOD>> \Semester}
+<<SyllabusofCourse>> -- <<AcademicPeriod>> \Semester}
 
 % \section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
 \section*{}\label{sec:--COURSE_CODE--}%
@@ -68,15 +71,22 @@
 --FULL_OUTCOMES--
 
 \addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<CompetencesIEEE>>}
+\begin{description}
+--COMPETENCES_ITEMS--
+\end{description}
+
+
+\addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<ListOfTopics>>}
 \begin{enumerate}
 --LIST_OF_TOPICS--
 \end{enumerate}
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. <<MetodologyAndEvaluation>>}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<MethodologyAndEvaluation>>}\\
 \begin{evaluation}
-{\noindent\bf --METODOLOGY--}:
+{\noindent\bf <<Methodology>>}:\\
 
 {\noindent\bf <<THEORY-SESSIONS>>:}\\
 <<THEORY-SESSIONS-CONTENT>>
@@ -94,38 +104,34 @@
 <<EVALUATION-CONTENT>>
 \end{evaluation}
 
-% \addtocounter{SyllabiSectionCount}{1}
-% \begin{center}
-% \begin{tabularx}{\textwidth}{|X|}      \hline
-% {\bf \arabic{SyllabiSectionCount}. <<CONTENTS>>}                      \\ \hline
-% \end{tabularx}
-% \end{center}
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \setcounter{SyllabiUnitCount}{0}
-% BEGINUNIT--
-% % A new unit begins here
-% \addtocounter{SyllabiUnitCount}{1}
-% \begin{center}
-% \begin{tabularx}{\textwidth}{|X|X|}                 \hline
-% \multicolumn{2}{|l|}{{\bf <<UNIT>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
-% \multicolumn{2}{|l|}{{\bf Nivel Bloom: --BLOOM_LEVEL--}} \\ \hline
-% {\bf GENERAL OBJECTIVE}  & {\bf CONTENT}                    \\ \hline
-% UNIT_GOAL--
-% & 
-% UNIT_CONTENT--
-% \\ \hline
-% \multicolumn{2}{|l|}
-% {\begin{minipage}{0.95\textwidth}
-% {\bf Lecturas:} --CITATIONS--
-% \end{minipage}
-% }
-% \\ \hline
-% \end{tabularx}
-% \end{center}
-% 
-% --ENDUNIT--
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Content>>}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{SyllabiUnitCount}{0}
+--BEGINUNIT--
+% A new unit begins here
+\addtocounter{SyllabiUnitCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|}                 \hline
+\multicolumn{2}{|l|}{{\bf <<Unit>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
+\multicolumn{2}{|l|}{{\bf <<CompetencesExpected>>: --LEVEL_OF_COMPETENCE--}} \\ \hline
+{\bf <<LearningOutcomes>>}  & {\bf <<Topics>>}                    \\ \hline
+--UNIT_GOAL--
+& 
+--UNIT_CONTENT--
+\\ \hline
+\multicolumn{2}{|l|}
+{\begin{minipage}{0.95\textwidth}
+{\bf Lecturas:} --CITATIONS--
+\end{minipage}
+}
+\\ \hline
+\end{tabularx}
+\end{center}
+
+--ENDUNIT--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \addtocounter{SyllabiSectionCount}{1}
 % \begin{center}
