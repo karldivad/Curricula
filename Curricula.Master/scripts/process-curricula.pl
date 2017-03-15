@@ -17,9 +17,14 @@ sub replacecodes()
 
 sub generate_general_info()
 {
-	Common::parse_bok();
-	Common::gen_bok();
-	
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+	      Util::print_message("*******************************************************************************************************");
+	      Util::print_message("                                  Generating BOK in $lang ...");
+	      Util::print_message("*******************************************************************************************************");
+	      Common::parse_bok($lang);
+	      Common::gen_bok($lang);
+	}
 	Common::read_all_min_max();
 	Util::precondition("gen_syllabi"); 
 	

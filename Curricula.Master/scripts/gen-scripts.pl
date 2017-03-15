@@ -77,6 +77,9 @@ sub gen_batch($$)
 	my $language_without_accents = Common::get_template("language_without_accents");
 	$txt =~ s/<LANG>/$language_without_accents/g;
 	
+	my $InLangBaseDir = Common::get_template("InLangBaseDir");
+	$txt =~ s/<IN_LANG_BASE_DIR>/$InLangBaseDir/g;
+	
 	my $InLangDir = Common::get_template("InLangDir");
 	$txt =~ s/<IN_LANG_DIR>/$InLangDir/g;
 
@@ -141,6 +144,7 @@ sub generate_institution()
 
 	$output_txt .= "\\newcommand{\\basedir}{".getcwd()."}\n";
 	$output_txt .= "\\newcommand{\\InDir}{\\basedir/".Common::get_template("InDir")."}\n";
+	$output_txt .= "\\newcommand{\\InLangBaseDir}{\\basedir/".Common::get_template("InLangBaseDir")."}\n";
 	$output_txt .= "\\newcommand{\\InLangDir}{\\basedir/".Common::get_template("InLangDir")."}\n";
 	$output_txt .= "\\newcommand{\\InAllTexDir}{\\basedir/".Common::get_template("InAllTexDir")."}\n";
 	$output_txt .= "\\newcommand{\\InTexDir}{\\basedir/".Common::get_template("InTexDir")."}\n";
