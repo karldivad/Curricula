@@ -1,0 +1,188 @@
+\newcommand{\ContribInitMsg}{Esta disciplina contribuye al logro de los siguientes resultados de la carrera\xspace}
+\newcommand{\CompetencesInitMsg}{Esta disciplina contribuye a la formación de las siguientes competencias del área de computación (IEEE)\xspace}
+
+\newcommand{\DefineOutcome}[2]{%
+\expandafter\def\csname Outcome#1\endcsname{#2}%
+}
+
+\newcommand{\ShowOutcomeText}[1]{%
+\csname Outcome#1\endcsname %
+}
+
+\newcommand{\ShowOutcome}[2]{%
+{\bf #1)} \csname Outcome#1\endcsname ({\bf \ShowCompetenceLevel{#2}})%
+}
+
+\newcommand{\ShowShortOutcomeLetter}[1]{%
+{\bf #1)} \csname Outcome#1Short\endcsname %
+}
+
+\newcommand{\ShowShortOutcome}[1]{%
+\csname Outcome#1Short\endcsname %
+}
+
+\newcommand{\DefineCompetence}[2]{%
+\expandafter\def\csname #1\endcsname{#2}%
+}
+
+\newcommand{\Competence}[1]{%
+\csname #1\endcsname\label{Competence:#1}%
+}
+\newcommand{\ShowCompetence}[2]{%
+{\bf #1.} \csname #1\endcsname {\bf $\Rightarrow$ Outcome #2}%
+}
+
+\newcommand{\DefineCompetenceLevel}[2]{%
+\expandafter\def\csname CompetenceLevel#1\endcsname{#2}%
+}
+\newcommand{\ShowCompetenceLevel}[1]{%
+\csname CompetenceLevel#1\endcsname%
+}
+
+\DefineOutcome{a}{An ability to apply knowledge of mathematics, science, and engineering.\xspace}
+\DefineOutcome{aShort}{Apply computer and math skills.\xspace}
+
+\DefineOutcome{b}{An ability to design and conduct experiments, as well as to analyze and interpret data.\xspace}
+\DefineOutcome{bShort}{Analyze problems and identify and define computational requirements.\xspace}
+
+\DefineOutcome{c}{An ability to design a system, component, or process to meet desired needs within realistic constraints such as economic, environmental, social, political, ethical, health and safety, manufacturability, and sustainability.\xspace}
+\DefineOutcome{cShort}{Design, implement and evaluate a computer system, process, component or program.\xspace}
+
+\DefineOutcome{d}{An ability to function on multidisciplinary teams.\xspace}
+\DefineOutcome{dShort}{Work effectively on teams.\xspace}
+
+\DefineOutcome{e}{Understand correctly the professional, ethical, legal, security and social implications of the profession.\xspace}
+\DefineOutcome{eShort}{Understand the professional, ethical, legal, security and social implications.\xspace}
+
+\DefineOutcome{f}{An ability to communicate effectively.\xspace}
+\DefineOutcome{fShort}{Communicate effectively.\xspace}
+
+\DefineOutcome{g}{The broad education necessary to understand the impact of engineering solutions in a global, economic, environmental, and societal context.\xspace}
+\DefineOutcome{gShort}{Analyze the local and global impact of computing.\xspace}
+
+\DefineOutcome{h}{A recognition of the need for, and an ability to engage in life-long learning.\xspace}
+\DefineOutcome{hShort}{Learn continuously.\xspace}
+
+\DefineOutcome{i}{An ability to use the techniques, skills, and modern engineering tools necessary for engineering practice..\xspace}
+\DefineOutcome{iShort}{Use current techniques and tools.\xspace}
+
+\DefineOutcome{j}{Apply the mathematical basis, principles of algorithms and the theory of Computer Science in the modeling and design of computational systems in such a way as to demonstrate understanding of the equilibrium points involved in the chosen option.\xspace}
+\DefineOutcome{jShort}{Apply mathematics, algorithms and CS theory in system modeling and design.\xspace}
+
+\DefineOutcome{k}{Apply the principles of development and design in the construction of software systems of variable complexity.\xspace}
+\DefineOutcome{kShort}{Apply principles of development and design in software of variable complexity.\xspace}
+
+% Our outcomes are here !
+\DefineOutcome{l}{Develop principles research in the area of computing with levels of international competitiveness.\xspace}
+\DefineOutcome{lShort}{Develop principles of research with international level.\xspace}
+
+\DefineOutcome{m}{Transform your knowledge of the area of Computer Science into technological enterprises.\xspace}
+\DefineOutcome{mShort}{Transform your knowledge into technological ventures.\xspace}
+
+\DefineOutcome{n}{Apply knowledge of the humanities in their professional work.\xspace}
+\DefineOutcome{nShort}{Apply knowledge of the humanities in their professional work.\xspace}
+\DefineOutcome{HUShort}{Apply knowledge of the humanities in their professional work.\xspace}
+
+%OnlyUCSP
+\DefineOutcome{ñ}{Understand that the formation of a good professional is not disconnected or opposed but rather contributes to genuine personal growth. This requires the assimilation of solid values, broad spiritual horizons and a deep vision of the cultural environment.\xspace}
+\DefineOutcome{ñShort}{Understand that human training contributes to authentic personal growth.\xspace}
+\DefineOutcome{FHShort}{Understand that human training contributes to authentic personal growth.\xspace}
+
+\DefineOutcome{o}{Improve the conditions of society by putting technology at the service of the human being.\xspace}
+\DefineOutcome{oShort}{Put technology at the service of the human being.\xspace}
+\DefineOutcome{TASDSHShort}{Put technology at the service of the human being.\xspace}
+
+\DefineCompetence{C1}{An intellectual understanding and the ability to apply mathematical foundations and computer science theory.}
+\DefineCompetence{C2}{Ability to have a critical and creative perspective in identifying and solving problems using computational thinking. }
+\DefineCompetence{C3}{An intellectual understanding of, and an appreciation for, the central role of algorithms and data structures.}
+\DefineCompetence{C4}{An understanding of computer hardware from a software perspective, for example, use of the processor, memory, disk drives, display, etc.}
+\DefineCompetence{C5}{Ability to implement algorithms and data structures in software.}
+\DefineCompetence{C6}{Ability to design and implement larger structural units that utilize algorithms and data structures and the interfaces through which these units communicate.}
+\DefineCompetence{C7}{Being able to apply the software engineering principles and technologies to ensure that software implementations are robust, reliable, and appropriate for their intended audience.}
+\DefineCompetence{C8}{Understanding of what current technologies can and cannot accomplish. }
+\DefineCompetence{C9}{Understanding of computing’s limitations, including the difference between what computing is inherently incapable of doing vs. what may be accomplished via future science and technology.}
+\DefineCompetence{C10}{Understanding of the impact on individuals, organizations, and society of deploying technological solutions and interventions.}
+\DefineCompetence{C11}{Understanding of the concept of the lifecycle, including the significance of its phases (planning, development, deployment, and evolution).}
+\DefineCompetence{C12}{Understanding the lifecycle implications for the development of all aspects of computer-related systems (including software, hardware, and human computer interface).}
+\DefineCompetence{C13}{Understanding the relationship between quality and lifecycle management}
+\DefineCompetence{C14}{Understanding of the essential concept of process as it relates to computing especially program execution and system operation.}
+\DefineCompetence{C15}{Understanding of the essential concept of process as it relates to professional activity, especially the relationship between product quality and the deployment of appropriate human processes during product development.}
+\DefineCompetence{C16}{Ability to identify advanced computing topics and understanding the frontiers of the discipline.}
+\DefineCompetence{C17}{Ability to properly express in oral and written media as expected from a university graduate. }
+\DefineCompetence{C18}{Ability to participate actively and as a member of a team. .}
+\DefineCompetence{C19}{Ability to effectively identify the goals and priorities of their project, stating the action, the time and resources required.}
+\DefineCompetence{C20}{Ability to connect theory and skills learned in academia to real-world occurrences explaining their relevance and utility.}
+\DefineCompetence{C21}{Understanding the professional, legal, security, political, humanistic, environmental, cultural and ethical issues.
+}
+\DefineCompetence{C22}{Ability to demonstrate attitudes and priorities that honor, protect, and enhance the profession’s ethical stature and standing..}
+\DefineCompetence{C23}{Ability to undertake, complete, and present a capstone project.}
+\DefineCompetence{C24}{Understanding the need for lifelong learning and improving skills and abilities.}
+\DefineCompetence{C25}{Ability to communicate in a second language.}
+ 
+\DefineCompetence{CS1}{Model and design computer-based systems in a way that demonstrates comprehension of the tradeoff involved in design choices.}
+\DefineCompetence{CS2}{Identify and analyze criteria and specifications appropriate to specific problems, and plan strategies for their solution.}
+\DefineCompetence{CS3}{Analyze the extent to which a computer-based system meets the criteria defined for its current use and future development.}
+\DefineCompetence{CS4}{Deploy appropriate theory, practices, and tools for the specification, design, implementation, and maintenance as well as the evaluation of computer-based systems.}
+\DefineCompetence{CS5}{Specify, design, and implement computer-based systems.}
+\DefineCompetence{CS6}{Evaluate systems in terms of general quality attributes and possible tradeoffs presented within the given problem.}
+\DefineCompetence{CS7}{Apply the principles of effective information management, information organization, and information-retrieval skills to information of various kinds, including text, images, sound, and video. This must include managing any security issues.}
+\DefineCompetence{CS8}{Apply the principles of human-computer interaction to the evaluation and construction of a wide range of materials including user interfaces, web pages, multimedia systems and mobile systems..}
+\DefineCompetence{CS9}{Identify any risks (and this includes any safety or security aspects) that may be involved in the operation of computing equipment within a given context. }
+\DefineCompetence{CS10}{Deploy effectively the tools used for the construction and documentation of software, with particular emphasis on understanding the whole process involved in using computers to solve practical problems. This should include tools for software control including version control and configuration management.}
+\DefineCompetence{CS11}{Be aware of the existence of publicly available software and understanding the potential of opensource projects.}
+\DefineCompetence{CS12}{Operate computing equipment and software systems effectively.}
+
+\DefineCompetence{CE1}{Specify, design, build, test, verify and validate digital systems, including computers,microprocessor-based systems and communications systems.}
+\DefineCompetence{CE2}{Develop specific processors, embedded systems, software development, and optimization of such systems.}
+\DefineCompetence{CE3}{Analyze and evaluate computer architectures, including parallel and distributed platforms, as well as developing and optimizing software for them.}
+\DefineCompetence{CE4}{Design and implement software for communications system.}
+\DefineCompetence{CE5}{Analyze, evaluate and select hardware and software platforms suitable for application support and real-time embedded systems.}
+\DefineCompetence{CE6}{Understand, implement and manage the security and safety systems.}
+\DefineCompetence{CE7}{Analyze, evaluate, select and configure hardware platforms for the development and implementation of software applications and services. .}
+\DefineCompetence{CE8}{Design, deploy, administer and manage computer networks.}
+
+\DefineCompetence{IS1}{Identify, understand and document information systems requirements.}
+\DefineCompetence{IS2}{Account for human-computer interfaces and intercultural differences, in order to deliver a quality user experience.}
+\DefineCompetence{IS3}{Design, implement, integrate and manage IT systems, enterprise, data and application architectures.}
+\DefineCompetence{IS4}{Gestionar los proyectos de sistemas de información, incluyendo el análisis de riesgos, estudios financieros, elaboración de presupuestos, la contratación y el desarrollo, y para apreciar los problemas de mantenimiento de los sistemas de información.}
+\DefineCompetence{IS5}{Identificar, analizar y comunicar los problemas, opciones y alternativas de solución, incluidos los estudios de viabilidad.}
+\DefineCompetence{IS6}{Identify and understand opportunities created by technological innovations.}
+\DefineCompetence{IS7}{Appreciate the relationships between business strategy and information systems, architecture and infrastructure.}
+\DefineCompetence{IS8}{Understand and implement secure systems, infrastructures and architectures.}
+\DefineCompetence{IS9}{Understand and implement secure systems, infrastructures and architectures.}
+\DefineCompetence{IS10}{Understand performance and scalability issues.}
+\DefineCompetence{IS11}{Manage existing information systems including resources, maintenance, procurement and business continuity issues.}
+
+
+\DefineCompetence{SE1}{Develop, maintain and evaluate software systems and services to meet all user requirements and behave reliably and efficiently, are affordable to develop and maintain and meet quality standards, applying the theories, principles, methods and best practices of Software Engineering.}
+\DefineCompetence{SE2}{Assess customer needs and specify the software requirements to meet those needs, reconciling conflicting goals by finding acceptable compromises within the constraints arising from the cost, time, the existence of systems already developed and the organizations themselves.}
+\DefineCompetence{SE3}{Solve integration problems in terms of strategies, standards and technologies available.}
+\DefineCompetence{SE4}{Work as an individual and as part of a team to develop and deliver quality software artifacts. Understand diverse processes (activities, standards and lifecycle configurations, formality as distinguished from agility) and roles. Perform measurements and analysis (basic) in projects, processes and product dimensions.}
+\DefineCompetence{SE5}{Reconcile conflicting project objectives, finding acceptable compromises within limitations of cost, time, knowledge, existing systems, organizations, engineering economics, finance and the fundamentals of risk analysis and management in a software context.}
+\DefineCompetence{SE6}{Design appropriate solutions in one or more application domains using software engineering approaches that integrate ethical, social, legal, and economic concerns.}
+\DefineCompetence{SE7}{Demonstrate an understanding of, and apply current theories to, models, and techniques that provide a basis for problem identification and analysis, software design, development, construction and implementation, verification and validation, documentation and quantitative analysis of design elements and software architectures.}
+\DefineCompetence{SE8}{Demonstrate an understanding of software reuse and adaptation, perform maintenance, integration, migration of software products and components, prepare software elements for potential reuse and create technical interfaces to components and services.}
+\DefineCompetence{SE9}{Demonstrate an understanding of systems of software and their environment (business models,regulations).}
+
+\DefineCompetence{IT1}{Design, implement, and evaluate a computer-based system, process, component, or program to meet desired needs within an organizational and societal context.}
+\DefineCompetence{IT2}{Identify and analyze user needs and incorporate them in the selection, creation, evaluation and administration of computer-based systems.}
+\DefineCompetence{IT3}{Integrate effectively IT based solutions, including the user environment.}
+\DefineCompetence{IT4}{Function as a user advocate. Explain and apply appropriate information technologies and employ best practices standards and appropriate methodologies to help an individual or organization achieve its goals and objectives.}
+\DefineCompetence{IT5}{Assist in the creation of an effective project plan.}
+\DefineCompetence{IT6}{Manage the information technology resources of an individual or organization.}
+\DefineCompetence{IT7}{Anticipate the changing direction of information technology and evaluate and communicate the likely utility of new technologies to an individual or organization.}
+
+\newcommand{\Familiarity}{Familiarizarse}
+\DefineCompetenceLevel{1}{\Familiarity}
+\newcommand{\Usage}{Usar}
+\DefineCompetenceLevel{2}{\Usage}
+\newcommand{\Assessment}{Evaluar}
+\DefineCompetenceLevel{3}{\Assessment}
+
+\newcommand{\LearningOutcomesTxtEsFamiliarity}{El estudiante {\bf entiende} lo que un concepto es o qué significa. Este nivel de dominio {\bf se refiere a un conocimiento básico} de un concepto en lugar de esperar instalación real con su aplicación. Proporciona una respuesta a la pregunta: {\bf ?`Qué sabe usted de esto?}}
+\newcommand{\LearningOutcomesTxtEsUsage}{El alumno es capaz de {\bf utilizar o aplicar} un concepto de una manera concreta. El uso de un concepto puede incluir, por ejemplo, apropiadamente usando un concepto específico en un programa, utilizando una técnica de prueba en particular, o la realización de un análisis particular. Proporciona una respuesta a la pregunta: {\bf ?`Qué sabes de cómo hacerlo?}}
+\newcommand{\LearningOutcomesTxtEsAssessment}{El alumno es capaz de {\bf considerar un concepto de múltiples puntos de vista} y/o {\bf justificar la selección de un determinado enfoque} para resolver un problema. Este nivel de dominio implica más que el uso de un concepto; se trata de la posibilidad de seleccionar un enfoque adecuado de las alternativas entendidas. Proporciona una respuesta a la pregunta: {\bf ?`Por qué hiciste eso?}}
+
+\newcommand{\LearningOutcomesTxtEnFamiliarity}{The student understands what a concept is or what it means. This level of mastery concerns a basic awareness of a concept as opposed to expecting real facility with its application. It provides an answer to the question: What do you know about this?}
+\newcommand{\LearningOutcomesTxtEnUsage}{The student is able to use or apply a concept in a concrete way. Using a concept may include, for example, appropriately using a specific concept in a program, using a particular proof technique, or performing a particular analysis. It provides an answer to the question: What do you know how to do?}
+\newcommand{\LearningOutcomesTxtEnAssessment}{The student is able to consider a concept from multiple viewpoints and/or justify the selection of a particular approach to solve a problem. This level of mastery implies more than using a concept; it involves the ability to select an appropriate approach from understood alternatives. It provides an answer to the question: Why would you do that?}

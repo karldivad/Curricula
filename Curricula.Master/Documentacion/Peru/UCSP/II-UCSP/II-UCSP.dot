@@ -7,141 +7,141 @@ digraph curricula
 	
 	
 	
-	"CB101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB101. Matemática\nBásica|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-"CB102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB102. Introducción a la\nQuímica|{{HT:4|HP:|TH: 4}|{Obligatorio|4 Créditos|  }}}"];
-"DI101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=chocolate, label="{DI101. Dibujo Técnico\ny CAD|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-"TC101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC101. Fundamentos de\nInformática|{{HT:|HP:4|TH: 4}|{Obligatorio|2 Créditos|  }}}"];
-"FG101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG101. Introducción\na la Vida\nUniversitaria|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-"FG102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG102. Metodología\ndel Estudio|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-"FG103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG103. Comunicación|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
+	"CB101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB101. MatemÃ¡tica\nBÃ¡sica|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+"CB102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB102. IntroducciÃ³n a la\nQuÃ­mica|{{HT:4|HP:|TH: 4}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+"DI101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=chocolate, label="{DI101. Dibujo TÃ©cnico\ny CAD|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+"TC101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC101. Fundamentos de\nInformÃ¡tica|{{HT:|HP:4|TH: 4}|{Obligatorio|2 CrÃ©ditos|  }}}"];
+"FG101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG101. IntroducciÃ³n\na la Vida\nUniversitaria|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+"FG102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG102. MetodologÃ­a\ndel Estudio|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+"FG103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG103. ComunicaciÃ³n|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
-	"FG104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG104. Introducción\na la Filosofía|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"CB103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB103. Física I|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"CB104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB104. Cálculo en\nuna Variable|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"CB105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB105. Algebra y\nGeometría|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"CB106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB106. Química I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"DI102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=chocolate, label="{DI102. Geometría\nDescriptiva|{{HT:|HP:4|TH: 4}|{Obligatorio|2 Créditos|  }}}"];
+	"FG104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG104. IntroducciÃ³n\na la FilosofÃ­a|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CB103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB103. FÃ­sica I|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"CB104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB104. CÃ¡lculo en\nuna Variable|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"CB105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB105. Algebra y\nGeometrÃ­a|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"CB106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB106. QuÃ­mica I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"DI102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=chocolate, label="{DI102. GeometrÃ­a\nDescriptiva|{{HT:|HP:4|TH: 4}|{Obligatorio|2 CrÃ©ditos|  }}}"];
 	subgraph cluster1G
 	{
 	label = "Electivos";
-	"FG105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG105. Artes Plásticas|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"FG106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG106. Apreciación\n Literaria|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"FG107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG107. Apreciación\n Musical|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"FG108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG108. Teatro|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"FG109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG109. Persona,\nMatrimonio y Familia|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
+	"FG105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG105. Artes PlÃ¡sticas|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"FG106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG106. ApreciaciÃ³n\n Literaria|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"FG107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG107. ApreciaciÃ³n\n Musical|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"FG108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG108. Teatro|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"FG109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG109. Persona,\nMatrimonio y Familia|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
 	}
 	
 	
 	
 	
 	
-	"FG110" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG110. Lógica y\nGnoseología|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"FG111" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG111. Antropología\nFilosófica y Teológica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"CB107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB107. Física II|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"CB108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB108. Cálculo en\nVarias Variables|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"CB109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB109. Química II|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"DI103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=chocolate, label="{DI103. Dibujo Técnico\nAvanzado|{{HT:|HP:4|TH: 4}|{Obligatorio|2 Créditos|  }}}"];
-	"TC102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC102. Administración\nde la Información|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
+	"FG110" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG110. LÃ³gica y\nGnoseologÃ­a|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"FG111" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG111. AntropologÃ­a\nFilosÃ³fica y TeolÃ³gica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CB107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB107. FÃ­sica II|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"CB108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB108. CÃ¡lculo en\nVarias Variables|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"CB109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorange, label="{CB109. QuÃ­mica II|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"DI103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=chocolate, label="{DI103. Dibujo TÃ©cnico\nAvanzado|{{HT:|HP:4|TH: 4}|{Obligatorio|2 CrÃ©ditos|  }}}"];
+	"TC102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC102. AdministraciÃ³n\nde la InformaciÃ³n|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG112" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG112. Teología I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"CI101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI101. Termodinámica|{{HT:|HP:6|TH: 6}|{Obligatorio|3 Créditos|  }}}"];
-	"CI102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI102. Mecánica para\nIngenieros|{{HT:|HP:4|TH: 4}|{Obligatorio|2 Créditos|  }}}"];
-	"OP101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP101. Investigación de\nOperaciones I|{{HT:3|HP:2|TH: 5}|{Obligatorio|4 Créditos|  }}}"];
-	"GE101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE101. Ingeniería\nEconómica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"GE102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE102. Contabilidad\nFinanciera|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP102. Métodos\nEstadísticos\npara la Industria I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
+	"FG112" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG112. TeologÃ­a I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CI101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI101. TermodinÃ¡mica|{{HT:|HP:6|TH: 6}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CI102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI102. MecÃ¡nica para\nIngenieros|{{HT:|HP:4|TH: 4}|{Obligatorio|2 CrÃ©ditos|  }}}"];
+	"OP101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP101. InvestigaciÃ³n de\nOperaciones I|{{HT:3|HP:2|TH: 5}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"GE101" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE101. IngenierÃ­a\nEconÃ³mica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE102. Contabilidad\nFinanciera|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP102" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP102. MÃ©todos\nEstadÃ­sticos\npara la Industria I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG113" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG113. Historia\nde la Cultura\nOccidental I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"OP103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP103. Metodología\nde la Investigación\nCientífica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"CI103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI103. Resistencia\nde Materiales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP104. Investigación de\nOperaciones II|{{HT:3|HP:2|TH: 5}|{Obligatorio|4 Créditos|  }}}"];
-	"GE103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE103. Gestión de\nEmpresa|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"GE104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE104. Economía\nde Empresa|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP105. Métodos\nEstadísticos\npara la Industria II|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
+	"FG113" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG113. Historia\nde la Cultura\nOccidental I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP103. MetodologÃ­a\nde la InvestigaciÃ³n\nCientÃ­fica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CI103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI103. Resistencia\nde Materiales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP104. InvestigaciÃ³n de\nOperaciones II|{{HT:3|HP:2|TH: 5}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"GE103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE103. GestiÃ³n de\nEmpresa|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE104. EconomÃ­a\nde Empresa|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP105. MÃ©todos\nEstadÃ­sticos\npara la Industria II|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG114" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG114. Historia de\nla Cultura\nOccidental II|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"CI104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI104. Procesos\nIndustriales|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"TC103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC103. Modelamiento de\nProcesos Industriales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"GE105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE105. Gestión de\n Personas|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"GE106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE106. Costos y\nPresupuestos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP106. Control\nEstadístico\nde Procesos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP107. Organización\ny Procesos\n Empresariales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
+	"FG114" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG114. Historia de\nla Cultura\nOccidental II|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CI104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI104. Procesos\nIndustriales|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"TC103" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC103. Modelamiento de\nProcesos Industriales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE105. GestiÃ³n de\n Personas|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE106. Costos y\nPresupuestos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP106. Control\nEstadÃ­stico\nde Procesos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP107. OrganizaciÃ³n\ny Procesos\n Empresariales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG115" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG115. Moral|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"CI105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI105. Operaciones\nUnitarias|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 Créditos|  }}}"];
-	"CI106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI106. Electricidad\nIndustrial|{{HT:1|HP:2|TH: 3}|{Obligatorio|2 Créditos|  }}}"];
-	"GE107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE107. Gestión\nComercial I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP108. SCM - Gestión\nde Operaciones|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP109. Gestión de\nMantenimiento|{{HT:|HP:4|TH: 4}|{Obligatorio|2 Créditos|  }}}"];
-	"OP110" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP110. Ingeniería de\nMétodos|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 Créditos|  }}}"];
-	"OP111" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP111. Sistemas\nde Gestión de Calidad|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 Créditos|  }}}"];
+	"FG115" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG115. Moral|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CI105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI105. Operaciones\nUnitarias|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"CI106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey, label="{CI106. Electricidad\nIndustrial|{{HT:1|HP:2|TH: 3}|{Obligatorio|2 CrÃ©ditos|  }}}"];
+	"GE107" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE107. GestiÃ³n\nComercial I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP108. SCM - GestiÃ³n\nde Operaciones|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP109. GestiÃ³n de\nMantenimiento|{{HT:|HP:4|TH: 4}|{Obligatorio|2 CrÃ©ditos|  }}}"];
+	"OP110" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP110. IngenierÃ­a de\nMÃ©todos|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP111" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP111. Sistemas\nde GestiÃ³n de Calidad|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG116" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG116. Análisis de\nla Realidad\nPeruana|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"TC104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC104. Automatización\nIndustrial|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"TC105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC105. Simulación\nde Sistemas|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP112" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP112. Sistema de\nMejora de Procesos|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];
-	"OP113" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP113. SCM -\nLogística I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP114" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP114. Diseño\nde Planta|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP115" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP115. Ingeniería\nde Producto|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
+	"FG116" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG116. AnÃ¡lisis de\nla Realidad\nPeruana|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"TC104" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC104. AutomatizaciÃ³n\nIndustrial|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"TC105" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC105. SimulaciÃ³n\nde Sistemas|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP112" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP112. Sistema de\nMejora de Procesos|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];
+	"OP113" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP113. SCM -\nLogÃ­stica I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP114" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP114. DiseÃ±o\nde Planta|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP115" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP115. IngenierÃ­a\nde Producto|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG117" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG117. Enseñanza\nSocial de la Iglesia|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"GE108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE108. Formulación\ny Evaluación\nde Proyectos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"GE109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE109. Dirección\nFinanciera|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP116" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP116. Gestión de\nOperaciones en Servicios|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP117" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP117. Taller de\nInvestigación I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP118" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP118. SCM -\nLogística II|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP119" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP119. Técnicas Modernas\nde Manufactura|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 Créditos|  }}}"];
+	"FG117" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG117. EnseÃ±anza\nSocial de la Iglesia|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE108" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE108. FormulaciÃ³n\ny EvaluaciÃ³n\nde Proyectos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE109" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE109. DirecciÃ³n\nFinanciera|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP116" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP116. GestiÃ³n de\nOperaciones en Servicios|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP117" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP117. Taller de\nInvestigaciÃ³n I|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP118" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP118. SCM -\nLogÃ­stica II|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP119" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP119. TÃ©cnicas Modernas\nde Manufactura|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	
 	
 	
 	
 	
-	"FG118" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG118. Etica\nProfesional|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];
-	"TC106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC106. Tópicos en\nIngeniería Industrial|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"GE110" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE110. Dirección\nEstratégica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP120" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP120. Gestión del\nMedio Ambiente|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];
-	"OP121" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP121. Taller de\nInvestigación II|{{HT:|HP:4|TH: 4}|{Obligatorio|2 Créditos|  }}}"];
-	"OP122" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP122. Sistemas de\nGestión de Seguridad\ny Salud en el trabajo|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 Créditos|  }}}"];
+	"FG118" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green, label="{FG118. Etica\nProfesional|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"TC106" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cyan1, label="{TC106. TÃ³picos en\nIngenierÃ­a Industrial|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"GE110" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE110. DirecciÃ³n\nEstratÃ©gica|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP120" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP120. GestiÃ³n del\nMedio Ambiente|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];
+	"OP121" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP121. Taller de\nInvestigaciÃ³n II|{{HT:|HP:4|TH: 4}|{Obligatorio|2 CrÃ©ditos|  }}}"];
+	"OP122" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP122. Sistemas de\nGestiÃ³n de Seguridad\ny Salud en el trabajo|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];
 	subgraph cluster2G
 	{
 	label = "Electivos";
-	"GE111" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE111. Desarrollo\nEmprendedor|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"GE112" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE112. Gestión de\nProyectos y PMI|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"GE113" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE113. Negocios\nInternacionales|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];
-	"GE114" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE114. Gestión\nComercial II|{{HT:1|HP:2|TH: 4}|{Electivo|3 Créditos|  }}}"];
+	"GE111" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE111. Desarrollo\nEmprendedor|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"GE112" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE112. GestiÃ³n de\nProyectos y PMI|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"GE113" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE113. Negocios\nInternacionales|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];
+	"GE114" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=tomato1, label="{GE114. GestiÃ³n\nComercial II|{{HT:1|HP:2|TH: 4}|{Electivo|3 CrÃ©ditos|  }}}"];
 	}
 	subgraph cluster3G
 	{
 	label = "Electivos";
-	"OP123" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP123. Lean Sigma\nGreenbelt|{{HT:2|HP:2|TH: 4}|{Electivo|3 Créditos|  }}}"];
-	"OP124" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP124. Temas Avanzados\nen Operaciones y SCM|{{HT:2|HP:2|TH: 4}|{Electivo|3 Créditos|  }}}"];
-	"OP125" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP125. Gerencia\nInsdustrial y de Servicios|{{HT:2|HP:2|TH: 4}|{Electivo|3 Créditos|  }}}"];
+	"OP123" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP123. Lean Sigma\nGreenbelt|{{HT:2|HP:2|TH: 4}|{Electivo|3 CrÃ©ditos|  }}}"];
+	"OP124" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP124. Temas Avanzados\nen Operaciones y SCM|{{HT:2|HP:2|TH: 4}|{Electivo|3 CrÃ©ditos|  }}}"];
+	"OP125" [shape=record,width=2.3,fontsize=14, height=1.5,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkorchid1, label="{OP125. Gerencia\nInsdustrial y de Servicios|{{HT:2|HP:2|TH: 4}|{Electivo|3 CrÃ©ditos|  }}}"];
 	}
 	
 	CB101->CB103;								
@@ -166,7 +166,7 @@ CB103->CB107;
 CB104->CB108;								
 CB106->CB109;								
 DI102->DI103;								
-TC101->TC102;							"Inglés(200)" [shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled];	"Inglés(200)"->TC102
+TC101->TC102;							"InglÃ©s(200)" [shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled];	"InglÃ©s(200)"->TC102
 								
 								
 								
@@ -189,7 +189,7 @@ CB108->OP103;
 CI102->CI103;								
 OP101->OP104;	TC102->OP104;							
 GE102->GE103;								
-GE101->GE104;							"Inglés(300)" [shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled];	"Inglés(300)"->GE104
+GE101->GE104;							"InglÃ©s(300)" [shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled];	"InglÃ©s(300)"->GE104
 OP102->OP105;								
 								
 								
@@ -215,7 +215,7 @@ OP105->GE107;	OP107->GE107;
 OP106->OP108;								
 CI104->OP109;								
 OP106->OP110;								
-OP107->OP111;							"Inglés(400)" [shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled];	"Inglés(400)"->OP111
+OP107->OP111;							"InglÃ©s(400)" [shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled];	"InglÃ©s(400)"->OP111
 								
 								
 								

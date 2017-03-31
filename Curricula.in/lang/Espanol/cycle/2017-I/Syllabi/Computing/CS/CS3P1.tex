@@ -1,45 +1,45 @@
 \begin{syllabus}
 
-\course{CS3P1. Computación Paralela y Distribuída}{Obligatorio}{CS3P1}
+\course{CS3P1. ComputaciÃ³n Paralela y DistribuÃ­da}{Obligatorio}{CS3P1}
 
 \begin{justification}
-La última década ha traído un crecimiento explosivo en computación con multiprocesadores, incluyendo 
-los procesadores de varios núcleos y centros de datos distribuidos. Como resultado, la computación 
+La Ãºltima dÃ©cada ha traÃ­do un crecimiento explosivo en computaciÃ³n con multiprocesadores, incluyendo 
+los procesadores de varios nÃºcleos y centros de datos distribuidos. Como resultado, la computaciÃ³n 
 paralela y distribuida se ha convertido de ser un tema ampliamente electivo para ser uno de los principales componentes
-en la malla estudios en ciencia de la computación de pregrado. Tanto la computación paralela como la distribuida implica 
-la ejecución simultánea de múltiples procesos, cuyas operaciones tienen el potencial para 
-intercalar de manera compleja. La computación paralela y distribuida construye sobre cimientos en muchas 
-áreas, incluyendo la comprensión de los conceptos fundamentales de los sistemas, tales como: concurrencia 
-y ejecución en paralelo, consistencia en el estado/manipulación de la memoria, y latencia. La 
-comunicación y la coordinación entre los procesos tiene sus cimientos en el paso de mensajes y modelos de 
-memoria compartida de la computación y conceptos algorítmicos como atomicidad, el consenso y espera condicional. 
-El logro de aceleración en la práctica requiere una comprensión de algoritmos paralelos, estrategias para la 
-descomposición problema, arquitectura de sistemas, estrategias de implementación y análisis de 
+en la malla estudios en ciencia de la computaciÃ³n de pregrado. Tanto la computaciÃ³n paralela como la distribuida implica 
+la ejecuciÃ³n simultÃ¡nea de mÃºltiples procesos, cuyas operaciones tienen el potencial para 
+intercalar de manera compleja. La computaciÃ³n paralela y distribuida construye sobre cimientos en muchas 
+Ã¡reas, incluyendo la comprensiÃ³n de los conceptos fundamentales de los sistemas, tales como: concurrencia 
+y ejecuciÃ³n en paralelo, consistencia en el estado/manipulaciÃ³n de la memoria, y latencia. La 
+comunicaciÃ³n y la coordinaciÃ³n entre los procesos tiene sus cimientos en el paso de mensajes y modelos de 
+memoria compartida de la computaciÃ³n y conceptos algorÃ­tmicos como atomicidad, el consenso y espera condicional. 
+El logro de aceleraciÃ³n en la prÃ¡ctica requiere una comprensiÃ³n de algoritmos paralelos, estrategias para la 
+descomposiciÃ³n problema, arquitectura de sistemas, estrategias de implementaciÃ³n y anÃ¡lisis de 
 rendimiento. Los sistemas distribuidos destacan los problemas de la seguridad y tolerancia a 
-fallos, hacen hincapié en el mantenimiento del estado replicado e introducen problemas adicionales en el campo de 
+fallos, hacen hincapiÃ© en el mantenimiento del estado replicado e introducen problemas adicionales en el campo de 
 las redes de computadoras.
 \end{justification}
 
 \begin{goals}
-\item Que el alumno sea capaz de crear aplicaciones paralelas de mediana complejidad aprovechando eficientemente máquinas con múltiples núcleos.
+\item Que el alumno sea capaz de crear aplicaciones paralelas de mediana complejidad aprovechando eficientemente mÃ¡quinas con mÃºltiples nÃºcleos.
 \item Que el alumno sea capaz de comparar aplicaciones secuenciales y paralelas.
-\item Que el alumno sea capaz de convertir, cuando la situación lo amerite, aplicaciones secuenciales a paralelas de forma eficiente.
+\item Que el alumno sea capaz de convertir, cuando la situaciÃ³n lo amerite, aplicaciones secuenciales a paralelas de forma eficiente.
 \end{goals}
 
 \begin{outcomes}
     \item \ShowOutcome{a}{2} 
-    \item \ShowOutcome{b}{2} % Analizar problemas e identificar y definir los requerimientos computacionales apropiados para su solución
-    \item \ShowOutcome{i}{2} % Utilizar técnicas y herramientas actuales necesarias para la práctica de la computación
-    \item \ShowOutcome{j}{2} % Aplicar la base matemática, principios de algoritmos y la teoría de la Ciencia de la Computación en el modelamiento y diseño de sistemas computacionales de tal manera que demuestre comprensión de los puntos de equilibrio involucrados en la opción escogida.
+    \item \ShowOutcome{b}{2} % Analizar problemas e identificar y definir los requerimientos computacionales apropiados para su soluciÃ³n
+    \item \ShowOutcome{i}{2} % Utilizar tÃ©cnicas y herramientas actuales necesarias para la prÃ¡ctica de la computaciÃ³n
+    \item \ShowOutcome{j}{2} % Aplicar la base matemÃ¡tica, principios de algoritmos y la teorÃ­a de la Ciencia de la ComputaciÃ³n en el modelamiento y diseÃ±o de sistemas computacionales de tal manera que demuestre comprensiÃ³n de los puntos de equilibrio involucrados en la opciÃ³n escogida.
 \end{outcomes}
 
 \begin{competences}
-    \item \ShowCompetence{C2}{a} % Capacidad para tener una perspectiva crítica y creativa para identificar y resolver problemas utilizando el pensamiento computacional
+    \item \ShowCompetence{C2}{a} % Capacidad para tener una perspectiva crÃ­tica y creativa para identificar y resolver problemas utilizando el pensamiento computacional
     \item \ShowCompetence{C4}{b}
-    \item \ShowCompetence{C16}{i} % Capacidad para identificar temas avanzados de computación y de la comprensión de las fronteras de la disciplina. 
-    \item \ShowCompetence{CS2}{i} % Identificar y analizar los criterios y especificaciones apropiadas a los problemas específicos, y planificar estrategias para su solución.
+    \item \ShowCompetence{C16}{i} % Capacidad para identificar temas avanzados de computaciÃ³n y de la comprensiÃ³n de las fronteras de la disciplina. 
+    \item \ShowCompetence{CS2}{i} % Identificar y analizar los criterios y especificaciones apropiadas a los problemas especÃ­ficos, y planificar estrategias para su soluciÃ³n.
     \item \ShowCompetence{CS3}{j} % Analizar el grado en que un sistema basado en el ordenador cumple con los criterios definidos para su uso actual y futuro desarrollo.
-  \item \ShowCompetence{CS6}{j} % Evaluar los sistemas en términos de atributos de calidad en general y las posibles ventajas y desventajas que se presentan en el problema dado.
+  \item \ShowCompetence{CS6}{j} % Evaluar los sistemas en tÃ©rminos de atributos de calidad en general y las posibles ventajas y desventajas que se presentan en el problema dado.
 \end{competences}
 
 \begin{unit}{\PDParallelismFundamentals}{}{peterpacheco,matloff,quinn}{18}{C2}
@@ -135,39 +135,4 @@ las redes de computadoras.
         \item \PDParallelAlgorithmsAnalysisandProgrammingLODefineSpeed~[\Familiarity] %
         \item \PDParallelAlgorithmsAnalysisandProgrammingLOIdentifyIndependent~[\Usage] %
         \item \PDParallelAlgorithmsAnalysisandProgrammingLOCharacterizeFeatures~[\Familiarity] %
-        \item \PDParallelAlgorithmsAnalysisandProgrammingLOImplementAAnd~[\Usage] %
-        \item \PDParallelAlgorithmsAnalysisandProgrammingLODecompose~[\Usage] %
-        \item \PDParallelAlgorithmsAnalysisandProgrammingLOProvideAn~[\Usage] %
-        \item \PDParallelAlgorithmsAnalysisandProgrammingLOGiveExamplesWhere~[\Usage] %
-        \item \PDParallelAlgorithmsAnalysisandProgrammingLOImplementAAlgorithm~[\Usage] %
-        \item \PDParallelAlgorithmsAnalysisandProgrammingLOIdentifyIssuesIn~[\Usage] %
-\end{learningoutcomes}%
-\end{unit}
-
-\begin{unit}{\PDParallelPerformance}{}{peterpacheco,matloff,wenmei,sanders}{18}{CS3}
-\begin{topics}%
-    \item \PDParallelPerformanceTopicLoad
-    \item \PDParallelPerformanceTopicPerformance
-    \item \PDParallelPerformanceTopicScheduling
-    \item \PDParallelPerformanceTopicEvaluating
-    \item \PDParallelPerformanceTopicData
-    \item \PDParallelPerformanceTopicPower
-\end{topics}
-\begin{learningoutcomes}%
-    \item \PDParallelPerformanceLODetect~[\Usage] %
-    \item \PDParallelPerformanceLOCalculateThe~[\Usage] %
-    \item \PDParallelPerformanceLODescribeHowLayout~[\Familiarity] %
-    \item \PDParallelPerformanceLODetectAnd~[\Usage] %
-    \item \PDParallelPerformanceLOExplainTheScheduling~[\Familiarity] %
-    \item \PDParallelPerformanceLOExplainPerformance~[\Familiarity] %
-    \item \PDParallelPerformanceLOExplainTheTrade~[\Familiarity] %
-\end{learningoutcomes}%
-\end{unit}
-
-
-
-\begin{coursebibliography}
-\bibfile{Computing/CS/CS3P1}
-\end{coursebibliography}
-
-\end{syllabus}
+        \item \PDParall

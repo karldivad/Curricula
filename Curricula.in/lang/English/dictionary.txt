@@ -13,11 +13,11 @@ GeneralObjective=General Objective
 CONTRIBUTIONTOOUTCOMES=Contribution to outcomes
 SyllabusofCourse=Syllabus of Course
 Syllabus=Syllabus
-Bibliography=Bibliografía
+Bibliography=Bibliography
 CONTENTS=CONTENTS
 Content=Content
 PERIOD=PERIOD
-AcademicPeriod                         = Academic Period  
+AcademicPeriod = Academic Period  
 COURSEAREA= Area
 COURSECODE= Code
 COURSENAME= Course name
@@ -121,7 +121,7 @@ EVALUATION-CONTENT    =.
 
 nocorehours        =No core hours
 corehours	   =Core Hours
-ThisSchool	   =This School
+ThisSchool	   =This School 
 
 AdviceRecCourses		=Se recomienda que el alumno haya llevado
 FreeCreditsAdvice		=More courses (<NFREECREDITS> <CREDITS>) may be added here

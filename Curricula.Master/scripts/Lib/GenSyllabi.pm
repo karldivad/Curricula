@@ -416,7 +416,7 @@ sub generate_tex_syllabi_files()
 			      $map{LANG}	= $lang;
 			      
 			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
-			      Util::print_message("Generating Syllabus: $output_file");
+			      #Util::print_message("Generating Syllabus: $output_file");
 			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
       
 			      # Copy bib files

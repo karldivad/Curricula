@@ -6,9 +6,9 @@ if( defined($ENV{'CurriculaParam'}))    { $Common::command = $ENV{'CurriculaPara
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");      }
 
 my %LU_info = ();
-my %BOKAreas = ("IT"  => "Tecnologia de Informaci�n",
-                "OMC" => "Organizaci�n y Gesti�n",
-                "TDS" => "Teor�a y Desarrollo de Sistemas de Informaci�n"
+my %BOKAreas = ("IT"  => "Tecnologia de InformaciÃ³n",
+                "OMC" => "OrganizaciÃ³n y GestiÃ³n",
+                "TDS" => "TeorÃ­a y Desarrollo de Sistemas de InformaciÃ³n"
 	       );
 my $replacements    = "";
 

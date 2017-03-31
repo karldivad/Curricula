@@ -8,7 +8,7 @@ use Data::Dumper;
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}
 
-# ok, Here we replace \'a by �, etc
+# ok, Here we replace \'a by Ã¡, etc 
 sub replacecodes()
 {
 	Util::precondition("parse_courses");

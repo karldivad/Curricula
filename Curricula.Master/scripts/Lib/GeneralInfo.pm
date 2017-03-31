@@ -722,8 +722,8 @@ sub generate_curricula_in_dot($)
 #         $legend .= "subgraph cluster1\n";
 #         $legend .= "{\n";
 #         $legend .= "      node [style=filled];\n";
-#         $legend .= "      CS [shape=box,fillcolor=cornflowerblue, label=\"CS:Ciencia de la Computación\"];\n";
-#         $legend .= "      CB [shape=box, fillcolor=honeydew3, label=\"CB:Ciencias Básicas\"];\n";
+#         $legend .= "      CS [shape=box,fillcolor=cornflowerblue, label=\"CS:Ciencia de la Computaci n\"];\n";
+#         $legend .= "      CB [shape=box, fillcolor=honeydew3, label=\"CB:Ciencias B sicas\"];\n";
 #         $legend .= "      HU [shape=box, fillcolor=chartreuse3, label=\"HU:Humanidades\"];\n";
 #         $legend .= "      ET [shape=box, fillcolor=tomato3, label=\"BT:Empresas de BT\"];\n";
 #         $legend .= "      CS->CB [style=\"invis\"];\n";
@@ -839,7 +839,7 @@ sub generate_pie($)
 # 	$output_txt .= "\\centering\n";
 # 	$output_txt .= "\\includegraphics[width=10cm]{fig/pie-$type}\n";
 # 	$output_txt .= "\\label{fig:pie-$type}\n";
-# 	$output_txt .= "\\caption{Distribución de cursos por áreas considerando creditaje (Total=$credits).}\n";
+# 	$output_txt .= "\\caption{Distribuci n de cursos por  reas considerando creditaje (Total=$credits).}\n";
 # 	$output_txt .= "\\end{figure}\n";
 # 	Util::write_file($outfile_file, $output_txt);
 }
@@ -848,7 +848,7 @@ sub get_bigtables_by_course_caption($$$$)
 {
 	my ($init_sem, $final_sem, $part_count, $prefix) = (@_);
 	my $caption	 = "\\caption{$Common::config{dictionary}{$prefix}}\n";
-	# Tópicos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER> (<NTABLE>/<NPARTS>)
+	# T picos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER> (<NTABLE>/<NPARTS>)
 	$caption	=~ s/<BEGIN_SEM>/\$$init_sem^{$Common::config{dictionary}{ordinal_postfix}{$init_sem}}\$/g;
 	$caption	=~ s/<END_SEM>/\$$final_sem^{$Common::config{dictionary}{ordinal_postfix}{$final_sem}}\$/g;
 	$caption	=~ s/<SEMESTER>/$Common::config{dictionary}{Semester}/g;
@@ -1010,7 +1010,7 @@ sub generate_table_topics_by_course($$$$$$)
 		}
 	}
 	#$table_text .= "\\multicolumn{8}{|l|}{\\textbf{$Common::config{dictionary}{semester_ordinal}{$semester} Semester}} \\\\ \\hline\n";
-	#$table_text .= "Código & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
+	#$table_text .= "C digo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
 		
  	foreach my $codcour2 (keys %{$Common::data{hours_by_course}})
 	{	$sum_row_text =~ s/--$codcour2--/$Common::data{hours_by_course}{$codcour2}/g;	}
@@ -1213,7 +1213,7 @@ sub generate_outcomes_by_course($$$$$$)
 			}
 		}
 		#$table_text .= "\\multicolumn{8}{|l|}{\\textbf{$Common::config{dictionary}{semester_ordinal}{$semester} Semester}} \\\\ \\hline\n";
-		#$table_text .= "Código & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
+		#$table_text .= "C digo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
 	}
  	#foreach my $codcour2 (keys %hours_by_course)
 	#{	$sum_row_text =~ s/--$codcour2--/$Common::data{hours_by_course}{$codcour2}/g;	}
@@ -1554,13 +1554,13 @@ sub generate_compatibility_with_standards()
 			$comparing_txt .= "	\\includegraphics[scale=1.0]{\\OutputFigDir/$key-$Common::area-with-$standard}\n";
 			
 			my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
-			#Comparación por área de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
+			#Comparaci n por  rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
 			$caption =~ s/<STANDARD_LONG_NAME>/$Common::config{dictionary}{standards_long_name}{$standard}/g;
 			$caption =~ s/<STANDARD>/$standard/g;
 			$caption =~ s/<STANDARD_REF_INSTITUTION>/$Common::config{dictionary}{InstitutionToCompareWith}/g;
 			$caption =~ s/<AREA>/$Common::config{area}/g;
 			$comparing_txt .= "	\\caption{$caption}\n";
-	# 		$comparing_txt .= "	\\caption{Comparación en creditaje por área de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
+	# 		$comparing_txt .= "	\\caption{Comparaci n en creditaje por  rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
 			$comparing_txt .= "	\\label{fig:comparing-$key-$Common::area-$Common::institution-with-$standard}\n";
 			$comparing_txt .= "\\end{figure}\n\n";
 		}
@@ -1579,7 +1579,7 @@ sub generate_pie_by_levels()
 	my $output_file = Common::get_template("out-pie-by-levels-file");
 	my $output_txt = "";
 	
-	# Pending: This code must be in parse_courses (¿?)
+	# Pending: This code must be in parse_courses ( ?)
 	my $total_credits = 0;
 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
@@ -1872,7 +1872,7 @@ sub process_equivalences()
 # 
 # 		my $this_sem_text = "<table width=\"100\%\" border=\"1\" cellpadding=\"1\">\n";
 # 		$this_sem_text .= "<tr>\n";
-# 		$this_sem_text .= "	<th align=\"left\">Código</th>\n";
+# 		$this_sem_text .= "	<th align=\"left\">C digo</th>\n";
 # 		$this_sem_text .= "	<th align=\"left\">Nombre</th>\n";
 # 		$this_sem_text .= "	<th align=\"left\">HT</th>\n";
 # 		$this_sem_text .= "	<th align=\"left\">HP</th>\n";

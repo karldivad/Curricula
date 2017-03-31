@@ -52,12 +52,12 @@ $| = 1;
 sub replace_accents($)
 {
 	my ($text) = (@_);
-	$text =~ s/\\'A/Á/g;		$text =~ s/\\'a/á/g;		$text =~ s/\\'\{a\}/á/g;
-	$text =~ s/\\'E/É/g;		$text =~ s/\\'e/é/g;		$text =~ s/\\'\{e\}/é/g;
-	$text =~ s/\\'I/Í/g;		$text =~ s/\\'i/í/g;		$text =~ s/\\'\{i\}/í/g;
-	$text =~ s/\\'O/Ó/g;		$text =~ s/\\'o/ó/g;		$text =~ s/\\'\{o\}/ó/g;
-	$text =~ s/\\'U/Ú/g;		$text =~ s/\\'u/ú/g;		$text =~ s/\\'\{u\}/ú/g;
-	$text =~ s/\\~N/Ñ/g;		$text =~ s/\\~n/ñ/g;		$text =~ s/\\~\{n\}/ñ/g;
+	$text =~ s/\\'A/Ã/g;		$text =~ s/\\'a/Ã¡/g;		$text =~ s/\\'\{a\}/Ã¡/g;
+	$text =~ s/\\'E/Ã‰/g;		$text =~ s/\\'e/Ã©/g;		$text =~ s/\\'\{e\}/Ã©/g;
+	$text =~ s/\\'I/Ã/g;		$text =~ s/\\'i/Ã­/g;		$text =~ s/\\'\{i\}/Ã­/g;
+	$text =~ s/\\'O/Ã“/g;		$text =~ s/\\'o/Ã³/g;		$text =~ s/\\'\{o\}/Ã³/g;
+	$text =~ s/\\'U/U/g;		$text =~ s/\\'u/Ãº/g;		$text =~ s/\\'\{u\}/Ãº/g;
+	$text =~ s/\\~N/Ã‘/g;		$text =~ s/\\~n/Ã±/g;		$text =~ s/\\~\{n\}/n/g;
 	return $text;
 }
 
@@ -65,12 +65,12 @@ sub replace_accents($)
 sub no_accents($)
 {
 	my ($text) = (@_);
-	$text =~ s/Á/A/g;		$text =~ s/á/a/g;
-	$text =~ s/É/E/g;		$text =~ s/é/e/g;
-	$text =~ s/Í/I/g;		$text =~ s/í/i/g;
-	$text =~ s/Ó/O/g;		$text =~ s/ó/o/g;
-	$text =~ s/Ú/U/g;		$text =~ s/ú/u/g;
-	$text =~ s/Ñ/N/g;		$text =~ s/ñ/n/g;
+	$text =~ s/Ã/A/g;		$text =~ s/Ã¡/a/g;
+	$text =~ s/Ã‰/E/g;		$text =~ s/Ã©/e/g;
+	$text =~ s/Ã/I/g;		$text =~ s/Ã­/i/g;
+	$text =~ s/Ã“/O/g;		$text =~ s/Ã³/o/g;
+	$text =~ s/Ãš/U/g;		$text =~ s/Ãº/u/g;
+	$text =~ s/Ã‘/N/g;		$text =~ s/Ã±/n/g;
 	return $text;
 }
 
@@ -79,12 +79,12 @@ sub no_accents($)
 sub special_chars_to_html($)
 {
 	my ($text) = (@_);
-	$text =~ s/Á/&Aacute;/g;		$text =~ s/á/&aacute;/g;
-	$text =~ s/É/&Eacute;/g;		$text =~ s/é/&eacute;/g;
-	$text =~ s/Í/&Iacute;/g;		$text =~ s/í/&iacute;/g;
-	$text =~ s/Ó/&Oacute;/g;		$text =~ s/ó/&oacute;/g;
-	$text =~ s/Ú/&Uacute;/g;		$text =~ s/ú/&uacute;/g;
-	$text =~ s/Ñ/&Ntilde;/g;		$text =~ s/ñ/&ntilde;/g;
+	$text =~ s/Ã/&Aacute;/g;		$text =~ s/Ã¡/&aacute;/g;
+	$text =~ s/Ã‰/&Eacute;/g;		$text =~ s/Ã©/&eacute;/g;
+	$text =~ s/Ã/&Iacute;/g;		$text =~ s/Ã­/&iacute;/g;
+	$text =~ s/Ã“/&Oacute;/g;		$text =~ s/Ã³/&oacute;/g;
+	$text =~ s/Ãš/&Uacute;/g;		$text =~ s/Ãº/&uacute;/g;
+	$text =~ s/Ã‘/&Ntilde;/g;		$text =~ s/Ã±/&ntilde;/g;
 	return $text;
 }
 
@@ -270,7 +270,7 @@ sub read_outcomes_labels()
 		    my ($outcome, $letter) = ($1, $2);
 		    $config{outcomes_map}{$outcome} = $letter;
 		    if( $letter =~ m/\\.n/)
-		    {       $config{outcomes_map}{$outcome} = "ñ";          }
+		    {       $config{outcomes_map}{$outcome} = "Ã±";          }
 	    }
 	}
 }
@@ -926,7 +926,7 @@ sub read_institutions_list()
 			$config{Curriculas}{disc}{$discipline}{$country}{$area}{$inst}{order} = $count++;
 			if(not defined($config{Curriculas}{disc}{$discipline}{$country}{$area}{$inst}{Plans}))
 			{	$config{Curriculas}{disc}{$discipline}{$country}{$area}{$inst}{Plans} = [];	}
-			push($config{Curriculas}{disc}{$discipline}{$country}{$area}{$inst}{Plans}, $plan);
+			push(@{$config{Curriculas}{disc}{$discipline}{$country}{$area}{$inst}{Plans}}, $plan);
 
 			# By Country
 			$config{Curriculas}{country}{$country}{$discipline}{$area}{$inst}{order} = $count;
@@ -2254,7 +2254,7 @@ sub remove_only_env($)
 # {
 # 	my ($text) = (@_);
 # 	my $count  = 0;
-# 	$text =~ s/\(Pág\.~\\pageref{.*?}\)//g;
+# 	$text =~ s/\($Common::config{dictionary}{Pag}\.~\\pageref{.*?}\)//g;
 # 	return ($text, $count);
 # }
 # 
@@ -2262,7 +2262,7 @@ sub remove_only_env($)
 # {
 # 	my ($text) = (@_);
 # 	my $count  = 0;
-# 	if($text =~ m/\\item\s(.*?)\s\(Pág\.\s\\pageref{(.*?)}\)/g)
+# 	if($text =~ m/\\item\s(.*?)\s\($Common::config{dictionary}{Pag}\.\s\\pageref{(.*?)}\)/g)
 # 	{	
 # 		#my ($label1) = ($1);
 # 		#print "label=\"$label1\" ... ";
@@ -2270,7 +2270,7 @@ sub remove_only_env($)
 # 		#print "title=\"$title1\"->\"$label1\"\n";
 # 		my $title2 = replace_special_chars($title1);
 # 		my $label2 = replace_special_chars($label1);
-# 		$text =~ s/\\item\s$title2\s\(Pág\.\s\\pageref{$label2}\)/\\item \\htmlref{$title1}{$label1}/g;
+# 		$text =~ s/\\item\s$title2\s\($Common::config{dictionary}{Pag}\.\s\\pageref{$label2}\)/\\item \\htmlref{$title1}{$label1}/g;
 # 		$count++;
 # 	}
 # 	return ($text, $count);
@@ -2570,7 +2570,7 @@ sub parse_courses()
 
 			$course_info{$codcour}{labtype}        	= $labtype;
 
-			$course_info{$codcour}{full_prerequisites}	= []; # # CS101F. Name1 (1st Sem, Pág 56), CS101O. Name2 (2nd Sem, Pág 87), ...
+			$course_info{$codcour}{full_prerequisites}	= []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, $Common::config{dictionary}{Pag} 87), ...
 			$course_info{$codcour}{code_name_and_sem_prerequisites} = "";
 			$course_info{$codcour}{prerequisites_just_codes}= $prerequisites;
 			$course_info{$codcour}{prerequisites_for_this_course}	= [];
@@ -3101,7 +3101,7 @@ sub parse_bok($)
 		$bok{$lang}{$ka}{description} = $body; 
 		$counts{$cmd}++;
 	    }
-	    elsif( $cmd eq "KU") # \KU{AL}{BasicAnalysis}{<<Análisis Básico>>}{}{#hours Tier1}{#hours Tier2}
+	    elsif( $cmd eq "KU") # \KU{AL}{BasicAnalysis}{<<AnÃ¡lisis BÃ¡sico>>}{}{#hours Tier1}{#hours Tier2}
 	    {	
 		$bok_in =~ m/\{(.*?)\}\{<<(.*?)>>\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g;
 		my ($p2, $body, $crossref, $nhTier1, $nhTier2)  = ($1, $2, $3, $4, $5);
@@ -3196,7 +3196,7 @@ sub gen_bok($)
 	$bok_index_txt .= "\\scriptsize\n";
 	$bok_index_txt .= "\\noindent\n";
 	my ($max_ntopics, $maxLO) = (0, 0);
-	foreach my $ka (sort {$bok{$lang}{$a}{order} <=> $bok{$lang}{$b}{order}} keys %bok{$lang})
+	foreach my $ka (sort {$bok{$lang}{$a}{order} <=> $bok{$lang}{$b}{order}} keys %{$bok{$lang}})
 	{
 		#Util::print_message("Generating KA: $ka (order=$bok{$lang}{$ka}{order} ...)");
 		my $macro = $ka;
@@ -3207,7 +3207,7 @@ sub gen_bok($)
 		$bok_output_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$bok_output_txt .= "% Knowledge Area: $ka\n";
 		$bok_output_txt .= "\\section{\\$macro}\\label{sec:BOK:$ka}\n"; 
-		$bok_index_txt .= "{\\bf \\ref{sec:BOK:$ka} \\htmlref{\\$macro}{sec:BOK:$ka}\\xspace (Pág.~\\pageref{sec:BOK:$ka})}\n";
+		$bok_index_txt .= "{\\bf \\ref{sec:BOK:$ka} \\htmlref{\\$macro}{sec:BOK:$ka}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ka})}\n";
 		my $hours_by_ku_file = "$ka-hours-by-ku";
 		
 		$macro = $ka."BOKDescription";
@@ -3235,8 +3235,8 @@ sub gen_bok($)
 		      
 		      my ($nhours_txt, $sep) = ("", "");
 		      #Util::print_message("bok{$ka}{KU}{$ku}{nhTier1}=$bok{$lang}{$ka}{KU}{$ku}{nhTier1} ...");
-		      my $ku_line = "\\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace (Pág.~\\pageref{sec:BOK:$ku_macro}) & <CORETIER1> & <CORETIER2> & <ELECTIVES> \\\\ \\hline\n";
-		      $bok_index_txt .= "\\item \\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace (Pág.~\\pageref{sec:BOK:$ku_macro})\n";
+		      my $ku_line = "\\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro}) & <CORETIER1> & <CORETIER2> & <ELECTIVES> \\\\ \\hline\n";
+		      $bok_index_txt .= "\\item \\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro})\n";
 		      if( $bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 )
 		      {		$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier1} $Common::config{dictionary}{hours} Core-Tier1";	$sep = ",~";	
 				$ku_line     =~ s/<CORETIER1>/$bok{$lang}{$ka}{KU}{$ku}{nhTier1}/g;
