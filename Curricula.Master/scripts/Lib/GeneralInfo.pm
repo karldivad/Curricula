@@ -723,7 +723,7 @@ sub generate_curricula_in_dot($)
 #         $legend .= "{\n";
 #         $legend .= "      node [style=filled];\n";
 #         $legend .= "      CS [shape=box,fillcolor=cornflowerblue, label=\"CS:Ciencia de la Computaci n\"];\n";
-#         $legend .= "      CB [shape=box, fillcolor=honeydew3, label=\"CB:Ciencias B sicas\"];\n";
+#         $legend .= "      CB [shape=box, fillcolor=honeydew3, label=\"CB:Ciencias Básicas\"];\n";
 #         $legend .= "      HU [shape=box, fillcolor=chartreuse3, label=\"HU:Humanidades\"];\n";
 #         $legend .= "      ET [shape=box, fillcolor=tomato3, label=\"BT:Empresas de BT\"];\n";
 #         $legend .= "      CS->CB [style=\"invis\"];\n";
@@ -839,7 +839,7 @@ sub generate_pie($)
 # 	$output_txt .= "\\centering\n";
 # 	$output_txt .= "\\includegraphics[width=10cm]{fig/pie-$type}\n";
 # 	$output_txt .= "\\label{fig:pie-$type}\n";
-# 	$output_txt .= "\\caption{Distribuci n de cursos por  reas considerando creditaje (Total=$credits).}\n";
+# 	$output_txt .= "\\caption{Distribución de cursos por áreas considerando creditaje (Total=$credits).}\n";
 # 	$output_txt .= "\\end{figure}\n";
 # 	Util::write_file($outfile_file, $output_txt);
 }
@@ -848,7 +848,7 @@ sub get_bigtables_by_course_caption($$$$)
 {
 	my ($init_sem, $final_sem, $part_count, $prefix) = (@_);
 	my $caption	 = "\\caption{$Common::config{dictionary}{$prefix}}\n";
-	# T picos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER> (<NTABLE>/<NPARTS>)
+	# Tópicos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER> (<NTABLE>/<NPARTS>)
 	$caption	=~ s/<BEGIN_SEM>/\$$init_sem^{$Common::config{dictionary}{ordinal_postfix}{$init_sem}}\$/g;
 	$caption	=~ s/<END_SEM>/\$$final_sem^{$Common::config{dictionary}{ordinal_postfix}{$final_sem}}\$/g;
 	$caption	=~ s/<SEMESTER>/$Common::config{dictionary}{Semester}/g;
