@@ -16,15 +16,15 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 	\item Conocer los elementos básicos del diseño de los sistemas operativos.
 \end{goals}
 
+
 \begin{outcomes}
     \item \ShowOutcome{b}{3}
-    \item \ShowOutcome{e}{1}
     \item \ShowOutcome{g}{3}
     \item \ShowOutcome{h}{2}
 \end{outcomes}
 
 \begin{competences}
-    \item \ShowCompetence{C1}{e}
+    \item \ShowCompetence{C1}{g}
     \item \ShowCompetence{C6}{h}
     \item \ShowCompetence{CS8}{b, g}
 \end{competences}
@@ -47,7 +47,7 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 \end{unit}
 
 \begin{unit}{\OSOperatingSystemPrinciples}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{6}{C1}
-\begin{topics}%
+\begin{topics}
       \item \OSOperatingSystemPrinciplesTopicStructuring
       \item \OSOperatingSystemPrinciplesTopicAbstractions
       \item \OSOperatingSystemPrinciplesTopicConcepts
@@ -68,7 +68,7 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 \end{unit}
 
 \begin{unit}{\OSConcurrency}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{9}{C6}
-\begin{topics}%
+\begin{topics}
       \item \OSConcurrencyTopicStates
       \item \OSConcurrencyTopicStructures
       \item \OSConcurrencyTopicDispatching
@@ -125,7 +125,7 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 
 
 \begin{unit}{\OSSecurityandProtection}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{6}{C1}
-\begin{topics}%
+\begin{topics}
       \item \OSSecurityandProtectionTopicOverview
       \item \OSSecurityandProtectionTopicPolicy
       \item \OSSecurityandProtectionTopicSecurity
@@ -143,7 +143,7 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 
 
 \begin{unit}{\OSVirtualMachines}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{6}{CS8}
-\begin{topics}%
+\begin{topics}
       \item \OSVirtualMachinesTopicTypes
       \item \OSVirtualMachinesTopicPaging
       \item \OSVirtualMachinesTopicVirtual
@@ -162,7 +162,7 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 
 
 \begin{unit}{\OSDeviceManagement}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{6}{C6}
-\begin{topics}%
+\begin{topics}
       \item \OSDeviceManagementTopicCharacteristics
       \item \OSDeviceManagementTopicAbstracting
       \item \OSDeviceManagementTopicBuffering
@@ -181,11 +181,80 @@ concurrencia y se modificará el funcionamiento de un pseudo Sistema Operativo.
 \end{unit}
 
 \begin{unit}{\OSFileSystems}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{6}{CS8}
-\begin{topics}%
+\begin{topics}
       \item \OSFileSystemsTopicFiles
       \item \OSFileSystemsTopicDirectories
       \item \OSFileSystemsTopicFile
       \item \OSFileSystemsTopicStandard
       \item \OSFileSystemsTopicMemory
       \item \OSFileSystemsTopicSpecial
-      
+      \item \OSFileSystemsTopicNaming
+      \item \OSFileSystemsTopicJournaling
+\end{topics}
+\begin{learningoutcomes}
+	\item \OSFileSystemsLODescribeTheBe [\Familiarity]
+	\item \OSFileSystemsLOCompareAndApproachesOrganization [\Assessment]
+	\item \OSFileSystemsLOSummarizeHow [\Familiarity]
+	\item \OSFileSystemsLOSummarizeTheJournaling [\Familiarity]
+\end{learningoutcomes}
+\end{unit}
+
+\begin{unit}{\OSRealTimeandEmbeddedSystems}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{6}{C1}
+\begin{topics}
+      \item \OSRealTimeandEmbeddedSystemsTopicProcess
+      \item \OSRealTimeandEmbeddedSystemsTopicMemoryDisk
+      \item \OSRealTimeandEmbeddedSystemsTopicFailures
+      \item \OSRealTimeandEmbeddedSystemsTopicSpecialConcerns
+\end{topics}
+\begin{learningoutcomes}
+	\item \OSRealTimeandEmbeddedSystemsLODescribeWhatSystem [\Familiarity]
+	\item \OSRealTimeandEmbeddedSystemsLOExplainTheAnd [\Familiarity]
+	\item \OSRealTimeandEmbeddedSystemsLOSummarizeSpecial [\Familiarity]
+\end{learningoutcomes}
+\end{unit}
+
+
+
+\begin{unit}{\OSFaultTolerance}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{3}{C1}
+\begin{topics}
+      \item \OSFaultToleranceTopicFundamental
+      \item \OSFaultToleranceTopicSpatial
+      \item \OSFaultToleranceTopicMethods
+      \item \OSFaultToleranceTopicExamples
+\end{topics}
+\begin{learningoutcomes}
+	\item \OSFaultToleranceLOExplainTheTheTolerance [\Familiarity]
+	\item \OSFaultToleranceLOOutlineThe [\Familiarity]
+	\item \OSFaultToleranceLOExplainHowSystem [\Familiarity]
+\end{learningoutcomes}
+\end{unit}
+
+
+
+\begin{unit}{\OSSystemPerformanceEvaluation}{}{silberschatz2012, stallings2005, tanenbaum2006, tanenbaum2001, mateu1999}{3}{C1}
+\begin{topics}
+      \item \OSSystemPerformanceEvaluationTopicWhy
+      \item \OSSystemPerformanceEvaluationTopicWhat
+      \item \OSSystemPerformanceEvaluationTopicSystems
+      \item \OSSystemPerformanceEvaluationTopicEvaluation
+      \item \OSSystemPerformanceEvaluationTopicHow
+\end{topics}
+\begin{learningoutcomes}
+	\item \OSSystemPerformanceEvaluationLODescribeTheUsedHow [\Familiarity]
+	\item \OSSystemPerformanceEvaluationLOExplainTheModels [\Familiarity]
+\end{learningoutcomes}
+\end{unit}
+
+
+
+
+
+
+
+\begin{coursebibliography}
+\bibfile{Computing/CS/CS2S1}
+\end{coursebibliography}
+
+\end{syllabus}
+
+

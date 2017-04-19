@@ -55,7 +55,7 @@ sub generate_course_tables()
 					  }  
 				      @{$Common::courses_by_semester{$semester}})
 		{
-                        #print "{$semester}{$Common::course_info{$codcour}{course_name}}{$Common::course_info{$codcour}{cr}}{$codcour}% $Common::course_info{$codcour}{course_name}, $Common::course_info{$codcour}{cr}\n";
+                        #print "{$semester}{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{$Common::course_info{$codcour}{cr}}{$codcour}% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}, $Common::course_info{$codcour}{cr}\n";
 			my %this_course_info 	= ();
 			my $codcour_label 	= Common::get_label($codcour);
 			$this_line		= $Common::config{dictionary}{course_fields};
@@ -72,7 +72,7 @@ sub generate_course_tables()
 			$pdflink .= "}\n";
 # 			Util::print_message("codcour = $codcour, $Common::course_info{$codcour}{bgcolor}");
 			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour_label}}{sec:$codcour}";
-			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}}{sec:$codcour}";
+			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
 			if(not $Common::course_info{$codcour}{recommended} eq "")
 			{	
 				my ($rec_courses, $sep) = ("", "");
@@ -81,7 +81,7 @@ sub generate_course_tables()
 # 					print "$rec(A)\n";
 					$rec = Common::get_label($rec);
 					my $semester_rec = $Common::course_info{$rec}{semester};
-					$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}}{sec:$codcour}";
+					$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
 					$rec_courses .= "($semester_rec";
 					$rec_courses .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester_rec}}\$)";
 					$sep = ", ";
@@ -211,7 +211,7 @@ sub generate_laboratories()
 			      {		Util::print_message("Course $codcour (Sem #$semester) has not LabType ... did you forget?");		
 					assert(not $Common::course_info{$codcour}{labtype} eq "");
 			      }
-			      my $this_course = "\\section*{$codcour. $Common::course_info{$codcour}{course_name} ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}) ";
+			      my $this_course = "\\section*{$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}) ";
 			      $this_course .= "$Common::course_info{$codcour}{semester}$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, Lab: $Common::course_info{$codcour}{lh} $Common::config{dictionary}{hrs}}\n";
 			      $this_course .= "\\Lab$Common::course_info{$codcour}{labtype}\n\n";
 			      $output_txt .= $this_course;
@@ -585,9 +585,9 @@ sub generate_description($)
 }
 
 # dot
-sub generate_curricula_in_dot($)
+sub generate_curricula_in_dot($$)
 {
-	my ($size) = (@_);
+	my ($size, $lang) = (@_);
 	my $output_file = Common::get_template("out-$size-graph-curricula-dot-file");
 	my $course_tpl 	= Util::read_file(Common::get_template("in-$size-graph-item.dot"));
 	my $output_txt = "";
@@ -629,7 +629,7 @@ sub generate_curricula_in_dot($)
 				      @{$Common::courses_by_semester{$semester}})
 		{
                         my $group = $Common::course_info{$codcour}{group};
-                        my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl)."\n";
+                        my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang)."\n";
                         if($Common::config{graph_version} == 1 || $group eq "")
 			{       $sem_text .= $this_course_dot;   }
                         elsif($Common::config{graph_version} >= 2) # related links for elective courses
@@ -722,7 +722,7 @@ sub generate_curricula_in_dot($)
 #         $legend .= "subgraph cluster1\n";
 #         $legend .= "{\n";
 #         $legend .= "      node [style=filled];\n";
-#         $legend .= "      CS [shape=box,fillcolor=cornflowerblue, label=\"CS:Ciencia de la Computaci n\"];\n";
+#         $legend .= "      CS [shape=box,fillcolor=cornflowerblue, label=\"CS:Ciencia de la Computacion\"];\n";
 #         $legend .= "      CB [shape=box, fillcolor=honeydew3, label=\"CB:Ciencias Básicas\"];\n";
 #         $legend .= "      HU [shape=box, fillcolor=chartreuse3, label=\"HU:Humanidades\"];\n";
 #         $legend .= "      ET [shape=box, fillcolor=tomato3, label=\"BT:Empresas de BT\"];\n";
@@ -735,7 +735,7 @@ sub generate_curricula_in_dot($)
         $output_txt .= $legend;
 	$output_txt .= "}\n";
 	Util::write_file($output_file, $output_txt);
-	Util::print_message("generate_curricula_in_dot($size) OK!"); 
+	Util::print_message("generate_curricula_in_dot($size, $lang) OK!"); 
 }
 
 # ok
@@ -1010,7 +1010,7 @@ sub generate_table_topics_by_course($$$$$$)
 		}
 	}
 	#$table_text .= "\\multicolumn{8}{|l|}{\\textbf{$Common::config{dictionary}{semester_ordinal}{$semester} Semester}} \\\\ \\hline\n";
-	#$table_text .= "C digo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
+	#$table_text .= "Cdigo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
 		
  	foreach my $codcour2 (keys %{$Common::data{hours_by_course}})
 	{	$sum_row_text =~ s/--$codcour2--/$Common::data{hours_by_course}{$codcour2}/g;	}
@@ -1213,7 +1213,7 @@ sub generate_outcomes_by_course($$$$$$)
 			}
 		}
 		#$table_text .= "\\multicolumn{8}{|l|}{\\textbf{$Common::config{dictionary}{semester_ordinal}{$semester} Semester}} \\\\ \\hline\n";
-		#$table_text .= "C digo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
+		#$table_text .= "Cdigo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
 	}
  	#foreach my $codcour2 (keys %hours_by_course)
 	#{	$sum_row_text =~ s/--$codcour2--/$Common::data{hours_by_course}{$codcour2}/g;	}
@@ -1270,7 +1270,11 @@ sub generate_list_of_courses_by_area()
 			my $codcour_label 	= Common::get_alias($codcour);
 # 			print "$codcour -> $codcour_label\n";
 			my $semester	= $Common::course_info{$codcour}{semester};
-			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}}{sec:$codcour} ";
+# 			print Dumper \%{$Common::course_info{$codcour}{course_name}};
+# 			Util::print_message("Common::config{language_without_accents}=$Common::config{language_without_accents}"); 
+# 			Util::print_message("Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}=$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
+
+			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour} ";
 			$this_topic .= " ($semester";
 			$this_topic .= "$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, ";
 			$this_topic .= "$Common::config{dictionary}{Pag}~\\pageref{sec:$codcour}";
@@ -1554,13 +1558,13 @@ sub generate_compatibility_with_standards()
 			$comparing_txt .= "	\\includegraphics[scale=1.0]{\\OutputFigDir/$key-$Common::area-with-$standard}\n";
 			
 			my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
-			#Comparaci n por  rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
+			#Comparacin por rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
 			$caption =~ s/<STANDARD_LONG_NAME>/$Common::config{dictionary}{standards_long_name}{$standard}/g;
 			$caption =~ s/<STANDARD>/$standard/g;
 			$caption =~ s/<STANDARD_REF_INSTITUTION>/$Common::config{dictionary}{InstitutionToCompareWith}/g;
 			$caption =~ s/<AREA>/$Common::config{area}/g;
 			$comparing_txt .= "	\\caption{$caption}\n";
-	# 		$comparing_txt .= "	\\caption{Comparaci n en creditaje por  rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
+	# 		$comparing_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
 			$comparing_txt .= "	\\label{fig:comparing-$key-$Common::area-$Common::institution-with-$standard}\n";
 			$comparing_txt .= "\\end{figure}\n\n";
 		}
@@ -1579,7 +1583,7 @@ sub generate_pie_by_levels()
 	my $output_file = Common::get_template("out-pie-by-levels-file");
 	my $output_txt = "";
 	
-	# Pending: This code must be in parse_courses ( ?)
+	# Pending: This code must be in parse_courses (?)
 	my $total_credits = 0;
 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
@@ -1708,7 +1712,7 @@ sub generate_equivalence_old2new($)
 			if($Common::course_info{$codcour}{bgcolor})
 			{
 				$tags{COURSE_CODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour_label}}{sec:$codcour}"; 
-				$tags{COURSE_NAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}}{sec:$codcour}";
+				$tags{COURSE_NAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
 				my $semester_label 	= Common::format_semester_label($Common::course_info{$codcour}{semester});
 				if($semester != $Common::course_info{$codcour}{semester})
 				{	$semester_label = "\\colorbox{honeydew3}{\\textcolor{black}{$semester_label}}";		}
@@ -1781,7 +1785,7 @@ sub generate_equivalence_new2old($)
 			my %tags = ();
 			my $codcour_label 	= Common::get_label($codcour);
 			$tags{COURSE_CODE} 	= "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour_label}}{sec:$codcour}"; 
-			$tags{COURSE_NAME} 	= "\\htmlref{$Common::course_info{$codcour}{course_name}}{sec:$codcour}";
+			$tags{COURSE_NAME} 	= "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
 			#$Common::course_info{$codcour}{equivalences}{$old_curricula} = "{$semester}{$old_course_codcour}{$old_course_name}{$old_course_cr}
 			if( not $Common::course_info{$codcour}{equivalences}{$old_curricula} )
 			{	$Common::course_info{$codcour}{equivalences}{$old_curricula} = "{}{}{}{}";	
@@ -1872,7 +1876,7 @@ sub process_equivalences()
 # 
 # 		my $this_sem_text = "<table width=\"100\%\" border=\"1\" cellpadding=\"1\">\n";
 # 		$this_sem_text .= "<tr>\n";
-# 		$this_sem_text .= "	<th align=\"left\">C digo</th>\n";
+# 		$this_sem_text .= "	<th align=\"left\">Cdigo</th>\n";
 # 		$this_sem_text .= "	<th align=\"left\">Nombre</th>\n";
 # 		$this_sem_text .= "	<th align=\"left\">HT</th>\n";
 # 		$this_sem_text .= "	<th align=\"left\">HP</th>\n";
@@ -1885,7 +1889,7 @@ sub process_equivalences()
 # 		{
 # 			$this_sem_text .= "<tr>\n";
 # 			$this_sem_text .= "	<td>$codcour</td>\n";
-# 			$this_sem_text .= "	<td>$Common::course_info{$codcour}{course_name}</td>\n";
+# 			$this_sem_text .= "	<td>$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}</td>\n";
 # 			$this_sem_text .= "	<td>$Common::course_info{$codcour}{th}</td>\n";
 # 			$this_sem_text .= "	<td>$Common::course_info{$codcour}{ph}</td>\n";
 # 			$this_sem_text .= "	<td>$Common::course_info{$codcour}{lh}</td>\n";
@@ -1938,7 +1942,7 @@ sub process_equivalences()
 # 			}
 # 			#$out_text =~ s/--INSTITUTION--/$Common::institution/g;
 # 			$out_text =~ s/--CODCUR--/$codcour/g;
-# 			$out_text =~ s/--CURSO--/$Common::course_info{$codcour}{course_name}/g;
+# 			$out_text =~ s/--CURSO--/$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}/g;
 # 			$out_text =~ s/--TIPO--/$Common::course_info{$codcour}{tipo}/g;
 # 			$out_text =~ s/--SEMESTRE--/$Common::course_info{$codcour}{semester}/g;
 # 			$out_text =~ s/--CREDITOS--/$Common::course_info{$codcour}{cr}/g;
@@ -1952,7 +1956,7 @@ sub process_equivalences()
 # 			{	
 # 				if(defined($Common::course_info{$req}))
 # 				{
-# 					$tmp .= "$sep$req. $Common::course_info{$req}{course_name} ";
+# 					$tmp .= "$sep$req. $Common::course_info{$req}{course_name}{$Common::config{language_without_accents}} ";
 # 					$tmp .= "($Common::course_info{$req}{semester}";
 # 					$tmp .= "<sup>"; 
 # 					$tmp .= "$Common::config{ordinal_postfix}{$Common::course_info{$req}{semester}}";
@@ -2046,7 +2050,7 @@ sub process_equivalences()
 # 		{
 # 			print "Sem :$semester, $codcour ...     \r";
 # 			$out_text .= "-- Inicio: $codcour (sem: $semester)\n";
-# 			$out_text .= "select create_course('$codcour', '$Common::course_info{$codcour}{course_name}');\n";
+# 			$out_text .= "select create_course('$codcour', '$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}');\n";
 # 
 # 			my $ins_plan_course = "select create_course_plan(";
 # 			$ins_plan_course   .= "'ht', 'hp', 'hl', 'cr', 'type', 'semester')\n";
@@ -2055,7 +2059,7 @@ sub process_equivalences()
 # 
 # 			#$out_text =~ s/--INSTITUTION--/$Common::institution/g;
 # 			#$out_text =~ s/--CODCUR--/$codcour/g;
-# 			#$out_text =~ s/--CURSO--/$Common::course_info{$codcour}{course_name}/g;
+# 			#$out_text =~ s/--CURSO--/$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}/g;
 # 			$ins_plan_course =~ s/--HT--/$Common::course_info{$codcour}{th}/g;
 # 			$ins_plan_course =~ s/--HP--/$Common::course_info{$codcour}{ph}/g;
 # 			$ins_plan_course =~ s/--HL--/$Common::course_info{$codcour}{lh}/g;
@@ -2071,7 +2075,7 @@ sub process_equivalences()
 # # 			{	
 # # 				if(defined($Common::course_info{$req}))
 # # 				{
-# # 					$tmp .= "$sep$req. $Common::course_info{$req}{course_name} ";
+# # 					$tmp .= "$sep$req. $Common::course_info{$req}{course_name}{$Common::config{language_without_accents}} ";
 # # 					$tmp .= "($Common::course_info{$req}{semester}";
 # # 					$tmp .= "<sup>"; 
 # # 					$tmp .= "$Common::config{ordinal_postfix}{$Common::course_info{$req}{semester}}";

@@ -8,25 +8,12 @@ con el paquete de sotfware libe de código abierto Scilab.
 La teoría matemática se limita a los fundamentos, mientras que la aplicación efectiva para la resolución de problemas es privilegiada. 
 En cada tópico, se enseña unos cuantos métodos de de relevancia para la ingeniería. 
 Los conocimientos sobre estos métodos prepara a los estudiantes para la búsqueda de alternativas más avanzadas, si se lo requiere.
-
-% This course introduces first concepts of Linear Algebra as well as of Numerical Methods
-% with an emphasis on problem-solving with the Scilab open-source computational
-% package. Mathematical theory is restricted to fundamentals whereas effective pure and
-% applied problem-solving is privileged. In each topic, only a few methods of relevance to
-% everyday Engineering are taught. Knowledgeability about these methods prepares
-% students for searching more advanced alternatives if and when necessary.
-
 \end{justification}
 
 \begin{goals}
 \item Capacidad para aplicar los conocimientos sobre Matemáticas.
 \item Capacidad para aplicar los conocimientos sobre Ingeniería.
 \item Capacidad para aplicar los conocimientos, técnicas, habilidades y herramientas modernas de la ingeniería moderna para la práctica de la ingenieria.
- 
-%Capacity to apply knowledge of Mathematics
-%Capacity to apply knowledge of Engineering
-%Capacity to apply the knowledge, techniques, skills, and modern tools of modern Engineering necessary for the Engineering practice 
-
 \end{goals}
 
 \begin{outcomes}
@@ -41,77 +28,74 @@ Los conocimientos sobre estos métodos prepara a los estudiantes para la búsque
 \end{competences}
 
 \begin{unit}{Introducción}{}{Anton,Chapra}{18}{C1}
-% begin{unit}{}{Introduction}{Anton,Chapra}{18}{C1}
   \begin{topics}
-      \item Importancia del álgebra lineal y métodos numéricos. Ejemplos. %Importance of Linear Algebra and Numerical Methods. Examples.
+      \item Importancia del álgebra lineal y métodos numéricos. Ejemplos.
    \end{topics}
 
    \begin{learningoutcomes}
-      \item . %Be able to understand the basic concepts and importance of Linear Algebra and Numerical Methods
+      \item Ser capaz de entender los conceptos básicos y la importancia de Álgebra Lineal y Métodos Numéricos.
    \end{learningoutcomes}
 \end{unit}
 
 \begin{unit}{Álgebra lineal}{}Anton,Chapra}{14}{C1}
-% begin{unit}{}{Linear Algebra}{Anton,Chapra}{14}{C1}
    \begin{topics}
-    \item . %Elementary matrix algebra and determinants
-    \item . %Null space and exact solutions of systems of linear equations Ax=b:
+    \item Álgebra matricial elemental y determinantes.
+    \item Espacio nulo y soluciones exactas de sistemas de ecuaciones lineales Ax = b:
 	  \begin{subtopics}
-	  \item . %Tridiagonal and triangular systems and Gaussian elimination with and without pivoting
-	  \item . %LU factorization and Crout algorithm
+	    \item Sistemas tridiagonal y triangular y eliminación gaussiana con y sin giro.
+	    \item Factorización LU y algoritmo Crout.
 	  \end{subtopics}
-    \item . %Basics on eigenvalues and eigenvectors:
+    \item Conceptos básicos sobre valores propios y vectores propios
 	  \begin{subtopics}
-	  \item . %Characteristic polynomials
-	  \item . %Algebraic and geometric multiplicities
+	    \item Polinomios característicos.
+	    \item Multiplicaciones algebraicas y geométricas.
 	  \end{subtopics}
-    \item . %Least squares estimation
-    \item . %Linear transformations
+    \item Estimación de mínimos cuadrados.
+    \item Transformaciones lineales.
     \end{topics}
 
    \begin{learningoutcomes}
-      \item . %Understanding the basics concepts of Linear Algebra.
-      \item . %Solve properly linear transformations problems.
-      \end{learningoutcomes}
+      \item Comprender los conceptos básicos del Álgebra Lineal.
+      \item Resolver problemas de transformaciones lineales.
+   \end{learningoutcomes}
 \end{unit}
 
 \begin{unit}{Métodos Numéricos}{}{Anton,Chapra}{22}{C24}
-% begin{unit}{}{Numerical methods}{Anton,Chapra}{22}{C24}
    \begin{topics}
-    \item . %Basics on solutions of systems of linear equations Ax=b: Jacobi and Gauss Seidel methods
-    \item . %Application of matrix factorizations to the solution of linear systems (singular value decomposition, QR, Cholesky) Numerical computation of null space, rank and condition number
-    \item . %Root finding:
+    \item Fundamentos de soluciones de sistemas de ecuaciones lineales Ax = b: métodos de Jacobi y Gauss Seidel
+    \item Aplicación de factorizaciones de matriz a la solución de sistemas lineales (descomposición de valores singulares, QR, Cholesky) Cálculo numérico del espacio nulo, rango y número de condición
+    \item Conclusión de la raíz:
 	  \begin{subtopics}
-	  \item . %Bisection
-	  \item . %Fixed-point iteration
-	  \item . %Newton-Raphson methods
+	    \item Bisección.
+	    \item Iteración de punto fijo.
+	    \item Métodos de Newton-Raphson.
 	  \end{subtopics}
-    \item . %Basics on interpolation:
+    \item Fundamentos de la interpolación:
 	  \begin{subtopics}
-	  \item . %Newton and Lagrange polynomial interpolations
-	  \item . %Spline interpolation
-	  \end{subtopics}
-    \item . %Basics on numerical differentiation and Taylor approximation
-    \item . %Basics on numerical integration:
+	    \item Interpolaciones polinomiales de Newton y Lagrange.
+	    \item Interpolación de spline.
+	    \end{subtopics}
+    \item Fundamentos de la diferenciación numérica y la aproximación de Taylor.
+    \item Aspectos básicos de la integración numérica:
 	  \begin{subtopics}
-	  \item . %Trapezium, midpoint and `Simpson\textquotesingle s rule
-	  \item . %Gaussian quadrature
+	    \item Trapecio, punto medio y regla de Simpson 
+	    \item Cuadratura gaussiana
 	  \end{subtopics}
-    \item . %Basics on numerical solutions to ODEs:
+    \item Conceptos básicos sobre las soluciones numéricas a las EDOs:
 	  \begin{subtopics}
-	  \item . %Finite differences; Euler and Runge-Kutta methods
-	  \item . %Converting higher order ODEs into a system of low order ODEs
-	  \item . %Runge-Kutta methods for systems of equations
-	  \item . %Single shooting method
+	    \item Diferencias finitas; Métodos de Euler y Runge-Kutta
+	    \item Convertir ODEs de orden superior en un sistema de ODEs de bajo orden.
+	    \item Métodos de Runge-Kutta para sistemas de ecuaciones
+	    \item Método simple.XYZ
 	  \end{subtopics}
-    \item . %Short introduction to optimization techniques: overview on linear programming, bounded linear systems, quadratic programming, gradient descent.
+    \item Breve introducción a las técnicas de optimización: visión general sobre la programación lineal, sistemas lineales acotados, programación cuadrática, descenso gradiente.
     \end{topics}
 
    \begin{learningoutcomes}
-      \item . %Understanding the basics concepts of Numerical Methods.
-      \item . %Applying the most frequent methods for the resolution of mathematical problems.
-      \item . %Implementing and applying numerical algorithms for the solution of mathematical problems using the Scilab open-source computational package.
-      \item . %Applying Scilab for the solution of mathematical problems and for plotting graphs.
+      \item Comprender los conceptos básicos de los métodos numéricos.
+      \item Aplicar los métodos más frecuentes para la resolución de problemas matemáticos.
+      \item Implementación y aplicación de algoritmos numéricos para la solución de problemas matemáticos utilizando el paquete computacional Scilab open-source.
+      \item Aplicación de Scilab para la solución de problemas matemáticos y para trazar  graficas.
       \end{learningoutcomes}
 \end{unit}
 
@@ -122,5 +106,3 @@ Los conocimientos sobre estos métodos prepara a los estudiantes para la búsque
 \end{coursebibliography}
 
 \end{syllabus}
-
-%\end{document}

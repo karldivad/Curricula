@@ -196,8 +196,8 @@ sub read_syllabus_info($$$)
 	}
 	
 	$map{COURSE_CODE} 	= $codcour;
-	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name};
-	$map{COURSE_TYPE}	= $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
+	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
+	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};
 
 	$semester 		= $Common::course_info{$codcour}{semester};
 	$map{SEMESTER}    	= $semester;
@@ -379,7 +379,7 @@ sub process_syllabi()
 	read_sumilla_template();   # 1st Read template for sumilla
 	read_syllabus_template();  # 2nd Read the syllabus template
 	gen_course_general_info(); # 3th Generate files containing Prerequisites, etc
-	gen_prerequisites_map();   # 4th Generate dot files 
+	gen_prerequisites_map($Common::config{language_without_accents});   # 4th Generate dot files 
 	
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
@@ -544,7 +544,7 @@ sub gen_book($$$)
 		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
-			$output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,$codcour. $Common::course_info{$codcour}{course_name},$codcour}]";
+			$output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}},$codcour}]";
 			$output_tex .= "{$prefix$codcour$postfix}\n";
 			$count++;
 		}
@@ -570,7 +570,7 @@ sub gen_short_descriptions()
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
 			#Util::print_message("codcour = $codcour    ");
-			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}";
+			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
 # 			$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
 # 			$sec_title 	.= "$Common::config{dictionary}{Semester})";
 			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
@@ -602,7 +602,7 @@ sub gen_list_of_units_by_course()
 		{
 			my $codcour_label 	= Common::get_label($codcour);
 			my $i = 0;
-			my $sec_title = "$codcour_label. $Common::course_info{$codcour}{course_name}";
+			my $sec_title = "$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
  			#$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
  			#$sec_title 	.= "$Common::config{dictionary}{Semester})";
 			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
@@ -661,7 +661,7 @@ sub gen_bibliography_list()
 			# print "codcour=$codcour ...\n";
 			my $bibfiles = $Common::course_info{$codcour}{short_bibfiles};
 			#print "codcour = $codcour    ";
-			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name} ";
+			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ";
 # 			$sec_title .= "($semester$Common::rom_postfix{$semester} sem)";
 			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
 			$output_tex .= "\\begin{btUnit}%\n";
@@ -702,7 +702,7 @@ sub generate_syllabi_include()
 			my $course_path = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
 			$course_path =~ s/(.*)\.tex/$1/g;
 			$output_tex .= "$newpage\\input{".Common::get_template("OutputTexDir")."/$codcour-sumilla}";
-                        $output_tex .= "% $Common::course_info{$codcour}{course_name}\n";
+                        $output_tex .= "% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
                         $ncourses++;
 			$newpage = "\\newpage";
                 }
@@ -783,8 +783,9 @@ sub gen_course_general_info()
 	 }
 }
 
-sub gen_prerequisites_map()
+sub gen_prerequisites_map($)
 {
+        my ($lang) = (@_);
 	my $size = "big";
 	my $course_tpl 	= Util::read_file(Common::get_template("in-$size-graph-item.dot"));
 
@@ -809,18 +810,18 @@ sub gen_prerequisites_map()
 			my $prev_courses_dot = "";
 			
 			foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
-			{	$prev_courses_dot .= Common::generate_course_info_in_dot($codprev, $course_tpl)."\n";	
+			{	$prev_courses_dot .= Common::generate_course_info_in_dot($codprev, $course_tpl, $lang)."\n";	
 				$prev_courses_dot .= "\t\"$codprev\"->\"$codcour\" [lhead=cluster$codcour];\n";
 				if($Common::course_info{$codprev}{semester} < $min_sem_to_show)
 				{	$min_sem_to_show = $Common::course_info{$codprev}{semester};	}
 				push(@{$courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
 			}
 			
- 			my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl)."\n";
+ 			my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang)."\n";
  			
 			my $post_course_dot = "";
 			foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
-			{	$post_course_dot  .= Common::generate_course_info_in_dot($codpost, $course_tpl)."\n";	
+			{	$post_course_dot  .= Common::generate_course_info_in_dot($codpost, $course_tpl, $lang)."\n";	
 				$post_course_dot .= "\t\"$codcour\"->\"$codpost\" [ltail=cluster$codcour];\n";
 				if($Common::course_info{$codpost}{semester} > $max_sem_to_show)
 				{	$max_sem_to_show = $Common::course_info{$codpost}{semester};	}
