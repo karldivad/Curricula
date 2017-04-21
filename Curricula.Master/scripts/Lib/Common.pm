@@ -1255,10 +1255,21 @@ sub read_specific_evaluacion_info()
 	else
 	{
 	      my $specific_evaluation = Util::read_file($specific_evaluation_file);
-	      while($specific_evaluation =~ m/\\begin\{evaluation\}\{(.*?)\}\s*\n((?:.|\n)*?)\n\\end\{evaluation\}/g)
+	      while($specific_evaluation =~ m/\\begin\{evaluation\}\{(.*?)\}\{(.*?)\}\s*\n((?:.|\n)*?)\\end\{evaluation\}/g)
 	      {
-		      my ($codcour, $eval) = ($1, $2);
-		      $Common::course_info{$codcour}{specific_evaluation} = "\\begin{evaluation}\n$eval\n\\end{evaluation}";
+		      my ($codcour, $parts, $eval) = ($1, $2, $3);
+		      $parts =~ s/ //g;
+		      my $output_parts = "";
+		      foreach my $onepart (split(",", $parts))
+		      {
+			    $output_parts .= "\\vspace{2mm}\n";
+			    $output_parts .= "{\\noindent\\bf <<$onepart-SESSIONS>>:}\\\\\n";
+			    $output_parts .= "<<$onepart-SESSIONS-CONTENT>>\n\n";
+		      }
+		      $Common::course_info{$codcour}{specific_evaluation} = "$output_parts\n$eval\n";
+		      Util::print_message("$codcour specific_evaluation detected!");
+		      #if($codcour eq "CS111") { 	Util::print_message("C. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
+		      #Util::print_message("$Common::course_info{$codcour}{specific_evaluation}");
 	      }
 	}
 }
@@ -1314,6 +1325,9 @@ sub set_initial_configuration($)
 	$config{macros_file} = "";
 
 	$config{encoding} 	= "latin1";
+	$config{lang_for_latex}{Espanol} = "spanish";
+	$config{lang_for_latex}{English} = "english";
+
         system("mkdir -p $config{out}/tex");
 
 	# Parse the command
@@ -3203,7 +3217,7 @@ sub gen_bok($)
 		my $macro = $ka;
 		$macros_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$macros_txt .= "% Knowledge Area: $ka\n";
-		$macros_txt .= "\\newcommand{\\$macro}{$bok{$lang}{$ka}{name} ($ka)}\n";
+		$macros_txt .= "\\newcommand{\\$macro}{$bok{$lang}{$ka}{name} ($ka)\\xspace}\n";
 		
 		$bok_output_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$bok_output_txt .= "% Knowledge Area: $ka\n";
@@ -3212,7 +3226,7 @@ sub gen_bok($)
 		my $hours_by_ku_file = "$ka-hours-by-ku";
 		
 		$macro = $ka."BOKDescription";
-		$macros_txt .= "\\newcommand{\\$macro}{$bok{$lang}{$ka}{description}}\n\n";
+		$macros_txt .= "\\newcommand{\\$macro}{$bok{$lang}{$ka}{description}\\xspace}\n\n";
 		$bok_output_txt .= "\\$macro\n\n";
 		
 		my $hours_by_ku_rows = "";
@@ -3231,8 +3245,9 @@ sub gen_bok($)
 		      #print Dumper(\%{$bok{$lang}{$ka}{KU}{$ku}});
 		      #Util::print_message("bok{$ka}{KU}{$ku}{order} = $bok{$lang}{$ka}{KU}{$ku}{order}");
 		      my $ku_macro = "$bok{$lang}{$ka}{KU}{$ku}{name}";
+		      $macros_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		      $macros_txt .= "% KU: $ka:$bok{$lang}{$ka}{KU}{$ku}{body}\n";
-		      $macros_txt .= "\\newcommand{\\$ku_macro}{$bok{$lang}{$ka}{KU}{$ku}{body}}\n";
+		      $macros_txt .= "\\newcommand{\\$ku_macro}{$bok{$lang}{$ka}{KU}{$ku}{body}\\xspace}\n";
 		      
 		      my ($nhours_txt, $sep) = ("", "");
 		      #Util::print_message("bok{$ka}{KU}{$ku}{nhTier1}=$bok{$lang}{$ka}{KU}{$ku}{nhTier1} ...");
@@ -3262,7 +3277,7 @@ sub gen_bok($)
 		      my $ku_description_macro = "$bok{$lang}{$ka}{KU}{$ku}{name}Description";
 		      $bok{$lang}{$ka}{KU}{$ku}{description} =~ s/_/\\_/g;
 
-		      $macros_txt .= "\\newcommand{\\$ku_description_macro}{$bok{$lang}{$ka}{KU}{$ku}{description}}\n";
+		      $macros_txt .= "\\newcommand{\\$ku_description_macro}{$bok{$lang}{$ka}{KU}{$ku}{description}\\xspace}\n";
 		      if( not $bok{$lang}{$ka}{KU}{$ku}{description} eq "~" )
 		      {  	$bok_output_txt .= "\\$ku_description_macro\\\\\n";	}
 		      
@@ -3297,8 +3312,8 @@ sub gen_bok($)
 					if( not $xref_txt eq "" )
 					{	$xref_txt = "\\xspace \\\\ {\\bf Ref:} $xref_txt";		}
 					$list_of_items .= "\t\\item \\$kuitem$xref_txt\\label{sec:BOK:$kuitem}\n";
-					$macros_txt	.= "\\newcommand{\\$kuitem}{$bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{body}}\n";
-					$alltopics 	.= "\t\\item \\$kuitem%\n";
+					$macros_txt	.= "\\newcommand{\\$kuitem}{$bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{body}\\xspace}\n";
+					$alltopics 	.= "\t\\item \\$kuitem\\xspace\n";
 					#$macros_txt	.= "\\newcommand{\\$kuitem"."Level}{$level}\n";
 				}
 				$bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{$level}}\n";
@@ -3327,12 +3342,12 @@ sub gen_bok($)
 			       	foreach my $loitem (sort { $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$a}{order} <=> $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$b}{order} }
 						    keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}{$level}} )
 				{
-					$all_the_items .= "\t\\item \\$loitem ~[\\".$loitem."Level]\\label{sec:BOK:$loitem}\n";
-					$macros_txt	.= "\\newcommand{\\$loitem}{$bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$loitem}{body}}\n";
+					$all_the_items .= "\t\\item \\$loitem\\xspace[\\".$loitem."Level]\\label{sec:BOK:$loitem}\n";
+					$macros_txt	.= "\\newcommand{\\$loitem}{$bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$loitem}{body}\\xspace}\n";
 					my $loitemlevel  = $loitem."Level";
-					my $thisloitemlevel = $Common::config{dictionary}{learning_outcomes}{$bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$loitem}{lolevel}};
+					my $thisloitemlevel = $Common::config{dictionaries}{$lang}{$bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$loitem}{lolevel}};
 					$macros_txt	.= "\\newcommand{\\$loitemlevel}{$thisloitemlevel}\n";
-					$all_lo 	.= "\t\\item~\\$loitem~[\\".$loitem."Level] %\n";
+					$all_lo 	.= "\t\\item \\$loitem\\xspace[\\".$loitem."Level] %\n";
 					$count_of_items_local++;
 				}
 				$bok_output_txt .= "\\begin{enumerate}\n";
@@ -3342,11 +3357,11 @@ sub gen_bok($)
 				$count_of_items += $count_of_items_local;
 				$macros_txt	.= "\n";
 		      }
-# 		      $macros_txt	.= "\\newcommand{\\$ku_macro"."AllLearningOutcomes}{%\n";
-# 		      $macros_txt	.= "\\begin{LOUnit}%\n";
-# 		      $macros_txt	.= "$all_lo";
-# 		      $macros_txt	.= "\\end{LOUnit}%\n}\n";
-# 		      $bok_output_txt .= "\n";
+		      $macros_txt	.= "\\newcommand{\\$ku_macro"."AllLearningOutcomes}{%\n";
+		      $macros_txt	.= "\\begin{learningoutcomes}%\n";
+		      $macros_txt	.= $all_lo;
+		      $macros_txt	.= "\\end{learningoutcomes}%\n}\n\n";
+		      $bok_output_txt .= "\n\n";
 		} # ku loop
 		$bok_index_txt .= "\\end{itemize}\n\n";
 		

@@ -14,6 +14,7 @@ CONTRIBUTIONTOOUTCOMES=Contribution to outcomes
 SyllabusofCourse=Syllabus of Course
 Syllabus=Syllabus
 Bibliography=Bibliography
+Readings=Readings
 CONTENTS=CONTENTS
 Content=Content
 PERIOD=PERIOD
@@ -41,6 +42,12 @@ Professor=Professor(s)
 AttentionwithAppointment=Meetings after coordination with the professor
 InformationAbouttheCourse=Information about the course
 BriefDescription=Brief description about the course
+Where=Where
+PerformanceInClass=Performance in class
+TheoryEvaluation=Theory evaluation
+Project=Project
+BookSummary=Book Summaries
+SetOfProblems=Set of problems
 
 HoursPerSession                        = Hours per Session
 LengthOfPeriod                         = Length Of Period 
@@ -48,7 +55,7 @@ Book 				       = Book
 Author				       = Author
 YearsOfPublication                     = Years of publication
 OtherTexts                             = Other Texts
-Tittle                                 = Tittle
+Title                                  = Title
 CourseInformation                      = Course Information.
 SpecificGoalsOfTheCourse               = Specific Goals Of The Course .
 SpecificCompetencesOfTheCourse         = Specific Competences Of TheCourse.
@@ -112,10 +119,10 @@ THEORY-SESSIONS     = Theory Sessions
 THEORY-SESSIONS-CONTENT =The development of the theoretical sessions is focused on the student, through his active participation, solving problems related to the course with the individual contributions and discussing real cases of the industry. The students will develop throughout the course a project of application of the tools received in a company.
 LAB-SESSIONS           =Lab Sessions
 LAB-SESSIONS-CONTENT    =Practical sessions are held in the laboratory. Laboratory practices are performed in teams to strengthen their communication. At the beginning of each laboratory the development of the practice is explained and at the end the main conclusions of the activity in group form are highlighted.
-ORAL-PRESENTATIONS    =Oral Presentations 
-ORAL-PRESENTATIONS-CONTENT =Individual and team participation is encouraged to present their ideas, motivating them with additional points in the different stages of the course evaluation.
-READING               =Reading
-READING-CONTENT       =Throughout the course different readings are provided, which are evaluated. The average of the notes in the readings is considered as the mark of a qualified practice. The use of the UTEC Online virtual campus allows each student to access the course information, and interact outside the classroom with the teacher and with the other students.
+ORAL-SESSIONS    =Oral Presentations 
+ORAL-SESSIONS-CONTENT =Individual and team participation is encouraged to present their ideas, motivating them with additional points in the different stages of the course evaluation.
+READING-SESSIONS               =Reading
+READING-SESSIONS-CONTENT       =Throughout the course different readings are provided, which are evaluated. The average of the notes in the readings is considered as the mark of a qualified practice. The use of the UTEC Online virtual campus allows each student to access the course information, and interact outside the classroom with the teacher and with the other students.
 EVALUATION-SYSTEM     =Evaluation System
 EVALUATION-CONTENT    =.
 
@@ -182,11 +189,10 @@ FG => General<ENTER>Knowledge
 10=>th
 </HASH>
 
-<HASH name=learning_outcomes>
-Familiarity=>Familiarity
-Usage=>Usage
-Assessment=>Assessment
-</HASH>
+Familiarity=Familiarity
+Usage=Usage
+Assessment=Assessment
+
 
 <HASH name=labels_per_level>
 1=>Introductory

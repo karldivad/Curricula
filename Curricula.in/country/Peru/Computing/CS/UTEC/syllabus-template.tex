@@ -2,7 +2,7 @@
 % This file was generated based on: --SOURCE_FILE_NAME--
 \input{current-institution}
 \usepackage[utf8]{inputenc} 
-\usepackage[spanish]{babel}
+\usepackage[--lang--]{babel}
 \usepackage{ae}
 \usepackage{csquotes}
 \usepackage{\InStyAllDir/syllabus-final}
@@ -93,17 +93,21 @@
 \begin{evaluation}
 {\noindent\bf <<Methodology>>}:\\
 
+\vspace{2mm}
 {\noindent\bf <<THEORY-SESSIONS>>:}\\
 <<THEORY-SESSIONS-CONTENT>>
 
+\vspace{2mm}
 {\noindent\bf <<LAB-SESSIONS>>:}\\
 <<LAB-SESSIONS-CONTENT>>
 
-{\noindent\bf <<ORAL-PRESENTATIONS>>:}\\
-<<ORAL-PRESENTATIONS-CONTENT>>
+\vspace{2mm}
+{\noindent\bf <<ORAL-SESSIONS>>:}\\
+<<ORAL-SESSIONS-CONTENT>>
 
-{\noindent\bf <<READING>>:}\\
-<<READING-CONTENT>>
+\vspace{2mm}
+{\noindent\bf <<READING-SESSIONS>>:}\\
+<<READING-SESSIONS-CONTENT>>
 
 {\noindent\bf <<EVALUATION-SYSTEM>>:}\\
 <<EVALUATION-CONTENT>>
@@ -128,7 +132,7 @@
 \\ \hline
 \multicolumn{2}{|l|}
 {\begin{minipage}{0.95\textwidth}
-{\bf Lecturas:} --CITATIONS--
+{\bf <<Readings>> :} --CITATIONS--
 \end{minipage}
 }
 \\ \hline
@@ -136,21 +140,5 @@
 \end{center}
 
 --ENDUNIT--
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \addtocounter{SyllabiSectionCount}{1}
-% \begin{center}
-% \begin{tabularx}{\textwidth}{|X|}      \hline
-% \arabic{SyllabiSectionCount}. EVALUACIONES  \\ \hline
-% \begin{evaluation}
-% 	\item[Evaluacion Permanente 1] : 20 \%
-% 	\item[Examen Parcial] : 30 \%
-% 	\item[Evaluación Permanente 2] : 20 \%
-% 	\item[Examen Final] : 30 \%
-% \end{evaluation}
-% \\ \hline
-% \end{tabularx}
-% \end{center}
 
 \end{document}

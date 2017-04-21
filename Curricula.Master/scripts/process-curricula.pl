@@ -25,6 +25,7 @@ sub generate_general_info()
 	      Common::parse_bok($lang);
 	      Common::gen_bok($lang);
 	}
+exit;
 	Common::read_all_min_max();
 	Util::precondition("gen_syllabi"); 
 	

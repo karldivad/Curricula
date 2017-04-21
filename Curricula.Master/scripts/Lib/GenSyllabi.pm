@@ -220,6 +220,7 @@ sub read_syllabus_info($$$)
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
 	if( not $Common::course_info{$codcour}{specific_evaluation} eq "" )
 	{	$map{EVALUATION} = $Common::course_info{$codcour}{specific_evaluation};	}
+	#if($codcour eq "CS111") { 	Util::print_message("Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
 	#Util::print_message("course $codcour\nmap{EVALUATION}=\n$map{EVALUATION}"); 
 	#exit;
 
@@ -329,10 +330,12 @@ sub genenerate_tex_syllabus_file($$$$$%)
 	$file_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
 
 	Util::print_message("genenerate_tex_syllabus_file $codcour: $output_file ...");
-	$file_template = Common::replace_tags($file_template, "--", "--", %map);
-	#Util::print_message("2");
-	$file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
-	#Util::print_message("");
+	for(my $i = 0 ; $i < 2; $i++ )
+	{
+	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
+	    $file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
+	}
+	
         #$file_template =~ s/--.*?--//g;
         system("rm $output_file");
 	Util::write_file($output_file, $file_template);
@@ -384,6 +387,8 @@ sub process_syllabi()
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
 	
+# 	Util::print_message("Common::config{syllabus_template}=\n$Common::config{syllabus_template}"); exit;
+	
 	generate_tex_syllabi_files();
         generate_syllabi_include();
  	gen_batch_to_compile_syllabi();
@@ -414,6 +419,8 @@ sub generate_tex_syllabi_files()
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
 			      $map{AREA}	= $Common::config{area};
 			      $map{LANG}	= $lang;
+			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
+			      #if($codcour eq "CS111") { 	Util::print_message("A. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
 			      
 			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
