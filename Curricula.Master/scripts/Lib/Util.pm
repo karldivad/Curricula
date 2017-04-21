@@ -136,6 +136,7 @@ sub write_file_to_gen_fig($$)
         # Second: generate the main to gen the fig
         my $main_txt = $Common::config{main_to_gen_fig};
         $main_txt =~ s/<OUTPUT_FILE>/$filename/g;
+        $main_txt =~ s/<ENCODING>/$Common::config{tex_encoding}/g;
 	write_file("$dir/$filename-main.tex", $main_txt);
 	print_message("write_file_to_gen_fig: $dir/$filename-main.tex OK!");
 	

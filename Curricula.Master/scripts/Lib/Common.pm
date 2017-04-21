@@ -1325,6 +1325,7 @@ sub set_initial_configuration($)
 	$config{macros_file} = "";
 
 	$config{encoding} 	= "latin1";
+	$config{tex_encoding} 	= "utf8";
 	$config{lang_for_latex}{Espanol} = "spanish";
 	$config{lang_for_latex}{English} = "english";
 

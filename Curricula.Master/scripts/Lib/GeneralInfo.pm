@@ -1588,23 +1588,28 @@ sub generate_pie_by_levels()
 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
 		my $maxE = 0;
-		my $nivelE = 1;
+		my $levelE = 1;
 		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
 			#print "$semester: $codcour;  ";
 			if($codcour =~ m/..(.).*/)
 			{
-				my $nivel = $1;
-				if(not defined($Common::data{credits_per_level}{$nivel}))
-				{	$Common::data{credits_per_level}{$nivel} = 0;		}
+				my $level = $1;
+				if( not defined($Common::config{colors}{colors_per_level}{$level}) )
+				{
+				      Util::print_warning("Course $codcour, (Sem $Common::course_info{$codcour}{semester}) has a level ($level) out of range ... ");
+				      $level = 1;
+				}
+				if(not defined($Common::data{credits_per_level}{$level}))
+				{	$Common::data{credits_per_level}{$level} = 0;		}
 				
 				if( $Common::course_info{$codcour}{course_type} eq "Elective" )
 				{	$maxE   = $Common::course_info{$codcour}{cr} if($Common::course_info{$codcour}{cr} > $maxE);
-					$nivelE = $nivel;
+					$levelE = $level;
 				}
 				else
-				{	$Common::data{credits_per_level}{$nivel} += $Common::course_info{$codcour}{cr};
+				{	$Common::data{credits_per_level}{$level} += $Common::course_info{$codcour}{cr};
 					$total_credits 		      				 += $Common::course_info{$codcour}{cr};
 				}
 				#if( $semester == 8 )
@@ -1613,7 +1618,7 @@ sub generate_pie_by_levels()
 				#}
 			}
 		}
-		$Common::data{credits_per_level}{$nivelE} += $maxE;
+		$Common::data{credits_per_level}{$levelE} += $maxE;
 		$total_credits 		    += $maxE;
 	}
 	$output_txt .= "\\begin{center}\n";
@@ -1629,6 +1634,7 @@ sub generate_pie_by_levels()
 		my $last = $first + $Common::data{credits_per_level}{$level};
 		my $mid = ($first + $last)/2;
 		my $percent = Util::calc_percent($Common::data{credits_per_level}{$level}, $total_credits);
+		#Util::print_message("Common::config{colors}{colors_per_level}{$level}]{2}{$first}{$last}=$Common::config{colors}{colors_per_level}{$level}]{2}{$first}{$last}");
 		$output_txt .= "\\pswedge[shadow=true,fillstyle=solid,fillcolor=$Common::config{colors}{colors_per_level}{$level}]{2}{$first}{$last}\n";
 		$output_txt .= "\\rput(1.2; $mid ){\\Large $percent \\\%}\n";
 		$output_txt .= "\\uput{2.2}[$mid](0;0){\\Large $Common::config{dictionary}{labels_per_level}{$level} ($Common::data{credits_per_level}{$level})}\n\n";
@@ -1638,6 +1644,7 @@ sub generate_pie_by_levels()
 	$output_txt .= "\\end{center}\n";
 	Util::write_file_to_gen_fig($output_file, $output_txt); 
 	Util::print_message("generate_pie_by_levels() ... OK!");
+
 }
 
 sub generate_equivalence_old2new($)
