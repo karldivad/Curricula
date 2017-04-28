@@ -693,9 +693,10 @@ sub generate_syllabi_include()
         my $output_file = Common::get_template("out-list-of-syllabi-include-file");
         my $output_tex  = "";
 
-        $output_tex  .= "%This file is generated automatically ... do not touch !!! (GenSyllabi.pm)\n";
+        $output_tex  .= "%This file is generated automatically ... do not touch !!! (GenSyllabi.pm: generate_syllabi_include())\n";
         $output_tex  .= "\\newcounter{conti}\n";
 
+        my $OutputTexDir = Common::get_template("OutputTexDir");
         my $ncourses    = 0;
 	my $newpage = "";
         for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
@@ -706,9 +707,11 @@ sub generate_syllabi_include()
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
 			    @{$Common::courses_by_semester{$semester}})
                 {
-			my $course_path = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
-			$course_path =~ s/(.*)\.tex/$1/g;
-			$output_tex .= "$newpage\\input{".Common::get_template("OutputTexDir")."/$codcour-sumilla}";
+			my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
+			system("cp $course_fullpath $OutputTexDir/.");
+			Util::print_message("cp $course_fullpath $OutputTexDir/.");
+			$course_fullpath =~ s/(.*)\.tex/$1/g;
+			$output_tex .= "$newpage\\input{$OutputTexDir/$codcour}";
                         $output_tex .= "% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
                         $ncourses++;
 			$newpage = "\\newpage";

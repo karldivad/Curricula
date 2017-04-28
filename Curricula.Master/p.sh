@@ -20,7 +20,10 @@
 
 # ./scripts/gen-scripts.pl CS-UTEC
 
+rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
 ./scripts/process-curricula.pl CS-UTEC
+latex curricula-main
+
 ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 
