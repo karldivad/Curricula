@@ -23,8 +23,11 @@
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
 ./scripts/process-curricula.pl CS-UTEC
 latex curricula-main
-
-../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
+latex curricula-main;
+bibtex curricula-main1
+./scripts/compbib.sh curricula-main
+      
+gh../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 
 cp ../Curricula.in/lang/Espanol/cycle/2017-I/Syllabi/Computing/CS/CS1D1.bib ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/tex

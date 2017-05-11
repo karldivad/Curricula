@@ -1,86 +1,86 @@
 
 % Semester #1 .
-% CS101F(CS101F). IntroducciÃ³n a la ProgramaciÃ³n (Obligatorio)
+% CS101F(CS101F). IntroducciÃÂ³n a la ProgramaciÃÂ³n (Obligatorio)
 CS101F->mleguen@ucsp.edu.pe,hernan.alvarez@ucsp.edu.pe
-% FG101(FG101). ComunicaciÃ³n (Obligatorio)
+% FG101(FG101). ComunicaciÃÂ³n (Obligatorio)
 FG101->lparedesv@ucsp.edu.pe
-% FG103(FG103). IntroducciÃ³n a la Vida Universitaria (Obligatorio)
+% FG103(FG103). IntroducciÃÂ³n a la Vida Universitaria (Obligatorio)
 FG103->gmaldonado@ucsp.edu.pe
 
 
 % Semester #2 .
-% CS101O(CS101O). IntroducciÃ³n a la ProgramaciÃ³n Orientada a Objetos (Obligatorio)
+% CS101O(CS101O). IntroducciÃÂ³n a la ProgramaciÃÂ³n Orientada a Objetos (Obligatorio)
 CS101O->bjjuarez@ucsp.edu.pe,hernan.alvarez@ucsp.edu.pe
 % CS106(CS106). Estructuras Discretas II (Obligatorio)
 CS106->lvasquez@ucsp.edu.pe
-% CS100(CS100). IntroducciÃ³n a la Ciencia de la ComputaciÃ³n (Obligatorio)
+% CS100(CS100). IntroducciÃÂ³n a la Ciencia de la ComputaciÃÂ³n (Obligatorio)
 CS100->ecuadros@ucsp.edu.pe
-% FG105(FG105). ApreciaciÃ³n de la MÃºsica (Electivo)
+% FG105(FG105). ApreciaciÃÂ³n de la MÃÂºsica (Electivo)
 FG105->gmaldonado@ucsp.edu.pe
 % FG106(FG106). Teatro (Electivo)
 FG106->hramoss@ucsp.edu.pe
 
 
 % Semester #3 .
-% CS102O(CS102O). Objetos y AbstracciÃ³n de Datos (Obligatorio)
+% CS102O(CS102O). Objetos y AbstracciÃÂ³n de Datos (Obligatorio)
 CS102O->ggdelgado@ucsp.edu.pe
 % CS220T(CS220T). Arquitectura de Computadores (Obligatorio)
 CS220T->ytupac@ucsp.edu.pe
-% CS130(CS130). IntroducciÃ³n a Internet (Obligatorio)
+% CS130(CS130). IntroducciÃÂ³n a Internet (Obligatorio)
 CS130->glovon@ucsp.edu.pe
-% CS107(CS107). Ãlgebra Abstracta (Obligatorio)
+% CS107(CS107). ÃÂlgebra Abstracta (Obligatorio)
 CS107->ana.maria.cuadros@ucsp.edu.pe
-% CB103(CB103). AnÃ¡lisis MatemÃ¡tico II (Obligatorio)
+% CB103(CB103). AnÃÂ¡lisis MatemÃÂ¡tico II (Obligatorio)
 CB103->dnina@ucsp.edu.pe
-% FG201(FG201). Artes PlÃ¡sticas (Electivo)
+% FG201(FG201). Artes PlÃÂ¡sticas (Electivo)
 FG201->rfmattosp@ucsp.edu.pe
-% FG107(FG107). Fundamentos AntropolÃ³gicos de la Ciencia (Obligatorio)
+% FG107(FG107). Fundamentos AntropolÃÂ³gicos de la Ciencia (Obligatorio)
 FG107->mberrios@ucsp.edu.pe
-% FG203(FG203). Oratoria y ExpresiÃ³n Personal (Electivo)
+% FG203(FG203). Oratoria y ExpresiÃÂ³n Personal (Electivo)
 FG203->mlrodriguez@ucsp.edu.pe
 
 
 % Semester #4 .
 % CS103O(CS103O). Algoritmos y Estructuras de Datos (Obligatorio)
 CS103O->acuadros@ucsp.edu.pe,hernan.alvarez@ucsp.edu.pe
-% CS211T(CS211T). TeorÃ­a de la ComputaciÃ³n (Obligatorio)
+% CS211T(CS211T). TeorÃÂ­a de la ComputaciÃÂ³n (Obligatorio)
 CS211T->dbarrios@ucsp.edu.pe
 % CS270T(CS270T). Bases de Datos I (Obligatorio)
 CS270T->ccastelo@ucsp.edu.pe
-% CB203(CB203). EstadÃ­stica y Probabilidades (Obligatorio)
+% CB203(CB203). EstadÃÂ­stica y Probabilidades (Obligatorio)
 CB203->dmayori@ucsp.edu.pe
-% CB201(CB201). AnÃ¡lisis MatemÃ¡tico III (Obligatorio)
+% CB201(CB201). AnÃÂ¡lisis MatemÃÂ¡tico III (Obligatorio)
 CB201->dnina@ucsp.edu.pe
 
 
 % Semester #5 .
-% CS290T(CS290T). IngenierÃ­a de Software I (Obligatorio)
+% CS290T(CS290T). IngenierÃÂ­a de Software I (Obligatorio)
 CS290T->gcalderon@ucsp.edu.pe,hjneyra@ucsp.edu.pe
 % CS271T(CS271T). Bases de Datos II (Obligatorio)
 CS271T->jtejadac@ucsp.edu.pe
-% CB111(CB111). FÃ­sica Computacional (Obligatorio)
+% CB111(CB111). FÃÂ­sica Computacional (Obligatorio)
 CB111->rlinares@ucsp.edu.pe
-% CB306(CB306). AnÃ¡lisis NumÃ©rico (Obligatorio)
+% CB306(CB306). AnÃÂ¡lisis NumÃÂ©rico (Obligatorio)
 CB306->cortiz@ucsp.edu.pe
-% FG209(FG209). PsicologÃ­a (Electivo)
+% FG209(FG209). PsicologÃÂ­a (Electivo)
 FG209->agarciacalderon@ucsp.edu.pe
 
 
 % Semester #6 .
 % CS315(CS315). Estructuras de Datos Avanzadas (Obligatorio)
 CS315->ecuadros@ucsp.edu.pe,hernan.alvarez@ucsp.edu.pe
-% CS260(CS260). LÃ³gica Computacional (Obligatorio)
+% CS260(CS260). LÃÂ³gica Computacional (Obligatorio)
 CS260->lvasquez@ucsp.edu.pe
-% CS390(CS390). IngenierÃ­a de Software II (Obligatorio)
+% CS390(CS390). IngenierÃÂ­a de Software II (Obligatorio)
 CS390->gcalderon@ucsp.edu.pe,hjneyra@ucsp.edu.pe
 % CS225T(CS225T). Sistemas Operativos (Obligatorio)
 CS225T->jsantisteban@ucsp.edu.pe,hernan.alvarez@ucsp.edu.pe
-% CB307(CB307). MatemÃ¡tica aplicada a la computaciÃ³n (Obligatorio)
+% CB307(CB307). MatemÃÂ¡tica aplicada a la computaciÃÂ³n (Obligatorio)
 CB307->ldiaz@ucsp.edu.pe
 
 
 % Semester #7 .
-% CS336(CS336). Seguridad en ComputaciÃ³n (Obligatorio)
+% CS336(CS336). Seguridad en ComputaciÃÂ³n (Obligatorio)
 CS336->jsantisteban@ucsp.edu.pe
 % CS401(CS401). Proyecto I (Obligatorio)
 CS401->cjdelgado@ucsp.edu.pe
@@ -89,22 +89,22 @@ CS401->cjdelgado@ucsp.edu.pe
 CS261T->jcgutierrezc@ucsp.edu.pe
 % CS314(CS314). Algoritmos Paralelos (Obligatorio)
 CS314->ahmamani@ucsp.edu.pe
-% CS343(CS343). Lenguajes de ProgramaciÃ³n (Obligatorio)
+% CS343(CS343). Lenguajes de ProgramaciÃÂ³n (Obligatorio)
 CS343->ahmamani@ucsp.edu.pe
-% CS250W(CS250W). InteracciÃ³n Humano Computador (Obligatorio)
+% CS250W(CS250W). InteracciÃÂ³n Humano Computador (Obligatorio)
 CS250W->ana.maria.cuadros@ucsp.edu.pe
 
 
 % Semester #8 .
-% CS255(CS255). ComputaciÃ³n GrÃ¡fica (Obligatorio)
+% CS255(CS255). ComputaciÃÂ³n GrÃÂ¡fica (Obligatorio)
 CS255->mleguen@ucsp.edu.pe
 % CS402(CS402). Proyecto II (Obligatorio)
 CS402->jeochoa@ucsp.edu.pe,ydyari@ucsp.edu.pe,ccastelo@ucsp.edu.pe
 % CS240S(CS240S). Compiladores (Obligatorio)
 CS240S->rpatino@ucsp.edu.pe,guillermo.laures@ucsp.edu.pe
-% CS230W(CS230W). ComputaciÃ³n Centrada en Redes (Obligatorio)
+% CS230W(CS230W). ComputaciÃÂ³n Centrada en Redes (Obligatorio)
 CS230W->jsantisteban@ucsp.edu.pe
-% CS280T(CS280T). Aspectos sociales y profesionales de la computaciÃ³n (Obligatorio)
+% CS280T(CS280T). Aspectos sociales y profesionales de la computaciÃÂ³n (Obligatorio)
 CS280T->rmedina@ucsp.edu.pe
 % CS391(CS391). Calidad de Software (Obligatorio)
 CS391->jcano@ucsp.edu.pe
@@ -113,39 +113,39 @@ FG205->jvcondori@ucsp.edu.pe
 
 
 % Semester #9 .
-% CS370(CS370). TÃ³picos en Bases de Datos (Obligatorio)
+% CS370(CS370). TÃÂ³picos en Bases de Datos (Obligatorio)
 CS370->jtejadac@ucsp.edu.pe
-% CS355(CS355). TÃ³picos en ComputaciÃ³n GrÃ¡fica (Electivo)
+% CS355(CS355). TÃÂ³picos en ComputaciÃÂ³n GrÃÂ¡fica (Electivo)
 CS355->jcgutierrezc@ucsp.edu.pe
-% CS361(CS361). TÃ³picos en Inteligencia Artificial (Electivo)
+% CS361(CS361). TÃÂ³picos en Inteligencia Artificial (Electivo)
 CS361->rpatino@ucsp.edu.pe
 % CS403(CS403). Proyecto de Tesis (Obligatorio)
 CS403->jcgutierrezc@ucsp.edu.pe,ana.maria.cuadros@ucsp.edu.pe,gmezal@ucsp.edu.pe
-% CS360(CS360). ComputaciÃ³n Bioinspirada (Electivo)
+% CS360(CS360). ComputaciÃÂ³n Bioinspirada (Electivo)
 CS360->ytupac@ucsp.edu.pe
-% CS393(CS393). MÃ©todos Formales (Electivo)
+% CS393(CS393). MÃÂ©todos Formales (Electivo)
 CS393->igor.calizaya@ucsp.edu.pe
-% FG221(FG221). Historia de la Ciencia y TecnologÃ­a (Obligatorio)
+% FG221(FG221). Historia de la Ciencia y TecnologÃÂ­a (Obligatorio)
 FG221->tmedina@ucsp.edu.pe
-% FG301(FG301). EnseÃ±anza Social de la Iglesia (Obligatorio)
+% FG301(FG301). EnseÃÂ±anza Social de la Iglesia (Obligatorio)
 FG301->darias@ucsp.edu.pe
-% ET101(ET101). FormaciÃ³n de Empresas de Base TecnolÃ³gica I (Obligatorio)
+% ET101(ET101). FormaciÃÂ³n de Empresas de Base TecnolÃÂ³gica I (Obligatorio)
 ET101->jeochoa@ucsp.edu.pe
 
 
 % Semester #10 .
-% CS356(CS356). ProgramaciÃ³n de Video Juegos (Electivo)
+% CS356(CS356). ProgramaciÃÂ³n de Video Juegos (Electivo)
 CS356->jcgutierrezc@ucsp.edu.pe
-% CS367(CS367). RobÃ³tica (Electivo)
+% CS367(CS367). RobÃÂ³tica (Electivo)
 CS367->dbarrios@ucsp.edu.pe
 % CS331(CS331). Cloud Computing (Obligatorio)
 CS331->ahmamani@ucsp.edu.pe,hjneyra@ucsp.edu.pe
 % CS404(CS404). Seminario de Tesis (Obligatorio)
 CS404->acuadros@ucsp.edu.pe,ytupac@ucsp.edu.pe,jeochoa@ucsp.edu.pe,jcgutierrezc@ucsp.edu.pe
-% CS232W(CS232W). ProgramaciÃ³n de Dispositivos MÃ³viles (Obligatorio)
+% CS232W(CS232W). ProgramaciÃÂ³n de Dispositivos MÃÂ³viles (Obligatorio)
 CS232W->jsantisteban@ucsp.edu.pe
-% FG211(FG211). Ãtica Profesional (Obligatorio)
+% FG211(FG211). ÃÂtica Profesional (Obligatorio)
 FG211->gmaldonado@ucsp.edu.pe
-% ET102(ET102). FormaciÃ³n de Empresas de Base TecnolÃ³gica II (Obligatorio)
+% ET102(ET102). FormaciÃÂ³n de Empresas de Base TecnolÃÂ³gica II (Obligatorio)
 ET102->jeochoa@ucsp.edu.pe
 

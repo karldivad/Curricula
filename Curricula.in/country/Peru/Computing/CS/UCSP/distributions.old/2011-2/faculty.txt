@@ -2,19 +2,19 @@
 TITLE=Dr.
 Ernesto Cuadros-Vargas
 \begin{itemize}
-\item Dr. en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (2004).
-\item M.Sc. en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (1998).
+\item Dr. en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (2004).
+\item M.Sc. en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (1998).
 \item http://socios.spc.org.pe/ecuadros
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<rubel7523@hotmail.com>
 TITLE=Prof.
-Rubel Dorjin Linares MÃ¡laga
+Rubel Dorjin Linares MÃÂ¡laga
 \begin{itemize}
-\item Licenciado en FÃ­sica, Universidad Nacional de San AgustÃ­n(2002).
-\item TÃ©cnico en MecÃ¡nica Automotriz. Instituto Superior Pedro P. Diaz (1998).
-\item Profesor del Ãrea de FÃsica Experimental. Universidad Nacional de San AgustÃ­n (desde 2003)
+\item Licenciado en FÃÂ­sica, Universidad Nacional de San AgustÃÂ­n(2002).
+\item TÃÂ©cnico en MecÃÂ¡nica Automotriz. Instituto Superior Pedro P. Diaz (1998).
+\item Profesor del ÃÂrea de FÃÂsica Experimental. Universidad Nacional de San AgustÃÂ­n (desde 2003)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -23,8 +23,8 @@ Rubel Dorjin Linares MÃ¡laga
 TITLE=Mag.
 Miriam Luisa Carpio Arias de Baldera
 \begin{itemize}
-\item Licenciada en Matematicas, Universidad Nacional de San AgustÃ­n (2006).
-\item Magister en EnseÃ±anza de las MatemÃ¡ticas, Pontificia Universidad CatÃ³lica del PerÃº (2009).
+\item Licenciada en Matematicas, Universidad Nacional de San AgustÃÂ­n (2006).
+\item Magister en EnseÃÂ±anza de las MatemÃÂ¡ticas, Pontificia Universidad CatÃÂ³lica del PerÃÂº (2009).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -34,20 +34,20 @@ Miriam Luisa Carpio Arias de Baldera
 TITLE=Dr.
 Dennis Barrios Aranibar
 \begin{itemize}
-\item Doctor en Ciencias en IngenierÃ­a ElÃ©ctrica y de ComputaciÃ³n, Universidade Federal do Rio Grande do Norte(2009).
-\item Mg. en Ciencias en IngenierÃ­a ElÃ©ctrica y de ComputaciÃ³n, Universidade Federal do Rio Grande do Norte(2005).
-\item Ing. de Sistemas. Universidad Nacional de San AgustÃ­n (2000).
+\item Doctor en Ciencias en IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n, Universidade Federal do Rio Grande do Norte(2009).
+\item Mg. en Ciencias en IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n, Universidade Federal do Rio Grande do Norte(2005).
+\item Ing. de Sistemas. Universidad Nacional de San AgustÃÂ­n (2000).
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<raquel.patino@gmail.com>
 TITLE=Dr.
-Raquel Esperanza PatiÃ±o Escarcina
+Raquel Esperanza PatiÃÂ±o Escarcina
 \begin{itemize}
-\item Doctor en Ciencias en IngenierÃ­a ElÃ©ctrica y de ComputaciÃ³n, Universidade Federal do Rio Grande do Norte(2009).
-\item Mg. en Sistemas y ComputaciÃ³n, Universidade Federal do Rio Grande do Norte(2004).
-\item Ing. de Sistemas. Universidad Nacional de San AgustÃ­n (2001).
+\item Doctor en Ciencias en IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n, Universidade Federal do Rio Grande do Norte(2009).
+\item Mg. en Sistemas y ComputaciÃÂ³n, Universidade Federal do Rio Grande do Norte(2004).
+\item Ing. de Sistemas. Universidad Nacional de San AgustÃÂ­n (2001).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -64,9 +64,9 @@ Zoila Haydee Neyra Pacheco
 TITLE=Dra.
 Judith Hayde Cruz Torres
 \begin{itemize}
-\item Dr. en MatemÃ¡tica, ICMC-USP, Brasil (2007).
-\item M.Sc. en MatemÃ¡tica, Universidad CatÃ³lica del Norte, Antofagasta - Chile (2003).
-\item Bach. MatemÃ¡tica, Universidad Nacional de San AgustÃ­n de Arequipa, 2000.
+\item Dr. en MatemÃÂ¡tica, ICMC-USP, Brasil (2007).
+\item M.Sc. en MatemÃÂ¡tica, Universidad CatÃÂ³lica del Norte, Antofagasta - Chile (2003).
+\item Bach. MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n de Arequipa, 2000.
 \end{itemize}
 --END-PROFESSOR--
 
@@ -74,7 +74,7 @@ Judith Hayde Cruz Torres
 TITLE=Mag.
 Anita G. Mamani Champi
 \begin{itemize}
-\item M.Sc. en MatemÃ¡tica, UFF, Brasil (2005).
+\item M.Sc. en MatemÃÂ¡tica, UFF, Brasil (2005).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -83,7 +83,7 @@ Anita G. Mamani Champi
 TITLE=Lic.
 Luz Marina Vasquez Quispe
 \begin{itemize}
-\item Licenciada en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº (2000).
+\item Licenciada en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº (2000).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -91,44 +91,44 @@ Luz Marina Vasquez Quispe
 TITLE=Lic.
 Renzo Hubert Osorio Ccoya
 \begin{itemize}
-\item Licenciado en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº (1999).
+\item Licenciado en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº (1999).
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<mercapto_one@hotmail.com>
 TITLE=Mag.
-RenÃ© Vilca Curo
+RenÃÂ© Vilca Curo
 \begin{itemize}
-\item Lic. MatemÃ¡tica, UNSA (2006).
+\item Lic. MatemÃÂ¡tica, UNSA (2006).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<alex.jcv@gmail.com>
 TITLE= Dr.
-Alex JesÃºs Cuadros-Vargas
+Alex JesÃÂºs Cuadros-Vargas
 \begin{itemize}
-\item Post Doctor en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (2007-2009).
-\item Dr. en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (2007).
-\item M.Sc. en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (2001).
+\item Post Doctor en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (2007-2009).
+\item Dr. en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (2007).
+\item M.Sc. en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (2001).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<anamariacuadros@gmail.com>
 TITLE=M.Sc.
-Ana MarÃ­a Cuadros Valdivia
+Ana MarÃÂ­a Cuadros Valdivia
 \begin{itemize}
-\item M.Sc. en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (2007).
+\item M.Sc. en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (2007).
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<jcgutierrezc@gmail.com>
 TITLE=Mag.
-Juan Carlos GutiÃ©rrez CÃ¡ceres
+Juan Carlos GutiÃÂ©rrez CÃÂ¡ceres
 \begin{itemize}
-\item Bachiller de IngenierÃ­a de Sistemas, UNSA, PerÃº(2000).
-\item Master en Ciencia de la ComputaciÃ³n, ICMC-USP, Brasil (2003).
+\item Bachiller de IngenierÃÂ­a de Sistemas, UNSA, PerÃÂº(2000).
+\item Master en Ciencia de la ComputaciÃÂ³n, ICMC-USP, Brasil (2003).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -136,8 +136,8 @@ Juan Carlos GutiÃ©rrez CÃ¡ceres
 TITLE=Mag.
 Christian Jorge Delgado Polar
 \begin{itemize}
-\item Bachiller en IngenierÃ­a InformÃ¡tica, UCSP, PerÃº (2004).
-\item Master en Ciencia de la ComputaciÃ³n, DCC-UFMG, Brasil (2007).
+\item Bachiller en IngenierÃÂ­a InformÃÂ¡tica, UCSP, PerÃÂº (2004).
+\item Master en Ciencia de la ComputaciÃÂ³n, DCC-UFMG, Brasil (2007).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -146,10 +146,10 @@ Christian Jorge Delgado Polar
 TITLE=Mag.
 Regina Paola Ticona Herrera
 \begin{itemize}
-\item Ingeniera InformÃ¡tica, Universidad CatÃ³lica San Pablo, PerÃº (2005)
-\item TÃ©cnico en ComputaciÃ³n e InformÃ¡tica, Instituto del Sur, PerÃº (2000)
-\item Bachiller en Derecho, Universidad Nacional de San AgustÃ­n, PerÃº (2002)
-\item MBA en Cooperativismo, Universidad de MondragÃ³n,  EspaÃ±a (2006)
+\item Ingeniera InformÃÂ¡tica, Universidad CatÃÂ³lica San Pablo, PerÃÂº (2005)
+\item TÃÂ©cnico en ComputaciÃÂ³n e InformÃÂ¡tica, Instituto del Sur, PerÃÂº (2000)
+\item Bachiller en Derecho, Universidad Nacional de San AgustÃÂ­n, PerÃÂº (2002)
+\item MBA en Cooperativismo, Universidad de MondragÃÂ³n,  EspaÃÂ±a (2006)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -157,7 +157,7 @@ Regina Paola Ticona Herrera
 --BEGIN-PROFESSOR--<apaz@ucsp.edu.pe>
 Alfredo Paz Valderrama
 \begin{itemize}
-\item Ingeniero de Sistemas, Universidad CatÃ³lica Santa MarÃ­a, PerÃº (2000)
+\item Ingeniero de Sistemas, Universidad CatÃÂ³lica Santa MarÃÂ­a, PerÃÂº (2000)
 \item http://www.ucsp.edu.pe/$\sim$apaz
 \end{itemize}
 --END-PROFESSOR--
@@ -167,17 +167,17 @@ Alfredo Paz Valderrama
 TITLE=Mag.
 Nicolas Antezana Abarca
 \begin{itemize}
-\item M.Sc. en Ciencia de la ComputaciÃ³n, American Institute Computer Science, EEUU (1998)
-\item Bachiller en EconomÃ­a, Universidad CatÃ³lica Santa MarÃ­a, PerÃº (1989)
+\item M.Sc. en Ciencia de la ComputaciÃÂ³n, American Institute Computer Science, EEUU (1998)
+\item Bachiller en EconomÃÂ­a, Universidad CatÃÂ³lica Santa MarÃÂ­a, PerÃÂº (1989)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<yaanbedoya@gmail.com>
 TITLE=Lic.
-Yaan AgustÃ­n Bedoya Barriga
+Yaan AgustÃÂ­n Bedoya Barriga
 \begin{itemize}
-\item Licenciado en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº(2004)
+\item Licenciado en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº(2004)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -186,45 +186,45 @@ Yaan AgustÃ­n Bedoya Barriga
 TITLE=Mag.
 Angel Evaristo Chavez Contreras
 \begin{itemize}
-\item Bachiller en EducaciÃ³n Universidad Nacional de San AgustÃ­n (2002)
+\item Bachiller en EducaciÃÂ³n Universidad Nacional de San AgustÃÂ­n (2002)
 \item Master en asesoramiento educativo familiar. Centro universitario 
-Villanueva Adscrito a la Complutense de Madrid  EspaÃ±a (2004)
+Villanueva Adscrito a la Complutense de Madrid  EspaÃÂ±a (2004)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<l.diaz@usp.edu.pe>
 TITLE=Mag.
-Luis DÃ­az Basurco
+Luis DÃÂ­az Basurco
 \begin{itemize}
-\item Magister en MatemÃ¡tica, Pontificia Universidad CatÃ³lica del PerÃº(1990)
+\item Magister en MatemÃÂ¡tica, Pontificia Universidad CatÃÂ³lica del PerÃÂº(1990)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<criloal23@gmail.com>
 TITLE=Mag.
-Cristian LÃ³pez Del Alamo
+Cristian LÃÂ³pez Del Alamo
 \begin{itemize}
-\item Ingeniero de Sistemas Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº (2003)
-\item Mag. en IngenierÃ­a de Software, Universidad de TarapacÃ¡, Chile (2010)
+\item Ingeniero de Sistemas Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº (2003)
+\item Mag. en IngenierÃÂ­a de Software, Universidad de TarapacÃÂ¡, Chile (2010)
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<j.lovon@usp.edu.pe>
 TITLE=Lic.
-Jorge LovÃ³n CaparÃ³
+Jorge LovÃÂ³n CaparÃÂ³
 \begin{itemize}
-\item Licenciado en EducaciÃ³n especialidad Ciencias Sociales. Universidad Nacional de San AgustÃ­n (2001).
-\item Licenciado en Ciencias de la ComunicaciÃ³n especialidad de Relaciones PÃºblicas e Industriales. Universidad CatÃ³lica Santa MarÃ­a (2001).
+\item Licenciado en EducaciÃÂ³n especialidad Ciencias Sociales. Universidad Nacional de San AgustÃÂ­n (2001).
+\item Licenciado en Ciencias de la ComunicaciÃÂ³n especialidad de Relaciones PÃÂºblicas e Industriales. Universidad CatÃÂ³lica Santa MarÃÂ­a (2001).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<rmaquito@gmail.com>
 TITLE=Lic.
-Roger Maquito GutiÃ©rrez
+Roger Maquito GutiÃÂ©rrez
 \begin{itemize}
-\item Licenciado en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n (2000).
+\item Licenciado en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n (2000).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -232,9 +232,9 @@ Roger Maquito GutiÃ©rrez
 TITLE=Mag.
 Walter Augusto Medina Rueda
 \begin{itemize}
-\item Master en BioquÃ­mica y BiologÃ­a Molecular Universidad Nacional de San AgustÃ­n (1995)
-\item Master en FilosofÃ­a con menciÃ³n en FilosofÃ­a de las Ciencias Naturales Universidad Nacional de San AgustÃ­n (2000)
-\item Doctor en Ciencias: Medicina Universidad Nacional de San AgustÃ­n (2002)
+\item Master en BioquÃÂ­mica y BiologÃÂ­a Molecular Universidad Nacional de San AgustÃÂ­n (1995)
+\item Master en FilosofÃÂ­a con menciÃÂ³n en FilosofÃÂ­a de las Ciencias Naturales Universidad Nacional de San AgustÃÂ­n (2000)
+\item Doctor en Ciencias: Medicina Universidad Nacional de San AgustÃÂ­n (2002)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -242,7 +242,7 @@ Walter Augusto Medina Rueda
 TITLE=Prof.
 Renzo H. Medina Zeballos
 \begin{itemize}
-\item Ingeniero de Sistemas, Universidad CatÃ³lica Santa MarÃ­a, Arequipa, PerÃº (2000).
+\item Ingeniero de Sistemas, Universidad CatÃÂ³lica Santa MarÃÂ­a, Arequipa, PerÃÂº (2000).
 \item Certificaciones Microsoft MCSE, MCDBA, MCP, MCSA, MCSD.
 \item Certificaciones Linux LPI1, LPI2.
 \end{itemize}
@@ -250,9 +250,9 @@ Renzo H. Medina Zeballos
 
 --BEGIN-PROFESSOR--<christianmontenegro@viabcp.com>
 TITLE=Prof.
-Hugo Montenegro BeltrÃ¡n
+Hugo Montenegro BeltrÃÂ¡n
 \begin{itemize}
-\item Ingeniero de Sistemas Universidad CatÃ³lica Sana MarÃ­a (2003)
+\item Ingeniero de Sistemas Universidad CatÃÂ³lica Sana MarÃÂ­a (2003)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -260,16 +260,16 @@ Hugo Montenegro BeltrÃ¡n
 TITLE=Prof.
 Zoila Neyra Pacheco
 \begin{itemize}
-\item Ingeniero de Sistemas Universidad CatÃ³lica Sana MarÃ­a (2005)
+\item Ingeniero de Sistemas Universidad CatÃÂ³lica Sana MarÃÂ­a (2005)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<l.lenin@ucsp.edu.pe>
 TITLE=Prof.
-Lenin L. Orihuela OrdoÃ±ez
+Lenin L. Orihuela OrdoÃÂ±ez
 \begin{itemize}
-\item Ingeniero ElectrÃ³nico Universidad Nacional de San AgustÃ­n (2001)
+\item Ingeniero ElectrÃÂ³nico Universidad Nacional de San AgustÃÂ­n (2001)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -278,16 +278,16 @@ ok
 TITLE=Lic.
 Christian Ortiz  Martinez
 \begin{itemize}
-\item Licenciado en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº (2006).
+\item Licenciado en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº (2006).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<anita_mcg@hotmail.com>
 TITLE=Mag.
-Ana MarÃ­a Cano GarcÃ­a
+Ana MarÃÂ­a Cano GarcÃÂ­a
 \begin{itemize}
-\item Licenciada en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº (1999).
-\item Master en Ciencias MenciÃ³n MatemÃ¡tica. Universidad CatÃ³lica del Norte. Antofagasta. Chile (2002)
+\item Licenciada en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº (1999).
+\item Master en Ciencias MenciÃÂ³n MatemÃÂ¡tica. Universidad CatÃÂ³lica del Norte. Antofagasta. Chile (2002)
 
 \end{itemize}
 --END-PROFESSOR--
@@ -298,7 +298,7 @@ ok
 TITLE=Lic.
 Renzo Hubert Osorio Ccoya
 \begin{itemize}
-\item Licenciado en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n, Arequipa, PerÃº (1999).
+\item Licenciado en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n, Arequipa, PerÃÂº (1999).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -307,8 +307,8 @@ ok
 TITLE=Mag.
 Raphael Palomino Valverde
 \begin{itemize}
-\item Ingeniero de Sistemas Universidad CatÃ³lica Santa MarÃ­a (1992)
-\item Master en IngenierÃ­a de Sistemas con menciÃ³n en Ciencias de la ComputaciÃ³n, Universidad CatÃ³lica Santa MarÃ­a (2000)
+\item Ingeniero de Sistemas Universidad CatÃÂ³lica Santa MarÃÂ­a (1992)
+\item Master en IngenierÃÂ­a de Sistemas con menciÃÂ³n en Ciencias de la ComputaciÃÂ³n, Universidad CatÃÂ³lica Santa MarÃÂ­a (2000)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -316,7 +316,7 @@ Raphael Palomino Valverde
 TITLE=Prof.
 Abigail Parisaca Vargas
 \begin{itemize}
-\item Bachilller en IngenierÃ­a de Sistemas Universidad Nacional de San AgustÃ­n (2002)
+\item Bachilller en IngenierÃÂ­a de Sistemas Universidad Nacional de San AgustÃÂ­n (2002)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -324,7 +324,7 @@ Abigail Parisaca Vargas
 TITLE=Lic.
 Fiorella Quintanilla Salinas
 \begin{itemize}
-\item Licenciada en Periodismo Universidad CatÃ³lica Santa MarÃ­a (2003)
+\item Licenciada en Periodismo Universidad CatÃÂ³lica Santa MarÃÂ­a (2003)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -332,26 +332,26 @@ Fiorella Quintanilla Salinas
 TITLE=Prof.
 Hugo Ramos Salinas
 \begin{itemize}
-\item Bachiller en Arquitectura Universidad Nacional de San AgustÃ­n (1992)
+\item Bachiller en Arquitectura Universidad Nacional de San AgustÃÂ­n (1992)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<erickro2000@gmail.com>
 TITLE=Prof.
-Erick Rodriguez OrdoÃ±ez
+Erick Rodriguez OrdoÃÂ±ez
 \begin{itemize}
-\item Bachiller en IngenierÃ­a InformÃ¡tica Universidad CatÃ³lica San Pablo (2005)
+\item Bachiller en IngenierÃÂ­a InformÃÂ¡tica Universidad CatÃÂ³lica San Pablo (2005)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<crosaspe@gmail.com>
 TITLE=Mag.
-Cesar Rosas AragÃ³n
+Cesar Rosas AragÃÂ³n
 \begin{itemize}
-\item Bachiller en IngenierÃ­a de Sistemas Universidad Nacional de San AgustÃ­n (2002)
-\item Master en Ciencias de la ComputaciÃ³n Universidad Federal Mato Grosso do Sul - Brasil (2004)
+\item Bachiller en IngenierÃÂ­a de Sistemas Universidad Nacional de San AgustÃÂ­n (2002)
+\item Master en Ciencias de la ComputaciÃÂ³n Universidad Federal Mato Grosso do Sul - Brasil (2004)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -360,7 +360,7 @@ Cesar Rosas AragÃ³n
 TITLE=Prof.
 Mateo San Roman Quiroz
 \begin{itemize}
-\item Ingeniero InformÃ¡tico, Universidad CatÃ³lica San Pablo (2006)
+\item Ingeniero InformÃÂ¡tico, Universidad CatÃÂ³lica San Pablo (2006)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -369,7 +369,7 @@ Mateo San Roman Quiroz
 TITLE=Mag.
 Fernando Valle Rondon
 \begin{itemize}
-\item Bachiller en Humanidades con menciÃ³n en Historia Pontificia Universidad CatÃ³lica del PerÃº (1997)
+\item Bachiller en Humanidades con menciÃÂ³n en Historia Pontificia Universidad CatÃÂ³lica del PerÃÂº (1997)
 \item Master en Historia Social Universidad Federal de Rio de Janeiro (2001)
 \end{itemize}
 --END-PROFESSOR--
@@ -377,9 +377,9 @@ Fernando Valle Rondon
 
 --BEGIN-PROFESSOR--<ivargas@bcp.com.pe>
 TITLE=Prof.
-IrÃ¡n Vargas BallÃ³n
+IrÃÂ¡n Vargas BallÃÂ³n
 \begin{itemize}
-\item Ingeniero de Sistemas Universidad Nacional de San AgustÃ­n (2002)
+\item Ingeniero de Sistemas Universidad Nacional de San AgustÃÂ­n (2002)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -388,17 +388,17 @@ IrÃ¡n Vargas BallÃ³n
 TITLE=Prof.
 Lourdes Villegas Cheneaux
 \begin{itemize}
-\item Licenciada en Ciencias de la ComunicaciÃ³n Social con especialidad en 
-Relaciones PÃºblicas e Industriales Universidad CatÃ³lica Santa MarÃ­a 
+\item Licenciada en Ciencias de la ComunicaciÃÂ³n Social con especialidad en 
+Relaciones PÃÂºblicas e Industriales Universidad CatÃÂ³lica Santa MarÃÂ­a 
 (1993)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<mprondon@gmail.com>
-MarÃ­a Pilar RondÃ³n RodrÃ­guez
+MarÃÂ­a Pilar RondÃÂ³n RodrÃÂ­guez
 \begin{itemize}
-\item Ingeniera InformÃ¡tica, Universidad CatÃ³lica San Pablo (2007)
+\item Ingeniera InformÃÂ¡tica, Universidad CatÃÂ³lica San Pablo (2007)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -407,26 +407,26 @@ MarÃ­a Pilar RondÃ³n RodrÃ­guez
 TITLE=M.Sc.
 Libertad Paredes Valdivia
 \begin{itemize}
-\item Licenciada en Lengua Literatura y FilosofÃ­a, Universidad CatÃ³lica Santa MarÃ­a (1975).
-\item Segunda EspecializaciÃ³n en LinguÃ­stica HispÃ¡nica, Universidad Nacional de San AgustÃ­n (1990).
-\item Profesora de ReligiÃ³n, Escuela Arquidiocesana (1988).
-\item Magister en EducaciÃ³n Superior, Universidad CatÃ³lica Santa MarÃ­a (1990).
+\item Licenciada en Lengua Literatura y FilosofÃÂ­a, Universidad CatÃÂ³lica Santa MarÃÂ­a (1975).
+\item Segunda EspecializaciÃÂ³n en LinguÃÂ­stica HispÃÂ¡nica, Universidad Nacional de San AgustÃÂ­n (1990).
+\item Profesora de ReligiÃÂ³n, Escuela Arquidiocesana (1988).
+\item Magister en EducaciÃÂ³n Superior, Universidad CatÃÂ³lica Santa MarÃÂ­a (1990).
 \end{itemize}
 --END-PROFESSOR--
 
 TITLE=Lic.
 --BEGIN-PROFESSOR--<jtejada@ucsp.edu.pe>
-JesÃºs Javier Tejada Rivera
+JesÃÂºs Javier Tejada Rivera
 \begin{itemize}
-\item Licenciado en FÃsica, Universidad Nacional de San AgustÃ­n (2000).
+\item Licenciado en FÃÂsica, Universidad Nacional de San AgustÃÂ­n (2000).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<enzoheredia@gmail.com>
 TITLE=Prof.
-Enzo Heredia MelÃ©ndez
+Enzo Heredia MelÃÂ©ndez
 \begin{itemize}
-\item Ingeniero Electronico, Universidad Nacional de San AgustÃ­n (2004).
+\item Ingeniero Electronico, Universidad Nacional de San AgustÃÂ­n (2004).
 \item Instructor CISCO CCNA1.
 \end{itemize}
 --END-PROFESSOR--
@@ -434,9 +434,9 @@ Enzo Heredia MelÃ©ndez
 
 --BEGIN-PROFESSOR--<ebmedina@gmail.com>
 TITLE=Lic.
-Enrique Miguel BriceÃ±o Medina
+Enrique Miguel BriceÃÂ±o Medina
 \begin{itemize}
-\item Licenciado en Derecho, Universidad Nacional de San AgustÃ­n (2004).
+\item Licenciado en Derecho, Universidad Nacional de San AgustÃÂ­n (2004).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -444,8 +444,8 @@ Enrique Miguel BriceÃ±o Medina
 TITLE=Mag.
 Elizabeth Vidal Duarte
 \begin{itemize}
-\item Ingeniera de Sistemas, Universidad CatÃ³lica Santa MarÃ­a(1997).
-\item Magister en EconomÃ­a, Universidad Nacional de San AgustÃ­n(2000).
+\item Ingeniera de Sistemas, Universidad CatÃÂ³lica Santa MarÃÂ­a(1997).
+\item Magister en EconomÃÂ­a, Universidad Nacional de San AgustÃÂ­n(2000).
 \item Becaria de International Institute for Software Technology, Macau - China (2004).
 \item Profesora Visitante Clayton State University, Atlanta - USA (2005).
 \item Profesora Investigadora National University of Singapore, Singapore (2006).
@@ -454,10 +454,10 @@ Elizabeth Vidal Duarte
 
 --BEGIN-PROFESSOR--<josullato@gmail.com>
 TITLE=Mag.
-JosÃ© Alfredo Sulla Torres
+JosÃÂ© Alfredo Sulla Torres
 \begin{itemize}
-\item Ingeniero de Sistemas, UCSM, PerÃº.
-\item Mag. en IngenierÃ­a de Sistemas, UCSM, PerÃº.
+\item Ingeniero de Sistemas, UCSM, PerÃÂº.
+\item Mag. en IngenierÃÂ­a de Sistemas, UCSM, PerÃÂº.
 \end{itemize}
 --END-PROFESSOR--
 
@@ -465,15 +465,15 @@ JosÃ© Alfredo Sulla Torres
 TITLE=Prof. 
 Yamilet Serrano Llerena
 \begin{itemize}
-\item IngenierÃ­a InformÃ¡tica, UCSP, PerÃº (2008).
+\item IngenierÃÂ­a InformÃÂ¡tica, UCSP, PerÃÂº (2008).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<patomc3@gmail.com>
 TITLE=Prof.
-Patricio MorriberÃ³n Cornejo
+Patricio MorriberÃÂ³n Cornejo
 \begin{itemize}
-\item Ing. InformÃ¡tico en IngenierÃ­a InformÃ¡tica, UCSP, PerÃº (2008).
+\item Ing. InformÃÂ¡tico en IngenierÃÂ­a InformÃÂ¡tica, UCSP, PerÃÂº (2008).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -482,16 +482,16 @@ Patricio MorriberÃ³n Cornejo
 TITLE=Prof.
 Rodrigo Lazo Paz
 \begin{itemize}
-\item Ing. InformÃ¡tico en IngenierÃ­a InformÃ¡tica, UCSP, PerÃº (2009).
+\item Ing. InformÃÂ¡tico en IngenierÃÂ­a InformÃÂ¡tica, UCSP, PerÃÂº (2009).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<jcano@bcp.com.pe>
 TITLE=Ing.
-Jhon Cano ChÃ¡vez
+Jhon Cano ChÃÂ¡vez
 \begin{itemize}
-\item Ing. de Sistemas. Universidad CatÃ³lica de Santa MarÃ­a (1998).
-\item Supervisor de Proyectos TÃ©cnicos - Banco de CrÃ©dito del PerÃº (desde 2001)
+\item Ing. de Sistemas. Universidad CatÃÂ³lica de Santa MarÃÂ­a (1998).
+\item Supervisor de Proyectos TÃÂ©cnicos - Banco de CrÃÂ©dito del PerÃÂº (desde 2001)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -500,16 +500,16 @@ Jhon Cano ChÃ¡vez
 TITLE=Mag.
 Carmen Barakat De Carpio
 \begin{itemize}
-\item Lic. en EducaciÃ³n. Especialidad en Letras - Lenguaje y Literatura. Universidad CatÃ³lica de Santa MarÃ­a (1979).
-\item Mag. en EducaciÃ³n Superior. Universidad CatÃ³lica de Santa MarÃ­a (2009).
+\item Lic. en EducaciÃÂ³n. Especialidad en Letras - Lenguaje y Literatura. Universidad CatÃÂ³lica de Santa MarÃÂ­a (1979).
+\item Mag. en EducaciÃÂ³n Superior. Universidad CatÃÂ³lica de Santa MarÃÂ­a (2009).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<dmayori@ucsp.edu.pe>
 TITLE=Lic.
-Deisy MayorÃ­ VelÃ¡squez
+Deisy MayorÃÂ­ VelÃÂ¡squez
 \begin{itemize}
-\item Lic. en MatemÃ¡tica. Universidad Nacional de San AgustÃ­n (1997).
+\item Lic. en MatemÃÂ¡tica. Universidad Nacional de San AgustÃÂ­n (1997).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -519,7 +519,7 @@ Deisy MayorÃ­ VelÃ¡squez
 TITLE=Prof.
 Sandra Alma Torres Otoya
 \begin{itemize}
-\item Ingeniera Industrial. Universidad Nacional de San AgustÃ­n (1999).
+\item Ingeniera Industrial. Universidad Nacional de San AgustÃÂ­n (1999).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -528,42 +528,42 @@ Sandra Alma Torres Otoya
 TITLE=Lic.
 Arturo Moises Salazar Monroy
 \begin{itemize}
-\item Lic. en Ciencias de la ComunicaciÃ³n. Universidad Nacional de San AgustÃ­n (2006).
-\item PED en Gerencia de Proyectos y Calidad. Pontificia Universidad CatÃ³lica del PerÃº (2007).
+\item Lic. en Ciencias de la ComunicaciÃÂ³n. Universidad Nacional de San AgustÃÂ­n (2006).
+\item PED en Gerencia de Proyectos y Calidad. Pontificia Universidad CatÃÂ³lica del PerÃÂº (2007).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<mjordan@ucsp.edu.pe>
 TITLE=Prof.
-MÃ³nica Jordan Franco
+MÃÂ³nica Jordan Franco
 \begin{itemize}
-\item Bach. en IngenierÃ­a InformÃ¡tica. Universidad CatÃ³lica San Pablo (2008).
+\item Bach. en IngenierÃÂ­a InformÃÂ¡tica. Universidad CatÃÂ³lica San Pablo (2008).
 \end{itemize}
 --END-PROFESSOR-- 
 
 --BEGIN-PROFESSOR--<monicawidmann@yahoo.es>
 TITLE=Abog.
-MÃ³nica JesÃºs Widmann Orihuela
+MÃÂ³nica JesÃÂºs Widmann Orihuela
 \begin{itemize}
-\item Abogada. Universidad CatÃ³lica Santa MarÃ­a (1999) 
-\item Segunda Especialidad en capacitacion para adultos. Pontificia Universidad CatÃ³lica del PerÃº (2002).
+\item Abogada. Universidad CatÃÂ³lica Santa MarÃÂ­a (1999) 
+\item Segunda Especialidad en capacitacion para adultos. Pontificia Universidad CatÃÂ³lica del PerÃÂº (2002).
 \item Ex-Coordinadora regional de Relaciones Institucionales de Union de Cervecerias Peruanas Backus \& Jhonson (2000-2007).
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<glovon@ucsp.edu.pe>
 TITLE=Prof.
-Gina LovÃ³n Alvarado
+Gina LovÃÂ³n Alvarado
 \begin{itemize}
-\item Bachiller en IngenierÃ­a de Sistemas, Universidad Nacional de San AgustÃ­n (2005)
+\item Bachiller en IngenierÃÂ­a de Sistemas, Universidad Nacional de San AgustÃÂ­n (2005)
 \end{itemize}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--<tmedina@ucsp.edu.pe>
 TITLE=Arq.
-Tatiana Beatriz Medina SÃ¡nchez
+Tatiana Beatriz Medina SÃÂ¡nchez
 \begin{itemize}
-\item Arquitecto, Universidad Nacional de San AgustÃ­n (2000).
+\item Arquitecto, Universidad Nacional de San AgustÃÂ­n (2000).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -572,28 +572,28 @@ Tatiana Beatriz Medina SÃ¡nchez
 TITLE=Prof.
 Diana Carmen Matos Novoa
 \begin{itemize}
-\item Bachiller en IngenierÃ­a de Sistemas, Universidad Nacional de Trujillo(2006)
+\item Bachiller en IngenierÃÂ­a de Sistemas, Universidad Nacional de Trujillo(2006)
 \end{itemize}
 --END-PROFESSOR--
 
 	
 --BEGIN-PROFESSOR--<darias@ucsp.edu.pe>
 TITLE=Mag.
-Diego FabÃ­an Arias Padilla
+Diego FabÃÂ­an Arias Padilla
 \begin{itemize}
-\item Licenciado en AdministraciÃ³n de Negocios, Universidad CatÃ³lica San Pablo(2006)
+\item Licenciado en AdministraciÃÂ³n de Negocios, Universidad CatÃÂ³lica San Pablo(2006)
 \item Magister en Doctrina Social de la Iglesia, Pontificia Universidad Lateranense de Roma(2008)
-\item Magister en GestiÃ³n y Responsabilidad Social de la Empresa, Pontificia Universidad Santo TomÃ¡s de Aquino(2008)
+\item Magister en GestiÃÂ³n y Responsabilidad Social de la Empresa, Pontificia Universidad Santo TomÃÂ¡s de Aquino(2008)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<jrsumaria@ucsp.edu.pe>
 TITLE=Mag.
-JosÃ© Renato Sumaria Del Campo
+JosÃÂ© Renato Sumaria Del Campo
 \begin{itemize}
 \item Bachiller en Periodismo, Universidad Jaime Bausate y Meza (2005)
-\item Magister en Periodismo, Universidad de San AndrÃ©s (2006)
+\item Magister en Periodismo, Universidad de San AndrÃÂ©s (2006)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -602,7 +602,7 @@ JosÃ© Renato Sumaria Del Campo
 TITLE=Prof.
 Wilfredo Bardales Roncalla
 \begin{itemize}
-\item Bachiller en IngenierÃ­a de InformÃ¡tica, Universidad CatÃ³lica San Pablo (2010)
+\item Bachiller en IngenierÃÂ­a de InformÃÂ¡tica, Universidad CatÃÂ³lica San Pablo (2010)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -610,10 +610,10 @@ Wilfredo Bardales Roncalla
 
 --BEGIN-PROFESSOR--<hsalasjb@hotmail.com>
 TITLE=Mag.
-Humberto Edgardo Salas Jarava y BeltrÃ¡n
+Humberto Edgardo Salas Jarava y BeltrÃÂ¡n
 \begin{itemize}
-\item Ing. MecÃ¡nico Electricista. Universidad Nacional de IngenierÃ­a (1968).
-\item Maestro en Ciencias. Especialidad InvestigaciÃ³n de Operaciones. Instituto TecnolÃ³gico y de Estudios Superiores de Monterrey. Mexico. (1973).
+\item Ing. MecÃÂ¡nico Electricista. Universidad Nacional de IngenierÃÂ­a (1968).
+\item Maestro en Ciencias. Especialidad InvestigaciÃÂ³n de Operaciones. Instituto TecnolÃÂ³gico y de Estudios Superiores de Monterrey. Mexico. (1973).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -621,7 +621,7 @@ Humberto Edgardo Salas Jarava y BeltrÃ¡n
 
 --BEGIN-PROFESSOR--<d.montesinosb@gmail.com>
 TITLE=Med.
-Dangello Montesinos BarandiarÃ¡n
+Dangello Montesinos BarandiarÃÂ¡n
 \begin{itemize}
 \item Medico Cirujano. Universidad Nacional de San Agustin (2005).
 \end{itemize}
@@ -632,7 +632,7 @@ Dangello Montesinos BarandiarÃ¡n
 TITLE=Lic.
 Vidal Salas Segovia
 \begin{itemize}
-\item Licenciado en Artes. MenciÃ³n en Artes PlÃ¡sticas. Universidad Nacional de San Agustin (2000).
+\item Licenciado en Artes. MenciÃÂ³n en Artes PlÃÂ¡sticas. Universidad Nacional de San Agustin (2000).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -640,17 +640,17 @@ Vidal Salas Segovia
 TITLE=Lic.
 Lizet Del Carmen Valencia Guillen
 \begin{itemize}
-\item Lic. en EducaciÃ³n. Especialidad Lengua, Literatura y FilosofÃ­a. Universidad CatÃ³lica de Santa MarÃ­a (2003).
-\item Bach. en Ciencias de la EducaciÃ³n. Universidad CatÃ³lica de Santa MarÃ­a (2003).
+\item Lic. en EducaciÃÂ³n. Especialidad Lengua, Literatura y FilosofÃÂ­a. Universidad CatÃÂ³lica de Santa MarÃÂ­a (2003).
+\item Bach. en Ciencias de la EducaciÃÂ³n. Universidad CatÃÂ³lica de Santa MarÃÂ­a (2003).
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<jpenarrieta@ucsp.edu.pe>
 TITLE=Prof.
-JosÃ© Alonso PeÃ±arrieta Escobedo
+JosÃÂ© Alonso PeÃÂ±arrieta Escobedo
 \begin{itemize}
-\item Ing. InformÃ¡tico en IngenierÃ­a InformÃ¡tica, UCSP, PerÃº (2008).
+\item Ing. InformÃÂ¡tico en IngenierÃÂ­a InformÃÂ¡tica, UCSP, PerÃÂº (2008).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -659,7 +659,7 @@ JosÃ© Alonso PeÃ±arrieta Escobedo
 TITLE=Lic.
 Sandra Claudia Aynaya Cahui
 \begin{itemize}
-\item Lic. en FÃsica. Universidad Nacional de San AgustÃ­n (2003).
+\item Lic. en FÃÂsica. Universidad Nacional de San AgustÃÂ­n (2003).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -675,9 +675,9 @@ Julio Santisteban Pablo
 
 --BEGIN-PROFESSOR--<racosta@ucsp.edu.pe>
 TITLE=Ing.
-Renzo Julio Acosta AranÃ­bar
+Renzo Julio Acosta AranÃÂ­bar
 \begin{itemize}
-\item Ing. ElectrÃ³nico, Universidad Nacional de San AgustÃ­n (2008).
+\item Ing. ElectrÃÂ³nico, Universidad Nacional de San AgustÃÂ­n (2008).
 \end{itemize}
 --END-PROFESSOR--
 
@@ -686,9 +686,9 @@ Renzo Julio Acosta AranÃ­bar
 TITLE=Mag.
 Nicolas Antezana Abarca
 \begin{itemize}
-\item M.Sc. en Ciencia de la ComputaciÃ³n, American Institute Computer Science, EEUU (1998)
-\item Bachiller en EconomÃ­a, Universidad CatÃ³lica Santa MarÃ­a, PerÃº (1989)
-\item Lic. en EconomÃ­a, Universidad CatÃ³lica Santa MarÃ­a, PerÃº (2009)
+\item M.Sc. en Ciencia de la ComputaciÃÂ³n, American Institute Computer Science, EEUU (1998)
+\item Bachiller en EconomÃÂ­a, Universidad CatÃÂ³lica Santa MarÃÂ­a, PerÃÂº (1989)
+\item Lic. en EconomÃÂ­a, Universidad CatÃÂ³lica Santa MarÃÂ­a, PerÃÂº (2009)
 \end{itemize}
 --END-PROFESSOR--
 
@@ -698,27 +698,27 @@ Nicolas Antezana Abarca
 TITLE=Lic.
 Gail Mar Linares Pomareda De Bocchio
 \begin{itemize}
-\item Lic. en EnfermerÃ­a, Universidad Cayetano Heredia, Lima, PerÃº (1989)
-\item Orientadora Familiar, Universidad CatÃ³lica San Pablo, Arequipa, PerÃº (1998)
-\item Conciliadora Extrajudicial, Universidad CatÃ³lica San Pablo, Arequipa, PerÃº (2000)
+\item Lic. en EnfermerÃÂ­a, Universidad Cayetano Heredia, Lima, PerÃÂº (1989)
+\item Orientadora Familiar, Universidad CatÃÂ³lica San Pablo, Arequipa, PerÃÂº (1998)
+\item Conciliadora Extrajudicial, Universidad CatÃÂ³lica San Pablo, Arequipa, PerÃÂº (2000)
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<yvantv@gmail.com>
 TITLE=Dr.
-YvÃ¡n JesÃºs TÃºpac Valdivia
+YvÃÂ¡n JesÃÂºs TÃÂºpac Valdivia
 \begin{itemize}
-\item Dr. en IngenierÃ­a ElÃ©ctrica, Pontificia Universidad CatÃ³lica do Rio de Janeiro (2005).
-\item Magister en IngenierÃ­a ElÃ©ctrica, Pontificia Universidad CatÃ³lica do Rio de Janeiro (2000).
-\item Bachiller en IngenierÃ­a ElectrÃ³nica, Universidad Nacional de San AgustÃ­n (1995).
+\item Dr. en IngenierÃÂ­a ElÃÂ©ctrica, Pontificia Universidad CatÃÂ³lica do Rio de Janeiro (2005).
+\item Magister en IngenierÃÂ­a ElÃÂ©ctrica, Pontificia Universidad CatÃÂ³lica do Rio de Janeiro (2000).
+\item Bachiller en IngenierÃÂ­a ElectrÃÂ³nica, Universidad Nacional de San AgustÃÂ­n (1995).
 \end{itemize}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--<edymorel@yahoo.com>
 TITLE=Lic.
-Eddy RodrÃ­guez Morel de la Prada
+Eddy RodrÃÂ­guez Morel de la Prada
 \begin{itemize}
 \item Licenciado en Filosofia
 \end{itemize}
@@ -738,7 +738,7 @@ Roger Silva Miller
 TITLE=Lic.
 Gonzalo Omar Maldonado Chauca
 \begin{itemize}
-\item Licenciado en Artes, Universidad Nacional de San AgustÃ­n (2004) 
+\item Licenciado en Artes, Universidad Nacional de San AgustÃÂ­n (2004) 
 \end{itemize}
 --END-PROFESSOR--
 
@@ -746,23 +746,23 @@ BEGIN-PROFESSOR--<lpachecoa@ucsp.edu.pe>
 TITLE=Ing.
 Luis Alberto Pacheco Abarca
 \begin{itemize}
-\item Ingeniero de sistemas, Universidad CatÃ³lica de Santa MarÃ­a (1997) 
+\item Ingeniero de sistemas, Universidad CatÃÂ³lica de Santa MarÃÂ­a (1997) 
 \end{itemize}
 --END-PROFESSOR--
 
 BEGIN-PROFESSOR--<jaca2525@hotmail.com>
 TITLE=Lic.
-JosÃ© ASlberto Carpio Alatrista
+JosÃÂ© ASlberto Carpio Alatrista
 \begin{itemize}
-\item Licenciado en MatemÃ¡tica, Universidad Nacional de San AgustÃ­n  
+\item Licenciado en MatemÃÂ¡tica, Universidad Nacional de San AgustÃÂ­n  
 \end{itemize}
 --END-PROFESSOR--
 
 BEGIN-PROFESSOR--<maria.elena.ortiz@ucsp.edu.pe>
 TITLE=Lic.
-MarÃ­a Elena Ortiz Ramirez
+MarÃÂ­a Elena Ortiz Ramirez
 \begin{itemize}
-\item Licenciada en PsicologÃ­a, Universidad Nacional de San AgustÃ­n (1996)  
+\item Licenciada en PsicologÃÂ­a, Universidad Nacional de San AgustÃÂ­n (1996)  
 \end{itemize}
 --END-PROFESSOR--
 
@@ -771,21 +771,21 @@ BEGIN-PROFESSOR--<pvalencia@ucsp.edu.pe>
 TITLE=Lic.
 Patricia Del Carmen Valencia Pajuelo
 \begin{itemize}
-\item Musico Profesional Conservatorio Regional  de MÃºsica Luis Duncker Lavalle (1994)  
-\item Bachiller en EducaciÃ³n Universidad Nacional de San AgustÃ­n (1997)
-\item Postgrado UJCM & EducaciÃ³n Superior
+\item Musico Profesional Conservatorio Regional  de MÃÂºsica Luis Duncker Lavalle (1994)  
+\item Bachiller en EducaciÃÂ³n Universidad Nacional de San AgustÃÂ­n (1997)
+\item Postgrado UJCM & EducaciÃÂ³n Superior
 \end{itemize}
 --END-PROFESSOR--
 
 BEGIN-PROFESSOR--<lortega@ucsp.edu.pe>
 TITLE=Lic.
-Lourdes VerÃ³nica Ortega Palma
+Lourdes VerÃÂ³nica Ortega Palma
 \begin{itemize}
-\item Licenciada en EducaciÃ³n: Especialidad Letras
-\item Mag. en TecnologÃ­a Educativa
-\item Bachiller en Ciencias de la EducaciÃ³n
-\item Directora de Institutos TecnolÃ³gicos
-\item Diplomado eb PedagogÃ­a Universitaria
+\item Licenciada en EducaciÃÂ³n: Especialidad Letras
+\item Mag. en TecnologÃÂ­a Educativa
+\item Bachiller en Ciencias de la EducaciÃÂ³n
+\item Directora de Institutos TecnolÃÂ³gicos
+\item Diplomado eb PedagogÃÂ­a Universitaria
 \end{itemize}
 --END-PROFESSOR--
 
@@ -793,7 +793,7 @@ BEGIN-PROFESSOR--<mberrios@ucsp.edu.pe>
 TITLE=Ing.
 Miriam Berrios Garaycochea
 \begin{itemize}
-\item Ing. en Industria Alimentaria Universidad CatÃ³lica de Santa MarÃ­a (1997)  
+\item Ing. en Industria Alimentaria Universidad CatÃÂ³lica de Santa MarÃÂ­a (1997)  
 \end{itemize}
 --END-PROFESSOR--
 
@@ -801,10 +801,10 @@ BEGIN-PROFESSOR--<egordillo@ucsp.edu.pe>
 TITLE=Lic.
 Enrique Gordillo Cisneros
 \begin{itemize}
-\item Lic. en EducaciÃ³n Secundaria con menciÃ³n en Lengua y Literatura por la Pontificia Universidad CatÃ³lica del PerÃº 
-\item Estudios de LinguÃ­stica y Literatura por la Pontificia Universidad CatÃ³lica del PerÃº
-\item Estudios de MetodologÃ­a para la Catequesis y TeologÃ­a Fundamental por el Instituto Nuestra SeÃ±ora de la ReconciliaciÃ³n
-\item Editor de mesa del Fondo Editorial de la Universidad CatÃ³lica San Pablo
+\item Lic. en EducaciÃÂ³n Secundaria con menciÃÂ³n en Lengua y Literatura por la Pontificia Universidad CatÃÂ³lica del PerÃÂº 
+\item Estudios de LinguÃÂ­stica y Literatura por la Pontificia Universidad CatÃÂ³lica del PerÃÂº
+\item Estudios de MetodologÃÂ­a para la Catequesis y TeologÃÂ­a Fundamental por el Instituto Nuestra SeÃÂ±ora de la ReconciliaciÃÂ³n
+\item Editor de mesa del Fondo Editorial de la Universidad CatÃÂ³lica San Pablo
 \end{itemize}
 --END-PROFESSOR--
 
@@ -812,9 +812,9 @@ BEGIN-PROFESSOR--<pamela.cabala@ucsp.edu.pe>
 TITLE=Lic.
 Pamela Denisse Cabala Banda
 \begin{itemize}
-\item Lic. en SociologÃ­a por la Universidad Nacional de San AgustÃ­n 
-\item Maestra de EducaciÃ³n Superior en la Universidad CatÃ³lica Santa MarÃ­a
-\item curso de especializaciÃ³n en la Escuela Complutense de Verano (Madrid & EspaÃ±a) sobre: PolÃ­ticas PÃºblicas y acciones Positivas
+\item Lic. en SociologÃÂ­a por la Universidad Nacional de San AgustÃÂ­n 
+\item Maestra de EducaciÃÂ³n Superior en la Universidad CatÃÂ³lica Santa MarÃÂ­a
+\item curso de especializaciÃÂ³n en la Escuela Complutense de Verano (Madrid & EspaÃÂ±a) sobre: PolÃÂ­ticas PÃÂºblicas y acciones Positivas
 \end{itemize}
 --END-PROFESSOR--
 
@@ -829,7 +829,7 @@ Andrea Alejandra Zegarra lozada
 
 BEGIN-PROFESSOR--<joseacalienes@gmail.com>
 TITLE=Prof.
-JosÃ© Alonzo Calienes Antezara
+JosÃÂ© Alonzo Calienes Antezara
 \begin{itemize}
 \item  
 \end{itemize}
@@ -837,9 +837,9 @@ JosÃ© Alonzo Calienes Antezara
 
 BEGIN-PROFESSOR--<jtejadac@ucsp.edu.pe>
 TITLE=Dr.
-Javier Leandro Tejada CÃ¡rcamo
+Javier Leandro Tejada CÃÂ¡rcamo
 \begin{itemize}
-\item  Dr. en Ciencias de la ComputaciÃ³n. IPN Mexico 2009 
+\item  Dr. en Ciencias de la ComputaciÃÂ³n. IPN Mexico 2009 
 \end{itemize}
 --END-PROFESSOR--
 

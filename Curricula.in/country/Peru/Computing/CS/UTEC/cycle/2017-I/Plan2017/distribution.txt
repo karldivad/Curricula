@@ -1,5 +1,7 @@
 
 % Semester #1 .
+% CS111(CS50). Introducción a la Ciencia de la Computación (Obligatorio)
+CS111->ecuadros@utec.edu.pe
 
 
 % Semester #2 .
