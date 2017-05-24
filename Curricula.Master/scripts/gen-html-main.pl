@@ -246,7 +246,7 @@ sub main()
 	Common::read_special_macros(Common::get_template("in-outcomes-macros-file"), "CompetenceLevel"); 
 	
 	GenSyllabi::process_syllabi();
-	Common::read_bok(); 
+	Common::read_bok($Common::config{language_without_accents}); 
 	Common::sort_macros();
 	
 	my $output_file = Common::get_template("unified-main-file");
@@ -269,6 +269,7 @@ sub main()
 		$maintxt =~ s/\\xrefTextAndPage\{(.*?)\}/\\htmlref\{\\$1\}\{sec:BOK:$1\}/g;
 #		$maintxt =~ s/\\xref\{(.*?)\}/\\ref\{sec:BOK:$1\} \\htmlref\{\csname #1\endcsname\}\{sec:BOK:#1\}
 		Util::print_message("$Common::institution: Environments = $environments_count");
+		Util::write_file($output_file, $maintxt);
 	}
         
         $maintxt =~ s/\\Competence\{(.*?)\}/$Common::config{Competence}{$1}\\label\{outcome:$1\}/g;

@@ -800,10 +800,12 @@ sub read_special_macros($$)
     Util::print_message("read_special_macros($macro) ($file_name) $count macros processed ... OK!");
 }
 
-sub read_bok()
+sub read_bok($)
 {
-    my $bok = Common::get_template("in-bok-macros-file");
-    read_macros($bok);
+    my ($lang) = (@_);
+    my $bok_macros_file = Common::get_template("in-bok-macros-file");
+    $bok_macros_file =~ s/<LANG>/$lang/g;
+    read_macros($bok_macros_file);
 }
 
 sub read_replacements()
@@ -1563,9 +1565,15 @@ sub read_faculty()
 {
 	my $faculty_file    		= get_template("faculty-file");
 
-	%{$config{degrees}} 		= ("Bachelor" => 0,      "Degree" => 1, "MasterPT" => 2,          "Master" => 3,              "DoctorPT" => 4,           "Doctor" => 5,             "PosDoc" => 6);
-	%{$config{degrees_description}} = (0 => "Bachelor",      1 => "Degree", 2 => "Master (Part Time)", 3 => "Master (Full Time)", 4 => "Doctor (Part Time)", 5 => "Doctor (Full Time)", 6 => "PosDoc");
-	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "MasterPT" => "Mag.", "Master" => "Mag.", "DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
+	%{$config{degrees}} 		= ("Bachelor" => 0,      "Degree" => 1, "Title" => 1,
+					   "MasterPT" => 2,      "Master" => 3,
+					   "DoctorPT" => 4,      "Doctor" => 5, "PosDoc" => 6);
+	%{$config{degrees_description}} = (0 => "Bachelor",      1 => "Degree", 	1 => "Title",
+					   2 => "Master (Part Time)", 	3 => "Master (Full Time)", 
+					   4 => "Doctor (Part Time)", 5 => "Doctor (Full Time)", 6 => "PosDoc");
+	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "Title" => "Prof.", 
+					   "MasterPT" => "Mag.", "Master" => "Mag.", 
+					   "DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
 	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Enterpreneurship" => 3, "Humanities" => 4 );
 	
 	%{$config{faculty}} = ();
@@ -3074,6 +3082,23 @@ sub update_page_numbers($)
 	}
 	Util::write_file($file, $file_txt);
 	Util::print_message("File $file ... pages replaced ok !");
+}
+
+sub update_page_numbers_for_all_courses_maps()
+{
+	my $OutputDotDir  		= Common::get_template("OutputDotDir");
+	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	{     
+	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+	      {
+		      if(defined($Common::antialias_info{$codcour}))
+		      {	$codcour = $Common::antialias_info{$codcour}	}
+		      my $codcour_alias = Common::get_alias($codcour);
+	  
+		      my $output_file = "$OutputDotDir/$codcour.dot";
+		      Common::update_page_numbers($output_file);
+	      }
+	}
 }
 
 my %bok = ();
