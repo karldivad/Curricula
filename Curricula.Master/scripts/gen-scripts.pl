@@ -94,7 +94,7 @@ sub gen_batch($$)
 
 	Util::write_file($target, $txt);
 	Util::print_message("gen_batch: $target created successfully ...");
-	system("chmod 744 $target");
+	system("chmod 774 $target");
 	#foreach my $inst (sort keys %inst_list)
 	#{	print "[[$inst]] ";	}
 }
@@ -121,8 +121,8 @@ sub gen_compileall_script()
 	#print OUT "rm -rf html";
 	print OUT "\n$body";
 	close(OUT);
-	system("chmod 744 $compileall_file");
-	Util::print_message("gen_compileall_script ok");
+	system("chmod 774 $compileall_file");
+	Util::print_message("gen_compileall_script ok"); 
 }
 
 # ok

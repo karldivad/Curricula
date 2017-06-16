@@ -452,7 +452,7 @@ sub set_initial_paths()
         $path_map{"out-nsemesters-file"}                = $path_map{OutputTexDir}."/nsemesters.tex";
 
 	
-	$path_map{"in-outcomes-macros-file"}		= $path_map{InTexDir}."/outcomes-macros.tex";
+	$path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.tex/outcomes-macros.tex";
 	$path_map{"in-bok-file"}			= $path_map{InTexDir}."/bok.tex";
 	$path_map{"in-bok-macros-file"}			= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros.sty";
 	$path_map{"in-bok-macros-V0-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros-V0.sty";
@@ -562,6 +562,7 @@ sub set_initial_paths()
         $path_map{"in-a0poster-sty-file"}               = $path_map{InStyAllDir}."/a0poster.sty";
         $path_map{"in-poster-macros-sty-file"}          = $path_map{InStyAllDir}."/poster-macros.sty";
         $path_map{"in-small-graph-curricula-file"}      = $path_map{InTexAllDir}."/small-graph-curricula.tex";
+	$path_map{"out-small-graph-curricula-file"}      = $path_map{OutputTexDir}."/small-graph-curricula.tex";
 
 	# Html
 	$path_map{"in-web-course-template.html-file"} 	= $path_map{InHtmlDir}."/web-course-template.html";
@@ -1435,7 +1436,11 @@ sub set_initial_configuration($)
 		read_macros($file);
 	}
 
-	read_macros(Common::get_template("in-outcomes-macros-file")); 	
+	my $outcomes_macros_file = Common::get_template("in-outcomes-macros-file");
+	$outcomes_macros_file =~ s/<LANG>/$Common::config{language_without_accents}/g;
+	read_macros($outcomes_macros_file);
+
+# 	read_macros(Common::get_template("in-outcomes-macros-file")); 	
 # 	print Dumper(\%{$Common::config{macros}}); exit;
 
 	read_macros(Common::get_template("out-current-institution-file")) if(-e Common::get_template("out-current-institution-file"));
@@ -1574,7 +1579,7 @@ sub read_faculty()
 	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "Title" => "Prof.", 
 					   "MasterPT" => "Mag.", "Master" => "Mag.", 
 					   "DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
-	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Enterpreneurship" => 3, "Humanities" => 4 );
+	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Enterpreneurship" => 3, "Humanities" => 4, "Empty" => 5 );
 	
 	%{$config{faculty}} = ();
 	return if(not -e $faculty_file);
@@ -1617,6 +1622,8 @@ sub read_faculty()
 			while( $titles =~ m/\\(.*?)\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
 			{	
 				my ($degreelevel, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);
+				if( $concentration eq "" )
+				{	$concentration = "Empty";	}
 				if( not defined($config{degrees}{$degreelevel}) )
 				{
 				      Util::print_error("Degree: $degreelevel not defined in faculty.txt ($email) ...");
@@ -2412,7 +2419,8 @@ sub expand_macros($$)
 			}
 		}
 	}
-	Util::print_message("expand_macros ($file: $macros_changed) saliendo ...");
+# 	print ".";
+# 	Util::print_message("expand_macros ($file: $macros_changed) saliendo ...");
 #  	if($macros_changed < 3)
 #  	{	Util::print_message("Macros changed ($macros_changed): \n$changes");	}
 	#print "siglas = $config{macros}{siglas} ... x7\n";

@@ -41,7 +41,8 @@ sub generate_general_info()
 	GeneralInfo::generate_pie_by_levels();
 
 	GeneralInfo::generate_curricula_in_dot("small", $Common::config{language_without_accents});
-	GeneralInfo::generate_curricula_in_dot("big", $Common::config{language_without_accents});
+	system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("out-small-graph-curricula-file"));
+	GeneralInfo::generate_curricula_in_dot("big", $Common::config{language_without_accents});   
 
 	GeneralInfo::generate_poster();
 

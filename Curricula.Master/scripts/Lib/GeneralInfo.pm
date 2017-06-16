@@ -735,7 +735,7 @@ sub generate_curricula_in_dot($$)
         $output_txt .= $legend;
 	$output_txt .= "}\n";
 	Util::write_file($output_file, $output_txt);
-	Util::print_message("generate_curricula_in_dot($size, $lang) OK!"); 
+	Util::print_message("generate_curricula_in_dot($size, $lang, $output_file) OK!"); 
 }
 
 # ok

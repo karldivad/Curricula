@@ -37,3 +37,9 @@ cp ../Curricula.in/lang/Espanol/cycle/2017-I/Syllabi/Computing/CS/CS1D1.bib ../C
 find . -name "*.bib" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
 find . -name "*.tex" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
 
+
+./scripts/process-curricula.pl CS-UTEC
+rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
+rm unified-curricula-main* ;
+./scripts/gen-html-main.pl CS-UTEC
+latex unified-curricula-main

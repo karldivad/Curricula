@@ -120,6 +120,7 @@ sub write_file($$)
 	open(OUT, ">$filename") or die Util::halt("write_file: $filename does not open");
 	print OUT $txt;
 	close(IN);
+	system("chgrp curricula $filename");
 }
 
 my @list_of_files_to_gen_fig;
@@ -159,7 +160,7 @@ sub generate_batch_to_gen_figs($)
                 $output_txt .= "\n";
 	}
         write_file($output_file, $output_txt);
-        system("chmod 744 $output_file");
+        system("chmod 774 $output_file");
         print_message("generate_batch_to_gen_figs($output_file) OK!");
 }
 

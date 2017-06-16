@@ -517,7 +517,7 @@ sub gen_batch_to_compile_syllabi()
 	}
 	$output .= "\n$cp_bib\n$gen_syllabi";
 	Util::write_file($out_gen_syllabi, $output);
-	system("chmod 744 $out_gen_syllabi");
+	system("chmod 774 $out_gen_syllabi");
 	Util::print_message("gen_batch_to_compile_syllabi $Common::institution ($count_courses courses) OK!");
 }
 
@@ -886,7 +886,7 @@ sub gen_prerequisites_map($)
 	 }
 	 my $batch_map_for_course_file = Common::get_template("out-gen-map-for-course");
 	 Util::write_file($batch_map_for_course_file, $batch_txt);
-	 system("chmod 744 $batch_map_for_course_file");
+	 system("chmod 774 $batch_map_for_course_file");
 }
 
 1;
