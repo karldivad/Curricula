@@ -15,7 +15,7 @@
 \Twitter{@ecuadrosv}
 \Blog{https://ecuadros.blogspot.com}
 \Research{Information Retrieval, Data Structures, Programming, Education in CS}
-\courses{CS100,CS101O,CS102O,CS103O,CS315,CS402,CS403,CS404}
+\courses{CS111,CS402,CS403,CS404}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
@@ -901,12 +901,12 @@
 
 --BEGIN-PROFESSOR--
 \email{dnina@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Dugán Paúl Nina Ortiz}
 \begin{titles}
-\Doctor{Mathematics}{Matemáticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2011}
-\Master{Mathematics}{Matemáticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2007}
-\Degree{Mathematics}{Matemáticas}{}{Universidad Nacional San Agustín}{Perú}{2003}
+    \Doctor{Mathematics}{Matemáticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}{2011}
+    \Master{Mathematics}{Matemáticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}{2007}
+    \Degree{Mathematics}{Matemáticas}{}{Universidad Nacional San Agustín}{Perú}{2003}
 \end{titles}
 \Category{}
 \webpage{}
@@ -925,8 +925,8 @@
 \prefix{}
 \name{Luz Marina Ramos Quispe}
 \begin{titles}
-\Master{Mathematics}{Matemáticas}{Estadí­stica}{Universidade Estadual de Campinas}{Brasil}(2015}
-\Degree{Mathematics}{Matemáticas}{}{Universidad Nacional San Agustín}{Perú}{2009}
+    \Master{Mathematics}{Matemáticas}{Estadí­stica}{Universidade Estadual de Campinas}{Brasil}{2015}
+    \Degree{Mathematics}{Matemáticas}{}{Universidad Nacional San Agustín}{Perú}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1235,12 +1235,12 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mrodriguez@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Jose Manuel Rodriguez Canales}
 \begin{titles}
-\Doctor{Humanities}{}{Ciencias Sociales} {Universidad Católica de Santa Marí­a}{Perú}{}
-\Master{Humanities}{}{Teologí­a}{Facultad de Teologí­a Pontificia y Civil de Lima}{Perú}{}
-\Degree{Humanities}{}{Teologí­a}{Facultad de Teologí­a Pontificia y Civil de Lima}{Perú}{}
+    \Doctor{Humanities}{Ciencias Sociales}{}{Universidad Católica de Santa Marí­a}{Perú}{}
+    \Master{Humanities}{Teologí­a}{}{Facultad de Teologí­a Pontificia y Civil de Lima}{Perú}{}
+    \Degree{Humanities}{Teologí­a}{}{Facultad de Teologí­a Pontificia y Civil de Lima}{Perú}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1766,7 +1766,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Prof.}
 \name{Gonzalo Ramírez}
 \begin{titles}
-     \Degree}{Lingüística y Literatura}{}{PUCP}{Perú}{2014}
+     \Degree{Humanities}{Lingüística y Literatura}{}{PUCP}{Perú}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1780,35 +1780,12 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \courses{}
 --END-PROFESSOR--
 
-
-
---BEGIN-PROFESSOR--
-\email{lrubio@utec.edu.pe}
-\prefix{Mg.}
-\name{Luis Fernando Rubio}
-\begin{titles}
-     \Master{}{Estudios Hispánicos Superiores}{}{US}{España}{2016}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-1-}
-\Mobile{+51-992721402.}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
-
-
 --BEGIN-PROFESSOR--
 \email{ovidal@utec.edu.pe}
 \prefix{Prof.}
 \name{Oriana Vidal}
 \begin{titles}
-     \Degree{}{Literatura Hispánica}{}{PUCP}{Perú}{2008}
+     \Degree{Humanities}{Literatura Hispánica}{}{PUCP}{Perú}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1823,13 +1800,31 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 --END-PROFESSOR--
 
 
+--BEGIN-PROFESSOR--
+\email{lrubio@utec.edu.pe}
+\prefix{Mg.}
+\name{Luis Fernando Rubio}
+\begin{titles}
+     \Master{Humanities}{Estudios Hispánicos Superiores}{}{US}{España}{2016}
+\end{titles}
+\Category{}
+\webpage{}
+\Office{}
+\Phone{+51-1-}
+\Mobile{+51-992721402.}
+\facebook{}
+\Twitter{}
+\Blog{}
+\Research{}
+\courses{}
+--END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{mzorrilla@utec.edu.pe}
 \prefix{Mg.}
 \name{Marcelo Zorrilla}
 \begin{titles}
-     \Master{}{MBA}{}{GEORGETOWN}{EEUU}{2014}
+     \Master{Humanities}{Master in Business Administration}{}{Georgetown}{EEUU}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1849,7 +1844,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Prof.}
 \name{Nae Hanashiro}
 \begin{titles}
-     \Degree{Literatura Hispánica}{Lingüística y Literatura}{}{PUCP}{Perú}{2012}
+     \Degree{Humanities}{Lingüística y Literatura}{Literatura Hispánica}{PUCP}{Perú}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1869,7 +1864,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Talía Tijero}
 \begin{titles}
-     \Doctor{}{Lingüística}{}{PUCV}{Chile}{2012}
+     \Doctor{Humanities}{Lingüística}{}{PUCV}{Chile}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1888,7 +1883,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{David Del Castillo}
 \begin{titles}
-     \Master{Dirección de Marketing y Gestión Comercial}{}{}{ESIC}{España}{2012}
+     \Master{Humanities}{Dirección de Marketing y Gestión Comercial}{}{ESIC}{España}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1929,7 +1924,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Jessica Velíz}
 \begin{titles}
-     \Master{}{Financial Management}{}{TILBURG UNIVERSITY}{Países Bajos}{2010}
+     \Master{Humanities}{Financial Management}{}{Tilburg University}{Países Bajos}{2010}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2151,7 +2146,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Prof.}
 \name{Carolina Malbrán}
 \begin{titles}
-     \Degree{Inglés}{}{INSTITUTO SANTA TRINIDAD}{Argentina}{2009}
+     \Degree{Humanities}{Inglés}{}{INSTITUTO SANTA TRINIDAD}{Argentina}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -3261,7 +3256,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \courses{}
 --END-PROFESSOR--
 
---BEGIN-PROFESSOR--
+BEGIN-PROFESSOR--
 \email{}
 \prefix{}
 \name{}

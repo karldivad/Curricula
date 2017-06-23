@@ -674,6 +674,11 @@ sub generate_curricula_in_dot($$)
 	# Third: Generate connections among courses
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		{	if( not defined($Common::config{prefix_priority}{$Common::course_info{$codcour}{prefix}}) )
+			{	Util::print_soft_error("Course $codcour ($Common::course_info{$codcour}{semester} Sem) has a prefix ($Common::course_info{$codcour}{prefix}) which haven't prefix_priority defined ...\n See ./Curricula.in/lang/<LANG>/<AREA>.config/<AREA>-All.config ");
+			}
+		}
 		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
@@ -1089,14 +1094,15 @@ sub generate_outcomes_by_course($$$$$$)
 		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
+			my $codcour_label = Common::get_label($codcour);
 			$extra_header = "";
  			$extra_header = "$Common::config{column2}" if($flag == 1 && $Common::config{graph_version}>= 2);
 			 $flag = 1 - $flag;
 			$col_header     	.= "$sep$extra_header"."c";
 
-			my $color 		= $Common::course_info{$codcour}{bgcolor};
+			my $color 		 = $Common::course_info{$codcour}{bgcolor};
 			if( not $color )
-			{	Util::print_error("Course $codcour (Sem $semester) has NOT color");	}
+			{	Util::print_error("Course $codcour (Alias: $codcour_label) ($semester Sem) has NOT color");	}
 			
 			#my $label 		= "\\colorbox{$color}{\\htmlref{$codcour}{sec:$codcour}}";
 			my $label 		= "\\htmlref{$codcour}{sec:$codcour}";

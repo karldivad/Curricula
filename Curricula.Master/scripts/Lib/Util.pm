@@ -1,5 +1,6 @@
 package Util;
 use strict;
+# use Term::ANSIColor; # http://pueblo.sourceforge.net/doc/manual/ansi_color_codes.html
 use POSIX;
 use POSIX qw(setsid);
 use POSIX qw(:errno_h :fcntl_h);
@@ -47,18 +48,21 @@ sub print_message($)
 sub print_error($)
 {
 	my ($msg) = (@_);
-	print "** ERROR ** : ";
-	print "$msg\n";
+	print_soft_error("** ERROR ** :$msg\n");
 	assert(0);
 	exit;
 }
 
+sub print_soft_error($)
+{
+	my ($msg) = (@_);
+	print "\x1b[41m$msg\x1b[49m";
+}
 # ok
 sub print_warning($)
 {
 	my ($msg) = (@_);
-	print "** WARNING ** : ";
-	print "$msg\n";
+	print "\x1b[43m ** WARNING ** : $msg\x1b[49m\n";
 }
 
 #  ok

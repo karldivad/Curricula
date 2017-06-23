@@ -414,6 +414,7 @@ sub generate_tex_syllabi_files()
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}} 
                                          @{$Common::courses_by_semester{$semester}})
 		{
+			my $codcour_label = Common::get_label($codcour);
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
@@ -422,9 +423,9 @@ sub generate_tex_syllabi_files()
 			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
 			      #if($codcour eq "CS111") { 	Util::print_message("A. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
 			      
-			      my $output_file = "$OutputTexDir/$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
+			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
-			      genenerate_tex_syllabus_file($codcour, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
+			      genenerate_tex_syllabus_file($codcour_label, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
       
 			      # Copy bib files
 			      my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
@@ -551,7 +552,8 @@ sub gen_book($$$)
 		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
-			$output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}},$codcour}]";
+			my $codcour_label = Common::get_label($codcour);
+			$output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}},$codcour}]";
 			$output_tex .= "{$prefix$codcour$postfix}\n";
 			$count++;
 		}
@@ -707,14 +709,15 @@ sub generate_syllabi_include()
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
 			    @{$Common::courses_by_semester{$semester}})
                 {
-			my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
-			system("cp $course_fullpath $OutputTexDir/.");
-			Util::print_message("cp $course_fullpath $OutputTexDir/.");
-			$course_fullpath =~ s/(.*)\.tex/$1/g;
-			$output_tex .= "$newpage\\input{$OutputTexDir/$codcour}";
-                        $output_tex .= "% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
-                        $ncourses++;
-			$newpage = "\\newpage";
+		    my $codcour_label = Common::get_label($codcour);
+		    my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
+		    system("cp $course_fullpath $OutputTexDir/.");
+		    Util::print_message("cp $course_fullpath $OutputTexDir/.");
+		    $course_fullpath =~ s/(.*)\.tex/$1/g;
+		    $output_tex .= "$newpage\\input{$OutputTexDir/$codcour_label}";
+		    $output_tex .= "% $codcour_label $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
+		    $ncourses++;
+		    $newpage = "\\newpage";
                 }
                 $output_tex .= "\n";
         }
