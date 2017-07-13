@@ -202,7 +202,7 @@ Indentation Mode=normal
 Mode=Bash
 
 [document-settings,item:scripts/Lib/Common.pm]
-Bookmarks=3097,806
+Bookmarks=3135,824
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -318,14 +318,14 @@ highlight=Logtalk
 line=0
 mode=Logtalk
 open=false
-order=10
+order=7
 
 [item:../Curricula.in/config/colors.config]
 archive=true
-column=8
+column=2
 encoding=UTF-8
 highlight=Logtalk
-line=6
+line=8
 mode=Logtalk
 open=false
 order=6
@@ -398,7 +398,7 @@ highlight=Logtalk
 line=0
 mode=Logtalk
 open=false
-order=11
+order=9
 
 [item:../Curricula.in/lang/Espanol/CS.config/CS.config]
 archive=true
@@ -442,13 +442,13 @@ order=9
 
 [item:../Curricula.in/lang/Espanol/CS.tex/CS2016-dependencies.tex]
 archive=true
-column=44
+column=0
 encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
 open=false
-order=7
+order=5
 
 [item:../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex]
 archive=true
@@ -492,13 +492,13 @@ order=10
 
 [item:../Curricula.in/lang/Espanol/dictionary.txt]
 archive=true
-column=8
+column=0
 encoding=UTF-8
 highlight=None
-line=15
+line=0
 mode=
 open=false
-order=4
+order=16
 
 [item:../Curricula.out/Peru/CS-UCSP/cycle/2016-1/Plan2016/tex/BodyOfKnowledge-Body.tex]
 archive=true
@@ -532,10 +532,10 @@ order=12
 
 [item:compile1institucion.sh]
 archive=true
-column=0
+column=36
 encoding=UTF-8
 highlight=Bash
-line=124
+line=110
 mode=Bash
 open=true
 order=2
@@ -562,33 +562,33 @@ order=0
 
 [item:scripts/Lib/Common.pm]
 archive=true
-column=49
+column=63
 encoding=UTF-8
 highlight=Perl
-line=563
+line=169
 mode=Perl
 open=true
 order=3
 
 [item:scripts/Lib/GenSyllabi.pm]
 archive=true
-column=26
+column=0
 encoding=UTF-8
 highlight=Perl
-line=191
+line=0
 mode=Perl
 open=false
-order=4
+order=11
 
 [item:scripts/Lib/GeneralInfo.pm]
 archive=true
-column=7
+column=0
 encoding=UTF-8
 highlight=Perl
-line=736
+line=0
 mode=Perl
 open=false
-order=12
+order=6
 
 [item:scripts/Lib/Util.pm]
 archive=true
@@ -598,7 +598,7 @@ highlight=Perl
 line=0
 mode=Perl
 open=false
-order=7
+order=4
 
 [item:scripts/clean.sh]
 archive=true
@@ -618,27 +618,27 @@ highlight=Perl
 line=0
 mode=Perl
 open=false
-order=8
+order=3
 
 [item:scripts/gen-html-main.pl]
 archive=true
-column=53
+column=0
 encoding=UTF-8
 highlight=Perl
-line=268
+line=0
 mode=Perl
 open=false
-order=2
+order=15
 
 [item:scripts/gen-scripts.pl]
 archive=true
-column=5
+column=0
 encoding=UTF-8
 highlight=Perl
-line=136
+line=0
 mode=Perl
 open=false
-order=1
+order=13
 
 [item:scripts/process-bok.pl]
 archive=true
@@ -648,7 +648,7 @@ highlight=Perl
 line=0
 mode=Perl
 open=false
-order=5
+order=10
 
 [item:scripts/process-curricula.pl]
 archive=true
@@ -658,7 +658,7 @@ highlight=Perl
 line=0
 mode=Perl
 open=false
-order=6
+order=1
 
 [item:scripts/update-analytic-info.pl]
 archive=true
@@ -672,13 +672,13 @@ order=-1
 
 [item:unified-curricula-main.tex]
 archive=true
-column=26
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=4169
+line=0
 mode=LaTeX
 open=false
-order=6
+order=14
 
 [view-settings,view=0,item:../Curricula.in/All.tex/preamble.tex]
 CursorColumn=0
@@ -693,10 +693,10 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:../Curricula.in/config/colors.config]
-CursorColumn=8
-CursorLine=6
+CursorColumn=2
+CursorLine=8
 JumpList=
-ViMarks=.,4,1,[,4,1,],4,1
+ViMarks=.,8,1,[,8,0,],8,1
 
 [view-settings,view=0,item:../Curricula.in/country/Peru/Computing/CS/CS.tex/Main.tex]
 CursorColumn=1
@@ -735,10 +735,10 @@ JumpList=
 ViMarks=.,0,114,[,0,114,],0,114
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/CS.config/CS-All.config]
-CursorColumn=24
-CursorLine=1
+CursorColumn=43
+CursorLine=0
 JumpList=
-ViMarks=.,0,68,[,0,68,],0,68
+ViMarks=.,0,48,[,0,48,],0,48
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/CS.config/CS.config]
 CursorColumn=0
@@ -765,10 +765,10 @@ JumpList=
 ViMarks=.,2,19,[,2,19,],2,19
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/CS.tex/CS2016-dependencies.tex]
-CursorColumn=44
-CursorLine=85
+CursorColumn=122
+CursorLine=233
 JumpList=
-ViMarks=.,85,43,[,85,43,],85,43,a,233,116
+ViMarks=.,233,0,[,0,0,],233,121,a,233,122
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex]
 CursorColumn=0
@@ -796,7 +796,7 @@ ViMarks=.,171,35,[,171,35,],171,35
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/dictionary.txt]
 CursorColumn=8
-CursorLine=15
+CursorLine=13
 JumpList=
 ViMarks=.,15,7,[,15,7,],15,7
 
@@ -819,10 +819,10 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:compile1institucion.sh]
-CursorColumn=0
-CursorLine=124
+CursorColumn=36
+CursorLine=110
 JumpList=
-ViMarks=.,119,0,[,119,0,],119,0
+ViMarks=.,0,0,[,0,0,],-1,-1
 
 [view-settings,view=0,item:curricula-main.tex]
 CursorColumn=0
@@ -837,28 +837,28 @@ JumpList=
 ViMarks=.,44,28,[,44,0,],-1,-1
 
 [view-settings,view=0,item:scripts/Lib/Common.pm]
-CursorColumn=49
-CursorLine=563
+CursorColumn=63
+CursorLine=169
 JumpList=
-ViMarks=.,564,62,[,564,62,],564,73,a,-1,-1,b,-1,-1,c,806,0,d,-1,-1,e,3097,0
+ViMarks=.,169,50,[,169,50,],169,62,a,-1,-1,b,-1,-1,c,824,0,d,-1,-1,e,3135,0
 
 [view-settings,view=0,item:scripts/Lib/GenSyllabi.pm]
-CursorColumn=26
-CursorLine=191
+CursorColumn=1
+CursorLine=731
 JumpList=
-ViMarks=.,0,0,[,0,0,],891,1,a,891,0
+ViMarks=.,731,1,[,731,1,],731,1,a,895,0
 
 [view-settings,view=0,item:scripts/Lib/GeneralInfo.pm]
-CursorColumn=7
-CursorLine=736
+CursorColumn=86
+CursorLine=67
 JumpList=
-ViMarks=.,737,62,[,737,60,],737,73,a,-1,-1,b,-1,-1
+ViMarks=.,67,72,[,67,72,],67,85,a,-1,-1,b,-1,-1
 
 [view-settings,view=0,item:scripts/Lib/Util.pm]
-CursorColumn=50
-CursorLine=140
+CursorColumn=49
+CursorLine=64
 JumpList=
-ViMarks=
+ViMarks=.,58,16,[,58,16,],58,16
 
 [view-settings,view=0,item:scripts/clean.sh]
 CursorColumn=114
@@ -867,22 +867,22 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:scripts/gen-faculty-info.pl]
-CursorColumn=84
-CursorLine=58
+CursorColumn=33
+CursorLine=102
 JumpList=
-ViMarks=.,58,83,[,58,83,],58,83
+ViMarks=.,102,33,[,102,33,],102,33
 
 [view-settings,view=0,item:scripts/gen-html-main.pl]
-CursorColumn=53
-CursorLine=268
+CursorColumn=1
+CursorLine=319
 JumpList=
-ViMarks=.,263,0,[,263,0,],263,0,a,24,0,b,24,27,c,113,0,d,60,0
+ViMarks=.,319,0,[,319,0,],319,0,a,24,0,b,24,27,c,113,0,d,60,0
 
 [view-settings,view=0,item:scripts/gen-scripts.pl]
 CursorColumn=5
-CursorLine=136
+CursorLine=21
 JumpList=
-ViMarks=.,146,90,[,146,87,],146,90
+ViMarks=.,27,40,[,27,40,],27,40
 
 [view-settings,view=0,item:scripts/process-bok.pl]
 CursorColumn=1
@@ -891,10 +891,10 @@ JumpList=
 ViMarks=.,11,18,[,11,18,],11,18,a,6,90,b,6,90,c,6,90,d,7,0,e,7,0
 
 [view-settings,view=0,item:scripts/process-curricula.pl]
-CursorColumn=128
-CursorLine=43
+CursorColumn=17
+CursorLine=78
 JumpList=
-ViMarks=.,43,128,[,43,128,],43,128
+ViMarks=.,78,17,[,78,17,],78,17
 
 [view-settings,view=0,item:scripts/update-analytic-info.pl]
 CursorColumn=0
@@ -903,7 +903,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:unified-curricula-main.tex]
-CursorColumn=26
-CursorLine=4169
+CursorColumn=72
+CursorLine=10628
 JumpList=
 ViMarks=.,0,0,[,0,0,],-1,-1

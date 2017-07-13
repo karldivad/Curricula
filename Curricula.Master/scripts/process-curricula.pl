@@ -83,9 +83,12 @@ sub main()
 	replacecodes();
 
 	GenSyllabi::process_syllabi();
-	GenSyllabi::gen_short_descriptions();
-	#GenSyllabi::gen_list_of_units_by_course();
-	GenSyllabi::gen_bibliography_list();
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+	    GenSyllabi::gen_short_descriptions($lang);
+	    #GenSyllabi::gen_list_of_units_by_course();
+	    GenSyllabi::gen_bibliography_list($lang);
+	}
 	generate_general_info();
 # 
 #         copy_basic_files();

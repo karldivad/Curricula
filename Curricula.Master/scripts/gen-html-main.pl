@@ -316,7 +316,8 @@ sub main()
         #$maintxt =~ s/\\xspace}/}/g;
 	$maintxt =~ s/\\end\{document\}/\\bibliography\{$all_bib_items\}\n\\end\{document\}/g;
 	while ($maintxt =~ m/\n\n\n/){	$maintxt =~ s/\n\n\n/\n\n/g;	}
-
+ 	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
+	
 	Util::write_file($output_file, $maintxt);
 	Util::print_message("Finishing gen-html-main.pl ... ");
 }

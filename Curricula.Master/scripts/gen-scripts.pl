@@ -25,6 +25,9 @@ sub gen_batch($$)
 	my $output_bib_dir = Common::get_template("OutputBinDir");
 	$txt =~ s/<OUTBIN>/$output_bib_dir/g;
 
+	my $InTexDir = Common::get_template("InDir");
+        $txt =~ s/<IN_DIR>/$InTexDir/g;
+        
 	my $InTexDir = Common::get_template("InTexDir");
         $txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
 

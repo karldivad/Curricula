@@ -8,7 +8,7 @@
 \end{titles}
 \Category{Principal}
 \webpage{http://socios.spc.org.pe/ecuadros}
-\Office{Computer Science Program, 3rd floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 2rd floor, UTEC. Barranco Lima}
 \Phone{+51-1-}
 \Mobile{+51-958.339.127}
 \facebook{https://www.facebook.com/pages/Ernesto-Cuadros-Vargas-Public-Figure/136184539813774}
@@ -41,7 +41,7 @@
 
 --BEGIN-PROFESSOR--
 \email{mleguen@ucsp.edu.pe}
-\prefix{Mag.}
+\prefix{Mg.}
 \name{Marc-Antoine Le Guen}
 \begin{titles}
 \Master{Computing}{Ciencia de la Computación}{Computación Gráfica}{Universiti Aix-Marseille}{Francia}{2013}
@@ -122,7 +122,7 @@
 
 --BEGIN-PROFESSOR--
 \email{wbardales@ucsp.edu.pe}
-\prefix{Mag.}
+\prefix{Mg.}
 \name{Wilfredo Bardales Roncalla}
 \begin{titles}
 \Master{Computing}{Informática}{Optimización y Razonamiento Automático}{Pontificia Universidad Católica de Rio de Janeiro}{Brasil}{2013}
@@ -163,7 +163,7 @@
 
 --BEGIN-PROFESSOR--
 \email{darias@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Diego Fabián Arias Padilla}
 \begin{titles}
 \Master{Humanities}{Gestión y Responsabilidad Social de la empresa}{}{Pontificia Universidad Santo Tomás de Aquino en Roma}{Italia}{2008}
@@ -204,7 +204,7 @@
 --END-PROFESSOR--
 --BEGIN-PROFESSOR--
 \email{rpatino@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Raquel Patiño Escarcina}
 \begin{titles}
 \Doctor{Computing}{Ingeniería Eléctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
@@ -225,7 +225,7 @@
 
 --BEGIN-PROFESSOR--
 \email{mberrios@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Miriam Berrios Garaycochea}
 \begin{titles}
 \Degree{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad Católica Santa Marí­a}{Perú}{1997}
@@ -244,7 +244,7 @@
 
 --BEGIN-PROFESSOR--
 \email{gcalderon@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Guillermo Enrique Calderón Ruiz}
 \begin{titles}
 \Doctor{Computing}{Ciencias de la Ingeniería}{}{Pontificia Universidad Católica de Chile}{Chile}{2011}
@@ -266,7 +266,7 @@
 
 --BEGIN-PROFESSOR--
 \email{igor.calizaya@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Igor Fernando Calizaya Catacora}
 \begin{titles}
 \Master{Computing}{Information Systems Management}{ISO27001}{University of Greenwich}{Inglaterra}{2012}
@@ -286,7 +286,7 @@
 
 --BEGIN-PROFESSOR--
 \email{jcano@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Jhon Humberto Cano Chávez}
 \begin{titles}
 \Degree{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa Marí­a}{Perú}{2000}
@@ -305,7 +305,7 @@
 
 --BEGIN-PROFESSOR--
 \email{ccastelo@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{César Christian Castelo Fernández}
 \begin{titles}
 \Master{Computing}{Ciencia de la Computación}{}{Universidad Estadual de Campinas-Unicamp}{Brasil}{2011}
@@ -325,7 +325,7 @@
 
 --BEGIN-PROFESSOR--
 \email{r.castro@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Rodolfo José Castro Salinas}
 \begin{titles}
 \Master{Humanities}{Ciencias del Matrimonio y la Familia}{}{Pontificio Instituto Juan Pablo II}{Italia}{2008}
@@ -345,7 +345,7 @@
 
 --BEGIN-PROFESSOR--
 \email{edward.cayllahua@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Edward Jorge Yuri Cayllahua Cahuina}
 \begin{titles}
 \Master{Computing}{Ciencia de la Computación}{}{Universidade Federal de Ouro Preto}{Brasil}{2013}
@@ -365,7 +365,7 @@
 
 --BEGIN-PROFESSOR--
 \email{achavezc@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Angel Evaristo Chávez Contreras}
 \begin{titles}
 \Master{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid España}{España}{2004}
@@ -385,7 +385,7 @@
 
 --BEGIN-PROFESSOR--
 \email{jvcondori@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{José Victor Condori Condori}
 \begin{titles}
 \Degree{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San Agustín}{Perú}{2001}
@@ -403,7 +403,7 @@
 --END-PROFESSOR--
 --BEGIN-PROFESSOR--
 \email{jcruzt@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Judith Hayde Cruz Torres}
 \begin{titles}
 \Doctor{Mathematics}{Matemáticas}{}{ICMC-USP}{Brasil}{2007}
@@ -424,7 +424,7 @@
 
 --BEGIN-PROFESSOR--
 \email{ana.maria.cuadros@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Ana Marí­a Cuadros Valdivia}
 \begin{titles}
 \DoctorPT{Computing}{Ciencia de la Computación}{}{Universidad Nacional San Agustín}{Perú}{2013}
@@ -466,7 +466,7 @@
 
 --BEGIN-PROFESSOR--
 \email{cjdelgado@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Christian Jorge Delgado Polar}
 \begin{titles}
 \Master{Computing}{Ciencia de la Computación}{}{DCC-UFMG}{Brasil}{2007}
@@ -486,7 +486,7 @@
 
 --BEGIN-PROFESSOR--
 \email{ldiaz@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Luis Fernando Díaz Basurco}
 \begin{titles}
 \Master{Mathematics}{Matemática}{}{Pontificia Universidad Católica del Perú}{Perú}{1990}
@@ -506,7 +506,7 @@
 
 --BEGIN-PROFESSOR--
 \email{agarciacalderon@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Adriana Maria Irene García Calderón Barreda}
 \begin{titles}
 \Degree{Humanities}{}{}{}{Perú}{}
@@ -525,7 +525,7 @@
 
 --BEGIN-PROFESSOR--
 \email{egordillo@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Enrique Gordillo Cisneros}
 \begin{titles}
 \Degree{Humanities}{Licenciado en Educación Secundaria con especialidad en Lengua y Literatura}{}{PUCP}{Perú}{2008}
@@ -544,7 +544,7 @@
 
 --BEGIN-PROFESSOR--
 \email{jcgutierrezc@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Juan Carlos Gutiérrez Cáceres}
 \begin{titles}
 \Doctor{Computing}{Ciencia de la Computación}{}{Universidad Nacional de San Agustín}{Perú}{2013}
@@ -565,7 +565,7 @@
 
 --BEGIN-PROFESSOR--
 \email{ahmamani@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Alvaro Henry Mamani Aliaga}
 \begin{titles}
 \Degree{Computing}{Bachelor Ingeniería de Sistemas}{}{UNSA}{Perú}{2006}
@@ -585,7 +585,7 @@
 
 --BEGIN-PROFESSOR--
 \email{mjordan@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Mónica Milagros Jordán Franco}
 \begin{titles}
 \Degree{Computing}{Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{}
@@ -604,7 +604,7 @@
 
 --BEGIN-PROFESSOR--
 \email{rlinares@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Rubel Dorjin Linares Málaga}
 \begin{titles}
 \Degree{Mathematics}{Licenciado en Física}{}{Universidad Nacional de San Agustín}{Perú}{2002}
@@ -623,7 +623,7 @@
 
 --BEGIN-PROFESSOR--
 \email{glovon@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Gina Lovon Alvarado}
 \begin{titles}
 \Master{Computing}{Ingeniería de Software}{}{Universidad de Tarapacá}{Chile}{2012}
@@ -644,7 +644,7 @@
 
 --BEGIN-PROFESSOR--
 \email{gmaldonado@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Gonzalo Omar Maldonado Chauca}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
@@ -663,7 +663,7 @@
 
 --BEGIN-PROFESSOR--
 \email{agmamanic@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Anita Genoveva Mamani Champi}
 \begin{titles}
 \Master{Mathematics}{Matemática}{}{UFF}{Brasil}{2005}
@@ -682,7 +682,7 @@
 
 --BEGIN-PROFESSOR--
 \email{rmarroquin@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Renato Javier Marroquin Mogrovejo}
 \begin{titles}
 \Master{Computing}{Ciencia de la Computación}{}{Pontificia Universidad de Rio de Janeiro}{Brasil}{2011}
@@ -702,7 +702,7 @@
 
 --BEGIN-PROFESSOR--
 \email{rfmattosp@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Rolando Fabián Mattos Pino}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
@@ -721,7 +721,7 @@
 
 --BEGIN-PROFESSOR--
 \email{s.matuk@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Silvia Matuk Kervaye}
 \begin{titles}
 \Doctor{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa Marí­a}{Perú}{1995}
@@ -742,7 +742,7 @@
 
 --BEGIN-PROFESSOR--
 \email{dmayori@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Deisy Virginia Mayorí­ Velásquez}
 \begin{titles}
 \Degree{Mathematics}{}{}{}{}{}
@@ -761,7 +761,7 @@
 
 --BEGIN-PROFESSOR--
 \email{gmedina@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Gonzalo Pablo Medina Bravo}
 \begin{titles}
 \Master{Humanities}{Derecho}{Polí­tica Jurisdiccional}{PUCP}{Perú}{2009}
@@ -782,7 +782,7 @@
 
 --BEGIN-PROFESSOR--
 \email{tmedina@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Tatiana Beatriz Medina Sanchez}
 \begin{titles}
 \Master{Humanities}{Artes}{}{Universidad Nacional de San Agustín}{Perú}{}
@@ -802,7 +802,7 @@
 
 --BEGIN-PROFESSOR--
 \email{rmedina@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Renzo Hernán Medina Zeballos}
 \begin{titles}
 \Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa Marí­a}{Perú}{2000}
@@ -821,7 +821,7 @@
 
 --BEGIN-PROFESSOR--
 \email{gmezal@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Graciela Lecireth Meza Lovón}
 \begin{titles}
 \Master{Computing}{Ciencia de la Computación}{}{UFMS-MS}{Brasil}{2007}
@@ -863,7 +863,7 @@
 
 --BEGIN-PROFESSOR--
 \email{hernan.alvarez@ucsp.edu.pe}
-\prefix{}
+\prefix{Bach.}
 \name{Hernán Humberto Álvarez Valera}
 \begin{titles}
 \Bachelor{Computing}{Bachiller de Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{2013}
@@ -882,7 +882,7 @@
 
 --BEGIN-PROFESSOR--
 \email{hjneyra@ucsp.edu.pe}
-\prefix{}
+\prefix{Bach.}
 \name{Jorge Homero Neyra Araoz}
 \begin{titles}
 \Bachelor{Computing}{Bachiller de Ingeniería de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2006}
@@ -922,7 +922,7 @@
 
 --BEGIN-PROFESSOR--
 \email{lmramos@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Luz Marina Ramos Quispe}
 \begin{titles}
     \Master{Mathematics}{Matemáticas}{Estadí­stica}{Universidade Estadual de Campinas}{Brasil}{2015}
@@ -943,7 +943,7 @@
 
 --BEGIN-PROFESSOR--
 \email{pnunezp@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Paloma Moreika Nuñez Portugal}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
@@ -962,7 +962,7 @@
 
 --BEGIN-PROFESSOR--
 \email{jeochoa@ucsp.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Jose Eduardo Ochoa Luna}
 \begin{titles}
 \Doctor{Computing}{Ciencia de la Computación}{}{Universidade de Sao Paulo}{Brasil}{2011}
@@ -983,7 +983,7 @@
 
 --BEGIN-PROFESSOR--
 \email{cortiz@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Christian PaúlOrtiz Martinez}
 \begin{titles}
 \Degree{Mathematics}{Matemática}{}{Universidad Nacional de San Agustín}{Perú}{2006}
@@ -1002,7 +1002,7 @@
 
 --BEGIN-PROFESSOR--
 \email{maria.elena.ortiz@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Maria Elena Ortiz Ramirez}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
@@ -1021,7 +1021,7 @@
 
 --BEGIN-PROFESSOR--
 \email{lpachecoa@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Luis Alberto Pacheco Abarca}
 \begin{titles}
 \Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa Marí­a}{Perú}{}
@@ -1040,7 +1040,7 @@
 
 --BEGIN-PROFESSOR--
 \email{fpacheco@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Flor de Marí­a Pacheco Tejada}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
@@ -1059,7 +1059,7 @@
 
 --BEGIN-PROFESSOR--
 \email{lparedesv@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Libertad Alejandra Paredes Valdivia}
 \begin{titles}
 \Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{Perú}{1990}
@@ -1079,7 +1079,7 @@
 
 --BEGIN-PROFESSOR--
 \email{efalvarez@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Edwing Fausto Álvarez Fernández}
 \begin{titles}
 \Degree{Humanities}{Licenciado en Educación}{}{Universidad Nacional de San Agustín}{Perú}{2000}
@@ -1098,7 +1098,7 @@
 
 --BEGIN-PROFESSOR--
 \email{susana.chaina@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Susana Giovanna Chaiña Mamani}
 \begin{titles}
 Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{Perú}{1990}
@@ -1118,7 +1118,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{glinares@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Gail Mar Linares Pomareda De Bocchio}
 \begin{titles}
 \Degree{Humanities}{Licenciada en Enfermería}{}{Universidad Peruana Cayetano Heredia}{Perú}{1999}
@@ -1137,7 +1137,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{apaz@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Alfredo Paz Valderrama}
 \begin{titles}
 \Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa Marí­a}{Perú}{2000}
@@ -1156,7 +1156,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{jpenarrieta@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{José Alonso Peñarrieta Escobedo}
 \begin{titles}
 \Degree{Computing}{Ingeniero Informático}{}{Universidad Católica San Pablo}{Perú}{2008}
@@ -1175,7 +1175,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{guillermo.laures@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Guillermo Laures García}
 \begin{titles}
 \Degree{Computing}{Bachiller en Ciencia de la Computación}{}{Universidad Católica San Pablo}{Perú}{2012}
@@ -1196,7 +1196,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mquirozz@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Maribel Marianela Quiroz Zegarra}
 \begin{titles}
 \Degree{Mathematics}{}{}{}{}{}
@@ -1215,7 +1215,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{hramoss@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Hugo Mario Ramos Salinas}
 \begin{titles}
 \Master{Humanities}{Artes}{}{Universidad Nacional San Agustín}{Perú}{}
@@ -1245,7 +1245,8 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \Category{}
 \webpage{}
 \Office{}
-\Phone{+51-54-505630 ext 477}
+\Phone{+51-54-505630 }
+\Extension{477}
 \Mobile{+51-}
 \facebook{}
 \Twitter{}
@@ -1256,7 +1257,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mlrodriguez@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Marí­a Lourdes Rodrí­guez Manrique}
 \begin{titles}
 \Degree{Humanities}{Lic.en Educación}{}{Universidad Nacional San Agustín}{Perú}{2000}
@@ -1276,7 +1277,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{frizzi.sanroman@ucsp.edu.pe}
-\prefix{}
+\prefix{	Mg.}
 \name{Frizzi Alejandra San Roman Salazar}
 \begin{titles}
     \Master{Computing}{Ciencia de la Computación}{}{Universidade de Sao Paulo}{Brasil}{2012}
@@ -1300,7 +1301,13 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{}
 \name{Julio Omar Santisteban Pablo}
 \begin{titles}
-\Master51-54-505630 ext 477}
+\Degree{}{}{}{}{}{}
+\end{titles}
+\Category{}
+\webpage{}
+\Office{}
+\Phone{+51-54-505630}
+\Extension{477}
 \Mobile{+51-}
 \facebook{}
 \Twitter{}
@@ -1311,7 +1318,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mlrodriguez@ucsp.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Marí­a Lourdes Rodríguez  Manrique}
 \begin{titles}
 \Degree{Humanities}{Lic.en Educación}{}{Universidad Nacional San Agustí­n}{Perú}{2000}
@@ -1331,7 +1338,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{frizzi.sanroman@ucsp.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Frizzi Alejandra San Roman Salazar}
 \begin{titles}
     \Master{Computing}{Ciencia de la Computación}{}{Universidade de Sao Paulo}{Brasil}{2012}
@@ -1375,7 +1382,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Leonardo Camacho Carhuaz}
 \begin{titles}
-     \Bachelor{}{Ingeniería Electrónica}{}{PUCP}{Perú}{2005}
+     \Bachelor{Computing}{Ingeniería Electrónica}{}{PUCP}{Perú}{2005}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1394,7 +1401,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Marita Ibañez Sandoval}
 \begin{titles}
-     \Bachelor{Mención en Pintura}{Arte}{}{PUCP}{Perú}{2008}
+     \Bachelor{Humanities}{Arte}{}{PUCP}{Perú}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1413,7 +1420,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Iris Vanesa Caycho}
 \begin{titles}
-     \Bachelor{}{Arquitectura}{}{UNFV}{Perú}{2006}
+     \Bachelor{Humanities}{Arquitectura}{}{UNFV}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1433,7 +1440,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Cesar Lucho Lingan}
 \begin{titles}
-     \Bachelor{Diseño Industrial}{Arte}{}{PUCP}{Perú}{2013}
+     \Bachelor{Humanities}{Arte}{}{PUCP}{Perú}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1452,7 +1459,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Melanie Cornejo Germer}
 \begin{titles}
-     \Doctor{Prevención de Enfermedades}{Filosofia}{}{HARVARD}{EEUU}{}
+     \Doctor{Humanities}{Filosofia}{}{HARVARD}{EEUU}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1471,7 +1478,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Enrique Mayorga}
 \begin{titles}
-     \Bachelor{Mención en Ingeniería Electrónica}{Ciencias}{}{PUCP}{Perú}{2007}
+     \Bachelor{Computing}{Ingeniería Electrónica}{}{PUCP}{Perú}{2007}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1490,7 +1497,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Juan Del Aguila Bartra}
 \begin{titles}
-     \Master{Investigación para el Diseño y la Innovación}{}{}{ELISAVA}{España}{2016}
+     \Master{Humanities}{Diseño e Innovación}{}{ELISAVA}{España}{2016}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1509,7 +1516,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Gabriela Pella Fernández}
 \begin{titles}
-     \Master{Desarrollo Sostenible y Responsabilidad Social}{}{}{EOI}{España}{2014}
+     \Master{Humanities}{Desarrollo Sostenible y Responsabilidad Social}{}{EOI}{España}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1528,7 +1535,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Gilda Díaz Martínez}
 \begin{titles}
-     \Master{Investigación para el Diseño y la Innovación}{}{}{ELISAVA}{España}{2016}
+     \Master{Humanities}{Diseño e Innovación}{}{ELISAVA}{España}{2016}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1548,7 +1555,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Prof.}
 \name{Alexandra Roldán Gatjens}
 \begin{titles}
-     \Degree{Diseño Textil y Indumentaria}{}{}{UP}{Argentina}{2013}
+     \Degree{Enterpreneurship}{Diseño Textil y Indumentaria}{}{UP}{Argentina}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1567,7 +1574,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Prof.}
 \name{Santiago Desperes}
 \begin{titles}
-     \Degree{}{Diseño Industrial}{}{UNLP}{Argentina}{2011}
+     \Degree{Enterpreneurship}{Diseño Industrial}{}{UNLP}{Argentina}{2011}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1586,7 +1593,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Eduardo Roncal Pereira}
 \begin{titles}
-     \Master{}{Diseño Gráfico}{}{PUCP}{Perú}{2015}
+     \Master{Humanities}{Diseño Gráfico}{}{PUCP}{Perú}{2015}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1605,7 +1612,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Eunice Villicaña Ortiz}
 \begin{titles}
-     \Doctor{Tecnología, Diversificación, Calidad y Ahorro Energético}{}{}{UNIOVI}{España}{2012}
+     \Doctor{Humanities}{Tecnología, Diversificación, Calidad y Ahorro Energético}{}{UNIOVI}{España}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1624,7 +1631,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Gonzalo Espinoza}
 \begin{titles}
-     \Master{Mención en Diseño Gráfico}{Arte}{}{PUCP}{Perú}{2013}
+     \Master{Humanities}{Diseño Gráfico}{}{PUCP}{Perú}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1645,15 +1652,15 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Ludmila Volodina}
 \begin{titles}
-     \Master{}{Administración de Negocios}{}{ULIMA}{Perú}{2004}
+     \Master{Computing}{Administración de Negocios}{}{ULIMA}{Perú}{2004}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-997923317.}
-\facebook{}
-\Twitter{}
+\Mobile{+51-997923317}
+\facebook{Ludmila Volodina}
+\Twitter{@ludavolo}
 \Blog{}
 \Research{}
 \courses{}
@@ -1666,7 +1673,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Ximena Castro Bernardini}
 \begin{titles}
-     \Master{Estudios de Paz, Conflictos y Desarrollo}{}{}{UJI}{España}{2014}
+     \Master{Humanities}{Estudios de Paz, Conflictos y Desarrollo}{}{UJI}{España}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1685,7 +1692,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Armando Millán Falconi}
 \begin{titles}
-     \Master{}{Docencia para la Educación Superior}{}{UNAB}{Chile}{2010}
+     \Master{Humanities}{Docencia para la Educación Superior}{}{UNAB}{Chile}{2010}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1706,7 +1713,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Ramón Ponce Testino}
 \begin{titles}
-     \Master{}{Ética Aplicada}{}{UU}{Países Bajos}{2007}
+     \Master{Humanities}{Ética Aplicada}{}{UU}{Países Bajos}{2007}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1726,7 +1733,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Giuliana Carrillo}
 \begin{titles}
-     \Master{}{Arte peruano y latinoamericano}{}{UNMSM}{Perú}{2017}
+     \Master{Humanities}{Arte peruano y latinoamericano}{}{UNMSM}{Perú}{2017}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1746,7 +1753,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Javier Pizarro}
 \begin{titles}
-     \Master{}{Estudios Culturales}{}{PUCP}{Perú}{2016}
+     \Master{Humanities}{Estudios Culturales}{}{PUCP}{Perú}{2016}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1824,7 +1831,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Marcelo Zorrilla}
 \begin{titles}
-     \Master{Humanities}{Master in Business Administration}{}{Georgetown}{EEUU}{2014}
+     \Master{Humanities}{Business Administration}{}{Georgetown}{EEUU}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1883,7 +1890,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{David Del Castillo}
 \begin{titles}
-     \Master{Humanities}{Dirección de Marketing y Gestión Comercial}{}{ESIC}{España}{2012}
+     \Master{Humanities}{Marketing y Gestión Comercial}{}{ESIC}{España}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1904,7 +1911,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Miguel Burriel}
 \begin{titles}
-     \Master{}{Domótica}{}{UPM}{España}{2005}
+     \Master{Computing}{Domótica}{}{UPM}{España}{2005}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1944,7 +1951,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Diego Macera}
 \begin{titles}
-     \Master{Políticas Públicas}{}{}{UCHICAGO}{EEUU}{2014}
+     \Master{Humanities}{Políticas Públicas}{}{UCHICAGO}{EEUU}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1964,7 +1971,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Mario Bazán}
 \begin{titles}
-     \Master{Desarrollo Ambiental}{}{}{PUCP}{Perú}{2014}
+     \Master{Humanities}{Desarrollo Ambiental}{}{PUCP}{Perú}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1983,7 +1990,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{José Carlos Saavedra}
 \begin{titles}
-     \Master{}{Economía}{}{}{}{}
+     \Master{Humanities}{Economía}{}{}{}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2004,7 +2011,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Estefania Ciliotta}
 \begin{titles}
-     \Bachelor{}{Administración}{}{ULIMA}{Perú}{2009}
+     \Bachelor{Humanities}{Administración}{}{ULIMA}{Perú}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2024,7 +2031,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Laura Kleiner}
 \begin{titles}
-     \Master{}{MBA}{}{UTDT}{Argentina}{2012}
+     \Master{Humanities}{MBA}{}{UTDT}{Argentina}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2044,7 +2051,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Antuané De la Flor Basterrechea}
 \begin{titles}
-     \Bachelor{}{Sociología}{}{PUCP}{Perú}{2006}
+     \Bachelor{Humanities}{Sociología}{}{PUCP}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2064,17 +2071,19 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Katia Cánepa}
 \begin{titles}
-     \Doctor{Ciencias e Informática}{}{}{PUCP-RIO}{Brasil}{2015}
+     \Doctor{Computing}{Informática}{}{PUCP-RIO}{Brasil}{2015}
+     \Master{Computing}{Informática}{}{PUCP-RIO}{Brasil}{2010}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{}
-\Phone{+51-1-}
+\Office{P-201}
+\Phone{+51-1-2305020}
+\Extension{4283}
 \Mobile{+51-922568756}
-\facebook{}
-\Twitter{}
+\facebook{beautytechie}
+\Twitter{@kfcito}
 \Blog{}
-\Research{}
+\Research{Human Computer Interaction, Ubiquitous Computing, Wearables, Beauty Technology}
 \courses{}
 --END-PROFESSOR--
 
@@ -2085,7 +2094,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Hauser , Deon Lynn}
 \begin{titles}
-     \Master{}{Arte}{}{MISSOURI}{EEUU}{2008}
+     \Master{Humanities}{Arte}{}{MISSOURI}{EEUU}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2105,7 +2114,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Barnes , Phillip John}
 \begin{titles}
-     \Bachelor{}{Spanish Language and Literature}{}{BIRMINGHAM}{Inglaterra}{1981}
+     \Bachelor{Humanities}{Spanish Language and Literature}{}{BIRMINGHAM}{Inglaterra}{1981}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2125,7 +2134,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Laos Solari, Aldo}
 \begin{titles}
-     \Master{}{MBA}{}{UP}{Perú}{2013}
+     \Master{Humanities}{MBA}{}{UP}{Perú}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2187,7 +2196,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Cox, Cristopher Creighton}
 \begin{titles}
-     \Master{}{Business Administration}{}{MSSTATE}{EEUU}{2000}
+     \Master{Humanities}{Business Administration}{}{MSSTATE}{EEUU}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2207,7 +2216,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Montoya Alarcon De Hamoir, Sheyla Rosa}
 \begin{titles}
-     \Bachelor{}{Psicología}{}{URP}{EEUU}{2013}
+     \Bachelor{Humanities}{Psicología}{}{URP}{EEUU}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2226,7 +2235,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Sabina Rehman, Sara}
 \begin{titles}
-     \Bachelor{}{Biología}{}{CSU}{UK}{2008}
+     \Bachelor{Humanities}{Biología}{}{CSU}{UK}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2247,7 +2256,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Valdivia Silva, Julio Ernesto}
 \begin{titles}
-     \Doctor{Ciencias}{}{}{UNAM}{México}{2010}
+     \Doctor{Mathematics}{Ciencias}{}{UNAM}{México}{2010}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2267,7 +2276,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Annis, Keith}
 \begin{titles}
-     \Bachelor{Ciencias}{}{}{CSU}{EEUU}{2004}
+     \Bachelor{Mathematics}{Ciencias}{}{CSU}{EEUU}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2287,7 +2296,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Cuba Medina, Armando}
 \begin{titles}
-     \Bachelor{}{Lingüística}{}{UNMSM}{Perú}{2013}
+     \Bachelor{Humanities}{Lingüística}{}{UNMSM}{Perú}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2307,7 +2316,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Vos Maatje}
 \begin{titles}
-     \Master{Cultura}{Organización y Gestión}{}{VU}{Paises Bajos}{2016}
+     \Master{Humanities}{Organización y Gestión}{}{VU}{Paises Bajos}{2016}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2326,7 +2335,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Diego López Francia}
 \begin{titles}
-     \Master{}{Filosofía}{}{PUCP}{Perú}{2016}
+     \Master{Humanities}{Filosofía}{}{PUCP}{Perú}{2016}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2347,7 +2356,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Luis Naters Lanegra}
 \begin{titles}
-     \Master{}{Lingüística y Literatura}{}{PUCP}{Perú}{2006}
+     \Master{Humanities}{Lingüística y Literatura}{}{PUCP}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2366,7 +2375,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Jessica Velíz}
 \begin{titles}
-     \Doctor{}{Lingüística hispánica}{}{}{}{}
+     \Doctor{Humanities}{Lingüística hispánica}{}{}{}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2385,7 +2394,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Teresa Torres Bustamante}
 \begin{titles}
-     \Doctor{}{Lingüística}{}{RUTGERS}{EEUU}{2013}
+     \Doctor{Humanities}{Lingüística}{}{RUTGERS}{EEUU}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2406,7 +2415,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Dr.}
 \name{Lizardo Seiner Lizárraga}
 \begin{titles}
-     \Doctor{}{Historia}{}{GRENOBLE-ALPES}{Francia}{2013}
+     \Doctor{Humanities}{Historia}{}{GRENOBLE-ALPES}{Francia}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2426,7 +2435,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Jaime Villanueva Barreto}
 \begin{titles}
-     \Master{}{Filosofía}{}{PUCP}{Perú}{2012}
+     \Master{Humanities}{Filosofía}{}{PUCP}{Perú}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2442,10 +2451,10 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{crodriguez@utec.edu.pe}
-\prefix{Mg..}
+\prefix{Mg.}
 \name{Celia Rodriguez Olaya}
 \begin{titles}
-     \Master{Arte peruano y latinoamericano}{Arte}{}{UNMSM}{Perú}{2014}
+     \Master{Humanities}{Arte}{Arte peruano y latinoamericano}{UNMSM}{Perú}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2466,7 +2475,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Carlos Viaña Rubio}
 \begin{titles}
-     \Master{Historia de la Filosofía}{Filosofía}{}{UNMSM}{Perú}{2014}
+     \Master{Humanities}{Filosofía}{Historia de la Filosofía}{UNMSM}{Perú}{2014}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2508,7 +2517,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Donita Rodriguez}
 \begin{titles}
-     \Master{}{Ciencias Económicas}{}{LSE}{UK}{2010}
+     \Master{Humanities}{Ciencias Económicas}{}{LSE}{UK}{2010}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2529,7 +2538,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Mg.}
 \name{Elmer Sánchez}
 \begin{titles}
-     \Master{}{Economía y Finanzas}{}{UIMP}{España}{2015}
+     \Master{Humanities}{Economía y Finanzas}{}{UIMP}{España}{2015}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2543,45 +2552,25 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \courses{}
 --END-PROFESSOR--
 
---BEGIN-PROFESSOR--
-\email{jfabian@utec.edu.pe}
-\prefix{}
-\name{Johanna Fabián Huertas}
-\begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
 
 
 %C.COMPUTACIÓN 
 
 --BEGIN-PROFESSOR--
-\email{jalvarado@utec.edu.pe}
-\prefix{}
+\email{jalvarador@utec.edu.pe}
+\prefix{Mg.}
 \name{Jorge Luis Alvarado Revata}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Gestión de la Investigación}{Desarrollo e Innovación}{UNIA}{España}{2016}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-992792980}
 \facebook{}
-\Twitter{}
-\Blog{}
+\Twitter{@jorgeinnovation}
+\Blog{whcoin.wordpress.com}
 \Research{}
 \courses{}
 --END-PROFESSOR--
@@ -2589,21 +2578,22 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mbermejo@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Maria Hilda Bermejo  Rios}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Informática}{}{PUCP}{Perú}{2014}
+     \Master{Computing}{Educación}{Docencia Universitaria}{UNAB}{Chile}{2012}
+     \Master{Computing}{Administració}{Administración y Gestión de Empresas}{UPC}{España}{2015}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
+\Mobile{+51-992751554}
+\facebook{Maria Hilda Bermejo}
 \Twitter{}
 \Blog{}
-\Research{}
+\Research{Game based Learning}
 \courses{}
 --END-PROFESSOR--
 
@@ -2611,21 +2601,21 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{ibringas@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Issac Ernesto Bringas Masgo}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Ciencias}{Ingeniería de Sistemas}{UNI}{Perú}{2001}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
+\Extension{}
+\Mobile{+51-979316482}
+\facebook{Ernesto Bringas Masgo}
 \Twitter{}
 \Blog{}
-\Research{}
+\Research{Simulación de Fluidos}
 \courses{}
 --END-PROFESSOR--
 
@@ -2633,57 +2623,56 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{tchambilla@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Teófilo Chambilla Aquino}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Ciencias}{Computación}{UCHILE}{Chile}{2015}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-945770106}
 \facebook{}
 \Twitter{}
-\Blog{}
-\Research{}
+\Blog{http://tchambil.blogspot.pe}
+\Research{Semantic Web-Linked open Data }
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{jfiestas@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Jose Antonio Fiestas Iquira}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Doctor{Computing}{Ciencias  Naturales}{}{UNIHEIDELBERG}{Alemania}{2006}
+     \Master{Mathematics}{Física}{}{UNIHEIDELBERG}{Alemania}{2002}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
+\Mobile{+51-945749804}
+\facebook{Jose Fiestas}
 \Twitter{}
 \Blog{}
-\Research{}
+\Research{Super Computación }
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{cmalpartida@utec.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Carlo Christian Malpartida Anton}
 \begin{titles}
      \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Degree{Computing}{Ingeniería Eléctrica}{}{PUCP}{Peŕu}{2012}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-986651714}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2692,20 +2681,19 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
-\email{mmelgar@utec.edu.pe}
-\prefix{}
+\email{mmelgarz@utec.edu.pe}
+\prefix{Mg.}
 \name{Mariano David Melgar Zavala}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Enterpreneurship}{Gestión de Proyectos}{}{UPC}{Perú}{2017}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
-\Twitter{}
+\Mobile{+51-944097236}
+\facebook{Mariano Melgar Zavala}
+\Twitter{marianomelgarz}
 \Blog{}
 \Research{}
 \courses{}
@@ -2713,53 +2701,51 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{rmelgarejo@utec.edu.pe}
-\prefix{}
-\name{ Randiel Javier Melgarejo Diaz}
+\prefix{Bach.}
+\name{Randiel Javier Melgarejo Diaz}
 \begin{titles}
      \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Bachelor{Computing}{Ingeniería de Sistemas}{}{UNI}{Perú}{2017}
 \end{titles}
 \Category{}
-\webpage{}
+\webpage{randielmelgarejo.wordpress.com}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
-\Twitter{}
+\Mobile{+51-999910953}
+\facebook{randiel.melgarejo.37}
+\Twitter{@_blackprince}
 \Blog{}
-\Research{}
+\Research{Integración de Plataformas en Telecomunicaciones}
 \courses{}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--
 \email{pmorriberon@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Patricio Morriberón Cornejo}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{MBA}{}{ITESM}{México}{2016}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-959173435}
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{}
+\Research{Innovación}
 \courses{}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--
 \email{jrenom@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Jose Miguel Renom Andara}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Doctor{Mathematics}{Matemáticas}{}{USB}{Venezuela}{2016}
 \end{titles}
 \Category{}
 \webpage{}
@@ -2776,19 +2762,18 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{rrivas@utec.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{Rubén Demetrio Rivas Medina}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Degree{Computing}{Ingeniería Agrícola}{Estadística e Informática}{UNALM}{Perú}{1990}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-981536664}
 \facebook{}
-\Twitter{}
+\Twitter{@rude4000}
 \Blog{}
 \Research{}
 \courses{}
@@ -2797,17 +2782,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
  
 --BEGIN-PROFESSOR--
 \email{jbroncano@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Juan Carlos Broncano Torres}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Matemática Aplicada}{UNI}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-997327502}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2817,17 +2801,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{jbarraza@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Julio Cesar Barraza Bernaola}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Matemática Aplicada}{UNI}{Perú}{2012}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-997085753}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2837,19 +2820,22 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{cantonini@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Claudia Fausta Maura Antonini Bova}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Doctor{Mathematics}{Ingeniería Industrial y Sistemas}{}{GATECH}{EEUU}{2005}
+     \Master{Mathematics}{Matemática Aplicada}{}{GATECH}{EEUU}{2000}
+     \Master{Mathematics}{Matemática Pura}{}{USB}{Venezuela}{1996}
+     \Master{Mathematics}{Investigación de Operaciones}{}{GATECH}{EEUU}{2004}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{}
-\Phone{+51-1-}
-\Mobile{+51-9.}
-\facebook{}
-\Twitter{}
+\Office{P-315}
+\Phone{+51-1-2305020}
+\Extension{4286}
+\Mobile{+51-932766009}
+\facebook{Claudia Antoninii}
+\Twitter{@antclaudia}
 \Blog{}
 \Research{}
 \courses{}
@@ -2857,17 +2843,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{etapia@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Elmer Alfonso Tapia Berrocal}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Humanities}{Educación}{Docencia Universitaria}{UPEU}{Perú}{2017}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-933057237}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2877,17 +2862,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{sescalante@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Sonia Escalante Huamaní}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Matemática Pura}{}{PUCP}{Perú}{1995}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-943153009}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2897,17 +2881,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{cnavarro@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Cristina Navarro Flores}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Matemática Aplicada}{UNI}{Perú}{2014}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-964024985}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2917,17 +2900,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{dpalomino@utec.edu.pe}
-\prefix{}
+\prefix{Prof.}
 \name{David  Ernesto Palomino Alva}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Degree{Humanities}{Educación}{}{USIL}{Perú}{2004}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-991155419}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2937,17 +2919,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{arios@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Alejandro Rios Cuadros}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Doctor{Mathematics}{Ciencias}{Física}{UFMG}{Brasil}{2016}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-993440455}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2957,17 +2938,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{rjabo@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Rosa Fabiola Jabo Bereche}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Matemáticas}{}{PUCP}{Perú}{2004}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-961736394}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2977,17 +2957,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mcarlos@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Max  Jorge Carlos Salazar}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Química Orgánica y Biología}{USP}{Brasil}{2015}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-943472550}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -2997,17 +2976,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{aratti@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Alejandra Ratti Parandelli}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Doctor{Humanities}{Filosofía}{}{ASTATE}{EEUU}{2010}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-940656002}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3017,17 +2995,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{rhoyos@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Rocío Giovanna Hoyos Diaz}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Humanities}{Educación}{Docencia e Investigación}{USMP}{Perú}{2016}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-992739323}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3037,17 +3014,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mbarrera@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Melissa Barrera Tomas}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Química}{UQAM}{Canadá}{2016}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-949636559}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3058,17 +3034,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mfernandez@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{María De Fátima Fernandez Lamarque}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Doctor{Humanities}{Filosofía}{}{LSU}{EEUU}{1996}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-966397967}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3078,17 +3053,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{apinedo@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Angela Pinedo Flores}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Ciencias de los Materiales }{PUCP}{Perú}{2016}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-991611002}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3098,17 +3072,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{czagarra@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Carmen Luz Zegarra Urquia}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Química}{}{PUCP}{Perú}{2008}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-999077806}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3118,17 +3091,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{mgusukuma@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Marco Antonio Gusukuma Higa}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ingeniería Industrial}{}{UNI}{Perú}{2014}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-997277718}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3138,77 +3110,77 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{jbueno@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Juan Carlos Bueno Villanueva}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Tecnologías de Información}{Dirección}{ESAN}{Perú}{2010}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{}
-\Phone{+51-1-}
+\Office{P-519}
+\Phone{+51-1-2305020}
+\Extension{4214}
 \Mobile{+51-9.}
-\facebook{}
+\facebook{jbueno@utec.edu.pe}
 \Twitter{}
 \Blog{}
-\Research{}
+\Research{Big Data}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
-\email{jdiaz@utec.edu.pe}
-\prefix{}
+\email{jdiazl@utec.edu.pe}
+\prefix{Mg.}
 \name{Jose Alfredo Diaz Leon}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Tecnologías de Información y Comunicaciones}{}{ESAN}{Perú}{2012}           
+     \Master{Computing}{Tecnologías de Información y Comunicaciones}{}{URL}{España}{2012}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-998645255}
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{}
+\Research{Dispositivos TICS}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{jfarfan@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Jaime Moshe Farfán Madariaga}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Computing}{Tecnologías de Información}{Dirección}{UDEP}{Perú}{2015}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{}
-\Phone{+51-1-}
-\Mobile{+51-9.}
+\Office{Dpto de Informática }
+\Phone{+51-1-3173900}
+\Extension{3230}
+\Mobile{+51-999407034.}
 \facebook{}
-\Twitter{}
+\Twitter{@jaimenfarfan}
 \Blog{}
-\Research{}
+\Research{Desarrollo de Start Up}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{mllosa@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Melchor Nicolás Llosa Demartini}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencia}{Gestión Ambiental}{UNFV}{Perú}{2008}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{}
-\Phone{+51-1-}
-\Mobile{+51-9.}
+\Office{P-613}
+\Phone{+51-1-2305020}
+\Extension{4237}
+\Mobile{+51-999011107}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3221,14 +3193,15 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{}
 \name{Alexander Filadelfo Peña Nevado}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+   
+     \Degree{Mathematics}{Física}{}{UNI}{Perú}{}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{}
-\Phone{+51-1-}
-\Mobile{+51-9.}
+\Office{P-605}
+\Phone{+51-1-2503020}
+\Extension{4230}
+\Mobile{+51-999258615}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3238,17 +3211,16 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 --BEGIN-PROFESSOR--
 \email{rperez@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Rosulo Perez Cupe}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
-     \Master{}{}{}{}{}{}
+     \Master{Mathematics}{Ciencias}{Matemática Aplicada}{UNI}{Perú}{2011}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Mobile{+51-995547531}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -3256,10 +3228,30 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \courses{}
 --END-PROFESSOR--
 
-BEGIN-PROFESSOR--
+--BEGIN-PROFESSOR--
+\email{ahmujica@gmail.com}
+\prefix{Bach.}
+\name{Alonso Mujica}
+\begin{titles}
+     \Bachelor{Computing}{Ingeniería Industrial}{}{ULIMA}{Perú}{2012}
+\end{titles}
+\Category{}
+\webpage{www.silabuz.com}
+\Office{}
+\Phone{+51-1-}
+\Extension{}
+\Mobile{+51-950598880.}
+\facebook{Alonso Mujica}
+\Twitter{@alonsomujica1}
+\Blog{timov.pe}
+\Research{Tecnologías de Educación}
+\courses{}
+--END-PROFESSOR--
+
+--BEGIN-PROFESSOR--
 \email{}
 \prefix{}
-\name{}
+\name{José Carreón Romero}
 \begin{titles}
      \Doctor{}{}{}{}{}{}
      \Master{}{}{}{}{}{}
@@ -3268,7 +3260,8 @@ BEGIN-PROFESSOR--
 \webpage{}
 \Office{}
 \Phone{+51-1-}
-\Mobile{+51-9.}
+\Extension{}
+\Mobile{+51-996605406}
 \facebook{}
 \Twitter{}
 \Blog{}

@@ -61,6 +61,18 @@ sub replace_accents($)
 	return $text;
 }
 
+sub replace_latex_babel_to_latex_standard($)
+{
+	my ($text) = (@_);
+	$text =~ s/Á/\\'A/g;		$text =~ s/á/\\'a/g;
+	$text =~ s/É/\\'E/g;		$text =~ s/é/\\'e/g;
+	$text =~ s/Í/\\'\{I\}/g;		$text =~ s/í/\\'\{i\}/g;
+	$text =~ s/Ó/\\'O/g;		$text =~ s/ó/\\'o/g;
+	$text =~ s/Ú/\\'U/g;		$text =~ s/ú/\\'u/g;
+	$text =~ s/Ñ/\\~N/g;		$text =~ s/ñ/\\~n/g;
+	return $text;
+}
+
 # ok
 sub no_accents($)
 {
@@ -151,8 +163,11 @@ sub get_prefix($)
 sub get_pdf_icon_link($)
 {
         my ($codcour) = (@_);
-        my $link  = "<a href=\"syllabi/$codcour.pdf\">";
-        $link    .= "<img alt=\"$Common::config{dictionary}{SyllabusOf} $codcour\" src=\"./figs/pdf.jpeg\" ";
+	my $lang = $Common::config{language_without_accents};
+	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+
+        my $link  = "<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
+        $link    .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" ";
         $link    .=  "style=\"border: 0px solid ; width: 16px; height: 16px;\"></a>";
         return $link;
 }
@@ -290,7 +305,7 @@ sub sem_label($)
 	my ($sem) = (@_);
 # 	print "$sem\n";
 	my $rpta  = "\"$sem$config{dictionary}{ordinal_postfix}{$sem} $config{dictionary}{Sem} ";
-	$rpta .= "($config{credits_this_semester}{$sem} $config{dictionary}{cr})\"";
+	$rpta    .= "($config{credits_this_semester}{$sem} $config{dictionary}{cr})\"";
 	return  $rpta;
 }
 
@@ -481,21 +496,24 @@ sub set_initial_paths()
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
 	$path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";
 
-	$path_map{"in-Book-of-syllabi-file"}		= $path_map{InTexAllDir}."/BookOfSyllabi.tex";
-	$path_map{"in-Book-of-syllabi-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
-	$path_map{"in-Book-of-syllabi-delivery-control-file"}		= $path_map{InTexAllDir}."/BookOfDeliveryControl.tex";
-	$path_map{"in-Book-of-syllabi-delivery-control-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
-	$path_map{"in-Book-of-descriptions-main-file"}	= $path_map{InTexAllDir}."/BookOfDescriptions.tex";
-	$path_map{"in-Book-of-descriptions-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
-	$path_map{"in-Book-of-bibliography-file"}	= $path_map{InTexAllDir}."/BookOfBibliography.tex";
-	$path_map{"in-Book-of-bibliography-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"in-Book-of-Syllabi-file"}		= $path_map{InTexAllDir}."/BookOfSyllabi.tex";
+	$path_map{"out-Book-of-Syllabi-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
+	$path_map{"in-Book-of-Syllabi-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"in-Book-of-Syllabi-delivery-control-file"}		= $path_map{InTexAllDir}."/BookOfDeliveryControl.tex";
+	$path_map{"in-Book-of-Syllabi-delivery-control-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"in-Book-of-Descriptions-main-file"}	= $path_map{InTexAllDir}."/BookOfDescriptions.tex";
+	$path_map{"out-Book-of-Descriptions-main-file"}	= $path_map{OutputTexDir}."/BookOfDescriptions-<LANG>.tex";
+	$path_map{"in-Book-of-Descriptions-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"in-Book-of-Bibliography-main-file"}	= $path_map{InTexAllDir}."/BookOfBibliography.tex";
+	$path_map{"out-Book-of-Bibliography-main-file"}	= $path_map{OutputTexDir}."/BookOfBibliography-<LANG>.tex";
+	$path_map{"in-Book-of-Bibliography-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
 	$path_map{"in-Book-of-units-by-course-main-file"}= $path_map{InTexAllDir}."/BookOfUnitsByCourse.tex";
 	$path_map{"in-Book-of-units-by-course-face-file"}= $path_map{InTexAllDir}."/Book-Face.tex";
 
         $path_map{"in-pdf-icon-file"}			= $path_map{InFigDir}."/pdf.jpeg";
-	$path_map{"out-pdf-syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist.tex";
-	$path_map{"out-pdf-syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
-	$path_map{"out-short-descriptions-file"}	= $path_map{OutputTexDir}."/short-descriptions.tex";
+	$path_map{"out-pdf-Syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist-<LANG>.tex";
+	$path_map{"out-pdf-Syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
+	$path_map{"out-short-Descriptions-file"}	= $path_map{OutputTexDir}."/short-descriptions.tex";
 	$path_map{"out-list-of-unit-by-course-file"}	= $path_map{OutputTexDir}."/list-of-units-by-course.tex";
 	$path_map{"out-bibliography-list-file"}		= $path_map{OutputTexDir}."/bibliography-list.tex";
 
@@ -1887,11 +1905,11 @@ sub preprocess_syllabus($)
 	while($fulltxt =~ m/\n\n\n/)
 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
 	
-	my $codcour_alias       = get_alias($codcour);
+	my $codcour_label       = get_alias($codcour);
 # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
 	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
 	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
-	my $header      = "\n\\course{$codcour_alias. $course_name}{$course_type}{$codcour}";
+	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
 	
 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
@@ -3077,7 +3095,7 @@ sub generate_course_info_in_dot($$$)
 
 	$map{NAME}	= $course_info{$codcour}{course_name}{$lang};
 	$map{TYPE}	= $config{dictionary}{$course_info{$codcour}{course_type}};
-	$map{PAGE}	= "--PAGE$codcour--";
+	$map{PAGE}	= "--PAGE$codcour_label--";
 
 	my ($outcome_txt, $sep) = ("", "");
 	foreach my $outcome (@{$course_info{$codcour}{outcomes_array}})
@@ -3086,6 +3104,16 @@ sub generate_course_info_in_dot($$$)
 	}
 	$map{OUTCOMES}	= $outcome_txt;
 	return replace_tags($this_item, "<", ">", %map);
+}
+
+sub generate_course_info_in_dot_with_sem($$$)
+{
+	my ($codcour, $this_item, $lang) = (@_);
+	my $output_txt = generate_course_info_in_dot($codcour, $this_item, $lang);
+
+	my $sem_label = "$Common::course_info{$codcour}{semester}$Common::config{dictionary}{ordinal_postfix}{$Common::course_info{$codcour}{semester}} $Common::config{dictionary}{Sem}";
+	$output_txt  =~ s/\(<SEM>\)/\($sem_label\)/g;
+	return $output_txt;
 }
 
 sub update_page_numbers($)
@@ -3467,6 +3495,8 @@ sub setup()
 	parse_courses(); 
 # 	print Dumper(\%{$course_info{"MA102"}});
 	filter_courses();
+
+	$Common::config{parallel} 	= 0;
 }
 
 1;
