@@ -160,15 +160,18 @@ sub get_prefix($)
 	return "";
 }
 
-sub get_pdf_icon_link($)
+sub get_pdf_icon_link($$)
 {
-        my ($codcour) = (@_);
-	my $lang = $Common::config{language_without_accents};
-	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-
-        my $link  = "<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
-        $link    .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" ";
-        $link    .=  "style=\"border: 0px solid ; width: 16px; height: 16px;\"></a>";
+        my ($prev_tex, $codcour) = (@_);
+	my $link  = "";
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+	    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+	    $link .= $prev_tex;
+	    $link .= "<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
+	    $link .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" ";
+	    $link .=  "style=\"border: 0px solid ; width: 16px; height: 16px;\"></a>\n";
+	}
         return $link;
 }
 
@@ -197,10 +200,12 @@ sub format_semester_label($)
 sub get_course_link($)
 {
 	my ($codcour) = (@_);
-	my $course_full_label	= "$codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}}";
+	my $codcour_label = Common::get_label($codcour);
+
+	my $course_full_label	= "$codcour_label. $course_info{$codcour}{course_name}{$config{language_without_accents}}";
 	my $semester 		= $course_info{$codcour}{semester};
-	my $course_link		= "\\htmlref{$course_full_label}{sec:$codcour}~";
-	$course_link   		.= "($semester\$^{$config{dictionary}{ordinal_postfix}{$semester}}\$ $config{dictionary}{Sem}-$config{dictionary}{Pag}~\\pageref{sec:$codcour})";
+	my $course_link		= "\\htmlref{$course_full_label}{sec:$codcour_label}~";
+	$course_link   		.= "($semester\$^{$config{dictionary}{ordinal_postfix}{$semester}}\$ $config{dictionary}{Sem}-$config{dictionary}{Pag}~\\pageref{sec:$codcour_label})";
 	return $course_link;
 }
 
@@ -375,8 +380,8 @@ sub set_global_variables()
 	$config{OutputAdvancesDir}   		= "$config{OutputInstDir}/advances";
 	system("mkdir -p $config{OutputAdvancesDir}");
 
-	$config{OutputPrereqDir}      	= "$config{OutputInstDir}/pre-prerequisites";    
-	system("mkdir -p $config{OutputPrereqDir}");
+# 	$config{OutputPrereqDir}      	= "$config{OutputInstDir}/pre-prerequisites";    
+# 	system("mkdir -p $config{OutputPrereqDir}");
 	
 	$config{OutputScriptsDir}	= "$config{OutputInstDir}/scripts";
 	system("mkdir -p $config{OutputScriptsDir}");
@@ -2701,6 +2706,7 @@ sub filter_courses()
 # 	exit;
 	foreach my $codcour (sort {$course_info{$a}{semester} <=> $course_info{$b}{semester}} keys %course_info)
 	{
+		my $codcour_label = Common::get_label($codcour);
 		my $semester = $course_info{$codcour}{semester};
 		$config{n_semesters} = $semester if($semester > $config{n_semesters});
 		$courses_count++;
@@ -2800,21 +2806,22 @@ sub filter_courses()
 			{	
 				if(defined($antialias_info{$codreq}))
 				{	$codreq = $antialias_info{$codreq};	}
+				my $codreq_label = Common::get_label($codreq);
 				if(defined($course_info{$codreq}))
 				{
 					my $course_full_label = "$codreq. $course_info{$codreq}{course_name}{$config{language_without_accents}}";
 					my $semester_prereq = $course_info{$codreq}{semester};
 					push(@{$course_info{$codcour}{full_prerequisites}}, get_course_link($codreq));
 
-					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "$sep\\htmlref{$course_full_label}{sec:$codcour}.~";
+					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "$sep\\htmlref{$course_full_label}{sec:$codcour_label}.~";
 					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "($semester_prereq\$^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
 					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "$config{dictionary}{Sem})\n";
 
-					$course_info{$codcour}{short_prerequisites} .= "$sep\\htmlref{$codreq}{sec:$codreq} ";
+					$course_info{$codcour}{short_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
 					$course_info{$codcour}{short_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
 					$course_info{$codcour}{short_prerequisites} .= "$config{dictionary}{Sem})";
 
-					$course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq}{sec:$codreq} ";
+					$course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
 					$course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
 					$course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
 
@@ -3066,7 +3073,7 @@ sub generate_course_info_in_dot($$$)
 	$map{FULLNAME}	= $newlabel;
 # 	Util::print_message("$nlines+$config{dictionary}{extralevels}"); 
 	$map{HEIGHT}	= 0.3*($nlines+$config{dictionary}{extralevels});
-	$map{TEXTCOLOR}	= $course_info{$codcour}{textcolor};
+	$map{FONTCOLOR}	= $course_info{$codcour}{textcolor};
 	
 	if($config{graph_version} >= 2)
 	{
@@ -3080,6 +3087,7 @@ sub generate_course_info_in_dot($$$)
 		}
 		$map{SHORTTYPE}	= $course_info{$codcour}{short_type};
 	}
+	$map{BORDERCOLOR} = "white";
 	$map{FILLCOLOR}	= $course_info{$codcour}{bgcolor};
 	$map{CR}		= $course_info{$codcour}{cr};
 	
@@ -3112,7 +3120,7 @@ sub generate_course_info_in_dot_with_sem($$$)
 	my $output_txt = generate_course_info_in_dot($codcour, $this_item, $lang);
 
 	my $sem_label = "$Common::course_info{$codcour}{semester}$Common::config{dictionary}{ordinal_postfix}{$Common::course_info{$codcour}{semester}} $Common::config{dictionary}{Sem}";
-	$output_txt  =~ s/\(<SEM>\)/\($sem_label\)/g;
+# 	$output_txt  =~ s/\(<SEM>\)/\($sem_label\)/g;
 	return $output_txt;
 }
 
@@ -3142,17 +3150,13 @@ sub update_page_numbers($)
 
 sub update_page_numbers_for_all_courses_maps()
 {
-	my $OutputDotDir  		= Common::get_template("OutputDotDir");
+	my $OutputDotDir  = Common::get_template("OutputDotDir");
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{     
 	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 	      {
-		      if(defined($Common::antialias_info{$codcour}))
-		      {	$codcour = $Common::antialias_info{$codcour}	}
 		      my $codcour_alias = Common::get_alias($codcour);
-	  
-		      my $output_file = "$OutputDotDir/$codcour.dot";
-		      Common::update_page_numbers($output_file);
+		      Common::update_page_numbers("$OutputDotDir/$codcour_alias.dot");
 	      }
 	}
 }

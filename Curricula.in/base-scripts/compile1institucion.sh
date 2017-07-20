@@ -110,6 +110,7 @@ if($html == 1) then
       -white <UNIFIED_MAIN_FILE>;
       cp "<OUTPUT_CURRICULA_HTML_FILE>" "<OUTPUT_INDEX_HTML_FILE>";
       #-split 3 -numbered_footnotes -images_only -timing -html_version latin1 -antialias -no_transparent \
+      
 
       ./scripts/update-analytic-info.pl <AREA>-<INST>
       ./scripts/gen-faculty-info.pl <AREA>-<INST>
@@ -123,6 +124,8 @@ rm <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf
 mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_DIR>/pdfs/.
 
 <OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
+mkdir -p <OUTPUT_HTML_DIR>/syllabi;
+cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 
 # Generate Books
 # 
@@ -144,11 +147,6 @@ mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_DIR>/pdfs/.
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 
-if($html == 1) then
-      #<OUTPUT_DIR>/scripts/gen-syllabi.sh
-      mkdir -p <OUTPUT_HTML_DIR>/syllabi;
-      cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
-endif
 
 date >> <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-time.txt;
 more <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-time.txt;

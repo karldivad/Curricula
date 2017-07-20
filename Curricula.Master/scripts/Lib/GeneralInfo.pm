@@ -65,13 +65,13 @@ sub generate_course_tables()
 			$pdflink .= "\\latexhtml{}{%\n";
                         $pdflink .= "\t\\begin{htmlonly}\n";
                         $pdflink .= "\t\t\\begin{rawhtml}\n";
-                        $pdflink .=  "\t\t\t".Common::get_pdf_icon_link($codcour_label)."\n";
+                        $pdflink .= Common::get_pdf_icon_link("\t\t\t", $codcour_label);
                         $pdflink .=  "\t\t\\end{rawhtml}\n";
                         $pdflink .=  "\t\\end{htmlonly}\n";
 			$pdflink .= "}\n";
 # 			Util::print_message("codcour = $codcour, $Common::course_info{$codcour}{bgcolor}");
-			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour_label}}{sec:$codcour}";
-			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour_label}}{sec:$codcour_label}";
+			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour_label}";
 			if(not $Common::course_info{$codcour}{recommended} eq "")
 			{	
 				my ($rec_courses, $sep) = ("", "");
@@ -80,7 +80,7 @@ sub generate_course_tables()
 # 					print "$rec(A)\n";
 					$rec = Common::get_label($rec);
 					my $semester_rec = $Common::course_info{$rec}{semester};
-					$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+					$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour_label}";
 					$rec_courses .= "($semester_rec";
 					$rec_courses .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester_rec}}\$)";
 					$sep = ", ";
@@ -88,7 +88,7 @@ sub generate_course_tables()
 				}
 				$this_course_info{COURSENAME} .= "\\footnote{$Common::config{dictionary}{AdviceRecCourses}: $rec_courses.}";	
 			}
-			$this_course_info{COURSENAME} .= " ($Common::config{dictionary}{Pag}~\\pageref{sec:$codcour})~$pdflink";
+			$this_course_info{COURSENAME} .= " ($Common::config{dictionary}{Pag}~\\pageref{sec:$codcour_label})~$pdflink";
 			$this_course_info{COURSEAREA} .= "$Common::course_info{$codcour}{area}";
 			$this_course_info{DPTO}       .= "$Common::course_info{$codcour}{department}";
 
@@ -1104,7 +1104,7 @@ sub generate_outcomes_by_course($$$$$$)
 			{	Util::print_error("Course $codcour (Alias: $codcour_label) ($semester Sem) has NOT color");	}
 			
 			#my $label 		= "\\colorbox{$color}{\\htmlref{$codcour}{sec:$codcour}}";
-			my $label 		= "\\htmlref{$codcour}{sec:$codcour}";
+			my $label 		= "\\htmlref{$codcour_label}{sec:$codcour_label}";
 			$first_row_text .= "& \\cellcolor{$color} ";
 			if( $angle > 0 ) {$first_row_text .= "\\rotatebox[origin=lb,units=360]{$angle}{$label} ";}
 			else {		  $first_row_text .= "$label ";	}
@@ -1184,11 +1184,12 @@ sub generate_outcomes_by_course($$$$$$)
 			if($background_flag == 1 && $Common::config{graph_version}>= 2)
 			{	$background_color = "";	}
 			my $codcour = $1;
+			my $codcour_label = Common::get_label($codcour);
 			
 			if( defined($Common::course_info{$codcour}{outcomes}{$outcome}))
 			{
                                 #$current_row =~ s/--$codcour--/\$\\checkmark\$/;
-                                $current_row =~ s/--$codcour--/$background_color\\htmlref{$Common::course_info{$codcour}{outcomes}{$outcome}}{sec:$codcour}/;
+                                $current_row =~ s/--$codcour--/$background_color\\htmlref{$Common::course_info{$codcour}{outcomes}{$outcome}}{sec:$codcour_label}/;
                                 #Util::print_message("Common::course_info{$codcour}{outcomes}{$outcome}=$Common::course_info{$codcour}{outcomes}{$outcome}");
 			}
 			else # There is no information for this cell

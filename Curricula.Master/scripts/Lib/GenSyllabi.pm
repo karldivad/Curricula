@@ -760,7 +760,7 @@ sub gen_course_general_info()
 			$syllabus_link .= "\t\\begin{htmlonly}\n";
 			$syllabus_link .= "\t\\item {\\bf $Common::config{dictionary}{Syllabus}}:\n";
 			$syllabus_link .= "\t\t\\begin{rawhtml}\n";
-			$syllabus_link .=  "\t\t\t".Common::get_pdf_icon_link($codcour_label)."-"."\n";
+			$syllabus_link .= Common::get_pdf_icon_link("\t\t\t", $codcour_label)."-";
 			$syllabus_link .=  "\t\t\\end{rawhtml}\n";
 			$syllabus_link .=  "\t\\end{htmlonly}\n";
 			$normal_header .= $syllabus_link;
@@ -780,21 +780,25 @@ sub gen_course_general_info()
 			$normal_header .= $prereq_txt;
 			$normal_header    .= "\\end{itemize}\n";
 			
-			my $output_file = "$OutputPrereqDir/$codcour";
+			my $output_file = "$OutputPrereqDir/$codcour_label";
 			Util::write_file("$output_file.tex", $normal_header);
-
+# 			Util::print_message("$codcour, $output_file.tex ok!");
+			
 			my $output_tex  = "";
 			$output_tex    .= "\\input{$output_file}\n\n";
 			$output_tex    .= "\\begin{figure}\n";
 			$output_tex    .= "\\centering\n";
-			$output_tex    .= "\\includegraphics[scale=0.66]{\\OutputFigDir/$codcour}\n";
-			$output_tex    .= "\\caption{Cursos relacionados con \\htmlref{$codcour}{sec:$codcour}}\n";
-			$output_tex    .= "\\label{fig:prereq:$codcour}\n";
+			$output_tex    .= "\\includegraphics[scale=0.66]{\\OutputFigDir/$codcour_label}\n";
+			$output_tex    .= "\\caption{Cursos relacionados con \\htmlref{$codcour_label}{sec:$codcour_label}}\n";
+			$output_tex    .= "\\label{fig:prereq:$codcour_label}\n";
 			$output_tex    .= "\\end{figure}\n";
 
 			Util::write_file("$output_file-html.tex", $output_tex);
+# 			Util::print_message("$output_file-html.tex ok!");
+			
 		}
 	 }
+	 #Util::print_error("TODO: XYZ Aqui falta poner varios silabos en idiomas !");
 }
 
 sub gen_prerequisites_map($)
@@ -803,7 +807,7 @@ sub gen_prerequisites_map($)
 	my $size = "big";
 	my $template_file = Common::get_template("in-$size-graph-item.dot");
 	my $course_tpl 	= Util::read_file($template_file);
-	$course_tpl =~ s/<FULLNAME>/<FULLNAME> \(<SEM>\)/g;
+# 	$course_tpl =~ s/<FULLNAME>/<FULLNAME> \(<SEM>\)/g;
 	#Util::print_message("course_tpl = $course_tpl ... ");
 	
 	Util::print_message("Reading $template_file ... ");
@@ -839,7 +843,12 @@ sub gen_prerequisites_map($)
 				push(@{$courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
 			}
 			
- 			my $this_course_dot = Common::generate_course_info_in_dot_with_sem($codcour, $course_tpl, $lang)."\n";
+ 			my $this_course_dot = $course_tpl;
+ 			my %map = ("FONTCOLOR"	=> "black",
+				   "FILLCOLOR"	=> "yellow",
+				   "BORDERCOLOR" => "black");
+ 			$this_course_dot = Common::replace_tags($this_course_dot, "<", ">", %map);
+ 			$this_course_dot = Common::generate_course_info_in_dot_with_sem($codcour, $this_course_dot, $lang)."\n";
  			
  			# Map courses AFTER this course
 			my $post_courses_dot = "";
@@ -857,25 +866,25 @@ sub gen_prerequisites_map($)
 			my $sem_definitions 	= "";
 			my $same_rank 		= "";
 			my $sep 		= "";
-# 			for( my $sem_count = $min_sem_to_show; $sem_count <= $max_sem_to_show; $sem_count++)
-# 			{	
-# 				my $sem_label = Common::sem_label($sem_count);
-# 				my $this_sem = "\t{ rank = same; $sem_label; "; 
-# 				foreach my $one_cour (@{$courses_by_semester{$sem_count}})
-# 				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
-# 				$same_rank .= "$this_sem }\n";
-# 				$sem_col .= "$sep$sem_label";
-# # 				,fillcolor=black,style=filled,fontcolor=white
-# 				$sem_definitions .= "\t$sem_label [shape=box];\n";
-# 				$sep = "->";
-# 			}
+			for( my $sem_count = $min_sem_to_show; $sem_count <= $max_sem_to_show; $sem_count++)
+			{	
+				my $sem_label = Common::sem_label($sem_count);
+				my $this_sem = "\t{ rank = same; $sem_label; "; 
+				foreach my $one_cour (@{$courses_by_semester{$sem_count}})
+				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
+				$same_rank .= "$this_sem }\n";
+				$sem_col .= "$sep$sem_label";
+# 				,fillcolor=black,style=filled,fontcolor=white
+				$sem_definitions .= "\t$sem_label [shape=box];\n";
+				$sep = "->";
+			}
 			my $output_tex  = "";
 			# Semester: Ej. 5th Sem.
 			$output_tex .= "digraph $codcour_label\n";
 			$output_tex .= "{\n";
 			$output_tex .= "\tbgcolor=white;\n";
 			$output_tex .= "\tcompound=true;\n";
-# 			$output_tex .= "\t$sem_col;\n";
+ 			$output_tex .= "\t$sem_col;\n";
  			$output_tex .= "\n";
 			$output_tex .= $sem_definitions;
 			if(not $prev_courses_dot eq "")
@@ -883,14 +892,14 @@ sub gen_prerequisites_map($)
 			
 			$output_tex .= "\tsubgraph cluster$codcour_label\n";
 			$output_tex .= "\t{\n";
-			$output_tex .= "\t\tbgcolor=yellow;\n";
-			$output_tex .= "\t\tcolor=yellow;\n";
+# 			$output_tex .= "\t\tbgcolor=yellow;\n";
+# 			$output_tex .= "\t\tcolor=yellow;\n";
 			$output_tex .= "\t$this_course_dot\n";
 			$output_tex .= "\t}\n";
 			
 			if(not $post_courses_dot eq "")
 			{	$output_tex .= "$post_courses_dot\n";	}
-# 			$output_tex .= "$same_rank\n";
+			$output_tex .= "$same_rank\n";
 			
 			$output_tex .= "}\n";
 			

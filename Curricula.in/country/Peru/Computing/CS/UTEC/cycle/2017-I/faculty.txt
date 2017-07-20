@@ -2554,6 +2554,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 
 
 
+
 %C.COMPUTACIÓN 
 
 --BEGIN-PROFESSOR--
@@ -2665,7 +2666,6 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Prof.}
 \name{Carlo Christian Malpartida Anton}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
      \Degree{Computing}{Ingeniería Eléctrica}{}{PUCP}{Peŕu}{2012}
 \end{titles}
 \Category{}
@@ -2704,7 +2704,6 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Randiel Javier Melgarejo Diaz}
 \begin{titles}
-     \Doctor{}{}{}{}{}{}
      \Bachelor{Computing}{Ingeniería de Sistemas}{}{UNI}{Perú}{2017}
 \end{titles}
 \Category{}
@@ -3233,7 +3232,7 @@ Master{Humanities}{Educación Superior}{}{Universidad Católica Santa Marí­a}{
 \prefix{Bach.}
 \name{Alonso Mujica}
 \begin{titles}
-     \Bachelor{Computing}{Ingeniería Industrial}{}{ULIMA}{Perú}{2012}
+     \Bachelor{Computing}{Ingeniería Industrial }{}{ULIMA}{Perú}{2012}
 \end{titles}
 \Category{}
 \webpage{www.silabuz.com}

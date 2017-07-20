@@ -30,6 +30,11 @@ bibtex curricula-main1
 gh../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-syllabi.sh all;
 
+./scripts/process-curricula.pl CS-UTEC
+dot -Tps ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/dot/CS2102.dot -o ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/fig/CS2102.ps; 
+convert ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/fig/CS2102.ps ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/fig/CS2102.png
+
+
 cp ../Curricula.in/lang/Espanol/cycle/2017-I/Syllabi/Computing/CS/CS1D1.bib ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/tex
 ./scripts/gen-syllabus.sh CS1D1-EN ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
 ./scripts/gen-syllabus.sh CS1D1-ES ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017

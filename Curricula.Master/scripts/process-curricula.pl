@@ -90,7 +90,7 @@ sub main()
 	    GenSyllabi::gen_bibliography_list($lang);
 	}
 	generate_general_info();
-# 
+
 #         copy_basic_files();
 #         Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));
 # 	

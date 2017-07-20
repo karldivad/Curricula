@@ -114,7 +114,7 @@ BibliographySection=Referencias Bibliográficas
 
 MethodologyAndEvaluation=Metodologia y Evaluación
 Methodology		=Metodología
-THEORY-SESSIONS     =Sesiones Teoricas 
+THEORY-SESSIONS     =Sesiones Teóricas 
 THEORY-SESSIONS-CONTENT =El desarrollo de las sesiones teóricas está focalizado en el estudiante, a través de su participación activa, resolviendo problemas relacionados al curso con los aportes individuales y discutiendo casos reales de la industria. Los alumnos desarrollarán a lo largo del curso un proyecto de aplicación de las herramientas recibidas en una empresa.
 LAB-SESSIONS           =Sesiones de Laboratorio 
 LAB-SESSIONS-CONTENT    =Las sesiones prácticas se desarrollan en laboratorio. Las prácticas de laboratorio se realizan en equipos para fortalecer su comunicación. Al inicio de cada laboratorio se explica el desarrollo de la práctica y al término se destaca las principales conclusiones de la actividad en forma grupal.
