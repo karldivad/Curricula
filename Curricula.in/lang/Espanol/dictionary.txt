@@ -30,6 +30,7 @@ Laboratory= Laboratorio
 CREDITS   = CRÉDITOS
 Credits   = Créditos
 cr        = cr
+CR	  = Cr
 Prerequisites=Prerrequisitos
 TYPE      = TIPO
 TypeOfCourse=Tipo de Curso

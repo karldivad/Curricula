@@ -98,10 +98,10 @@ if($html == 1) then
       dvips -o <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi;
       ps2pdf <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.pdf;
       rm <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi;
-
+    
       rm -rf <OUTPUT_HTML_DIR>;
       mkdir -p <OUTPUT_HTML_DIR>/figs;
-      cp <IN_LANG_DIR>/figs/pdf.jpeg <IN_LANG_DIR>/figs/star.gif <IN_LANG_DIR>/figs/none.gif <OUTPUT_HTML_DIR>/figs/.;
+      cp <IN_LANG_DIR>/figs/pdf.jpeg <IN_LANG_DIR>/figs/star.gif <IN_LANG_DIR>/figs/none.gif <IN_LANG_DIR>/figs/*.png <OUTPUT_HTML_DIR>/figs/.;
 
       latex2html -t "Curricula <AREA>-<INST>" \
       -dir "<OUTPUT_HTML_DIR>/" -mkdir \

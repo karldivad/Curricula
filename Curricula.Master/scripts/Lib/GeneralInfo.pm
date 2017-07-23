@@ -103,7 +103,7 @@ sub generate_course_tables()
 			if($Common::course_info{$codcour}{lh} > 0)
 			{	$this_course_info{LABORATORY} = "$Common::course_info{$codcour}{lh}";	}
 			else{	$this_course_info{LABORATORY} = "~";	}
-			$this_course_info{CREDITS} = "$Common::course_info{$codcour}{cr}";
+			$this_course_info{CR} = "$Common::course_info{$codcour}{cr}";
 			
 			if($Common::course_info{$codcour}{course_type} eq "Mandatory")
 			{	$this_course_info{TYPE} = $Common::config{dictionary}{MandatoryShort};		}
@@ -300,7 +300,7 @@ sub generate_distribution_credits_by_area_by_semester()
 	my $table_begin = "\\begin{table}[h!]\n";
 	   $table_begin.= "\\centering\n";
 	my $nareas = 0;
-	my $width       = 5 + 1.3 * keys %{$Common::config{area_priority}};
+	my $width       = 6 + 1.3 * keys %{$Common::config{area_priority}};
 	   $table_begin.= "\\begin{tabularx}{$width"."cm}{";
 	my $table_end1  = "\\end{tabularx}\n";
 	my $table_end2  = "\\end{table}\n\n";
@@ -356,7 +356,7 @@ sub generate_distribution_credits_by_area_by_semester()
 	$output_txt .= "\\caption{$Common::config{dictionary}{DistributionCreditsByArea}}\\label{tab:DistributionCreditsByArea}\n";
 	$output_txt .= $table_end2;
 	Util::write_file($output_file, $output_txt);
-	Util::print_message("generate_distribution_area_by_semester ... OK!");
+	Util::print_message("generate_distribution_area_by_semester ($output_file) ... OK!");
 }
 
 sub generate_bok_index_old()
@@ -1234,7 +1234,8 @@ sub generate_outcomes_by_course($$$$$$)
 	$output_text .= $table_end2;
 	#$output_text .= $sum_row_text;
 
-	Util::write_file("$outfile", $output_text);
+	Util::write_file($outfile, $output_text);
+	Util::print_message("Writing $outfile ... ok!");
 # 	Util::print_message("generate_outcomes_by_course($init_sem, $sem_per_page, $rows_per_page,$outfile,$angle,$size) OK! ...");
 }
 

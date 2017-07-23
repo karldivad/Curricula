@@ -164,13 +164,16 @@ sub get_pdf_icon_link($$)
 {
         my ($prev_tex, $codcour) = (@_);
 	my $link  = "";
+	my $sep   = "";
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 	    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
 	    $link .= $prev_tex;
-	    $link .= "<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
-	    $link .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" ";
-	    $link .=  "style=\"border: 0px solid ; width: 16px; height: 16px;\"></a>\n";
+	    $link .= "$sep<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
+	    $link .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	    $link .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	    $link .= "</a>\n";
+	    $sep = ", ";
 	}
         return $link;
 }

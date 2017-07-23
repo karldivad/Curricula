@@ -215,7 +215,7 @@ sub replace_special_cases($)
           $maintxt =~ s/\\begin\{tabular\}\{$old_columns_header\}/\\begin\{tabular\}\{$new_columns_header\}/g;
     }
 #      $maintxt =~ s/\\rotatebox.*?\{.*?\}\{\(\\colorbox\{.*?\}\{\\htmlref\{.*?\}\{.*?\}\}\)\}/$1/g; xyz;
-     $maintxt =~ s/\\rotatebox.*?\{.*?\}\{\(\\htmlref\{.*?\}\{.*?\}\)\}/$1/g;
+     $maintxt =~ s/\\rotatebox.*?\{.*?\}\{(\\htmlref\{.*?\}\{.*?\})\}/$1/g;
     #print "siglas = $macros{siglas} x2\n";
 
      #\\ref{out:Outcomeb}) & \PrintOutcomeWOLetter{b}
@@ -318,6 +318,7 @@ sub main()
 	while ($maintxt =~ m/\n\n\n/){	$maintxt =~ s/\n\n\n/\n\n/g;	}
  	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
 	
+	$maintxt =~ s/\\cellcolor\{.*?\}//g;
 	Util::write_file($output_file, $maintxt);
 	Util::print_message("Finishing gen-html-main.pl ... ");
 }
