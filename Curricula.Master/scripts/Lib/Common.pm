@@ -66,9 +66,9 @@ sub replace_latex_babel_to_latex_standard($)
 	my ($text) = (@_);
 	$text =~ s/Á/\\'A/g;		$text =~ s/á/\\'a/g;
 	$text =~ s/É/\\'E/g;		$text =~ s/é/\\'e/g;
-	$text =~ s/Í/\\'\{I\}/g;		$text =~ s/í/\\'\{i\}/g;
+	$text =~ s/Í/\\'\{I\}/g;	$text =~ s/í/\\'\{i\}/g;
 	$text =~ s/Ó/\\'O/g;		$text =~ s/ó/\\'o/g;
-	$text =~ s/Ú/\\'U/g;		$text =~ s/ú/\\'u/g;
+	$text =~ s/Ú/\\'U/g;		$text =~ s/ú/\\'u/g;		$text =~ s/ü/\\"u/g;
 	$text =~ s/Ñ/\\~N/g;		$text =~ s/ñ/\\~n/g;
 	return $text;
 }

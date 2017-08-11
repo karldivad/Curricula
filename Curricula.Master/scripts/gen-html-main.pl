@@ -142,6 +142,9 @@ sub replace_environments($)
 sub replace_special_cases($)
 {
     my ($maintxt) = (@_);
+#     $maintxt =~ s/  / /g;
+#     $maintxt =~ s/\s*\}/\}/g;
+#     $maintxt =~ s/\{\s*/\{/g;
     $maintxt =~ s/\\begin\{btSect\}((.|\\|\n)*)\\end\{btSect\}//g;
     $maintxt =~ s/\\begin\{btUnit\}//g;
     $maintxt =~ s/\\end\{btUnit\}//g;
@@ -151,7 +154,7 @@ sub replace_special_cases($)
     $maintxt =~ s/\\.*?\{landscape\}//g;
     $maintxt =~ s/\\pagebreak//g;
     $maintxt =~ s/\\newpage//g;
-    $maintxt =~ s/\s*$Common::config{dictionary}{Pag}~\\pageref\{sec:.*?\}//g;
+    $maintxt =~ s/\s*$Common::config{dictionary}{Pag}.?~\\pageref\{sec:.*?\}//g;
     $maintxt =~ s/[,-]\)/\)/g;
     $maintxt =~ s/\(\)//g;
     $maintxt =~ s/\$\^\{(.*?)\}\$~$Common::config{dictionary}{Sem}/$1~$Common::config{dictionary}{Sem}/g;
@@ -249,8 +252,8 @@ sub main()
 	Common::read_special_macros($outcomes_macros_file, "Competence"); 
 	Common::read_special_macros($outcomes_macros_file, "CompetenceLevel"); 
 	
-	GenSyllabi::process_syllabi();
 	Common::read_bok($Common::config{language_without_accents}); 
+	GenSyllabi::process_syllabi();
 	Common::sort_macros();
 	
 	my $output_file = Common::get_template("unified-main-file");
@@ -276,6 +279,8 @@ sub main()
 		Util::print_message("$Common::institution: Environments = $environments_count");
 		Util::write_file($output_file, $maintxt);
 	}
+# 	Util::print_message("Llego aqui 1!"); exit;
+#         Util::write_file($output_file, $maintxt); exit;
         
         #print Dumper(\%{$Common::config{Competence}}); exit;
         while( $maintxt =~ m/\\Competence\{(.*?)\}/g )
@@ -316,7 +321,7 @@ sub main()
         #$maintxt =~ s/\\xspace}/}/g;
 	$maintxt =~ s/\\end\{document\}/\\bibliography\{$all_bib_items\}\n\\end\{document\}/g;
 	while ($maintxt =~ m/\n\n\n/){	$maintxt =~ s/\n\n\n/\n\n/g;	}
- 	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
+	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
 	
 	$maintxt =~ s/\\cellcolor\{.*?\}//g;
 	Util::write_file($output_file, $maintxt);

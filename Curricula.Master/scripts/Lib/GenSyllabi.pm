@@ -537,7 +537,7 @@ sub gen_book($$$$)
 	    my $OutFileTpl = "out-pdf-$InBook$postfix-includelist-file";
 	    my $OutputFile = Common::get_template($OutFileTpl);
 	    $OutputFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-	    Util::print_message("Generating $OutputFile file ...");
+	   
 	    my $output_tex = "";
 	    #$output_tex .="rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc\n\n";
 	    my $count = 0;
@@ -562,7 +562,6 @@ sub gen_book($$$$)
 	    
 	    system("cp ".Common::get_template("in-$InBookFile$postfix-face-file")." ".Common::get_template("OutputTexDir"));
 	    Util::print_message("gen_book ($count courses) in $OutputFile OK!");
-	    exit;
 }
 
 # ok
