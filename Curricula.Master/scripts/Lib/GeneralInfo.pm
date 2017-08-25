@@ -657,7 +657,7 @@ sub generate_curricula_in_dot($$)
 			  $sem_text .= "\t$group_name"." [shape=ellipse, fontcolor=black, style=filled, fillcolor=yellow, label=\"$Common::config{dictionary}{Electives}\"];\n";
 			  $sem_text .= $clusters_info{$group}{dot};
 			  foreach my $onecourse (@{$clusters_info{$group}{courses}})
-			  {	$sem_text .= "\t$group_name->$onecourse;\n";	}
+			  {	$sem_text .= "\t$group_name->".Common::get_label($onecourse).";\n";	}
 			  $cluster_count++;
 		  }
 		}

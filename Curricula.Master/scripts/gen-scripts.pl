@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
+use File::Path qw(make_path);
 use scripts::Lib::Common;
 use Cwd;
 
@@ -35,6 +36,7 @@ sub gen_batch($$)
         $txt =~ s/<IN_INST_DIR>/$InInstDir/g;
         
         my $OutputDir = Common::get_template("OutDir");
+        mkdir -p
         $txt =~ s/<OUTPUT_DIR>/$OutputDir/g;
         
         my $OutputInstDir = Common::get_template("OutputInstDir");

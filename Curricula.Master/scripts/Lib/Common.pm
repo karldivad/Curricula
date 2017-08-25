@@ -139,6 +139,17 @@ sub get_alias($)
 	return $course_info{$codcour}{alias};
 }
 
+sub detect_codcour($)
+{
+	my ($cc) = (@_);
+	my $codcour = $cc;
+	if(defined($antialias_info{$cc}))
+	{	$codcour = $antialias_info{$cc}		}
+	if( not defined($course_info{$codcour}) )
+	{     Util::print_error("codcour \"$codcour\" does not exist ... ");		}
+	return $codcour;
+}
+
 # ok
 sub get_label($)
 {
@@ -504,28 +515,32 @@ sub set_initial_paths()
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
 	$path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";
 
-	$path_map{"in-Book-of-Syllabi-file"}		= $path_map{InTexAllDir}."/BookOfSyllabi.tex";
-	$path_map{"out-Book-of-Syllabi-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
+	$path_map{"in-Book-of-Syllabi-main-file"}	= $path_map{InTexAllDir}."/BookOfSyllabi.tex";
+	$path_map{"out-Book-of-Syllabi-main-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
 	$path_map{"in-Book-of-Syllabi-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"out-Syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist-<LANG>.tex";
+
 	$path_map{"in-Book-of-Syllabi-delivery-control-file"}		= $path_map{InTexAllDir}."/BookOfDeliveryControl.tex";
 	$path_map{"in-Book-of-Syllabi-delivery-control-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+
 	$path_map{"in-Book-of-Descriptions-main-file"}	= $path_map{InTexAllDir}."/BookOfDescriptions.tex";
 	$path_map{"out-Book-of-Descriptions-main-file"}	= $path_map{OutputTexDir}."/BookOfDescriptions-<LANG>.tex";
 	$path_map{"in-Book-of-Descriptions-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"out-Descriptions-includelist-file"}	= $path_map{OutputTexDir}."/short-descriptions-<LANG>.tex";
+
 	$path_map{"in-Book-of-Bibliography-main-file"}	= $path_map{InTexAllDir}."/BookOfBibliography.tex";
 	$path_map{"out-Book-of-Bibliography-main-file"}	= $path_map{OutputTexDir}."/BookOfBibliography-<LANG>.tex";
 	$path_map{"in-Book-of-Bibliography-face-file"}	= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"out-Bibliography-includelist-file"}	= $path_map{OutputTexDir}."/bibliography-list-<LANG>.tex";
+
 	$path_map{"in-Book-of-units-by-course-main-file"}= $path_map{InTexAllDir}."/BookOfUnitsByCourse.tex";
 	$path_map{"in-Book-of-units-by-course-face-file"}= $path_map{InTexAllDir}."/Book-Face.tex";
+	$path_map{"out-Syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
 
         $path_map{"in-pdf-icon-file"}			= $path_map{InFigDir}."/pdf.jpeg";
-	$path_map{"out-pdf-Syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist-<LANG>.tex";
-	$path_map{"out-pdf-Syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
-	$path_map{"out-short-Descriptions-file"}	= $path_map{OutputTexDir}."/short-descriptions.tex";
-	$path_map{"out-list-of-unit-by-course-file"}	= $path_map{OutputTexDir}."/list-of-units-by-course.tex";
-	$path_map{"out-bibliography-list-file"}		= $path_map{OutputTexDir}."/bibliography-list.tex";
 
-	
+	$path_map{"out-list-of-unit-by-course-file"}	= $path_map{OutputTexDir}."/list-of-units-by-course.tex";
+
 	$path_map{"in-description-foreach-area-file"}   = $path_map{InTexDir}."/description-foreach-area.tex";
 	$path_map{"out-description-foreach-area-file"}  = $path_map{OutputTexDir}."/area-description.tex";
 
@@ -1200,7 +1215,8 @@ sub read_institution_info($)
 	{	$this_inst_info{SyllabusLangs} 			= $1;
 		$this_inst_info{SyllabusLangs} 			=~ s/ //g;
 		$this_inst_info{SyllabusLangs_without_accents} 	= no_accents($this_inst_info{SyllabusLangs});
-		@{$this_inst_info{SyllabusLangsList}} 		= split(",", $this_inst_info{SyllabusLangs_without_accents})
+		foreach my $lang (split(",", $this_inst_info{SyllabusLangs_without_accents}))
+		{	push( @{$this_inst_info{SyllabusLangsList}}, $lang);	}
 	}
 	else
 	{	Util::print_error("read_institution_info: there is not \\SyllabusLang defined in \"$file\"\n");	}
@@ -1280,26 +1296,51 @@ sub read_specific_evaluacion_info()
 {
 	Util::precondition("filter_courses");
 	my $specific_evaluation_file = get_template("in-specific-evaluation-file");
+	#Util::print_message("Common::config{SyllabusLangs_without_accents} = $Common::config{SyllabusLangs_without_accents}");
 	if(not -e $specific_evaluation_file)
 	{	Util::print_warning("No specific evaluation file ($specific_evaluation_file) ... you may create one to specify criteria for each course ...");	}
 	else
 	{
+	      Util::print_message("Reading specific evaluation file ($specific_evaluation_file) ...");
 	      my $specific_evaluation = Util::read_file($specific_evaluation_file);
-	      while($specific_evaluation =~ m/\\begin\{evaluation\}\{(.*?)\}\{(.*?)\}\s*\n((?:.|\n)*?)\\end\{evaluation\}/g)
-	      {
-		      my ($codcour, $parts, $eval) = ($1, $2, $3);
-		      $parts =~ s/ //g;
-		      my $output_parts = "";
-		      foreach my $onepart (split(",", $parts))
-		      {
-			    $output_parts .= "\\vspace{2mm}\n";
-			    $output_parts .= "{\\noindent\\bf <<$onepart-SESSIONS>>:}\\\\\n";
-			    $output_parts .= "<<$onepart-SESSIONS-CONTENT>>\n\n";
+	      while($specific_evaluation =~ m/\\begin\{evaluation\}\{(.*?)\}((?:.|\n)*?)\\end\{evaluation\}/g)
+	      {	
+		      my ($cc, $this_evaluation_body) = ($1, $2);
+		      my $codcour = detect_codcour($cc);
+		      #Util::print_message("this_evaluation_body=\n$this_evaluation_body");
+		      if ( $this_evaluation_body  =~ m/\{(.*?)\}\{(.*?)\}\s*\n((?:.|\n)*)/g)
+		      {	
+			    my ($listoflangs, $parts, $eval) = ($1, $2, $3);
+			    $parts =~ s/ //g;	$listoflangs =~ s/ //g;
+			    #Util::print_message("listoflangs=$listoflangs, $parts$parts, eval=\n$eval");
+			    if( $listoflangs eq "*" ){	$listoflangs = $Common::config{SyllabusLangs_without_accents};		}
+			    my $output_parts = "";
+			    foreach my $onepart (split(",", $parts))
+			    {
+				  $output_parts .= "{\\noindent\\bf <<$onepart-SESSIONS>>:}\\\\\n";
+				  $output_parts .= "<<$onepart-SESSIONS-CONTENT>>\n";
+				  $output_parts .= "\n\\vspace{2mm}\n";
+			    }
+			    foreach my $lang (split(",", $listoflangs))
+			    {
+				  if(not defined($config{dictionaries}{$lang}{lang_prefix}) )
+				  {	Util::print_error("$cc($codcour) has an undefined Language($lang) !...");		}
+				  my $evaluation_header = "\\vspace{2mm}\n";
+				  $evaluation_header .= "{\\noindent\\bf <<EVALUATION-SYSTEM>>:}\\\\\n";
+				  $Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$evaluation_header$eval\n";
+				  #$Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$eval\n";
+
+				  Util::print_warning("$cc($codcour) specific_evaluation ($lang) detected!");
+				  #Util::print_message("$Common::course_info{$codcour}{$lang}{specific_evaluation}"); exit;
+				  #if($codcour eq "CS111") { 	Util::print_message("C. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
+				  #Util::print_message("$Common::course_info{$codcour}{specific_evaluation}");
+			    }
 		      }
-		      $Common::course_info{$codcour}{specific_evaluation} = "$output_parts\n$eval\n";
-		      Util::print_message("$codcour specific_evaluation detected!");
-		      #if($codcour eq "CS111") { 	Util::print_message("C. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
-		      #Util::print_message("$Common::course_info{$codcour}{specific_evaluation}");
+		      else
+		      {
+			    Util::print_error("Specific Evaluation for $cc($codcour) out of format?\nfile: $specific_evaluation_file ");
+		      }
+
 	      }
 	}
 }
@@ -1422,7 +1463,7 @@ sub set_initial_configuration($)
 	      my $lang_prefix = "";
 	      if( $lang =~ m/(..)/g )
 	      {		$lang_prefix = uc($1);	      }
-	      %{$config{dictionaries}{$lang}} = read_dictionary_file($lang);
+	      %{$config{dictionaries}{$lang}} 		= read_dictionary_file($lang);
 	      $config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
 	      #Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
 	}
@@ -2796,7 +2837,7 @@ sub filter_courses()
 
 		my $sep 		= "";
 		$course_info{$codcour}{n_prereq} = 0;
-		foreach my $codreq (split(",",$course_info{$codcour}{prerequisites_just_codes}))
+		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites_just_codes}))
 		{	
 			$codreq =~ s/ //g;
 			if($codreq =~ m/$institution=(.*)/)
@@ -2809,9 +2850,10 @@ sub filter_courses()
 			{	
 				if(defined($antialias_info{$codreq}))
 				{	$codreq = $antialias_info{$codreq};	}
-				my $codreq_label = Common::get_label($codreq);
 				if(defined($course_info{$codreq}))
 				{
+					my $codreq_label = Common::get_label($codreq);
+					#Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
 					my $course_full_label = "$codreq. $course_info{$codreq}{course_name}{$config{language_without_accents}}";
 					my $semester_prereq = $course_info{$codreq}{semester};
 					push(@{$course_info{$codcour}{full_prerequisites}}, get_course_link($codreq));

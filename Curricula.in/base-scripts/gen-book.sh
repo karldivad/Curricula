@@ -11,8 +11,8 @@ set OutputFile  = "$3"
 set OutputInstDir=<OUTPUT_INST_DIR>
 set current_dir = `pwd`
 
-# set semester = `grep -e "\Semester}" $InfoFile | cut -d"{" -f3 | cut -d\\ -f1`
-set InfoFile	= "<IN_INST_DIR>/institution-info.tex"
+# # set semester = `grep -e "\Semester}" $InfoFile | cut -d"{" -f3 | cut -d\\ -f1`
+# set InfoFile	= "<IN_INST_DIR>/institution-info.tex"
 
 echo "<OUTPUT_SCRIPTS_DIR>/CompileTexFile.sh <AREA> <INST> pdflatex $MainFile $OutputInstDir"
 <OUTPUT_SCRIPTS_DIR>/CompileTexFile.sh <AREA> <INST> $Compiler $MainFile "$OutputFile";
@@ -24,4 +24,5 @@ pdftk A=$MainFile.pdf cat A1-1 output $MainFile-P1.pdf;
 convert $MainFile-P1.pdf $MainFile-P1.png;
 rm $MainFile-P1.pdf;
 cd $current_dir;
+cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/.
 

@@ -85,9 +85,9 @@ sub main()
 	GenSyllabi::process_syllabi();
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
-	    GenSyllabi::gen_short_descriptions($lang);
+	    GenSyllabi::gen_book_of_descriptions($lang);
 	    #GenSyllabi::gen_list_of_units_by_course();
-	    GenSyllabi::gen_bibliography_list($lang);
+	    GenSyllabi::gen_book_of_bibliography($lang);
 	}
 	generate_general_info();
 

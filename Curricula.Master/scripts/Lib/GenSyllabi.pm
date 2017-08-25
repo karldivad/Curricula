@@ -18,9 +18,9 @@ sub get_environment($$$)
 	return "";
 }
 
-sub process_syllabus_units($$$)
+sub process_syllabus_units($$$$)
 {
-	my ($syllabus_in, $unit_struct, $codcour)	= (@_);
+	my ($codcour, $lang, $syllabus_in, $unit_struct)	= (@_);
 	my ($unit_count, $total_hours) 			= (0, 0);
 	my %accu_hours     				= ();
 	
@@ -164,7 +164,7 @@ sub read_syllabus_info($$$)
 # 	$Common::course_info{$codcour}{goals}         	= get_environment($codcour, $syllabus_in, "goals");
 	foreach my $env ("outcomes", "competences", "justification", "goals")
 	{
-	      $Common::course_info{$codcour}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
+	      $Common::course_info{$codcour}{$lang}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
 	}
 
 	# 2nd: Process its outcomes and learningoutcomes
@@ -178,7 +178,7 @@ sub read_syllabus_info($$$)
 	my %macro_for_env = ("outcomes" => "ShowOutcome", "competences"=>"ShowCompetence");
 	foreach my $env ("outcomes", "competences")
 	{
-	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{txt}) )
+	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{txt}) )
 	      {
 		      my ($key, $level)     = ("", "");
 		      my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*)\\}\\{(.*?)\\}";
@@ -205,23 +205,24 @@ sub read_syllabus_info($$$)
 	$map{SEMESTER}         .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester}}\$ ";
 	$map{SEMESTER}         .= "$Common::config{dictionary}{Semester}.";
 	$map{CREDITS}		= $Common::course_info{$codcour}{cr};
-	$map{JUSTIFICATION}	= $Common::course_info{$codcour}{justification}{txt};
+	$map{JUSTIFICATION}	= $Common::course_info{$codcour}{$lang}{justification}{txt};
 	
-	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{goals}{txt}\n\\end{itemize}";
-	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{goals}{txt};
+	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{$lang}{goals}{txt}\n\\end{itemize}";
+	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{$lang}{goals}{txt};
 	
 	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{itemized}\\end{description}";
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{itemized};
 	
 	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{itemized}\\end{description}";
 	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{itemized};
-	
+
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
 
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
-	if( not $Common::course_info{$codcour}{specific_evaluation} eq "" )
-	{	$map{EVALUATION} = $Common::course_info{$codcour}{specific_evaluation};	}
-	#if($codcour eq "CS111") { 	Util::print_message("Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
+	if( defined($Common::course_info{$codcour}{$lang}{specific_evaluation}) )
+	{	$map{EVALUATION} = $Common::course_info{$codcour}{$lang}{specific_evaluation};	}
+	#Util::print_message("Common::course_info{$codcour}{$lang}{specific_evaluation}=\n$Common::course_info{$codcour}{$lang}{specific_evaluation}");	exit;
+	
 	#Util::print_message("course $codcour\nmap{EVALUATION}=\n$map{EVALUATION}"); 
 	#exit;
 
@@ -283,13 +284,13 @@ sub read_syllabus_info($$$)
 	my $unit_struct = "";
 	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 	{	$unit_struct = $1;	}
-	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($syllabus_in, $unit_struct, $codcour);
+	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
 	
 	my $sumilla_template = $Common::config{sumilla_template};
 	$unit_struct = "";
 	if($sumilla_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 	{	$unit_struct = $1;	}
-	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($syllabus_in, $unit_struct, $codcour);
+	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
 	
 	
 	$map{LIST_OF_TOPICS} = $map{SHORT_DESCRIPTION};
@@ -425,7 +426,10 @@ sub generate_tex_syllabi_files()
 			      $map{AREA}	= $Common::config{area};
 			      $map{LANG}	= $lang;
 			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
-			      #if($codcour eq "CS111") { 	Util::print_message("A. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
+			      #Util::print_message("A. Common::course_info{$codcour}{$lang}{specific_evaluation}=\n$Common::course_info{$codcour}{$lang}{specific_evaluation}");	exit;
+			      #Util::print_message("Common::config{syllabus_template}=$Common::config{syllabus_template}");	
+			      #Util::print_warning("map{EVALUATION}=$map{EVALUATION}");	exit;
+			      
 			      
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
@@ -525,6 +529,24 @@ sub get_hidden_chapter_info($)
 	return $output_tex;
 }
 
+sub write_book_files($$$)
+{
+      my ($InBook, $lang, $output_tex) = (@_);
+      system("cp ".Common::get_template("in-Book-of-$InBook-face-file")." ".Common::get_template("OutputTexDir"));
+      
+      my $InBookContent = Util::read_file(Common::get_template("in-Book-of-$InBook-main-file"));
+      $InBookContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+      my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
+      $OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+      Util::print_message("Generating $OutBookFile ok");
+      Util::write_file($OutBookFile, $InBookContent);
+      
+      my $OutputIncludeListFile = Common::get_template("out-$InBook-includelist-file");
+      $OutputIncludeListFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+      
+      Util::print_message("Generating $OutputIncludeListFile ok");
+      Util::write_file($OutputIncludeListFile, $output_tex);
+}
 # ok
 # GenSyllabi::gen_book("Syllabi", "syllabi/", "");
 # GenSyllabi::gen_book("Syllabi", "../pdf/", "-delivery-control");
@@ -532,40 +554,30 @@ sub gen_book($$$$)
 {
 	my ($InBook, $prefix, $postfix, $lang) = (@_);
 	Util::precondition("set_global_variables");	
-	  
-	    my $InBookFile = "Book-of-$InBook";
-	    my $OutFileTpl = "out-pdf-$InBook$postfix-includelist-file";
-	    my $OutputFile = Common::get_template($OutFileTpl);
-	    $OutputFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-	   
-	    my $output_tex = "";
-	    #$output_tex .="rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc\n\n";
-	    my $count = 0;
-	    for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	    {
-		    $output_tex .= get_hidden_chapter_info($semester);
-		    #foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		    foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
-		    {
-			my $codcour_label = Common::get_label($codcour);
-			#-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
-			$output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}},$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}}]";
-			$output_tex .= "{$prefix$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}$postfix}\n";
-			$count++;
-		    }
-		    $output_tex .= "\n";
-	    }
-	    Util::write_file($OutputFile, $output_tex);
-	    Util::print_message("Generating $OutputFile ok ... ");
-	    my $OutBookFile =  Common::get_template("out-Book-of-$InBook-file");	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-	    system("cp ".Common::get_template("in-$InBookFile$postfix-file")." $OutBookFile");
-	    
-	    system("cp ".Common::get_template("in-$InBookFile$postfix-face-file")." ".Common::get_template("OutputTexDir"));
-	    Util::print_message("gen_book ($count courses) in $OutputFile OK!");
+	
+	my $output_tex = "";
+	#$output_tex .="rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc\n\n";
+	my $count = 0;
+	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	{
+		$output_tex .= get_hidden_chapter_info($semester);
+		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
+		{
+		    my $codcour_label = Common::get_label($codcour);
+		    #-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
+		    $output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}},$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}}]";
+		    $output_tex .= "{$prefix$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}$postfix}\n";
+		    $count++;
+		}
+		$output_tex .= "\n";
+	}
+	write_book_files("Syllabi", $lang, $output_tex);
+# 	Util::print_message("gen_book ($count courses) in $OutputFile OK!");
 }
 
 # ok
-sub gen_short_descriptions($)
+sub gen_book_of_descriptions($)
 {
       my ($lang) = (@_);
       Util::precondition("set_global_variables");
@@ -577,22 +589,18 @@ sub gen_short_descriptions($)
 	      foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 	      {
 		      #Util::print_message("codcour = $codcour    ");
-		      my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
+		      my $codcour_label = Common::get_label($codcour);
+		      my $sec_title = "$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
   # 			$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
   # 			$sec_title 	.= "$Common::config{dictionary}{Semester})";
-		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
-		      $output_tex .= "$Common::course_info{$codcour}{justification}\n\n";
+		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour_label}\n";
+		      $output_tex .= "$Common::course_info{$codcour}{$lang}{justification}{txt}\n\n";
 		      $count++;
 	      }
 	      $output_tex .= "\n";
       }
-      my $OutBookFile =  Common::get_template("out-Book-of-Descriptions-main-file");	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-      Util::write_file($OutBookFile, $output_tex);
-      system("cp ".Common::get_template("in-Book-of-Descriptions-main-file")." $OutBookFile");
-      my $command = "cp ".Common::get_template("in-Book-of-Descriptions-face-file")." ".Common::get_template("OutputTexDir");
-  # 	Util::print_warning($command);
-      system($command);
-      Util::print_message("gen_short_descriptions $OutBookFile ($count courses) OK!");
+      write_book_files("Descriptions", $lang, $output_tex);
+      Util::print_message("gen_book_of_descriptions ($count courses) OK!");
 }
 
 # ok
@@ -652,7 +660,7 @@ sub gen_list_of_units_by_course()
 	Util::print_message("gen_list_of_units_by_course $file_name ($count courses) OK!");
 }
 
-sub gen_bibliography_list($)
+sub gen_book_of_bibliography($)
 {
       my ($lang) = (@_);
       Util::precondition("set_global_variables");
@@ -682,11 +690,8 @@ sub gen_bibliography_list($)
 	      }
 	      $output_tex .= "\n";
       }
-      my $OutBookFile =  Common::get_template("out-Book-of-Bibliography-main-file");	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-      Util::write_file($OutBookFile, $output_tex);
-      system("cp ".Common::get_template("in-Book-of-Bibliography-main-file")." $OutBookFile");
-      system("cp ".Common::get_template("in-Book-of-Bibliography-face-file")." ".Common::get_template("OutputTexDir"));
-      Util::print_message("gen_bibliography_list $OutBookFile ($count courses) OK!");
+      write_book_files("Bibliography", $lang, $output_tex);
+      Util::print_message("gen_book_of_bibliography ($count courses) OK!");
 }
 
 sub generate_syllabi_include()
