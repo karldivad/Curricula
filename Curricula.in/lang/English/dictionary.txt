@@ -214,3 +214,6 @@ POO=>Object Oriented Programming
 ADS=>Systems Analysis and Design
 ADA=>Algorithms Analysis and Design
 </HASH>
+
+Mission=Mission
+Definition=Definition

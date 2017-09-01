@@ -743,8 +743,9 @@ sub generate_curricula_in_dot($$)
 }
 
 # ok
-sub generate_poster()
+sub generate_poster($)
 {
+        my ($lang) = (@_);
 	my $poster_txt = Util::read_file(Common::get_template("in-poster-file"));
 
         my $total_left_width = 90; #cm
@@ -765,7 +766,9 @@ sub generate_poster()
         # ..........
         # ..........
         # ..........
+        $poster_txt = Common::replace_tags($poster_txt, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
 	Util::write_file(Common::get_template("out-poster-file"), $poster_txt);
+	
         system("cp ".Common::get_template("in-a0poster-sty-file")." ".Common::get_template("OutputTexDir")); ;
         system("cp ".Common::get_template("in-poster-macros-sty-file")." ".Common::get_template("OutputTexDir")); ;
 

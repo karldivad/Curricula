@@ -214,3 +214,6 @@ ADS=>Análisis y Diseño de Sistemas
 ADA=>Análisis y Diseño de Algoritmos
 #IVU= >Introducción a la Vida Universitaria
 </HASH>
+
+Mission=Misión
+Definition=Definición

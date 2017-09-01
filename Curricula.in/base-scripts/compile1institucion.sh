@@ -47,7 +47,7 @@ set OutputTexDir=<OUTPUT_TEX_DIR>
 set OutputScriptsDir=<OUTPUT_SCRIPTS_DIR>
 set OutputHtmlDir=<OUTPUT_HTML_DIR>
 
-./clean
+rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
 # ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g' 
 
 mkdir -p <OUT_LOG_DIR>
@@ -58,7 +58,7 @@ mkdir -p <OUT_LOG_DIR>
 if($pdf == 1) then
       # latex -interaction=nonstopmode <MAIN_FILE>
       latex <MAIN_FILE>;
-      bibtex <MAIN_FILE>1;
+      #bibtex <MAIN_FILE>1;
       
       ./scripts/compbib.sh <MAIN_FILE> > <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-errors-bib.txt;
 
