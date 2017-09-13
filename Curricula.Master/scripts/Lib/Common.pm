@@ -275,7 +275,7 @@ sub InsertSeparator($)
 sub read_pages()
 {
         my $filename    = Common::get_template("file_for_page_numbers");
-        $config{pages_map}   = ();
+        %{$config{pages_map}}   = ();
 
 	if(-e $filename)
         {
@@ -315,6 +315,7 @@ sub read_pagerefs()
     Common::read_pages();
     #%{$config{outcomes_map}}  = 
     Common::read_outcomes_labels();
+    #print Dumper(%{$Common::config{outcomes_map}}); exit;
     Util::check_point("read_pagerefs");
 }
 
@@ -2598,17 +2599,18 @@ sub parse_courses()
 # 	if(not open(IN, "<$input_file"))
 # 	{  Util::halt("parse_courses: $input_file does not open ...");	}
 	my $active_semester = 0;
-	while($file_txt =~ m/\\course\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*?)\n/g)
+	while($file_txt =~ m/\\course\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*?)\n/g)
 	{
-	      # \course{sem}{course_type}{area}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
-		my ($semester, $course_type, $area, $department, $codcour, $codcour_alias, $course_name_es, $course_name_en) = ($1, $2, $3, $4, $5, $6, $7, $8);
-		my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($9, $10, $11, $12, $13, $14, $15);
-		my $prerequisites                       = $16;
-		my $recommended                         = $17;
-		my $coreq		                = $18;
-		my $group				= $19;
-		my $axes				= $20;
-		my $inst_wildcard			= $21;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
+	      # \course{sem}{course_type}{area_country}{area_pie}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
+		my ($semester, $course_type, $area, $area_pie, $department, $codcour, $codcour_alias, $course_name_es, $course_name_en) = ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+		my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($10, $11, $12, $13, $14, $15, $16);
+		my $prerequisites                       = $17;
+		my $recommended                         = $18;
+		my $coreq		                = $19;
+		my $group				= $20;
+		my $axes				= $21;
+		my $inst_wildcard			= $22;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
+		#Util::print_message("Wilcard: $inst_wildcard");
 		my @inst_array                          = split(",", $inst_wildcard);
 		my $count                               = 0;
 		my $priority = 0;
@@ -2675,6 +2677,7 @@ sub parse_courses()
 		$course_info{$codcour}{course_name}{Espanol} = $course_name_es;
 		$course_info{$codcour}{course_name}{English} = $course_name_en;
 		$course_info{$codcour}{area}		= $area;
+		$course_info{$codcour}{area_pie}	= $area_pie;
 		$course_info{$codcour}{department}	= $department;
 
 		$course_info{$codcour}{cr}             	= $credits;
@@ -2735,8 +2738,9 @@ sub filter_courses()
 
 	$counts{credits}{count} 	= 0;
 	$counts{hours}{count} 		= 0;
-	%{$config{used_prefix}}		= ();
-	$config{number_of_used_prefix}	= 0;
+	%{$config{used_prefix}}		= ();	$config{number_of_used_prefix}	 = 0;
+	%{$config{used_area_pie}}	= ();	$config{number_of_used_area_pie} = 0;
+
  	my $courses_count 		= 0;
  	my $active_semester 		= 0;
  	my $maxE 			= 0;
@@ -2782,6 +2786,13 @@ sub filter_courses()
 			$config{used_prefix}{$prefix} = "";
 			$config{number_of_used_prefix}++;
 		}
+		my $area_pie = $course_info{$codcour}{area_pie};
+		if(not defined($config{used_area_pie}{$area_pie}))   # YES HERE
+		{
+			$config{used_area_pie}{$area_pie} = "";
+			$config{number_of_used_area_pie}++;
+		}
+
 		# print "coursecode= $codcour, area= $course_info{$codcour}{axe}\n";
 		$course_info{$codcour}{naxes}		= 0;
 		foreach $axe (split(",", $course_info{$codcour}{axes}))
@@ -2813,9 +2824,11 @@ sub filter_courses()
                         {
                               $config{electives}{$semester}{$group}{cr}    = $Common::course_info{$codcour}{cr};
                               $config{electives}{$semester}{$group}{prefix}= $Common::course_info{$codcour}{prefix};
+			      $config{electives}{$semester}{$group}{area_pie} = $Common::course_info{$codcour}{area_pie};
                               #Util::print_message("config{electives}{$semester}{$group}{cr}=$config{electives}{$semester}{$group}{cr}");
                               #$electives{$group}{prefix}= $Common::course_info{$codcour}{prefix};
-			      $counts{credits}{prefix}{$prefix} += $Common::course_info{$codcour}{cr};
+			      $counts{credits}{prefix}{$prefix}     += $Common::course_info{$codcour}{cr};
+			      $counts{credits}{area_pie}{$area_pie} += $Common::course_info{$codcour}{cr};
                         }
                         else
                         {       #Util::halt("config{electives}{$semester}{$group}{cr}=$electives{$group}{cr},  Common::course_info{$codcour}{cr}=$Common::course_info{$codcour}{cr}");
@@ -2831,6 +2844,7 @@ sub filter_courses()
 			}
 			$counts{credits}{count}	      += $course_info{$codcour}{cr};
 			$counts{credits}{prefix}{$prefix}     += $Common::course_info{$codcour}{cr};
+			$counts{credits}{area_pie}{$area_pie} += $Common::course_info{$codcour}{cr};
 		}
 		#print "codcour = $codcour, cr=$course_info{$codcour}{cr}, ($course_info{$codcour}{course_type}) $counts{credits}{count}, maxE = $maxE\n";
 		#print "contador hasta el $active_semester = $counts{credits}{count}, maxE = $maxE\n";
@@ -3217,6 +3231,7 @@ sub parse_bok($)
 	my $output_txt = "";
 	
 	my %counts = ();
+	my $KAorder = 0;
 	while($bok_in =~ m/\\(.*?){(.*?)}/g)
 	{
 	    my ($cmd, $ka)  = ($1, $2);
@@ -3228,8 +3243,7 @@ sub parse_bok($)
 		{	$body = $1;	}
 		
 		$bok{$lang}{$ka}{name} 	= $body; 
-		my $KAorder		= scalar keys %bok;
-		$bok{$lang}{$ka}{order} 	= $KAorder;
+		$bok{$lang}{$ka}{order} 	= $KAorder++;
 		($bok{$lang}{$ka}{nhTier1}, $bok{$lang}{$ka}{nhTier2}) = (0, 0);
 		$counts{$cmd}++;
 
@@ -3342,9 +3356,10 @@ sub gen_bok($)
 	$bok_index_txt .= "\\scriptsize\n";
 	$bok_index_txt .= "\\noindent\n";
 	my ($max_ntopics, $maxLO) = (0, 0);
+	my $topics_priority = 0;
 	foreach my $ka (sort {$bok{$lang}{$a}{order} <=> $bok{$lang}{$b}{order}} keys %{$bok{$lang}})
 	{
-		#Util::print_message("Generating KA: $ka (order=$bok{$lang}{$ka}{order} ...)");
+		#til::print_message("Generating KA: $ka (order=$bok{$lang}{$ka}{order} ...)");
 		my $macro = $ka;
 		$macros_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$macros_txt .= "% Knowledge Area: $ka\n";
@@ -3375,6 +3390,8 @@ sub gen_bok($)
 		{
 		      #print Dumper(\%{$bok{$lang}{$ka}{KU}{$ku}});
 		      #Util::print_message("bok{$ka}{KU}{$ku}{order} = $bok{$lang}{$ka}{KU}{$ku}{order}");
+		      $Common::config{topics_priority}{$ku} = $topics_priority++;
+
 		      my $ku_macro = "$bok{$lang}{$ka}{KU}{$ku}{name}";
 		      $macros_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		      $macros_txt .= "% KU: $ka:$bok{$lang}{$ka}{KU}{$ku}{body}\n";
@@ -3382,7 +3399,8 @@ sub gen_bok($)
 		      
 		      my ($nhours_txt, $sep) = ("", "");
 		      #Util::print_message("bok{$ka}{KU}{$ku}{nhTier1}=$bok{$lang}{$ka}{KU}{$ku}{nhTier1} ...");
-		      my $ku_line = "\\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro}) & <CORETIER1> & <CORETIER2> & <ELECTIVES> \\\\ \\hline\n";
+		      $Common::config{ref}{$ku} = "sec:BOK:$ku_macro";
+		      my $ku_line = "\\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{$Common::config{ref}{$ku}}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro}) & <CORETIER1> & <CORETIER2> & <ELECTIVES> \\\\ \\hline\n";
 		      $bok_index_txt .= "\\item \\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro})\n";
 		      if( $bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 )
 		      {		$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier1} $Common::config{dictionary}{hours} Core-Tier1";	$sep = ",~";	
@@ -3527,7 +3545,7 @@ sub gen_bok($)
 
 	Util::check_point("generate_bok");
 # 	Util::write_file();
- 	#print Dumper(\%{$Common::config{dictionary}});
+ 	#print Dumper(\%{$Common::config{topics_priority}});
 }
 
 sub setup()

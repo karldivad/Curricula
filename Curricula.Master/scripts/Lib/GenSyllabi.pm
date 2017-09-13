@@ -80,25 +80,26 @@ sub process_syllabus_units($$$$)
 		$map{UNIT_BIBITEMS}	= $unit_bibitems;
 		
 		$map{LEVEL_OF_COMPETENCE}	= $level_of_competence;
-		if($unit_caption =~ m/\\(.*)/) 
+		my $codcour_label = Common::get_label($codcour);
+		if($unit_caption =~ m/^\\(.*)/) 
 		{
 			$unit_caption = $1;
-			if( defined($Common::config{topics_priority}{$unit_caption}) )
-			{
-				if(not defined($Common::map_hours_unit_by_course{$unit_caption}{$codcour}))
-				{	$Common::map_hours_unit_by_course{$unit_caption}{$codcour} = 0;		}
-				$Common::map_hours_unit_by_course{$unit_caption}{$codcour} += $unit_hours;
+			#Util::print_message("Course: $codcour_label: \\$unit_caption found ...");
+			#print Dumper (\%$Common::config{topics_priority}); exit;
+			if(not defined($Common::map_hours_unit_by_course{$unit_caption}{$codcour_label}))
+			{	$Common::map_hours_unit_by_course{$unit_caption}{$codcour_label} = 0;		}
+			$Common::map_hours_unit_by_course{$unit_caption}{$codcour_label} += $unit_hours;
 
-				if(not defined($Common::acc_hours_by_course{$codcour}))
-				{	$Common::acc_hours_by_course{$codcour}  = 0;						}
-				$Common::acc_hours_by_course{$codcour} += $unit_hours;
+			if(not defined($Common::acc_hours_by_course{$codcour_label}))
+			{	$Common::acc_hours_by_course{$codcour_label}  = 0;						}
+			$Common::acc_hours_by_course{$codcour_label} += $unit_hours;
 
-				if(not defined($Common::acc_hours_by_course{$unit_caption}))
-				{	$Common::acc_hours_by_unit{$unit_caption}  = 0;						}
-				$Common::acc_hours_by_unit{$unit_caption} += $unit_hours;
-			}
+			if(not defined($Common::acc_hours_by_course{$unit_caption}))
+			{	$Common::acc_hours_by_unit{$unit_caption}  = 0;						}
+			$Common::acc_hours_by_unit{$unit_caption} += $unit_hours;
+			
+			#print Dumper (\%Common::map_hours_unit_by_course); exit;
 		}
-
 		$sep = ",";
 		my ($topics, $unitgoals) = ("", "");
 		if($unit_body =~ m/(\\begin\{topics\}\s*((?:.|\n)*?)\\end\{topics\})/g)
@@ -134,6 +135,7 @@ sub process_syllabus_units($$$$)
 		$all_units_txt .= $thisunit;
 	}
 	Util::check_point("process_syllabus_units");
+	#print Dumper (\%Common::map_hours_unit_by_course); exit;
 	return ($all_units_txt, $unit_captions);
 }
 

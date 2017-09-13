@@ -60,7 +60,6 @@ sub generate_course_tables()
 			my $codcour_label 	= Common::get_label($codcour);
 			$this_line		= $Common::config{dictionary}{course_fields};
 			my $prefix		= $Common::course_info{$codcour}{prefix};
-			my $area		= $Common::course_info{$codcour}{area};
 			my $pdflink 		= "";
 			$pdflink .= "\\latexhtml{}{%\n";
                         $pdflink .= "\t\\begin{htmlonly}\n";
@@ -109,6 +108,7 @@ sub generate_course_tables()
 			{	$this_course_info{TYPE} = $Common::config{dictionary}{MandatoryShort};		}
 			else{	$this_course_info{TYPE} = $Common::config{dictionary}{ElectiveShort};		}
 			
+			my $area		= $Common::course_info{$codcour}{area};
 			$Common::counts{map_cred_area}{$semester}{$area} = 0 if(not defined($Common::counts{map_cred_area}{$semester}{$area}));
 			if($Common::course_info{$codcour}{course_type} eq "Mandatory")
 			{
@@ -220,75 +220,6 @@ sub generate_laboratories()
 	Util::write_file(Common::get_template("out-laboratories-by-course-file"), $output_txt);
 	Util::check_point("generate_laboratories");
 	Util::print_message("generate_laboratories OK!");
-}
-
-# Generates the table of areas by semester
-sub generate_distribution_area_by_semester()
-{
-	my $output_file = Common::get_template("out-distribution-area-by-semester-file");
-	my $output_txt 	= "";
-	
-	my $table_begin = "\\begin{table}[h!]\n";
-	   $table_begin.= "\\centering\n";
-	my $width       = 5 + 1.3*$Common::config{number_of_used_areas};
-	$table_begin   .= "\\begin{tabularx}{$width"."cm}{";
-	my $table_end1  = "";
-	   $table_end1  = "\\end{tabularx}\n";
-	my $table_end2  = "";
-	   $table_end2 .= "\\end{table}\n\n";
-	
-	my ($header, $areas_header, $area_sum, $percent)       = ("|X|", "  ", " {\\bf $Common::config{dictionary}{Total}} ", "");
-	my $area;
-	foreach $area (sort {$Common::config{prefix_priority}{$a} cmp $Common::config{prefix_priority}{$b}} keys %{$Common::config{used_areas}})
-	{	
-		$header         .= "c|";	
-		my $color		  = $Common::config{colors}{$area}{bgcolor};
-		$areas_header   .= "& \\colorbox{$color}{{\\bf $area}}";
-		$Common::counts{credits}{prefix}{$area} = 0;
-		$area_sum .= " & $area";
-		$percent  .= " & $area";
-	}
-	$table_begin  .= $header."c|} \\hline\n";
-	$areas_header .= " &  \\\\ \\hline\n";
-	$area_sum     .= " & $Common::config{ncredits} \\\\ \\hline\n";;
-	$percent      .= " &  \\\\ \\hline\n";;
-        
-	my $table_body= "";
-	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
-	{	
-		$table_body .= "{\\bf $Common::config{dictionary}{semester_ordinal}{$semester} $Common::config{dictionary}{Semester}}";	
-		my $sum_sem = 0;
-		foreach $area (sort {$Common::config{prefix_priority}{$a} cmp $Common::config{prefix_priority}{$b}} keys %{$Common::config{used_prefix}})
-		{
-			#print "$area\n";
-			$table_body .= "& ";
-			if(defined($Common::counts{map_cred_area}{$semester}{$area}))
-			{	
-				#Util::print_message("Sem = $semester, a=$area => $Common::counts{map_cred_area}{$semester}{$area}");
-				$table_body      .= "$Common::counts{map_cred_area}{$semester}{$area} ";	
-				$sum_sem         += $Common::counts{map_cred_area}{$semester}{$area};
-				$Common::counts{credits}{prefix}{$area} += $Common::counts{map_cred_area}{$semester}{$area};
-			}
-		}
-		$table_body .= " & $sum_sem \\\\ \\hline\n";
-		#$Common::counts{map_cred_area}{$semester}{$area}
-	}
-	
-	foreach $area (sort {$Common::config{prefix_priority}{$a} cmp $Common::config{prefix_priority}{$b}} keys %{$Common::config{used_areas}})
-	{	$area_sum =~ s/$area/$Common::counts{credits}{prefix}{$area}/g;
-                my $area_percent = int(1000*$Common::counts{credits}{prefix}{$area}/$Common::config{ncredits})/10.0;
-                $percent =~ s/$area/$area_percent\\%/g;
-	}
-	$output_txt .= $table_begin;
-	$output_txt .= $areas_header;
-	$output_txt .= $table_body;
-	$output_txt .= $area_sum;
-	$output_txt .= $percent;
-	$output_txt .= $table_end1;
-	$output_txt .= "\\caption{$Common::config{dictionary}{DistributionCreditsByArea}}\\label{tab:DistributionCreditsByArea}\n";
-	$output_txt .= $table_end2;
-	Util::write_file($output_file, $output_txt);
-	Util::print_message("generate_distribution_area_by_semester ... OK!");
 }
 
 # Generates the table of credits by area
@@ -803,13 +734,14 @@ sub generate_pie($)
 	my $credits = 0;
 	
 	#print Dumper(\%{$Common::counts{credits}{prefix}}); exit;
-	foreach my $prefix (sort {$Common::config{prefix_priority}{$a} cmp $Common::config{prefix_priority}{$b}} keys %{$Common::config{used_prefix}})
+	#$counts{credits}{area_pie}{$area_pie}
+	foreach my $prefix (sort {$Common::config{prefix_priority}{$a} cmp $Common::config{prefix_priority}{$b}} keys %{$Common::config{used_area_pie}})
 	{
-		#Util::print_message("type=$type, area=$prefix, $Common::counts{credits}{prefix}{$prefix}");
-		my $last  = $first + $Common::counts{credits}{prefix}{$prefix};
-		$credits += $Common::counts{credits}{prefix}{$prefix};
+		#Util::print_message("type=$type, area=$prefix, $Common::counts{credits}{area_pie}{$prefix}");
+		my $last  = $first + $Common::counts{credits}{area_pie}{$prefix}; #$counts{credits}{area_pie}
+		$credits += $Common::counts{credits}{area_pie}{$prefix};
 		my $mid = ($first + $last)/2;
-		my $percent = Util::calc_percent($Common::counts{credits}{prefix}{$prefix}, $max);
+		my $percent = Util::calc_percent($Common::counts{credits}{area_pie}{$prefix}, $max);
 		#print "area=$prefix, first=$first, last=$last\n";
 		if(defined($Common::config{colors}{$prefix}))
 		{
@@ -817,7 +749,7 @@ sub generate_pie($)
 			$output_txt .= "\\pswedge[fillstyle=solid,fillcolor=$Common::config{colors}{$prefix}{bgcolor}]{2}{$first}{$last}\n";
 # 			$output_txt .= "\\rput(1.2; $mid ){\\psframebox*{\\Large \\colorbox{$Common::colors{$prefix}{bgcolor}}{$percent \\\%}}}\n";
 			$output_txt .= "\\rput(1.2; $mid ){$percent \\\%}\n";
-			$output_txt .= "\\uput{2.2}[ $mid ](0;0){$prefix ($Common::counts{credits}{prefix}{$prefix})}\n\n";
+			$output_txt .= "\\uput{2.2}[ $mid ](0;0){$prefix ($Common::counts{credits}{area_pie}{$prefix})}\n\n";
 			$first = $last;
 		}
 	}
@@ -836,19 +768,11 @@ sub generate_pie($)
 	#$area_count{$Common::course_info{$codcour}{area}} += $Common::course_info{$codcour}{cr};
 	#$credit_count += $Common::course_info{$codcour}{cr};
 	Util::write_file_to_gen_fig($output_file, $output_txt); 
-	#print Dumper(\%{$Common::data});
-	#exit;
-# 	Util::print_message("generate_pie($type) $output_file OK!"); 
-
-# 	$outfile_file = Common::get_template("out-pie-$type-graf-file")
-# 	$output_txt = "";
-# 	$output_txt .= "\\begin{figure}[h!]\n";
-# 	$output_txt .= "\\centering\n";
-# 	$output_txt .= "\\includegraphics[width=10cm]{fig/pie-$type}\n";
-# 	$output_txt .= "\\label{fig:pie-$type}\n";
-# 	$output_txt .= "\\caption{Distribución de cursos por áreas considerando creditaje (Total=$credits).}\n";
-# 	$output_txt .= "\\end{figure}\n";
-# 	Util::write_file($outfile_file, $output_txt);
+	my $fig_file = Common::get_template("OutputFigDir")."/pie-$type*"; 
+	Util::print_message("Removing file: $fig_file ...");
+	system("rm $fig_file");
+# 	exit;
+# 	Util::write_file("File $output_file Generated!", $output_txt);
 }
 
 sub get_bigtables_by_course_caption($$$$)
@@ -886,17 +810,18 @@ sub generate_table_topics_by_course($$$$$$)
 		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
+			my $codcour_label = Common::get_label($codcour);
 			$extra_header = "";
  			$extra_header = "$Common::config{column2}" if($flag == 1 && $Common::config{graph_version}>= 2);
 			 $flag = 1 - $flag;
 			$col_header     	.= "$sep$extra_header"."c";
 			my $color 		 = $Common::course_info{$codcour}{bgcolor};
-			my $label 		 = "\\colorbox{$color}{\\htmlref{$codcour}{sec:$codcour}}";
+			my $label 		 = "\\colorbox{$color}{\\htmlref{$codcour_label}{sec:$codcour_label}}";
 			if( $angle > 0 ) {$first_row_text .= "& \\rotatebox[origin=lb,units=360]{$angle}{$label} ";}
-			else {		  $first_row_text .= "& $codcour ";	}
-			$row_text       .= "& --$codcour-- ";
-			$sum_row_text   .= "& --$codcour-- ";
-			$Common::data{hours_by_course}{$codcour} = 0;
+			else {		  $first_row_text .= "& $codcour_label ";	}
+			$row_text       .= "& --$codcour_label-- ";
+			$sum_row_text   .= "& --$codcour_label-- ";
+			$Common::data{hours_by_course}{$codcour_label} = 0;
 			$sem_per_course{$semester}++;
 		}
 		$col_header     .= "$sep";
@@ -947,8 +872,11 @@ sub generate_table_topics_by_course($$$$$$)
 	my $first_backgroud_flag = $Common::config{first_backgroud_flag};
 	my $background = $first_backgroud_flag;
         Util::precondition("generate_bok");
+        #Util::print_message("A");
+        #print Dumper (\%Common::map_hours_unit_by_course); exit;
 	foreach my $unit_name (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %Common::map_hours_unit_by_course)
 	{
+		#Util::print_message("B");
 #  		print "unit_name= $unit_name, priority= $Common::config{topics_priority}{$unit_name}\n";
 		if( not defined($Common::config{topics_priority}{$unit_name}) )
 		{	print " falta $unit_name ";	}
@@ -968,28 +896,31 @@ sub generate_table_topics_by_course($$$$$$)
 		      else
 		      {	      $pdflink = Common::get_small_icon("none.gif", "abc");	}
 		}
-# 		my $label = "";
-# 		if(not defined($Common::config{ref}{$unit_name}))
-# 		{	Util::print_message("Common::config{ref}{$unit_name} not defined ..."); exit;
-# 		}
-		my $unit_cell = "$pdflink\\htmlref{\\$unit_label}{$Common::config{ref}{$unit_name}}";
+		if(not defined($Common::config{ref}{$unit_name}))
+		{	Util::print_error("Common::config{ref}{$unit_name} not defined ..."); exit;
+		}
+
+ 		my $unit_cell = "$pdflink\\htmlref{\\$unit_label}{$Common::config{ref}{$unit_name}}";
 		$current_row  =~ s/--unit--/$unit_cell/g;
 		my $sum_row = 0;
+		#Util::print_message("row_text=$row_text");
 		while($current_row =~ m/--(.*?)--/g)
 		{
-			my $codcour = $1;
-			my $label = $unit_name."-".$codcour;
-			if(defined($Common::map_hours_unit_by_course{$unit_name}{$codcour}))
-			{	$current_row =~ s/--$codcour--/\\htmlref{$Common::map_hours_unit_by_course{$unit_name}{$codcour}}{sec:$codcour}/;
-				$sum_row += $Common::map_hours_unit_by_course{$unit_name}{$codcour};
+			my $codcour_label = $1;
+			my $label = $unit_name."-".$codcour_label;
+			if(defined($Common::map_hours_unit_by_course{$unit_name}{$codcour_label}))
+			{	$current_row =~ s/--$codcour_label--/\\htmlref{$Common::map_hours_unit_by_course{$unit_name}{$codcour_label}}{sec:$codcour_label}/;
+				$sum_row += $Common::map_hours_unit_by_course{$unit_name}{$codcour_label};
 			}
 			else # There is no information for this cell
-			{	$current_row =~ s/--$codcour--/~/;
+			{	$current_row =~ s/--$codcour_label--/~/;
 			}
-			if(defined($Common::map_hours_unit_by_course{$unit_name}{$codcour}))
-			{	$Common::data{hours_by_course}{$codcour} += $Common::map_hours_unit_by_course{$unit_name}{$codcour};
+			if(defined($Common::map_hours_unit_by_course{$unit_name}{$codcour_label}))
+			{	$Common::data{hours_by_course}{$codcour_label} += $Common::map_hours_unit_by_course{$unit_name}{$codcour_label};
 			}
 		}
+		#Util::print_message("current_row=$current_row");
+
 		if( $sum_row > 0 )
 		{
 			$row_counter++;
@@ -1018,7 +949,7 @@ sub generate_table_topics_by_course($$$$$$)
 	}
 	#$table_text .= "\\multicolumn{8}{|l|}{\\textbf{$Common::config{dictionary}{semester_ordinal}{$semester} Semester}} \\\\ \\hline\n";
 	#$table_text .= "Cdigo & Curso & HT & HP & HL & Cr & T & Requisitos             \\\\ \\hline\n";
-		
+	
  	foreach my $codcour2 (keys %{$Common::data{hours_by_course}})
 	{	$sum_row_text =~ s/--$codcour2--/$Common::data{hours_by_course}{$codcour2}/g;	}
 	$output_text .= $table_begin;
@@ -1048,6 +979,7 @@ sub generate_all_topics_by_course()
 	my $output_txt		= "";
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
 	{	
+		#Util::print_message("Generating $output_file-$i.tex OK");
 		generate_table_topics_by_course($i, $sem_per_page, $rows_per_page, "$output_file-$i.tex", 90, "book");
 		$rows_per_page	= $Common::config{topics_rows_per_page};
 		$output_txt	.= "\\input{$output_file-$i}\n";
@@ -1062,8 +994,10 @@ sub generate_all_topics_by_course()
 		generate_table_topics_by_course($i, $sem_per_page, 500, "$output_file-$i-web.tex", 90, "book");
 		$output_txt	.= "\\input{$output_file-$i-web}\n";
 	}
+	Util::print_message("Generating $output_file-web.tex OK");
 	Util::write_file("$output_file-web.tex", $output_txt);
 
+	#exit;
 	#my $big_file 	= Common::get_template("OutputTexDir")."/all-$prefix-by-course";
 	#generate_table_topics_by_course(1, 10, 500, "$big_file.tex", 90, "poster");
 	Util::print_message("generate_all_topics_by_course() OK!");

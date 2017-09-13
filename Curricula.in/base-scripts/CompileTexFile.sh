@@ -24,6 +24,8 @@ endif
 
 cd "<OUTPUT_TEX_DIR>";
 set new_dir = `pwd`
+rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
+
 # $current_dir/scripts/clean_temp_files
 
 mkdir -p $current_dir/<OUT_LOG_DIR>;

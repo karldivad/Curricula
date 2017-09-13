@@ -21,6 +21,8 @@
 # ./scripts/gen-scripts.pl CS-UTEC
 
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
+./scripts/gen-scripts.pl CS-UTEC
+
 ./scripts/process-curricula.pl CS-UTEC
 latex curricula-main
 latex curricula-main;

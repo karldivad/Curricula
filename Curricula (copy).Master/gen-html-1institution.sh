@@ -1,1 +1,0 @@
-../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/scripts/gen-html-1institution.sh
