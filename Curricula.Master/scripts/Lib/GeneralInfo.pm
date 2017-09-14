@@ -791,11 +791,14 @@ sub get_bigtables_by_course_caption($$$$)
 sub generate_table_topics_by_course($$$$$$)
 {
 	my ($init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
+	my $lang = $Common::config{language_without_accents};
+	
 	my ($sep, $hline) = ($Common::config{sep}, $Common::config{hline});
 	my $col_header     = $sep."X$sep";
 	my $sem_header     = " ";
 	my $row_text       = "<color>--unit-- ";
 	my $first_row_text = "";
+	
 	$first_row_text  = "$Common::config{row2} " if($Common::config{graph_version}>= 2);
 	my $sum_row_text   = "$Common::config{dictionary}{Total} ";
 	my %sem_per_course = ();
@@ -874,49 +877,46 @@ sub generate_table_topics_by_course($$$$$$)
         Util::precondition("generate_bok");
         #Util::print_message("A");
         #print Dumper (\%Common::map_hours_unit_by_course); exit;
-	foreach my $unit_name (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %Common::map_hours_unit_by_course)
+	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %Common::map_hours_unit_by_course)
 	{
+		my $ka = $Common::ku_info{$lang}{$ku}{ka};
 		#Util::print_message("B");
-#  		print "unit_name= $unit_name, priority= $Common::config{topics_priority}{$unit_name}\n";
-		if( not defined($Common::config{topics_priority}{$unit_name}) )
-		{	print " falta $unit_name ";	}
+#  		print "unit_name= $ku, priority= $Common::config{topics_priority}{$ku}\n";
+		if( not defined($Common::config{topics_priority}{$ku}) )
+		{	print " falta $ku ";	}
 		#print "\n";
-		$current_row = $row_text;
-		my $temp = "$unit_name";
-		my $unit_label = $unit_name;
-		my $pdflink 		= "";
-		if($temp =~ m/(.*)Def/)
-		{
-		      my $Hours = "$1Hours";
-		      if(defined($Common::config{macros}{$Hours}))
-		      {	
-			      $pdflink = Common::get_small_icon("star.gif", "abc");
-			      $unit_label = "$unit_label ($Common::config{macros}{$Hours} $Common::config{dictionary}{hours})";	
-		      }
-		      else
-		      {	      $pdflink = Common::get_small_icon("none.gif", "abc");	}
-		}
-		if(not defined($Common::config{ref}{$unit_name}))
-		{	Util::print_error("Common::config{ref}{$unit_name} not defined ..."); exit;
+		$current_row 	= $row_text;
+		my $temp 	= "$ku";
+		my $ku_label	= Common::format_ku_label($lang, $ku);
+		my $pdflink 	= Common::get_small_icon("none.gif", "");
+		
+		#Util::print_warning("ku_info{$lang}{$ku}{ka}=$Common::ku_info{$lang}{$ku}{ka}");
+		#print Dumper(\%{$Common::ku_info{$lang}{$ku}});
+		#print Dumper(\%{$Common::bok{$lang}{$ka}{KU}{$ku}}); 
+		if( $Common::bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 || $Common::bok{$lang}{$ka}{KU}{$ku}{nhTier2} > 0 )
+		{	$pdflink = Common::get_small_icon("star.gif", $Common::config{dictionary}{MandatoryUnit});		}
+
+		if(not defined($Common::config{ref}{$ku}))
+		{	Util::print_error("Common::config{ref}{$ku} not defined ..."); exit;
 		}
 
- 		my $unit_cell = "$pdflink\\htmlref{\\$unit_label}{$Common::config{ref}{$unit_name}}";
+ 		my $unit_cell = "$pdflink\\htmlref{$ku_label}{$Common::config{ref}{$ku}}";
 		$current_row  =~ s/--unit--/$unit_cell/g;
 		my $sum_row = 0;
 		#Util::print_message("row_text=$row_text");
 		while($current_row =~ m/--(.*?)--/g)
 		{
 			my $codcour_label = $1;
-			my $label = $unit_name."-".$codcour_label;
-			if(defined($Common::map_hours_unit_by_course{$unit_name}{$codcour_label}))
-			{	$current_row =~ s/--$codcour_label--/\\htmlref{$Common::map_hours_unit_by_course{$unit_name}{$codcour_label}}{sec:$codcour_label}/;
-				$sum_row += $Common::map_hours_unit_by_course{$unit_name}{$codcour_label};
+			my $label = $ku."-".$codcour_label;
+			if(defined($Common::map_hours_unit_by_course{$ku}{$codcour_label}))
+			{	$current_row =~ s/--$codcour_label--/\\htmlref{$Common::map_hours_unit_by_course{$ku}{$codcour_label}}{sec:$codcour_label}/;
+				$sum_row += $Common::map_hours_unit_by_course{$ku}{$codcour_label};
 			}
 			else # There is no information for this cell
 			{	$current_row =~ s/--$codcour_label--/~/;
 			}
-			if(defined($Common::map_hours_unit_by_course{$unit_name}{$codcour_label}))
-			{	$Common::data{hours_by_course}{$codcour_label} += $Common::map_hours_unit_by_course{$unit_name}{$codcour_label};
+			if(defined($Common::map_hours_unit_by_course{$ku}{$codcour_label}))
+			{	$Common::data{hours_by_course}{$codcour_label} += $Common::map_hours_unit_by_course{$ku}{$codcour_label};
 			}
 		}
 		#Util::print_message("current_row=$current_row");

@@ -218,7 +218,8 @@ sub replace_special_cases($)
           $maintxt =~ s/\\begin\{tabular\}\{$old_columns_header\}/\\begin\{tabular\}\{$new_columns_header\}/g;
     }
 #      $maintxt =~ s/\\rotatebox.*?\{.*?\}\{\(\\colorbox\{.*?\}\{\\htmlref\{.*?\}\{.*?\}\}\)\}/$1/g; xyz;
-     $maintxt =~ s/\\rotatebox.*?\{.*?\}\{(\\htmlref\{.*?\}\{.*?\})\}/$1/g;
+		   #\rotatebox[origin=lb,units=360]{90}{\colorbox{cornflowerblue}{\htmlref{CS1D01}{sec:CS1D01}}}
+     $maintxt =~ s/\\rotatebox.*?\{.*?\}\{.*?\{.*?\}\{(\\htmlref\{.*?\}\{.*?\})\}\}/$1/g;
     #print "siglas = $macros{siglas} x2\n";
 
      #\\ref{out:Outcomeb}) & \PrintOutcomeWOLetter{b}

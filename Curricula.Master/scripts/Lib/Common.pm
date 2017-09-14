@@ -23,6 +23,7 @@ our %path_map			= ();
 our %data			= ();
 our %inst_list			= ();
 our %map_hours_unit_by_course   = ();
+our %ku_info			= ();
 our %acc_hours_by_course	= ();
 our %acc_hours_by_unit		= ();
 
@@ -3220,7 +3221,7 @@ sub update_page_numbers_for_all_courses_maps()
 	}
 }
 
-my %bok = ();
+our %bok = ();
 sub parse_bok($)
 {
 	my ($lang) = (@_);
@@ -3279,6 +3280,11 @@ sub parse_bok($)
 		$bok{$lang}{$ka}{nhTier1} 		+= $nhTier1;
 		$bok{$lang}{$ka}{KU}{$ku}{nhTier2} 	 = $nhTier2;
 		$bok{$lang}{$ka}{nhTier2} 		+= $nhTier2;
+
+		$ku_info{$lang}{$ku}{ka} 	= $ka;
+		$ku_info{$lang}{$ku}{nhTier1}	= $nhTier1;
+		$ku_info{$lang}{$ku}{nhTier2}	= $nhTier2;
+		
 		$counts{$cmd}++;
 # 		Util::print_message("KU ($ka, $ku, $KUPos, $crossref, Tier1=$nhTier1, Tier2=$nhTier2) ...");
 	    }
@@ -3341,6 +3347,35 @@ sub parse_bok($)
 	#print Dumper(\%bok);
 	#Util::print_message("parse_bok($bok_in_file) $count macros processed ... OK!");
 	#Util::print_message("bok{SE}{order} = $bok{$lang}{SE}{order}");
+# 	Util::print_message("bok{$lang}");
+# 	foreach my $key (keys %{$bok{Espanol}{SP}{KU}})
+# 	{	Util::print_warning("key=$key");	}
+# 	print Dumper (\%{$Common::bok{"Espanol"}{SP}{KU}}); 
+# 	exit;
+}
+
+sub format_ku_label($$)
+{
+	my ($lang, $ku) = (@_);
+	my $ka = $Common::ku_info{$lang}{$ku}{ka};
+
+	my $ku_label = "\\$bok{$lang}{$ka}{KU}{$ku}{name}";
+	my $nhours_txt = "";
+	my $sep = "";
+
+	#my $ku_line = "\\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{$Common::config{ref}{$ku}}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro}) & <CORETIER1> & <CORETIER2> & <ELECTIVES> \\\\ \\hline\n";
+	#$bok_index_txt .= "\\item \\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro})\n";
+	if( $bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 )
+	{	$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier1} $Common::config{dictionary}{hours} Core-Tier1";	$sep = ",~";
+	}
+	if( $bok{$lang}{$ka}{KU}{$ku}{nhTier2} > 0 )
+	{	$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier2} $Common::config{dictionary}{hours} Core-Tier2";	$sep = ",~";
+	}
+
+	if( not $nhours_txt eq "" )
+	{	$ku_label .= " ($nhours_txt)";
+	}
+	return $ku_label;
 }
 
 sub gen_bok($)

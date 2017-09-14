@@ -81,6 +81,7 @@ Sem		   =Sem
 Semesters	   =Semesters
 Mandatory	   =Mandatory
 MandatoryShort	   =M
+MandatoryUnit	   =Mandatory Unit
 Core-Tier1	   =Core Tier1
 Core-Tier2	   =Core Tier2
 Elective	   =Elective

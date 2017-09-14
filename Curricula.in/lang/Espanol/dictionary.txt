@@ -80,6 +80,7 @@ Sem		   =Sem
 Semesters	   =Semestres
 Mandatory	   =Obligatorio
 MandatoryShort	   =O
+MandatoryUnit	   =Unidad obligatoria
 Core-Tier1	   =Core Tier1
 Core-Tier2	   =Core Tier2
 Elective	   =Electivo
