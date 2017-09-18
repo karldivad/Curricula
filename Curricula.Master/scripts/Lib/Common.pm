@@ -3350,8 +3350,8 @@ sub parse_bok($)
 # 	Util::print_message("bok{$lang}");
 # 	foreach my $key (keys %{$bok{Espanol}{SP}{KU}})
 # 	{	Util::print_warning("key=$key");	}
-# 	print Dumper (\%{$Common::bok{"Espanol"}{SP}{KU}}); 
-# 	exit;
+ 	#print Dumper (\%{$Common::bok{"Espanol"}{DS}{KU}}); 
+ 	#exit;
 }
 
 sub format_ku_label($$)
@@ -3359,7 +3359,7 @@ sub format_ku_label($$)
 	my ($lang, $ku) = (@_);
 	my $ka = $Common::ku_info{$lang}{$ku}{ka};
 
-	my $ku_label = "\\$bok{$lang}{$ka}{KU}{$ku}{name}";
+	my $ku_label = "$ka \\$bok{$lang}{$ka}{KU}{$ku}{name}";
 	my $nhours_txt = "";
 	my $sep = "";
 
@@ -3375,7 +3375,7 @@ sub format_ku_label($$)
 	if( not $nhours_txt eq "" )
 	{	$ku_label .= " ($nhours_txt)";
 	}
-	return $ku_label;
+	return $ku_label ;
 }
 
 sub gen_bok($)

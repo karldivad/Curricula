@@ -788,19 +788,20 @@ sub get_bigtables_by_course_caption($$$$)
 }
 
 # ok
-sub generate_table_topics_by_course($$$$$$)
+sub generate_table_topics_by_course($$$$$$$)
 {
-	my ($init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
-	my $lang = $Common::config{language_without_accents};
+	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
 	
 	my ($sep, $hline) = ($Common::config{sep}, $Common::config{hline});
-	my $col_header     = $sep."X$sep";
-	my $sem_header     = " ";
-	my $row_text       = "<color>--unit-- ";
-	my $first_row_text = "";
+	my $col_header     = $sep."cX$sep";
+	my $sem_header     = " & ";
+	my $row_text       = "<color> --mandatory-- & --unit-- ";
+	#my $row_text       = "<color>--unit-- ";
+	my $first_row_text = "~ & ";
 	
-	$first_row_text  = "$Common::config{row2} " if($Common::config{graph_version}>= 2);
-	my $sum_row_text   = "$Common::config{dictionary}{Total} ";
+	$first_row_text  = "$Common::config{row2} & " if($Common::config{graph_version}>= 2);
+	my $sum_row_text   = "~ & $Common::config{dictionary}{Total} ";
+	#my $sum_row_text   = "$Common::config{dictionary}{Total} ";
 	my %sem_per_course = ();
 
 	$Common::data{hours_by_course} = ();
@@ -816,7 +817,7 @@ sub generate_table_topics_by_course($$$$$$)
 			my $codcour_label = Common::get_label($codcour);
 			$extra_header = "";
  			$extra_header = "$Common::config{column2}" if($flag == 1 && $Common::config{graph_version}>= 2);
-			 $flag = 1 - $flag;
+			$flag = 1 - $flag;
 			$col_header     	.= "$sep$extra_header"."c";
 			my $color 		 = $Common::course_info{$codcour}{bgcolor};
 			my $label 		 = "\\colorbox{$color}{\\htmlref{$codcour_label}{sec:$codcour_label}}";
@@ -877,7 +878,7 @@ sub generate_table_topics_by_course($$$$$$)
         Util::precondition("generate_bok");
         #Util::print_message("A");
         #print Dumper (\%Common::map_hours_unit_by_course); exit;
-	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %Common::map_hours_unit_by_course)
+	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %{$Common::map_hours_unit_by_course{$lang}})
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
 		#Util::print_message("B");
@@ -897,9 +898,17 @@ sub generate_table_topics_by_course($$$$$$)
 		{	$pdflink = Common::get_small_icon("star.gif", $Common::config{dictionary}{MandatoryUnit});		}
 
 		if(not defined($Common::config{ref}{$ku}))
-		{	Util::print_error("Common::config{ref}{$ku} not defined ..."); exit;
+		{	Util::print_error("Common::config{ref}{$ku} not defined ..."); #exit;
 		}
-
+		my $ContainsMandatoryHours = "~";
+		if( $Common::bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 || $Common::bok{$lang}{$ka}{KU}{$ku}{nhTier2} > 0 )
+		{	$current_row  =~ s/--mandatory--/\$\\bigstar\$/g;	 
+			#$ContainsMandatoryHours = "\$\\bigstar\$";	
+		}
+		else
+		{	$current_row  =~ s/--mandatory--/~/g;	}
+		
+ 		#my $unit_cell = "$pdflink\\htmlref{$ContainsMandatoryHours$ku_label}{$Common::config{ref}{$ku}}";
  		my $unit_cell = "$pdflink\\htmlref{$ku_label}{$Common::config{ref}{$ku}}";
 		$current_row  =~ s/--unit--/$unit_cell/g;
 		my $sum_row = 0;
@@ -908,15 +917,17 @@ sub generate_table_topics_by_course($$$$$$)
 		{
 			my $codcour_label = $1;
 			my $label = $ku."-".$codcour_label;
-			if(defined($Common::map_hours_unit_by_course{$ku}{$codcour_label}))
-			{	$current_row =~ s/--$codcour_label--/\\htmlref{$Common::map_hours_unit_by_course{$ku}{$codcour_label}}{sec:$codcour_label}/;
-				$sum_row += $Common::map_hours_unit_by_course{$ku}{$codcour_label};
+			#print Dumper (\%{$Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions}}); exit;
+			
+			if(defined($Common::map_hours_unit_by_course{$lang}{$ku}{$codcour_label}))
+			{	$current_row =~ s/--$codcour_label--/\\htmlref{$Common::map_hours_unit_by_course{$lang}{$ku}{$codcour_label}}{sec:$codcour_label}/;
+				$sum_row += $Common::map_hours_unit_by_course{$lang}{$ku}{$codcour_label};
 			}
 			else # There is no information for this cell
 			{	$current_row =~ s/--$codcour_label--/~/;
 			}
-			if(defined($Common::map_hours_unit_by_course{$ku}{$codcour_label}))
-			{	$Common::data{hours_by_course}{$codcour_label} += $Common::map_hours_unit_by_course{$ku}{$codcour_label};
+			if(defined($Common::map_hours_unit_by_course{$lang}{$ku}{$codcour_label}))
+			{	$Common::data{hours_by_course}{$codcour_label} += $Common::map_hours_unit_by_course{$lang}{$ku}{$codcour_label};
 			}
 		}
 		#Util::print_message("current_row=$current_row");
@@ -968,8 +979,9 @@ sub generate_table_topics_by_course($$$$$$)
 }
 
 # ok
-sub generate_all_topics_by_course()
+sub generate_all_topics_by_course($)
 {
+	my ($lang) = (@_);
 	my $prefix = "topics";
  	my $rows_per_page = $Common::config{topics_rows_per_page}-2;
  	my $sem_per_page  = $Common::config{topics_sem_per_page};
@@ -980,7 +992,7 @@ sub generate_all_topics_by_course()
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
 	{	
 		#Util::print_message("Generating $output_file-$i.tex OK");
-		generate_table_topics_by_course($i, $sem_per_page, $rows_per_page, "$output_file-$i.tex", 90, "book");
+		generate_table_topics_by_course($lang, $i, $sem_per_page, $rows_per_page, "$output_file-$i.tex", 90, "book");
 		$rows_per_page	= $Common::config{topics_rows_per_page};
 		$output_txt	.= "\\input{$output_file-$i}\n";
 	}
@@ -991,7 +1003,7 @@ sub generate_all_topics_by_course()
 	$rows_per_page	= $Common::config{topics_rows_per_page};
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
 	{	
-		generate_table_topics_by_course($i, $sem_per_page, 500, "$output_file-$i-web.tex", 90, "book");
+		generate_table_topics_by_course($lang, $i, $sem_per_page, 500, "$output_file-$i-web.tex", 90, "book");
 		$output_txt	.= "\\input{$output_file-$i-web}\n";
 	}
 	Util::print_message("Generating $output_file-web.tex OK");
@@ -999,14 +1011,14 @@ sub generate_all_topics_by_course()
 
 	#exit;
 	#my $big_file 	= Common::get_template("OutputTexDir")."/all-$prefix-by-course";
-	#generate_table_topics_by_course(1, 10, 500, "$big_file.tex", 90, "poster");
+	#generate_table_topics_by_course($lang, 1, 10, 500, "$big_file.tex", 90, "poster");
 	Util::print_message("generate_all_topics_by_course() OK!");
 }
 
 # ok
-sub generate_outcomes_by_course($$$$$$)
+sub generate_outcomes_by_course($$$$$$$)
 {
-	my ($init_sem, $sem_per_page, $rows_per_page, $outfile, $angle, $size) = (@_);
+	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile, $angle, $size) = (@_);
 	my ($sep, $hline) = ($Common::config{sep}, $Common::config{hline});
 	my $col_header     = $sep."rX$sep";
 	my $sem_header     = " & ";
@@ -1177,8 +1189,9 @@ sub generate_outcomes_by_course($$$$$$)
 }
 
 # ok
-sub generate_all_outcomes_by_course()
+sub generate_all_outcomes_by_course($)
 {
+	my ($lang) = (@_);
 	my $rows_per_page = $Common::config{outcomes_rows_per_page};
 	my $sem_per_page  = $Common::config{outcomes_sem_per_page};
 	my $angle	  = 90;
@@ -1188,15 +1201,15 @@ sub generate_all_outcomes_by_course()
 	#$output_txt	.= "\\begin{landscape}\n";
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
 	{	
-		generate_outcomes_by_course($i, $sem_per_page, $rows_per_page, "$outfile-$i.tex", $angle, "book");
+		generate_outcomes_by_course($lang, $i, $sem_per_page, $rows_per_page, "$outfile-$i.tex", $angle, "book");
 		$output_txt	.= "\\input{$outfile-$i}\n";
 	}
 	#$output_txt	.= "\\end{landscape}\n";
 	Util::write_file("$outfile.tex", $output_txt);
 
 	my $big_file 	= Common::get_template("in-all-outcomes-by-course-poster");
-	generate_outcomes_by_course(1, 10, 500, $big_file, 90, "poster");
-	Util::print_message("generate_all_outcomes_by_course() OK!");
+	generate_outcomes_by_course($lang, 1, 10, 500, $big_file, 90, "poster");
+	Util::print_message("generate_all_outcomes_by_course($lang) OK!");
 }
 
 # ok
