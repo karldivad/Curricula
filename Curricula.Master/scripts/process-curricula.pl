@@ -25,6 +25,7 @@ sub generate_general_info()
 	      Common::parse_bok($lang);
 	      Common::gen_bok($lang);
 	}
+	my $lang = $Common::config{language_without_accents};
 	Common::read_all_min_max();
 	Util::precondition("gen_syllabi"); 
 	
@@ -40,14 +41,14 @@ sub generate_general_info()
 
 	GeneralInfo::generate_pie_by_levels();
 
-	GeneralInfo::generate_curricula_in_dot("small", $Common::config{language_without_accents});
+	GeneralInfo::generate_curricula_in_dot("small", $lang);
 	system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("out-small-graph-curricula-file"));
-	GeneralInfo::generate_curricula_in_dot("big", $Common::config{language_without_accents});   
+	GeneralInfo::generate_curricula_in_dot("big", $lang);   
 
-	GeneralInfo::generate_poster($Common::config{language_without_accents});
+	GeneralInfo::generate_poster($lang);
 
-	GeneralInfo::generate_all_topics_by_course();
-	GeneralInfo::generate_all_outcomes_by_course();
+	GeneralInfo::generate_all_topics_by_course($lang);
+	GeneralInfo::generate_all_outcomes_by_course($lang);
 
 	GeneralInfo::generate_list_of_courses_by_area();
 	GeneralInfo::generate_compatibility_with_standards();

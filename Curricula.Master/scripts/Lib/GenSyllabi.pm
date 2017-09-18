@@ -71,6 +71,11 @@ sub process_syllabus_units($$$$)
 		push(@{$Common::course_info{$codcour}{units}{alternative_caption}}, $alternative_caption);
 		push(@{$Common::course_info{$codcour}{units}{bib_items}}   , $unit_bibitems);
 		push(@{$Common::course_info{$codcour}{units}{hours}}       , $unit_hours);
+# 		if($codcour eq "CS1D1")
+# 		{
+# 		    print Dumper (\%{$Common::course_info{$codcour}{units}}); exit;
+# 		    #print Dumper (\%{$Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions}}); exit;
+# 		}
 		push(@{$Common::course_info{$codcour}{units}{level_of_competence}} , $level_of_competence);
 		$Common::course_info{$codcour}{allbibitems} .= "$sep$unit_bibitems";
 
@@ -86,19 +91,20 @@ sub process_syllabus_units($$$$)
 			$unit_caption = $1;
 			#Util::print_message("Course: $codcour_label: \\$unit_caption found ...");
 			#print Dumper (\%$Common::config{topics_priority}); exit;
-			if(not defined($Common::map_hours_unit_by_course{$unit_caption}{$codcour_label}))
-			{	$Common::map_hours_unit_by_course{$unit_caption}{$codcour_label} = 0;		}
-			$Common::map_hours_unit_by_course{$unit_caption}{$codcour_label} += $unit_hours;
+			if(not defined($Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour_label}))
+			{	$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour_label} = 0;		}
+			$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour_label} += $unit_hours;
 
-			if(not defined($Common::acc_hours_by_course{$codcour_label}))
-			{	$Common::acc_hours_by_course{$codcour_label}  = 0;						}
-			$Common::acc_hours_by_course{$codcour_label} += $unit_hours;
+			if(not defined($Common::acc_hours_by_course{$lang}{$codcour_label}))
+			{	$Common::acc_hours_by_course{$lang}{$codcour_label}  = 0;						}
+			$Common::acc_hours_by_course{$lang}{$codcour_label} += $unit_hours;
 
-			if(not defined($Common::acc_hours_by_course{$unit_caption}))
-			{	$Common::acc_hours_by_unit{$unit_caption}  = 0;						}
-			$Common::acc_hours_by_unit{$unit_caption} += $unit_hours;
+			if(not defined($Common::acc_hours_by_course{$lang}{$unit_caption}))
+			{	$Common::acc_hours_by_unit{$lang}{$unit_caption}  = 0;						}
+			$Common::acc_hours_by_unit{$lang}{$unit_caption} += $unit_hours;
 			
-			#print Dumper (\%Common::map_hours_unit_by_course); exit;
+# 			if( $unit_caption eq "DSSetsRelationsandFunctions" )
+# 			{	print Dumper (\%Common::map_hours_unit_by_course{$lang}{$unit_caption}); 		}
 		}
 		$sep = ",";
 		my ($topics, $unitgoals) = ("", "");
@@ -119,17 +125,13 @@ sub process_syllabus_units($$$$)
 		$map{FULL_HOURS}	= "$unit_hours $Common::config{dictionary}{hours}";
 		$map{UNIT_GOAL}		= $unitgoals;
 		$map{UNIT_CONTENT}	= $topics;
-
-		$map{PERCENTAGE} = 0;
-		$map{PERCENTAGE} = int(100*$accu_hours{$unit_count}/$total_hours+0.5) if($total_hours  > 0 );
+		$map{PERCENTAGE} 	= 0;
+		$map{PERCENTAGE} 	= int(100*$accu_hours{$unit_count}/$total_hours+0.5) if($total_hours  > 0 );
 
 		$sep = "";
 		my $bib_citations = "";
 		foreach my $bibitem (split(",", $unit_bibitems))
-		{
-			$bib_citations .= "$sep\\cite{$bibitem}";
-			$sep = ", ";
-		}
+		{	$bib_citations .= "$sep\\cite{$bibitem}";	$sep = ", ";		}
 		$map{CITATIONS} = $bib_citations;
 		$thisunit = Common::replace_tags($thisunit, "--", "--", %map);
 		$all_units_txt .= $thisunit;
@@ -287,13 +289,18 @@ sub read_syllabus_info($$$)
 	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 	{	$unit_struct = $1;	}
 	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
-	
-	my $sumilla_template = $Common::config{sumilla_template};
-	$unit_struct = "";
-	if($sumilla_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
-	{	$unit_struct = $1;	}
-	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
-	
+# 	if($codcour eq "CS1D1")
+#  	{	print Dumper (\%Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions}); 
+#  	}
+ 	
+# 	my $sumilla_template = $Common::config{sumilla_template};
+# 	$unit_struct = "";
+# 	if($sumilla_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
+# 	{	$unit_struct = $1;	}
+# 	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
+# 	if($codcour eq "CS1D1")
+#  	{	print Dumper (\%Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions}); exit;
+#  	}
 	
 	$map{LIST_OF_TOPICS} = $map{SHORT_DESCRIPTION};
 	$map{SHORT_DESCRIPTION} = "\\begin{inparaenum}\n$map{SHORT_DESCRIPTION}\\end{inparaenum}";
