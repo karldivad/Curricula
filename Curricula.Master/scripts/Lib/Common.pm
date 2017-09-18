@@ -2129,14 +2129,15 @@ sub find_credit_column($)
 	while($course_line =~ m/<<(.*?)>>/g)
 	{
 		my $tag = $1;
-# 		Util::print_message("tag=$tag");
-		if($tag eq "CREDITS")
+ 		#Util::print_message("tag=$tag");
+		if($tag eq "CR")
 		{ 	
-# 			Util::print_message("count=$count"); exit;
+#			Util::print_message("count=$count"); exit;
 			return $count;
 		}
 		$count++;
 	}
+	#Util::print_message("$course_line"); exit;
 	return 1;
 }
 

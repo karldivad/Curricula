@@ -104,6 +104,9 @@ ContributionToOutcomes=Contribución a los resultados ({\it Outcomes})
 ContributionToSkills=Contribución a las habilidades de Ciencia de la Computación (IEEE)
 Skills		   = Habilidades
 Units		   =Unidades
+KUTitle		   =Unidad de Conocimiento
+KUsTitle	   =Unidades de Conocimiento
+
 Topics             =Tópicos
 ListOfTopics	   =Lista de temas a estudiar en el curso
 UnitGoals          =Objetivos

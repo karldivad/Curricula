@@ -18,7 +18,7 @@ sub generate_course_tables()
 	my $n_columns   = Common::count_number_of_tags($this_line);
 #  	print "COURSENAME=$Common::config{COURSENAME}\n"; exit;
 	
-	#Util::print_message("config{ncourses} = $Common::config{ncourses} ... (GeneralInfo line #21)"); exit;
+	#Util::print_message("cred_column = $cred_column"); exit;
 	my %electives = ();
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
@@ -144,9 +144,8 @@ sub generate_course_tables()
 
 			$this_sem_text .=  "\\multicolumn{$n_columns}{|l|}{$line} \\\\ \\hline\n";
 		}
-# 		Util::print_message("Credits are at column: $cred_column"); exit;
-		if($cred_column == 0){}
-		elsif($cred_column == 1)
+ 		#Util::print_message("Credits are at column: $cred_column of $n_columns"); exit;
+		if($cred_column == 1)
 		{	$this_sem_text .= " $Common::config{credits_this_semester}{$semester} & ";
 			$this_sem_text .= "\\multicolumn{".($n_columns-$cred_column)."}{|l}{} \\\\ \\cline{$cred_column-$cred_column}\n";
 		}
@@ -191,7 +190,7 @@ sub generate_course_tables()
         $Common::config{ncredits} = $total_credits;
         my $ncredits_file = Common::get_template("out-ncredits-file");
 	Util::write_file(Common::get_template("out-ncredits-file"), "$Common::config{ncredits}\\xspace");
-	Util::print_message("generate_course_tables OK!");
+	Util::print_message("generate_course_tables ($output_file) OK!");
 
 # 	print Dumper \%{$Common::counts{map_cred_area}{2}};
 # 	print Dumper \%{$Common::counts{map_cred_area}{9}};
@@ -797,9 +796,12 @@ sub generate_table_topics_by_course($$$$$$$)
 	my $sem_header     = " & ";
 	my $row_text       = "<color> --mandatory-- & --unit-- ";
 	#my $row_text       = "<color>--unit-- ";
-	my $first_row_text = "~ & ";
+	my $ku_and_course_title = "{\\bf $Common::config{dictionary}{KUsTitle}}";
 	
-	$first_row_text  = "$Common::config{row2} & " if($Common::config{graph_version}>= 2);
+	my $first_row_text = "";
+	$first_row_text  = "$Common::config{row2} " if($Common::config{graph_version}>= 2);
+	$first_row_text .= "~ & $ku_and_course_title ";
+	
 	my $sum_row_text   = "~ & $Common::config{dictionary}{Total} ";
 	#my $sum_row_text   = "$Common::config{dictionary}{Total} ";
 	my %sem_per_course = ();
@@ -1231,10 +1233,10 @@ sub generate_list_of_courses_by_area()
 # 			Util::print_message("Common::config{language_without_accents}=$Common::config{language_without_accents}"); 
 # 			Util::print_message("Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}=$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
 
-			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour} ";
+			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour_label} ";
 			$this_topic .= " ($semester";
 			$this_topic .= "$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, ";
-			$this_topic .= "$Common::config{dictionary}{Pag}~\\pageref{sec:$codcour}";
+			$this_topic .= "$Common::config{dictionary}{Pag}~\\pageref{sec:$codcour_label}";
 			$this_topic .= ")\n";
 		}
 		my $area_title = $Common::config{dictionary}{all_areas}{$axe};
