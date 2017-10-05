@@ -22,6 +22,7 @@ AcademicPeriod = Academic Period
 COURSEAREA= Area
 COURSECODE= Code
 COURSENAME= Course name
+SYLLABI=Sílabo
 THEORY    = THEORY
 Theory    = Theory
 PRACTICE  = PRACTICE

@@ -21,6 +21,7 @@ AcademicPeriod = Periodo Académico
 COURSEAREA= Área
 COURSECODE= Código
 COURSENAME= Curso
+SYLLABI=Syllabi
 THEORY    = HT
 Theory    = Teoría
 PRACTICE  = HP

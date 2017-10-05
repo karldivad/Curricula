@@ -337,7 +337,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=33
 mode=LaTeX
-open=true
+open=false
 order=6
 
 [item:../Curricula.in/country/Peru/Computing/CS/UCSP/cycle/2015-1/Plan2010/distribution.txt]
@@ -367,7 +367,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=16
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:../Curricula.in/country/Peru/Computing/CS/UTEC/cycle/2017-I/Plan2017/Specific-Evaluation.tex]
@@ -457,7 +457,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=4
 mode=LaTeX
-open=true
+open=false
 order=5
 
 [item:../Curricula.in/lang/Espanol/CS.tex/chap-introduction.tex]
@@ -532,13 +532,13 @@ order=12
 
 [item:compile1institucion.sh]
 archive=true
-column=29
+column=101
 encoding=UTF-8
 highlight=Bash
-line=60
+line=125
 mode=Bash
 open=true
-order=7
+order=1
 
 [item:curricula-main.tex]
 archive=true
@@ -552,32 +552,32 @@ order=12
 
 [item:p.sh]
 archive=true
-column=0
+column=2
 encoding=UTF-8
 highlight=Bash
-line=23
+line=20
 mode=Bash
-open=false
-order=2
+open=true
+order=0
 
 [item:scripts/Lib/Common.pm]
 archive=true
-column=3
+column=0
 encoding=UTF-8
 highlight=Perl
 line=3361
 mode=Perl
-open=true
+open=false
 order=2
 
 [item:scripts/Lib/GenSyllabi.pm]
 archive=true
-column=46
+column=34
 encoding=UTF-8
 highlight=Perl
 line=88
 mode=Perl
-open=true
+open=false
 order=0
 
 [item:scripts/Lib/GeneralInfo.pm]
@@ -627,7 +627,7 @@ encoding=UTF-8
 highlight=Perl
 line=254
 mode=Perl
-open=true
+open=false
 order=4
 
 [item:scripts/gen-scripts.pl]
@@ -657,7 +657,7 @@ encoding=UTF-8
 highlight=Perl
 line=25
 mode=Perl
-open=true
+open=false
 order=3
 
 [item:scripts/update-analytic-info.pl]
@@ -819,10 +819,10 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:compile1institucion.sh]
-CursorColumn=29
-CursorLine=60
+CursorColumn=101
+CursorLine=125
 JumpList=
-ViMarks=.,57,0,[,57,0,],57,0
+ViMarks=.,72,0,[,72,0,],72,0
 
 [view-settings,view=0,item:curricula-main.tex]
 CursorColumn=27
@@ -831,19 +831,19 @@ JumpList=
 ViMarks=.,9,0,[,9,0,],9,0
 
 [view-settings,view=0,item:p.sh]
-CursorColumn=0
-CursorLine=23
+CursorColumn=2
+CursorLine=20
 JumpList=
 ViMarks=.,30,42,[,30,42,],30,42
 
 [view-settings,view=0,item:scripts/Lib/Common.pm]
-CursorColumn=3
+CursorColumn=0
 CursorLine=3361
 JumpList=
 ViMarks=.,3361,2,[,3361,2,],3361,2,a,-1,-1,b,-1,-1,c,1324,0,d,-1,-1,e,3544,35,f,3546,0
 
 [view-settings,view=0,item:scripts/Lib/GenSyllabi.pm]
-CursorColumn=46
+CursorColumn=34
 CursorLine=88
 JumpList=
 ViMarks=.,87,3,[,87,3,],87,3,a,907,0,b,433,0,c,88,0

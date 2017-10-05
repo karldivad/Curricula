@@ -911,7 +911,8 @@ sub generate_table_topics_by_course($$$$$$$)
 		{	$current_row  =~ s/--mandatory--/~/g;	}
 		
  		#my $unit_cell = "$pdflink\\htmlref{$ContainsMandatoryHours$ku_label}{$Common::config{ref}{$ku}}";
- 		my $unit_cell = "$pdflink\\htmlref{$ku_label}{$Common::config{ref}{$ku}}";
+ 		#my $unit_cell = "$pdflink\\htmlref{$ku_label}{$Common::config{ref}{$ku}}";
+ 		my $unit_cell = "\\htmlref{$ku_label}{$Common::config{ref}{$ku}}";
 		$current_row  =~ s/--unit--/$unit_cell/g;
 		my $sum_row = 0;
 		#Util::print_message("row_text=$row_text");
