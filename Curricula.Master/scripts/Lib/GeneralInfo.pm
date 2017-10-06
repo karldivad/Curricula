@@ -1,4 +1,5 @@
 package GeneralInfo;
+use Math::Trig;
 use Carp::Assert;
 use scripts::Lib::Common;
 use Data::Dumper;
@@ -722,8 +723,8 @@ sub generate_pie($)
 	
 	$output_txt .= "\\begin{center}\n";
 	$output_txt .= "\\psset{framesep=1pt,unit=1cm}\n";
-	$output_txt .= "\\begin{pspicture}(-2.2,-2.5)(4,2.6)\n";
-	$output_txt .= "\\psframe*[linecolor=white](-2,-2.5)(3.3,2.6)\n";
+	$output_txt .= "\\begin{pspicture}(-2.5,-2.5)(4,2.6)\n";
+	$output_txt .= "\\psframe*[linecolor=white](-2.6,-2.6)(4,2.6)\n";
 	$output_txt .= "\\SpecialCoor\n";
 	my $count = $Common::counts{$type}{count};
 	my $max   = $Common::config{ncredits};
@@ -1055,9 +1056,11 @@ sub generate_outcomes_by_course($$$$$$$)
 			if( not $color )
 			{	Util::print_error("Course $codcour (Alias: $codcour_label) ($semester Sem) has NOT color");	}
 			
-			#my $label 		= "\\colorbox{$color}{\\htmlref{$codcour}{sec:$codcour}}";
-			my $label 		= "\\htmlref{$codcour_label}{sec:$codcour_label}";
-			$first_row_text .= "& \\cellcolor{$color} ";
+			# \colorbox{cornflowerblue}{\htmlref{CS1100}{sec:CS1100}}
+			my $label 		= "\\colorbox{$color}{\\htmlref{$codcour_label}{sec:$codcour_label}}";
+			#my $label 		= "\\htmlref{$codcour_label}{sec:$codcour_label}";
+# 			$first_row_text .= "& \\cellcolor{$color} ";
+			$first_row_text .= "& ";
 			if( $angle > 0 ) {$first_row_text .= "\\rotatebox[origin=lb,units=360]{$angle}{$label} ";}
 			else {		  $first_row_text .= "$label ";	}
 			$row_text       .= "& --$codcour-- ";
@@ -1352,19 +1355,24 @@ sub generate_spider_with_one_standard($)
 	$output_txt 	.= "\\begin{center}\n";
 	$output_txt 	.= "\\psset{unit=0.9cm}\n";
 	my $bottom   	 = -$range-1.5;
-	my $limits	 = "(-".($range+3).",".$bottom.")(".($range+4).",".($range+0.5).")";
+	my $limits	 = "(-".($range+4).",".$bottom.")(".($range+4).",".($range+0.5).")";
 	$output_txt 	.= "\\begin{pspicture}$limits\n";
+	$limits	 	 = "(-".($range+4).",".$bottom.")(".($range+4).",".($range+0.5).")";
 	$output_txt 	.= "\t\\psframe*[linecolor=white]$limits\n";
+	
+	# Draw the circles
 	my $i = 1;
 	for(; $i <= $circles ; $i++)
 	{	
 		$output_txt .= "	\\pscircle[linestyle=dotted](0,0){$i}\n";
 		my $label = $i*10;
-		$output_txt .= "\t\\rput[rt]($i,0){\\small $label\\\%}\n";
+		$output_txt .= "\t\\rput[t](-$i,0){\\small $label\\\%}\n";
 	#	$output_txt .= "	\\pscircle[](0,0){$i}\n";
 	}
 	
-	my $nareas   = $Common::config{NumberOfAxes};
+	my $nareas   = 0;
+	foreach my $axe (keys %{$Common::config{dictionary}{all_areas}})
+	{	$nareas++;	}
 	my $ang_base = Util::get_ang_base($nareas);
 	my $ang      = 0;
 	
@@ -1375,7 +1383,7 @@ sub generate_spider_with_one_standard($)
 			keys %{$Common::config{dictionary}{all_areas}})
 	{
 		# Dibujar los ejes
-		my ($x, $y)  = ($range, 0);
+		my ($x, $y)  = (-$range, 0);
 		my ($xp,$yp) = Util::rotate($x, $y, $ang);
 		($xp,$yp) = (Util::round($xp), Util::round($yp));
 		$output_txt .= "\t\\psline[arrows=->,linestyle=dotted](0,0)($xp,$yp)\n";
@@ -1384,14 +1392,15 @@ sub generate_spider_with_one_standard($)
 		my $tb = "b";
 		$tb = "t" if($yp < 0);
 		my $xpe=$xp;
-		if (($i<($nareas/4))||($i>($nareas-$nareas/4)))
-		{	$xpe+=1;	}
-		else
-		{	$xpe-=1;	}
+# 		if (($i<($nareas/4))||($i>($nareas-$nareas/4)))
+# 		{	$xpe+=1;	}
+# 		else
+# 		{	$xpe-=1;	}
 		my $area_title = $Common::config{dictionary}{all_areas}{$axe};
  		$area_title =~ s/<ENTER>/ /g;
 		$output_txt .= "\t\\rput[$tb]($xpe,$yp){$area_title}\n";
-		$i++; $ang += $ang_base;
+		$ang -= $ang_base;
+		$i++;
 	}
 	my $graph_base = generate_background_figure_for_one_standard($standard, $nareas, $ang_base);
 	$output_txt .= $graph_base;

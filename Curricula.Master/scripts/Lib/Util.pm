@@ -77,7 +77,7 @@ sub halt($)
 sub get_ang_base($)
 {
 	my ($nareas) = (@_);
-	return (2*3.14)/$nareas;
+	return (2*3.14159)/$nareas;
 }
 
 sub rotate($$$)

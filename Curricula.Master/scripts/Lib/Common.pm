@@ -638,6 +638,7 @@ sub get_file_name($)
 sub read_discipline_config()
 {
 	my %discipline_cfg	= read_config_file("discipline-config");
+	#print Dumper (\%discipline_cfg); exit;
 	my ($key, $value);
 	while ( ($key, $value)  = each(%discipline_cfg) ) 
 	{	
