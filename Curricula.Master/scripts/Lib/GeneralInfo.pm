@@ -1272,9 +1272,9 @@ my $Min_Color        = "red";
 my $Max_Color        = "blue";
 my $ThisSchool_Color = "black";
 
-my %line_style          = ("min"  => "linecolor=$Min_Color,linestyle=dashed,linewidth=1pt",
-			   "max"  => "linecolor=$Max_Color,linestyle=dashed,linewidth=1pt",
-			   "univ" => "linecolor=$ThisSchool_Color,linewidth=1pt");
+my %line_style          = ("min"  => "linecolor=$Min_Color,linestyle=dashed,linewidth=0.5pt",
+			   "max"  => "linecolor=$Max_Color,linestyle=dashed,linewidth=0.5pt",
+			   "univ" => "linecolor=$ThisSchool_Color,linewidth=0.5pt");
 
 # Generate legends
 sub get_legend($$$$$)
@@ -1299,9 +1299,10 @@ sub get_legend($$$$$)
 }
 
 # ok
-sub generate_background_figure_for_one_standard($$$)
+sub generate_background_figure_for_one_standard($$$$)
 {
-	my ($standard, $nareas, $ang_base) = (@_);
+	my ($standard, $nareas, $ang_base, $leftright) = (@_);
+	
 	#Util::print_message("axe=CS, data{counts_per_standard}{CS} = $Common::data{counts_per_standard}{CS}"); exit;
  	my @mma        = ("min", "max");
 					# linearc=0.5,
@@ -1310,39 +1311,63 @@ sub generate_background_figure_for_one_standard($$$)
 			  "univ" => "\t\\psline[arrows=-,$line_style{univ}]");
 	my %first      = ("min" => "", "max" => "", "univ" => "");
 	my $ang   = 0;
-	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=>
-                              $Common::config{sub_areas_priority}{$b}}
-                          keys %{$Common::config{dictionary}{all_areas}})
+	
+	my @list_of_values = ();
+	my $count = 0;
+ 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=>
+                               $Common::config{sub_areas_priority}{$b}}
+                           keys %{$Common::config{dictionary}{all_areas}})
 	{
-		my ($x,  $y);
-		my ($xp, $yp);
-		foreach my $mm (@mma)
-		{
-			($x, $y)  = (100*$Common::config{StdInfo}{$standard}{$axe}{$mm}/
-                                    $Common::config{StdInfo}{$standard}{max}, 0);
-			($xp,$yp) = Util::rotate($x, $y, $ang);
-			($xp,$yp) = (Util::round($xp)/10, Util::round($yp)/10);
-			if($first{$mm} eq "")
-			{	$first{$mm} = "($xp,$yp)";	}
-			$out_tex{$mm} .= "($xp,$yp)";
-		}
-		#This university
-		#Util::print_message("axe=$axe, =$Common::data{counts_per_standard}{$axe}/$Common::counts{credits}{count}");
-		($x, $y)   = (100 * $Common::data{counts_per_standard}{$axe}/$Common::counts{credits}{count}, 0);
-		($xp, $yp) = Util::rotate($x, $y, $ang);
-		($xp, $yp) = (Util::round($xp)/10.0, Util::round($yp)/10.);
-		#Util::print_message("(x=$x, y=$y), (xp=$xp, yp=$yp)");
-		if($first{univ} eq "")
-		{	$first{univ} = "($xp,$yp)";	}
-		$out_tex{univ} .= "($xp,$yp)";
-
-		# $this_univ 
-		$ang += $ang_base;
+	    my ($x,  $y, $xp, $yp);
+	    foreach my $mm ("min", "max")
+	    {
+		my ( $x, $y) = (100*$Common::config{StdInfo}{$standard}{$axe}{$mm}/$Common::config{StdInfo}{$standard}{max}, 0);
+		#my ($xp,$yp) = ($x, $y);
+		($xp,$yp) = Util::rotate($leftright*$x, $y, $leftright*$ang); # Aqui change left, right
+		($xp,$yp) = (Util::round($xp)/10, Util::round($yp)/10);
+		($list_of_values[$count]{$mm}{x}, $list_of_values[$count]{$mm}{y}) = ($xp,$yp);
+		$out_tex{$mm} .= "($xp,$yp)";
+	    }
+	    # This university
+	    ($x, $y)   = (100 * $Common::data{counts_per_standard}{$axe}/$Common::counts{credits}{count}, 0);
+	    ($xp, $yp) = Util::rotate($leftright*$x, $y, $leftright*$ang);
+	    ($xp, $yp) = (Util::round($xp)/10.0, Util::round($yp)/10.);
+	    $out_tex{univ} .= "($xp,$yp)";
+	    ($list_of_values[$count]{univ}{x}, $list_of_values[$count]{univ}{y}) = ($xp,$yp);
+	    
+	    $ang += $ang_base;
+	    $count++;
 	}
-	$out_tex{min} .= "$first{min}\n";
-	$out_tex{max} .= "$first{max}\n";
-	$out_tex{univ} .= "$first{univ}\n";
- 	return "$out_tex{min}\n$out_tex{max}\n\t\%This Univ\n$out_tex{univ}";
+	foreach my $mm ("min", "max", "univ")
+	{	$out_tex{$mm} .= "($list_of_values[0]{$mm}{x}, $list_of_values[0]{$mm}{y})\n";		}
+	
+# 	#print Dumper (\@list_of_values); exit;
+# 	print "max = ";
+# 	for( $count = 0; $count < $nareas ; $count++ )
+# 	{    printf("(%5.2f,%5.2f)  ", $list_of_values[$count]{max}{x}, $list_of_values[$count]{max}{y});		}
+# 	print "\n";
+# 	print "min = ";
+# 	for( $count = 0; $count < $nareas ; $count++ )
+# 	{    printf("(%5.2f,%5.2f)  ", $list_of_values[$count]{min}{x}, $list_of_values[$count]{min}{y});		}
+# 	print "\n";
+# 	exit;
+
+	#(0,0)(2,3)(3,2.5)
+	my $output_polygon = "";
+	$count = 0;
+ 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=>
+                               $Common::config{sub_areas_priority}{$b}}
+                           keys %{$Common::config{dictionary}{all_areas}})
+	{
+	    my ($axe1,  $axe2) = ($count, ($count+1)%$nareas);
+	    $output_polygon .= "\t\\pspolygon[fillcolor=yellow,fillstyle=solid,linecolor=yellow]";
+	    $output_polygon .= "($list_of_values[$axe1]{min}{x}, $list_of_values[$axe1]{min}{y})($list_of_values[$axe1]{max}{x}, $list_of_values[$axe1]{max}{y})";
+	    $output_polygon .= "($list_of_values[$axe2]{max}{x}, $list_of_values[$axe2]{max}{y})($list_of_values[$axe2]{min}{x}, $list_of_values[$axe2]{min}{y})\n";	    
+	    $count++;
+	}
+	foreach my $mm ("min", "max", "univ")
+	{	$output_polygon .= $out_tex{$mm};	}
+	return $output_polygon;
 }
 
 sub generate_spider_with_one_standard($)
@@ -1360,52 +1385,55 @@ sub generate_spider_with_one_standard($)
 	$limits	 	 = "(-".($range+4).",".$bottom.")(".($range+4).",".($range+0.5).")";
 	$output_txt 	.= "\t\\psframe*[linecolor=white]$limits\n";
 	
-	# Draw the circles
-	my $i = 1;
-	for(; $i <= $circles ; $i++)
-	{	
-		$output_txt .= "	\\pscircle[linestyle=dotted](0,0){$i}\n";
-		my $label = $i*10;
-		$output_txt .= "\t\\rput[t](-$i,0){\\small $label\\\%}\n";
-	#	$output_txt .= "	\\pscircle[](0,0){$i}\n";
-	}
-	
 	my $nareas   = 0;
 	foreach my $axe (keys %{$Common::config{dictionary}{all_areas}})
 	{	$nareas++;	}
 	my $ang_base = Util::get_ang_base($nareas);
-	my $ang      = 0;
+	my $leftright = 1;
 	
+	my $graph_base = generate_background_figure_for_one_standard($standard, $nareas, $ang_base, $leftright); # -
+	$output_txt .= "$graph_base\n";
+
+	# Draw the circles
+	my $i = 1;
+	for(; $i <= $circles ; $i++)
+	{	
+		$output_txt .= "	\\pscircle[linestyle=dotted](0,0){$i}\t\t";
+		my $label = $i*10;
+		$output_txt .= "\\rput[t](".($leftright*$i).",0){\\small $label\\\%}\n";
+	#	$output_txt .= "	\\pscircle[](0,0){$i}\n";
+	}
+
+	my $ang		= 0;
 	#Draw axes
 	$i = 0;
-	my $this_univ = "";
+	my $this_univ	= "";
 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=> $Common::config{sub_areas_priority}{$b}} 
 			keys %{$Common::config{dictionary}{all_areas}})
 	{
 		# Dibujar los ejes
-		my ($x, $y)  = (-$range, 0);
+		my ($x, $y)  = ($leftright*$range, 0);
 		my ($xp,$yp) = Util::rotate($x, $y, $ang);
 		($xp,$yp) = (Util::round($xp), Util::round($yp));
-		$output_txt .= "\t\\psline[arrows=->,linestyle=dotted](0,0)($xp,$yp)\n";
+		$output_txt .= "\t\\psline[arrows=->,linestyle=dotted](0,0)($xp,$yp)\t\t";
 
 		# Draw labels for each area
 		my $tb = "b";
 		$tb = "t" if($yp < 0);
+		
 		my $xpe=$xp;
-# 		if (($i<($nareas/4))||($i>($nareas-$nareas/4)))
-# 		{	$xpe+=1;	}
-# 		else
-# 		{	$xpe-=1;	}
+		#if($i<($nareas/4))||($i>($nareas-$nareas/4)))
+ 		if ($xp < 0)	{	$xpe-=1;	}
+ 		else		{	$xpe+=1;	}
+ 		
 		my $area_title = $Common::config{dictionary}{all_areas}{$axe};
  		$area_title =~ s/<ENTER>/ /g;
 		$output_txt .= "\t\\rput[$tb]($xpe,$yp){$area_title}\n";
-		$ang -= $ang_base;
+		$ang += $leftright*$ang_base;
 		$i++;
 	}
-	my $graph_base = generate_background_figure_for_one_standard($standard, $nareas, $ang_base);
-	$output_txt .= $graph_base;
 	$output_txt .= "\n";
-
+	
 	# Generate legends
 	$output_txt .= get_legend(4, -$range+2*$Common::config{legend_space}, 5, -$range+2*$Common::config{legend_space}, $standard);
 	
@@ -1423,11 +1451,15 @@ sub generate_curves_with_one_standard($)
 	my $output_txt	= "";
 
 	my $range   	 = 5;
+	my $bottom   	 = -3.3;
+	my $nareas   = 0;
+	foreach my $axe (keys %{$Common::config{dictionary}{all_areas}})
+	{	$nareas++;	}
+	
 	my $circles 	 = $range - 1;
 	$output_txt 	.= "\\begin{center}\n";
 	$output_txt 	.= "\\psset{unit=0.9cm}\n";
-	my $bottom   	 = -3.3;
-	$output_txt 	.= "\\begin{pspicture}(-1,$bottom)(".($Common::config{NumberOfAxes}+1).",".($range+0.5).")\n";
+	$output_txt 	.= "\\begin{pspicture}(-1,$bottom)(".($nareas+1).",".($range+0.5).")\n";
 	$output_txt 	.= "\t\\psframe*[linecolor=white](-1,$bottom)(".($Common::config{NumberOfAxes}+1).",".($range+0.5).")\n";
 	$output_txt 	.= "\t\\psframe[shadow=true](0,0)($Common::config{NumberOfAxes},$range)\n";
 	$output_txt 	.= "\t\\psgrid[gridcolor=pink,subgriddiv=1,subgridcolor=lightgray,gridlabelcolor=white](0,0)($Common::config{NumberOfAxes},$range)\n";
@@ -1444,6 +1476,7 @@ sub generate_curves_with_one_standard($)
 	my %out_tex    = ("min" => "",
 			  "max" => "",
 			  "univ" => "");
+                          
 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=> $Common::config{sub_areas_priority}{$b}}
 			keys %{$Common::config{dictionary}{all_areas}})
 	{
