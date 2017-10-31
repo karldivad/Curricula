@@ -1272,9 +1272,9 @@ my $Min_Color        = "red";
 my $Max_Color        = "blue";
 my $ThisSchool_Color = "black";
 
-my %line_style          = ("min"  => "linecolor=$Min_Color,linestyle=dashed,linewidth=0.5pt",
-			   "max"  => "linecolor=$Max_Color,linestyle=dashed,linewidth=0.5pt",
-			   "univ" => "linecolor=$ThisSchool_Color,linewidth=0.5pt");
+my %line_style          = ("min"  => "linecolor=$Min_Color,linestyle=dashed,linewidth=0.8pt",
+			   "max"  => "linecolor=$Max_Color,linestyle=dashed,linewidth=0.8pt",
+			   "univ" => "linecolor=$ThisSchool_Color,linewidth=0.8pt");
 
 # Generate legends
 sub get_legend($$$$$)
@@ -1450,19 +1450,20 @@ sub generate_curves_with_one_standard($)
 	my ($standard) = (@_);
 	my $output_txt	= "";
 
-	my $range   	 = 5;
-	my $bottom   	 = -3.3;
+	my $range    = 5;
+	my $bottom   = -3.3;
 	my $nareas   = 0;
+	my $margin = 0.3;
 	foreach my $axe (keys %{$Common::config{dictionary}{all_areas}})
 	{	$nareas++;	}
 	
 	my $circles 	 = $range - 1;
 	$output_txt 	.= "\\begin{center}\n";
 	$output_txt 	.= "\\psset{unit=0.9cm}\n";
-	$output_txt 	.= "\\begin{pspicture}(-1,$bottom)(".($nareas+1).",".($range+0.5).")\n";
-	$output_txt 	.= "\t\\psframe*[linecolor=white](-1,$bottom)(".($Common::config{NumberOfAxes}+1).",".($range+0.5).")\n";
-	$output_txt 	.= "\t\\psframe[shadow=true](0,0)($Common::config{NumberOfAxes},$range)\n";
-	$output_txt 	.= "\t\\psgrid[gridcolor=pink,subgriddiv=1,subgridcolor=lightgray,gridlabelcolor=white](0,0)($Common::config{NumberOfAxes},$range)\n";
+	$output_txt 	.= "\\begin{pspicture}(-$margin,$bottom)(".($nareas+1).",".($range+$margin).")\n";
+	$output_txt 	.= "\t\\psframe*[linecolor=white](-1,$bottom)(".($nareas+1).",".($range+0.5).")\n";
+	$output_txt 	.= "\t\\psframe[shadow=true](0,0)(".($nareas+$margin).",$range)\n";
+	$output_txt 	.= "\t\\psgrid[gridcolor=lightgray,subgriddiv=1,subgridcolor=lightgray,griddots=10,gridlabelcolor=white](0,0)(".($nareas+$margin).",$range)\n\n";
 
 	my $i = 1;
 	for(; $i <= $range ; $i++)
@@ -1525,9 +1526,7 @@ sub generate_curves_with_one_standard($)
 	$output_txt .= "\n";
 
 	# Generate legends
-	$output_txt .= get_legend($Common::config{NumberOfAxes}-2.9, 5,
-				  $Common::config{NumberOfAxes}    , 3.5,
-                                  $standard);
+	$output_txt .= get_legend($nareas-2.9, 4.8, $nareas, 3.3, $standard);
 	
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n"; 

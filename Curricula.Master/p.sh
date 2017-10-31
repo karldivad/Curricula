@@ -54,3 +54,7 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 rm unified-curricula-main* ;
 ./scripts/gen-html-main.pl CS-UTEC
 latex unified-curricula-main
+
+# Peru
+dot -Tps ../../Curricula-Peru/AllPeru-creacion.dot -o ../../Curricula-Peru/AllPeru-creacion.ps
+convert ../../Curricula-Peru/AllPeru-creacion.ps ../../Curricula-Peru/AllPeru-creacion.pdflatex
