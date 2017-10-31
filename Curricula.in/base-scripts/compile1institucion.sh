@@ -91,6 +91,7 @@ endif
 if($html == 1) then
       rm <UNIFIED_MAIN_FILE>* ;
       ./scripts/gen-html-main.pl <AREA>-<INST>;
+      cp <IN_DIR>/css/<MAIN_FILE>.css <UNIFIED_MAIN_FILE>.css
 
       latex <UNIFIED_MAIN_FILE>;
       bibtex <UNIFIED_MAIN_FILE>;
