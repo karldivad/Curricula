@@ -50,7 +50,8 @@ set OutputHtmlDir=<OUTPUT_HTML_DIR>
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
 # ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g' 
 
-#sudo chown -R ecuadros:curricula
+# sudo addgroup curricula
+#sudo chown -R ecuadros:curricula ./Curricula
 
 mkdir -p <OUT_LOG_DIR>
 ./scripts/process-curricula.pl <AREA>-<INST> ;

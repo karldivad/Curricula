@@ -2602,113 +2602,123 @@ sub parse_courses()
 # 	if(not open(IN, "<$input_file"))
 # 	{  Util::halt("parse_courses: $input_file does not open ...");	}
 	my $active_semester = 0;
-	while($file_txt =~ m/\\course\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*?)\n/g)
+	while($file_txt =~ m/\\course(.*)\n/g)
 	{
+	      my ($course_params) = ($1);
+	      $course_params =~ s/\n//g; $course_params =~ s/\r//g;
 	      # \course{sem}{course_type}{area_country}{area_pie}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
-		my ($semester, $course_type, $area, $area_pie, $department, $codcour, $codcour_alias, $course_name_es, $course_name_en) = ($1, $2, $3, $4, $5, $6, $7, $8, $9);
-		my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($10, $11, $12, $13, $14, $15, $16);
-		my $prerequisites                       = $17;
-		my $recommended                         = $18;
-		my $coreq		                = $19;
-		my $group				= $20;
-		my $axes				= $21;
-		my $inst_wildcard			= $22;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
-		#Util::print_message("Wilcard: $inst_wildcard");
-		my @inst_array                          = split(",", $inst_wildcard);
-		my $count                               = 0;
-		my $priority = 0;
-		if( $active_semester != $semester )
-		{
-		      $active_semester = $semester;
-		      Util::print_message("");
-		}
-		foreach my $inst (@inst_array)
-		{
-			if( $config{valid_institutions}{$inst} )
-			{	
-			      $count++;
-			      if($config{filter_priority}{$inst} > $priority)
-			      {		$priority = $config{filter_priority}{$inst};		}
-			}
-		}
-		if( $count == 0 ){	 #Util::print_warning("$codcour ignored $inst_wildcard");	
-		    next; 
-		}
-		if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
-		{	if( $priority < $course_info{$codcour}{priority}) 
-			{	
-				Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
-				next;
-			}
-			#if( $priority == $course_info{$codcour}{priority})
-		}
-		if($axes eq "")
-		{
-			Util::halt("Course $codcour (Sem: $semester)has not area defined, see dependencies");
-		}
-		$config{n_semesters} = $semester if($semester > $config{n_semesters});
-		$courses_count++;
-		#print "wildcards = $inst_wildcard\n";
-		#Util::print_message("coursecode = $codcour, semester = $semester\n");
-		print "$codcour ";
-# 			print ".";
-		print "*" if($courses_count % 10 == 0);
-		$prerequisites =~ s/ //g;
-		$recommended   =~ s/ //g;
-		$coreq	       =~ s/ //g;
-		
-		#print_message("Processing coursecode=$codcour ...");
-		$course_info{$codcour}{priority}	= $priority;
-		$course_info{$codcour}{semester}       	= $semester;
-		$course_info{$codcour}{course_type}    	= $course_type; # $config{dictionary}{$course_type};
-		$course_info{$codcour}{short_type}     	= $config{dictionary}{MandatoryShort};
-		$course_info{$codcour}{short_type}	= $config{dictionary}{ElectiveShort} if($course_info{$codcour}{course_type} eq $Common::config{dictionary}{Elective});
-		if($codcour_alias eq "") {	$codcour_alias = $codcour 	}
-		else		{  $antialias_info{$codcour_alias} 	= $codcour;	}
-		$course_info{$codcour}{alias}		= $codcour_alias;
-		
-		$course_info{$codcour}{axes}           	= $axes;
-		$course_info{$codcour}{naxes}		= 0;
+	      if($course_params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*?)/g)
+	      {
+		  my ($semester, $course_type, $area, $area_pie, $department, $codcour, $codcour_alias, $course_name_es, $course_name_en) = ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+		  my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($10, $11, $12, $13, $14, $15, $16);
+		  my $prerequisites                       = $17;
+		  my $recommended                         = $18;
+		  my $coreq		                = $19;
+		  my $group				= $20;
+		  my $axes				= $21;
+		  my $inst_wildcard			= $22;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
+		  #Util::print_message("Wilcard: $inst_wildcard ");
+		  my @inst_array                          = split(",", $inst_wildcard);
+		  my $count                               = 0;
+		  my $priority = 0;
+		  if( $active_semester != $semester )
+		  {
+			$active_semester = $semester;
+			Util::print_message("");
+		  }
+		  foreach my $inst (@inst_array)
+		  {
+			  if( $config{valid_institutions}{$inst} )
+			  {	
+				$count++;
+				if($config{filter_priority}{$inst} > $priority)
+				{		$priority = $config{filter_priority}{$inst};		}
+			  }
+		  }
+		  if( $count == 0 ){	 #Util::print_warning("$codcour ignored $inst_wildcard");	
+			Util::print_warning("\\course$course_params ignored! (filter:$inst_list{$institution}{filter})");
+			next; 
+		  }
+		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
+		  {	if( $priority < $course_info{$codcour}{priority}) 
+			  {	
+				  Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
+				  next;
+			  }
+			  #if( $priority == $course_info{$codcour}{priority})
+		  }
+		  if($axes eq "")
+		  {
+			  Util::halt("Course $codcour (Sem: $semester)has not area defined, see dependencies");
+		  }
+		  $config{n_semesters} = $semester if($semester > $config{n_semesters});
+		  $courses_count++;
+		  #print "wildcards = $inst_wildcard\n";
+		  #Util::print_message("coursecode = $codcour, semester = $semester\n");
+		  print "$codcour ";
+  # 			print ".";
+		  print "*" if($courses_count % 10 == 0);
+		  $prerequisites =~ s/ //g;
+		  $recommended   =~ s/ //g;
+		  $coreq	       =~ s/ //g;
+		  
+		  #print_message("Processing coursecode=$codcour ...");
+		  $course_info{$codcour}{priority}	= $priority;
+		  $course_info{$codcour}{semester}       	= $semester;
+		  $course_info{$codcour}{course_type}    	= $course_type; # $config{dictionary}{$course_type};
+		  $course_info{$codcour}{short_type}     	= $config{dictionary}{MandatoryShort};
+		  $course_info{$codcour}{short_type}	= $config{dictionary}{ElectiveShort} if($course_info{$codcour}{course_type} eq $Common::config{dictionary}{Elective});
+		  if($codcour_alias eq "") {	$codcour_alias = $codcour 	}
+		  else		{  $antialias_info{$codcour_alias} 	= $codcour;	}
+		  $course_info{$codcour}{alias}		= $codcour_alias;
+		  
+		  $course_info{$codcour}{axes}           	= $axes;
+		  $course_info{$codcour}{naxes}		= 0;
 
-		my $prefix = get_prefix($codcour);
-		$course_info{$codcour}{prefix}		= $prefix;
-		
-		# print "coursecode= $codcour, area= $course_info{$codcour}{axe}\n";
-# 			$area_priority{$codcour}		= $axes;
-		$course_info{$codcour}{textcolor}	= $config{colors}{$prefix}{textcolor};
-		$course_info{$codcour}{bgcolor}		= $config{colors}{$prefix}{bgcolor};
-		$course_info{$codcour}{course_name}{Espanol} = $course_name_es;
-		$course_info{$codcour}{course_name}{English} = $course_name_en;
-		$course_info{$codcour}{area}		= $area;
-		$course_info{$codcour}{area_pie}	= $area_pie;
-		$course_info{$codcour}{department}	= $department;
+		  my $prefix = get_prefix($codcour);
+		  $course_info{$codcour}{prefix}		= $prefix;
+		  
+		  # print "coursecode= $codcour, area= $course_info{$codcour}{axe}\n";
+  # 			$area_priority{$codcour}		= $axes;
+		  $course_info{$codcour}{textcolor}	= $config{colors}{$prefix}{textcolor};
+		  $course_info{$codcour}{bgcolor}		= $config{colors}{$prefix}{bgcolor};
+		  $course_info{$codcour}{course_name}{Espanol} = $course_name_es;
+		  $course_info{$codcour}{course_name}{English} = $course_name_en;
+		  $course_info{$codcour}{area}		= $area;
+		  $course_info{$codcour}{area_pie}	= $area_pie;
+		  $course_info{$codcour}{department}	= $department;
 
-		$course_info{$codcour}{cr}             	= $credits;
-		($course_info{$codcour}{th}, $course_info{$codcour}{ph}, $course_info{$codcour}{lh})		= (0, 0, 0);
-		$course_info{$codcour}{th}             	= $ht if(not $ht eq "");
-		$course_info{$codcour}{ph}             	= $hp if(not $hp eq "");
-		$course_info{$codcour}{lh}             	= $hl if(not $hl eq "");
+		  $course_info{$codcour}{cr}             	= $credits;
+		  ($course_info{$codcour}{th}, $course_info{$codcour}{ph}, $course_info{$codcour}{lh})		= (0, 0, 0);
+		  $course_info{$codcour}{th}             	= $ht if(not $ht eq "");
+		  $course_info{$codcour}{ph}             	= $hp if(not $hp eq "");
+		  $course_info{$codcour}{lh}             	= $hl if(not $hl eq "");
 
-		($course_info{$codcour}{ti}, $course_info{$codcour}{tot})            = (0, 0);
-		$course_info{$codcour}{ti}              = $ti if(not $ti eq "");
-		$course_info{$codcour}{tot}             = $tot if(not $tot eq "");
+		  ($course_info{$codcour}{ti}, $course_info{$codcour}{tot})            = (0, 0);
+		  $course_info{$codcour}{ti}              = $ti if(not $ti eq "");
+		  $course_info{$codcour}{tot}             = $tot if(not $tot eq "");
 
-		$course_info{$codcour}{labtype}        	= $labtype;
+		  $course_info{$codcour}{labtype}        	= $labtype;
 
-		$course_info{$codcour}{full_prerequisites}	= []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, $Common::config{dictionary}{Pag} 87), ...
-		$course_info{$codcour}{code_name_and_sem_prerequisites} = "";
-		$course_info{$codcour}{prerequisites_just_codes}= $prerequisites;
-		$course_info{$codcour}{prerequisites_for_this_course}	= [];
-		$course_info{$codcour}{courses_after_this_course} 	= [];
-		$course_info{$codcour}{short_prerequisites}	= ""; # CS101F (1st Sem), CS101O (2nd Sem), ...
-		$course_info{$codcour}{code_and_sem_prerequisites}= "";
-		$course_info{$codcour}{recommended}   		= $recommended;
-		$course_info{$codcour}{corequisites}		= $coreq;
-		$course_info{$codcour}{group}          	= $group;
-		%{$course_info{$codcour}{extra_tags}}	= ();
-		$course_info{$codcour}{inst_list}      	= $inst_wildcard;
-		$course_info{$codcour}{equivalence}		= "";
-		$course_info{$codcour}{specific_evaluation}	= "";
+		  $course_info{$codcour}{full_prerequisites}	= []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, $Common::config{dictionary}{Pag} 87), ...
+		  $course_info{$codcour}{code_name_and_sem_prerequisites} = "";
+		  $course_info{$codcour}{prerequisites_just_codes}= $prerequisites;
+		  $course_info{$codcour}{prerequisites_for_this_course}	= [];
+		  $course_info{$codcour}{courses_after_this_course} 	= [];
+		  $course_info{$codcour}{short_prerequisites}	= ""; # CS101F (1st Sem), CS101O (2nd Sem), ...
+		  $course_info{$codcour}{code_and_sem_prerequisites}= "";
+		  $course_info{$codcour}{recommended}   		= $recommended;
+		  $course_info{$codcour}{corequisites}		= $coreq;
+		  $course_info{$codcour}{group}          	= $group;
+		  %{$course_info{$codcour}{extra_tags}}	= ();
+		  $course_info{$codcour}{inst_list}      	= $inst_wildcard;
+		  $course_info{$codcour}{equivalence}		= "";
+		  $course_info{$codcour}{specific_evaluation}	= "";
+	      }
+	      else
+	      {
+		  Util::print_warning("course: \"\\course$course_params\" does not contain the right # of parameters ...");
+	      }
 	}
 	
 # 	close(IN);
