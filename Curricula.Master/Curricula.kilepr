@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.3
-lastDocument=compile1institucion.sh
+lastDocument=scripts/Lib/Common.pm
 masterDocument=
 name=Curricula
 pkg_extIsRegExp=false
@@ -115,7 +115,7 @@ Indentation Mode=normal
 Mode=LaTeX
 
 [document-settings,item:../Curricula.in/lang/Espanol/CS.tex/CS2016-dependencies.tex]
-Bookmarks=0,235
+Bookmarks=235
 Encoding=UTF-8
 Highlighting=LaTeX
 Indentation Mode=normal
@@ -202,7 +202,7 @@ Indentation Mode=normal
 Mode=Bash
 
 [document-settings,item:scripts/Lib/Common.pm]
-Bookmarks=3554,3556,1324
+Bookmarks=3558,3560,1324
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -442,7 +442,7 @@ order=9
 
 [item:../Curricula.in/lang/Espanol/CS.tex/CS2016-dependencies.tex]
 archive=true
-column=126
+column=105
 encoding=UTF-8
 highlight=LaTeX
 line=235
@@ -562,10 +562,10 @@ order=0
 
 [item:scripts/Lib/Common.pm]
 archive=true
-column=56
+column=223
 encoding=UTF-8
 highlight=Perl
-line=2607
+line=2611
 mode=Perl
 open=true
 order=3
@@ -765,10 +765,10 @@ JumpList=
 ViMarks=.,2,19,[,2,19,],2,19
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/CS.tex/CS2016-dependencies.tex]
-CursorColumn=126
+CursorColumn=105
 CursorLine=235
 JumpList=
-ViMarks=.,235,0,[,0,0,],235,125,a,235,126
+ViMarks=.,235,104,[,235,103,],235,104,a,235,140
 
 [view-settings,view=0,item:../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex]
 CursorColumn=24
@@ -837,10 +837,10 @@ JumpList=
 ViMarks=.,30,42,[,30,42,],30,42
 
 [view-settings,view=0,item:scripts/Lib/Common.pm]
-CursorColumn=56
-CursorLine=2607
+CursorColumn=223
+CursorLine=2611
 JumpList=
-ViMarks=.,2607,55,[,2607,55,],2607,55,a,-1,-1,b,-1,-1,c,1324,0,d,-1,-1,e,3554,35,f,3556,0
+ViMarks=.,2611,222,[,2611,222,],2611,222,a,-1,-1,b,-1,-1,c,1324,0,d,-1,-1,e,3558,35,f,3560,0
 
 [view-settings,view=0,item:scripts/Lib/GenSyllabi.pm]
 CursorColumn=34

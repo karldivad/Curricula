@@ -113,16 +113,16 @@ sub GetOutCountryBaseDir($)
     return $path_map{InDir}."/country/".filter_non_valid_chars($country);
 }
 
-sub GetInstDir($$$)
+sub GetInstDir($$$$)
 {	
-	my ($country, $area, $inst) = (@_);
-	return GetInCountryBaseDir($country)."/$config{discipline}/$area/$inst";
+	my ($country, $discipline, $area, $inst) = (@_);
+	return GetInCountryBaseDir($country)."/$discipline/$area/$inst";
 }
 
-sub GetInstitutionInfo($$$)
+sub GetInstitutionInfo($$$$)
 {	
-	my ($country, $area, $inst) = (@_);
-	return GetInstDir($country, $area, $inst)."/institution-info.tex";
+	my ($country, $discipline, $area, $inst) = (@_);
+	return GetInstDir($country, $discipline, $area, $inst)."/institution-info.tex";
 }
 
 sub filter_non_valid_chars($)
@@ -445,6 +445,8 @@ sub set_initial_paths()
 	$path_map{InCountryDir}				= GetInCountryBaseDir($path_map{country_without_accents});
 	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex"; 
 	$path_map{InInstDir}				= $path_map{InCountryDir}."/$config{discipline}/$config{area}/$config{institution}";
+	$path_map{InInstUCSPDir}			= GetInstDir("Peru", "Computing", "CS", "UCSP");
+
 	$path_map{InEquivDir}				= $path_map{InInstDir}."/equivalences";
 	$path_map{InLogosDir}				= $path_map{InCountryDir}."/logos";
 	$path_map{InTemplatesDot}			= $path_map{InCountryDir}."/dot";
@@ -1411,8 +1413,8 @@ sub set_initial_configuration($)
 	read_institutions_list();
 	$config{discipline}	  	= $inst_list{$config{institution}}{discipline};
 
-	$config{InInstDir} 				= GetInstDir($inst_list{$config{institution}}{country}, $config{area}, $config{institution});
-	$path_map{"this-institutions-info-file"}	= GetInstitutionInfo($inst_list{$config{institution}}{country}, $config{area}, $config{institution});
+	$config{InInstDir} 				= GetInstDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
+	$path_map{"this-institutions-info-file"}	= GetInstitutionInfo($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
 	$path_map{"copyrights"}				= "$config{in}/copyrights.tex";
 
 	# Read copyrights 
@@ -1767,6 +1769,13 @@ sub read_distribution()
 	Util::precondition("set_initial_paths");
 	my $distribution_file = get_template("in-distribution-file");
 	Util::uncheck_point("read_distribution");
+	if( not -e "$distribution_file" )
+	{
+	    my $distribution_dir = get_template("in-distribution-dir");
+	    system("mkdir -p \"$distribution_dir\"");
+	    Util::write_file($distribution_file, "");
+	    Util::print_warning("read_distribution: \"$distribution_file\" does not exist ... I created a new one :)");
+	}
 	if( not open(IN, "<$distribution_file") )
 	{
 	    Util::print_error("read_distribution: I can not open \"$distribution_file\"");
@@ -2601,23 +2610,25 @@ sub parse_courses()
 # 	my @lines = split("\n", $files_txt);
 # 	if(not open(IN, "<$input_file"))
 # 	{  Util::halt("parse_courses: $input_file does not open ...");	}
+# 	print Dumper(\%{$config{valid_institutions}}); 
+
 	my $active_semester = 0;
 	while($file_txt =~ m/\\course(.*)\n/g)
 	{
 	      my ($course_params) = ($1);
 	      $course_params =~ s/\n//g; $course_params =~ s/\r//g;
-	      # \course{sem}{course_type}{area_country}{area_pie}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
-	      if($course_params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*?)/g)
+	      #                       {sem}{course_type}{area_country}{area_pie}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
+	      if($course_params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*)/g)
 	      {
-		  my ($semester, $course_type, $area, $area_pie, $department, $codcour, $codcour_alias, $course_name_es, $course_name_en) = ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+		  my ($semester, $course_type, $area, $area_pie, $department)     = ($1, $2, $3, $4, $5);
+		  my ($codcour, $codcour_alias, $course_name_es, $course_name_en) = ($6, $7, $8, $9);
 		  my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   = ($10, $11, $12, $13, $14, $15, $16);
-		  my $prerequisites                       = $17;
-		  my $recommended                         = $18;
-		  my $coreq		                = $19;
-		  my $group				= $20;
-		  my $axes				= $21;
-		  my $inst_wildcard			= $22;	$inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
-		  #Util::print_message("Wilcard: $inst_wildcard ");
+		  my ($prerequisites, $recommended, $coreq, $group)   = ($17, $18, $19, $20);
+		  my ($axes, $inst_wildcard)			      = ($21, $22);
+		  $inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
+# 		  Util::print_message("$axes");
+# 		  Util::print_message("Labtype: $labtype");
+# 		  Util::print_message("Wilcard: $inst_wildcard ");
 		  my @inst_array                          = split(",", $inst_wildcard);
 		  my $count                               = 0;
 		  my $priority = 0;
@@ -2628,20 +2639,23 @@ sub parse_courses()
 		  }
 		  foreach my $inst (@inst_array)
 		  {
-			  if( $config{valid_institutions}{$inst} )
+			  if( defined($config{valid_institutions}{$inst}) )
 			  {	
 				$count++;
 				if($config{filter_priority}{$inst} > $priority)
 				{		$priority = $config{filter_priority}{$inst};		}
+				#Util::print_message("$inst matches ...");
 			  }
+			  #else{	#Util::print_message("$inst does not match ...");	}
 		  }
 		  if( $count == 0 ){	 #Util::print_warning("$codcour ignored $inst_wildcard");	
-			Util::print_warning("\\course$course_params ignored! (filter:$inst_list{$institution}{filter})");
+			#Util::print_warning("\\course$course_params ignored! (filter:$inst_list{$institution}{filter})");
 			next; 
 		  }
 		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
 		  {	if( $priority < $course_info{$codcour}{priority}) 
 			  {	
+				  print "\n";
 				  Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
 				  next;
 			  }
