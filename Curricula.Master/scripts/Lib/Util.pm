@@ -124,7 +124,7 @@ sub write_file($$)
 	open(OUT, ">$filename") or die Util::halt("write_file: $filename does not open");
 	print OUT $txt;
 	close(IN);
-	system("chgrp curricula $filename");
+	#system("chgrp curricula $filename");
 }
 
 my @list_of_files_to_gen_fig;

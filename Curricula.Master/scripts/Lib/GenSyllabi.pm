@@ -357,10 +357,20 @@ sub genenerate_tex_syllabus_file($$$$$%)
 
 sub read_sumilla_template()
 {
-	my $template_file = Common::get_template("in-sumilla-template-file");
-	if(not -e $template_file)
-	{	Util::halt("It seems that you forgot the template sumilla file ... verify \"$template_file\"");		}
-	$Common::config{sumilla_template} = Util::read_file($template_file);
+	my $sumilla_file = Common::get_template("in-sumilla-template-file");
+	if(not -e $sumilla_file)
+	{
+	    Util::print_warning("It seems that you forgot the template sumilla file ... \"$sumilla_file\"");	
+	    my $InstDir = Common::get_template("InInstDir");
+	    system("mkdir -p \"$InstDir\"");
+	    my $UCSPDir = Common::get_template("InInstUCSPDir");
+	    my $command = "cp \"$UCSPDir/sumilla*.tex\" \"$InstDir/.\"";
+	    Util::print_warning("Executing command: $command");
+	    system($command);
+	    Util::halt("I just created template sumilla file \"$sumilla_file\" based on CS-UCSP");	
+	    
+	}
+	$Common::config{sumilla_template} = Util::read_file($sumilla_file);
 }
 
 sub read_syllabus_template()
@@ -456,7 +466,7 @@ sub generate_tex_syllabi_files()
 # 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 		}
 	}
-	system("chgrp curricula $OutputTexDir/*");
+	#system("chgrp curricula $OutputTexDir/*");
 	Util::check_point("generate_tex_syllabi_files");
 }
 
