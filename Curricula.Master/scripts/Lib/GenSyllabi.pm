@@ -357,20 +357,20 @@ sub genenerate_tex_syllabus_file($$$$$%)
 
 sub read_sumilla_template()
 {
-	my $sumilla_file = Common::get_template("in-sumilla-template-file");
-	if(not -e $sumilla_file)
+	my $syllabus_file = Common::get_template("in-syllabus-template-file");
+	if(not -e $syllabus_file)
 	{
-	    Util::print_warning("It seems that you forgot the template sumilla file ... \"$sumilla_file\"");	
+	    Util::print_warning("It seems that you forgot the template sumilla file ... \"$syllabus_file\"");	
 	    my $InstDir = Common::get_template("InInstDir");
 	    system("mkdir -p \"$InstDir\"");
 	    my $UCSPDir = Common::get_template("InInstUCSPDir");
-	    my $command = "cp \"$UCSPDir/sumilla*.tex\" \"$InstDir/.\"";
+	    my $command = "cp \"$UCSPDir/syllabus-template.tex\" \"$InstDir/.\"";
 	    Util::print_warning("Executing command: $command");
 	    system($command);
-	    Util::halt("I just created template sumilla file \"$sumilla_file\" based on CS-UCSP");	
+	    Util::halt("I just created template sumilla file \"$syllabus_file\" based on CS-UCSP");	
 	    
 	}
-	$Common::config{sumilla_template} = Util::read_file($sumilla_file);
+	$Common::config{sumilla_template} = Util::read_file($syllabus_file);
 }
 
 sub read_syllabus_template()

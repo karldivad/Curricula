@@ -26,8 +26,8 @@ sub gen_batch($$)
 	my $output_bib_dir = Common::get_template("OutputBinDir");
 	$txt =~ s/<OUTBIN>/$output_bib_dir/g;
 
-	my $InTexDir = Common::get_template("InDir");
-        $txt =~ s/<IN_DIR>/$InTexDir/g;
+	my $InDir = Common::get_template("InDir");
+        $txt =~ s/<IN_DIR>/$InDir/g;
         
 	my $InTexDir = Common::get_template("InTexDir");
         $txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
@@ -194,7 +194,7 @@ sub update_acronyms()
 	foreach my $inst (sort keys %Common::inst_list)
 	{
 		#system("mv institutions-info/institutions-$inst.tex institutions-info/info-$inst.tex");
-		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $Common::config{area}, $inst);
+		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $Common::config{discipline}, $Common::config{area}, $inst);
 		if(-e $out_txt_name)
 		{
                         Util::print_message("Reading: $out_txt_name ...");

@@ -3609,6 +3609,41 @@ sub gen_bok($)
  	#print Dumper(\%{$Common::config{topics_priority}});
 }
 
+sub generate_books_links()
+{
+	my $output_links = "";
+	my $tabs = "\t\t";
+	my $poster_link	 = <<"TEXT";
+		<TABLE BORDER=0 BORDERCOLOR=RED>
+		<TR> <TD colspan="3" align="center"> <a href="\\currentarea-\\siglas-poster.pdf">
+		      <IMG SRC="\\currentarea-\\siglas-poster.png" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
+		      </TD>
+		</TR> 
+TEXT
+	$output_links .= $poster_link;
+
+	foreach my $book ("Syllabi", "Bibliography", "Description")
+	{
+	      my $book_link = "$tabs<TR>\n";
+	      foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	      {
+		    my $lang_prefix 	 = $Common::config{dictionaries}{$lang}{lang_prefix};
+		    my $BookTitle = "$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}";
+		    my $onebook = <<"BOOK";
+                    <TD align="center"> <a href="BookOf$book-$lang_prefix.pdf">
+ 			<IMG SRC="BookOf$book-$lang_prefix-P1.png" ALT="$BookTitle" height="500"><br>$BookTitle</a>
+		    </TD>
+BOOK
+		    $book_link .= $onebook;
+		    falta get_pdf_icon_link para el icono del idioma ...
+	      }
+	      $book_link .= "\n";
+	      $book_link .= "$tabs</TR>\n";
+	      $output_links .= $book_link;
+	}
+	$output_links .= "$tabs</TABLE>\n";
+}
+
 sub setup()
 {
 	print "\x1b[44m";

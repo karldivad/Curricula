@@ -8,107 +8,151 @@
 \begin{document}
 
 \begin{tabularx}{\textwidth}{p{3cm}cX}
-{\centering \includegraphics[width=2cm]{\InLogosDir/\INST-small} }
+\includegraphics[width=3cm]{\InLogosDir/\INST} 
 &
 \begin{minipage}{0.75\textwidth}
 \begin{center}
-\vspace*{-2cm}
 {\noindent\Large\bf\University\\ \SchoolFullNameBreak \\SILABO}
+\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+\addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 \end{center}
 \end{minipage}
 \end{tabularx}
-{\centering
-\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
-\addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
-}
+
+\addtocounter{SyllabiSectionCount}{1}
 
 \noindent \Semester
-
 \begin{center}
-\begin{tabularx}{\textwidth}{|p{6cm}cX|}\hline
-\multicolumn{3}{|l|}{\textbf{\arabic{SyllabusSectionCount}. DATOS GENERALES}} \\ \hline
-\textbf{\arabic{SyllabusSectionCount}.1 CARRERA PROFESIONAL}     & : & Ciencia de la ComputaciÃ³n        \\
-\textbf{\arabic{SyllabusSectionCount}.2 ASIGNATURA }             & : & --COURSE_CODE--. --COURSE_NAME--          \\
-\textbf{\arabic{SyllabusSectionCount}.3 SEMESTRE ACADÃMICO}      & : & --SEMESTER--       \\
-\textbf{\arabic{SyllabusSectionCount}.4 PREREQUISITO(S)}         & : & --PREREQUISITES--  \\
-\textbf{\arabic{SyllabusSectionCount}.5 CARÃCTER}                & : & --COURSE_TYPE--           \\
-\textbf{\arabic{SyllabusSectionCount}.6 HORAS}                   & : & --HOURS--          \\
-\textbf{\arabic{SyllabusSectionCount}.7 CRÃDITOS}                & : & --CREDITS--       \\     \hline
+\begin{tabularx}{\textwidth}{|p{5cm}cX|}\hline
+\multicolumn{3}{|l|}{{\bf \arabic{SyllabiSectionCount}. DATOS GENERALES}}                \\ \hline
+\arabic{SyllabiSectionCount}.1 CARRERA PROFESIONAL     & : & \SchoolShortName           \\
+\arabic{SyllabiSectionCount}.2 ASIGNATURA              & : & --COURSE_CODE--. --COURSE_NAME-- \\
+\arabic{SyllabiSectionCount}.3 SEMESTRE ACADÃMICO      & : & --SEMESTER--          \\
+\arabic{SyllabiSectionCount}.4 PREREQUISITO(S)         & : & --PREREQUISITES--     \\
+\arabic{SyllabiSectionCount}.5 CARÃCTER                & : & --COURSE_TYPE--              \\
+\arabic{SyllabiSectionCount}.6 HORAS                   & : & --HOURS--          \\ 
+\arabic{SyllabiSectionCount}.7 CRÃDITOS                & : & --CREDITS--          \\ \hline
 \end{tabularx}
 \end{center}
 
-\addtocounter{SyllabusSectionCount}{1}
+\addtocounter{SyllabiSectionCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|}      \hline
-\textbf{\arabic{SyllabusSectionCount}. DOCENTE}\\ \hline
---DOCENTE--                  \\ \hline
+{\bf \arabic{SyllabiSectionCount}. DOCENTE}\\ \hline
+--PROFESSOR_SHORT_CVS--
+\\ \hline
 \end{tabularx}
 \end{center}
 
-\addtocounter{SyllabusSectionCount}{1}
+\addtocounter{SyllabiSectionCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|}      \hline
-\textbf{\arabic{SyllabusSectionCount}. FUNDAMENTACIÃN DEL CURSO}        \\ \hline
+{\bf \arabic{SyllabiSectionCount}. FUNDAMENTACIÃN DEL CURSO}        \\ \hline
 --JUSTIFICATION--                  \\ \hline
 \end{tabularx}
 \end{center}
 
-\addtocounter{SyllabusSectionCount}{1}
+\addtocounter{SyllabiSectionCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|}      \hline
-\textbf{\arabic{SyllabusSectionCount}. SUMILLA}                        \\ \hline
+{\bf \arabic{SyllabiSectionCount}. SUMILLA}                         \\ \hline
 --SHORT_DESCRIPTION--                         \\ \hline
 \end{tabularx}
 \end{center}
 
-\addtocounter{SyllabusSectionCount}{1}
+\addtocounter{SyllabiSectionCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|}      \hline
-\textbf{\arabic{SyllabusSectionCount}. OBJETIVO GENERAL}                \\ \hline
---GOAL--                 \\ \hline
+{\bf \arabic{SyllabiSectionCount}. OBJETIVO GENERAL}                \\ \hline
+--FULL_GOALS--                 \\ \hline
 \end{tabularx}
 \end{center}
 
+\addtocounter{SyllabiSectionCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|}      \hline
-\addtocounter{SyllabusSectionCount}{1}
-\textbf{\arabic{SyllabusSectionCount}. CONTENIDOS}                      \\ \hline
+{\bf \arabic{SyllabiSectionCount}. CONTRIBUCIÃN A LA FORMACIÃN PROFESIONAL Y FORMACIÃN GENERAL} \\ \hline
+\ContribInitMsg:
+--FULL_OUTCOMES--\\ \hline
 \end{tabularx}
 \end{center}
 
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. COMPETENCIAS ESPECÃFICAS DE COMPUTACIÃN} \\ \hline
+\CompetencesInitMsg:
+--FULL_COMPETENCES--\\ \hline
+\end{tabularx}
+\end{center}
+
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+{\bf \arabic{SyllabiSectionCount}. CONTENIDOS}                      \\ \hline
+\end{tabularx}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{SyllabiUnitCount}{0}
 --BEGINUNIT--
-% Inicio unidad
-\addtocounter{SyllabusUnitCount}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A new unit begins here
+\addtocounter{SyllabiUnitCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|X|}                 \hline
-\multicolumn{2}{|l|}{\textbf{\arabic{SyllabusSectionCount}.\arabic{SyllabusUnitCount}: --UNIT_TITLE--\xspace(--HOURS--)}} \\ \hline
-\textbf{Objetivo general}  & \textbf{Contenido}                    \\ \hline
---GOAL--
-&
+\multicolumn{2}{|l|}{{\bf UNIDAD \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
+\multicolumn{2}{|l|}{{\bf Competencias: --LEVEL_OF_COMPETENCE--}} \\ \hline
+{\bf CONTENIDO}  & {\bf OBJETIVO GENERAL}                    \\ \hline
 --UNIT_CONTENT--
+& 
+--UNIT_GOAL--
 \\ \hline
 \multicolumn{2}{|l|}
-{
-\textbf{BibliografÃ­a:} --CITATIONS--
+{\begin{minipage}{0.95\textwidth}
+{\bf Lecturas:} --CITATIONS--
+\end{minipage}
 }
 \\ \hline
 \end{tabularx}
 \end{center}
 
 --ENDUNIT--
-\addtocounter{SyllabusSectionCount}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+ 
+
+\addtocounter{SyllabiSectionCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|}      \hline
-\arabic{SyllabusSectionCount}. EVALUACIONES  \\ \hline
+\arabic{SyllabiSectionCount}. METODOLOGÃA  \\ \hline
 \begin{evaluation}
-	\item[Examen Parcial] : 50 \%
-	\item[Examen Final]   : 50 \%
+	\item El profesor del curso presentarÃ¡ clases teÃ³ricas de los temas seÃ±alados en el programa propiciando la intervenciÃ³n de los alumnos. 
+	\item El profesor del curso presentarÃ¡ demostraciones para fundamentar clases teÃ³ricas.
+	\item El profesor y los alumnos realizarÃ¡n prÃ¡cticas
+	\item Los alumnos deberÃ¡n asistir a clase habiendo leÃ­do lo que el profesor va a presentar. 
+	De esta manera se facilitarÃ¡ la comprensiÃ³n y los estudiantes estarÃ¡n en mejores condiciones de hacer consultas en clase.
 \end{evaluation}
 \\ \hline
 \end{tabularx}
 \end{center}
 
-\bibliographystyle{--BIBSTYLE--}
+\addtocounter{SyllabiSectionCount}{1}
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|}      \hline
+\arabic{SyllabiSectionCount}. EVALUACIONES  \\ \hline
+\begin{evaluation}
+	\item[EvaluaciÃ³n Permanente 1] : 20 \%
+	\item[Examen Parcial] : 30 \%
+	\item[EvaluaciÃ³n Permanente 2] : 20 \%
+	\item[Examen Final] : 30 \%
+\end{evaluation}
+\\ \hline
+\end{tabularx}
+\end{center}
+
+\bibliographystyle{apalike}
 \bibliography{--BIBFILE--}
 \end{document}

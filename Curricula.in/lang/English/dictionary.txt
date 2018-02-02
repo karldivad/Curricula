@@ -54,6 +54,7 @@ SetOfProblems=Set of problems
 HoursPerSession                        = Hours per Session
 LengthOfPeriod                         = Length Of Period 
 Book 				       = Book
+BookOf				       = Book of
 Author				       = Author
 YearsOfPublication                     = Years of publication
 OtherTexts                             = Other Texts
@@ -74,6 +75,8 @@ TOTALHOURS= Total Hours
 Syllabus  = Sillabus
 SyllabusOf= Sillabus de
 Syllabi   = Syllabi
+Description=Short description
+Bibliography=Bibliography
 Plan	  = Plan
 BloomLevel= Bloom Level
 
