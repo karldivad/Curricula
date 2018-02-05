@@ -784,7 +784,7 @@ sub gen_course_general_info()
 			$syllabus_link .= "\t\\begin{htmlonly}\n";
 			$syllabus_link .= "\t\\item {\\bf $Common::config{dictionary}{Syllabus}}:\n";
 			$syllabus_link .= "\t\t\\begin{rawhtml}\n";
-			$syllabus_link .= Common::get_pdf_icon_link("\t\t\t", $codcour_label)."-";
+			$syllabus_link .= Common::get_syllabi_language_icons("\t\t\t", $codcour_label)."-";
 			$syllabus_link .=  "\t\t\\end{rawhtml}\n";
 			$syllabus_link .=  "\t\\end{htmlonly}\n";
 			$normal_header .= $syllabus_link;

@@ -317,7 +317,7 @@ sub main()
         }
         
         my $books_html = Common::generate_books_links();
-        $maintxt =~ s/<BOOKS>/$books_html/g;
+        $maintxt =~ s/<BOOKS>/\n$books_html/g;
         $maintxt = replace_special_cases($maintxt);
         
 	my $all_bib_items = Common::get_list_of_bib_files();

@@ -172,7 +172,7 @@ sub get_prefix($)
 	return "";
 }
 
-sub get_pdf_icon_link($$)
+sub get_syllabi_language_icons($$)
 {
         my ($prev_tex, $codcour) = (@_);
 	my $link  = "";
@@ -182,11 +182,20 @@ sub get_pdf_icon_link($$)
 	    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
 	    $link .= $prev_tex;
 	    $link .= "$sep<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
-	    $link .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
-	    $link .= "<img alt=\"Syllabus: $codcour-$lang_prefix\" src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	    $link .= "<img alt=\"$codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	    $link .= "<img alt=\"$codcour-$lang_prefix\" src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
 	    $link .= "</a>\n";
 	    $sep = ", ";
 	}
+        return $link;
+}
+
+sub get_language_icon($)
+{
+        my ($lang) = (@_);
+	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+	my $link  = "<img src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	   $link .= "<img src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
         return $link;
 }
 
@@ -3619,29 +3628,30 @@ sub generate_books_links()
 		      <IMG SRC="\\currentarea-\\siglas-poster.png" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
 		      </TD>
 		</TR> 
+		</TABLE>
 TEXT
 	$output_links .= $poster_link;
-
-	foreach my $book ("Syllabi", "Bibliography", "Description")
+	foreach my $book ("Syllabi", "Bibliography", "Descriptions")
 	{
-	      my $book_link = "$tabs<TR>\n";
+	      $output_links .= "$tabs<TABLE 0 BORDER=1>\n";
+	      $output_links .= "$tabs<TR>\n";
+	      my $book_link = "";
 	      foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	      {
 		    my $lang_prefix 	 = $Common::config{dictionaries}{$lang}{lang_prefix};
-		    my $BookTitle = "$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}";
-		    my $onebook = <<"BOOK";
-                    <TD align="center"> <a href="BookOf$book-$lang_prefix.pdf">
- 			<IMG SRC="BookOf$book-$lang_prefix-P1.png" ALT="$BookTitle" height="500"><br>$BookTitle</a>
-		    </TD>
-BOOK
-		    $book_link .= $onebook;
-		    falta get_pdf_icon_link para el icono del idioma ...
+		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
+		    $book_link .= "$tabs\t<TD align=\"center\">\n";
+		    $book_link .= "$tabs\t\t<A HREF=\"BookOf$book-$lang_prefix.pdf\">\n";
+		    $book_link .= "$tabs\t\t<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle<BR>\n";
+		    $book_link .= "$tabs\t\t".get_language_icon($lang)."\n";
+		    $book_link .= "$tabs\t\t</A>\n";
+		    $book_link .= "$tabs\t</TD>\n";
 	      }
-	      $book_link .= "\n";
-	      $book_link .= "$tabs</TR>\n";
 	      $output_links .= $book_link;
+	      $output_links .= "$tabs</TR>\n";
+	      $output_links .= "$tabs</TABLE>\n";
 	}
-	$output_links .= "$tabs</TABLE>\n";
+	return $output_links;
 }
 
 sub setup()

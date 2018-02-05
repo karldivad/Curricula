@@ -65,7 +65,7 @@ sub generate_course_tables()
 			$pdflink .= "\\latexhtml{}{%\n";
                         $pdflink .= "\t\\begin{htmlonly}\n";
                         $pdflink .= "\t\t\\begin{rawhtml}\n";
-                        $pdflink .= Common::get_pdf_icon_link("\t\t\t", $codcour_label);
+                        $pdflink .= Common::get_syllabi_language_icons("\t\t\t", $codcour_label);
                         $pdflink .=  "\t\t\\end{rawhtml}\n";
                         $pdflink .=  "\t\\end{htmlonly}\n";
 			$pdflink .= "}\n";
