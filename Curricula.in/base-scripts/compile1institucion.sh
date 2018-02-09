@@ -125,7 +125,8 @@ endif
 pdftk A=<OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf cat A1-1 output <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf;
 convert <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf <OUTPUT_TEX_DIR>/../html/<AREA>-<INST>-poster.png;
 rm <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf
-mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_DIR>/pdfs/.
+cp <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
+mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_HTML_DIR>/.
 
 <OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
 mkdir -p <OUTPUT_HTML_DIR>/syllabi;

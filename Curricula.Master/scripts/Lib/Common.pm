@@ -3623,17 +3623,19 @@ sub generate_books_links()
 	my $output_links = "";
 	my $tabs = "\t\t";
 	my $poster_link	 = <<"TEXT";
+		<CENTER>
 		<TABLE BORDER=0 BORDERCOLOR=RED>
 		<TR> <TD colspan="3" align="center"> <a href="\\currentarea-\\siglas-poster.pdf">
 		      <IMG SRC="\\currentarea-\\siglas-poster.png" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
 		      </TD>
 		</TR> 
 		</TABLE>
+		<HR>
 TEXT
 	$output_links .= $poster_link;
 	foreach my $book ("Syllabi", "Bibliography", "Descriptions")
 	{
-	      $output_links .= "$tabs<TABLE 0 BORDER=1>\n";
+	      $output_links .= "$tabs<TABLE>\n";
 	      $output_links .= "$tabs<TR>\n";
 	      my $book_link = "";
 	      foreach my $lang (@{$Common::config{SyllabusLangsList}})
@@ -3642,7 +3644,7 @@ TEXT
 		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
 		    $book_link .= "$tabs\t<TD align=\"center\">\n";
 		    $book_link .= "$tabs\t\t<A HREF=\"BookOf$book-$lang_prefix.pdf\">\n";
-		    $book_link .= "$tabs\t\t<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle<BR>\n";
+		    $book_link .= "$tabs\t\t<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle\n";
 		    $book_link .= "$tabs\t\t".get_language_icon($lang)."\n";
 		    $book_link .= "$tabs\t\t</A>\n";
 		    $book_link .= "$tabs\t</TD>\n";
@@ -3650,7 +3652,9 @@ TEXT
 	      $output_links .= $book_link;
 	      $output_links .= "$tabs</TR>\n";
 	      $output_links .= "$tabs</TABLE>\n";
+	      $output_links .= "$tabs<HR>\n\n";
 	}
+	$output_links .= "</CENTER>";
 	return $output_links;
 }
 
