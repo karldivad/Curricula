@@ -12,6 +12,31 @@ if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no comm
 $| = 1;
 
 # ok
+
+sub replace_outcomes_sequence($)
+{
+    my ($maintxt) = (@_);
+#     if( $maintxt =~ m/\\begin\{enumerate\}\[a\)\]\s*\n((.|\t|\s|\n)*?)\\end\{enumerate\}/g )
+#     {
+# 	my ($outcomeslist) = ($1);
+# 	$maintxt =~ s/\\begin\{enumerate\}\[a\)\]\s*\n((.|\t|\s|\n)*?)\\end\{enumerate\}/--outcomes-list--/g;
+# 	my $output = "";
+# 	foreach my $outcome_in (split("\n", $outcomeslist))
+# 	{
+# 	      if( $outcome_in =~ m/\\item (.*)\\label\{out:Outcome(.*?)\}/g )
+# 	      {
+# 	          my ($txt, $letter) = ($1, $2);
+# 		  $output .= "\\item {\\bf $letter} $txt\\label\{out:Outcome$letter\}\n";
+# 	      }
+# 	}
+# # 	print Dumper($output); exit;
+# 	$outcomeslist = Common::replace_special_chars($outcomeslist);
+# 	$maintxt =~ s/--outcomes-list--/\\begin\{enumerate\}\n$output/\\end\{enumerate\}\n/g;
+#     }
+# #     \\begin\{enumerate\}\[a\)\]\s*\n$outcomeslist\\end\{enumerate\} )
+    return $maintxt;
+}
+
 sub replace_syllabus($)
 {
 	my ($text) = (@_);
@@ -319,6 +344,8 @@ sub main()
         my $books_html = Common::generate_books_links();
         $maintxt =~ s/<BOOKS>/\n$books_html/g;
         $maintxt = replace_special_cases($maintxt);
+#         $maintxt = replace_outcomes_sequence($maintxt);
+# 	aqui falta;
         
 	my $all_bib_items = Common::get_list_of_bib_files();
         #$maintxt =~ s/\\xspace}/}/g;

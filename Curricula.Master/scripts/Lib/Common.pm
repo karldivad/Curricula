@@ -312,6 +312,7 @@ sub read_outcomes_labels()
 	    while($file_txt =~ m/\\newlabel\{out:Outcome(.*?)\}\{\{(.*?)\}/g)
 	    {
 		    my ($outcome, $letter) = ($1, $2);
+		    if($outcome eq "\\IeC {\\~n}"){	$outcome = "ñ";		}
 		    $config{outcomes_map}{$outcome} = $letter;
 		    if( $letter =~ m/\\.n/)
 		    {       $config{outcomes_map}{$outcome} = "ñ";          }
@@ -3224,6 +3225,7 @@ sub update_page_numbers($)
 	my ($file)     = (@_);
         Util::precondition("read_pagerefs");
 	my $file_txt  = Util::read_file($file);
+# 	Util::print_message("update_page_numbers: replacing $file ... pages replaced ok !");
 	#$file_txt =~ s/--PAGEFG102--/$Common::config{pages_map}{"sec:FG102"}/g;
 	while( $file_txt =~ m/--PAGE(.*?)--/)
 	{
@@ -3237,8 +3239,10 @@ sub update_page_numbers($)
 	#$file_txt =~ s/--PAGE(.*?)--/$Common::config{pages_map}{"sec:$1"}/g;
 	foreach my $outcome (keys %{$Common::config{outcomes_map}})
 	{
+# 		Util::print_message("Outcome: $outcome being replaced ...");
 		$file_txt =~ s/\\outcome\{$outcome\}/$Common::config{outcomes_map}{$outcome}/g;
 	}
+# 	print Dumper(\%{$Common::config{outcomes_map}});
 	Util::write_file($file, $file_txt);
 	Util::print_message("File $file ... pages replaced ok !");
 }
@@ -3625,12 +3629,11 @@ sub generate_books_links()
 	my $poster_link	 = <<"TEXT";
 		<CENTER>
 		<TABLE BORDER=0 BORDERCOLOR=RED>
-		<TR> <TD colspan="3" align="center"> <a href="\\currentarea-\\siglas-poster.pdf">
-		      <IMG SRC="\\currentarea-\\siglas-poster.png" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
+		<TR> <TD colspan="3" align="center"> <a href="$config{area}-$config{institution}-poster.pdf">
+		      <IMG SRC="$config{area}-$config{institution}-poster.png" border="1" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
 		      </TD>
 		</TR> 
 		</TABLE>
-		<HR>
 TEXT
 	$output_links .= $poster_link;
 	foreach my $book ("Syllabi", "Bibliography", "Descriptions")
@@ -3644,7 +3647,7 @@ TEXT
 		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
 		    $book_link .= "$tabs\t<TD align=\"center\">\n";
 		    $book_link .= "$tabs\t\t<A HREF=\"BookOf$book-$lang_prefix.pdf\">\n";
-		    $book_link .= "$tabs\t\t<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle\n";
+		    $book_link .= "$tabs\t\t<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle\n";
 		    $book_link .= "$tabs\t\t".get_language_icon($lang)."\n";
 		    $book_link .= "$tabs\t\t</A>\n";
 		    $book_link .= "$tabs\t</TD>\n";
@@ -3652,7 +3655,8 @@ TEXT
 	      $output_links .= $book_link;
 	      $output_links .= "$tabs</TR>\n";
 	      $output_links .= "$tabs</TABLE>\n";
-	      $output_links .= "$tabs<HR>\n\n";
+ 	      $output_links .= "$tabs<BR>\n";
+	      $output_links .= "$tabs<BR>\n\n";
 	}
 	$output_links .= "</CENTER>";
 	return $output_links;
