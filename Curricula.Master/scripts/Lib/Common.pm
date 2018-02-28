@@ -2926,6 +2926,7 @@ sub filter_courses()
 				}
 				else
 				{
+					print Dumper(\%{$course_info{$codcour}});
 					Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
 				}
 			}
