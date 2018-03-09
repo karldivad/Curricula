@@ -38,7 +38,7 @@ our %counts              	= ();
 our %antialias_info 	 	= ();
 our %list_of_courses_per_axe	= ();
 
-my %Numbers2Text 		= (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "FOUR", 
+my %Numbers2Text 		= (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "FOUR",
 				   5 => "FIVE", 6 => "SIX", 7 => "SEVEN", 8 => "EIGHT", 9 => "NINE"
 				  );
 our %template_files = (	"Syllabus" 		=> "in-syllabus-template-file"
@@ -102,25 +102,25 @@ sub special_chars_to_html($)
 }
 
 sub GetInCountryBaseDir($)
-{   
+{
     my ($country) =  (@_);
     return $path_map{InDir}."/country/".filter_non_valid_chars($country);
 }
 
 sub GetOutCountryBaseDir($)
-{   
+{
     my ($country) =  (@_);
     return $path_map{InDir}."/country/".filter_non_valid_chars($country);
 }
 
 sub GetInstDir($$$$)
-{	
+{
 	my ($country, $discipline, $area, $inst) = (@_);
 	return GetInCountryBaseDir($country)."/$discipline/$area/$inst";
 }
 
 sub GetInstitutionInfo($$$$)
-{	
+{
 	my ($country, $discipline, $area, $inst) = (@_);
 	return GetInstDir($country, $discipline, $area, $inst)."/institution-info.tex";
 }
@@ -136,7 +136,7 @@ sub filter_non_valid_chars($)
 # ok
 sub get_alias($)
 {
-	my ($codcour) = (@_);	
+	my ($codcour) = (@_);
 	return $course_info{$codcour}{alias};
 }
 
@@ -322,9 +322,9 @@ sub read_outcomes_labels()
 
 sub read_pagerefs()
 {
-    #%{$config{pages_map}}     = 
+    #%{$config{pages_map}}     =
     Common::read_pages();
-    #%{$config{outcomes_map}}  = 
+    #%{$config{outcomes_map}}  =
     Common::read_outcomes_labels();
     #print Dumper(%{$Common::config{outcomes_map}}); exit;
     Util::check_point("read_pagerefs");
@@ -377,24 +377,24 @@ sub set_global_variables()
         $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/figs";
         #system("mkdir -p $config{OutputHtmlDir}");
         system("mkdir -p $config{OutputHtmlFigsDir}");
-# 	$config{OutputHtmlDir}	       		= "$config{OutputInstDir}/html"; 			
+# 	$config{OutputHtmlDir}	       		= "$config{OutputInstDir}/html";
 # 	system("mkdir -p $config{OutputHtmlDir}");
 
-	my $cwd = getcwd();        
+	my $cwd = getcwd();
 	my $cmd = "ln -f -s $cwd/$config{OutputHtmlDir} $config{OutputInstDir}/html";
 # 	Util::print_message($cmd);
         system($cmd);
 
 	$config{OutputPrereqDir} 	= "$config{OutputTexDir}/prereq";
 	system("mkdir -p $config{OutputPrereqDir}");
-	
+
 	$config{OutputDotDir} 	= "$config{OutputInstDir}/dot";
 	system("mkdir -p $config{OutputDotDir}");
 
 	$config{OutputBinDir} 		= "$config{OutputInstDir}/bin";
 	system("mkdir -p $config{OutputBinDir}");
 
-	$config{OutputSqlDir}        		= "$config{OutputInstDir}/gen-sql"; 		
+	$config{OutputSqlDir}        		= "$config{OutputInstDir}/gen-sql";
 	system("mkdir -p $config{OutputSqlDir}");
 
 	$config{OutputMain4FigDir}   	= "$config{OutputInstDir}/tex/main4figs";
@@ -406,12 +406,12 @@ sub set_global_variables()
 	$config{OutputAdvancesDir}   		= "$config{OutputInstDir}/advances";
 	system("mkdir -p $config{OutputAdvancesDir}");
 
-# 	$config{OutputPrereqDir}      	= "$config{OutputInstDir}/pre-prerequisites";    
+# 	$config{OutputPrereqDir}      	= "$config{OutputInstDir}/pre-prerequisites";
 # 	system("mkdir -p $config{OutputPrereqDir}");
-	
+
 	$config{OutputScriptsDir}	= "$config{OutputInstDir}/scripts";
 	system("mkdir -p $config{OutputScriptsDir}");
-	
+
 	$config{InLangBaseDir}	 	= "$config{in}/lang";
 	$config{InLangDir}	 	= "$config{InLangBaseDir}/$config{language_without_accents}";
 	#$config{in_html_dir}      	= $config{InLangDir}."/templates";
@@ -445,7 +445,7 @@ sub set_initial_paths()
 	$path_map{InStyDir}				= $path_map{InLangDir}."/$config{area}.sty";
 	$path_map{InStyAllDir}				= $path_map{InDir}."/All.sty";
 	$path_map{InSyllabiContainerDir}		= $path_map{InLangDir}."/cycle/$config{Semester}/Syllabi";
-      
+
         $path_map{InFigDir}                             = $path_map{InLangDir}."/figs";
 	$path_map{InOthersDir}				= $path_map{InLangDir}."/$config{area}.others";
 	$path_map{InHtmlDir}				= $path_map{InLangDir}."/All.html";
@@ -453,7 +453,7 @@ sub set_initial_paths()
 	$path_map{InDisciplineDir}			= $path_map{InLangDir}."/$config{discipline}.tex";
 	$path_map{InScriptsDir}				= "./scripts";
 	$path_map{InCountryDir}				= GetInCountryBaseDir($path_map{country_without_accents});
-	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex"; 
+	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex";
 	$path_map{InInstDir}				= $path_map{InCountryDir}."/$config{discipline}/$config{area}/$config{institution}";
 	$path_map{InInstUCSPDir}			= GetInstDir("Peru", "Computing", "CS", "UCSP");
 
@@ -499,12 +499,12 @@ sub set_initial_paths()
         $path_map{"out-ncredits-file"}                  = $path_map{OutputTexDir}."/ncredits.tex";
         $path_map{"out-nsemesters-file"}                = $path_map{OutputTexDir}."/nsemesters.tex";
 
-	
+
 	$path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.tex/outcomes-macros.tex";
 	$path_map{"in-bok-file"}			= $path_map{InTexDir}."/bok.tex";
 	$path_map{"in-bok-macros-file"}			= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros.sty";
 	$path_map{"in-bok-macros-V0-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros-V0.sty";
-	
+
 	$path_map{"in-LU-file"}				= $path_map{InTexDir}."/LU.tex";
 
 	$path_map{"out-bok-index-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Index.tex";
@@ -571,9 +571,9 @@ sub set_initial_paths()
 	$path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
 	$path_map{"in-specific-evaluation-file"}	= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
 	$path_map{"out-only-macros-file"}		= $path_map{OutputTexDir}."/macros-only.tex";
-	
+
 	$path_map{"faculty-file"}			= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
-	
+
 	$path_map{"faculty-template.html"}		= $path_map{InFacultyIconsDir}."/faculty.html";
 	$path_map{"NoFace-file"}			= $path_map{InFacultyIconsDir}."/noface.gif";
 
@@ -600,17 +600,17 @@ sub set_initial_paths()
 	$path_map{"in-compile-simple-latex-base-file"}	= $path_map{InDir}."/base-scripts/compile-simple-latex.sh";
 	$path_map{"out-compile-simple-latex-file"} 	= $path_map{OutputScriptsDir}."/compile-simple-latex.sh";
 	$path_map{"update-page-numbers"}	 	= $path_map{InScriptsDir}."/update-page-numbers.pl";
-	
+
 	$path_map{"out-batch-to-gen-figs-file"}         = $path_map{OutputScriptsDir}."/gen-fig-files.sh";
 	$path_map{"out-gen-syllabi.sh-file"}		= $path_map{OutputScriptsDir}."/gen-syllabi.sh";
 	$path_map{"out-gen-map-for-course"}		= $path_map{OutputScriptsDir}."/gen-map-for-course.sh";
-	
+
 	# Dot files
 	$path_map{"in-small-graph-item.dot"}		= $path_map{InTemplatesDot}."/small-graph-item$config{graph_version}.dot";
 	$path_map{"in-big-graph-item.dot"}		= $path_map{InTemplatesDot}."/big-graph-item$config{graph_version}.dot";
 	$path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula.dot";
 	$path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula.dot";
- 
+
 	# Poster files
 	$path_map{"in-poster-file"}			= $path_map{InDisciplineDir}."/$config{discipline}-poster.tex";
 	$path_map{"out-poster-file"}			= $path_map{OutputTexDir}."/$config{discipline}-poster.tex";
@@ -624,7 +624,7 @@ sub set_initial_paths()
         $path_map{"in-analytics.js-file"}               = $path_map{InDir}."/analytics.js";
 
 	# Config files
- 	$path_map{"all-config"}				= $path_map{InDir}."/config/all.config"; 
+ 	$path_map{"all-config"}				= $path_map{InDir}."/config/all.config";
  	$path_map{"colors"}				= $path_map{InDir}."/config/colors.config";
  	$path_map{"discipline-config"}		   	= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
  	$path_map{"in-area-all-config-file"}		= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
@@ -636,7 +636,7 @@ sub set_initial_paths()
 	$path_map{SpiderChartInfoDir}			= $path_map{InDisciplineDir}."/SpiderChartInfo";
 
 	$path_map{"OutputDisciplinesList-file"}	= $path_map{OutHtmlBase}."/disciplines.html";
-	
+
 	Util::check_point("set_initial_paths");
 }
 
@@ -652,10 +652,10 @@ sub read_discipline_config()
 	my %discipline_cfg	= read_config_file("discipline-config");
 	#print Dumper (\%discipline_cfg); exit;
 	my ($key, $value);
-	while ( ($key, $value)  = each(%discipline_cfg) ) 
-	{	
+	while ( ($key, $value)  = each(%discipline_cfg) )
+	{
 # 		print "country-info: key=$key, value=$value\n";
-		$config{$key} = $value; 	
+		$config{$key} = $value;
 	}
 
 	@{$config{SyllabiDirs}} = ();
@@ -753,8 +753,8 @@ sub read_config_file_details($)
 # 	foreach my $line (split("\n", $txt))
 
 	while($txt =~ m/\s*(.*?)\s*=\s*(.*)\s*/g)
-	{	$map{$1} = $2;	
- 		if($1 eq "ComparisonWithStandardCaption") 
+	{	$map{$1} = $2;
+ 		if($1 eq "ComparisonWithStandardCaption")
 		{ 	#print "map{$1}=\"$2\"; ($tpl) \n";
 			#exit;
 		}
@@ -783,7 +783,7 @@ sub read_config($)
 	my ($tpl) = (@_);
 	my %map = read_config_file($tpl);
 	my ($key, $value);
-	while ( ($key, $value) = each(%map)) 
+	while ( ($key, $value) = each(%map))
 	{
 		$config{$key} = $value;
 # 		if( $key eq "SyllabusListOfDirs" )
@@ -809,7 +809,7 @@ sub read_macros($)
 {
     my ($file_name) = (@_);
     my $bok_txt 	  = clean_file(Util::read_file($file_name));
-    
+
     my $count = 0;
     while($bok_txt =~ m/\\newcommand\{\\(.*?)\}((\s|\n)*?)\{/g)
     {
@@ -835,7 +835,7 @@ sub read_special_macros($$)
 {
     my ($file_name, $macro) = (@_);
     my $txt 	  = clean_file(Util::read_file($file_name));
-    
+
     my $count = 0;
     while($txt =~ m/\\Define$macro\{(.*?)\}\{/g)
     {
@@ -917,7 +917,7 @@ sub process_config_vars()
 	$count = 0;
 	foreach my $area (split(",", $config{AreaPriority}))
 	{	$config{area_priority}{$area} = ++$count;		}
-	
+
 	%{$config{colors}{colors_per_level}}   = %{$config{temp_colors}{colors_per_level}};
 	undef(%{$config{temp_colors}{colors_per_level}});
 	foreach my $prefix (keys %{$config{temp_colors}})
@@ -1027,11 +1027,11 @@ sub generate_html_index_by_country()
 		  {
 			foreach my $inst (sort keys %{$config{Curriculas}{country}{$country}{$discipline}{$area}})
 			{
-			      my @list_of_plans = ("", ""); 
+			      my @list_of_plans = ("", "");
 			      my @sep = ("", "");
 			      my @counter_by_inst = (0, 0);
 			      foreach my $plan (sort keys %{$config{Curriculas}{country}{$country}{$discipline}{$area}{$inst}{Plans}})
-			      {    
+			      {
 				    if( $config{Curriculas}{country}{$country}{$discipline}{$area}{$inst}{Plans}{$plan}{version} eq "final" )
 				    {
 					  Util::print_message("\tProcessing institution: $area/$inst ($plan) ...");
@@ -1101,7 +1101,7 @@ sub generate_index_for_this_discipline()
 	    foreach my $country (sort keys %{$config{Curriculas}{disc}{$discipline}})
 	    {
 		  Util::print_message("  Processing country: $country ...");
-		  
+
 		  my $area_list_html = "";
 		  foreach my $area (keys %{$config{Curriculas}{disc}{$discipline}{$country}})
 		  {
@@ -1173,14 +1173,14 @@ sub read_copyrights($)
 	my %file_info = ();
 	# Read the HTMLFootnote
 	if($txt =~ m/\\newcommand\{\\HTMLFootnote\}\{\{(\s*(?:.|\n)*?)\}\}/)
-	{	
+	{
 		$file_info{HTMLFootnote} = $1;
 		$file_info{HTMLFootnote} =~ s/\n/ /g;
 		$file_info{HTMLFootnote} =~ s/\t/ /g;
 		$file_info{HTMLFootnote} =~ s/\s\s/ /g;
 	}
 	else
-	{	Util::print_error("(read_copyrights): there is not \\HTMLFootnote configured in \"$file\" ...\n");	
+	{	Util::print_error("(read_copyrights): there is not \\HTMLFootnote configured in \"$file\" ...\n");
 	}
 	Util::check_point("read_copyrights");
 	Util::print_message("read_copyrights ($file) ... OK !");
@@ -1251,7 +1251,7 @@ sub read_institution_info($)
 	$this_inst_info{sep} = "|";
 	$this_inst_info{hline} = "\\hline";
 	if($txt =~ m/\\newcommand\{\\GraphVersion\}\{(.*?)\\.*?\}/)
-	{	$this_inst_info{graph_version} = $1;		
+	{	$this_inst_info{graph_version} = $1;
 		if($this_inst_info{graph_version} == 2)
 		{
 		      $this_inst_info{sep} = "";
@@ -1259,14 +1259,14 @@ sub read_institution_info($)
 		}
 	}
 	else
-	{	Util::print_warning("(read_institution_info): there is not \\GraphVersion configured in \"$file\" ... assuming 1 ...\n");	
+	{	Util::print_warning("(read_institution_info): there is not \\GraphVersion configured in \"$file\" ... assuming 1 ...\n");
 	}
-	
+
 	# Read the CurriculaVersion
 	if($txt =~ m/\\newcommand\{\\CurriculaVersion\}\{(.*?)\\.*?\}/)
 	{	$this_inst_info{CurriculaVersion} = $1;		}
 	else
-	{	Util::print_warning("(read_institution_info): there is not \\CurriculaVersion configured in \"$file\" ... assuming 3 ...\n");	
+	{	Util::print_warning("(read_institution_info): there is not \\CurriculaVersion configured in \"$file\" ... assuming 3 ...\n");
 		$this_inst_info{CurriculaVersion} = 3;
 	}
 
@@ -1274,7 +1274,7 @@ sub read_institution_info($)
 	if($txt =~ m/\\newcommand\{\\OutcomesList\}\{(.*?)\}/)
 	{	$this_inst_info{outcomes_list} = $1;		}
 	else
-	{	Util::print_error("(read_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n");	
+	{	Util::print_error("(read_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n");
 	}
 
         # Read the outcomes list
@@ -1319,12 +1319,12 @@ sub read_specific_evaluacion_info()
 	      Util::print_message("Reading specific evaluation file ($specific_evaluation_file) ...");
 	      my $specific_evaluation = Util::read_file($specific_evaluation_file);
 	      while($specific_evaluation =~ m/\\begin\{evaluation\}\{(.*?)\}((?:.|\n)*?)\\end\{evaluation\}/g)
-	      {	
+	      {
 		      my ($cc, $this_evaluation_body) = ($1, $2);
 		      my $codcour = detect_codcour($cc);
 		      #Util::print_message("this_evaluation_body=\n$this_evaluation_body");
 		      if ( $this_evaluation_body  =~ m/\{(.*?)\}\{(.*?)\}\s*\n((?:.|\n)*)/g)
-		      {	
+		      {
 			    my ($listoflangs, $parts, $eval) = ($1, $2, $3);
 			    $parts =~ s/ //g;	$listoflangs =~ s/ //g;
 			    #Util::print_message("listoflangs=$listoflangs, $parts$parts, eval=\n$eval");
@@ -1402,7 +1402,7 @@ sub verify_dependencies()
 }
 
 # First Parameter is something such as CS-SPC
-sub set_initial_configuration($)  
+sub set_initial_configuration($)
 {
 	my ($command) = (@_);
 	$config{projectname} = "Curricula";
@@ -1427,7 +1427,7 @@ sub set_initial_configuration($)
 	$path_map{"this-institutions-info-file"}	= GetInstitutionInfo($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
 	$path_map{"copyrights"}				= "$config{in}/copyrights.tex";
 
-	# Read copyrights 
+	# Read copyrights
 	my %copyrights_vars = read_copyrights( get_template("copyrights") );
 	foreach my $key (keys %copyrights_vars)
 	{	$config{$key} = $copyrights_vars{$key};	}
@@ -1440,7 +1440,7 @@ sub set_initial_configuration($)
 
 	$config{equivalences} =~ s/ //g;
 # 	Util::print_message("config{equivalences} = \"$config{equivalences}\""); exit;
-	
+
 	$config{OutputInstDir}	    	= "$config{out}/$inst_list{$config{institution}}{country}/$config{area}-$config{institution}/cycle/$config{Semester}/Plan$config{Plan}";
 	$config{LinkToCurriculaBase} 	= "http://education.spc.org.pe/$inst_list{$config{institution}}{country}/$config{area}-$config{institution}/Plan$config{Plan}";
 	$config{OutHtmlBase}	    	= "$config{out}/html";
@@ -1471,7 +1471,7 @@ sub set_initial_configuration($)
 	%{$config{temp_colors}} = read_config_file("colors");
 
 	# Read dictionary for this language
-	
+
 	%{$config{dictionary}} = read_config_file("dictionary");
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
@@ -1482,13 +1482,13 @@ sub set_initial_configuration($)
 	      $config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
 	      #Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
 	}
-# 	print Dumper(\%{$config{dictionary}});	
+# 	print Dumper(\%{$config{dictionary}});
 # 	print Dumper(\%{$config{dictionaries}{Espanol}});
-# 	print Dumper(\%{$config{dictionaries}{English}}); 
+# 	print Dumper(\%{$config{dictionaries}{English}});
 
 	# Read specific config for its country
 	my %countryvars = read_config_file("in-country-config-file");
-	while ( my ($key, $value) = each(%countryvars) ) 
+	while ( my ($key, $value) = each(%countryvars) )
 	{	$config{dictionary}{$key} = $value; 	}
 
 	# Read customize vars for this institution (optional)
@@ -1496,7 +1496,7 @@ sub set_initial_configuration($)
 	if( -e $inst_config_file )
 	{
 	    my %instvars = read_config_file("in-institution-config-file");
-	    while ( my ($key, $value) = each(%instvars) ) 
+	    while ( my ($key, $value) = each(%instvars) )
 	    {	$config{dictionary}{$key} = $value; 	}
 	}
 	$config{"country-environments-to-insert"} = "";
@@ -1515,7 +1515,7 @@ sub set_initial_configuration($)
 	{
 		$file =~ s/<STY-AREA>/$InStyDir/g;
 		$file =~ s/<LANG-AREA>/$InLangDir/g;
-		
+
 		read_macros($file);
 	}
 
@@ -1523,7 +1523,7 @@ sub set_initial_configuration($)
 	$outcomes_macros_file =~ s/<LANG>/$Common::config{language_without_accents}/g;
 	read_macros($outcomes_macros_file);
 
-# 	read_macros(Common::get_template("in-outcomes-macros-file")); 	
+# 	read_macros(Common::get_template("in-outcomes-macros-file"));
 # 	print Dumper(\%{$Common::config{macros}}); exit;
 
 	read_macros(Common::get_template("out-current-institution-file")) if(-e Common::get_template("out-current-institution-file"));
@@ -1569,7 +1569,7 @@ sub read_crossed_references()
 sub gen_only_macros()
 {
 	my $output_txt = "";
-	
+
 	$output_txt .= "% 1st by countries ...\n";
 	foreach my $country (keys %{$config{list_of_countries}})
 	{
@@ -1597,7 +1597,7 @@ sub gen_only_macros()
                 {       $output_txt .= "\#1";   }
                 $output_txt .= "\\xspace}\n\n";
         }
-        
+
 	$output_txt .= "% And now by institutions ...\n";
 	foreach my $inst (keys %inst_list)
         {
@@ -1632,7 +1632,7 @@ sub gen_faculty_sql()
 		$output_sql .= "INSERT INTO auth_user(id, username, first_name, last_name, email, password, ";
 		$output_sql .= "is_staff, is_active, is_superuser)\n";
 		$output_sql .= "\tVALUES($user_count, '$username', '$firstname', '$lastname', '$email', PASSWORD, 0, 0, 0);\n\n";
-		
+
 		my $shortcv = "";
 		if( $config{faculty}{$email}{shortcv} =~ /(\\begin\{itemize\}(?:.|\n)*?\\end\{itemize\})/g )
 		{	$shortcv = $1;	}
@@ -1643,7 +1643,7 @@ sub gen_faculty_sql()
 		$output_sql .= "INSERT INTO curricula_professor(id, user_id, shortBio, prefix_id)\n";
 		$output_sql .= "\tVALUES($professor_count, $user_count, ";
 		$output_sql .= "'$shortcv', '$title');\n\n";
-		
+
 	}
 	Util::write_file("$config{OutputSqlDir}/docentes.sql", $output_sql);
 }
@@ -1657,13 +1657,13 @@ sub read_faculty()
 					   "MasterPT" => 2,      "Master" => 3,
 					   "DoctorPT" => 4,      "Doctor" => 5, "PosDoc" => 6);
 	%{$config{degrees_description}} = (0 => "Bachelor",      1 => "Degree", 	1 => "Title",
-					   2 => "Master (Part Time)", 	3 => "Master (Full Time)", 
+					   2 => "Master (Part Time)", 	3 => "Master (Full Time)",
 					   4 => "Doctor (Part Time)", 5 => "Doctor (Full Time)", 6 => "PosDoc");
-	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "Title" => "Prof.", 
-					   "MasterPT" => "Mag.", "Master" => "Mag.", 
+	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "Title" => "Prof.",
+					   "MasterPT" => "Mag.", "Master" => "Mag.",
 					   "DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
 	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Enterpreneurship" => 3, "Humanities" => 4, "Empty" => 5 );
-	
+
 	%{$config{faculty}} = ();
 	return if(not -e $faculty_file);
 	my $input = Util::read_file($faculty_file);
@@ -1680,7 +1680,7 @@ sub read_faculty()
 		($config{faculty}{$email}{fields}{shortcv}, $config{faculty}{$email}{fields}{shortcvhtml})   	= ("", "");
 		my $emailwithoutat = $email; $emailwithoutat =~ s/[@\.]//g;
 		$config{faculty}{$email}{fields}{emailwithoutat} = $emailwithoutat;
-		
+
 		$config{faculty}{$email}{fields}{degreelevel} = -1;
 		$config{faculty}{$email}{fields}{degreelevel_description} = "";
 		$config{faculty}{$email}{concentration} = "";
@@ -1706,7 +1706,7 @@ sub read_faculty()
 			{
 			    $line =~ s/\n//g; $line =~ s/\r//g;
 			    if( $line =~ m/\\(.*?)({.*)/g )
-			    {	
+			    {
 				my ($degreelevel, $tail) = ($1, $2);
 				if( not defined($config{degrees}{$degreelevel}) )
 				{
@@ -1749,7 +1749,7 @@ sub read_faculty()
 				$config{faculty}{$email}{fields}{shortcv}     .= "\\item $config{faculty}{$email}{fields}{shortcvline}{$key}\n";
 				$config{faculty}{$email}{fields}{shortcvhtml} .= "\t<li>$config{faculty}{$email}{fields}{shortcvline}{$key}</li>\n";
 			}
-			
+
 			# Second, process the rest of fields such as name, WebPage, Phone, courses, facebook, twitter, etc
 			while( $body =~ m/\\(.*?){(.*?)}/g )
 			{
@@ -1757,7 +1757,7 @@ sub read_faculty()
 			      $field =~ s/ //g;
 			      $field = lc $field;
 			      if( $val ne "" )
-			      {		$config{faculty}{$email}{fields}{$field} = $val;	
+			      {		$config{faculty}{$email}{fields}{$field} = $val;
 			      }
 			}
 		}
@@ -1772,8 +1772,11 @@ sub read_faculty()
 	Util::check_point("read_faculty");
 #    	print Dumper(\%{$config{faculty}{"ecuadros\@ucsp.edu.pe"}});
 }
- 
-# ok
+
+our %professor_role_order = ("T" => 1,
+			     "L" => 2,
+			     "-" => 3,
+			    );
 sub read_distribution()
 {
 	Util::precondition("set_initial_paths");
@@ -1791,7 +1794,7 @@ sub read_distribution()
 	    Util::print_error("read_distribution: I can not open \"$distribution_file\"");
 	    exit;
 	}
-	
+
 	my $count   = 0;
 	my $line_number = 0;
 	my $codcour = "";
@@ -1804,11 +1807,11 @@ sub read_distribution()
 		$line =~ s/\r//g;
 		if($line =~ m/\s*(.*)\s*->\s*(.*)\s*/)
 		{
-			$codcour   = $1; 
-			my $emails = $2; 
+			$codcour   = $1;
+			my $emails = $2;
 			$codcour =~ s/\s//g;
 			$emails  =~ s/\s//g;
-			
+
 			if(defined($antialias_info{$codcour}))
 			{	$codcour = $antialias_info{$codcour}	}
 			if( not defined($course_info{$codcour}) )
@@ -1820,35 +1823,47 @@ sub read_distribution()
 			{
 			      Util::print_error("$codcour_alias is empty ! codcour=$codcour, $course_info{$codcour}{name}=$course_info{$codcour}{alias}");
 			}
-# 			
+#
 			if(not defined($config{distribution}{$codcour_alias}))
 			{
-				
+
 				$config{distribution}{$codcour_alias} = ();
 				#Util::print_message("Initializing $codcour($codcour_alias) ---");
 				#Util::print_message("I found professor for course $codcour_alias: $emails ...");
 			}
 			#print "\$config{distribution}{$codcour} ... = ";
 			my $sequence = 1;
-			foreach my $professor_email (split(",",$emails) )
-			{	
+			foreach my $one_professor_assignment (split(",", $emails) )
+			{
+				my $professor_email = "";
+				my $professor_role  = "-";
+				if($one_professor_assignment =~ m/(.*):(.*)/)
+				{	$professor_email = $1;
+					$professor_role  = $2;
+				}
+				else{
+				      $professor_email = $one_professor_assignment;
+				      Util::print_soft_error("distribution error($distribution_file) ... $codcour_alias($codcour):$one_professor_assignment ... no role assigned?");
+				}
  				if( defined($config{faculty}{$professor_email}) )
-				{    
+				{
 				      if(not defined($config{distribution}{$codcour_alias}{$professor_email}))
-				      {		$config{distribution}{$codcour_alias}{$professor_email} = $sequence++;	}
-                                }
+				      {		$config{distribution}{$codcour_alias}{$professor_role}{$professor_email} = $sequence++;	
+						$config{faculty}{$professor_email}{$codcour_alias}{role} = $professor_role;
+				      }
+        }
 				else
 				{
-				      Util::print_warning("No professor information for email:\"$professor_email\" ($codcour) ... just commenting it");
+				      Util::print_warning("No professor information for email:\"$professor_email\" $codcour_alias($codcour) ... just commenting it");
                                       $ignored_email{$codcour_alias} = "" if(not defined($ignored_email{$codcour_alias}));
                                       $ignored_email{$codcour_alias} .= ",$professor_email";
 				}
 				#print "$professor_email ";
 			}
-                        
+
 			#print "\$config{distribution}{$codcour} .= ";
 			#foreach my $email (%{$config{distribution}{$codcour}})
-			#{	
+			#{
 			#	print "$email ** ";
 			#}
 			#print "\n";
@@ -1864,7 +1879,7 @@ sub read_distribution()
 		my $this_sem_text  = "";
 		my $this_sem_count = 0;
 		my $ncourses       = 0;
-		
+
 # 		foreach $codcour (@{$courses_by_semester{$semester}})
 		foreach my $codcour (sort {$config{prefix_priority}{$course_info{$a}{prefix}} <=> $config{prefix_priority}{$course_info{$b}{prefix}}}  @{$courses_by_semester{$semester}})
 		{
@@ -1878,19 +1893,27 @@ sub read_distribution()
 			}
 			else
 			{	my $sep = "";
-				$this_sem_text .= "% $codcour($codcour_alias). $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
+				$this_sem_text .= "% $codcour_alias($codcour). $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
 				$this_sem_text .= "$codcour->";
-				foreach my $email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel}} keys %{$config{distribution}{$codcour_alias}})
-				{
-					$this_sem_text .= "$sep$email";
-# 					Util::print_message("$this_sem_text ...");
-					$sep = ",";
-					$config{faculty}{$email}{fields}{active} 			= "Yes";
-					$config{faculty}{$email}{fields}{courses_assigned}{$codcour} 	= "";
-				}
-				
-				$this_sem_text .= "\n";
+				foreach my $role (sort {$professor_role_order{$a} <=> $professor_role_order{$b} } 
+						  keys %{$Common::config{distribution}{$codcour_alias}})
+				{      
+					foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel}} 
+								     keys %{$config{distribution}{$codcour_alias}{$role}}
+								    )
+					{
+						$this_sem_text .= "$sep$professor_email:";
+						if(defined($config{faculty}{$professor_email}{$codcour_alias}{role}))
+						{	$this_sem_text .= $config{faculty}{$professor_email}{$codcour_alias}{role};	}
+						else{	$this_sem_text .= "-";		}
 
+	# 					Util::print_message("$this_sem_text ...");
+						$sep = ",";
+						$config{faculty}{$professor_email}{fields}{active} 			= "Yes";
+						$config{faculty}{$professor_email}{fields}{courses_assigned}{$codcour} 	= "";
+					}
+				}
+				$this_sem_text .= "\n";
                                 if( defined($ignored_email{$codcour_alias}) )
                                 {
                                       $this_sem_text .= "%IGNORED $codcour->$ignored_email{$codcour_alias}\n";
@@ -1904,7 +1927,7 @@ sub read_distribution()
 			$output_txt .= "$this_sem_text\n";
 		}
 	}
-	Util::write_file("$distribution_file", $output_txt);	
+	Util::write_file("$distribution_file", $output_txt);
 	Util::print_message("read_distribution($distribution_file) OK!");
 	Util::check_point("read_distribution");
 }
@@ -1925,7 +1948,7 @@ sub read_aditional_info_for_silabos()
 			if( $label eq "COURSE" )
 			{	$codcour = $body;	}
 			else
-			{	
+			{
 				$course_info{$codcour}{extra_tags}{$label} = "\\specialcell{$body}";
 				#print "Aditional $codcour > $label=\"$body\"\n";
 			}
@@ -1953,7 +1976,7 @@ sub save_outcomes_involved($$)
 	    {
 		if($line =~ m/\\ExpandOutcome(.*?)\}\{(.*?)\}/)
 		{
-		    $course_info{$codcour}{outcomes}{$1} = $2;	
+		    $course_info{$codcour}{outcomes}{$1} = $2;
 		}
 	    }
 	}
@@ -1967,7 +1990,7 @@ sub preprocess_syllabus($)
 # 	print "filename = $filename\n";
 	my $codcour = "";
 	if($filename =~ m/.*\/(.*)\.tex/)
-	{	$codcour = $1;		}	
+	{	$codcour = $1;		}
 	my @contents;
 	my $line = "";
 
@@ -1975,13 +1998,13 @@ sub preprocess_syllabus($)
 	$fulltxt = replace_accents($fulltxt);
 	while($fulltxt =~ m/\n\n\n/)
 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
-	
+
 	my $codcour_label       = get_alias($codcour);
 # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
 	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
 	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
 	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
-	
+
 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 	save_outcomes_involved($codcour, $fulltxt);
@@ -1991,8 +2014,8 @@ sub preprocess_syllabus($)
 	my ($count,$inunit)  = (0, 0);
 	my $output_txt = "";
 	foreach $line (@contents)
-	{	
-		$line =~ s/\\\s/\\/g; 
+	{
+		$line =~ s/\\\s/\\/g;
 		$output_txt .= "$line\n";
 		$count++;
 	}
@@ -2013,7 +2036,7 @@ sub replace_special_characters_in_syllabi()
 	my $base_syllabi = get_template("InSyllabiContainerDir");
 	foreach my $localdir (@{$config{SyllabiDirs}})
 	{
-		my $dir = "$base_syllabi/$localdir";	
+		my $dir = "$base_syllabi/$localdir";
 		my @filelist = ();
 		if( -d $dir )
 		{	opendir DIR, $dir;
@@ -2033,7 +2056,7 @@ sub replace_special_characters_in_syllabi()
 				{
  					preprocess_syllabus("$dir/$texfile");
 # 					generate_prerequisitos($texfile);
-				}	
+				}
 			}
 			elsif($texfile=~ m/(.*)\.bib$/)
 			{
@@ -2049,7 +2072,7 @@ sub replace_acronyms($)
 	my ($label) = (@_);
 	foreach my $acro (keys %{$config{dictionary}{Acronyms}})
 	{
-		$label =~ s/$config{dictionary}{Acronyms}{$acro}/$acro/g;	
+		$label =~ s/$config{dictionary}{Acronyms}{$acro}/$acro/g;
 	}
 	return $label;
 }
@@ -2084,7 +2107,7 @@ sub wrap_label($)
 	return ($output,$nlines);
 }
 
-# 
+#
 # sub change_number_by_text($)
 # {
 # 	my ($txt) = (@_);
@@ -2095,13 +2118,13 @@ sub wrap_label($)
 # 	}
 # 	$txt =~ s/\./x/g;
 # 	return $txt;
-# } 
- 
+# }
+
 sub replace_tags($$$%)
 {
  	my ($txt, $before, $after, %map) = (@_);
 	my $count = 1;
-	
+
 	while($txt =~ m/$before(.*?)$after/g)
 	{
 		my $tag=$1;
@@ -2151,7 +2174,7 @@ sub find_credit_column($)
 		my $tag = $1;
  		#Util::print_message("tag=$tag");
 		if($tag eq "CR")
-		{ 	
+		{
 #			Util::print_message("count=$count"); exit;
 			return $count;
 		}
@@ -2161,7 +2184,7 @@ sub find_credit_column($)
 	return 1;
 }
 
-# ok 
+# ok
 sub read_bok_order()
 {
 	my $file = get_template("in-macros-order-file");
@@ -2171,8 +2194,8 @@ sub read_bok_order()
 	foreach my $line (split("\n", $txt))
 	{
 		if($line =~ m/(([a-z]|[A-Z])*)/)
-		{	
-			$config{topics_priority}{$1} = $count++;		
+		{
+			$config{topics_priority}{$1} = $count++;
  		}
 	}
 	Util::print_message("read_bok_order: $count topics read ...");
@@ -2180,7 +2203,7 @@ sub read_bok_order()
 
 # my $sql_topic  = "<prefix>INSERT INTO curricula_knowledgetopic(id, \"name\", unit_id, \"topicParent_id\")\n";
 #    $sql_topic .= "<prefix>\t\tVALUES (<ctopic>, \'<body>\', <cunit>, <parent>);\n";
-# 
+#
 # sub gen_bok_normal_topic($$$$$)
 # {
 # 	my ($ctopic, $body, $cunit, $prefix, $parent) = (@_);
@@ -2188,19 +2211,19 @@ sub read_bok_order()
 # 	{	$body =~ s/  / /g;	}
 # 	my $secret = "xyz1y2b3ytr";
 # 	$body .= $secret;
-# 
+#
 # # 	print "0:\"$body\"\n"	if($body =~ m/pigeonhole/);
 # 	if($body =~ m/(.*) $secret/) #delete spaces at the end
 # 	{	$body = "$1$secret";	}
 # # 	print "s:\"$body\"\n"	if($body =~ m/pigeonhole/);
-# 
+#
 # 	if($body =~ m/(.*)\.$secret/) #delete the point
 # 	{	$body = "$1";		}
 # # 	print "p:\"$body\"\n"	if($body =~ m/pigeonhole/);
-# 
+#
 # 	$body =~ s/$secret//g;
 # # 	print "f:\"$body\"\n"	if($body =~ m/pigeonhole/);
-# 
+#
 # 	$ctopic++;
 # 	my $this_sql = $sql_topic;
 # 	$this_sql =~ s/<prefix>/$prefix/g;
@@ -2210,26 +2233,26 @@ sub read_bok_order()
 # 	$this_sql =~ s/<parent>/$parent/g;
 # 	return ($this_sql, $ctopic);
 # }
-# 
+#
 # sub gen_bok_subtopic($$$$$)
 # {
 # 	my ($ctopic, $body, $cunit, $prefix, $parent) = (@_);
 # 	my $this_sql = "";
 # 	my $sub_body = "";
-# 	
+#
 # 	my @lines = split("\n", $body);
 # 	foreach my $line (@lines)
 # 	{
 # 		if( $line =~ m/\\item\s+(.*?)\.\s*%/)
-# 		{	
-# 			my $sql_tmp = ""; 
+# 		{
+# 			my $sql_tmp = "";
 # 			($sql_tmp, $ctopic) = gen_bok_normal_topic($ctopic, $1, $cunit, "$prefix   ", $parent);
 # 			$this_sql              .= $sql_tmp;
 # 		}
 # 	}
 # 	return ($this_sql, $ctopic);
 # }
-# 
+#
 # sub gen_bok_topic($$$$)
 # {
 # 	my ($ctopic, $body, $cunit, $prefix) = (@_);
@@ -2239,7 +2262,7 @@ sub read_bok_order()
 # 	{
 # 		$body     = $1;
 # 		$sub_body = $2;
-# 
+#
 # # 		print "\"$body\"\n";
 # # 		print "\"$sub_body\"";  exit;
 # 		($this_sql, $ctopic) = gen_bok_normal_topic($ctopic, $body, $cunit, $prefix, "null");
@@ -2254,14 +2277,14 @@ sub read_bok_order()
 # 	}
 # 	return ($sql, $ctopic);
 # }
-# 
+#
 # sub generate_bok_sql($$)
 # {
 # 	my ($filename, $outfile) = (@_);
 # 	my $txt_file = Util::read_file($filename);
 # # 	print $txt_file;exit;
 # 	my $sql = "";
-# 
+#
 # 	# Config
 # 	my $bok_id = 1; #CS=1
 # 	my ($carea, $cunit, $ctopic) = (0, 0, 0);
@@ -2276,10 +2299,10 @@ sub read_bok_order()
 # 		$this_sql =~ s/<id>/$carea/g;		$this_sql =~ s/<name>/$CS_Areas_description{$area}/g;
 # 		$this_sql =~ s/<acro>/$area/g;		$this_sql =~ s/<bok_id>/$bok_id/g;
 # 		$sql .= $this_sql;
-# 		
+#
 # 	}
 # 	$sql .= "\n";
-# 
+#
 # # 	print($sql);
 # 	$carea = 0;
 # 	my $curr_area = "";
@@ -2304,7 +2327,7 @@ sub read_bok_order()
 # # 		{	print "\"$_\"\n";		}
 # # # 		print "\"$body\"";
 # # 		exit;
-# 
+#
 # # 		$body =~ s/\. }//g;
 # # 		$body =~ s/\.}//g;
 # # 		if( $body =~ m/(.*)\.(\s+)/)
@@ -2320,7 +2343,7 @@ sub read_bok_order()
 # 				$sql     .= $this_sql;
 # 				$this_sql = "";
 # 			}
-# 
+#
 # 			#Process this topic
 # # 			$this_sql = "   INSERT INTO curricula_knowledgetopic(id, \"name\", unit_id, \"topicParent_id\")\n";
 # # 			$this_sql.= "\t\t\tVALUES ($ctopic, \"$body\", $cunit, null);\n";
@@ -2347,7 +2370,7 @@ sub read_bok_order()
 # 			$this_sql .= "INSERT INTO curricula_knowledgeunit(id, \"name\", area_id, hours)\n";
 # 			$this_sql .= "\tVALUES ($cunit, \'$body\', $carea, <nhoras>);\n";
 # # 			$sql      .= $this_sql;
-# 
+#
 # 		}
 # 	}
 # 	Util::write_file($outfile, $sql);
@@ -2370,7 +2393,7 @@ sub remove_only_env($)
 			--$count if( $this_char eq "}" );
 			$body1 .= $this_char if($count > 0 );
 		}
-		
+
 		#print "*********************************\n";
 		#print "body=<$body>\n";
 		#print "*********************************\n";
@@ -2396,13 +2419,13 @@ sub remove_only_env($)
 # 	$text =~ s/\($Common::config{dictionary}{Pag}\.~\\pageref{.*?}\)//g;
 # 	return ($text, $count);
 # }
-# 
+#
 # sub replace_bok_pagerefs($)
 # {
 # 	my ($text) = (@_);
 # 	my $count  = 0;
 # 	if($text =~ m/\\item\s(.*?)\s\($Common::config{dictionary}{Pag}\.\s\\pageref{(.*?)}\)/g)
-# 	{	
+# 	{
 # 		#my ($label1) = ($1);
 # 		#print "label=\"$label1\" ... ";
 # 		my ($title1, $label1) = ($1, $2);
@@ -2414,12 +2437,12 @@ sub remove_only_env($)
 # 	}
 # 	return ($text, $count);
 # }
-# 
+#
 # sub readfile($$)
 # {
 # 	my ($filename, $area) = (@_);
 # 	my $line;
-# 	
+#
 # 	if(not -e "$filename")
 # 	{
 # 		print "readfile: \"$filename\" no existe\n";
@@ -2431,7 +2454,7 @@ sub remove_only_env($)
 # 	my $changes;
 # 	my $count = 0;
 # 	foreach $line (@lines)
-# 	{	
+# 	{
 # 		my $extratxt = "";
 # 		if( $lines[$count] =~ m/^%/)
 # 		{	$lines[$count] = "\n"; }
@@ -2439,7 +2462,7 @@ sub remove_only_env($)
 # 		{	($lines[$count], $changes)        = replace_bok_pagerefs($line);
 # 		}
 # 		elsif($filename eq "cs-tabla.tex" or $filename =~ m/pre\-prerequisites/)
-# 		{	
+# 		{
 # 			($lines[$count], $changes)        = replace_Pag_pagerefs($line);
 # 		}
 # 		elsif( $lines[$count] =~ m/(^.*)(.)%(.*)/)
@@ -2447,7 +2470,7 @@ sub remove_only_env($)
 # 			{}
 # 			else
 # 			{
-# 				$lines[$count] = "$1$2\n" ; 
+# 				$lines[$count] = "$1$2\n" ;
 # 				#print "$line";
 # 			}
 # 		}
@@ -2504,23 +2527,23 @@ sub expand_macros($$)
 {
 	my ($file, $text) = (@_);
 	my $macros_changed = 0;
-	
+
 # 	Util::print_message("**************************************************");
 	Util::precondition("sort_macros");
 	#print "siglas = $config{macros}{siglas} x5";
 	if(not defined($config{macros}{siglas}))
 	{	Util::halt("\$config{macros}{siglas} does not exit !!!!\n");		}
-  
+
 	my $changes = "";
 	my $ctemp = 1;
 	while($ctemp > 0)
 	{
-		$ctemp = 0; 
+		$ctemp = 0;
 		foreach my $key (sort {length($b) <=> length($a)} keys %{$config{macros}})
 		{
 # 			$text     =~ s/\\$key/$config{macros}{$key}/g;
 			if($text =~ m/\\$key/)
-			{	
+			{
 				$text     =~ s/\\$key/$config{macros}{$key}/g;
 				$changes .= "\\$key:$config{macros}{$key}\n";
 				$macros_changed++;
@@ -2541,18 +2564,18 @@ sub expand($$$)
 {
 	my ($text, $macro, $key) = (@_);
 	my $count = 0;
- 
+
 	$text =~ s/\\Show$macro\{(.*?)}/$1) $config{$key}{$1}/g;
 	#print "siglas = $config{macros}{siglas} ... x7\n";
 	return ($text, $count);
 }
 
-# 
+#
 sub expand_sub_file($$)
 {
 	my ($text, $IncludeType) = (@_);
 	my $count = 0;
-	
+
 	#while($filetxt =~ m/\\begin{unit}{(.*)}{(.*)}\s*\n((?:.|\n)*?)\\end{unit}/g)
 	my $prefix = "";
 	#my $source_txt = "";
@@ -2615,12 +2638,12 @@ sub parse_courses()
 
  	my $courses_count 		= 0;
 	$config{n_semesters}		= 0;
-	
+
  	my $file_txt = Util::read_file($input_file);
 # 	my @lines = split("\n", $files_txt);
 # 	if(not open(IN, "<$input_file"))
 # 	{  Util::halt("parse_courses: $input_file does not open ...");	}
-# 	print Dumper(\%{$config{valid_institutions}}); 
+# 	print Dumper(\%{$config{valid_institutions}});
 
 	my $active_semester = 0;
 	while($file_txt =~ m/\\course(.*)\n/g)
@@ -2645,12 +2668,12 @@ sub parse_courses()
 		  if( $active_semester != $semester )
 		  {
 			$active_semester = $semester;
-			Util::print_message("");
+			Util::print_color("\n$semester:");
 		  }
 		  foreach my $inst (@inst_array)
 		  {
 			  if( defined($config{valid_institutions}{$inst}) )
-			  {	
+			  {
 				$count++;
 				if($config{filter_priority}{$inst} > $priority)
 				{		$priority = $config{filter_priority}{$inst};		}
@@ -2658,13 +2681,15 @@ sub parse_courses()
 			  }
 			  #else{	#Util::print_message("$inst does not match ...");	}
 		  }
-		  if( $count == 0 ){	 #Util::print_warning("$codcour ignored $inst_wildcard");	
+		  if( $count == 0 ){	 #Util::print_warning("$codcour ignored $inst_wildcard");
 			#Util::print_warning("\\course$course_params ignored! (filter:$inst_list{$institution}{filter})");
-			next; 
+			next;
 		  }
+		  
+# 		  my $codcour_alias = get_alias($codcour);
 		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
-		  {	if( $priority < $course_info{$codcour}{priority}) 
-			  {	
+		  {	if( $priority < $course_info{$codcour}{priority})
+			  {
 				  print "\n";
 				  Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
 				  next;
@@ -2679,13 +2704,10 @@ sub parse_courses()
 		  $courses_count++;
 		  #print "wildcards = $inst_wildcard\n";
 		  #Util::print_message("coursecode = $codcour, semester = $semester\n");
-		  print "$codcour ";
-  # 			print ".";
-		  print "*" if($courses_count % 10 == 0);
 		  $prerequisites =~ s/ //g;
 		  $recommended   =~ s/ //g;
 		  $coreq	       =~ s/ //g;
-		  
+
 		  #print_message("Processing coursecode=$codcour ...");
 		  $course_info{$codcour}{priority}	= $priority;
 		  $course_info{$codcour}{semester}       	= $semester;
@@ -2694,14 +2716,21 @@ sub parse_courses()
 		  $course_info{$codcour}{short_type}	= $config{dictionary}{ElectiveShort} if($course_info{$codcour}{course_type} eq $Common::config{dictionary}{Elective});
 		  if($codcour_alias eq "") {	$codcour_alias = $codcour 	}
 		  else		{  $antialias_info{$codcour_alias} 	= $codcour;	}
-		  $course_info{$codcour}{alias}		= $codcour_alias;
 		  
+		  $course_info{$codcour}{alias}		= $codcour_alias;
+
+		  if(not $codcour_alias eq $codcour)
+		  {	print "$codcour_alias($codcour) ";	}
+		  else{	print "$codcour_alias ";	}
+  # 			print ".";
+# 		  print "*" if($courses_count % 10 == 0);
+
 		  $course_info{$codcour}{axes}           	= $axes;
 		  $course_info{$codcour}{naxes}		= 0;
 
 		  my $prefix = get_prefix($codcour);
 		  $course_info{$codcour}{prefix}		= $prefix;
-		  
+
 		  # print "coursecode= $codcour, area= $course_info{$codcour}{axe}\n";
   # 			$area_priority{$codcour}		= $axes;
 		  $course_info{$codcour}{textcolor}	= $config{colors}{$prefix}{textcolor};
@@ -2744,7 +2773,7 @@ sub parse_courses()
 		  Util::print_warning("course: \"\\course$course_params\" does not contain the right # of parameters ...");
 	      }
 	}
-	
+
 # 	close(IN);
 
 	if(not defined($config{SemMin}) and not defined($config{SemMax}) )
@@ -2757,7 +2786,7 @@ sub parse_courses()
 	    if( $config{SemMax} > $config{n_semesters} )
 	    {	$config{SemMax} = $config{n_semesters};		}
 	}
-	
+
 	Util::print_message("");
 	Util::print_message("config{SemMin} = $config{SemMin}, config{SemMax} = $config{SemMax}");
 	Util::check_point("parse_courses");
@@ -2802,7 +2831,7 @@ sub filter_courses()
 		{
 			#print "Active Semester = $active_semester\n";
 			if($active_semester != 0)
-			{	
+			{
 				foreach $axe (split(",", $elective_axes))
 				{	$counts{credits}{areas}{$axe}	+= $maxE/$elective_naxes;	}
 				$counts{credits}{count}			+= $maxE;
@@ -2838,7 +2867,7 @@ sub filter_courses()
 		foreach $axe (split(",", $course_info{$codcour}{axes}))
 		{
 		      if(not defined($data{counts_per_standard}{$axe}))
-		      {		$data{counts_per_standard}{$axe} 		= 0;	
+		      {		$data{counts_per_standard}{$axe} 		= 0;
 				$list_of_courses_per_axe{$axe}{courses} 	= [];
 		      }
 		      $data{counts_per_standard}{$axe}     += $course_info{$codcour}{cr}/$course_info{$codcour}{naxes};
@@ -2889,7 +2918,7 @@ sub filter_courses()
 		my $sep 		= "";
 		$course_info{$codcour}{n_prereq} = 0;
 		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites_just_codes}))
-		{	
+		{
 			$codreq =~ s/ //g;
 			if($codreq =~ m/$institution=(.*)/)
 			{	  push(@{$course_info{$codcour}{full_prerequisites}}, $1);
@@ -2898,7 +2927,7 @@ sub filter_courses()
 			elsif($codreq =~ m/(.*?)=(.*)/)
 			{	 Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring"); 			}
 			else
-			{	
+			{
 				if(defined($antialias_info{$codreq}))
 				{	$codreq = $antialias_info{$codreq};	}
 				if(defined($course_info{$codreq}))
@@ -2989,7 +3018,7 @@ sub filter_courses()
                               $counts{credits}{areas}{$axe} += $course_info{$codcour}{cr}/$course_info{$codcour}{naxes};
 			      #Util::print_message("codcour=$codcour, axe=$axe");
 			}
-                        
+
 		}
                 #Util::print_message("config{credits_this_semester}{$semester}=$config{credits_this_semester}{$semester}");
                 if( defined($config{electives}{$semester}) )
@@ -3040,7 +3069,7 @@ sub read_min_max($$)
 	my ($SpiderChartInfoDir,$standard) = (@_);
 	my $input_file = "$SpiderChartInfoDir/$standard-MinMax.tex";
 	my $filetxt = Util::read_file("$input_file");
-	
+
 	Util::print_message("read_min_max: reading $input_file");
 	# This accumulator is only to calculate the final % compared with the total
 	$config{StdInfo}{$standard}{min} = 0;
@@ -3065,7 +3094,7 @@ sub read_min_max($$)
 }
 
 sub read_all_min_max()
-{	
+{
 	my $SpiderChartInfoDir = get_template("SpiderChartInfoDir");
 	foreach (split(",", $config{Standards}))
 	{
@@ -3168,14 +3197,14 @@ sub generate_course_info_in_dot($$$)
 	my @height = (0, 0, 0.6, 0.9, 1.2, 1.5);
 # 	my $height = 0.3*$nlines+0.1*($nlines-1) + 0.3*$config{extralevels}+0.05*($config{extralevels}-1);
 	$map{FULLNAME}	= $newlabel;
-# 	Util::print_message("$nlines+$config{dictionary}{extralevels}"); 
+# 	Util::print_message("$nlines+$config{dictionary}{extralevels}");
 	$map{HEIGHT}	= 0.3*($nlines+$config{dictionary}{extralevels});
 	$map{FONTCOLOR}	= $course_info{$codcour}{textcolor};
-	
+
 	if($config{graph_version} >= 2)
 	{
 		if( $course_info{$codcour}{short_type} eq $config{dictionary}{MandatoryShort})
-		{	$map{PERIPHERIES}	= 2;	
+		{	$map{PERIPHERIES}	= 2;
 			$map{SHAPE}			= "record";
 		}
 		else
@@ -3187,7 +3216,7 @@ sub generate_course_info_in_dot($$$)
 	$map{BORDERCOLOR} = "white";
 	$map{FILLCOLOR}	= $course_info{$codcour}{bgcolor};
 	$map{CR}		= $course_info{$codcour}{cr};
-	
+
 	if($course_info{$codcour}{th} > 0)
 	{		$map{HT}	= $course_info{$codcour}{th};	}
 	else{	$map{HT}	= "";	}
@@ -3252,7 +3281,7 @@ sub update_page_numbers_for_all_courses_maps()
 {
 	my $OutputDotDir  = Common::get_template("OutputDotDir");
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	{     
+	{
 	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 	      {
 		      my $codcour_alias = Common::get_alias($codcour);
@@ -3270,20 +3299,20 @@ sub parse_bok($)
  	Util::print_message("Processing $bok_in_file ...");
 	my $bok_in = Util::read_file($bok_in_file);
 	my $output_txt = "";
-	
+
 	my %counts = ();
 	my $KAorder = 0;
 	while($bok_in =~ m/\\(.*?){(.*?)}/g)
 	{
 	    my ($cmd, $ka)  = ($1, $2);
 	    if($cmd eq "KA") # \KA{AL}{<<Algoritmos y Complejidad>>}{crossref}
-	    {	
+	    {
 		$bok_in =~ m/\{<<(.*?)>>\}\{(.*?)\}/g;
 		my ($body, $crossref)  = ($1, $2);
 		if( $body =~ m/(.*)\.$/ )
 		{	$body = $1;	}
-		
-		$bok{$lang}{$ka}{name} 	= $body; 
+
+		$bok{$lang}{$ka}{name} 	= $body;
 		$bok{$lang}{$ka}{order} 	= $KAorder++;
 		($bok{$lang}{$ka}{nhTier1}, $bok{$lang}{$ka}{nhTier2}) = (0, 0);
 		$counts{$cmd}++;
@@ -3293,22 +3322,22 @@ sub parse_bok($)
  		#Util::print_message("$body");
 	    }
 	    elsif( $cmd eq "KADescription")
-	    {	
+	    {
 		$bok_in =~ m/{<<((.|\n)*?)>>}/g;
 		my ($body)  = ($1);
 # 		if( $body =~ m/(.*)\.$/ )
 # 		{	$body = $1;	}
-		
-		$bok{$lang}{$ka}{description} = $body; 
+
+		$bok{$lang}{$ka}{description} = $body;
 		$counts{$cmd}++;
 	    }
 	    elsif( $cmd eq "KU") # \KU{AL}{BasicAnalysis}{<<Análisis Básico>>}{}{#hours Tier1}{#hours Tier2}
-	    {	
+	    {
 		$bok_in =~ m/\{(.*?)\}\{<<(.*?)>>\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g;
 		my ($p2, $body, $crossref, $nhTier1, $nhTier2)  = ($1, $2, $3, $4, $5);
 		if( $body =~ m/(.*)\.$/ )
 		{	$body = $1;	}
-		
+
 		my $ku 			= "$ka$p2";
 		%{$bok{$lang}{$ka}{KU}{$ku}} 	= ();
 		my $KUPos 		= scalar keys %{$bok{$lang}{$ka}{KU}};
@@ -3324,29 +3353,29 @@ sub parse_bok($)
 		$ku_info{$lang}{$ku}{ka} 	= $ka;
 		$ku_info{$lang}{$ku}{nhTier1}	= $nhTier1;
 		$ku_info{$lang}{$ku}{nhTier2}	= $nhTier2;
-		
+
 		$counts{$cmd}++;
 # 		Util::print_message("KU ($ka, $ku, $KUPos, $crossref, Tier1=$nhTier1, Tier2=$nhTier2) ...");
 	    }
 	    elsif( $cmd eq "KUDescription") # \KUDescription{AL}{BasicAnalysis}{<<~>>}
-	    {	
+	    {
 		$bok_in =~ m/\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
 		my ($p2, $body)  = ($1, $2);
 		#if( $body =~ m/(.*)\.$/ )
 		#{	$body = $1;	}
-		
+
 		my $ku			= "$ka$p2";
 		$bok{$lang}{$ka}{KU}{$ku}{description}= $body;
 		$counts{$cmd}++;
 # 		Util::print_message("KU ($ka, $ku, KUDescription) ...");
 	    }
 	    elsif( $cmd eq "KUItem") # \KUItem{AL}{BasicAnalysis}{Core-Tier2}{Recurrence}{crossrefs}{<<Relaciones recurrentes \begion{topic} ... \n \end{topic}.>>}
-	    {	
+	    {
 		$bok_in =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
 		my ($kubase, $tier, $kuposfix, $crossref, $body)  = ($1, $2, $3, $4, $5);
 		#if( $body =~ m/(.*)\.$/ )
 		#{	$body = $1;	}
-		
+
 		my $ku 			= "$ka$kubase";
 		my $kuitem		= $ku."Topic".$kuposfix;
 		my $KUItemPos 		= scalar keys %{$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}};
@@ -3355,20 +3384,20 @@ sub parse_bok($)
 # 		$crossref =~ s/\s//g;
 		$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $crossref;
 # 		if( not $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} eq "" )
-# 		{	Util::print_message("kuitem = $kuitem, bok{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} ... ");		
+# 		{	Util::print_message("kuitem = $kuitem, bok{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} ... ");
 # 			exit;
 # 		}
 		$counts{$cmd}++;
-		
+
 		#Util::print_message("$cmd, $ka, $kubase, $kuposfix, $tier, $body ...");
 	    }
 	    elsif( $cmd eq "LO") # \LO{AL}{BasicAnalysis}{Core-Tier1}{Familiarity}{State}{<<Indique la definicion formal de Big O.>>}
-	    {	
+	    {
 		$bok_in =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
 		my ($kubase, $tier, $lolevel, $kuposfix, $body)  = ($1, $2, $3, $4, $5);
 		if( $body =~ m/(.*)\.$/ )
 		{	$body = $1;	}
-		
+
 		my $ku 			= "$ka$kubase";
 		my $LOitem		= $ku."LO".$kuposfix;
 		my $LOItemPos 		= scalar keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}};
@@ -3382,7 +3411,7 @@ sub parse_bok($)
 	    #Util::print_message("Processing macro #$count: $cmd ...");
 	}
 	foreach (keys %counts)
-	{	Util::print_message("counts{$_} = $counts{$_} ...");	}	
+	{	Util::print_message("counts{$_} = $counts{$_} ...");	}
 	Util::check_point("parse_bok");
 	#print Dumper(\%bok);
 	#Util::print_message("parse_bok($bok_in_file) $count macros processed ... OK!");
@@ -3390,7 +3419,7 @@ sub parse_bok($)
 # 	Util::print_message("bok{$lang}");
 # 	foreach my $key (keys %{$bok{Espanol}{SP}{KU}})
 # 	{	Util::print_warning("key=$key");	}
- 	#print Dumper (\%{$Common::bok{"Espanol"}{DS}{KU}}); 
+ 	#print Dumper (\%{$Common::bok{"Espanol"}{DS}{KU}});
  	#exit;
 }
 
@@ -3426,7 +3455,7 @@ sub gen_bok($)
 	my $macros_txt = "";
 	my $bok_index_txt = "";
 	my $bok_output_txt = "";
-	
+
 	$bok_index_txt .= "\\begin{multicols}{2}\n";
 	$bok_index_txt .= "\\scriptsize\n";
 	$bok_index_txt .= "\\noindent\n";
@@ -3439,20 +3468,20 @@ sub gen_bok($)
 		$macros_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$macros_txt .= "% Knowledge Area: $ka\n";
 		$macros_txt .= "\\newcommand{\\$macro}{$bok{$lang}{$ka}{name} ($ka)\\xspace}\n";
-		
+
 		$bok_output_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$bok_output_txt .= "% Knowledge Area: $ka\n";
-		$bok_output_txt .= "\\section{\\$macro}\\label{sec:BOK:$ka}\n"; 
+		$bok_output_txt .= "\\section{\\$macro}\\label{sec:BOK:$ka}\n";
 		$bok_index_txt .= "{\\bf \\ref{sec:BOK:$ka} \\htmlref{\\$macro}{sec:BOK:$ka}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ka})}\n";
 		my $hours_by_ku_file = "$ka-hours-by-ku";
-		
+
 		$macro = $ka."BOKDescription";
 		$macros_txt .= "\\newcommand{\\$macro}{$bok{$lang}{$ka}{description}\\xspace}\n\n";
 		$bok_output_txt .= "\\$macro\n\n";
-		
+
 		my $hours_by_ku_rows = "";
 		$bok_output_txt .= "\\input{\\OutputTexDir/$hours_by_ku_file}\n";
-		
+
 # 		my $ku 			= "$ka$p2";
 # 		%{$bok{$lang}{$ka}{KU}{$ku}} 	= ();
 # 		my $KUPos 		= scalar keys %{$bok{$lang}{$ka}{KU}};
@@ -3460,7 +3489,7 @@ sub gen_bok($)
 # 		$bok{$lang}{$ka}{KU}{$ku}{order}= $KUPos;
 		#Util::print_message("");
 		$bok_index_txt .= "\\begin{itemize}\n";
-		foreach my $ku (sort {$bok{$lang}{$ka}{KU}{$a}{order} <=> $bok{$lang}{$ka}{KU}{$b}{order}} 
+		foreach my $ku (sort {$bok{$lang}{$ka}{KU}{$a}{order} <=> $bok{$lang}{$ka}{KU}{$b}{order}}
 				keys %{$bok{$lang}{$ka}{KU}})
 		{
 		      #print Dumper(\%{$bok{$lang}{$ka}{KU}{$ku}});
@@ -3471,40 +3500,40 @@ sub gen_bok($)
 		      $macros_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		      $macros_txt .= "% KU: $ka:$bok{$lang}{$ka}{KU}{$ku}{body}\n";
 		      $macros_txt .= "\\newcommand{\\$ku_macro}{$bok{$lang}{$ka}{KU}{$ku}{body}\\xspace}\n";
-		      
+
 		      my ($nhours_txt, $sep) = ("", "");
 		      #Util::print_message("bok{$ka}{KU}{$ku}{nhTier1}=$bok{$lang}{$ka}{KU}{$ku}{nhTier1} ...");
 		      $Common::config{ref}{$ku} = "sec:BOK:$ku_macro";
 		      my $ku_line = "\\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{$Common::config{ref}{$ku}}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro}) & <CORETIER1> & <CORETIER2> & <ELECTIVES> \\\\ \\hline\n";
 		      $bok_index_txt .= "\\item \\ref{sec:BOK:$ku_macro} \\htmlref{\\$ku_macro}{sec:BOK:$ku_macro}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ku_macro})\n";
 		      if( $bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 )
-		      {		$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier1} $Common::config{dictionary}{hours} Core-Tier1";	$sep = ",~";	
+		      {		$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier1} $Common::config{dictionary}{hours} Core-Tier1";	$sep = ",~";
 				$ku_line     =~ s/<CORETIER1>/$bok{$lang}{$ka}{KU}{$ku}{nhTier1}/g;
 		      }
 		      if( $bok{$lang}{$ka}{KU}{$ku}{nhTier2} > 0 )
-		      {		$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier2} $Common::config{dictionary}{hours} Core-Tier2";	$sep = ",~";	
+		      {		$nhours_txt .= "$sep$bok{$lang}{$ka}{KU}{$ku}{nhTier2} $Common::config{dictionary}{hours} Core-Tier2";	$sep = ",~";
 				$ku_line     =~ s/<CORETIER2>/$bok{$lang}{$ka}{KU}{$ku}{nhTier2}/g;
 		      }
-		      
+
 		      if( defined($bok{$lang}{$ka}{KU}{$ku}{items}{Elective}) )
 		      {		$ku_line     =~ s/<ELECTIVES>/$Common::config{dictionary}{Yes}/g;      }
-		      else{ 	$ku_line     =~ s/<ELECTIVES>/$Common::config{dictionary}{No}/g;	}      
+		      else{ 	$ku_line     =~ s/<ELECTIVES>/$Common::config{dictionary}{No}/g;	}
 		      $ku_line =~ s/<CORETIER.?>/~/g;
 
 		      $hours_by_ku_rows .= $ku_line;
 
 		      if( not $nhours_txt eq "" )
 		      {		$nhours_txt = "~($nhours_txt)";	}
-		      
+
 		      $bok_output_txt .= "\\subsection{$ka/\\$ku_macro$nhours_txt}\\label{sec:BOK:$ku_macro}\n";
-		      
+
 		      my $ku_description_macro = "$bok{$lang}{$ka}{KU}{$ku}{name}Description";
 		      $bok{$lang}{$ka}{KU}{$ku}{description} =~ s/_/\\_/g;
 
 		      $macros_txt .= "\\newcommand{\\$ku_description_macro}{$bok{$lang}{$ka}{KU}{$ku}{description}\\xspace}\n";
 		      if( not $bok{$lang}{$ka}{KU}{$ku}{description} eq "~" )
 		      {  	$bok_output_txt .= "\\$ku_description_macro\\\\\n";	}
-		      
+
 		      #my $kuitem		= $ku."Topic".$p3;
 # 		      $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{body}  = $body;
 # 		      $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{order} = $KUItemPos;
@@ -3513,7 +3542,7 @@ sub gen_bok($)
 		      #$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{body}
 		      my $alltopics = "";
 		      $bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{Topics}:}\\\\\n";
-		      foreach my $level (sort {$a cmp $b} 
+		      foreach my $level (sort {$a cmp $b}
 				         keys %{$bok{$lang}{$ka}{KU}{$ku}{items}})
 		      {
 				#Util::print_message("Generating $level ...");
@@ -3524,10 +3553,10 @@ sub gen_bok($)
 					$bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{crossref} =~ s/\s//g;
 					my $xref_txt = "";
 					if( not $bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{crossref} eq "" )
-					{	
+					{
 						#Util::print_message("bok{$ka}{KU}{$ku}{items}{$level}{$kuitem}{crossref} = $bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{crossref} ... ");
 						my $sep = "";
-						foreach my $xref (split(",", $bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{crossref}))	
+						foreach my $xref (split(",", $bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{crossref}))
 						{	$xref_txt .= "$sep\\xref{$xref}";
 							$sep = ", ";
 						}
@@ -3551,13 +3580,13 @@ sub gen_bok($)
 		      $macros_txt	.= $alltopics;
 		      $macros_txt	.= "\\end{topics}\n}\n";
 		      $bok_output_txt .= "\n";
-		      
+
 		      #$bok{$lang}{$ka}{KU}{$ku}{LO}{$p4}{$LOitem}{body}  = $body; 	# $p4 = Familiarity
 		      #$bok{$lang}{$ka}{KU}{$ku}{LO}{$p4}{$LOitem}{order} = $LOItemPos;
 		      my $all_lo = "";
 		      $bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{LearningOutcomes}:}\\\\\n";
 		      my $count_of_items = 0;
-		      foreach my $level (sort {	$bok{$lang}{$ka}{KU}{$ku}{LO}{$a} cmp $bok{$lang}{$ka}{KU}{$ku}{LO}{$b} } 
+		      foreach my $level (sort {	$bok{$lang}{$ka}{KU}{$ku}{LO}{$a} cmp $bok{$lang}{$ka}{KU}{$ku}{LO}{$b} }
 				         keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}})
 		      {
 				$bok_output_txt .= "\\noindent {\\bf $level:}\n";
@@ -3588,10 +3617,10 @@ sub gen_bok($)
 		      $bok_output_txt .= "\n\n";
 		} # ku loop
 		$bok_index_txt .= "\\end{itemize}\n\n";
-		
+
 		$macros_txt     .= "\n\n";
 		$bok_output_txt .= "\n\n";
-		
+
 		$hours_by_ku_file = Common::get_template("OutputTexDir")."/$hours_by_ku_file.tex";
 		#Util::print_message("Generating $hours_by_ku_file ...");
 		my $hours_by_ku_table = "\\begin{center}\n";
@@ -3600,7 +3629,7 @@ sub gen_bok($)
 		$hours_by_ku_table .=  $hours_by_ku_rows;
 		$hours_by_ku_table .= "\\end{tabularx}\n";
 		$hours_by_ku_table .= "\\end{center}\n";
-		
+
 		Util::write_file($hours_by_ku_file, $hours_by_ku_table);
 	}
 	$bok_index_txt .= "\\end{multicols}\n";
@@ -3633,7 +3662,7 @@ sub generate_books_links()
 		<TR> <TD colspan="3" align="center"> <a href="$config{area}-$config{institution}-poster.pdf">
 		      <IMG SRC="$config{area}-$config{institution}-poster.png" border="1" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
 		      </TD>
-		</TR> 
+		</TR>
 		</TABLE>
 TEXT
 	$output_links .= $poster_link;
@@ -3674,7 +3703,7 @@ sub setup()
 	set_initial_configuration($Common::command);
 
 	read_pagerefs();
-	parse_courses(); 
+	parse_courses();
 # 	print Dumper(\%{$course_info{"MA102"}});
 	filter_courses();
 

@@ -53,12 +53,20 @@ sub print_error($)
 	exit;
 }
 
+
 sub print_soft_error($)
 {
 	my ($msg) = (@_);
-	print "\x1b[41m$msg\x1b[49m";
+	print "\x1b[41m$msg\x1b[49m\n";
 }
+
 # ok
+sub print_color($)
+{
+	my ($msg) = (@_);
+	print "\x1b[43m$msg\x1b[49m";
+}
+
 sub print_warning($)
 {
 	my ($msg) = (@_);

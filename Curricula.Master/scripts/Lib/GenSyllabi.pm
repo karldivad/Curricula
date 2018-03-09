@@ -141,10 +141,10 @@ sub process_syllabus_units($$$$)
 	return ($all_units_txt, $unit_captions);
 }
 
+# ok
 sub read_syllabus_info($$$)
 {
 	my ($codcour, $semester, $lang)   = (@_);
-	my $count       = 0;
 	my $fullname 	= Common::get_syllabus_full_path($codcour, $semester, $lang);
 	my $syllabus_in	= Util::read_file($fullname);
 # 	Util::print_message("GenSyllabi::read_syllabus_info $codcour ...");
@@ -234,26 +234,41 @@ sub read_syllabus_info($$$)
 	my $sep    = "";
 	if(defined($Common::antialias_info{$codcour}))
 	{	$codcour = $Common::antialias_info{$codcour}	}
-	my $alias = Common::get_alias($codcour);
-	if(defined($Common::config{distribution}{$alias}))
+	my $codcour_alias = Common::get_alias($codcour);
+	if(defined($Common::config{distribution}{$codcour_alias}))
 	{
-		foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}} keys %{$Common::config{distribution}{$alias}})
-		{
-			if(defined($Common::config{faculty}{$email}{fields}{name}))
-			{	
-				$map{PROFESSOR_NAMES} 			.= "$Common::config{faculty}{$email}{fields}{name} ";
-				$map{PROFESSOR_SHORT_CVS}		.= "\\noindent $Common::config{faculty}{$email}{fields}{prefix} $Common::config{faculty}{$email}{fields}{name}\n";
-				$map{PROFESSOR_SHORT_CVS} 		.= "\\begin{itemize}\n";
-				$map{PROFESSOR_SHORT_CVS} 		.= "$Common::config{faculty}{$email}{fields}{shortcv}";
-				$map{PROFESSOR_SHORT_CVS} 		.= "\\end{itemize}\n\n";
-				#$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
-			}
-			$sep = ", ";
+		foreach my $role (sort {$Common::professor_role_order{$a} <=> $Common::professor_role_order{$b} } 
+		                   keys %{$Common::config{distribution}{$codcour_alias}})
+		{                   
+		      my $count = 0;
+		      my $PROFESSOR_SHORT_CVS = "";
+		      foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}} 
+					keys %{$Common::config{distribution}{$codcour_alias}{$role}})
+		      {      
+			      if(defined($Common::config{faculty}{$email}{fields}{name}))
+			      {	
+				      $map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
+				      $PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{prefix} $Common::config{faculty}{$email}{fields}{name}\n";
+				      $PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
+				      $PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
+				      $PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}";
+				      $PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
+				      $count++;
+				      #$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
+			      }
+			      $sep = ", ";
+		      }
+		      if( $count > 0 )
+		      {	      $map{PROFESSOR_SHORT_CVS} .= "\n\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
+			      $map{PROFESSOR_SHORT_CVS} .= "\\begin{itemize}[noitemsep]\n";
+			      $map{PROFESSOR_SHORT_CVS} .= $PROFESSOR_SHORT_CVS;
+			      $map{PROFESSOR_SHORT_CVS} .= "\\end{itemize}\n";
+		      }
 		}
 	}
 	else
 	{
- 		#Util::print_message("There is no professor assigned to $codcour ($alias) (Sem #$Common::course_info{$codcour}{semester})");
+ 		Util::print_soft_error("There is no professor assigned to $codcour ($codcour_alias) (Sem #$Common::course_info{$codcour}{semester})");
 	}
 	$Common::course_info{$codcour}{docentes_names}  	= $map{PROFESSOR_NAMES};
 	$Common::course_info{$codcour}{docentes_titles}  	= $map{PROFESSOR_TITLES};

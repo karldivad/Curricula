@@ -225,3 +225,9 @@ ADA=>Análisis y Diseño de Algoritmos
 
 Mission=Misión
 Definition=Definición
+
+<HASH name=professor_role_label>
+T=>Titular
+L=>Laboratorio
+-=>
+</HASH>
