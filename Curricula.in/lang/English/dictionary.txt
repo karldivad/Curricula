@@ -224,3 +224,9 @@ ADA=>Algorithms Analysis and Design
 
 Mission=Mission
 Definition=Definition
+
+<HASH name=professor_role_label>
+T=>Lecturer
+L=>Practice
+-=>
+</HASH>
