@@ -1690,6 +1690,7 @@ sub read_faculty()
 		%{$config{faculty}{$email}{fields}{courses_assigned}} = ();
 
 		my ($titles_raw, $others) = ("", "");
+		my $new_titles = "\\begin{titles}\n";
 		if($body =~ m/\\begin\{titles\}\s*\n((?:.|\n)*?)\\end\{titles\}\s*\n((?:.|\n)*?)/g)
 		{
 			($titles_raw, $others) = ($1, $2);
@@ -1705,16 +1706,57 @@ sub read_faculty()
 			foreach my $line ( split("\n", $titles_raw) )
 			{
 			    $line =~ s/\n//g; $line =~ s/\r//g;
-			    if( $line =~ m/\\(.*?)({.*)/g )
+			    if( $line =~ m/\\(.*?)(\{.*)/g )
 			    {
 				my ($degreelevel, $tail) = ($1, $2);
 				if( not defined($config{degrees}{$degreelevel}) )
 				{
 				    Util::print_soft_error("I do not recognize this degree level ($email): \"\\$degreelevel\"\n");
+				    $new_titles .= $line;
 				}
 				else
 				{
-# 				    Util::print_message("Processing $email tail ($tail)");
+# # 				    Util::print_message("Processing $email tail ($tail)");
+# 				    my ($lang, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ("", "", "", "", "", "", "");
+# 				    my $lang_prefix = "";
+# 				    if( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
+# 				    {	($lang, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);	
+# 					$lang = uc $lang;
+# 					if(not defined($Common::config{dictionaries}{$lang}{lang_prefix})
+# 					{
+# 					      $lang = $Common::config{dictionaries}{$lang}{lang_prefix};
+# 					}
+# 				    }
+# 				    else if ( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
+# 				    {
+# 					($concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);
+# 					$lang = $Common::config{SyllabusLangsList}[0];
+# 					$lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+# 				    }
+# 				    else{
+# 					Util::print_soft_error("Faculty $email has an error in the degree \\$degreelevel ... $tail\n");
+# 					$new_titles .= $line;
+# 					next;
+# 				    }
+# 				    if( $concentration eq "" )
+# 				    {	$concentration = "Empty";	}
+# 				    if($config{degrees}{$degreelevel} > $config{faculty}{$email}{fields}{degreelevel})
+# 				    {
+# 					  $config{faculty}{$email}{fields}{degreelevel} 		= $config{degrees}{$degreelevel};
+# 					  $config{faculty}{$email}{fields}{degreelevel_description}	= $config{degrees_description}{$config{degrees}{$degreelevel}};
+# 					  $config{faculty}{$email}{fields}{prefix} 			= $config{prefix}{$degreelevel};
+# 					  $config{faculty}{$email}{concentration} 			= $concentration;
+# 					  $config{faculty}{$email}{area}	 			= $area;
+# 				    }
+# 
+# 				    # Add 1 to the counter of Doctors, Magisters, etc
+# 				    if( not defined($config{counters}{$degreelevel}) ) {	$config{counters}{$degreelevel} = 0;}
+# 				    $config{counters}{$degreelevel}++;
+# 				    $config{faculty}{$email}{fields}{shortcvline}{$degreelevel} = "$config{prefix}{$degreelevel} $degree, $institution_of_degree, $country, $year.";
+# 				    $count++;
+# 				    $new_titles = "\t\\$degreelevel{$lang}{$concentration}{$degree}{$area}{$institution_of_degree}{$country}{$year}\n";
+
+
 				    if( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
 				    {
 					my ($concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6);
@@ -1739,6 +1781,7 @@ sub read_faculty()
 				    }
 				}
 			    }
+			    else{ 	$new_titles .= $line;	}
 			}
  			if( $count == 0 )
  			{
@@ -1761,6 +1804,7 @@ sub read_faculty()
 			      }
 			}
 		}
+		$new_titles .= "\\end{titles}\n";
 		if( not defined($config{faculty}{$email}{fields}{courses}) )
 		{	$config{faculty}{$email}{fields}{courses} = "";		}
 		$config{faculty}{$email}{fields}{courses} 			=~ s/\s*//g;
