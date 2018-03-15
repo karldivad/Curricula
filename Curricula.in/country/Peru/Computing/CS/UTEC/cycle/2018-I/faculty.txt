@@ -8,7 +8,7 @@
 \end{titles}
 \Category{Principal}
 \webpage{http://socios.spc.org.pe/ecuadros}
-\Office{Computer Science Program, 2rd floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 5th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500 Ext 4281}
 \Mobile{+51-958.339.127}
 \facebook{https://www.facebook.com/pages/Ernesto-Cuadros-Vargas-Public-Figure/136184539813774}
@@ -18,6 +18,7 @@
 \courses{CS111,CS402,CS403,CS404}
 --END-PROFESSOR--
 
+
 --BEGIN-PROFESSOR--
 \email{mbermejo@utec.edu.pe}
 \prefix{Mg.}
@@ -62,7 +63,7 @@
 
 --BEGIN-PROFESSOR--
 \email{rmelgarejo@utec.edu.pe}
-\prefix{Bach}
+\prefix{Bach.}
 \name{Randiel Melgarejo Diaz}
 \begin{titles}
      \Bachelor{Computing}{Ciencia de la Computación}{Bachiller en Ciencias con Mención en Ingeniería de Sistemas}{Universidad Nacional de Ingenierías}{Perú}{2013}
@@ -78,6 +79,8 @@
 \Research{Integration patterns}
 \courses{CS1100}
 --END-PROFESSOR--
+
+
 
 
 --BEGIN-PROFESSOR--
@@ -220,7 +223,7 @@
 \prefix{}
 \name{Kenneth Lopez}
 \begin{titles}
-     \Master{Computing}{Análisis de Sistemas}{ Data Base, Business Managing , Big Data }{FGV - Fundação Getúlio Vargas}{Brasil}{2017} 
+     \Master{Computing}{Análisis de Sistemas}{Data Base, Business Managing , Big Data }{FGV - Fundação Getúlio Vargas}{Brasil}{2017} 
      \Bachelor{Computing}{Ciencia de la Computación}{Informática }{PUCP}{Perú}{2010} 
 \end{titles}
 \Category{TP}
@@ -479,13 +482,13 @@
 
 --BEGIN-PROFESSOR--
 \email{jbueno@utec.edu.pe}
-\prefix{Prof.}
+\prefix{Mag.}
 \name{Juan Carlos Bueno Villanueva}
 \begin{titles}
      \Master{Computing}{Ciencia de la Computación}{Dirección de Tecnologías de la Información}{ESAN}{Perú}{2010}
      \Bachelor{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{Universidad Peruana de Ciencias Aplicadas}{Perú}{2001}
 \end{titles}
-\Category{TP}
+\Category{TC}
 \webpage{https://www.utec.edu.pe/profesores/juan-carlos-bueno-villanueva}
 \Office{5th floor UTEC. Barranco Lima}
 \Phone{+51-1-2303500 Ext 4214}
@@ -496,10 +499,3 @@
 \Research{Telemedicine, Paliative Care Remote Monitoring}
 \courses{CS1110}
 --END-PROFESSOR--
-
-
-
-
-
-
-
