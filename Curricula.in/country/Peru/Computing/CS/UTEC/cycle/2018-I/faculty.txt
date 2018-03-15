@@ -3,9 +3,10 @@
 \prefix{Dr.}
 \name{Ernesto Cuadros-Vargas}
 \begin{titles}
-     \Doctor{Computing}{Ciencia de la Computación}{Recuperación de Información}{ICMC-USP}{Brasil}{2004}
-     \Master{Computing}{Ciencia de la Computación}{Redes Neuronales}{ICMC-USP}{Brasil}{1998}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Recuperación de Información}{ICMC-USP}{Brasil}{2004}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Redes Neuronales}{ICMC-USP}{Brasil}{1998}
 \end{titles}
+
 \Category{Principal}
 \webpage{http://socios.spc.org.pe/ecuadros}
 \Office{Computer Science Program, 5th floor, UTEC. Barranco Lima}
@@ -18,16 +19,16 @@
 \courses{CS111,CS402,CS403,CS404}
 --END-PROFESSOR--
 
-
+
 --BEGIN-PROFESSOR--
 \email{mbermejo@utec.edu.pe}
 \prefix{Mg.}
 \name{Maria Hilda Bermejo Rios}
 \begin{titles}
-       \Master{Computing}{Computing}{Programming}{Pontificia Universidad Católica del Perú}{Perú}{2001}
-       \Master{Education}{Docencia en Educación Superior}{Game Based Learning}{Universidad Nacional Andrés Bello}{Chile}{2012}
-      \Master{MBA}{Business Administration and Management}{Universitat Politécnica de Catalunya}{UPC}{España}{2001}
-      \Master{MBA}{Business Administration and Management}{Escuela de Postgrado de la Universidad Peruana de Ciencias Aplicadas}{UPC}{Perú}{2004}
+	\Master{Espanol}{Computing}{Computing}{Programming}{Pontificia Universidad Católica del Perú}{Perú}{2001}
+	\Master{Espanol}{Education}{Docencia en Educación Superior}{Game Based Learning}{Universidad Nacional Andrés Bello}{Chile}{2012}
+	\Master{Espanol}{MBA}{Business Administration and Management}{Universitat Politécnica de Catalunya}{UPC}{España}{2001}
+	\Master{Espanol}{MBA}{Business Administration and Management}{Escuela de Postgrado de la Universidad Peruana de Ciencias Aplicadas}{UPC}{Perú}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -46,8 +47,8 @@
 \prefix{Dr.}
 \name{Jesus Edwin Bellido Angulo}
 \begin{titles}
-     \Doctor{Computing }{Software Engineering}{Software Architecture }{Pontificia Universidad Católica de Chile}{Chile}{2014} 
-    \Master{Computing }{Software Engineering}{ }{Pontificia Universidad Católica de Chile}{Chile}{2014} 
+	\Doctor{Espanol}{Computing }{Software Engineering}{Software Architecture }{Pontificia Universidad Católica de Chile}{Chile}{2014}
+	\Master{Espanol}{Computing }{Software Engineering}{ }{Pontificia Universidad Católica de Chile}{Chile}{2014}
 \end{titles}
 \Category{Principal}
 \webpage{}
@@ -66,7 +67,7 @@
 \prefix{Bach.}
 \name{Randiel Melgarejo Diaz}
 \begin{titles}
-     \Bachelor{Computing}{Ciencia de la Computación}{Bachiller en Ciencias con Mención en Ingeniería de Sistemas}{Universidad Nacional de Ingenierías}{Perú}{2013}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Bachiller en Ciencias con Mención en Ingeniería de Sistemas}{Universidad Nacional de Ingenierías}{Perú}{2013}
 \end{titles}
 \Category{TP}
 \webpage{http://randielmelgarejo.wordpress.com}
@@ -88,7 +89,7 @@
 \prefix{Dr.}
 \name{Heider Sanchez}
 \begin{titles}
-     \Doctor{Computing}{Ciencia de la Computación}{Minería de Datos}{UChile}{Chile}{2017}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Minería de Datos}{UChile}{Chile}{2017}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -110,7 +111,7 @@
 \prefix{MBA.}
 \name{Patricio Morriberón}
 \begin{titles}
-     \Master{Administración y dirección de empresas}{}{MBA. EGADE}{Tecnológico de Monterrey}{México}{}
+	\Master{Espanol}{Administración y dirección de empresas}{}{MBA. EGADE}{Tecnológico de Monterrey}{México}{}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -132,7 +133,7 @@
 \prefix{}
 \name{Miguel Paredes}
 \begin{titles}
-     \Doctor{Computing}{Ciencia de la Computación}{Applied Machine Learning / Data Science, Causality and Prediction }{MIT}{USA}{2018}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Applied Machine Learning / Data Science, Causality and Prediction }{MIT}{USA}{2018}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -154,7 +155,7 @@
 \prefix{}
 \name{Alonso Mujica Troncoso}
 \begin{titles}
-     \Bachelor{Ingeniería Industrial}{}{}{Universidad de Lima}{Perú}{2012}
+	\Bachelor{Espanol}{Ingeniería Industrial}{}{}{Universidad de Lima}{Perú}{2012}
 \end{titles}
 \Category{TP}
 \webpage{https://www.linkedin.com/in/alonso-mujica-677a2a51/}
@@ -176,8 +177,8 @@
 \prefix{Msc}
 \name{Isaac Ernesto Bringas}
 \begin{titles}
-     \Master{Computing}{Computing}{Ciencias con mención en Ingeniería de Sistemas}{Facultad de Ing de Sistemas de la UNI}{Perú}{2010}
-    \Bachelor{Computing}{Computing}{Ingeniería de Sistemas}{Facultad de Ingeniería Industrial y Sistemas de la UNI}{Perú}{1995}
+	\Master{Espanol}{Computing}{Computing}{Ciencias con mención en Ingeniería de Sistemas}{Facultad de Ing de Sistemas de la UNI}{Perú}{2010}
+	\Bachelor{Espanol}{Computing}{Computing}{Ingeniería de Sistemas}{Facultad de Ingeniería Industrial y Sistemas de la UNI}{Perú}{1995}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -200,9 +201,9 @@
 \prefix{Msc}
 \name{Ruben Rivas Medina}
 \begin{titles}
-     \Master{Business Administration }{}{}{Centrum - Pontificia Universidad Católica del Perú}{Perú}{2017}
-     \Master{Computing}{ Ingeniería de Software}{}{Convenio Pontificia Universidad Católica del Perú y CCL}{Perú}{2006}
-     \Bachelor{Ingeniero Agrícola}{}{}{Universidad Nacional Agraria}{Perú}{1992}
+	\Master{Espanol}{Business Administration }{}{}{Centrum - Pontificia Universidad Católica del Perú}{Perú}{2017}
+	\Master{Espanol}{Computing}{ Ingeniería de Software}{}{Convenio Pontificia Universidad Católica del Perú y CCL}{Perú}{2006}
+	\Bachelor{Espanol}{Ingeniero Agrícola}{}{}{Universidad Nacional Agraria}{Perú}{1992}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -223,8 +224,8 @@
 \prefix{}
 \name{Kenneth Lopez}
 \begin{titles}
-     \Master{Computing}{Análisis de Sistemas}{Data Base, Business Managing , Big Data }{FGV - Fundação Getúlio Vargas}{Brasil}{2017} 
-     \Bachelor{Computing}{Ciencia de la Computación}{Informática }{PUCP}{Perú}{2010} 
+	\Master{Espanol}{Computing}{Análisis de Sistemas}{Data Base, Business Managing , Big Data }{FGV - Fundação Getúlio Vargas}{Brasil}{2017}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Informática }{PUCP}{Perú}{2010}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -245,7 +246,7 @@
 \prefix{MBA.}
 \name{Kefreen Ryenz Batista Lacerda}
 \begin{titles}
-     \Master{MBA}{Gestión Estratégica de Negocios}{ }{FGV}{Brasil}{2014} 
+	\Master{Espanol}{MBA}{Gestión Estratégica de Negocios}{ }{FGV}{Brasil}{2014}
 \end{titles}
 \Category{TP}
 \webpage{https://kefreen.com/}
@@ -266,7 +267,7 @@
 \prefix{}
 \name{Mariano Melgar}
 \begin{titles}
-     \Bachelor{Computing}{Ingeniero Informático}{}{USIL}{Perú}{2006} 
+	\Bachelor{Espanol}{Computing}{Ingeniero Informático}{}{USIL}{Perú}{2006}
 \end{titles}
 \Category{TP}
 \webpage{http://notengo.com}
@@ -288,7 +289,7 @@
 \prefix{Bach}
 \name{José Arellano Piñan}
 \begin{titles}
-     \Bachelor{Computing}{Information System}{}{}{UPC}{Perú} 
+	\Bachelor{Espanol}{Computing}{Information System}{}{}{UPC}{Perú}
 \end{titles}
 \Category{TP}
 \webpage{http://www.linkedin.com/in/jap90}
@@ -309,7 +310,7 @@
 \prefix{Mg}
 \name{Teófilo Chambilla Aquino}
 \begin{titles}
-     \Master{Computing}{Computer Science}{Semantic Web }{Universidad de Chile}{Chile}{2016} 
+	\Master{Espanol}{Computing}{Computer Science}{Semantic Web }{Universidad de Chile}{Chile}{2016}
 \end{titles}
 \Category{TP}
 \webpage{http://tchambil.blogspot.pe/}
@@ -332,8 +333,8 @@
 \prefix{Dr.}
 \name{Walter Aliaga Aliaga}
 \begin{titles}
-     \Master{Electrical Engineering}{}{ }{PUC-Rio}{Brasil}{2010} 
-\Doctor{Electrical Engineering}{}{ }{Coppe-UFRJ}{Brasil}{2017} 
+	\Master{Espanol}{Electrical Engineering}{}{ }{PUC-Rio}{Brasil}{2010}
+	\Doctor{Espanol}{Electrical Engineering}{}{ }{Coppe-UFRJ}{Brasil}{2017}
 \end{titles}
 \Category{TP}
 \webpage{https://www.utec.edu.pe/carreras-de-ingenieria/ciencia-de-la-computacion}
@@ -354,8 +355,8 @@
 \prefix{Dr ©}
 \name{Yamilet Rosario Serrano Llerena}
 \begin{titles}
-     \Doctor{Computing}{Software Engineering}{ }{NUS}{Singapore}{2018} 
-\Bachelor{Computing}{Computer Science}{ }{UCSP}{Arequipa Perú}{} 
+	\Doctor{Espanol}{Computing}{Software Engineering}{ }{NUS}{Singapore}{2018}
+	\Bachelor{Espanol}{Computing}{Computer Science}{ }{UCSP}{Arequipa Perú}{}
 \end{titles}
 \Category{Principal}
 \webpage{http://www.comp.nus.edu.sg/~yserrano/About_Me.html}
@@ -376,9 +377,9 @@
 \prefix{Mg.}
 \name{José Alfredo Díaz León}
 \begin{titles}
-     \Master{Computing}{Ciencia de la Computación}{Tecnología de la información}{ Universidades Esan y Ramón Llull}{Perú/España}{2009} 
-     \Master{Computing}{Ciencia de la Computación}{Dirección de Empresas}{ Universidad de Deusto}{España}{1986} 
-     \Bachelor{Economía}{}{}{Universidad de Lima}{Perú}{1981} 
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Tecnología de la información}{ Universidades Esan y Ramón Llull}{Perú/España}{2009}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Dirección de Empresas}{ Universidad de Deusto}{España}{1986}
+	\Bachelor{Espanol}{Economía}{}{}{Universidad de Lima}{Perú}{1981}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -399,8 +400,8 @@
 \prefix{}
 \name{Jaime Farfán MSc.}
 \begin{titles}
-     \Master{Dirección Estratégica en Tecnologías de la Información}{}{ }{Universidad de Piura}{Perú}{2015} 
-     \Bachelor{Computing}{Computing}{Ingeniero de Sistemas}{UCSM}{Peru}{1995}
+	\Master{Espanol}{Dirección Estratégica en Tecnologías de la Información}{}{ }{Universidad de Piura}{Perú}{2015}
+	\Bachelor{Espanol}{Computing}{Computing}{Ingeniero de Sistemas}{UCSM}{Peru}{1995}
 \end{titles}
 \Category{TP}
 \webpage{https://www.linkedin.com/in/jaimefarfan/}
@@ -421,8 +422,8 @@
 \prefix{}
 \name{Jorge Alvarado}
 \begin{titles}
-     \Master{I+D+i}{}{}{UNIA}{España}{2015} 
-     \Bachelor{Computing}{Computing}{Ingeniería de Sistemas}{UNMSM}{Perú}{2005}
+	\Master{Espanol}{I+D+i}{}{}{UNIA}{España}{2015}
+	\Bachelor{Espanol}{Computing}{Computing}{Ingeniería de Sistemas}{UNMSM}{Perú}{2005}
 \end{titles}
 \Category{TP}
 \webpage{https://newscomputing.wordpress.com}
@@ -443,7 +444,7 @@
 \prefix{Dr.}
 \name{José Miguel Renom}
 \begin{titles}
-     \Doctor{Matemáticas }{}{}{Universidad Simón Bolívar}{Venezuela}{2016} 
+	\Doctor{Espanol}{Matemáticas }{}{}{Universidad Simón Bolívar}{Venezuela}{2016}
 \end{titles}
 \Category{TP}
 \webpage{}
@@ -464,8 +465,8 @@
 \prefix{Dr.}
 \name{José Fiestas}
 \begin{titles}
-     \Doctor{Natural Science}{Astrophysics}{ }{Heidelberg}{Germany}{2006}
-\end{titles}
+	\Doctor{Espanol}{Natural Science}{Astrophysics}{ }{Heidelberg}{Germany}{2006}
+\end{titles}     
 \Category{TP}
 \webpage{https://www.utec.edu.pe/page/30/profesores/688}
 \Office{CS, UTEC, Barranco, Lima}
@@ -485,8 +486,8 @@
 \prefix{Mag.}
 \name{Juan Carlos Bueno Villanueva}
 \begin{titles}
-     \Master{Computing}{Ciencia de la Computación}{Dirección de Tecnologías de la Información}{ESAN}{Perú}{2010}
-     \Bachelor{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{Universidad Peruana de Ciencias Aplicadas}{Perú}{2001}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Dirección de Tecnologías de la Información}{ESAN}{Perú}{2010}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{Universidad Peruana de Ciencias Aplicadas}{Perú}{2001}
 \end{titles}
 \Category{TC}
 \webpage{https://www.utec.edu.pe/profesores/juan-carlos-bueno-villanueva}

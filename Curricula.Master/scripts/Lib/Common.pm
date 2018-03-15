@@ -1667,6 +1667,7 @@ sub read_faculty()
 	%{$config{faculty}} = ();
 	return if(not -e $faculty_file);
 	my $input = Util::read_file($faculty_file);
+	my $copy_input = $input;
 	Util::print_message("Faculty file: $faculty_file found! processing now ...");
 	while($input =~ m/--BEGIN-PROFESSOR--\s*\n\\email\{(.*?)\}((?:.|\n)*?)--END-PROFESSOR--?/g)
 	{
@@ -1716,69 +1717,69 @@ sub read_faculty()
 				}
 				else
 				{
-# # 				    Util::print_message("Processing $email tail ($tail)");
-# 				    my ($lang, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ("", "", "", "", "", "", "");
-# 				    my $lang_prefix = "";
-# 				    if( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
-# 				    {	($lang, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);	
-# 					$lang = uc $lang;
-# 					if(not defined($Common::config{dictionaries}{$lang}{lang_prefix})
-# 					{
-# 					      $lang = $Common::config{dictionaries}{$lang}{lang_prefix};
-# 					}
-# 				    }
-# 				    else if ( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
-# 				    {
-# 					($concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);
-# 					$lang = $Common::config{SyllabusLangsList}[0];
-# 					$lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-# 				    }
-# 				    else{
-# 					Util::print_soft_error("Faculty $email has an error in the degree \\$degreelevel ... $tail\n");
-# 					$new_titles .= $line;
-# 					next;
-# 				    }
-# 				    if( $concentration eq "" )
-# 				    {	$concentration = "Empty";	}
-# 				    if($config{degrees}{$degreelevel} > $config{faculty}{$email}{fields}{degreelevel})
-# 				    {
-# 					  $config{faculty}{$email}{fields}{degreelevel} 		= $config{degrees}{$degreelevel};
-# 					  $config{faculty}{$email}{fields}{degreelevel_description}	= $config{degrees_description}{$config{degrees}{$degreelevel}};
-# 					  $config{faculty}{$email}{fields}{prefix} 			= $config{prefix}{$degreelevel};
-# 					  $config{faculty}{$email}{concentration} 			= $concentration;
-# 					  $config{faculty}{$email}{area}	 			= $area;
-# 				    }
-# 
-# 				    # Add 1 to the counter of Doctors, Magisters, etc
-# 				    if( not defined($config{counters}{$degreelevel}) ) {	$config{counters}{$degreelevel} = 0;}
-# 				    $config{counters}{$degreelevel}++;
-# 				    $config{faculty}{$email}{fields}{shortcvline}{$degreelevel} = "$config{prefix}{$degreelevel} $degree, $institution_of_degree, $country, $year.";
-# 				    $count++;
-# 				    $new_titles = "\t\\$degreelevel{$lang}{$concentration}{$degree}{$area}{$institution_of_degree}{$country}{$year}\n";
+# 				    Util::print_message("Processing $email tail ($tail)");
+				    my ($lang, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ("", "", "", "", "", "", "");
+				    if( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
+				    {	($lang, $concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);	
 
-
-				    if( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
-				    {
-					my ($concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6);
-					if( $concentration eq "" )
-					{	$concentration = "Empty";	}
-					if($config{degrees}{$degreelevel} > $config{faculty}{$email}{fields}{degreelevel})
+					if(not defined($Common::config{dictionaries}{$lang}) )
 					{
-					      $config{faculty}{$email}{fields}{degreelevel} 		= $config{degrees}{$degreelevel};
-					      $config{faculty}{$email}{fields}{degreelevel_description}	= $config{degrees_description}{$config{degrees}{$degreelevel}};
-					      $config{faculty}{$email}{fields}{prefix} 			= $config{prefix}{$degreelevel};
-					      $config{faculty}{$email}{concentration} 			= $concentration;
-					      $config{faculty}{$email}{area}	 			= $area;
+					      Util::print_warning("Fixing language $lang->$Common::config{SyllabusLangsList}[0] in $line");
+					      $lang = $Common::config{SyllabusLangsList}[0];
 					}
-					# Add 1 to the counter of Doctors, Magisters, etc
-					if( not defined($config{counters}{$degreelevel}) ) {	$config{counters}{$degreelevel} = 0;}
-					$config{counters}{$degreelevel}++;
-					$config{faculty}{$email}{fields}{shortcvline}{$degreelevel} = "$config{prefix}{$degreelevel} $degree, $institution_of_degree, $country, $year.";
-					$count++;
+				    }
+				    elsif ( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
+				    {
+					($concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);
+					Util::print_warning("Adding language $Common::config{SyllabusLangsList}[0] in $line");
+					$lang = $Common::config{SyllabusLangsList}[0];
 				    }
 				    else{
 					Util::print_soft_error("Faculty $email has an error in the degree \\$degreelevel ... $tail\n");
+					$new_titles .= $line;
+					next;
 				    }
+				    if( $concentration eq "" )
+				    {	$concentration = "Empty";	}
+				    if($config{degrees}{$degreelevel} > $config{faculty}{$email}{fields}{degreelevel})
+				    {
+					  $config{faculty}{$email}{fields}{degreelevel} 		= $config{degrees}{$degreelevel};
+					  $config{faculty}{$email}{fields}{degreelevel_description}	= $config{degrees_description}{$config{degrees}{$degreelevel}};
+					  $config{faculty}{$email}{fields}{prefix} 			= $config{prefix}{$degreelevel};
+					  $config{faculty}{$email}{concentration} 			= $concentration;
+					  $config{faculty}{$email}{area}	 			= $area;
+				    }
+
+				    # Add 1 to the counter of Doctors, Magisters, etc
+				    if( not defined($config{counters}{$degreelevel}) ) {	$config{counters}{$degreelevel} = 0;}
+				    $config{counters}{$degreelevel}++;
+				    $config{faculty}{$email}{fields}{shortcvline}{$degreelevel} = "$config{prefix}{$degreelevel} $degree, $institution_of_degree, $country, $year.";
+				    $count++;
+				    $new_titles .= "\t\\$degreelevel"."{$lang}{$concentration}{$degree}{$area}{$institution_of_degree}{$country}{$year}\n";
+
+
+# 				    if( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
+# 				    {
+# 					my ($concentration, $degree, $area, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6);
+# 					if( $concentration eq "" )
+# 					{	$concentration = "Empty";	}
+# 					if($config{degrees}{$degreelevel} > $config{faculty}{$email}{fields}{degreelevel})
+# 					{
+# 					      $config{faculty}{$email}{fields}{degreelevel} 		= $config{degrees}{$degreelevel};
+# 					      $config{faculty}{$email}{fields}{degreelevel_description}	= $config{degrees_description}{$config{degrees}{$degreelevel}};
+# 					      $config{faculty}{$email}{fields}{prefix} 			= $config{prefix}{$degreelevel};
+# 					      $config{faculty}{$email}{concentration} 			= $concentration;
+# 					      $config{faculty}{$email}{area}	 			= $area;
+# 					}
+# 					# Add 1 to the counter of Doctors, Magisters, etc
+# 					if( not defined($config{counters}{$degreelevel}) ) {	$config{counters}{$degreelevel} = 0;}
+# 					$config{counters}{$degreelevel}++;
+# 					$config{faculty}{$email}{fields}{shortcvline}{$degreelevel} = "$config{prefix}{$degreelevel} $degree, $institution_of_degree, $country, $year.";
+# 					$count++;
+# 				    }
+# 				    else{
+# 					Util::print_soft_error("Faculty $email has an error in the degree \\$degreelevel ... $tail\n");
+# 				    }
 				}
 			    }
 			    else{ 	$new_titles .= $line;	}
@@ -1804,7 +1805,11 @@ sub read_faculty()
 			      }
 			}
 		}
-		$new_titles .= "\\end{titles}\n";
+		$new_titles .= "\\end{titles}";
+		$titles_raw = Common::replace_special_chars($titles_raw);
+		$copy_input =~ s/\\begin\{titles\}\s*\n$titles_raw\\end\{titles\}/$new_titles/g;
+ 		#Util::print_message($new_titles); 
+
 		if( not defined($config{faculty}{$email}{fields}{courses}) )
 		{	$config{faculty}{$email}{fields}{courses} = "";		}
 		$config{faculty}{$email}{fields}{courses} 			=~ s/\s*//g;
@@ -1813,6 +1818,7 @@ sub read_faculty()
 		{	$config{faculty}{$email}{fields}{courses_i_could_teach}{$onecodcour} = "";		}
 		#Util::print_message("$config{faculty}{$email}{fields}{shortcv}");
 	}
+	Util::write_file($faculty_file, $copy_input);
 	Util::check_point("read_faculty");
 #    	print Dumper(\%{$config{faculty}{"ecuadros\@ucsp.edu.pe"}});
 }
