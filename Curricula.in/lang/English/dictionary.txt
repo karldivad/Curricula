@@ -230,3 +230,6 @@ T=>Lecturer
 L=>Practice
 -=>
 </HASH>
+
+DoctorIn=PhD in
+MasterIn=MSc in

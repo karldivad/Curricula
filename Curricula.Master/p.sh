@@ -57,3 +57,11 @@ latex unified-curricula-main
 # Peru
 dot -Tps ../../Curricula-Peru/AllPeru-creacion.dot -o ../../Curricula-Peru/AllPeru-creacion.ps
 convert ../../Curricula-Peru/AllPeru-creacion.ps ../../Curricula-Peru/AllPeru-creacion.pdflatex
+
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1100
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1102
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1103
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1D01
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1D02
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS2B01
+../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS2201

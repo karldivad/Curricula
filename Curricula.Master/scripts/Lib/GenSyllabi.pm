@@ -243,20 +243,28 @@ sub read_syllabus_info($$$)
 		{                   
 		      my $count = 0;
 		      my $PROFESSOR_SHORT_CVS = "";
-		      foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}} 
+		      foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
+						$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
+						$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
+					      }
 					keys %{$Common::config{distribution}{$codcour_alias}{$role}})
-		      {      
-			      if(defined($Common::config{faculty}{$email}{fields}{name}))
-			      {	
+		      {		
+			      #Util::print_warning("$codcour_alias: $role $email, $Common::config{faculty}{$email}{fields}{degreelevel}, $Common::config{faculty}{$email}{fields}{dedication}, $Common::config{faculty}{$email}{fields}{name}");
+			      #print Dumper(\%{$Common::config{faculty}{$email}{fields}});
+# 			      if(defined($Common::config{faculty}{$email}{fields}{name}))
+# 			      {	
+				  if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
+				  {
 				      $map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
-				      $PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{prefix} $Common::config{faculty}{$email}{fields}{name}\n";
+				      $PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name}\n";
 				      $PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
 				      $PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
-				      $PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}";
+				      $PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
 				      $PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
 				      $count++;
 				      #$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
-			      }
+				  }
+# 			      }
 			      $sep = ", ";
 		      }
 		      if( $count > 0 )

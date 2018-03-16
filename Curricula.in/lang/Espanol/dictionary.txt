@@ -231,3 +231,6 @@ T=>Titular
 L=>Laboratorio
 -=>
 </HASH>
+
+DoctorIn=Doctor en
+MasterIn=Master en
