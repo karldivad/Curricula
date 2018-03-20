@@ -35,6 +35,7 @@ brew install Caskroom/cask/mactex;
 brew install tcsh;
 brew install perl
 brew cask install mactex;
+brew install caskroom/cask/meld
 
 brew install cpanm
 cpanm Carp::Assert
@@ -79,4 +80,4 @@ sudo apt-get install texlive-science texlive-latex-extra texlive-bibtex-extra gv
 sudo wget http://www.medibuntu.org/sources.list.d/jaunty.list -O /etc/apt/sources.list.d/medibuntu.list
 sudo apt-get update && sudo apt-get install medibuntu-keyring && sudo apt-get update
 
-sudo apt install aptitude
+sudo apt-get install aptitude

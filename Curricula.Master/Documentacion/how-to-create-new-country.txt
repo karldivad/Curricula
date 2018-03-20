@@ -9,4 +9,4 @@
 - Crear el ./in/country.Peru/dot/small-graph-item2.dot
 - Crear el ./in/country.Peru/CS.tex/Main.tex
 
-- Crear una institución de acuerdo al "how-to-create-new-institution.txt"
+- Crear una instituciÃ³n de acuerdo al "how-to-create-new-institution.txt"

@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
+use File::Path qw(make_path);
 use scripts::Lib::Common;
 use Cwd;
 
@@ -25,6 +26,9 @@ sub gen_batch($$)
 	my $output_bib_dir = Common::get_template("OutputBinDir");
 	$txt =~ s/<OUTBIN>/$output_bib_dir/g;
 
+	my $InDir = Common::get_template("InDir");
+        $txt =~ s/<IN_DIR>/$InDir/g;
+        
 	my $InTexDir = Common::get_template("InTexDir");
         $txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
 
@@ -32,6 +36,7 @@ sub gen_batch($$)
         $txt =~ s/<IN_INST_DIR>/$InInstDir/g;
         
         my $OutputDir = Common::get_template("OutDir");
+        mkdir -p
         $txt =~ s/<OUTPUT_DIR>/$OutputDir/g;
         
         my $OutputInstDir = Common::get_template("OutputInstDir");
@@ -77,6 +82,9 @@ sub gen_batch($$)
 	my $language_without_accents = Common::get_template("language_without_accents");
 	$txt =~ s/<LANG>/$language_without_accents/g;
 	
+	my $InLangBaseDir = Common::get_template("InLangBaseDir");
+	$txt =~ s/<IN_LANG_BASE_DIR>/$InLangBaseDir/g;
+	
 	my $InLangDir = Common::get_template("InLangDir");
 	$txt =~ s/<IN_LANG_DIR>/$InLangDir/g;
 
@@ -91,7 +99,7 @@ sub gen_batch($$)
 
 	Util::write_file($target, $txt);
 	Util::print_message("gen_batch: $target created successfully ...");
-	system("chmod 744 $target");
+	system("chmod 774 $target");
 	#foreach my $inst (sort keys %inst_list)
 	#{	print "[[$inst]] ";	}
 }
@@ -118,8 +126,8 @@ sub gen_compileall_script()
 	#print OUT "rm -rf html";
 	print OUT "\n$body";
 	close(OUT);
-	system("chmod 744 $compileall_file");
-	Util::print_message("gen_compileall_script ok");
+	system("chmod 774 $compileall_file");
+	Util::print_message("gen_compileall_script ok"); 
 }
 
 # ok
@@ -141,6 +149,7 @@ sub generate_institution()
 
 	$output_txt .= "\\newcommand{\\basedir}{".getcwd()."}\n";
 	$output_txt .= "\\newcommand{\\InDir}{\\basedir/".Common::get_template("InDir")."}\n";
+	$output_txt .= "\\newcommand{\\InLangBaseDir}{\\basedir/".Common::get_template("InLangBaseDir")."}\n";
 	$output_txt .= "\\newcommand{\\InLangDir}{\\basedir/".Common::get_template("InLangDir")."}\n";
 	$output_txt .= "\\newcommand{\\InAllTexDir}{\\basedir/".Common::get_template("InAllTexDir")."}\n";
 	$output_txt .= "\\newcommand{\\InTexDir}{\\basedir/".Common::get_template("InTexDir")."}\n";
@@ -185,7 +194,7 @@ sub update_acronyms()
 	foreach my $inst (sort keys %Common::inst_list)
 	{
 		#system("mv institutions-info/institutions-$inst.tex institutions-info/info-$inst.tex");
-		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $Common::config{area}, $inst);
+		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $Common::config{discipline}, $Common::config{area}, $inst);
 		if(-e $out_txt_name)
 		{
                         Util::print_message("Reading: $out_txt_name ...");

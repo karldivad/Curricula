@@ -16,5 +16,5 @@ ps2pdf $intexfile.ps $intexfile.pdf;
 rm $intexfile.dvi $intexfile.aux $intexfile.log;
 cd $current_dir;
 #rm $workingdir/$intexfile.ps
-echo "$workingdir/$intexfile.pdf -> <OUTPUT_DIR>/pdfs/$outfile.pdf;"
-mv $workingdir/$intexfile.pdf <OUTPUT_DIR>/pdfs/$outfile.pdf;
+echo "$workingdir/$intexfile.pdf -> $workingdir/$outfile.pdf;"
+mv $workingdir/$intexfile.pdf $workingdir/$outfile.pdf;

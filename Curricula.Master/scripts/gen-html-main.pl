@@ -12,6 +12,31 @@ if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no comm
 $| = 1;
 
 # ok
+
+sub replace_outcomes_sequence($)
+{
+    my ($maintxt) = (@_);
+#     if( $maintxt =~ m/\\begin\{enumerate\}\[a\)\]\s*\n((.|\t|\s|\n)*?)\\end\{enumerate\}/g )
+#     {
+# 	my ($outcomeslist) = ($1);
+# 	$maintxt =~ s/\\begin\{enumerate\}\[a\)\]\s*\n((.|\t|\s|\n)*?)\\end\{enumerate\}/--outcomes-list--/g;
+# 	my $output = "";
+# 	foreach my $outcome_in (split("\n", $outcomeslist))
+# 	{
+# 	      if( $outcome_in =~ m/\\item (.*)\\label\{out:Outcome(.*?)\}/g )
+# 	      {
+# 	          my ($txt, $letter) = ($1, $2);
+# 		  $output .= "\\item {\\bf $letter} $txt\\label\{out:Outcome$letter\}\n";
+# 	      }
+# 	}
+# # 	print Dumper($output); exit;
+# 	$outcomeslist = Common::replace_special_chars($outcomeslist);
+# 	$maintxt =~ s/--outcomes-list--/\\begin\{enumerate\}\n$output/\\end\{enumerate\}\n/g;
+#     }
+# #     \\begin\{enumerate\}\[a\)\]\s*\n$outcomeslist\\end\{enumerate\} )
+    return $maintxt;
+}
+
 sub replace_syllabus($)
 {
 	my ($text) = (@_);
@@ -21,13 +46,14 @@ sub replace_syllabus($)
 	while($text =~ m/\\course\{(.*?)\}\{(.*?)\}\{(.*?)\}/g)
 	{
 		my ($course_name, $course_type, $codcour) = ($1, $2, $3);
+ 		my ($course_name_wsc, $course_type_wsc, $codcour_wsc) = (Common::replace_special_chars($course_name), Common::replace_special_chars($course_type), Common::replace_special_chars($codcour));
 		my $syllabus_head  = ""; 
 
 		$syllabus_head .= "\n\\section{$course_name ($course_type)}\\label{sec:$codcour}\n";
 		$syllabus_head .= "\\input{".Common::get_template("OutputPrereqDir")."/$codcour-html}\n";
 
-		$text =~ s/\\course\{$course_name\}\{$course_type\}\{$codcour\}/$syllabus_head/g;
-		#print ".";
+		$text =~ s/\\course\{$course_name_wsc\}\{$course_type_wsc\}\{$codcour_wsc\}/$syllabus_head/g;
+# 		print ".";
 		$syllabus_count++;
 	}
 	$text =~ s/\\end\{syllabus\}//g;
@@ -141,6 +167,9 @@ sub replace_environments($)
 sub replace_special_cases($)
 {
     my ($maintxt) = (@_);
+#     $maintxt =~ s/  / /g;
+#     $maintxt =~ s/\s*\}/\}/g;
+#     $maintxt =~ s/\{\s*/\{/g;
     $maintxt =~ s/\\begin\{btSect\}((.|\\|\n)*)\\end\{btSect\}//g;
     $maintxt =~ s/\\begin\{btUnit\}//g;
     $maintxt =~ s/\\end\{btUnit\}//g;
@@ -150,7 +179,7 @@ sub replace_special_cases($)
     $maintxt =~ s/\\.*?\{landscape\}//g;
     $maintxt =~ s/\\pagebreak//g;
     $maintxt =~ s/\\newpage//g;
-    $maintxt =~ s/\s*$Common::config{dictionary}{Pag}~\\pageref\{sec:.*?\}//g;
+    $maintxt =~ s/\s*$Common::config{dictionary}{Pag}.?~\\pageref\{sec:.*?\}//g;
     $maintxt =~ s/[,-]\)/\)/g;
     $maintxt =~ s/\(\)//g;
     $maintxt =~ s/\$\^\{(.*?)\}\$~$Common::config{dictionary}{Sem}/$1~$Common::config{dictionary}{Sem}/g;
@@ -214,7 +243,8 @@ sub replace_special_cases($)
           $maintxt =~ s/\\begin\{tabular\}\{$old_columns_header\}/\\begin\{tabular\}\{$new_columns_header\}/g;
     }
 #      $maintxt =~ s/\\rotatebox.*?\{.*?\}\{\(\\colorbox\{.*?\}\{\\htmlref\{.*?\}\{.*?\}\}\)\}/$1/g; xyz;
-     $maintxt =~ s/\\rotatebox.*?\{.*?\}\{\(\\htmlref\{.*?\}\{.*?\}\)\}/$1/g;
+		   #\rotatebox[origin=lb,units=360]{90}{\colorbox{cornflowerblue}{\htmlref{CS1D01}{sec:CS1D01}}}
+     $maintxt =~ s/\\rotatebox.*?\{.*?\}\{(.*?\{.*?\}\{\\htmlref\{.*?\}\{.*?\}\})\}/$1/g;
     #print "siglas = $macros{siglas} x2\n";
 
      #\\ref{out:Outcomeb}) & \PrintOutcomeWOLetter{b}
@@ -241,12 +271,15 @@ sub main()
 {
 	Util::begin_time();
 	Common::setup();
-	Common::read_special_macros(Common::get_template("in-outcomes-macros-file"), "Outcome"); 
-	Common::read_special_macros(Common::get_template("in-outcomes-macros-file"), "Competence"); 
-	Common::read_special_macros(Common::get_template("in-outcomes-macros-file"), "CompetenceLevel"); 
+	my $lang = $Common::config{language_without_accents};
+	my $outcomes_macros_file = Common::get_template("in-outcomes-macros-file");
+	$outcomes_macros_file =~ s/<LANG>/$lang/g;
+	Common::read_special_macros($outcomes_macros_file, "Outcome"); 
+	Common::read_special_macros($outcomes_macros_file, "Competence"); 
+	Common::read_special_macros($outcomes_macros_file, "CompetenceLevel"); 
 	
+	Common::read_bok($Common::config{language_without_accents}); 
 	GenSyllabi::process_syllabi();
-	Common::read_bok(); 
 	Common::sort_macros();
 	
 	my $output_file = Common::get_template("unified-main-file");
@@ -257,6 +290,7 @@ sub main()
 	my $macros_changed	= 0;
 	my $environments_count	= 0;
 	my $laps		= 0;
+	
 	while(($changes+$macros_changed+$environments_count) > 0)
 	#for(my $laps = 0; $laps < 5 ; $laps++)
 	{
@@ -269,8 +303,20 @@ sub main()
 		$maintxt =~ s/\\xrefTextAndPage\{(.*?)\}/\\htmlref\{\\$1\}\{sec:BOK:$1\}/g;
 #		$maintxt =~ s/\\xref\{(.*?)\}/\\ref\{sec:BOK:$1\} \\htmlref\{\csname #1\endcsname\}\{sec:BOK:#1\}
 		Util::print_message("$Common::institution: Environments = $environments_count");
+		Util::write_file($output_file, $maintxt);
 	}
+# 	Util::print_message("Llego aqui 1!"); exit;
+#         Util::write_file($output_file, $maintxt); exit;
         
+        #print Dumper(\%{$Common::config{Competence}}); exit;
+        while( $maintxt =~ m/\\Competence\{(.*?)\}/g )
+        {   my ($competence) = ($1);
+	    if( not defined($Common::config{Competence}{$1}) )
+	    {	Util::print_error("\\Competence{$competence} not defined  ... ($Common::config{Competence}{$competence})");		}
+	    my $competence_wsc = Common::replace_special_chars($competence);
+# 	    Util::print_message("Replacing \\Competence{$competence} ... ($Common::config{Competence}{$competence})");
+	    $maintxt =~ s/\\Competence\{$competence_wsc\}/$Common::config{Competence}{$competence}\\label\{outcome:$competence\}/g;
+        }
         $maintxt =~ s/\\Competence\{(.*?)\}/$Common::config{Competence}{$1}\\label\{outcome:$1\}/g;
  	$maintxt =~ s/\\ShowOutcome\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Outcome}{$1} ($Common::config{CompetenceLevel}{$2})/g;
  	$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \{\\bf Outcome: $2\}/g;
@@ -281,7 +327,7 @@ sub main()
 # 		Util::print_message("Using short outcome: $OutcomeShort");
 		if( $Common::config{Outcome}{$OutcomeShort} )
 		{	$maintxt =~ s/\\ShowShortOutcome\{$outcome\}/$Common::config{Outcome}{$OutcomeShort}/g;	}
-		else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See outcomes-macros.tex !");	}
+		else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
         }
         $maintxt =~ s/\\xspace/ /g;
         $maintxt =~ s/\\\\ \{/ \{/g;
@@ -295,13 +341,19 @@ sub main()
  		$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;	
         }
         
+        my $books_html = Common::generate_books_links();
+        $maintxt =~ s/<BOOKS>/\n$books_html/g;
         $maintxt = replace_special_cases($maintxt);
+#         $maintxt = replace_outcomes_sequence($maintxt);
+# 	aqui falta;
         
 	my $all_bib_items = Common::get_list_of_bib_files();
         #$maintxt =~ s/\\xspace}/}/g;
 	$maintxt =~ s/\\end\{document\}/\\bibliography\{$all_bib_items\}\n\\end\{document\}/g;
 	while ($maintxt =~ m/\n\n\n/){	$maintxt =~ s/\n\n\n/\n\n/g;	}
-
+	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
+	
+	$maintxt =~ s/\\cellcolor\{.*?\}//g;
 	Util::write_file($output_file, $maintxt);
 	Util::print_message("Finishing gen-html-main.pl ... ");
 }

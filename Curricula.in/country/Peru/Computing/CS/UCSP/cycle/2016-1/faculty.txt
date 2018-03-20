@@ -3,12 +3,12 @@
 \prefix{Dr.}
 \name{Ernesto Cuadros-Vargas}
 \begin{titles}
-     \Doctor{Computing}{Ciencia de la Computaci�n}{Recuperaci�n de Informaci�n}{ICMC-USP}{Brasil}{2004}
-     \Master{Computing}{Ciencia de la Computaci�n}{Redes Neuronales}{ICMC-USP}{Brasil}{1998}
+     \Doctor{Computing}{Ciencia de la ComputaciÃÂ³n}{RecuperaciÃÂ³n de InformaciÃÂ³n}{ICMC-USP}{Brasil}{2004}
+     \Master{Computing}{Ciencia de la ComputaciÃÂ³n}{Redes Neuronales}{ICMC-USP}{Brasil}{1998}
 \end{titles}
 \Category{Principal}
 \webpage{http://socios.spc.org.pe/ecuadros}
-\Office{Computer Science Program, 4th floor, UCSP San L�zaro}
+\Office{Computer Science Program, 4th floor, UCSP San LÃÂ¡zaro}
 \Phone{+51-54-605630 Ext 326}
 \Mobile{+51-958.339.127}
 \facebook{https://www.facebook.com/pages/Ernesto-Cuadros-Vargas-Public-Figure/136184539813774}
@@ -23,8 +23,8 @@
 \prefix{Mg.}
 \name{Gustavo Delgado Ugarte}
 \begin{titles}
-\Master{Computing}{Ingenier�a del Software}{}{Escuela Universitaria de Ingenier�a Industrial, Inform�tica y Sistemas - UTA}{Chile}{2009}
-\Degree{Computing}{Ingeniero de Sistemas}{}{UCSM}{Per�}{2006}
+\Master{Computing}{IngenierÃÂ­a del Software}{}{Escuela Universitaria de IngenierÃÂ­a Industrial, InformÃÂ¡tica y Sistemas - UTA}{Chile}{2009}
+\Degree{Computing}{Ingeniero de Sistemas}{}{UCSM}{PerÃÂº}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -34,7 +34,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Ingenier�a del Software}
+\Research{IngenierÃÂ­a del Software}
 \courses{}
 --END-PROFESSOR--
 |	
@@ -44,8 +44,8 @@
 \prefix{Mag.}
 \name{Marc-Antoine Le Guen}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{Computaci�n Gr�fica}{Universit� Aix-Marseille}{Francia}{2013}
-\Degree{Computing}{Ciencia de la Computaci�n}{Computaci�n Gr�fica}{IUT Arles}{Francia}{2011}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{ComputaciÃÂ³n GrÃÂ¡fica}{UniversitÃÂ­ Aix-Marseille}{Francia}{2013}
+\Degree{Computing}{Ciencia de la ComputaciÃÂ³n}{ComputaciÃÂ³n GrÃÂ¡fica}{IUT Arles}{Francia}{2011}
 \end{titles}
 \Category{}
 \webpage{}
@@ -55,7 +55,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Computaci�n Gr�fica}
+\Research{ComputaciÃÂ³n GrÃÂ¡fica}
 \courses{}
 --END-PROFESSOR--
 
@@ -64,8 +64,8 @@
 \prefix{Mg.}
 \name{Yessenia Deysi Yari Ramos}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{UFRGS}{Brasil}{2011}
-\Degree{Computing}{Ingeniera de Sistemas}{}{UNSA}{Per�}{2008}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{UFRGS}{Brasil}{2011}
+\Degree{Computing}{Ingeniera de Sistemas}{}{UNSA}{PerÃÂº}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -75,7 +75,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Procesamiento de Im�genes, Visi�n Computacional, Inteligencia Artificial}
+\Research{Procesamiento de ImÃÂ¡genes, VisiÃÂ³n Computacional, Inteligencia Artificial}
 \courses{}
 --END-PROFESSOR--
 
@@ -84,8 +84,8 @@
 \prefix{Mg.}
 \name{Alexander Victor Ocsa Mamani}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{ICMC-USP}{Brasil}{2011}
-\Degree{Computing}{Ingeniera de Sistemas}{}{UNSA}{Per�}{2009}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{ICMC-USP}{Brasil}{2011}
+\Degree{Computing}{Ingeniera de Sistemas}{}{UNSA}{PerÃÂº}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -95,7 +95,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Estructuras de Datos y Algoritmos, Base de Datos, Computaci�n Paralela,  Procesamiento de Im�genes,  Inteligencia Artificial}
+\Research{Estructuras de Datos y Algoritmos, Base de Datos, ComputaciÃÂ³n Paralela,  Procesamiento de ImÃÂ¡genes,  Inteligencia Artificial}
 \courses{}
 --END-PROFESSOR--
 
@@ -104,8 +104,8 @@
 \prefix{Mg.}
 \name{Jessica Elizabeth Acevedo Flores}
 \begin{titles}
-\Master{Engineering}{Computer engineering}{}{Universidad Nacional de Ciencias y Tecnolog�a de Taiw�n}{China}{2007}
-\Degree{Engineering}{Ingenier�a Electr�nica}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2004}
+\Master{Engineering}{Computer engineering}{}{Universidad Nacional de Ciencias y TecnologÃÂ­a de TaiwÃÂ¡n}{China}{2007}
+\Degree{Engineering}{IngenierÃÂ­a ElectrÃÂ³nica}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -125,8 +125,8 @@
 \prefix{Mag.}
 \name{Wilfredo Bardales Roncalla}
 \begin{titles}
-\Master{Computing}{Inform�tica}{Optimizaci�n y Razonamiento Autom�tico}{Pontificia Universidad Cat�lica de Rio de Janeiro}{Brasil}{2013}
-\Degree{Computing}{Ingeniero Inform�tico}{}{Universidad Cat�lica San Pablo}{Per�}{2007}
+\Master{Computing}{InformÃÂ¡tica}{OptimizaciÃÂ³n y Razonamiento AutomÃÂ¡tico}{Pontificia Universidad CatÃÂ³lica de Rio de Janeiro}{Brasil}{2013}
+\Degree{Computing}{Ingeniero InformÃÂ¡tico}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2007}
 \end{titles}
 \Category{}
 \webpage{}
@@ -136,7 +136,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Algoritmos, Optimizaci�n y Razonamiento Autom�tico}
+\Research{Algoritmos, OptimizaciÃÂ³n y Razonamiento AutomÃÂ¡tico}
 \courses{CS210T}
 --END-PROFESSOR--
 
@@ -144,9 +144,9 @@
 --BEGIN-PROFESSOR--
 \email{bjjuarez@ucsp.edu.pe} 
 \prefix{Prof.}
-\name{Bruno Ju�rez Valdivia}
+\name{Bruno JuÃÂ¡rez Valdivia}
 \begin{titles}
-\Degree{Computing}{Ingeniero de Sistemas}{}{UCSM}{Per�}{2008}
+\Degree{Computing}{Ingeniero de Sistemas}{}{UCSM}{PerÃÂº}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -164,11 +164,11 @@
 --BEGIN-PROFESSOR--
 \email{darias@ucsp.edu.pe}
 \prefix{}
-\name{Diego Fabi�n Arias Padilla}
+\name{Diego FabiÃÂ¡n Arias Padilla}
 \begin{titles}
-\Master{Humanities}{Gesti�n y Responsabilidad Social de la empresa}{}{Pontificia Universidad Santo Tom�s de Aquino en Roma}{Italia}{2008}
+\Master{Humanities}{GestiÃÂ³n y Responsabilidad Social de la empresa}{}{Pontificia Universidad Santo TomÃÂ¡s de Aquino en Roma}{Italia}{2008}
 \Master{Humanities}{Doctrina Social de la Iglesia}{}{Pontificia Universidas Lateranense de Roma}{Italia}{2008}
-\Degree{Humanities}{Administraci�n de negocios}{}{Universidad Cat�lica San Pablo}{Per�}{2006}
+\Degree{Humanities}{AdministraciÃÂ³n de negocios}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -187,29 +187,29 @@
 \prefix{Dr.}
 \name{Dennis Barrios Aranibar}
 \begin{titles}
-\Doctor{Computing}{Ingenier�a El�ctrica y de Computaci�n}{}{Rob�tica}{UFRN}{Brasil}{2009}
-\Master{Computing}{Ingenier�a El�ctrica y de Computaci�n}{}{Rob�tica}{UFRN}{Brasil}{2005}
-\Degree{Computing}{Ingeniero de Sistemas}{}{UNSA}{Per�}{2000}
+\Doctor{Computing}{IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n}{}{RobÃÂ³tica}{UFRN}{Brasil}{2009}
+\Master{Computing}{IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n}{}{RobÃÂ³tica}{UFRN}{Brasil}{2005}
+\Degree{Computing}{Ingeniero de Sistemas}{}{UNSA}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
-\Office{Taller de rob�tica (Campus de Salaverry)}
+\Office{Taller de robÃÂ³tica (Campus de Salaverry)}
 \Phone{+51-54-}
 \Mobile{+51-959462462}
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Rob�tica}
+\Research{RobÃÂ³tica}
 \courses{}
 --END-PROFESSOR--
 --BEGIN-PROFESSOR--
 \email{rpatino@ucsp.edu.pe}
 \prefix{}
-\name{Raquel Pati�o Escarcina}
+\name{Raquel PatiÃÂ±o Escarcina}
 \begin{titles}
-\Doctor{Computing}{Ingenier�a El�ctrica y de Computaci�n}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
-\Master{Computing}{Ingenier�a El�ctrica y de Computaci�n}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2004}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional San Agust�n}{Per�}{2000}
+\Doctor{Computing}{IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
+\Master{Computing}{IngenierÃÂ­a ElÃÂ©ctrica y de ComputaciÃÂ³n}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2004}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -228,7 +228,7 @@
 \prefix{}
 \name{Miriam Berrios Garaycochea}
 \begin{titles}
-\Degree{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1997}
+\Degree{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1997}
 \end{titles}
 \Category{}
 \webpage{}
@@ -245,12 +245,12 @@
 --BEGIN-PROFESSOR--
 \email{gcalderon@ucsp.edu.pe}
 \prefix{}
-\name{Guillermo Enrique Calder�n Ruiz}
+\name{Guillermo Enrique CalderÃÂ³n Ruiz}
 \begin{titles}
-\Doctor{Computing}{Ciencias de la Ingenier�a}{}{Pontificia Universidad Cat�lica de Chile}{Chile}{2011}
-\Master{Computing}{Ingenier�a}{}{Pontificia Universidad Cat�lica de Chile}{Chile}{2010}
-\Master{Computing}{Ingenier�a de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2009}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1998}
+\Doctor{Computing}{Ciencias de la IngenierÃÂ­a}{}{Pontificia Universidad CatÃÂ³lica de Chile}{Chile}{2011}
+\Master{Computing}{IngenierÃÂ­a}{}{Pontificia Universidad CatÃÂ³lica de Chile}{Chile}{2010}
+\Master{Computing}{IngenierÃÂ­a de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2009}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1998}
 \end{titles}
 \Category{}
 \webpage{}
@@ -260,7 +260,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Ingenier�a de Software}
+\Research{IngenierÃÂ­a de Software}
 \courses{}
 --END-PROFESSOR--
 
@@ -270,7 +270,7 @@
 \name{Igor Fernando Calizaya Catacora}
 \begin{titles}
 \Master{Computing}{Information Systems Management}{ISO27001}{University of Greenwich}{Inglaterra}{2012}
-\Degree{Computing}{Ingeniero Inform�tico}{Biometr�a}{Universidad Cat�lica San Pablo}{Per�}{2008}
+\Degree{Computing}{Ingeniero InformÃÂ¡tico}{BiometrÃÂ­a}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -280,16 +280,16 @@
 \facebook{}
 \Twitter{@igorfcc}
 \Blog{}
-\Research{Sistemas de Informaci�n}
+\Research{Sistemas de InformaciÃÂ³n}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{jcano@ucsp.edu.pe}
 \prefix{}
-\name{Jhon Humberto Cano Ch�vez}
+\name{Jhon Humberto Cano ChÃÂ¡vez}
 \begin{titles}
-\Degree{Computing}{Ingenier�a de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2000}
+\Degree{Computing}{IngenierÃÂ­a de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -306,10 +306,10 @@
 --BEGIN-PROFESSOR--
 \email{ccastelo@ucsp.edu.pe}
 \prefix{}
-\name{C�sar Christian Castelo Fern�ndez}
+\name{CÃÂ©sar Christian Castelo FernÃÂ¡ndez}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{Universidad Estadual de Campinas-Unicamp}{Brasil}{2011}
-\Degree{Computing}{Ingenier�a de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2009}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidad Estadual de Campinas-Unicamp}{Brasil}{2011}
+\Degree{Computing}{IngenierÃÂ­a de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -319,17 +319,17 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Procesamiento de Im�genes}
+\Research{Procesamiento de ImÃÂ¡genes}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{r.castro@ucsp.edu.pe}
 \prefix{}
-\name{Rodolfo Jos� Castro Salinas}
+\name{Rodolfo JosÃÂ© Castro Salinas}
 \begin{titles}
 \Master{Humanities}{Ciencias del Matrimonio y la Familia}{}{Pontificio Instituto Juan Pablo II}{Italia}{2008}
-\Degree{Humanities}{Administraci�n de negocios}{}{Universidad Cat�lica San Pablo}{Per�}{2004}
+\Degree{Humanities}{AdministraciÃÂ³n de negocios}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -348,8 +348,8 @@
 \prefix{}
 \name{Edward Jorge Yuri Cayllahua Cahuina}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{Universidade Federal de Ouro Preto}{Brasil}{2013}
-\Degree{Computing}{Bachiller en Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{2007}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidade Federal de Ouro Preto}{Brasil}{2013}
+\Degree{Computing}{Bachiller en IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2007}
 \end{titles}
 \Category{}
 \webpage{}
@@ -359,17 +359,17 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Procesamiento de V�deos}
+\Research{Procesamiento de VÃÂ­deos}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{achavezc@ucsp.edu.pe}
 \prefix{}
-\name{Angel Evaristo Ch�vez Contreras}
+\name{Angel Evaristo ChÃÂ¡vez Contreras}
 \begin{titles}
-\Master{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid Espa�a}{Espa�a}{2004}
-\Degree{Humanities}{Bachiller en Educaci�n}{}{Universidad Nacional de San Agust�n}{Per�}{2002}
+\Master{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid EspaÃÂ±a}{EspaÃÂ±a}{2004}
+\Degree{Humanities}{Bachiller en EducaciÃÂ³n}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2002}
 \end{titles}
 \Category{}
 \webpage{}
@@ -386,9 +386,9 @@
 --BEGIN-PROFESSOR--
 \email{jvcondori@ucsp.edu.pe}
 \prefix{}
-\name{Jos� Victor Condori Condori}
+\name{JosÃÂ© Victor Condori Condori}
 \begin{titles}
-\Degree{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San Agust�n}{Per�}{2001}
+\Degree{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2001}
 \end{titles}
 \Category{}
 \webpage{}
@@ -406,9 +406,9 @@
 \prefix{}
 \name{Judith Hayde Cruz Torres}
 \begin{titles}
-\Doctor{Mathematics}{Matem�ticas}{}{ICMC-USP}{Brasil}{2007}
-\Master{Mathematics}{Matem�ticas}{}{Universidad Cat�lica del Norte}{Chile}{2003}
-\Degree{Mathematics}{Bachiller en Matem�tica}{}{Universidad Nacional de San Agust�n}{Per�}{2000}
+\Doctor{Mathematics}{MatemÃÂ¡ticas}{}{ICMC-USP}{Brasil}{2007}
+\Master{Mathematics}{MatemÃÂ¡ticas}{}{Universidad CatÃÂ³lica del Norte}{Chile}{2003}
+\Degree{Mathematics}{Bachiller en MatemÃÂ¡tica}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -418,18 +418,18 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Matem�tica}
+\Research{MatemÃÂ¡tica}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{ana.maria.cuadros@ucsp.edu.pe}
 \prefix{}
-\name{Ana Mar�a Cuadros Valdivia}
+\name{Ana MarÃÂ­a Cuadros Valdivia}
 \begin{titles}
-\DoctorPT{Computing}{Ciencia de la Computaci�n}{}{Universidad Nacional San Agust�n}{Per�}{2013}
-\Master{Computing}{Ciencia de la Computaci�n}{}{ICMC-USP}{Brasil}{2007}
-\Degree{Computing}{Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{2008}
+\DoctorPT{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2013}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{ICMC-USP}{Brasil}{2007}
+\Degree{Computing}{IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -439,18 +439,18 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Visualizaci�n Cient�fica}
+\Research{VisualizaciÃÂ³n CientÃÂ­fica}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{acuadros@ucsp.edu.pe}
 \prefix{Dr.}
-\name{Alex Jes�s Cuadros Vargas}
+\name{Alex JesÃÂºs Cuadros Vargas}
 \begin{titles}
-\PosDoc{Computing}{Ciencia de la Computaci�n}{}{ICMC-USP}{Brasil}{2009}.
-\Doctor{Computing}{Ciencia de la Computaci�n}{}{ICMC-USP}{Brasil}{2007}.
-\Master{Computing}{Ciencia de la Computaci�n}{}{ICMC-USP}{Brasil}{2001}.
+\PosDoc{Computing}{Ciencia de la ComputaciÃÂ³n}{}{ICMC-USP}{Brasil}{2009}.
+\Doctor{Computing}{Ciencia de la ComputaciÃÂ³n}{}{ICMC-USP}{Brasil}{2007}.
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{ICMC-USP}{Brasil}{2001}.
 \end{titles}
 \Category{}
 \webpage{}
@@ -460,7 +460,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Computaci�n Gr�fica, Geometr�a Computacional, Generaci�n de mallas, Visualizaci�n Cient�fica y M�dica, Reconstrucci�n Tridimensional, Estructuras de datos, Programaci�n gen�rica, Programaci�n paralela.}
+\Research{ComputaciÃÂ³n GrÃÂ¡fica, GeometrÃÂ­a Computacional, GeneraciÃÂ³n de mallas, VisualizaciÃÂ³n CientÃÂ­fica y MÃÂ©dica, ReconstrucciÃÂ³n Tridimensional, Estructuras de datos, ProgramaciÃÂ³n genÃÂ©rica, ProgramaciÃÂ³n paralela.}
 \courses{}
 --END-PROFESSOR--
 
@@ -469,8 +469,8 @@
 \prefix{}
 \name{Christian Jorge Delgado Polar}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{DCC-UFMG}{Brasil}{2007}
-\Degree{Computing}{Bachiller en Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{2004}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{DCC-UFMG}{Brasil}{2007}
+\Degree{Computing}{Bachiller en IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -487,9 +487,9 @@
 --BEGIN-PROFESSOR--
 \email{ldiaz@ucsp.edu.pe}
 \prefix{}
-\name{Luis Fernando D�az Basurco}
+\name{Luis Fernando DÃÂ­az Basurco}
 \begin{titles}
-\Master{Mathematics}{Matem�tica}{}{Pontificia Universidad Cat�lica del Per�}{Per�}{1990}
+\Master{Mathematics}{MatemÃÂ¡tica}{}{Pontificia Universidad CatÃÂ³lica del PerÃÂº}{PerÃÂº}{1990}
 \end{titles}
 \Category{}
 \webpage{}
@@ -499,7 +499,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Matem�tica}
+\Research{MatemÃÂ¡tica}
 \courses{}
 --END-PROFESSOR--
 
@@ -507,9 +507,9 @@
 --BEGIN-PROFESSOR--
 \email{agarciacalderon@ucsp.edu.pe}
 \prefix{}
-\name{Adriana Maria Irene Garc�a Calder�n Barreda}
+\name{Adriana Maria Irene GarcÃÂ­a CalderÃÂ³n Barreda}
 \begin{titles}
-\Degree{Humanities}{}{}{}{Per�}{}
+\Degree{Humanities}{}{}{}{PerÃÂº}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -528,7 +528,7 @@
 \prefix{}
 \name{Enrique Gordillo Cisneros}
 \begin{titles}
-\Degree{Humanities}{Licenciado en Educaci�n Secundaria con especialidad en Lengua y Literatura}{}{PUCP}{Per�}{2008}
+\Degree{Humanities}{Licenciado en EducaciÃÂ³n Secundaria con especialidad en Lengua y Literatura}{}{PUCP}{PerÃÂº}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -545,11 +545,11 @@
 --BEGIN-PROFESSOR--
 \email{jcgutierrezc@ucsp.edu.pe}
 \prefix{}
-\name{Juan Carlos Guti�rrez C�ceres}
+\name{Juan Carlos GutiÃÂ©rrez CÃÂ¡ceres}
 \begin{titles}
-\Doctor{Computing}{Ciencia de la Computaci�n}{}{Universidad Nacional de San Agust�n}{Per�}{2013}
-\Master{Computing}{Ciencia de la Computaci�n}{}{ICMC-USP}{Brasil}{2003}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional de San Agust�n}{Per�}{}
+\Doctor{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2013}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{ICMC-USP}{Brasil}{2003}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -559,7 +559,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Inteligencia Artificial, Im�genes}
+\Research{Inteligencia Artificial, ImÃÂ¡genes}
 \courses{}
 --END-PROFESSOR--
 
@@ -568,8 +568,8 @@
 \prefix{}
 \name{Alvaro Henry Mamani Aliaga}
 \begin{titles}
-\Degree{Computing}{Bachiller Ingenier�a de Sistemas}{}{UNSA}{Per�}{2006}
-\Master{Computing}{Ciencia de la Computaci�n}{Sistemas Distribu�dos}{IME-USP}{Brasil}{2011}
+\Degree{Computing}{Bachiller IngenierÃÂ­a de Sistemas}{}{UNSA}{PerÃÂº}{2006}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{Sistemas DistribuÃÂ­dos}{IME-USP}{Brasil}{2011}
 \end{titles}
 \Category{}
 \webpage{}
@@ -586,9 +586,9 @@
 --BEGIN-PROFESSOR--
 \email{mjordan@ucsp.edu.pe}
 \prefix{}
-\name{M�nica Milagros Jord�n Franco}
+\name{MÃÂ³nica Milagros JordÃÂ¡n Franco}
 \begin{titles}
-\Degree{Computing}{Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{}
+\Degree{Computing}{IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -605,9 +605,9 @@
 --BEGIN-PROFESSOR--
 \email{rlinares@ucsp.edu.pe}
 \prefix{}
-\name{Rubel Dorjin Linares M�laga}
+\name{Rubel Dorjin Linares MÃÂ¡laga}
 \begin{titles}
-\Degree{Mathematics}{Licenciado en F�sica}{}{Universidad Nacional de San Agust�n}{Per�}{2002}
+\Degree{Mathematics}{Licenciado en FÃÂ­sica}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2002}
 \end{titles}
 \Category{}
 \webpage{}
@@ -626,8 +626,8 @@
 \prefix{}
 \name{Gina Lovon Alvarado}
 \begin{titles}
-\Master{Computing}{Ingenier�a de Software}{}{Universidad de Tarapac�}{Chile}{2012}
-\Degree{Computing}{Ingeniera de Sistemas}{}{Universidad Nacional de San Agust�n}{Per�}{2012}
+\Master{Computing}{IngenierÃÂ­a de Software}{}{Universidad de TarapacÃÂ¡}{Chile}{2012}
+\Degree{Computing}{Ingeniera de Sistemas}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -666,7 +666,7 @@
 \prefix{}
 \name{Anita Genoveva Mamani Champi}
 \begin{titles}
-\Master{Mathematics}{Matem�tica}{}{UFF}{Brasil}{2005}
+\Master{Mathematics}{MatemÃÂ¡tica}{}{UFF}{Brasil}{2005}
 \end{titles}
 \Category{}
 \webpage{}
@@ -685,8 +685,8 @@
 \prefix{}
 \name{Renato Javier Marroquin Mogrovejo}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{Pontificia Universidad de Rio de Janeiro}{Brasil}{2011}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2007}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Pontificia Universidad de Rio de Janeiro}{Brasil}{2011}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2007}
 \end{titles}
 \Category{}
 \webpage{}
@@ -696,14 +696,14 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Programaci�n Cloud}
+\Research{ProgramaciÃÂ³n Cloud}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{rfmattosp@ucsp.edu.pe}
 \prefix{}
-\name{Rolando Fabi�n Mattos Pino}
+\name{Rolando FabiÃÂ¡n Mattos Pino}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
 \end{titles}
@@ -724,9 +724,9 @@
 \prefix{}
 \name{Silvia Matuk Kervaye}
 \begin{titles}
-\Doctor{Humanities}{Ciencias Humanas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1995}
-\Master{Humanities}{Ciencias Humanas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1992}
-\Degree{Humanities}{Ciencias Humanas}{}{Pontificia Universidad Cat�lica del Per�}{Per�}{1966}
+\Doctor{Humanities}{Ciencias Humanas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1995}
+\Master{Humanities}{Ciencias Humanas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1992}
+\Degree{Humanities}{Ciencias Humanas}{}{Pontificia Universidad CatÃÂ³lica del PerÃÂº}{PerÃÂº}{1966}
 \end{titles}
 \Category{}
 \webpage{}
@@ -743,7 +743,7 @@
 --BEGIN-PROFESSOR--
 \email{dmayori@ucsp.edu.pe}
 \prefix{}
-\name{Deisy Virginia Mayor� Vel�squez}
+\name{Deisy Virginia MayorÃÂ­ VelÃÂ¡squez}
 \begin{titles}
 \Degree{Mathematics}{}{}{}{}{}
 \end{titles}
@@ -764,9 +764,9 @@
 \prefix{}
 \name{Gonzalo Pablo Medina Bravo}
 \begin{titles}
-\Master{Humanities}{Derecho}{Pol�tica Jurisdiccional}{PUCP}{Per�}{2009}
-\Degree{Humanidades}{Humanidades}{Historia}{UCSP}{Per�}{2011}
-\Degree{Humanidades}{Humanidades}{Docencia Universitaria Cat�lica}{UCSP}{Per�}{2011}
+\Master{Humanities}{Derecho}{PolÃÂ­tica Jurisdiccional}{PUCP}{PerÃÂº}{2009}
+\Degree{Humanidades}{Humanidades}{Historia}{UCSP}{PerÃÂº}{2011}
+\Degree{Humanidades}{Humanidades}{Docencia Universitaria CatÃÂ³lica}{UCSP}{PerÃÂº}{2011}
 \end{titles}
 \Category{}
 \webpage{}
@@ -785,8 +785,8 @@
 \prefix{}
 \name{Tatiana Beatriz Medina Sanchez}
 \begin{titles}
-\Master{Humanities}{Artes}{}{Universidad Nacional de San Agust�n}{Per�}{}
-\Degree{Humanities}{Arquitecta}{}{Universidad Nacional de San Agust�n}{Per�}{}
+\Master{Humanities}{Artes}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{}
+\Degree{Humanities}{Arquitecta}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -803,9 +803,9 @@
 --BEGIN-PROFESSOR--
 \email{rmedina@ucsp.edu.pe}
 \prefix{}
-\name{Renzo Hern�n Medina Zeballos}
+\name{Renzo HernÃÂ¡n Medina Zeballos}
 \begin{titles}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2000}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -822,10 +822,10 @@
 --BEGIN-PROFESSOR--
 \email{gmezal@ucsp.edu.pe}
 \prefix{}
-\name{Graciela Lecireth Meza Lov�n}
+\name{Graciela Lecireth Meza LovÃÂ³n}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{UFMS-MS}{Brasil}{2007}
-\Degree{Computing}{Bachiller en Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{2004}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{UFMS-MS}{Brasil}{2007}
+\Degree{Computing}{Bachiller en IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -835,7 +835,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Inteligencia Artificial, Im�genes}
+\Research{Inteligencia Artificial, ImÃÂ¡genes}
 \courses{}
 --END-PROFESSOR--
 
@@ -846,8 +846,8 @@
 \prefix{}
 \name{Rensso Victor Hugo Mora Colque}
 \begin{titles}
-\Master{Computing}{Ciencia de la Computaci�n}{}{Universidade Federal de Ouro Preto}{Brasil}{2012}
-\Degree{Computing}{Ingeniero Inform�tico}{}{Universidad Cat�lica San Pablo}{Per�}{2011}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidade Federal de Ouro Preto}{Brasil}{2012}
+\Degree{Computing}{Ingeniero InformÃÂ¡tico}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2011}
 \end{titles}
 \Category{}
 \webpage{}
@@ -857,16 +857,16 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Procesamiento de V�deos}
+\Research{Procesamiento de VÃÂ­deos}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{hernan.alvarez@ucsp.edu.pe}
 \prefix{}
-\name{Hern�n Humberto �lvarez Valera}
+\name{HernÃÂ¡n Humberto ÃÂlvarez Valera}
 \begin{titles}
-\Bachelor{Computing}{Bachiller de Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{2013}
+\Bachelor{Computing}{Bachiller de IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2013}
 \end{titles}
 \Category{}
 \webpage{}
@@ -885,7 +885,7 @@
 \prefix{}
 \name{Jorge Homero Neyra Araoz}
 \begin{titles}
-\Bachelor{Computing}{Bachiller de Ingenier�a de Sistemas}{}{Universidad Nacional San Agust�n}{Per�}{2006}
+\Bachelor{Computing}{Bachiller de IngenierÃÂ­a de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -902,11 +902,11 @@
 --BEGIN-PROFESSOR--
 \email{dnina@ucsp.edu.pe}
 \prefix{}
-\name{Dug�n Pa�l Nina Ortiz}
+\name{DugÃÂ¡n PaÃÂºl Nina Ortiz}
 \begin{titles}
-\Doctor{Mathematics}{Matem�ticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2011}
-\Master{Mathematics}{Matem�ticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2007}
-\Degree{Mathematics}{Matem�ticas}{}{Universidad Nacional San Agust�n}{Per�}{2003}
+\Doctor{Mathematics}{MatemÃÂ¡ticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2011}
+\Master{Mathematics}{MatemÃÂ¡ticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2007}
+\Degree{Mathematics}{MatemÃÂ¡ticas}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2003}
 \end{titles}
 \Category{}
 \webpage{}
@@ -925,8 +925,8 @@
 \prefix{}
 \name{Luz Marina Ramos Quispe}
 \begin{titles}
-\Master{Mathematics}{Matem�ticas}{Estad�stica}{Universidade Estadual de Campinas}{Brasil}(2015}
-\Degree{Mathematics}{Matem�ticas}{}{Universidad Nacional San Agust�n}{Per�}{2009}
+\Master{Mathematics}{MatemÃÂ¡ticas}{EstadÃÂ­stica}{Universidade Estadual de Campinas}{Brasil}(2015}
+\Degree{Mathematics}{MatemÃÂ¡ticas}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -944,7 +944,7 @@
 --BEGIN-PROFESSOR--
 \email{pnunezp@ucsp.edu.pe}
 \prefix{}
-\name{Paloma Moreika Nu�ez Portugal}
+\name{Paloma Moreika NuÃÂ±ez Portugal}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
 \end{titles}
@@ -965,9 +965,9 @@
 \prefix{}
 \name{Jose Eduardo Ochoa Luna}
 \begin{titles}
-\Doctor{Computing}{Ciencia de la Computaci�n}{}{Universidade de Sao Paulo}{Brasil}{2011}
-\Master{Computing}{Ciencia de la Computaci�n}{}{Universidade Federal de Mato Grosso do Sul - UFMS}{Brasil}{2004}
-\Degree{Computing}{Bachiller en Ingenier�a de Sistemas}{}{Universidad Nacional San Agust�n}{Per�}{2000}
+\Doctor{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidade de Sao Paulo}{Brasil}{2011}
+\Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidade Federal de Mato Grosso do Sul - UFMS}{Brasil}{2004}
+\Degree{Computing}{Bachiller en IngenierÃÂ­a de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -977,16 +977,16 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Inteligencia Artificial, Optimizaci�n}
+\Research{Inteligencia Artificial, OptimizaciÃÂ³n}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{cortiz@ucsp.edu.pe}
 \prefix{}
-\name{Christian Pa�l Ortiz Martinez}
+\name{Christian PaÃÂºl Ortiz Martinez}
 \begin{titles}
-\Degree{Mathematics}{Matem�tica}{}{Universidad Nacional de San Agust�n}{Per�}{2006}
+\Degree{Mathematics}{MatemÃÂ¡tica}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1024,7 +1024,7 @@
 \prefix{}
 \name{Luis Alberto Pacheco Abarca}
 \begin{titles}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1041,7 +1041,7 @@
 --BEGIN-PROFESSOR--
 \email{fpacheco@ucsp.edu.pe}
 \prefix{}
-\name{Flor de Mar�a Pacheco Tejada}
+\name{Flor de MarÃÂ­a Pacheco Tejada}
 \begin{titles}
 \Degree{Humanities}{}{}{}{}{}
 \end{titles}
@@ -1062,8 +1062,8 @@
 \prefix{}
 \name{Libertad Alejandra Paredes Valdivia}
 \begin{titles}
-\Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1990}
-\Degree{Humanities}{Licenciada en Lengua Literatura y Filosof�a}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1975}
+\Master{Humanities}{EducaciÃÂ³n Superior}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1990}
+\Degree{Humanities}{Licenciada en Lengua Literatura y FilosofÃÂ­a}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1975}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1080,9 +1080,9 @@
 --BEGIN-PROFESSOR--
 \email{efalvarez@ucsp.edu.pe}
 \prefix{}
-\name{Edwing Fausto �lvarez Fern�ndez}
+\name{Edwing Fausto ÃÂlvarez FernÃÂ¡ndez}
 \begin{titles}
-\Degree{Humanities}{Licenciado en Educaci�n}{}{Universidad Nacional de San Agust�n}{Per�}{2000}
+\Degree{Humanities}{Licenciado en EducaciÃÂ³n}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1099,10 +1099,10 @@
 --BEGIN-PROFESSOR--
 \email{susana.chaina@ucsp.edu.pe}
 \prefix{}
-\name{Susana Giovanna Chai�a Mamani}
+\name{Susana Giovanna ChaiÃÂ±a Mamani}
 \begin{titles}
-Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1990}
-\Degree{Humanities}{Licenciada en Psicolog�a}{}{Universidad Nacional de San Agust�n}{Per�}{2010}
+Master{Humanities}{EducaciÃÂ³n Superior}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{1990}
+\Degree{Humanities}{Licenciada en PsicologÃÂ­a}{}{Universidad Nacional de San AgustÃÂ­n}{PerÃÂº}{2010}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1121,7 +1121,7 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 \prefix{}
 \name{Gail Mar Linares Pomareda De Bocchio}
 \begin{titles}
-\Degree{Humanities}{Licenciada en Enfermer�a}{}{Universidad Peruana Cayetano Heredia}{Per�}{1999}
+\Degree{Humanities}{Licenciada en EnfermerÃÂ­a}{}{Universidad Peruana Cayetano Heredia}{PerÃÂº}{1999}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1140,7 +1140,7 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 \prefix{}
 \name{Alfredo Paz Valderrama}
 \begin{titles}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2000}
+\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad CatÃÂ³lica Santa MarÃÂ­a}{PerÃÂº}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1157,9 +1157,9 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 --BEGIN-PROFESSOR--
 \email{jpenarrieta@ucsp.edu.pe}
 \prefix{}
-\name{Jos� Alonso Pe�arrieta Escobedo}
+\name{JosÃÂ© Alonso PeÃÂ±arrieta Escobedo}
 \begin{titles}
-\Degree{Computing}{Ingeniero Inform�tico}{}{Universidad Cat�lica San Pablo}{Per�}{2008}
+\Degree{Computing}{Ingeniero InformÃÂ¡tico}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1176,9 +1176,9 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 --BEGIN-PROFESSOR--
 \email{guillermo.laures@ucsp.edu.pe}
 \prefix{}
-\name{Guillermo Laures Garc�a}
+\name{Guillermo Laures GarcÃÂ­a}
 \begin{titles}
-\Degree{Computing}{Bachiller en Ciencia de la Computaci�n}{}{Universidad Cat�lica San Pablo}{Per�}{2012}
+\Degree{Computing}{Bachiller en Ciencia de la ComputaciÃÂ³n}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1218,8 +1218,8 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 \prefix{}
 \name{Hugo Mario Ramos Salinas}
 \begin{titles}
-\Master{Humanities}{Artes}{}{Universidad Nacional San Agust�n}{Per�}{}
-\Degree{Humanities}{Bachiller en Arquitectura}{}{Universidad Nacional San Agust�n}{Per�}{1992}
+\Master{Humanities}{Artes}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{}
+\Degree{Humanities}{Bachiller en Arquitectura}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{1992}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1238,9 +1238,9 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 \prefix{}
 \name{Jose Manuel Rodriguez Canales}
 \begin{titles}
-\Doctor{Humanities}{}{Ciencias Sociales} {Universidad Cat�lica de Santa Mar�a}{Per�}{}
-\Master{Humanities}{}{Teolog�a}{Facultad de Teolog�a Pontificia y Civil de Lima}{Per�}{}
-\Degree{Humanities}{}{Teolog�a}{Facultad de Teolog�a Pontificia y Civil de Lima}{Per�}{}
+\Doctor{Humanities}{}{Ciencias Sociales} {Universidad CatÃÂ³lica de Santa MarÃÂ­a}{PerÃÂº}{}
+\Master{Humanities}{}{TeologÃÂ­a}{Facultad de TeologÃÂ­a Pontificia y Civil de Lima}{PerÃÂº}{}
+\Degree{Humanities}{}{TeologÃÂ­a}{Facultad de TeologÃÂ­a Pontificia y Civil de Lima}{PerÃÂº}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1257,10 +1257,10 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 --BEGIN-PROFESSOR--
 \email{mlrodriguez@ucsp.edu.pe}
 \prefix{}
-\name{Mar�a Lourdes Rodr�guez Manrique}
+\name{MarÃÂ­a Lourdes RodrÃÂ­guez Manrique}
 \begin{titles}
-\Degree{Humanities}{Lic.en Educaci�n}{}{Universidad Nacional San Agust�n}{Per�}{2000}
-\Degree{Humanities}{Lic.en Antropolog�a}{}{Universidad Nacional San Agust�n}{Per�}{1990}
+\Degree{Humanities}{Lic.en EducaciÃÂ³n}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{2000}
+\Degree{Humanities}{Lic.en AntropologÃÂ­a}{}{Universidad Nacional San AgustÃÂ­n}{PerÃÂº}{1990}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1279,8 +1279,8 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 \prefix{}
 \name{Frizzi Alejandra San Roman Salazar}
 \begin{titles}
-    \Master{Computing}{Ciencia de la Computaci�n}{}{Universidade de Sao Paulo}{Brasil}{2012}
-    \Degree{Computing}{Ingenier�a Inform�tica}{}{Universidad Cat�lica San Pablo}{Per�}{2006}
+    \Master{Computing}{Ciencia de la ComputaciÃÂ³n}{}{Universidade de Sao Paulo}{Brasil}{2012}
+    \Degree{Computing}{IngenierÃÂ­a InformÃÂ¡tica}{}{Universidad CatÃÂ³lica San Pablo}{PerÃÂº}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1290,7 +1290,7 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Visualizaci�n Cient�fica}
+\Research{VisualizaciÃÂ³n CientÃÂ­fica}
 \courses{}
 --END-PROFESSOR--
 
@@ -1298,271 +1298,33 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 --BEGIN-PROFESSOR--
 \email{jsantisteban@ucsp.edu.pe}
 \prefix{}
-\name{Julio Omar Santisteban Pablo}
-\begin{titles}
-\Master{Computing}{Internetworking}{}{University of Technology}{Australia}{2008}
-\Degree{Computing}{}{}{}{}{}
+\name{Julio Omar 
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
-\Phone{+51-54-}
-\Mobile{+51-957824992}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{Lenguaje Natural}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{nsempe@ucsp.edu.pe}
-\prefix{}
-\name{N�stor V�ctor Semp� M�ndez}
-\begin{titles}
-\Degree{Humanities}{Licenciado en Ciencias Qu�micas}{}{Universidad Nacional de Buenos Aires}{Argentina}{1971}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-988647067}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
-
---BEGIN-PROFESSOR--
-\email{bsierra@ucsp.edu.pe}
-\prefix{}
-\name{Brito Elmer Sierra Huahuachampi}
-\begin{titles}
-\Degree{Mathematics}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-953769822}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
-
---BEGIN-PROFESSOR--
-\email{jtejadac@ucsp.edu.pe}
-\prefix{}
-\name{Javier Leandro Tejada C�rcamo}
-\begin{titles}
-\Doctor{Computing}{Ciencia de la Computaci�n}{}{IPN}{M�xico}{2009}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958327151}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{Bases de datos, Lenguaje Natural}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{ytupac@ucsp.edu.pe}
-\prefix{}
-\name{Yv�n Jes�s T�pac Valdivia}
-\begin{titles}
-\Doctor{Computing}{Ingenier�a El�ctrica}{}{Pontificia Universidad Cat�lica de Rio de Janeiro}{Brasil}{2005}
-\Master{Computing}{Ingenier�a El�ctrica}{}{Pontificia Universidad Cat�lica de Rio de Janeiro}{Brasil}{2000}
-\Degree{Computing}{Bachiller en Ingenier�a El�ctrica}{}{Universidad Nacional San Agust�n}{Per�}{1994}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958686787}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{Inteligencia Artificial, Optimizaci�n}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{evargas@ucsp.edu.pe}
-\prefix{}
-\name{Erick Vargas Arenas}
-\begin{titles}
-\Master{Enterpreneurship}{Administraci�n Estrat�gica de Negocios}{}{Pontificia Universidad Cat�lica del Per�}{Per�}{2010}
-\Degree{Computing}{Ingeniero de Sistemas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{1998}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958336515}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{Empresas de base tecnol�gica}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{lvasquez@ucsp.edu.pe}
-\prefix{}
-\name{Luz Marina V�squez Quispe}
-\begin{titles}
-\Degree{Mathematics}{Licenciada en Matem�tica}{}{Universidad Nacional de San Agust�n}{Per�}{2000}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-954735600}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{rvilcab@ucsp.edu.pe}
-\prefix{}
-\name{Rolando Vilca Begazo}
-\begin{titles}
-\Degree{Humanities}{Licenciado en Ciencias de la Comunicaci�n, Especialidad de Periodismo}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958505725}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{saquise@ucsp.edu.pe}
-\prefix{}
-\name{Sergio Mois�s Aquise Escobedo}
-\begin{titles}
-\Degree{Mathematics}{Licenciado en Matem�tica}{}{Universidad Nacional de San Agust�n}{Per�}{2000}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{}
-\Mobile{}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{cavaldivial@ucsp.edu.pe}
-\prefix{}
-\name{Carlos Antonio Valdivia Laura}
-\begin{titles}
-\Degree{Humanities}{Psicolog�a}{}{Universidad Nacional de San Agust�n de Arequipa}{Per�}{}  
-
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-979310858}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{gportugal@ucsp.edu.pe}
-\prefix{}
-\name{Gonzalo Max Portugal Y�bar}
-\begin{titles}
-\Degree{Humanities}{Licenciado en Comunicaci�n Social}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{rsilva@ucsp.edu.pe}
-\prefix{}
-\name{Roger Silva Miller}
-\begin{titles}
-\Master{Humanities}{Filosof�a}{}{Pontificie Universidad Cat�lica de R�o de Janeiro}{Brasil}{}
-\Degree{Humanities}{Licenciado en Filosofia}{} {Universidad Cat�lica de Petr�polis}{Brasil}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958541163}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{cagallegos@ucsp.edu.pe}
-\prefix{}
-\name{C�sar Alberto Gallegos Esquivias}
-\begin{titles}
-\Degree{Mathematics}{Lic.en Educaci�n (definir????)}{}{Universidad  (definir????)}{Per�  (definir????)}{2000  (definir????)}
-
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
+\Phone{+51-54-505630 ext 477}
 \Mobile{+51-}
 \facebook{}
 \Twitter{}
-\Blog{}
+\Blog{roncuaz.blogspot.com}
 \Research{}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
-\email{lortega@ucsp.edu.pe}
+\email{mlrodriguez@ucsp.edu.pe}
 \prefix{}
-\name{Lourdes Veronica Ortega Palma}
+\name{MarÃÂÃÂ­a Lourdes RodrÃÂÃÂ­guez Manrique}
 \begin{titles}
-\Degree{Humanities}{}{}{}{}{}
+\Degree{Humanities}{Lic.en EducaciÃÂÃÂ³n}{}{Universidad Nacional San AgustÃÂÃÂ­n}{PerÃÂÃÂº}{2000}
+\Degree{Humanities}{Lic.en AntropologÃÂÃÂ­a}{}{Universidad Nacional San AgustÃÂÃÂ­n}{PerÃÂÃÂº}{1990}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-54-}
-\Mobile{+51-943287829}
+\Mobile{+51-959085874}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -1571,201 +1333,27 @@ Master{Humanities}{Educaci�n Superior}{}{Universidad Cat�lica Santa Mar�a}{Per�}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
-\email{jchaname@ucsp.edu.pe}
+\email{frizzi.sanroman@ucsp.edu.pe}
 \prefix{}
-\name{Mar�a Jes�s Chaname Dominguez}
+\name{Frizzi Alejandra San Roman Salazar}
 \begin{titles}
-\Degree{Humanities}{Licenciada en Educaci�n}{} {Pontificia Universidad Cat�lica del Per�}{Per�}{2008}
+    \Master{Computing}{Ciencia de la ComputaciÃÂÃÂ³n}{}{Universidade de Sao Paulo}{Brasil}{2012}
+    \Degree{Computing}{IngenierÃÂÃÂ­a InformÃÂÃÂ¡tica}{}{Universidad CatÃÂÃÂ³lica San Pablo}{PerÃÂÃÂº}{2006}
 \end{titles}
 \Category{}
 \webpage{}
 \Office{}
 \Phone{+51-54-}
-\Mobile{+51-958538937}
+\Mobile{+51-950301710}
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{hcalderon@ucsp.edu.pe}
-\prefix{}
-\name{Hugo Calder�n Mestas}
-\begin{titles}
-\Degree{Humanities}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958086960}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
-
-
-
---BEGIN-PROFESSOR--
-\email{aiparraguirre@ucsp.edu.pe}
-\prefix{}
-\name{Ana Cecilia Iparraguirre Alegre}
-\begin{titles}
-\Master{Humanities}{Psicolog�a Educativa (c)}{}{Universidad Cat�lica San Pablo}{Per�}{2014}
-\Degree{Humanities}{Licenciada en Relaciones Industriales}{} {Universidad Cat�lica Santa Mar�a}{Per�}{1998}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-974797761}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{sorihuela@ucsp.edu.pe}
-\prefix{}
-\name{Sonia Candelaria Orihuela Rivero}
-\begin{titles}
-\Degree{Humanities}{Licenciada en Educaci�n}{}{Universidad Cat�lica Santa Mar�a}{Per�}{} 
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-986002353}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
+\Research{VisualizaciÃÂÃÂ³n CientÃÂÃÂ­fica}
 \courses{}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--
-\email{pamela.cabala@ucsp.edu.pe}
+\email{jsantisteban@ucsp.edu.pe}
 \prefix{}
-\name{Pamela Denisse Cabala Banda de Vega}
-\begin{titles}
-\Degree{Humanities}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-979999766}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{jvalenciav@ucsp.edu.pe}
-\prefix{}
-\name{Jessica Valencia V�squez}
-\begin{titles}
-\Degree{Humanities}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958315814}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{fzegarra@ucsp.edu.pe}
-\prefix{}
-\name{Fernando Zegarra Aguilar}
-\begin{titles}
-\Master{Humanities}{Gerencia Social y Recursos Humanos}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2013}
-\Degree{Humanities}{Bachiller en Teolog�a}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2006}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-}
-\Mobile{+51-958887157}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{rnarvaez@ucsp.edu.pe}
-\prefix{}
-\name{Ricardo Rafael Narvaez Tosi}
-\begin{titles}
-\Degree{Humanities}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54-228383}
-\Mobile{+51}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{apacheco@ucsp.edu.pe}
-\prefix{}
-\name{Adriana Pacheco Leyton}
-\begin{titles}
-\Master{Humanities}{}{}{}}{}
-\Degree{Humanities}{}{}{}{}{}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54}
-\Mobile{+51-987981222}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
---BEGIN-PROFESSOR--
-\email{pnunez@ucsp.edu.pe}
-\prefix{}
-\name{Pablo Plinio N��ez Saija}
-\begin{titles}
-\Master{Humanities}{Gesti�n Educativa (c)}{}{Universidad Cat�lica San Pablo}{Per�}{2013}
-\Degree{Humanities}{Licenciado en Administraci�n de Empresas}{}{Universidad Cat�lica Santa Mar�a}{Per�}{2002}
-\end{titles}
-\Category{}
-\webpage{}
-\Office{}
-\Phone{+51-54}
-\Mobile{+51-988222455}
-\facebook{}
-\Twitter{}
-\Blog{}
-\Research{}
-\courses{}
---END-PROFESSOR--
-
-
+\name{Julio Omar 

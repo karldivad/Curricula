@@ -1,5 +1,6 @@
 package Util;
 use strict;
+# use Term::ANSIColor; # http://pueblo.sourceforge.net/doc/manual/ansi_color_codes.html
 use POSIX;
 use POSIX qw(setsid);
 use POSIX qw(:errno_h :fcntl_h);
@@ -47,18 +48,29 @@ sub print_message($)
 sub print_error($)
 {
 	my ($msg) = (@_);
-	print "** ERROR ** : ";
-	print "$msg\n";
+	print_soft_error("** ERROR ** :$msg\n");
 	assert(0);
 	exit;
 }
 
+
+sub print_soft_error($)
+{
+	my ($msg) = (@_);
+	print "\x1b[41m$msg\x1b[49m\n";
+}
+
 # ok
+sub print_color($)
+{
+	my ($msg) = (@_);
+	print "\x1b[43m$msg\x1b[49m";
+}
+
 sub print_warning($)
 {
 	my ($msg) = (@_);
-	print "** WARNING ** : ";
-	print "$msg\n";
+	print "\x1b[43m ** WARNING ** : $msg\x1b[49m\n";
 }
 
 #  ok
@@ -73,7 +85,7 @@ sub halt($)
 sub get_ang_base($)
 {
 	my ($nareas) = (@_);
-	return (2*3.14)/$nareas;
+	return (2*3.14159)/$nareas;
 }
 
 sub rotate($$$)
@@ -120,6 +132,7 @@ sub write_file($$)
 	open(OUT, ">$filename") or die Util::halt("write_file: $filename does not open");
 	print OUT $txt;
 	close(IN);
+	#system("chgrp curricula $filename");
 }
 
 my @list_of_files_to_gen_fig;
@@ -136,6 +149,7 @@ sub write_file_to_gen_fig($$)
         # Second: generate the main to gen the fig
         my $main_txt = $Common::config{main_to_gen_fig};
         $main_txt =~ s/<OUTPUT_FILE>/$filename/g;
+        $main_txt =~ s/<ENCODING>/$Common::config{tex_encoding}/g;
 	write_file("$dir/$filename-main.tex", $main_txt);
 	print_message("write_file_to_gen_fig: $dir/$filename-main.tex OK!");
 	
@@ -158,7 +172,7 @@ sub generate_batch_to_gen_figs($)
                 $output_txt .= "\n";
 	}
         write_file($output_file, $output_txt);
-        system("chmod 744 $output_file");
+        system("chmod 774 $output_file");
         print_message("generate_batch_to_gen_figs($output_file) OK!");
 }
 

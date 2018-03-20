@@ -4,9 +4,25 @@ DEPARTMENT= DEPARTMENT
 SEMESTER  = SEMESTER
 TYPEOFCOURSE=TYPE OF COURSE
 
+GENERALINFORMATION=GENERAL INFORMATION
+CourseCodeandName=Code and Name
+HoursTheoryAndLab=Hours of theory and Lab
+RATIONALEOFTHECOURSE=RATIONALE OF THE COURSE
+GeneralObjective=General Objective
+
+CONTRIBUTIONTOOUTCOMES=Contribution to outcomes
+SyllabusofCourse=Syllabus of Course
+Syllabus=Syllabus
+Bibliography=Bibliography
+Readings=Readings
+CONTENTS=CONTENTS
+Content=Content
+PERIOD=PERIOD
+AcademicPeriod = Academic Period  
 COURSEAREA= Area
 COURSECODE= Code
 COURSENAME= Course name
+SYLLABI=Sílabo
 THEORY    = THEORY
 Theory    = Theory
 PRACTICE  = PRACTICE
@@ -16,23 +32,38 @@ Laboratory= Laboratory
 CREDITS   = CREDITS
 Credits   = Credits
 cr        = cr
+CR	  = Cr
 Prerequisites=Prerrequisites
-TYPE      = Type
+TYPE      = TYPE
+TypeOfCourse=Type of Course
 PREREQ    = Prerequisites
-Prerequisites=Prerrequisites
-AcademicPeriod                         = Academic Period  
+SUMILLA  = SUMILLA
+UNIT=UNIT
+Unit=Unit
+Professor=Professor(s)
+AttentionwithAppointment=Meetings after coordination with the professor
+InformationAbouttheCourse=Information about the course
+BriefDescription=Brief description about the course
+Where=Where
+PerformanceInClass=Performance in class
+TheoryEvaluation=Theory evaluation
+Project=Project
+BookSummary=Book Summaries
+SetOfProblems=Set of problems
+
 HoursPerSession                        = Hours per Session
 LengthOfPeriod                         = Length Of Period 
 Book 				       = Book
+BookOf				       = Book of
 Author				       = Author
 YearsOfPublication                     = Years of publication
 OtherTexts                             = Other Texts
-Tittle                                 = Tittle
+Title                                  = Title
 CourseInformation                      = Course Information.
 SpecificGoalsOfTheCourse               = Specific Goals Of The Course .
 SpecificCompetencesOfTheCourse         = Specific Competences Of TheCourse.
 ListOfSubjectsToStudyDuringTheCourse   = List Of Subjects To Study During TheCourse.
-MethodologyAndMethodOfEvaluation       = Methodology And Method Of Evaluation.
+MethodologyAndMethodOfEvaluation       = Methodology and Method of Evaluation.
 BriefDescriptionOfCourseContent        = Brief Description Of Course Content.
 Name                                   = Nombre.
 E-mail                                 = E-mail. 
@@ -44,6 +75,8 @@ TOTALHOURS= Total Hours
 Syllabus  = Sillabus
 SyllabusOf= Sillabus de
 Syllabi   = Syllabi
+Descriptions=Short descriptions
+Bibliography=Bibliography
 Plan	  = Plan
 BloomLevel= Bloom Level
 
@@ -52,6 +85,7 @@ Sem		   =Sem
 Semesters	   =Semesters
 Mandatory	   =Mandatory
 MandatoryShort	   =M
+MandatoryUnit	   =Mandatory Unit
 Core-Tier1	   =Core Tier1
 Core-Tier2	   =Core Tier2
 Elective	   =Elective
@@ -70,20 +104,43 @@ FinalReport	   =Final Report
 LastModification   =Last change
 Justification	   = Justification
 GeneralGoals	   = Generales Goals
+Competences	   = Competences
 ContributionToOutcomes=Contribution to Outcomes
 ContributionToSkills=Contribution to Computer Science Skills (IEEE)
 Skills		   = Skills
 Units		   =Units
+KUTitle		   =Knowledge Unit
+KUsTitle	   =Knowledge Units
 Topics             =Topics
+ListOfTopics	   =List of topics
 UnitGoals          =Goals
 LearningOutcomes   =Learning Outcomes
-LearningObjectives
+LearningLevelExpected=Learning Level Expected
+CompetencesExpected=Competences Expected
+CompetencesIEEE	   = Competences (IEEE)
 UnitNotDefined     =Unit Not Defined
 BibliographySection=Bibliography
 
+MethodologyAndEvaluation=Methodology and Evaluation
+Methodology		=Methodology
+THEORY-SESSIONS     = Theory Sessions
+THEORY-SESSIONS-CONTENT =The development of the theoretical sessions is focused on the student, through his active participation, solving problems related to the course with the individual contributions and discussing real cases of the industry. The students will develop throughout the course a project of application of the tools received in a company.
+LAB-SESSIONS           =Lab Sessions
+LAB-SESSIONS-CONTENT    =Practical sessions are held in the laboratory. Laboratory practices are performed in teams to strengthen their communication. At the beginning of each laboratory the development of the practice is explained and at the end the main conclusions of the activity in group form are highlighted.
+ORAL-SESSIONS    =Oral Presentations
+ORAL-SESSIONS-CONTENT =Individual and team participation is encouraged to present their ideas, motivating them with additional points in the different stages of the course evaluation.
+READING-SESSIONS               =Reading
+READING-SESSIONS-CONTENT       =Throughout the course different readings are provided, which are evaluated. The average of the notes in the readings is considered as the mark of a qualified practice. The use of the UTEC Online virtual campus allows each student to access the course information, and interact outside the classroom with the teacher and with the other students.
+EVALUATION-SYSTEM     =Evaluation System
+EVALUATION-CONTENT    	 =~
+METHODOLOGY-DESCRIPTION  =~
+NoteT=It consists of the average scores of the individual short exams, rounded up (this note is about 9).
+NoteP=It consists of the average grades of group practice, rounded up (this note is about 9).
+NoteE=It consists of the result of individual effort problems rounded up (this note is about 2).
+
 nocorehours        =No core hours
 corehours	   =Core Hours
-ThisSchool	   =This School
+ThisSchool	   =This School 
 
 AdviceRecCourses		=Se recomienda que el alumno haya llevado
 FreeCreditsAdvice		=More courses (<NFREECREDITS> <CREDITS>) may be added here
@@ -144,11 +201,10 @@ FG => General<ENTER>Knowledge
 10=>th
 </HASH>
 
-<HASH name=learning_outcomes>
-Familiarity=>Familiarity
-Usage=>Usage
-Assessment=>Assessment
-</HASH>
+Familiarity=Familiarity
+Usage=Usage
+Assessment=Assessment
+
 
 <HASH name=labels_per_level>
 1=>Introductory
@@ -165,3 +221,15 @@ POO=>Object Oriented Programming
 ADS=>Systems Analysis and Design
 ADA=>Algorithms Analysis and Design
 </HASH>
+
+Mission=Mission
+Definition=Definition
+
+<HASH name=professor_role_label>
+T=>Lecturer
+L=>Practice
+-=>
+</HASH>
+
+DoctorIn=PhD in
+MasterIn=MSc in

@@ -16,7 +16,7 @@ echo `pwd`
 
 cd $OutputTexDir
 latex $course
-bibtex $course
+biber $course
 latex $course
 latex $course
 dvipdfm -o ../syllabi/$course.pdf $course.dvi 

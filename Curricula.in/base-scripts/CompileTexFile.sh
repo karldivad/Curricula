@@ -9,9 +9,11 @@ set MainFile	= $4   	#i.e BookOfSyllabi
 set OutputFile	= "$5"
 #--END-FILTERS--
 
+
 set current_dir = `pwd`
 echo "current_dir = $current_dir";
 set OutputInstDir=<OUTPUT_INST_DIR>
+echo "CompileTexFile.sh $area $institution latex_prg $MainFile $OutputInstDir"
 
 if( ! -e $OutputInstDir/tex/$MainFile.tex ) then
   echo "**************************************************************************************************************************";
@@ -22,6 +24,8 @@ endif
 
 cd "<OUTPUT_TEX_DIR>";
 set new_dir = `pwd`
+rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
+
 # $current_dir/scripts/clean_temp_files
 
 mkdir -p $current_dir/<OUT_LOG_DIR>;
@@ -41,10 +45,9 @@ rm *.aux  *.log *.toc *.blg *.bbl $MainFile.ps $MainFile.dvi;
 echo "cd $current_dir";
 cd $current_dir;
 
-echo "cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_HTML_DIR>"
-cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_HTML_DIR>;
-echo "File <OUTPUT_HTML_DIR>/$MainFile.pdf generated !";
+echo "cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_HTML_DIR>/."
+cp "<OUTPUT_TEX_DIR>/$MainFile.pdf" <OUTPUT_HTML_DIR>/.;
 
-cp <OUTPUT_TEX_DIR>/$MainFile.pdf "../out/pdfs/$OutputFile.pdf";
-echo "File ../out/pdfs/$OutputFile generated !";
+cp "<OUTPUT_TEX_DIR>/$MainFile.pdf" "<OUTPUT_DIR>/pdfs/$OutputFile.pdf";
+echo "File <OUTPUT_DIR>/pdfs/$OutputFile generated !";
 

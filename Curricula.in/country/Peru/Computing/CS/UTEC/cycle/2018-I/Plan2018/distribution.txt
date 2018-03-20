@@ -1,0 +1,42 @@
+
+% Semester #1 .
+% CS1D01(CS1D1). Estructuras Discretas I (Obligatorio)
+CS1D1->jrenom@utec.edu.pe:T,jfiestas@utec.edu.pe:T
+% CS1100(CS111). Introducción a la Ciencia de la Computación (Obligatorio)
+CS111->ecuadros@utec.edu.pe:T,jbellido@utec.edu.pe:L,jfiestas@utec.edu.pe:L,heider.sanchez.pe@gmail.com:L,tchambilla@utec.edu.pe:L,jbueno@utec.edu.pe:L,pmorriberon@utec.edu.pe:L,rrivas@utec.edu.pe:L,jdiazl@utec.edu.pe:L,kenneth@tektonlabs.com:L,jalvarador@utec.edu.pe:L,mmelgarz@utec.edu.pe:L,rmelgarejo@utec.edu.pe:L
+
+
+% Semester #2 .
+% CS1D02(CS1D2). Estructuras Discretas II (Obligatorio)
+CS1D2->jfiestas@utec.edu.pe:T
+% CS1102(CS112). Programación Orientada a Objetos I (Obligatorio)
+CS112->mbermejo@utec.edu.pe:T,tchambilla@utec.edu.pe:L,ibringas@utec.edu.pe:L,rrivas@utec.edu.pe:L,rmelgarejo@utec.edu.pe:L
+
+
+% Semester #3 .
+% CS2B01(CS2B1). Desarrollo Basado en Plataformas (Obligatorio)
+CS2B1->jbellido@utec.edu.pe:T
+% CS1103(CS113). Programación Orientada a Objetos II (Obligatorio)
+CS113->rrivas@utec.edu.pe:T,ibringas@utec.edu.pe:T
+
+
+% Semester #4 .
+
+
+% Semester #5 .
+
+
+% Semester #6 .
+
+
+% Semester #7 .
+
+
+% Semester #8 .
+
+
+% Semester #9 .
+
+
+% Semester #10 .
+

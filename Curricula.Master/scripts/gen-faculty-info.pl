@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
+use Data::Dumper; 
 use scripts::Lib::Common;
 use scripts::Lib::GenSyllabi;
 
@@ -48,8 +49,15 @@ sub generate_information_4_professor($)
       {
 	    if( not defined($Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} ) )
 	    {	$Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} = "";
-		Util::print_message("> > > > > Professor $email has assigned course $codcour but he is not able to teach that course ... < < < < <");
+		Util::print_warning("Professor $email has assigned course $codcour but he is not able to teach that course ...");
 	    }
+      }
+      
+      foreach $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
+      {		if( not defined($Common::course_info{$codcour}) )
+		{
+		    Util::print_warning("Course $codcour assigned to $email does not exist ..."); 
+		}
       }
       
       foreach $codcour ( sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester}} keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
@@ -132,20 +140,26 @@ sub generate_faculty_info()
 	
 	# 1st verify if all professors have concentration ...
 	my $count_of_errors = 0;
+	my $concentration_rank = 100;
 	foreach $email (keys %{$Common::config{faculty}})
 	{
 	      my $concentration = $Common::config{faculty}{$email}{concentration};
 	      if($concentration eq "" or not defined($Common::config{sort_areas}{$concentration}) )
-	      {		Util::print_message("Professor $email:  I do not recognize this concentration area (\"$concentration\") ...");
+	      {		Util::print_warning("Professor $email:  I do not recognize this concentration area (\"$concentration\") ...");
 			$count_of_errors++;
+			$Common::config{faculty}{$email}{concentration_rank} 	= $concentration_rank;
+			$Common::config{sort_areas}{$concentration} 		= $concentration_rank++;
+	      }
+	      else{
+			$Common::config{faculty}{$email}{concentration_rank} = $Common::config{sort_areas}{$concentration};
 	      }
 	}
 
 	if($count_of_errors > 0)
-	{	Util::print_error("Some professors ($count_of_errors in total) have not concentration area or have invalid ones ...");		}
-
+	{	Util::print_warning("Some professors ($count_of_errors in total) have not concentration area or have invalid ones ...");		}
+	
 	# 2nd sort them by areas, degreelevel, name
-	my @faculty_sorted_by_priority = sort {  ($Common::config{sort_areas}{$Common::config{faculty}{$a}{concentration}} <=> $Common::config{sort_areas}{$Common::config{faculty}{$b}{concentration}}) ||
+	my @faculty_sorted_by_priority = sort {  ($Common::config{faculty}{$a}{concentration_rank} <=> $Common::config{faculty}{$b}{concentration_rank}) ||
 			     ($Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}) ||
 			     ($Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name})
 			  } keys %{$Common::config{faculty}};
@@ -169,7 +183,14 @@ sub generate_faculty_info()
 # 			     ($Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}) ||
 # 			     ($Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name})
 # 			  } keys %{$Common::config{faculty}};
-			  
+	  
+# 	print Dumper (\%{$Common::config{faculty_groups}});
+	foreach $concentration (keys %{$Common::config{faculty_groups}})
+	{
+	      if(not defined($Common::config{sort_areas}{$concentration}) ) 
+	      {		Util::print_warning("Concentration area \"$concentration\" not defined ...");		}
+	}
+	
 	my $index_of_professors = "<table border=\"1\" align=\"center\">\n";
 	foreach $concentration (sort {$Common::config{sort_areas}{$a} <=> $Common::config{sort_areas}{$b}} keys %{$Common::config{faculty_groups}})
  	{	$index_of_professors .= "<th>$concentration</th>\n";		}
@@ -234,33 +255,48 @@ sub generate_link_for_courses()
       
       for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
       {
-	    foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	    {
-		  if(not $Common::config{area_priority}{$Common::course_info{$codcour}{area}})
-		  {
-			Util::print_warning("I do not find Common::config{area_priority}{$Common::course_info{$codcour}{area}}");
-		  }
-	    }
-	    foreach my $codcour (sort {$Common::config{area_priority}{$Common::course_info{$a}{area}} <=> $Common::config{area_priority}{$Common::course_info{$b}{area}}}  @{$Common::courses_by_semester{$semester}})
+	    my $codcour = "";
+# 	    foreach $codcour (@{$Common::courses_by_semester{$semester}})
+# 	    {
+# 		  if(defined($Common::antialias_info{$codcour}))
+# 		  {	$codcour = $Common::antialias_info{$codcour}	}
+# 		  if(not $Common::config{prefix_priority}{$Common::course_info{$codcour}{area}})
+# 		  {
+# 			Util::print_warning("I do not find Common::config{prefix_priority}{$Common::course_info{$codcour}{area}} ... See CS-All.config to add it");
+# 			print Dumper(\%{$Common::config{prefix_priority}}); exit;
+# 		  }
+# 	    }
+	    
+# 	    foreach $codcour (@{$Common::courses_by_semester{$semester}})
+	    foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 	    {
 		  if(defined($Common::antialias_info{$codcour}))
 		  {	$codcour = $Common::antialias_info{$codcour}	}
 		  my $alias = Common::get_alias($codcour);
 		  my $link = "";
-# 		                <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
-		  
-		  if( $html_file =~ m/<A(?:.|\n)*?HREF="(.*?)".*?$codcour\. $Common::course_info{$codcour}{course_name} \($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}\).*?<\/A>/)
+#                 <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
+
+		  $Common::course_info{$codcour}{link} = "";
+# 		  <A NAME="tex2html972"
+#   HREF="5_65_CS3P2_Cloud_Computing_.html"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">65</SPAN> CS3P2. Cloud Computing (Obligatorio)</A>
+		  #print Dumper(\$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}});
+		  my $courselabel = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} \\($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}\\)";
+		  printf("Searching link for: %-s. ", $courselabel);
+		  if( $html_file =~ m/HREF="(.*?)">(.*?)$courselabel<\/A>/g)
 		  {
 			$link = $1;
 			$Common::course_info{$codcour}{link} = $link;
-			#Util::print_message("$codcour. $Common::course_info{$codcour}{course_name} ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}})=>$link");
+			
+			print "$link";
 # 			Util::print_message("codcour=$codcour ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}), link = $link");
 		  }
 		  else
-		  {	Util::print_error("I did not find a link for course $codcour ... (see $html_index file ...)");	  
+		  {	Util::print_soft_error("Not found ($Common::course_info{$codcour}{semester} Sem) ... ");
 		  }
+		  print "\n";
 	    }
       }
+      print "\n";
 }
 
 sub main()

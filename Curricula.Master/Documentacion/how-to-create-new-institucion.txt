@@ -4,7 +4,7 @@
      * syllabus-delivery-control.tex
      * institution-info.tex,
      * ack.tex
-- Configurar datos de la institución (in/country.Peru/CS-SPC/institution-info.tex)
+- Configurar datos de la instituciÃ³n (in/country.Peru/CS-SPC/institution-info.tex)
 - Copiar el ./in/country.Peru/logos/SPC.eps
 - Crear el ./in/country.Peru/logos/SPC.jpg
 - Crear el ./in/country.Peru/logos/SPC-small.eps

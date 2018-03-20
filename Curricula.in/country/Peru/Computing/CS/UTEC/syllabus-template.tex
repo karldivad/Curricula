@@ -1,6 +1,20 @@
 \documentclass[final]{article}
+% This file was generated based on: --SOURCE_FILE_NAME--
 \input{current-institution}
+\usepackage[utf8]{inputenc} 
+% \usepackage[--lang--]{babel}
+\usepackage{ae}
+\usepackage{csquotes}
 \usepackage{\InStyAllDir/syllabus-final}
+\input{\InLangBaseDir/--LANG--/--AREA--.tex/outcomes-macros}
+\usepackage{\InLangBaseDir/--LANG--/--AREA--.sty/bok-macros} 				% Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
+% \usepackage{\InStyDir/bok-macros} 							% Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
+
+\usepackage{enumitem} 
+% \usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\usepackage[style=alphabetic]{biblatex}
+% \bibliographystyle{apalike}
+\addbibresource{--BIBFILE--}
 
 \newcommand{\INST}{}
 \newcommand{\AREA}{}
@@ -12,78 +26,95 @@
 &
 \begin{minipage}{0.75\textwidth}
 \begin{center}
-{\noindent\Large\bf\University\\ \SchoolFullNameBreak \\SILABO}
-\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+{\noindent\Large\bf\University--LANG--\\
+\SchoolFullNameBreak--LANG-- \\
+<<SyllabusofCourse>> -- <<AcademicPeriod>> \Semester}
+
+% \section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+\section*{}\label{sec:--COURSE_CODE--}%
 \addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 \end{center}
 \end{minipage}
 \end{tabularx}
 
 \addtocounter{SyllabiSectionCount}{1}
-
-\noindent \Semester
-\begin{center}
-\begin{tabularx}{\textwidth}{|p{5cm}cX|}\hline
-\multicolumn{3}{|l|}{{\bf \arabic{SyllabiSectionCount}. DATOS GENERALES}}                \\ \hline
-\arabic{SyllabiSectionCount}.1 <<SCHOOL>>     	& : & \SchoolShortName           \\
-\arabic{SyllabiSectionCount}.2 <<COURSE>>       & : & --COURSE_CODE--. --COURSE_NAME-- \\
-\arabic{SyllabiSectionCount}.3 <<SEMESTER>>     & : & --SEMESTER--          \\
-\arabic{SyllabiSectionCount}.4 <<PREREQUISITES>>& : & --PREREQUISITES--     \\
-\arabic{SyllabiSectionCount}.5 <<TYPE>>         & : & --COURSE_TYPE--              \\
-\arabic{SyllabiSectionCount}.6 <<HOURS>>        & : & --HOURS--          \\ 
-\arabic{SyllabiSectionCount}.7 <<CREDITS>>      & : & --CREDITS--          \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<CourseCodeandName>>:} --COURSE_CODE--. --COURSE_NAME-- \label{sec:--COURSE_CODE--}
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. DOCENTE}\\ \hline
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Credits>>:} --CREDITS--
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<HoursTheoryAndLab>>:} --HOURS--
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Professor>>}\\
 --PROFESSOR_SHORT_CVS--
-\\ \hline
-\end{tabularx}
-\end{center}
+<<AttentionwithAppointment>>
+
+\addtocounter{SyllabiSectionCount}{1} {\noindent\bf \arabic{SyllabiSectionCount}. <<Bibliography>>}
+\defbibheading{bibliography}[\bibname]{}
+\printbibliography
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. FUNDAMENTACIÓN DEL CURSO}        \\ \hline
---JUSTIFICATION--                  \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<InformationAbouttheCourse>>}
+\begin{enumerate}[label=(\alph*)]
+\item {\bf <<BriefDescription>>}
+--JUSTIFICATION--
+ 
+\item {\bf <<Prerequisites>>:}
+--PREREQUISITES--
+ 
+\item {\bf <<TypeOfCourse>>:} --COURSE_TYPE--
+\end{enumerate}
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. SUMILLA}                         \\ \hline
---SHORT_DESCRIPTION--                         \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Competences>>}
+--FULL_GOALS--
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. OBJETIVO GENERAL}                \\ \hline
---GOAL--                 \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<ContributionToOutcomes>>}
+--FULL_OUTCOMES--
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. CONTRIBUCIÓN A LA FORMACIÓN PROFESIONAL Y FORMACIÓN GENERAL} \\ \hline
-\ContribInitMsg:
---OUTCOMES--\\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<CompetencesIEEE>>}
+\begin{description}
+--COMPETENCES_ITEMS--
+\end{description}
 
 
 \addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-{\bf \arabic{SyllabiSectionCount}. CONTENIDOS}                      \\ \hline
-\end{tabularx}
-\end{center}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<ListOfTopics>>}
+\begin{enumerate}
+--LIST_OF_TOPICS--
+\end{enumerate}
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<MethodologyAndEvaluation>>}\\
+\begin{evaluation}
+{\noindent\bf <<Methodology>>}:\\
+
+\vspace{2mm}
+{\noindent\bf <<THEORY-SESSIONS>>:}\\
+<<THEORY-SESSIONS-CONTENT>>
+
+\vspace{2mm}
+{\noindent\bf <<LAB-SESSIONS>>:}\\
+<<LAB-SESSIONS-CONTENT>>
+
+\vspace{2mm}
+{\noindent\bf <<ORAL-SESSIONS>>:}\\
+<<ORAL-SESSIONS-CONTENT>>
+
+\vspace{2mm}
+{\noindent\bf <<READING-SESSIONS>>:}\\
+<<READING-SESSIONS-CONTENT>>
+
+{\noindent\bf <<EVALUATION-SYSTEM>>:}\\
+<<EVALUATION-CONTENT>>
+\end{evaluation}
+
+\addtocounter{SyllabiSectionCount}{1}
+{\noindent\bf \arabic{SyllabiSectionCount}. <<Content>>}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{SyllabiUnitCount}{0}
@@ -92,16 +123,16 @@
 \addtocounter{SyllabiUnitCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|X|}                 \hline
-\multicolumn{2}{|l|}{{\bf <<UNIT>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
-\multicolumn{2}{|l|}{{\bf Nivel Bloom: --BLOOM_LEVEL--}} \\ \hline
-{\bf OBJETIVO GENERAL}  & {\bf CONTENIDO}                    \\ \hline
+\multicolumn{2}{|l|}{{\bf <<Unit>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--)}} \\ \hline
+\multicolumn{2}{|l|}{{\bf <<CompetencesExpected>>: --LEVEL_OF_COMPETENCE--}} \\ \hline
+{\bf <<LearningOutcomes>>}  & {\bf <<Topics>>}                    \\ \hline
 --UNIT_GOAL--
 & 
 --UNIT_CONTENT--
 \\ \hline
 \multicolumn{2}{|l|}
 {\begin{minipage}{0.95\textwidth}
-{\bf Lecturas:} --CITATIONS--
+{\bf <<Readings>> :} --CITATIONS--
 \end{minipage}
 }
 \\ \hline
@@ -109,37 +140,5 @@
 \end{center}
 
 --ENDUNIT--
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-\arabic{SyllabiSectionCount}. METODOLOGÍA  \\ \hline
-\begin{evaluation}
-	\item El profesor del curso presentará clases teóricas de los temas señalados en el programa propiciando la intervención de los alumnos. 
-	\item El profesor del curso presentará demostraciones para fundamentar clases teóricas.
-	\item El profesor y los alumnos realizarán prácticas
-	\item Los alumnos deberán asistir a clase habiendo leído lo que el profesor va a presentar. 
-	De esta manera se facilitará la comprensión y los estudiantes estarán en mejores condiciones de hacer consultas en clase.
-\end{evaluation}
-\\ \hline
-\end{tabularx}
-\end{center}
-
-\addtocounter{SyllabiSectionCount}{1}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|}      \hline
-\arabic{SyllabiSectionCount}. EVALUACIONES  \\ \hline
-\begin{evaluation}
-	\item[Evaluación Permanente 1] : 20 \%
-	\item[Examen Parcial] : 30 \%
-	\item[Evaluación Permanente 2] : 20 \%
-	\item[Examen Final] : 30 \%
-\end{evaluation}
-\\ \hline
-\end{tabularx}
-\end{center}
-
-\bibliographystyle{apalike}
-\bibliography{--BIBFILE--}
 \end{document}

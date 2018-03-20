@@ -15,120 +15,120 @@ digraph curricula
 	"1er Sem (22 cr)"->"2do Sem (22 cr)"->"3er Sem (22 cr)"->"4to Sem (21 cr)"->"5to Sem (22 cr)"->"6to Sem (22 cr)"->"7mo Sem (22 cr)"->"8vo Sem (22 cr)"->"9no Sem (22 cr)"->"10mo Sem (22 cr)";												
 													
 													
-	"HU010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU010. Introducción\na la Vida\nUniversitaria|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"IS011" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cornflowerblue, label="{IS011. Metodología\ndel Estudio|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"IS010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cornflowerblue, label="{IS010. Comunicación|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];												
-	"MA010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA010. Matemáticas|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SC010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC010. Introducción a la Ingeniería|{{HT:1|HP:2|TH: 3}|{Obligatorio|2 Créditos|  }}}"];												
-	"MA011" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA011. Algebra y Geometría|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"IC010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC010. Programación I|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
+	"HU010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU010. IntroducciÃ³n\na la Vida\nUniversitaria|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"IS011" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cornflowerblue, label="{IS011. MetodologÃ­a\ndel Estudio|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"IS010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=cornflowerblue, label="{IS010. ComunicaciÃ³n|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"MA010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA010. MatemÃ¡ticas|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SC010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC010. IntroducciÃ³n a la IngenierÃ­a|{{HT:1|HP:2|TH: 3}|{Obligatorio|2 CrÃ©ditos|  }}}"];												
+	"MA011" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA011. Algebra y GeometrÃ­a|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"IC010" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC010. ProgramaciÃ³n I|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"FI020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=khaki1, label="{FI020. Física I|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"MA020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA020. Cálculo en una Variable|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"MA021" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA021. Algebra Lineal|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"IC020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC020. Programación II|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"EL020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL020. Circuitos Eléctricos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"HU023" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU023. Apreciación Artistica|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];												
-	"HU024" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU024. Apreciación Literaria|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];												
-	"HU021" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU021. Apreciación Musical|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];												
-	"HU020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU020. Teatro|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];												
-	"HU022" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU022. Persona, Matrominio y Familia|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];												
-	"HU025" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU025. Liderazgo|{{HT:1|HP:2|TH: 3}|{Electivo|2 Créditos|  }}}"];												
+	"FI020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=khaki1, label="{FI020. FÃ­sica I|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"MA020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA020. CÃ¡lculo en una Variable|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"MA021" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA021. Algebra Lineal|{{HT:1|HP:4|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"IC020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC020. ProgramaciÃ³n II|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"EL020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL020. Circuitos ElÃ©ctricos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"HU023" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU023. ApreciaciÃ³n Artistica|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];												
+	"HU024" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU024. ApreciaciÃ³n Literaria|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];												
+	"HU021" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU021. ApreciaciÃ³n Musical|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];												
+	"HU020" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU020. Teatro|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];												
+	"HU022" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU022. Persona, Matrominio y Familia|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];												
+	"HU025" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU025. Liderazgo|{{HT:1|HP:2|TH: 3}|{Electivo|2 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"HU030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU030. Introducción a la Filosofía|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"MA031" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA031. Ecuaciones Diferenciales |{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"FI030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=khaki1, label="{FI030. Física II|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"MA030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA030. Cálculo en Varias Variables|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"EL030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL030. Electrónica Digital|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"EL031" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL031. Circuitos Electrónicos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
+	"HU030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU030. IntroducciÃ³n a la FilosofÃ­a|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"MA031" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA031. Ecuaciones Diferenciales |{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"FI030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=khaki1, label="{FI030. FÃ­sica II|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"MA030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA030. CÃ¡lculo en Varias Variables|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"EL030" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL030. ElectrÃ³nica Digital|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"EL031" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL031. Circuitos ElectrÃ³nicos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"MA040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA040. Probabilidad y Variable Aleatoria|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"IC040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC040. Arquitectura de Computadoras|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"FI040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=khaki1, label="{FI040. Campos Electromagnéticos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SN040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN040. Señales y Sistemas |{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"TE040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE040. Redes de Acceso y Medio Compartido|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"HU040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU040. Antropología Filosófica y Teológica|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
+	"MA040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gray72, label="{MA040. Probabilidad y Variable Aleatoria|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"IC040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC040. Arquitectura de Computadoras|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"FI040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=khaki1, label="{FI040. Campos ElectromagnÃ©ticos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SN040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN040. SeÃ±ales y Sistemas |{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"TE040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE040. Redes de Acceso y Medio Compartido|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"HU040" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU040. AntropologÃ­a FilosÃ³fica y TeolÃ³gica|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"HU051" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU051. Historia de la Cultura Occidental I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"SN050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN050. Sistemas Lineales|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"TD050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gold, label="{TD050. Tratamiento de la Información|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"HU050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU050. Lógica y Gnoseología|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"IC050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC050. Microprocesadores y Microcontroladores|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"CA050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA050. Electrónica Industrial|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
+	"HU051" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU051. Historia de la Cultura Occidental I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"SN050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN050. Sistemas Lineales|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"TD050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gold, label="{TD050. Tratamiento de la InformaciÃ³n|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"HU050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU050. LÃ³gica y GnoseologÃ­a|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"IC050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=grey72, label="{IC050. Microprocesadores y Microcontroladores|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"CA050" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA050. ElectrÃ³nica Industrial|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"TE060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE060. Redes de Ordenadores|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SN060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN060. Comunicación Digitales|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SN061" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN061. Tratamiento Digital de Señales|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"RF060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=magenta4, label="{RF060. Electrónica de Comunicaciones|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"HU060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU060. Teología I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"HU061" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU061. Historia de la Cultura Occidental II|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
+	"TE060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE060. Redes de Ordenadores|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SN060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN060. ComunicaciÃ³n Digitales|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SN061" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN061. Tratamiento Digital de SeÃ±ales|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"RF060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=magenta4, label="{RF060. ElectrÃ³nica de Comunicaciones|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"HU060" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU060. TeologÃ­a I|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"HU061" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU061. Historia de la Cultura Occidental II|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"CA070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA070. Sistemas de Control|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SN071" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN071. Tratamiento de Señales Multimedia|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"RF070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=magenta4, label="{RF070. Alta Frecuencia|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SC070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC070. Sistemas de Telecomunicaciones|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SE070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=coral, label="{SE070. Regulación y Política de Telecomunicaciones|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];												
-	"HU070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU070. Moral|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
+	"CA070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA070. Sistemas de Control|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SN071" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=crimson, label="{SN071. Tratamiento de SeÃ±ales Multimedia|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"RF070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=magenta4, label="{RF070. Alta Frecuencia|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SC070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC070. Sistemas de Telecomunicaciones|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SE070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=coral, label="{SE070. RegulaciÃ³n y PolÃ­tica de Telecomunicaciones|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"HU070" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU070. Moral|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"TE080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE080. Aplicaciones y Servicios de Redes|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"EL080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL080. Sistemas Optoelectrónicos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SC080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC080. Comunicaciones Inalámbricas|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"IN080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green3, label="{IN080. Metodología de la Investigación|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];												
-	"HU080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU080. Análisis de la Realidad Peruana|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"RF080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=magenta4, label="{RF080. Antenas y Propagación|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
+	"TE080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE080. Aplicaciones y Servicios de Redes|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"EL080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL080. Sistemas OptoelectrÃ³nicos|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SC080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC080. Comunicaciones InalÃ¡mbricas|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"IN080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green3, label="{IN080. MetodologÃ­a de la InvestigaciÃ³n|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"HU080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU080. AnÃ¡lisis de la Realidad Peruana|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"RF080" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=magenta4, label="{RF080. Antenas y PropagaciÃ³n|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"HU090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU090. Enseñanza Social de la Iglesia|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"TE090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE090. Conmutación Planificación y Getión de Redes|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"CA090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA090. Control y Automatización|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"SC090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC090. Comunicaciones Móviles y Satelitales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];												
-	"TD090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gold, label="{TD090. Introducción al Aprendizaje Máquina|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
-	"IN090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green3, label="{IN090. Proyecto de Tesis I|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 Créditos|  }}}"];												
+	"HU090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU090. EnseÃ±anza Social de la Iglesia|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"TE090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE090. ConmutaciÃ³n PlanificaciÃ³n y GetiÃ³n de Redes|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"CA090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA090. Control y AutomatizaciÃ³n|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"SC090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=lightpink, label="{SC090. Comunicaciones MÃ³viles y Satelitales|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"TD090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gold, label="{TD090. IntroducciÃ³n al Aprendizaje MÃ¡quina|{{HT:2|HP:2|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
+	"IN090" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green3, label="{IN090. Proyecto de Tesis I|{{HT:2|HP:4|TH: 6}|{Obligatorio|4 CrÃ©ditos|  }}}"];												
 													
 													
 													
 													
 													
-	"HU100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU100. Etica Profesional|{{HT:3|HP:|TH: 3}|{Obligatorio|3 Créditos|  }}}"];												
-	"SE101" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=coral, label="{SE101. El Negocio de Empresas de Base Tecnológica|{{HT:1|HP:2|TH: 3}|{Obligatorio|2 Créditos|  }}}"];												
-	"EL100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL100. Enertrónica|{{HT:1|HP:2|TH: 5}|{Electivo|3 Créditos|  }}}"];												
-	"CA100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA100. Robótica|{{HT:1|HP:2|TH: 5}|{Electivo|3 Créditos|  }}}"];												
-	"TD100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gold, label="{TD100. Tratamiento de Datos|{{HT:1|HP:2|TH: 5}|{Electivo|3 Créditos|  }}}"];												
-	"SE100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=coral, label="{SE100. Economía y Proyectos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 Créditos|  }}}"];												
-	"TE100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE100. Sistemas Operativos Distribuidos y Servidores|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"CA100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA100. Comunicaciones Industriales|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 Créditos|  }}}"];												
-	"IN100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green3, label="{IN100. Proyecto de Tesis II|{{HT:2|HP:6|TH: 8}|{Obligatorio|5 Créditos|  }}}"];												
+	"HU100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=aquamarine, label="{HU100. Etica Profesional|{{HT:3|HP:|TH: 3}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"SE101" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=coral, label="{SE101. El Negocio de Empresas de Base TecnolÃ³gica|{{HT:1|HP:2|TH: 3}|{Obligatorio|2 CrÃ©ditos|  }}}"];												
+	"EL100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=red, label="{EL100. EnertrÃ³nica|{{HT:1|HP:2|TH: 5}|{Electivo|3 CrÃ©ditos|  }}}"];												
+	"CA100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA100. RobÃ³tica|{{HT:1|HP:2|TH: 5}|{Electivo|3 CrÃ©ditos|  }}}"];												
+	"TD100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=gold, label="{TD100. Tratamiento de Datos|{{HT:1|HP:2|TH: 5}|{Electivo|3 CrÃ©ditos|  }}}"];												
+	"SE100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=coral, label="{SE100. EconomÃ­a y Proyectos|{{HT:2|HP:2|TH: 4}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"TE100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=darkolivegreen, label="{TE100. Sistemas Operativos Distribuidos y Servidores|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"CA100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=dodgerblue4, label="{CA100. Comunicaciones Industriales|{{HT:1|HP:2|TH: 5}|{Obligatorio|3 CrÃ©ditos|  }}}"];												
+	"IN100" [shape=record,width=2.3,fontsize=14,height=1.8,fixedsize=true,fontcolor=black,color=white,style=filled,peripheries=2, fillcolor=green3, label="{IN100. Proyecto de Tesis II|{{HT:2|HP:6|TH: 8}|{Obligatorio|5 CrÃ©ditos|  }}}"];												
 													
 												
 													
@@ -137,7 +137,7 @@ digraph curricula
 													
 	{ rank = same; "1er Sem (22 cr)";"HU010"; "IS011"; "IS010"; "MA010"; "SC010"; "MA011"; "IC010";  }												
 	{ rank = same; "2do Sem (22 cr)";"FI020"; "MA020"; "MA021"; "IC020"; "EL020"; "HU023"; "HU024"; "HU021"; "HU020"; "HU022"; "HU025";  }												
-	{ rank = same; "3er Sem (Créditos cr)";"HU030"; "MA031"; "FI030"; "MA030"; "EL030"; "EL031";  }												
+	{ rank = same; "3er Sem (CrÃ©ditos cr)";"HU030"; "MA031"; "FI030"; "MA030"; "EL030"; "EL031";  }												
 	{ rank = same; "4to Sem (4 cr)";"MA040"; "IC040"; "FI040"; "SN040"; "TE040"; "HU040";  }												
 	{ rank = same; "5to Sem (4 cr)";"HU051"; "SN050"; "TD050"; "HU050"; "IC050"; "CA050";  }												
 	{ rank = same; "6to Sem (3 cr)";"TE060"; "SN060"; "SN061"; "RF060"; "HU060"; "HU061";  }												
@@ -179,7 +179,7 @@ digraph curricula
 	MA020->MA031;	MA021->MA031;											
 	FI020->FI030;												
 	MA020->MA030;												
-	IC010->EL030;	EL020->EL030;		"Inglés(200)"[shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled]; "Inglés(200)"->EL030;									
+	IC010->EL030;	EL020->EL030;		"InglÃ©s(200)"[shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled]; "InglÃ©s(200)"->EL030;									
 	EL020->EL031;												
 													
 													
@@ -199,7 +199,7 @@ digraph curricula
 													
 													
 	SN040->SN050;	MA031->SN050;											
-	MA040->TD050;			"Inglés(300)"[shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled]; "Inglés(300)"->TD050;									
+	MA040->TD050;			"InglÃ©s(300)"[shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled]; "InglÃ©s(300)"->TD050;									
 	HU030->HU050;												
 	IC040->IC050;												
 	EL031->CA050;												
@@ -222,7 +222,7 @@ digraph curricula
 	CA050->CA070;	SN050->CA070;											
 	SN061->SN071;												
 	FI040->RF070;	RF060->RF070;											
-	TE060->SC070;			"Inglés(400)"[shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled]; "Inglés(400)"->SC070;									
+	TE060->SC070;			"InglÃ©s(400)"[shape=polygon,sides=4,peripheries=2,color=lightblue,style=filled]; "InglÃ©s(400)"->SC070;									
 	TE040->SE070;												
 	HU070->HU070;	HU050->HU070;											
 													
