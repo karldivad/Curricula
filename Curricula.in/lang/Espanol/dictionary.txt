@@ -124,11 +124,11 @@ BibliographySection=Referencias Bibliográficas
 MethodologyAndEvaluation=Metodologia y Evaluación
 Methodology		=Metodología
 THEORY-SESSIONS     =Sesiones Teóricas
-THEORY-SESSIONS-CONTENT =El desarrollo de las sesiones teóricas está focalizado en el estudiante, a través de su participación activa, resolviendo problemas relacionados al curso con los aportes individuales y discutiendo casos reales de la industria. Los alumnos desarrollarán a lo largo del curso un proyecto de aplicación de las herramientas recibidas en una empresa.
+THEORY-SESSIONS-CONTENT =Las sesiones de teoría se llevan a cabo en clases magistrales donde se realizarán actividades que propicien un aprendizaje activo, con dinámicas que permitan a los estudiantes interiorizar los conceptos.
 LAB-SESSIONS           =Sesiones de Laboratorio
-LAB-SESSIONS-CONTENT    =Las sesiones prácticas se desarrollan en laboratorio. Las prácticas de laboratorio se realizan en equipos para fortalecer su comunicación. Al inicio de cada laboratorio se explica el desarrollo de la práctica y al término se destaca las principales conclusiones de la actividad en forma grupal.
-ORAL-SESSIONS    =Exposiciones individuales o grupales
-ORAL-SESSIONS-CONTENT =Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso.
+LAB-SESSIONS-CONTENT    =Para verificar que los alumnos hayan alcanzado el logro planteado para cada una de las unidades de aprendizaje, realizarán actividades que les permita aplicar los conocimientos adquiridos durante las sesiones de teoría y se les propondrá retos que permitan evaluar el desempeño de los alumnos.
+ORAL-SESSIONS           =Exposiciones individuales o grupales
+ORAL-SESSIONS-CONTENT   =Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso.
 READING-SESSIONS         =Lecturas
 READING-SESSIONS-CONTENT =A lo largo del curso se proporcionan diferentes lecturas, las cuales son evaluadas. El promedio de las notas de las lecturas es considerado como la nota de una práctica calificada. El uso del campus virtual UTEC Online permite a cada estudiante acceder a la información del curso, e interactuar fuera de aula con el profesor y con los otros estudiantes.
 EVALUATION-SYSTEM        =Sistema de Evaluación
@@ -234,3 +234,8 @@ L=>Laboratorio
 
 DoctorIn=Doctor en
 MasterIn=Master en
+
+Modality=Modalidad
+FaceToFace=Presencial
+Blended=Semipresencial (Blended)
+Virtual=Virtual

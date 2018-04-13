@@ -65,3 +65,11 @@ convert ../../Curricula-Peru/AllPeru-creacion.ps ../../Curricula-Peru/AllPeru-cr
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1D02
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS2B01
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS2201
+
+cp Common.pm Common.pm.backup
+cp GeneralInfo.pm GeneralInfo.pm.backup
+cp GenSyllabi.pm GenSyllabi.pm.backup
+
+cp Common.pm.backup      Common.pm
+cp GeneralInfo.pm.backup GeneralInfo.pm
+cp GenSyllabi.pm.backup  GenSyllabi.pm

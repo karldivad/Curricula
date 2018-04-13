@@ -235,11 +235,10 @@ sub read_syllabus_info($$$)
 	my $sep    = "";
 	if(defined($Common::antialias_info{$codcour}))
 	{	$codcour = $Common::antialias_info{$codcour}	}
-	my $codcour_alias = Common::get_alias($codcour);
-	if(defined($Common::config{distribution}{$codcour_alias}))
+	if(defined($Common::config{distribution}{$codcour}))
 	{
 		foreach my $role (sort {$Common::professor_role_order{$a} <=> $Common::professor_role_order{$b} } 
-		                   keys %{$Common::config{distribution}{$codcour_alias}})
+		                   keys %{$Common::config{distribution}{$codcour}})
 		{                   
 		      my $count = 0;
 		      my $PROFESSOR_SHORT_CVS = "";
@@ -247,9 +246,9 @@ sub read_syllabus_info($$$)
 						$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
 						$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
 					      }
-					keys %{$Common::config{distribution}{$codcour_alias}{$role}})
+					keys %{$Common::config{distribution}{$codcour}{$role}})
 		      {		
-			      #Util::print_warning("$codcour_alias: $role $email, $Common::config{faculty}{$email}{fields}{degreelevel}, $Common::config{faculty}{$email}{fields}{dedication}, $Common::config{faculty}{$email}{fields}{name}");
+			      #Util::print_warning("$codcour: $role $email, $Common::config{faculty}{$email}{fields}{degreelevel}, $Common::config{faculty}{$email}{fields}{dedication}, $Common::config{faculty}{$email}{fields}{name}");
 			      #print Dumper(\%{$Common::config{faculty}{$email}{fields}});
 # 			      if(defined($Common::config{faculty}{$email}{fields}{name}))
 # 			      {	
@@ -277,7 +276,7 @@ sub read_syllabus_info($$$)
 	}
 	else
 	{
- 		Util::print_soft_error("There is no professor assigned to $codcour ($codcour_alias) (Sem #$Common::course_info{$codcour}{semester})");
+ 		Util::print_soft_error("There is no professor assigned to $codcour (Sem #$Common::course_info{$codcour}{semester})");
 	}
 	$Common::course_info{$codcour}{docentes_names}  	= $map{PROFESSOR_NAMES};
 	$Common::course_info{$codcour}{docentes_titles}  	= $map{PROFESSOR_TITLES};
@@ -458,9 +457,7 @@ sub generate_tex_syllabi_files()
 	my $OutputTexDir = Common::get_template("OutputTexDir");
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax}; $semester++)
 	{
-		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-                foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}} 
-                                         @{$Common::courses_by_semester{$semester}})
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
 			my $codcour_label = Common::get_label($codcour);
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
@@ -536,9 +533,9 @@ sub gen_batch_to_compile_syllabi()
 
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax}; $semester++)
 	{
-		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		$output .= "#Semester #$semester\n";
-		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		#foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
 			my $codcour_label = Common::get_label($codcour);
 			$output .= "if(\$course == \"$codcour\" || \$course == \"$codcour_label\" || \$course == \"all\") then\n";
@@ -604,13 +601,14 @@ sub gen_book($$$$)
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
 		$output_tex .= get_hidden_chapter_info($semester);
-		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		#foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
+		#		      @{$Common::courses_by_semester{$semester}})
 		{
 		    my $codcour_label = Common::get_label($codcour);
 		    #-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
-		    $output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}},$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}}]";
-		    $output_tex .= "{$prefix$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}$postfix}\n";
+		    $output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,{$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}},$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}}]";
+		    $output_tex .= "{$prefix$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}$postfix}\n";
 		    $count++;
 		}
 		$output_tex .= "\n";
@@ -632,11 +630,11 @@ sub gen_book_of_descriptions($)
 	      foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 	      {
 		      #Util::print_message("codcour = $codcour    ");
-		      my $codcour_label = Common::get_label($codcour);
-		      my $sec_title = "$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
+		      #my $codcour_label = Common::get_label($codcour);
+		      my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
   # 			$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
   # 			$sec_title 	.= "$Common::config{dictionary}{Semester})";
-		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour_label}\n";
+		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
 		      $output_tex .= "$Common::course_info{$codcour}{$lang}{justification}{txt}\n\n";
 		      $count++;
 	      }
@@ -656,12 +654,12 @@ sub gen_list_of_units_by_course()
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
 		$output_tex .= get_hidden_chapter_info($semester);
-		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-                foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+                #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
-			my $codcour_label 	= Common::get_label($codcour);
+			#my $codcour_label 	= Common::get_label($codcour);
 			my $i = 0;
-			my $sec_title = "$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
+			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
  			#$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
  			#$sec_title 	.= "$Common::config{dictionary}{Semester})";
 			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
@@ -713,8 +711,9 @@ sub gen_book_of_bibliography($)
       for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
       {
 	      $output_tex .= get_hidden_chapter_info($semester);
-	      #foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	      foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
+	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+	      #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
+		#		  @{$Common::courses_by_semester{$semester}})
 	      {
 		      # print "codcour=$codcour ...\n";
 		      my $bibfiles = $Common::course_info{$codcour}{short_bibfiles};
@@ -753,16 +752,17 @@ sub generate_syllabi_include()
                 $output_tex .= "\n";
                 $output_tex .= "\\addcontentsline{toc}{section}{$Common::config{dictionary}{semester_ordinal}{$semester} ";
                 $output_tex .= "$Common::config{dictionary}{Semester}}\n";
-                foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
-			    @{$Common::courses_by_semester{$semester}})
+#               foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
+# 					  @{$Common::courses_by_semester{$semester}})
+		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
                 {
-		    my $codcour_label = Common::get_label($codcour);
+		    #my $codcour_label = Common::get_label($codcour);
 		    my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
 		    system("cp $course_fullpath $OutputTexDir/.");
 		    Util::print_message("cp $course_fullpath $OutputTexDir/.");
 		    $course_fullpath =~ s/(.*)\.tex/$1/g;
 		    $output_tex .= "$newpage\\input{$OutputTexDir/$codcour}";
-		    $output_tex .= "% $codcour_label $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
+		    $output_tex .= "% $codcour $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
 		    $ncourses++;
 		    $newpage = "\\newpage";
                 }
@@ -780,8 +780,9 @@ sub gen_course_general_info()
 	
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
-		#foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-                foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+                #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
+		#		      @{$Common::courses_by_semester{$semester}})
 		{
 			my $normal_header   = "\\begin{itemize}\n";
 

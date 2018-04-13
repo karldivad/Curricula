@@ -60,6 +60,7 @@ mkdir -p <OUT_LOG_DIR>
 
 if($pdf == 1) then
       # latex -interaction=nonstopmode <MAIN_FILE>
+      ./scripts/clean.sh
       latex <MAIN_FILE>;
       #bibtex <MAIN_FILE>1;
       

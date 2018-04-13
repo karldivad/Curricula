@@ -29,8 +29,8 @@
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Algoritmos}{Pontificia Universidad Católica del Perú}{Perú}{2001}
 	\Master{Espanol}{Educación}{Docencia en Educación Superior}{Game Based Learning}{Universidad Nacional Andrés Bello}{Chile}{2012}
-	\Master{Espanol}{MBA}{Administración y Dirección de Empresas}{}{Universitat Politécnica de Catalunya -UPC}{España}{2001}
-	\Master{Espanol}{MBA}{Administración y Dirección de Empresas}{}{Escuela de Postgrado de la Universidad Peruana de Ciencias Aplicadas-UPC}{Perú}{2004}
+	\Master{Espanol}{Administración de Empresas}{Administración y Dirección de Empresas}{}{Universitat Politécnica de Catalunya -UPC}{España}{2001}
+	\Master{Espanol}{Administración de Empresas}{Administración y Dirección de Empresas}{}{Escuela de Postgrado de la Universidad Peruana de Ciencias Aplicadas-UPC}{Perú}{2004}
 	\Master{English}{Computing}{Computer Science}{Algorithms}{Pontificia Universidad Católica del Perú}{Perú}{2001}
 	\Master{English}{Education}{Teaching in higher Education}{Game Based Learning}{Universidad Nacional Andrés Bello}{Chile}{2012}
 	\Master{English}{MBA}{Business Administration and Management}{}{Universitat Politécnica de Catalunya-UPC}{España}{2001}
@@ -125,7 +125,7 @@
 \prefix{MBA.}
 \name{Patricio Morriberón}
 \begin{titles}
-	\Master{Espanol}{Espanol}{MBA}{Administración y dirección de empresas}{Tecnológico de Monterrey}{México}{2016}
+	\Master{Espanol}{Espanol}{Administración de Empresas}{Dirección y Administración de Empresas}{Tecnológico de Monterrey}{México}{2016}
 	\Master{Espanol}{English}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
 	\Master{English}{English}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
 \end{titles}
@@ -218,14 +218,12 @@
 
 
 
-
-
 --BEGIN-PROFESSOR--
 \email{rrivas@utec.edu.pe}
 \prefix{Msc}
 \name{Ruben Rivas Medina}
 \begin{titles}
-	\Master{Espanol}{MBA}{Administración y Dirección de Empresas}{}{Centrum - Pontificia Universidad Católica del Perú}{Perú}{2017}
+	\Master{Espanol}{Administración de Empresas}{Administración y Dirección de Empresas}{}{Centrum - Pontificia Universidad Católica del Perú}{Perú}{2017}
 	\Master{Espanol}{Computing}{Computing}{Ingeniería de Software}{Convenio Pontificia Universidad Católica del Perú y CCL}{Perú}{2006}
 	\Bachelor{Espanol}{Ingeniería}{Ingeniería}{Ingeniero Agrícola}{Universidad Nacional Agraria}{Perú}{1992}
 	\Master{English}{MBA}{Master Business Administration}{}{Centrum - Pontificia Universidad Católica del Perú}{Peru}{2017}
@@ -421,7 +419,7 @@
 \name{José Alfredo Díaz León}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Tecnología de la información}{Universidades Esan y Ramón Llull}{Perú/España}{2009}
-	\Master{Espanol}{MBA}{Administración y Dirección de Empresas}{Dirección de Empresas}{ Universidad de Deusto}{España}{1986}
+	\Master{Espanol}{Administración de Empresas}{Administración y Dirección de Empresas}{Dirección de Empresas}{ Universidad de Deusto}{España}{1986}
 	\Bachelor{Espanol}{Economía}{Economía}{}{Universidad de Lima}{Perú}{1981}
 	\Master{English}{Computing}{Ciencia de la Computación}{Information Technology}{Universidades Esan y Ramón Llull}{Perú/España}{2009}
 	\Master{English}{MBA}{Business Administration}{Business management}{ Universidad de Deusto}{España}{1986}
@@ -495,8 +493,8 @@
 \prefix{Dr.}
 \name{José Miguel Renom}
 \begin{titles}
-	\Doctor{Espanol}{Ciencia}{Matemáticas}{Estadística}{Universidad Simón Bolívar}{Venezuela}{2016}
-	\Doctor{English}{Science}{Math}{Statistics}{Universidad Simón Bolívar}{Venezuela}{2016}
+	\Doctor{Espanol}{Ciencia}{Matemáticas}{Teoría de Grafos, Simulación, Probabilidades}{Universidad Simón Bolívar}{Venezuela}{2016}
+	\Doctor{English}{Science}{Math}{Graph Theory, Simulation, Probabilities}{Universidad Simón Bolívar}{Venezuela}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -554,6 +552,50 @@
 \Twitter{}
 \Blog{}
 \Research{Telemedicine, Paliative Care Remote Monitoring}
+\courses{CS1110}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{ajaflorez@gmail.com}
+\prefix{Mag.}
+\name{Juan Antonio Flores Moroco}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia}{Ciencia e Informática}{Algoritmos}{Universidad Nacional del Altiplano - Puno}{Perú}
+	\Master{English}{Computing}{Science}{Science and Computing}{Algorithms}{Universidad Nacional del Altiplano - Puno}{Peru}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{5th floor UTEC. Barranco Lima}
+\Phone{}
+\Mobile{+51958 193 803}
+\facebook{https://www.facebook.com/ajaflorez }
+\Twitter{@ajaflorez}
+\Blog{}
+\Research{Procesamiento de Lenguaje Natural }
+\courses{CS1110}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{rotkyvairam@gmail.com}
+\prefix{Bach.}
+\name{Rotkyuvairam Gonzales Quinteros}
+\begin{titles}
+	\Bachelor{Espanol}{Administración de Empresas}{Administración}{Especialización en Banca y Finanzas}{Universidad Inca Garcilazo de la Vega}{Perú}{2016 }
+	\Bachelor{English}{Administración}{Administration}{Banking and finances}{Universidad Inca Garcilazo de la Vega}{Perú}{2016}
+	\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{5th floor UTEC. Barranco Lima}
+\Phone{}
+\Mobile{+51994} 001 611}
+\facebook{https://m.facebook.com/rotkyvairam }
+\Twitter{https://mobile.twitter.com/Rotkyvairam}
+\Blog{}
+\Research{Transformación Digital, RPA Robotics Programming Application}
 \courses{CS1110}
 --END-PROFESSOR--
 

@@ -56,6 +56,9 @@ sub generate_general_info()
 # 	GeneralInfo::generate_faculty_info();
  	GeneralInfo::process_equivalences();
 
+ 	GeneralInfo::generate_link_for_courses();
+	GeneralInfo::generate_faculty_info();
+	
 # 	generate_sql_for_new_courses();
 # 	
 # 	generate_tables_for_advance();

@@ -60,7 +60,8 @@ sub generate_information_4_professor($)
 		}
       }
       
-      foreach $codcour ( sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester}} keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
+      foreach $codcour ( sort  {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester}} 
+                         keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
       {
 	    my $link = $Common::course_info{$codcour}{link};
 	    if( defined($Common::config{faculty}{$email}{fields}{courses_assigned}{$codcour} ) )
@@ -272,7 +273,7 @@ sub generate_link_for_courses()
 	    {
 		  if(defined($Common::antialias_info{$codcour}))
 		  {	$codcour = $Common::antialias_info{$codcour}	}
-		  my $alias = Common::get_alias($codcour);
+		  my $alias = Common::get_alias($codcour);	
 		  my $link = "";
 #                 <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
 
@@ -312,7 +313,6 @@ sub main()
 	generate_faculty_info();
 	
 # 	my $maintxt		= Util::read_file(Common::get_template("curricula-main"));
-	
 # 	my $output_file = Common::get_template("unified-main-file");
 #  	Util::write_file($output_file, $maintxt);
 }
