@@ -152,6 +152,18 @@ sub read_syllabus_info($$$)
 	$syllabus_in =~ s/\\ExpandOutcome\{/\\ShowOutcome\{/g;
 	$syllabus_in =~ s/\\Competence\{/\\ShowCompetence\{/g;
 	$syllabus_in =~ s/\{unitgoals\}/\{learningoutcomes\}/g;
+	
+	$syllabus_in = Common::replace_accents($syllabus_in);
+	while($syllabus_in =~ m/\n\n\n/)
+	{	$syllabus_in =~ s/\n\n\n/\n\n/g;	}
+# 	my $codcour_label       = get_alias($codcour);
+	my $course_name = $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}};
+	my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
+	my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour} % Common.pm";
+	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
+	$syllabus_in 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
+# 	Common::read_outcomes_involved($codcour, $fulltxt);
+	
 	Util::write_file($fullname, $syllabus_in);
 	
 # 	my $count_old_macros = 0;

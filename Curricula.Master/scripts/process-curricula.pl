@@ -38,7 +38,6 @@ sub generate_general_info()
 	
 	GeneralInfo::generate_pie("credits");
 	GeneralInfo::generate_pie("hours");
-
 	GeneralInfo::generate_pie_by_levels();
 
 	GeneralInfo::generate_curricula_in_dot("small", $lang);
@@ -79,6 +78,12 @@ sub copy_basic_files()
 
 sub main()
 {
+# 	my $codcour = "CS242";
+# 	print Dumper (\%{$Common::course_info{$codcour}});
+# 	if( defined($Common::course_info{$codcour}{alias}{abc}{xyz}) )
+# 	{	print Dumper (\%{$Common::course_info{$codcour}});	}
+# 	exit;
+	
 	Util::begin_time();
 	Common::setup();
 	#Common::read_bok($Common::config{language_without_accents}); exit;
@@ -86,7 +91,7 @@ sub main()
 	Common::gen_only_macros();
 	
 # 	Common::check_preconditions();
-	replacecodes();
+# 	replacecodes();
 
 	GenSyllabi::process_syllabi();
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
@@ -104,6 +109,7 @@ sub main()
 	Util::print_time_elapsed();
 	Util::print_message("process-curricula finished ok ...");
  	#print Dumper(\%{$Common::config{faculty}{"acuadros\@ucsp.edu.pe"}});
+ 	Common::shutdown();
 }
 
 main();

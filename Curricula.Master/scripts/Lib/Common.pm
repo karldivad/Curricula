@@ -158,7 +158,12 @@ sub filter_non_valid_chars($)
 sub get_alias($)
 {
 	my ($codcour) = (@_);
-	return $course_info{$codcour}{alias};
+# 	if(defined($course_info{$codcour}))
+# 	{
+	    if( defined($course_info{$codcour}{alias}) )
+	    {	return $course_info{$codcour}{alias};		}
+# 	}
+	else{	return "";	}
 }
 
 sub detect_codcour($)
@@ -2041,21 +2046,21 @@ sub replace_accents_in_file($)
 	Util::write_file($filename, $fulltxt);
 }
 
-sub save_outcomes_involved($$)
-{
-	my ($codcour, $fulltxt) = (@_);
- 	if($fulltxt =~ m/\\begin\{outcomes\}\s*((?:.|\n)*?)\\end\{outcomes\}/)
-	{
-	    my $body = $1;
-	    foreach my $line (split("\n", $body))
-	    {
-		if($line =~ m/\\ExpandOutcome(.*?)\}\{(.*?)\}/)
-		{
-		    $course_info{$codcour}{outcomes}{$1} = $2;
-		}
-	    }
-	}
-}
+# sub read_outcomes_involved($$)
+# {
+# 	my ($codcour, $fulltxt) = (@_);
+#  	if($fulltxt =~ m/\\begin\{outcomes\}\s*((?:.|\n)*?)\\end\{outcomes\}/)
+# 	{
+# 	    my $body = $1;
+# 	    foreach my $line (split("\n", $body))
+# 	    {
+# 		if($line =~ m/\\ExpandOutcome(.*?)\}\{(.*?)\}/)
+# 		{
+# 		    $course_info{$codcour}{outcomes}{$1} = $2;
+# 		}
+# 	    }
+# 	}
+# }
 
 # ok
 sub preprocess_syllabus($)
@@ -2070,19 +2075,21 @@ sub preprocess_syllabus($)
 	my $line = "";
 
 	my $fulltxt = Util::read_file($filename);
-	$fulltxt = replace_accents($fulltxt);
-	while($fulltxt =~ m/\n\n\n/)
-	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
+# 	$fulltxt = replace_accents($fulltxt);
+# 	while($fulltxt =~ m/\n\n\n/)
+# 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
 
-	my $codcour_label       = get_alias($codcour);
 # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
-	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
-	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
-	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
-
-	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
-	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
-	save_outcomes_involved($codcour, $fulltxt);
+# 	if( not defined($course_info{$codcour}{course_type}) )
+# 	{	print "$codcour\n".Dumper(\%{$course_info{$codcour}}); exit;
+# 	}
+# 	my $codcour_label       = get_alias($codcour);
+# 	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
+# 	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
+# 	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
+# 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
+# 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
+	read_outcomes_involved($codcour, $fulltxt);
 
 	system("rm $filename");
 	@contents = split("\n", $fulltxt);
@@ -2106,40 +2113,42 @@ sub preprocess_syllabus($)
 }
 
 # ok
-sub replace_special_characters_in_syllabi()
-{
-	my $base_syllabi = get_template("InSyllabiContainerDir");
-	foreach my $localdir (@{$config{SyllabiDirs}})
-	{
-		my $dir = "$base_syllabi/$localdir";
-		my @filelist = ();
-		if( -d $dir )
-		{	opendir DIR, $dir;
-			@filelist = readdir DIR;
-			closedir DIR;
-		}
-		else
-		{
-			Util::print_error("I can not open directory: $dir ...");
-		}
-		foreach my $texfile (@filelist)
-		{
-			if($texfile=~ m/(.*)\.tex$/)
-			{
-				my $codcour = $1;
-				if(defined($course_info{$codcour}))
-				{
- 					preprocess_syllabus("$dir/$texfile");
-# 					generate_prerequisitos($texfile);
-				}
-			}
-			elsif($texfile=~ m/(.*)\.bib$/)
-			{
-				replace_accents_in_file("$dir/$texfile");
-			}
-		}
-	}
-}
+# sub replace_special_characters_in_syllabi()
+# {
+# 	my $base_syllabi = get_template("InSyllabiContainerDir");
+# 
+# # 	foreach my $codcour (@codcour_list_sorted)
+# 	foreach my $localdir (@{$config{SyllabiDirs}})
+# 	{
+# 		my $dir = "$base_syllabi/$localdir";
+# 		my @filelist = ();
+# 		if( -d $dir )
+# 		{	opendir DIR, $dir;
+# 			@filelist = readdir DIR;
+# 			closedir DIR;
+# 		}
+# 		else
+# 		{
+# 			Util::print_error("I can not open directory: $dir ...");
+# 		}
+# 		foreach my $texfile (@filelist)
+# 		{
+# 			if($texfile=~ m/(.*)\.tex$/)
+# 			{
+# # 				my $codcour = $1;
+# # 				if(defined($course_info{$codcour}))
+# # 				{
+#  					preprocess_syllabus("$dir/$texfile");
+# # 					generate_prerequisitos($texfile);
+# # 				}
+# 			}
+# 			elsif($texfile=~ m/(.*)\.bib$/)
+# 			{
+# 				replace_accents_in_file("$dir/$texfile");
+# 			}
+# 		}
+# 	}
+# }
 
 sub replace_acronyms($)
 {
@@ -2719,6 +2728,7 @@ sub parse_courses()
 # 	{  Util::halt("parse_courses: $input_file does not open ...");	}
 # 	print Dumper(\%{$config{valid_institutions}});
 	
+	my $flag = 0;
 	my $active_semester = 0;
 	while($file_txt =~ m/\\course(.*)\n/g)
 	{
@@ -2729,23 +2739,16 @@ sub parse_courses()
 	      {
 		  my ($semester, $course_type, $area, $area_pie, $department)     = ($1, $2, $3, $4, $5);
 		  my ($codcour, $codcour_alias, $course_name_es, $course_name_en) = ($6, $7, $8, $9);
-		  my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   		= ($10, $11, $12, $13, $14, $15, $16);
-		  my ($prerequisites, $recommended, $coreq, $group)   		= ($17, $18, $19, $20);
-		  my ($axes, $inst_wildcard)			      = ($21, $22);
+		  my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   		  = ($10, $11, $12, $13, $14, $15, $16);
+		  my ($prerequisites, $recommended, $coreq, $group)   		  = ($17, $18, $19, $20);
+		  my ($axes, $inst_wildcard)			      		  = ($21, $22);
 		  my $coursefile = $codcour;
 
+		  if( $codcour eq "CS211" )	{	$flag = 1; 	Util::print_warning("codcour = $codcour");	}
 		  $inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
 # 		  Util::print_message("$axes");
 # 		  Util::print_message("Labtype: $labtype");
 # 		  Util::print_message("Wilcard: $inst_wildcard ");
-
-#		  print_message("Processing coursecode=$codcour ...");
-		  if($codcour_alias eq "") {	$codcour_alias = $codcour; 	}
-		  else
-		  {   $codcour = $codcour_alias;
-		      #$antialias_info{$codcour_alias} 	= $codcour;
-		  }
-		  $course_info{$codcour}{coursefile}	= $coursefile;
 
 		  my @inst_array        = split(",", $inst_wildcard);
 		  my $count             = 0;
@@ -2772,6 +2775,18 @@ sub parse_courses()
 			next;
 		  }
 
+# 		  Util::print_warning("codcour=$codcour, codcour_alias=$codcour_alias ...");
+		  if($codcour_alias eq "") {	$codcour_alias = $codcour; 	}
+		  else
+		  {   $codcour = $codcour_alias;
+		      #$antialias_info{$codcour_alias} 	= $codcour;
+		  }
+# 		  Util::print_warning("codcour=$codcour, codcour_alias=$codcour_alias ...");
+
+# 		  if( $flag == 1 )	{	Util::print_warning("codcour = $codcour");	
+#  						print Dumper(\%{$course_info{$codcour}});	exit;	
+# 					}
+		  $course_info{$codcour}{coursefile}	= $coursefile;
 # 		  my $codcour_alias = get_alias($codcour);
 		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
 		  {	
@@ -2819,7 +2834,7 @@ sub parse_courses()
 		  $course_info{$codcour}{prefix}		= $prefix;
 
 		  # print "coursecode= $codcour, area= $course_info{$codcour}{axe}\n";
-  # 			$area_priority{$codcour}		= $axes;
+# 			$area_priority{$codcour}		= $axes;
 		  $course_info{$codcour}{textcolor}	= $config{colors}{$prefix}{textcolor};
 		  $course_info{$codcour}{bgcolor}		= $config{colors}{$prefix}{bgcolor};
 		  $course_info{$codcour}{course_name}{Espanol} = $course_name_es;
@@ -2852,7 +2867,9 @@ sub parse_courses()
 		  $course_info{$codcour}{courses_after_this_course} 	= [];
 		  $course_info{$codcour}{short_prerequisites}		= ""; # CS101F (1st Sem), CS101O (2nd Sem), ...
 		  $course_info{$codcour}{code_and_sem_prerequisites}	= "";
+# 		  Util::print_warning("codcour=$codcour, $recommended");
 		  $course_info{$codcour}{recommended}   		= get_label($recommended);
+# 		  Util::print_warning("course_info{$codcour}{recommended}=$course_info{$codcour}{recommended}"); exit;
 		  $course_info{$codcour}{corequisites}			= get_label($coreq);
 		  $course_info{$codcour}{group}          		= $group;
 		  %{$course_info{$codcour}{extra_tags}}			= ();
@@ -2864,6 +2881,7 @@ sub parse_courses()
 	      {
 		  Util::print_warning("course: \"\\course$course_params\" does not contain the right # of parameters ...");
 	      }
+	      $flag = 0;
 	}
 
 # 	close(IN);
@@ -2879,9 +2897,9 @@ sub parse_courses()
 	    {	$config{SemMax} = $config{n_semesters};		}
 	}
 
-	@codcour_list_sorted = sort {#$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
-# 				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
+	@codcour_list_sorted = sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
+ 				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
+ 				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
 					   $a cmp $b
 				}
 				@codcour_list_sorted;
@@ -2916,13 +2934,20 @@ sub filter_courses()
 	my $axe 			= "";
 	$config{n_semesters}		= 0;
 
-	foreach my $codcour (sort keys %course_info)
-	{	Util::print_message("Codcour $codcour, sem=$course_info{$codcour}{semester}");		}
-	print Dumper (\%{$course_info{CS1102}});
-	exit;
-	foreach my $codcour (sort {$course_info{$a}{semester} <=> $course_info{$b}{semester}} keys %course_info)
+# 	foreach my $codcour (@codcour_list_sorted)
+# 	{			
+# 		Util::print_message("Codcour $codcour, sem=$course_info{$codcour}{semester}");
+# 	}
+# 	print Dumper (\%{$course_info{CS342}});
+# 	exit;
+	foreach my $codcour (@codcour_list_sorted)
 	{
 		my $codcour_label = Common::get_label($codcour);
+		if( not defined($course_info{$codcour}{semester}) )
+		{
+		      print Dumper (\%{$course_info{$codcour}});
+		      Util::print_error("codcour=$codcour, semester not defined");
+		}
 		my $semester = $course_info{$codcour}{semester};
 		$config{n_semesters} = $semester if($semester > $config{n_semesters});
 		$courses_count++;
@@ -3818,11 +3843,9 @@ TEXT
 
 sub setup()
 {
-	print "\x1b[44m";
-	print "***********************************************************************\n";
-	print "**                     Curricula generator                           **\n";
-	print "***********************************************************************\n";
-	print "\x1b[49m\n";
+	print "\x1b[44m***********************************************************************\x1b[49m\n";
+	print "\x1b[44m**                     Curricula generator                           **\x1b[49m\n";
+	print "\x1b[44m***********************************************************************\x1b[49m\n";
 
 	set_initial_configuration($Common::command);
 
@@ -3833,6 +3856,13 @@ sub setup()
 	sort_courses();
 
 	$Common::config{parallel} 	= 1;
+}
+
+sub shutdown()
+{
+	print "\x1b[44m***********************************************************************\x1b[49m\n";
+	print "\x1b[44m**                     Finishing                                     **\x1b[49m\n";
+	print "\x1b[44m***********************************************************************\x1b[49m\n";
 }
 
 1;

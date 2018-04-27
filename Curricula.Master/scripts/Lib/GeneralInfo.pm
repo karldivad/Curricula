@@ -73,6 +73,8 @@ sub generate_course_tables()
 # 			Util::print_message("codcour = $codcour, $Common::course_info{$codcour}{bgcolor}");
 			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour}}{sec:$codcour}";
 			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+# 			Util::print_message("codcour=$codcour");
+# 			print Dumper ( \%{$Common::course_info{$codcour}} );
 			if(not $Common::course_info{$codcour}{recommended} eq "")
 			{	
 				my ($rec_courses, $sep) = ("", "");
@@ -1936,7 +1938,7 @@ sub generate_information_4_professor($)
       #my $cict = $Common::config{faculty}{"ecuadros\@ucsp.edu.pe"}{fields}{courses_i_could_teach};
       #Util::print_message("Courses I could teach: $cict"); exit;
       my $codcour = "";
-      foreach $codcour ( keys $Common::config{faculty}{$email}{fields}{courses_assigned} )
+      foreach $codcour ( keys %{$Common::config{faculty}{$email}{fields}{courses_assigned}} )
       {
 	    if( not defined($Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} ) )
 	    {	$Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} = "";
@@ -2195,7 +2197,7 @@ sub generate_link_for_courses()
 	    }
       }
       print "\n";
-      exit;
+#       exit;
 }
 
 # sub generate_tables_for_advance()
