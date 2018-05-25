@@ -50,11 +50,7 @@ sub generate_course_tables()
 # 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 # 		{    Util::print_message("Common::course_info{$codcour}{course_type} = $Common::course_info{$codcour}{course_type}");
 # 		}
-		
-# 		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }  @{$Common::courses_by_semester{$semester}})
+
                 foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
                         #print "{$semester}{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{$Common::course_info{$codcour}{cr}}{$codcour}% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}, $Common::course_info{$codcour}{cr}\n";
@@ -205,11 +201,6 @@ sub generate_laboratories()
 	my $output_txt = "";
 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
-# 		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
 			if($Common::course_info{$codcour}{lh} > 0)
@@ -563,11 +554,6 @@ sub generate_curricula_in_dot($$)
 		$sem_text .= " [shape=box];\n";
 
                 my %clusters_info = ();
-#		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
                         my $group = $Common::course_info{$codcour}{group};
@@ -621,12 +607,7 @@ sub generate_curricula_in_dot($$)
 			{	Util::print_soft_error("Course $codcour ($Common::course_info{$codcour}{semester} Sem) has a prefix ($Common::course_info{$codcour}{prefix}) which haven't prefix_priority defined ...\n See ./Curricula.in/lang/<LANG>/<AREA>.config/<AREA>-All.config ");
 			}
 		}
-
-# 		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
+		
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
 			foreach my $req (split(",", $Common::course_info{$codcour}{prerequisites_just_codes}))
@@ -828,14 +809,8 @@ sub generate_table_topics_by_course($$$$$$$)
 	my $semester;
 	my $flag = 1; my $extra_header = "";
 	for($semester=$init_sem; $semester < $init_sem+$sem_per_page && $semester <= $Common::config{n_semesters}; $semester++)
-	#for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
 		$sem_per_course{$semester} = 0;
-#                 foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
 			#my $codcour_label = Common::get_label($codcour);
@@ -1065,11 +1040,6 @@ sub generate_outcomes_by_course($$$$$$$)
 	for($semester=$init_sem; $semester < $init_sem+$sem_per_page && $semester <= $Common::config{n_semesters}; $semester++)
 	{
 		$sem_per_course{$semester} = 0;
-# 		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
 			#my $codcour_label = Common::get_label($codcour);
@@ -1620,11 +1590,6 @@ sub generate_pie_by_levels()
 	{
 		my $maxE = 0;
 		my $levelE = 1;
-# 		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
 			#print "$semester: $codcour;  ";
@@ -1633,8 +1598,10 @@ sub generate_pie_by_levels()
 				my $level = $1;
 				if( not defined($Common::config{colors}{colors_per_level}{$level}) )
 				{
-				      Util::print_warning("Course $codcour, (Sem $Common::course_info{$codcour}{semester}) has a level ($level) out of range ... ");
-				      $level = 1;
+				      my $wrong_level = $level;
+				      if( $level < $Common::config{course_min_level} ) {	$level = $Common::config{course_min_level};	}
+				      if( $level > $Common::config{course_max_level} ) {	$level = $Common::config{course_max_level};	}
+				      Util::print_warning("Course $codcour, (Sem $Common::course_info{$codcour}{semester}) has a level ($wrong_level) out of range ... assuming $level");
 				}
 				if(not defined($Common::data{credits_per_level}{$level}))
 				{	$Common::data{credits_per_level}{$level} = 0;		}
@@ -1822,12 +1789,7 @@ sub generate_equivalence_new2old($)
 		my $endtable    = "\\end{tabularx}\n";
 		$endtable      .= "\n";
 		my $line_tpl = "<COURSE_CODE> & <COURSE_NAME> & <COURSE_CREDITS> & <OLD_COURSE_CODE> & <OLD_COURSE_NAME> & <OLD_COURSE_SEM> & <OLD_COURSE_CREDITS> \\\\ \\hline\n";
-#               foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 				     @{$Common::courses_by_semester{$semester}}
-# 				    )
+		
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
 			my %tags = ();
@@ -2148,17 +2110,10 @@ sub generate_link_for_courses()
       my $html_file_input 	= Util::read_file($html_index);
       
       for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
-      {
-	    my $codcour = "";
- 	    Util::print_message("Sem: $semester");
-# 	    foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 				      }
-# 				      @{$Common::courses_by_semester{$semester}})
- 	    foreach $codcour (@{$Common::courses_by_semester{$semester}})
+      { 	    
+	    Util::print_message("Sem: $semester");
+	    foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 	    {
-		  
 		  if(defined($Common::antialias_info{$codcour}))
 		  {	$codcour = $Common::antialias_info{$codcour}	}
 		  my $courselabel = Common::get_alias($codcour);	
@@ -2180,7 +2135,7 @@ sub generate_link_for_courses()
 # 		  }
 		  #exit;
 		  my $html_file = $html_file_input;
-		  if( $html_file_input =~ m/HREF="(.*?$courselabel.*?html)">/g)
+		  if( $html_file =~ m/HREF="(.*?$courselabel.*?html)">/g)
 		  {
 			$link = $1;
 			$Common::course_info{$codcour}{link} = $link;
@@ -2190,12 +2145,12 @@ sub generate_link_for_courses()
 		  }
 		  else
 		  {	
-		        Util::print_soft_error("Not found ($Common::course_info{$codcour}{semester} Sem) ... ");
+		        Util::print_error("Not found ($Common::course_info{$codcour}{semester} Sem) ... ");
 		        #exit;
 		  }
 		  #print "\n";
 	    }
-      }
+       }
       print "\n";
 #       exit;
 }
@@ -2272,11 +2227,6 @@ sub generate_link_for_courses()
 # 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 # 	{
 # 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-#               # foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }  
-# 					    @{$Common::courses_by_semester{$semester}})
 # 		{
 # 			print "Generando $codcour (Sem: $semester)     \r";
 # 			my $out_text = $html_base_txt;
@@ -2394,11 +2344,6 @@ sub generate_link_for_courses()
 # 	my $out_text = "";
 # 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 # 	{
-#               #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 		#			   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 		#			   $a cmp $b
-# 		#			  }  
-# 		#			  @{$Common::courses_by_semester{$semester}})
 # 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 # 		{
 # 			print "Sem :$semester, $codcour ...     \r";
@@ -2512,11 +2457,6 @@ sub generate_link_for_courses()
 # 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 # 	{
 # 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-#               foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-# 					   $a cmp $b
-# 					  }
-# 					  @{$Common::courses_by_semester{$semester}})
 # 		{
 # 			my $file = "$Common::silabos_dir/$codcour-sumilla.tex";
 # 		}

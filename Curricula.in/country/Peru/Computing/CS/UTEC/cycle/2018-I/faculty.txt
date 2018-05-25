@@ -125,9 +125,10 @@
 \prefix{MBA.}
 \name{Patricio Morriberón}
 \begin{titles}
-	\Master{Espanol}{Espanol}{Administración de Empresas}{Dirección y Administración de Empresas}{Tecnológico de Monterrey}{México}{2016}
-	\Master{Espanol}{English}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
-	\Master{English}{English}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
+	\Master{Espanol}{Computing}{Administración de Empresas}{Dirección y Administración de Empresas}{Tecnológico de Monterrey}{México}{2016}
+	\Master{English}{Computing}{Administración de Empresas}{Dirección y Administración de Empresas}{Tecnológico de Monterrey}{México}{2016}
+	\Master{Espanol}{Computing}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
+	\Master{English}{Computing}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -141,8 +142,6 @@
 \Research{Innovación, EdTech}
 \courses{CS1102, CS1100}
 --END-PROFESSOR--
-
-
 
 
 --BEGIN-PROFESSOR--
@@ -166,16 +165,13 @@
 \courses{TBD}
 --END-PROFESSOR--
 
-
-
-
 --BEGIN-PROFESSOR--
 \email{amujica@utec.edu.pe}
 \prefix{}
 \name{Alonso Mujica Troncoso}
 \begin{titles}
-	\Bachelor{Espanol}{Ingeniería}{Ingeniería}{Ingeniería Industrial}{Universidad de Lima}{Perú}{2012}
-	\Bachelor{English}{Engineering}{Engineering}{Industrial Engineering}{Universidad de Lima}{Peru}{2013}
+	\Bachelor{Espanol}{Business}{Ingeniería}{Ingeniería Industrial}{Universidad de Lima}{Perú}{2012}
+	\Bachelor{English}{Business}{Engineering}{Industrial Engineering}{Universidad de Lima}{Peru}{2013}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -189,9 +185,6 @@
 \Research{Programming and Education in CS}
 \courses{CS1100}
 --END-PROFESSOR--
-
-
-
 
 --BEGIN-PROFESSOR--
 \email{ibringas@utec.edu.pe}
@@ -216,18 +209,16 @@
 \courses{CS1102}
 --END-PROFESSOR--
 
-
-
 --BEGIN-PROFESSOR--
 \email{rrivas@utec.edu.pe}
 \prefix{Msc}
 \name{Ruben Rivas Medina}
 \begin{titles}
-	\Master{Espanol}{Administración de Empresas}{Administración y Dirección de Empresas}{}{Centrum - Pontificia Universidad Católica del Perú}{Perú}{2017}
+	\Master{Espanol}{Business}{Administración y Dirección de Empresas}{}{Centrum - Pontificia Universidad Católica del Perú}{Perú}{2017}
+	\Master{English}{Business}{Master Business Administration}{}{Centrum - Pontificia Universidad Católica del Perú}{Peru}{2017}
 	\Master{Espanol}{Computing}{Computing}{Ingeniería de Software}{Convenio Pontificia Universidad Católica del Perú y CCL}{Perú}{2006}
-	\Bachelor{Espanol}{Ingeniería}{Ingeniería}{Ingeniero Agrícola}{Universidad Nacional Agraria}{Perú}{1992}
-	\Master{English}{MBA}{Master Business Administration}{}{Centrum - Pontificia Universidad Católica del Perú}{Peru}{2017}
 	\Master{English}{Computing}{Computing}{Software Engineering}{Convenio Pontificia Universidad Católica del Peru y CCL}{Peru}{2006}
+	\Bachelor{Espanol}{Ingeniería}{Ingeniería}{Ingeniero Agrícola}{Universidad Nacional Agraria}{Perú}{1992}
 	\Bachelor{English}{Engineering}{Engineering}{Agricultural engineer}{Universidad Nacional Agraria}{Peru}{1992}
 \end{titles}
 \Category{}
@@ -242,7 +233,6 @@
 \Research{Programming, Data Structures, Algorithms}
 \courses{CS1100, CS1101, CS1102}
 --END-PROFESSOR--
-
 
 
 --BEGIN-PROFESSOR--
@@ -275,8 +265,10 @@
 \prefix{MBA.}
 \name{Kefreen Ryenz Batista Lacerda}
 \begin{titles}
-	\Master{Espanol}{MBA}{Administración y Dirección de Empresas}{Gestión Estratégica de Negocios}{FGV}{Brasil}{2014}
-	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{FGV}{Brazil}{2014}
+	\Master{Espanol}{Computing}{Administración y Dirección de Empresas}{Gestión Estratégica de Negocios}{FGV}{Brasil}{2014}
+	\Master{English}{Computing}{Master Business Administration}{Strategic Business Management}{FGV}{Brazil}{2014}
+	\Bachelor{Espanol}{Computing}{Análise de Sistemas de Informações}{}{FIP}{Brasil}{2006}
+	\Bachelor{English}{Computing}{Análise de Sistemas de Informações}{}{FIP}{Brasil}{2006}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -370,11 +362,11 @@
 \prefix{Dr.}
 \name{Walter Aliaga Aliaga}
 \begin{titles}
-	\Doctor{Espanol}{Ingeniería}{Ingeniería}{Ingeniería Eléctrica}{Coppe-UFRJ}{Brasil}{2017}
-	\Master{Espanol}{Ingeniería}{Ingeniería}{Ingeniería Eléctrica}{PUC-Rio}{Brasil}{2010}
-	\Doctor{English}{Engineering}{Engineering}{Electrical Engineering}{Coppe-UFRJ}{Brazil}{2017}
-	\Master{English}{Engineering}{Engineering}{Electrical Engineering}{PUC-Rio}{Brazil}{2010}
-	\end{titles}
+	\Doctor{Espanol}{Engineering}{Ingeniería Eléctrica}{Sub área}{Coppe-UFRJ}{Brasil}{2017}
+	\Master{Espanol}{Engineering}{Ingeniería Eléctrica}{Sub área}{PUC-Rio}{Brasil}{2010}
+	\Doctor{English}{Engineering}{Electrical Engineering}{Sub área}{Coppe-UFRJ}{Brazil}{2017}
+	\Master{English}{Engineering}{Electrical Engineering}{Sub área}{PUC-Rio}{Brazil}{2010}
+\end{titles}
 \Category{}
 \Dedication{TP}
 \webpage{https://www.utec.edu.pe/carreras-de-ingenieria/ciencia-de-la-computacion}
@@ -387,8 +379,6 @@
 \Research{Dynamical Systems, Nonlinear Systems, Decision-Making, Evolutionary Game Theory}
 \courses{CS2201}
 --END-PROFESSOR--
-
-
 
 --BEGIN-PROFESSOR--
 \email{yamis940@gmail.com}
@@ -493,8 +483,8 @@
 \prefix{Dr.}
 \name{José Miguel Renom}
 \begin{titles}
-	\Doctor{Espanol}{Ciencia}{Matemáticas}{Teoría de Grafos, Simulación, Probabilidades}{Universidad Simón Bolívar}{Venezuela}{2016}
-	\Doctor{English}{Science}{Math}{Graph Theory, Simulation, Probabilities}{Universidad Simón Bolívar}{Venezuela}{2016}
+	\Doctor{Espanol}{Mathematics}{Matemáticas}{Teoría de Grafos, Simulación, Probabilidades}{Universidad Simón Bolívar}{Venezuela}{2016}
+	\Doctor{English}{Mathematics}{Math}{Graph Theory, Simulation, Probabilities}{Universidad Simón Bolívar}{Venezuela}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -516,7 +506,7 @@
 \prefix{Dr.}
 \name{José Fiestas}
 \begin{titles}
-	\Doctor{Espanol}{Ciencia}{Ciencias Naturales}{Astrofísica}{Heidelberg}{Germany}{2006}
+	\Doctor{Espanol}{Science}{Ciencias Naturales}{Astrofísica}{Heidelberg}{Germany}{2006}
 	\Doctor{English}{Science}{Natural Science}{Astrophysics}{Heidelberg}{Germany}{2006}
 \end{titles}     
 \Category{}
@@ -583,9 +573,9 @@
 \prefix{Bach.}
 \name{Rotkyuvairam Gonzales Quinteros}
 \begin{titles}
-	\Bachelor{Espanol}{Administración de Empresas}{Administración}{Especialización en Banca y Finanzas}{Universidad Inca Garcilazo de la Vega}{Perú}{2016 }
-	\Bachelor{English}{Administración}{Administration}{Banking and finances}{Universidad Inca Garcilazo de la Vega}{Perú}{2016}
-	\end{titles}
+	\Bachelor{Espanol}{Business}{Administración}{Especialización en Banca y Finanzas}{Universidad Inca Garcilazo de la Vega}{Perú}{2016}
+	\Bachelor{English}{Business}{Administration}{Banking and finances}{Universidad Inca Garcilazo de la Vega}{Perú}{2016}
+\end{titles}
 \Category{}
 \Dedication{TP}
 \webpage{}

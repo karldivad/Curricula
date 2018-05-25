@@ -1672,7 +1672,7 @@ sub read_faculty()
 	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "Title" => "Prof.",
 					   "MasterPT" => "Mag.", "Master" => "Mag.",
 					   "DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
-	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Enterpreneurship" => 3, "Humanities" => 4, "Empty" => 5 );
+	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Science" => 3, "Engineering" => 4, "Enterpreneurship" => 5, "Business" => 6, "Humanities" => 7, "Empty" => 8 );
 
 	%{$config{faculty}} = ();
 	return if(not -e $faculty_file);
@@ -1835,11 +1835,21 @@ sub read_faculty()
 		{	$config{faculty}{$email}{fields}{courses} = "";		}
 		$config{faculty}{$email}{fields}{courses} 			=~ s/\s*//g;
 		%{$config{faculty}{$email}{fields}{courses_assigned}} = ();
+		my $new_list_of_courses = "";
 		foreach my $onecodcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
-		{	
-		      $onecodcour = get_label($onecodcour);
-		      $config{faculty}{$email}{fields}{courses_i_could_teach}{$onecodcour} = "";		
+		{
+		      if( defined($config{map_file_to_course}{$onecodcour}) ) 
+		      {
+			    $new_list_of_courses .= $config{map_file_to_course}{$onecodcour};
+		      }
 		}
+		Util::print_error("Before: $config{faculty}{$email}{fields}{courses}. After: $new_list_of_courses");
+
+# 		{	
+# 		      $onecodcour = get_label($onecodcour);
+# 		      Util::print_message("get_label($onecodcour)=".get_label($onecodcour));
+# 		      $config{faculty}{$email}{fields}{courses_i_could_teach}{$onecodcour} = "";		
+# 		}
 		#Util::print_message("$config{faculty}{$email}{fields}{shortcv}");
 	}
 	Util::write_file($faculty_file, $copy_input);
@@ -1956,12 +1966,7 @@ sub read_distribution()
 		my $this_sem_count = 0;
 		my $ncourses       = 0;
 
-# 		foreach $codcour (@{$courses_by_semester{$semester}})
-		foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-					   $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-					   $a cmp $b
-					  }
-					  @{$courses_by_semester{$semester}})
+		foreach my $codcour (@{$courses_by_semester{$semester}})
 		{
 			#Util::print_message("Regenerating distribution for $codcour ...");
 			if(defined($antialias_info{$codcour}))
@@ -1975,8 +1980,8 @@ sub read_distribution()
 			{	my $sep = "";
 				$this_sem_text .= "% $codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
 				$this_sem_text .= "$codcour_alias->";
-				foreach my $role (sort {$professor_role_order{$a} <=> $professor_role_order{$b} }
-						  keys %{$Common::config{distribution}{$codcour_alias}})
+				foreach my $role (sort  { $professor_role_order{$a} <=> $professor_role_order{$b} }
+						  keys %{ $Common::config{distribution}{$codcour_alias}})
 				{
 					foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel}}
 								     keys %{$config{distribution}{$codcour_alias}{$role}}
@@ -2881,7 +2886,7 @@ sub parse_courses()
 	      {
 		  Util::print_warning("course: \"\\course$course_params\" does not contain the right # of parameters ...");
 	      }
-	      $flag = 0;
+	      #$flag = 0;
 	}
 
 # 	close(IN);
@@ -2897,16 +2902,6 @@ sub parse_courses()
 	    {	$config{SemMax} = $config{n_semesters};		}
 	}
 
-	@codcour_list_sorted = sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
- 				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
- 				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-					   $a cmp $b
-				}
-				@codcour_list_sorted;
-	#@{$Common::courses_by_semester{$semester}})
-        #$codcour_label
-
-# 	print Dumper(\@codcour_list_sorted); exit;
 	Util::print_message("");
 	Util::print_message("config{SemMin} = $config{SemMin}, config{SemMax} = $config{SemMax}");
 	Util::check_point("parse_courses");
@@ -2919,6 +2914,7 @@ sub filter_courses()
 {
 	Util::precondition("set_initial_configuration");
 	Util::precondition("parse_courses");
+	Util::precondition("sort_courses");
  	my $input_file    = get_template("list-of-courses");
 	Util::print_message("Filtering courses ...");
 
@@ -2949,6 +2945,8 @@ sub filter_courses()
 		      Util::print_error("codcour=$codcour, semester not defined");
 		}
 		my $semester = $course_info{$codcour}{semester};
+		my $coursefile = $course_info{$codcour}{coursefile};
+		$config{map_file_to_course}{coursefile} = $codcour;
 		$config{n_semesters} = $semester if($semester > $config{n_semesters});
 		$courses_count++;
 		#print "wildcards = $inst_wildcard\n";
@@ -2967,11 +2965,7 @@ sub filter_courses()
 			$active_semester = $semester;
 			$maxE = 0;
 		}
-		if(not defined($courses_by_semester{$semester}))
-		{
-			$courses_by_semester{$semester} = [];
-		}
-		push(@{$courses_by_semester{$semester}}, $codcour);
+		
 		#print_message("Processing coursecode=$codcour ...");
 		my $prefix = get_prefix($codcour);
 		if(not defined($config{used_prefix}{$prefix}))   # YES HERE
@@ -3170,23 +3164,24 @@ sub filter_courses()
 
 sub sort_courses()
 {
-	@codcour_list_sorted = sort {#$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
-# 				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-# 				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
+	@codcour_list_sorted = sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
+ 				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
+ 				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
 					   $a cmp $b
 				}
 				@codcour_list_sorted;
-
-	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	#@{$Common::courses_by_semester{$semester}})
+        #$codcour_label
+	#print Dumper(\@codcour_list_sorted); exit;
+	foreach my $codcour (@codcour_list_sorted)
 	{
-	        @{$courses_by_semester{$semester}} = sort { #$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
-							    $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
-							    $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-							    $a cmp $b 
-							  } @{$courses_by_semester{$semester}};
-		foreach my $codcour (@{$courses_by_semester{$semester}})
-		{	push(@codcour_list_sorted, $codcour);		}
+	      my $semester = $course_info{$codcour}{semester};
+	      # Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
+	      if(not defined($courses_by_semester{$semester}))
+		{	$courses_by_semester{$semester} = [];		}
+		push(@{$courses_by_semester{$semester}}, $codcour);
 	}
+	Util::check_point("sort_courses");
 }
 
 sub get_list_of_bib_files()
@@ -3429,13 +3424,9 @@ sub update_page_numbers($)
 sub update_page_numbers_for_all_courses_maps()
 {
 	my $OutputDotDir  = Common::get_template("OutputDotDir");
-	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	{
-	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	      {
-		      my $codcour_alias = Common::get_alias($codcour);
-		      Common::update_page_numbers("$OutputDotDir/$codcour_alias.dot");
-	      }
+	foreach my $codcour (@codcour_list_sorted)
+	{	
+		Common::update_page_numbers("$OutputDotDir/$codcour.dot");
 	}
 }
 
@@ -3852,8 +3843,8 @@ sub setup()
 	read_pagerefs();
 	parse_courses();
 # 	print Dumper(\%{$course_info{"MA102"}});
-	filter_courses();
 	sort_courses();
+	filter_courses();
 
 	$Common::config{parallel} 	= 1;
 }

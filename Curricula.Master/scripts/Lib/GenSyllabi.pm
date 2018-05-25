@@ -547,7 +547,6 @@ sub gen_batch_to_compile_syllabi()
 	{
 		$output .= "#Semester #$semester\n";
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		#foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
 			my $codcour_label = Common::get_label($codcour);
 			$output .= "if(\$course == \"$codcour\" || \$course == \"$codcour_label\" || \$course == \"all\") then\n";
@@ -614,8 +613,6 @@ sub gen_book($$$$)
 	{
 		$output_tex .= get_hidden_chapter_info($semester);
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		#foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
-		#		      @{$Common::courses_by_semester{$semester}})
 		{
 		    my $codcour_label = Common::get_label($codcour);
 		    #-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
@@ -667,7 +664,6 @@ sub gen_list_of_units_by_course()
 	{
 		$output_tex .= get_hidden_chapter_info($semester);
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-                #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
 		{
 			#my $codcour_label 	= Common::get_label($codcour);
 			my $i = 0;
@@ -724,8 +720,6 @@ sub gen_book_of_bibliography($)
       {
 	      $output_tex .= get_hidden_chapter_info($semester);
 	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	      #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
-		#		  @{$Common::courses_by_semester{$semester}})
 	      {
 		      # print "codcour=$codcour ...\n";
 		      my $bibfiles = $Common::course_info{$codcour}{short_bibfiles};
@@ -764,8 +758,6 @@ sub generate_syllabi_include()
                 $output_tex .= "\n";
                 $output_tex .= "\\addcontentsline{toc}{section}{$Common::config{dictionary}{semester_ordinal}{$semester} ";
                 $output_tex .= "$Common::config{dictionary}{Semester}}\n";
-#               foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
-# 					  @{$Common::courses_by_semester{$semester}})
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
                 {
 		    #my $codcour_label = Common::get_label($codcour);
@@ -793,8 +785,6 @@ sub gen_course_general_info()
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-                #foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  
-		#		      @{$Common::courses_by_semester{$semester}})
 		{
 			my $normal_header   = "\\begin{itemize}\n";
 
@@ -888,8 +878,9 @@ sub gen_prerequisites_map($)
 			my $codcour_label = Common::get_label($codcour);
 			my $min_sem_to_show 	= $Common::course_info{$codcour}{semester};
 			my $max_sem_to_show 	= $Common::course_info{$codcour}{semester};
-			my %courses_by_semester = ();
-			push(@{$courses_by_semester{$Common::course_info{$codcour}{semester}}}, $codcour);
+			my %local_list_of_courses_by_semester = ();
+			
+			push(@{$local_list_of_courses_by_semester{$Common::course_info{$codcour}{semester}}}, $codcour);
 			
 			my $output_file = "$OutputDotDir/$codcour_label.dot";
 			my $prev_courses_dot = "";
@@ -901,7 +892,7 @@ sub gen_prerequisites_map($)
 
 				$prev_courses_dot .= "\t\"$codprev_label\"->\"$codcour_label\" [lhead=cluster$codcour_label];\n";
 				$min_sem_to_show = $Common::course_info{$codprev}{semester} if($Common::course_info{$codprev}{semester} < $min_sem_to_show);
-				push(@{$courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
+				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
 			}
 			
  			my $this_course_dot = $course_tpl;
@@ -920,7 +911,7 @@ sub gen_prerequisites_map($)
 
 				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
 				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
-				push(@{$courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
 			}
 			
 			my $sem_col 		= "";
@@ -931,7 +922,7 @@ sub gen_prerequisites_map($)
 			{	
 				my $sem_label = Common::sem_label($sem_count);
 				my $this_sem = "\t{ rank = same; $sem_label; "; 
-				foreach my $one_cour (@{$courses_by_semester{$sem_count}})
+				foreach my $one_cour (@{$local_list_of_courses_by_semester{$sem_count}})
 				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
 				$same_rank .= "$this_sem }\n";
 				$sem_col .= "$sep$sem_label";
