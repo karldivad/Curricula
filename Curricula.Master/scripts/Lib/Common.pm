@@ -1833,18 +1833,32 @@ sub read_faculty()
 
 		if( not defined($config{faculty}{$email}{fields}{courses}) )
 		{	$config{faculty}{$email}{fields}{courses} = "";		}
-		$config{faculty}{$email}{fields}{courses} 			=~ s/\s*//g;
+		my $originalListOfCourses = $config{faculty}{$email}{fields}{courses};
+		$config{faculty}{$email}{fields}{courses} 			=~ s/ //g;
 		%{$config{faculty}{$email}{fields}{courses_assigned}} = ();
-		my $new_list_of_courses = "";
-		foreach my $onecodcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
-		{
-		      if( defined($config{map_file_to_course}{$onecodcour}) ) 
+		my ($newListOfCourses, $sep) = ("", "");
+		foreach my $codcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
+		{ 
+		      if( defined($config{map_file_to_course}{$codcour}) ) 
 		      {
-			    $new_list_of_courses .= $config{map_file_to_course}{$onecodcour};
+			    $newListOfCourses .= "$sep$config{map_file_to_course}{$codcour}";
 		      }
+		      else{
+			    $newListOfCourses .= "$sep$codcour";
+			    if( not defined($course_info{$codcour}) )
+			    {	Util::print_warning("$email course: \"$codcour\" is not recognized ! ... just ignoring it !");	}
+		      }
+		      $sep = ",";
 		}
-		Util::print_error("Before: $config{faculty}{$email}{fields}{courses}. After: $new_list_of_courses");
 
+		#print Dumper (%{$config{map_file_to_course}}); exit;
+		#$copy_input =~ s/CS111,CS402/CS1100,CS4002/s;
+		#Util::print_warning("$email Before: $config{faculty}{$email}{fields}{courses}. After: $newListOfCourses");
+		$copy_input =~ s/\\courses\{$originalListOfCourses\}/\\courses\{$newListOfCourses\}/g;
+		$config{faculty}{$email}{fields}{courses} = $newListOfCourses;
+		foreach my $codcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
+		{	$Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} = "";
+		}
 # 		{	
 # 		      $onecodcour = get_label($onecodcour);
 # 		      Util::print_message("get_label($onecodcour)=".get_label($onecodcour));
@@ -1852,6 +1866,7 @@ sub read_faculty()
 # 		}
 		#Util::print_message("$config{faculty}{$email}{fields}{shortcv}");
 	}
+	#Util::print_message("$copy_input");
 	Util::write_file($faculty_file, $copy_input);
 	Util::check_point("read_faculty");
 #    	print Dumper(\%{$config{faculty}{"ecuadros\@ucsp.edu.pe"}});
@@ -2946,7 +2961,8 @@ sub filter_courses()
 		}
 		my $semester = $course_info{$codcour}{semester};
 		my $coursefile = $course_info{$codcour}{coursefile};
-		$config{map_file_to_course}{coursefile} = $codcour;
+		#Util::print_message("config{map_file_to_course}{$coursefile} = $codcour;");
+		$config{map_file_to_course}{$coursefile} = $codcour;
 		$config{n_semesters} = $semester if($semester > $config{n_semesters});
 		$courses_count++;
 		#print "wildcards = $inst_wildcard\n";

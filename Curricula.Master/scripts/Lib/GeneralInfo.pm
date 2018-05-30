@@ -1902,6 +1902,7 @@ sub generate_information_4_professor($)
       my $codcour = "";
       foreach $codcour ( keys %{$Common::config{faculty}{$email}{fields}{courses_assigned}} )
       {
+	    #Util::print_message("config{faculty}{$email}{fields}{courses_assigned}: $codcour");
 	    if( not defined($Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} ) )
 	    {	$Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} = "";
 		Util::print_warning("Professor $email has assigned course $codcour but he is not able to teach that course ...");

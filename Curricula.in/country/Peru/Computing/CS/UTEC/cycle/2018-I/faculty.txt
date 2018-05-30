@@ -18,7 +18,7 @@
 \Twitter{@ecuadrosv}
 \Blog{https://ecuadros.blogspot.com}
 \Research{Information Retrieval, Data Structures, Programming, Education in CS}
-\courses{CS111,CS402,CS403,CS404}
+\courses{CS1100,CS1102,CS2100,CS3102,CS4002,CS4003,CS4004,EG0007,EG0008,EG0009}
 --END-PROFESSOR--
 
 
@@ -46,7 +46,7 @@
 \Twitter{}
 \Blog{}
 \Research{Education in CS,Technologies in educational processes, Game Based Learning}
-\courses{CS1100, CS1102}
+\courses{CS1100,CS1102}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
@@ -69,7 +69,7 @@
 \Twitter{@jesubellido}
 \Blog{}
 \Research{Software architecture, Web, ReST, Software Quality}
-\courses{CS1100, CS2B01}
+\courses{CS1100,CS2B01}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
@@ -90,7 +90,7 @@
 \Twitter{}
 \Blog{}
 \Research{Integration patterns}
-\courses{CS1100}
+\courses{CS1100,CS1102,CS1103}
 --END-PROFESSOR--
 
 
@@ -114,7 +114,7 @@
 \Twitter{@heider_cs}
 \Blog{}
 \Research{Data mining,  Multimedia Information Retrieval, Time series analysis}
-\courses{--}
+\courses{CS1100,CS1102,CS2100,CS2601,CS2701,CS2702,CS3700}
 --END-PROFESSOR--
 
 
@@ -140,7 +140,7 @@
 \Twitter{}
 \Blog{}
 \Research{Innovación, EdTech}
-\courses{CS1102, CS1100}
+\courses{CS1102,CS1100}
 --END-PROFESSOR--
 
 
@@ -162,7 +162,7 @@
 \Twitter{}
 \Blog{}
 \Research{Machine Learning, Econometric, Causal Effects, Prediction vs. Causation, Randomized Experiments}
-\courses{TBD}
+\courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
@@ -206,7 +206,7 @@
 \Twitter{}
 \Blog{}
 \Research{Programming}
-\courses{CS1102}
+\courses{CS1102,CS1103}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
@@ -231,7 +231,7 @@
 \Twitter{}
 \Blog{}
 \Research{Programming, Data Structures, Algorithms}
-\courses{CS1100, CS1101, CS1102}
+\courses{CS1100,CS1102,CS1103,CS2100,CS2701}
 --END-PROFESSOR--
 
 
@@ -255,7 +255,7 @@
 \Twitter{}
 \Blog{}
 \Research{Programming}
-\courses{CS111}
+\courses{CS1100,CS2901,CS2902,CS3909,EG0009}
 --END-PROFESSOR--
 
 
@@ -280,7 +280,7 @@
 \Twitter{}
 \Blog{http://innovar.tech/}
 \Research{Programming, Data Structures, Innovations,}
-\courses{Todavía no mapeado}
+\courses{CS1100,CS2701,CS2702,CS3700}
 --END-PROFESSOR--
 
 
@@ -303,7 +303,7 @@
 \Twitter{}
 \Blog{https://Marianomelgar.blogspot.com}
 \Research{Desarrollo móvil y web}
-\courses{Cs1100}
+\courses{CS1100,CS1102}
 --END-PROFESSOR--
 
 
@@ -327,7 +327,7 @@
 \Twitter{}
 \Blog{https://medium.com/@peperepito}
 \Research{Information Systems, Digital Marketing, Sports Management}
-\courses{CS111}
+\courses{CS1100}
 --END-PROFESSOR--
 
 
@@ -350,7 +350,7 @@
 \Twitter{}
 \Blog{http://tchambil.blogspot.pe/}
 \Research{Semantic Web (Linked Open Data, RDF, EndPoints SPARQL), Multi-agent System,  Software Engineering (refactory) and Data Mining}
-\courses{CS1100,CS1102}
+\courses{CS1100,CS1102,CS2701}
 --END-PROFESSOR--
 
 
@@ -377,7 +377,7 @@
 \Twitter{}
 \Blog{}
 \Research{Dynamical Systems, Nonlinear Systems, Decision-Making, Evolutionary Game Theory}
-\courses{CS2201}
+\courses{CS2201,CS2301}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
@@ -398,7 +398,7 @@
 \Twitter{}
 \Blog{https://sg.linkedin.com/in/yamilet-serrano-71891591}
 \Research{Formal Methods,  Model Checking, Probabilistic Verification}
-\courses{*}
+\courses{CS1100,CS1D01,CS1102,CS1D02,CS2101}
 --END-PROFESSOR--
 
 
@@ -425,7 +425,7 @@
 \Twitter{}
 \Blog{}
 \Research{Educación de programación para niños de primaria}
-\courses{Seguridad de Información, CS, Modelo y simulación de Negocios}
+\courses{CS1100,GH0012,GH0013,GH0014,CS3101,GH0016,CS3P03,GH0008,GH0009}
 --END-PROFESSOR--
 
 
@@ -450,7 +450,7 @@
 \Twitter{}
 \Blog{}
 \Research{Base de datos, Cloud Computing, Cognitive Computing, POO}
-\courses{CS1100,CS1102}
+\courses{CS1100,CS1102,CS1103,CS2701}
 --END-PROFESSOR--
 
 
@@ -473,7 +473,7 @@
 \Twitter{}
 \Blog{https://www.linkedin.com/in/jorgeluisalvarado/}
 \Research{Diffusion of innovations, programming languages}
-\courses{CS1100, CS1101}
+\courses{CS1100,CS1102,CS2B01,CS2701}
 --END-PROFESSOR--
 
 
@@ -496,7 +496,7 @@
 \Twitter{@jrenom}
 \Blog{}
 \Research{Probability, Graph Theory, Simulation, Data Analysis}
-\courses{CS1D01, CS1D02}
+\courses{CS1D01,CS1D02}
 --END-PROFESSOR--
 
 
@@ -518,8 +518,8 @@
 \facebook{}
 \Twitter{}
 \Blog{https://www.utec.edu.pe/page/30/profesores/688}
-\Research{COmputer simulation, High Performance Computing, GPU}
-\courses{CS111}
+\Research{Computer simulation, High Performance Computing, GPU}
+\courses{CS1D01,CS1D02,CS1100,CS1102,CS1103,CS3700,CS3P01}
 --END-PROFESSOR--
 
 
@@ -542,7 +542,7 @@
 \Twitter{}
 \Blog{}
 \Research{Telemedicine, Paliative Care Remote Monitoring}
-\courses{CS1110}
+\courses{CS1100}
 --END-PROFESSOR--
 
 
@@ -560,11 +560,11 @@
 \Office{5th floor UTEC. Barranco Lima}
 \Phone{}
 \Mobile{+51958 193 803}
-\facebook{https://www.facebook.com/ajaflorez }
+\facebook{https://www.facebook.com/ajaflorez}
 \Twitter{@ajaflorez}
 \Blog{}
 \Research{Procesamiento de Lenguaje Natural }
-\courses{CS1110}
+\courses{CS1100,CS1102,CS1103,CS2B01,CS2100,CS2701}
 --END-PROFESSOR--
 
 
@@ -586,7 +586,9 @@
 \Twitter{https://mobile.twitter.com/Rotkyvairam}
 \Blog{}
 \Research{Transformación Digital, RPA Robotics Programming Application}
-\courses{CS1110}
+\courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019}
 --END-PROFESSOR--
+
+
 
 
