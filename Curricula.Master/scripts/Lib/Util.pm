@@ -57,21 +57,21 @@ sub print_error($)
 sub print_soft_error($)
 {
 	my ($msg) = (@_);
-	print "\x1b[41m$msg\x1b[49m\n";
+	print "\x1b[41m$msg\x1b[0m\n";
 }
 
 # ok # https://pypi.python.org/pypi/colorama
 sub print_color($)
 {
 	my ($msg) = (@_);
-	print "\x1b[43m$msg\x1b[49m";
+	print "\x1b[43m$msg\x1b[40m";
 }
 
 # https://pypi.python.org/pypi/colorama
 sub print_warning($)
 {
 	my ($msg) = (@_);
-	print "\x1b[43m ** WARNING ** : $msg\x1b[49m\n";
+	print "\x1b[43m ** WARNING ** : $msg\x1b[0m\n";
 }
 
 # https://pypi.python.org/pypi/colorama

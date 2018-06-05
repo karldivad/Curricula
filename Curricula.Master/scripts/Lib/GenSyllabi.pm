@@ -747,7 +747,7 @@ sub generate_syllabi_include()
         my $output_file = Common::get_template("out-list-of-syllabi-include-file");
         my $output_tex  = "";
 
-        $output_tex  .= "%This file is generated automatically ... do not touch !!! (GenSyllabi.pm: generate_syllabi_include())\n";
+        $output_tex  .= "%This file is generated automatically ... do not touch !!! (GenSyllabi.pm: generate_syllabi_include()) \n";
         $output_tex  .= "\\newcounter{conti}\n";
 
         my $OutputTexDir = Common::get_template("OutputTexDir");
@@ -761,11 +761,14 @@ sub generate_syllabi_include()
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
                 {
 		    #my $codcour_label = Common::get_label($codcour);
-		    my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, Common::get_template("language_without_accents"));
-		    system("cp $course_fullpath $OutputTexDir/.");
-		    Util::print_message("cp $course_fullpath $OutputTexDir/.");
+		    my $lang 		= Common::get_template("language_without_accents");
+		    my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
+		    my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, $lang);
+		    my $cp_command = "cp $course_fullpath $OutputTexDir/$codcour-orig-$lang_prefix.tex";
+		    Util::print_message("copying ... cp $course_fullpath $OutputTexDir/$codcour-orig-$lang_prefix.tex");
+		    system($cp_command);
 		    $course_fullpath =~ s/(.*)\.tex/$1/g;
-		    $output_tex .= "$newpage\\input{$OutputTexDir/$codcour}";
+		    $output_tex .= "$newpage\\input{$OutputTexDir/$codcour-orig-$lang_prefix}"; 
 		    $output_tex .= "% $codcour $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
 		    $ncourses++;
 		    $newpage = "\\newpage";

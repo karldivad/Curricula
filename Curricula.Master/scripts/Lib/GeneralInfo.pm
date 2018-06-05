@@ -227,7 +227,7 @@ sub generate_distribution_credits_by_area_by_semester()
 	my $output_file = Common::get_template("out-distribution-of-credits-by-area-by-semester-file");
 	my $output_txt 	= "";
 	
-	my $table_begin = "\\begin{table}[h!]\n";
+	my $table_begin = "\\begin{table}[H]\n";
 	   $table_begin.= "\\centering\n";
 	my $nareas = 0;
 	my $width       = 6 + 1.3 * keys %{$Common::config{area_priority}};
@@ -848,7 +848,7 @@ sub generate_table_topics_by_course($$$$$$$)
 	#$table_begin   .= "\\begin{landscape}";
 	if($size eq "book")
 	{	$table_begin   .= "\\begin{center}\n";
-		$table_begin   .= "\\begin{table}[h!]\n";
+		$table_begin   .= "\\begin{table}[H]\n";
 	}
 	my $tabsize 		= "";
 	$tabsize 		= "24cm" if($size eq "book");
@@ -1093,7 +1093,7 @@ sub generate_outcomes_by_course($$$$$$$)
 	#$table_begin   .= "\\begin{landscape}\n";
 	if($size eq "book")
 	{	$table_begin   .= "\\begin{center}\n";
-		$table_begin   .= "\\begin{table}[h!]\n";
+		$table_begin   .= "\\begin{table}[H]\n";
 	}
 	my $tabsize 		= "";
 	$tabsize 		= "24cm" if($size eq "book");
@@ -1554,7 +1554,7 @@ sub generate_compatibility_with_standards()
 	{
 		foreach my $key (sort keys %type_of_graph)
 		{
-			$comparing_txt .= "\\begin{figure}[h!]\n";
+			$comparing_txt .= "\\begin{figure}[H]\n";
 			$comparing_txt .= "\\centering\n";
 			$comparing_txt .= "	\\includegraphics[scale=1.0]{\\OutputFigDir/$key-$Common::area-with-$standard}\n";
 			

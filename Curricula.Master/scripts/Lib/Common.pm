@@ -2764,7 +2764,7 @@ sub parse_courses()
 		  my ($axes, $inst_wildcard)			      		  = ($21, $22);
 		  my $coursefile = $codcour;
 
-		  if( $codcour eq "CS211" )	{	$flag = 1; 	Util::print_warning("codcour = $codcour");	}
+		  #if( $codcour eq "CS211" )	{	$flag = 1; 	Util::print_warning("codcour = $codcour");	}
 		  $inst_wildcard =~ s/\n//g; 	$inst_wildcard =~ s/\r//g;
 # 		  Util::print_message("$axes");
 # 		  Util::print_message("Labtype: $labtype");
@@ -2777,7 +2777,7 @@ sub parse_courses()
 		  {
 			$active_semester = $semester;
 			print "\n";
-			Util::print_color("$semester:\n");
+			Util::print_color("$semester: ");
 		  }
 		  foreach my $inst (@inst_array)
 		  {
@@ -2806,25 +2806,29 @@ sub parse_courses()
 # 		  if( $flag == 1 )	{	Util::print_warning("codcour = $codcour");	
 #  						print Dumper(\%{$course_info{$codcour}});	exit;	
 # 					}
-		  $course_info{$codcour}{coursefile}	= $coursefile;
+		  
 # 		  my $codcour_alias = get_alias($codcour);
 		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
 		  {	
-# 			  Util::print_message("priority = $priority");
-# 			  Util::print_message("course_info{$codcour}{priority} = $course_info{$codcour}{priority}");
-			  if( $priority < $course_info{$codcour}{priority})
-			  {
-				  print "\n";
-				  Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
-				  next;
-			  }
-			  #if( $priority == $course_info{$codcour}{priority})
+ 			  Util::print_message("priority = $priority");
+ 			  Util::print_message("course_info{$codcour}{priority} = $course_info{$codcour}{priority}");
+			  #if( defined($course_info{$codcour}{priority}) )
+			  #{
+			      if( $priority < $course_info{$codcour}{priority} )
+			      {
+				      print "\n";
+				      Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
+				      next;
+			      }
+			  #}
 		  }
+		  $config{n_semesters} = $semester if($semester > $config{n_semesters});
+
+		  $course_info{$codcour}{coursefile}	= $coursefile;
 		  if($axes eq "")
 		  {
 			  Util::halt("Course $codcour (Sem: $semester) has not area defined, see dependencies");
 		  }
-		  $config{n_semesters} = $semester if($semester > $config{n_semesters});
 		  $courses_count++;
 		  #print "wildcards = $inst_wildcard\n";
 		  #Util::print_message("coursecode = $codcour, semester = $semester\n");
