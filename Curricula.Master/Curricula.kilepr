@@ -552,7 +552,7 @@ order=1
 
 [item:scripts/Lib/Common.pm]
 archive=true
-column=102
+column=13
 encoding=UTF-8
 highlight=Perl
 line=1845
@@ -831,7 +831,7 @@ JumpList=
 ViMarks=.,74,24,[,74,24,],74,24
 
 [view-settings,view=0,item:scripts/Lib/Common.pm]
-CursorColumn=102
+CursorColumn=13
 CursorLine=1845
 JumpList=
 ViMarks=.,1845,102,[,1845,102,],1845,102,a,-1,-1,b,-1,-1,c,-1,-1,d,-1,-1,e,-1,-1,f,-1,-1,g,-1,-1,h,-1,-1,i,2886,0,j,2919,1,k,2903,0,l,1842,0

@@ -1440,9 +1440,11 @@ sub generate_spider_with_one_standard($)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
-	my $output_file = "spider-$Common::area-with-$standard";
-	Util::write_file_to_gen_fig(Common::get_template("OutputTexDir")."/$output_file.tex", $output_txt);
-	Util::print_message("generate_spider_with_one_standard($standard) OK!");
+	my $output_file = Common::get_template("OutputTexDir")."/spider-$Common::area-with-$standard.tex";
+	Util::write_file_to_gen_fig($output_file, $output_txt);
+	Util::print_message("generate_spider_with_one_standard($standard) OK!  $output_file");
+	#print Dumper (%{$Common::config{dictionary}{all_areas}}); exit;
+	Util::print_message("nareas=$nareas, ang_base=$ang_base"); exit;
 }
 
 sub generate_curves_with_one_standard($)
