@@ -199,16 +199,21 @@ sub generate_course_tables()
 sub generate_laboratories()
 {
 	my $output_txt = "";
+	#Util::print_message("$Common::config{n_semesters}");
+	my $cols4labs = $Common::config{COL4LABS};
 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
-			if($Common::course_info{$codcour}{lh} > 0)
+# 			print Dumper(%{$Common::course_info{$codcour}}); exit;
+			#Util::print_message("$codcour: lh=$Common::course_info{$codcour}{lh}");
+			if($Common::course_info{$codcour}{$cols4labs} > 0)
 			{
 			      if($Common::course_info{$codcour}{labtype} eq "")
 			      {		Util::print_message("Course $codcour (Sem #$semester) has not LabType ... did you forget?");		
 					assert(not $Common::course_info{$codcour}{labtype} eq "");
 			      }
+			      #Util::print_message("Course $codcour (Sem #$semester) LabType: $Common::course_info{$codcour}{labtype}");
 			      my $this_course = "\\section*{$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}) ";
 			      $this_course .= "$Common::course_info{$codcour}{semester}$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, Lab: $Common::course_info{$codcour}{lh} $Common::config{dictionary}{hrs}}\n";
 			      $this_course .= "\\Lab$Common::course_info{$codcour}{labtype}\n\n";
@@ -1444,7 +1449,7 @@ sub generate_spider_with_one_standard($)
 	Util::write_file_to_gen_fig($output_file, $output_txt);
 	Util::print_message("generate_spider_with_one_standard($standard) OK!  $output_file");
 	#print Dumper (%{$Common::config{dictionary}{all_areas}}); exit;
-	Util::print_message("nareas=$nareas, ang_base=$ang_base"); exit;
+	#Util::print_message("nareas=$nareas, ang_base=$ang_base"); ;
 }
 
 sub generate_curves_with_one_standard($)

@@ -1424,6 +1424,7 @@ sub set_initial_configuration($)
 	$config{tex_encoding} 	= "utf8";
 	$config{lang_for_latex}{Espanol} = "spanish";
 	$config{lang_for_latex}{English} = "english";
+	$config{COL4LABS} = "lh";
 
         system("mkdir -p $config{out}/tex");
 
@@ -1477,7 +1478,9 @@ sub set_initial_configuration($)
 	$path_map{"crossed-reference-file"}		= $config{main_file}.".aux";
 	read_config("in-area-all-config-file"); # i.e. CS-All.config
  	read_config("in-area-config-file");     # i.e. CS.config
+	read_config("in-institution-config-file");     # i.e. institution.config
 	#Util::print_message("CS=$config{dictionary}{AreaDescription}{CS}"); exit;
+
 	%{$config{temp_colors}} = read_config_file("colors");
 
 	# Read dictionary for this language
@@ -1507,8 +1510,10 @@ sub set_initial_configuration($)
 	{
 	    my %instvars = read_config_file("in-institution-config-file");
 	    while ( my ($key, $value) = each(%instvars) )
-	    {	$config{dictionary}{$key} = $value; 	}
+	    {	$config{$key} = $value; 	}
 	}
+	#Util::print_message("config{COL4LABS}=$config{COL4LABS}"); exit;
+
 	$config{"country-environments-to-insert"} = "";
 	my $file_to_insert = Common::get_template("in-country-environments-to-insert-file");
 	if(-e $file_to_insert)
