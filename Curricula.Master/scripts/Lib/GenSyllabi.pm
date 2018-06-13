@@ -174,9 +174,15 @@ sub read_syllabus_info($$$)
 	$map{SOURCE_FILE_NAME} = $fullname;
 	# 1st: Get general information from this syllabus
 	$Common::course_info{$codcour}{unitcount}	= 0;
-# 	$Common::course_info{$codcour}{justification}	= get_environment($codcour, $syllabus_in, "justification");
-# 	$Common::course_info{$codcour}{goals}         	= get_environment($codcour, $syllabus_in, "goals");
 	foreach my $env ("outcomes", "competences", "justification", "goals")
+	{
+	      if( $syllabus_in =~ m/\\begin\{$env\}\s*\n((?:.|\n)*)\\end\{$env\}/g) # legacy version of this environment
+	      {		$Common::course_info{$codcour}{$lang}{$env}{V1}{txt} 	= $1;		
+	      }
+	      elsif( $syllabus_in =~ m/\\begin\{$env\}\{(.*?)\}\s*\n((?:.|\n)*)\\end\{$env\}/g)
+	      {		my $version = $1;		}
+	}
+	foreach my $env ("justification", "goals")
 	{
 	      $Common::course_info{$codcour}{$lang}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
 	}
