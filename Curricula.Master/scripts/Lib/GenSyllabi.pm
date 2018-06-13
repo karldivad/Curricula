@@ -164,8 +164,6 @@ sub read_syllabus_info($$$)
 	$syllabus_in 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 # 	Common::read_outcomes_involved($codcour, $fulltxt);
 	
-	Util::write_file($fullname, $syllabus_in);
-	
 # 	my $count_old_macros = 0;
 # 	($syllabus_in, $count_old_macros) = Common::replace_old_macros($syllabus_in);
 # 	Util::write_file($fullname, $syllabus_in);
@@ -355,6 +353,7 @@ sub read_syllabus_info($$$)
 
 	foreach (keys %{$Common::course_info{$codcour}{extra_tags}})
 	{	$map{$_} = $Common::course_info{$codcour}{extra_tags}{$_};		}
+	Util::write_file($fullname, $syllabus_in);
 	# TEXT TO CUT
 # 	if( $codcour eq "FG170" )
 # 	{	print Dumper(\%map);	exit;

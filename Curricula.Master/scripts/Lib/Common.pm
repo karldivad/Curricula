@@ -2087,55 +2087,55 @@ sub replace_accents_in_file($)
 # 	}
 # }
 
-# ok
-sub preprocess_syllabus($)
-{
-	Util::precondition("parse_courses");
-	my ($filename) = (@_);
-# 	print "filename = $filename\n";
-	my $codcour = "";
-	if($filename =~ m/.*\/(.*)\.tex/)
-	{	$codcour = $1;		}
-	my @contents;
-	my $line = "";
-
-	my $fulltxt = Util::read_file($filename);
-# 	$fulltxt = replace_accents($fulltxt);
-# 	while($fulltxt =~ m/\n\n\n/)
-# 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
-
-# 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
-# 	if( not defined($course_info{$codcour}{course_type}) )
-# 	{	print "$codcour\n".Dumper(\%{$course_info{$codcour}}); exit;
+# # ok
+# sub preprocess_syllabus($)
+# {
+# 	Util::precondition("parse_courses");
+# 	my ($filename) = (@_);
+# # 	print "filename = $filename\n";
+# 	my $codcour = "";
+# 	if($filename =~ m/.*\/(.*)\.tex/)
+# 	{	$codcour = $1;		}
+# 	my @contents;
+# 	my $line = "";
+# 
+# 	my $fulltxt = Util::read_file($filename);
+# # 	$fulltxt = replace_accents($fulltxt);
+# # 	while($fulltxt =~ m/\n\n\n/)
+# # 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
+# 
+# # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
+# # 	if( not defined($course_info{$codcour}{course_type}) )
+# # 	{	print "$codcour\n".Dumper(\%{$course_info{$codcour}}); exit;
+# # 	}
+# # 	my $codcour_label       = get_alias($codcour);
+# # 	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
+# # 	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
+# # 	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
+# # 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
+# # 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
+# 	read_outcomes_involved($codcour, $fulltxt);
+# 
+# 	#system("rm $filename");
+# 	@contents = split("\n", $fulltxt);
+# 	my ($count,$inunit)  = (0, 0);
+# 	my $output_txt = "";
+# 	foreach $line (@contents)
+# 	{
+# 		$line =~ s/\\\s/\\/g;
+# 		$output_txt .= "$line\n";
+# 		$count++;
 # 	}
-# 	my $codcour_label       = get_alias($codcour);
-# 	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
-# 	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
-# 	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
-# 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
-# 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
-	read_outcomes_involved($codcour, $fulltxt);
-
-	system("rm $filename");
-	@contents = split("\n", $fulltxt);
-	my ($count,$inunit)  = (0, 0);
-	my $output_txt = "";
-	foreach $line (@contents)
-	{
-		$line =~ s/\\\s/\\/g;
-		$output_txt .= "$line\n";
-		$count++;
-	}
-        my $country_environments_to_insert = $Common::config{"country-environments-to-insert"};
-        $country_environments_to_insert =~ s/<AREA>/$Common::course_info{$codcour}{prefix}/g;
-        #$country_environments_to_insert = "hola raton abc";
-
-        my $newtext = "$country_environments_to_insert\n\n\\begin{coursebibliography}";
-        $output_txt =~ s/\\begin\{coursebibliography\}/$newtext/g;
-
-	Util::write_file($filename, $output_txt);
-        #Util::print_message($filename); exit;
-}
+#         my $country_environments_to_insert = $Common::config{"country-environments-to-insert"};
+#         $country_environments_to_insert =~ s/<AREA>/$Common::course_info{$codcour}{prefix}/g;
+#         #$country_environments_to_insert = "hola raton abc";
+# 
+#         my $newtext = "$country_environments_to_insert\n\n\\begin{coursebibliography}";
+#         $output_txt =~ s/\\begin\{coursebibliography\}/$newtext/g;
+# 
+# 	Util::write_file($filename, $output_txt);
+#         #Util::print_message($filename); exit;
+# }
 
 # ok
 # sub replace_special_characters_in_syllabi()
