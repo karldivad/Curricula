@@ -174,13 +174,20 @@ sub read_syllabus_info($$$)
 	$map{SOURCE_FILE_NAME} = $fullname;
 	# 1st: Get general information from this syllabus
 	$Common::course_info{$codcour}{unitcount}	= 0;
-	foreach my $env ("outcomes", "competences", "justification", "goals")
+	foreach my $env ("outcomes", "competences")
 	{
-	      if( $syllabus_in =~ m/\\begin\{$env\}\s*\n((?:.|\n)*)\\end\{$env\}/g) # legacy version of this environment
-	      {		$Common::course_info{$codcour}{$lang}{$env}{V1}{txt} 	= $1;		
+	      my $version = "V1";
+	      my $body = "";
+	      while( $syllabus_in =~ m/\\begin\{$env\}\s*(.*?)\s*\n((?:.|\n)*)\\end\{$env\}/g) # legacy version of this environment
+	      {		my $version_brute = $1;
+			$body = $2;
+			$Common::course_info{$codcour}{$lang}{$env}{V1}{txt} 	= $1;
+			$syllabus_in =~ s/\\begin\{$env\}\s*\s*\n((?:.|\n)*)\\end\{$env\}/\\begin\{$env\}\{V1\}\n$1\\end\{$env\}/g;
 	      }
-	      elsif( $syllabus_in =~ m/\\begin\{$env\}\{(.*?)\}\s*\n((?:.|\n)*)\\end\{$env\}/g)
-	      {		my $version = $1;		}
+# 	      elsif( $syllabus_in =~ m/\\begin\{$env\}\{(.*?)\}\s*\n((?:.|\n)*)\\end\{$env\}/g)
+# 	      {		$version = $1;		
+# 			$Common::course_info{$codcour}{$lang}{$env}{$version}{txt} 	= $2;
+# 	      }
 	}
 	foreach my $env ("justification", "goals")
 	{
@@ -198,7 +205,7 @@ sub read_syllabus_info($$$)
 	my %macro_for_env = ("outcomes" => "ShowOutcome", "competences"=>"ShowCompetence");
 	foreach my $env ("outcomes", "competences")
 	{
-	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{txt}) )
+	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{$Common::config{OutcomesVersion}}{txt}) )
 	      {
 		      my ($key, $level)     = ("", "");
 		      my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*)\\}\\{(.*?)\\}";
