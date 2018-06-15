@@ -1021,6 +1021,19 @@ sub generate_all_topics_by_course($)
 	Util::print_message("generate_all_topics_by_course() OK!");
 }
 
+sub generate_list_of_outcomes()
+{
+	my $version 	= $Common::config{OutcomesVersion};
+	my @outcomes_list = split(",", $Common::config{outcomes_list}{$version});
+	my $output_tex  = "\\begin{enumerate}[$outcomes_list[0])]\n";
+	foreach my $outcome (@outcomes_list)
+	{	$output_tex  .= "\\item \\ShowOutcomeText{$outcome}\\label{out:Outcome$outcome}\n";		}
+	$output_tex  .= "\\end{enumerate}\n";
+	my $output_file	= Common::get_template("out-list-of-outcomes");
+	Util::print_message("generate_list_of_outcomes OK! ($output_file)");
+	Util::write_file($output_file, $output_tex);
+}
+
 # ok
 sub generate_outcomes_by_course($$$$$$$)
 {
@@ -1122,7 +1135,8 @@ sub generate_outcomes_by_course($$$$$$$)
 	#print "Antes do foreach ...\n";
 	#@outcome_acro_array
 	$background_flag 		 = $first_backgroud_flag;
-	foreach my $outcome (split(",", $Common::config{outcomes_list}))
+	my $version = $Common::config{OutcomesVersion};
+	foreach my $outcome (split(",", $Common::config{outcomes_list}{$version}))
 	{
 		#print "main_area = $main_area \n";
 		#print "unit_name=$unit_name ...\n";
@@ -1143,12 +1157,13 @@ sub generate_outcomes_by_course($$$$$$$)
 			my $codcour = $1;
 			#my $codcour_label = Common::get_label($codcour);
 			my $codcour_label = $codcour;
-			
-			if( defined($Common::course_info{$codcour}{outcomes}{$outcome}))
+# 			            $Common::course_info{$codcour}{$env}{$version}{$key} = $2;
+			if( defined($Common::course_info{$codcour}{outcomes}{$version}{$outcome}) )
 			{
                                 #$current_row =~ s/--$codcour--/\$\\checkmark\$/;
-                                $current_row =~ s/--$codcour--/$background_color\\htmlref{$Common::course_info{$codcour}{outcomes}{$outcome}}{sec:$codcour_label}/;
-                                #Util::print_message("Common::course_info{$codcour}{outcomes}{$outcome}=$Common::course_info{$codcour}{outcomes}{$outcome}");
+                                $current_row =~ s/--$codcour--/$background_color\\htmlref{$Common::course_info{$codcour}{outcomes}{$version}{$outcome}}{sec:$codcour_label}/;
+                                #Util::print_error("Porque llego aqui si nunca se está cargando lo que esta en este if");
+                                #Util::print_message("Common::course_info{$codcour}{outcomes}{$outcome}=$Common::course_info{$codcour}{outcomes}{$version}{$outcome}");
 			}
 			else # There is no information for this cell
 			{	$current_row =~ s/--$codcour--/$background_color/;

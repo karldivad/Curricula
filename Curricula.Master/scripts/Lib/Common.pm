@@ -533,6 +533,7 @@ sub set_initial_paths()
 	$path_map{"out-list-of-courses-per-area-file"}	= $path_map{OutputTexDir}."/list-of-courses-per-area.tex";
 	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards.tex";
 	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster.tex";
+	$path_map{"out-list-of-outcomes"}		= $path_map{OutputTexDir}."/list-of-outcomes.tex";
         $path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
 	$path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";
@@ -1281,12 +1282,36 @@ sub read_institution_info($)
 	}
 
 	# Read the outcomes list
-	if($txt =~ m/\\newcommand\{\\OutcomesList\}\{(.*?)\}/)
-	{	$this_inst_info{outcomes_list} = $1;		}
-	else
-	{	Util::print_error("(read_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n");
-	}
+	my $OutcomesError = "(read_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n";
 
+	my $txt_copy = $txt;
+	my @outcomes_array = $txt_copy =~ m/\\newcommand\{\\OutcomesList\}(.*?)\n/g;
+	foreach my $params (@outcomes_array)
+	{
+		my ($version, $outcomeslist) = ($config{OutcomesVersionDefault}, "");
+		if( $params =~ m/\{(.*?)\}\{(.*?)\}/g )
+		{	($version, $outcomeslist) = ($1, $2);		}
+		elsif( $params =~ m/\{(.*?)\}/g )
+		{	$outcomeslist = $1; 	
+			$txt_copy =~ s/\\newcommand\{\\OutcomesList\}\{$outcomeslist\}/\\newcommand\{\\OutcomesList\}\{$version\}\{$outcomeslist\}/g;
+		}
+		else{	Util::print_error($OutcomesError);	}
+		Util::print_message("this_inst_info{outcomes_list}{$version} = $outcomeslist");
+		if( defined($this_inst_info{outcomes_list}{$version}) && not $this_inst_info{outcomes_list}{$version} eq "" )
+		{	Util::print_error("Many \\newcommand\{\\OutcomesList\} for the same version??? (\"$file\")");	}
+		$this_inst_info{outcomes_list}{$version} = $outcomeslist;		
+	}
+	#print Dumper(\%this_inst_info); 	exit;
+	$txt = $txt_copy;
+	# Read the CurriculaVersion
+	if($txt =~ m/\\newcommand\{\\OutcomesVersion\}\{(.*?)\}/g)
+	{	$this_inst_info{OutcomesVersion} = $1;		}
+	else
+	{	Util::print_warning("(read_institution_info): there is not \\OutcomesVersion configured in \"$file\" ... assuming $config{OutcomesVersionDefault} ...\n");
+		$txt .= "\n\\newcommand\{\\OutcomesVersion\}\{$config{OutcomesVersionDefault}\}\n";
+		$this_inst_info{OutcomesVersion} = $config{OutcomesVersionDefault};
+	}
+	
         # Read the outcomes list
         if($txt =~ m/\\newcommand\{\\logowidth\}\{(\d*)(.*?)\}/)
         {       $this_inst_info{logowidth}       = $1;
@@ -1312,6 +1337,10 @@ sub read_institution_info($)
 	else
 	{	Util::print_warning("(read_institution_info): there is not \\equivalences in \"$file\"\n");	}
 
+	Util::print_message("After ($file)\n$txt"); 
+	#print Dumper(\%this_inst_info); 	exit;
+
+	Util::write_file($file, $txt);
 	Util::check_point("read_institution_info");
 	Util::print_message("institution_info ($file) ... OK !");
 	return %this_inst_info;
@@ -1417,6 +1446,7 @@ sub set_initial_configuration($)
 	my ($command) = (@_);
 	$config{projectname} = "Curricula";
 	($config{in}, $config{out})		= ("../$config{projectname}.in", "../$config{projectname}.out");
+	$config{OutcomesVersionDefault} = "V1";
 	($path_map{InDir}, $path_map{OutDir})	= ($config{in}, $config{out});
 	$config{macros_file} = "";
 

@@ -172,57 +172,65 @@ sub read_syllabus_info($$$)
 	my %map = ();
 	
 	$map{SOURCE_FILE_NAME} = $fullname;
-	# 1st: Get general information from this syllabus
 	$Common::course_info{$codcour}{unitcount}	= 0;
-	foreach my $env ("outcomes", "competences")
-	{
-	      my $version = "V1";
-	      my $body = "";
-	      while( $syllabus_in =~ m/\\begin\{$env\}\s*(.*?)\s*\n((?:.|\n)*)\\end\{$env\}/g) # legacy version of this environment
-	      {		my $version_brute = $1;
-			$body = $2;
-			$Common::course_info{$codcour}{$lang}{$env}{V1}{txt} 	= $1;
-			$syllabus_in =~ s/\\begin\{$env\}\s*\s*\n((?:.|\n)*)\\end\{$env\}/\\begin\{$env\}\{V1\}\n$1\\end\{$env\}/g;
-	      }
-# 	      elsif( $syllabus_in =~ m/\\begin\{$env\}\{(.*?)\}\s*\n((?:.|\n)*)\\end\{$env\}/g)
-# 	      {		$version = $1;		
-# 			$Common::course_info{$codcour}{$lang}{$env}{$version}{txt} 	= $2;
-# 	      }
-	}
 	foreach my $env ("justification", "goals")
 	{
 	      $Common::course_info{$codcour}{$lang}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
 	}
-
-	# 2nd: Process its outcomes and learningoutcomes
-	foreach my $env ("outcomes", "competences")
-	{
-	      $Common::course_info{$codcour}{$env}{itemized}	= "";
-	      $Common::course_info{$codcour}{$env}{array}	= [];
-	      $Common::course_info{$codcour}{$env}{count}     	= 0;
-	}
-
+	
+	# 1st: Get general information from this syllabus
+	#Util::print_soft_error("Syllabus before ($fullname)");
+	#Util::print_warning($syllabus_in);
 	my %macro_for_env = ("outcomes" => "ShowOutcome", "competences"=>"ShowCompetence");
 	foreach my $env ("outcomes", "competences")
 	{
-	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{$Common::config{OutcomesVersion}}{txt}) )
+	      my $version = $Common::config{OutcomesVersionDefault};
+	      my $body = "";
+	      my $syllabus_in_copy = $syllabus_in;
+	      while( $syllabus_in_copy =~ m/\\begin\{$env\}(.*?)\n((?:.|\n)*?)\\end\{$env\}/g) # legacy version of this environment
+	      {		my $version_brute = $1;
+			$body = $2;
+# 			Util::print_message("Version detected ($env) \"$version_brute\"");
+			$version = $version_brute; 
+			$version =~ s/ //g;
+			if( $version =~ m/\{(.*?)\}/g ) # We have already an existing version
+			{	$version = $1;	
+			}
+			else  # We do not have a version yet ... add a default ($Common::config{OutcomesVersionDefault})
+			{	$version = $Common::config{OutcomesVersionDefault};
+				$syllabus_in_copy =~ s/\\begin\{$env\}\s*.*?\s*\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\{$version\}\n$body\\end\{$env\}/g;
+			}
+			$Common::course_info{$codcour}{$env}{$version}{txt} 	= $body;
+	      }
+	      $syllabus_in = $syllabus_in_copy;
+	      $Common::course_info{$codcour}{$env}{$version}{itemized}	= "";
+	      #$Common::course_info{$codcour}{$env}{$version}{array}	= [];
+	      $Common::course_info{$codcour}{$env}{$version}{count}     	= 0;
+	}
+	#Util::print_soft_error("Syllabus after");
+	#Util::print_warning($syllabus_in); exit;
+	my $version = $Common::config{OutcomesVersion};
+	foreach my $env ("outcomes", "competences")
+	{
+	      #print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
+	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{$version}{txt}) )
 	      {
 		      my ($key, $level)     = ("", "");
-		      my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*)\\}\\{(.*?)\\}";
+		      my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*?)\\}\\{(.*?)\\}";
 		      if( $one_line =~ m/$reg_exp/g )
 		      { 
 			      ($key, $level) = ($1, $2);
-			      $Common::course_info{$codcour}{$env}{$key} = $2; # Instead of "" we must put the level of this outcome/LO
-			      push(@{$Common::course_info{$codcour}{$env}{array}}, $key); # Sequential to list later
-			      $Common::course_info{$codcour}{$env}{count}++;
+			      $Common::course_info{$codcour}{$env}{$version}{$key} = $2; # Instead of "" we must put the level of this outcome/LO
+			      #push(@{$Common::course_info{$codcour}{$env}{$version}{array}}, $key); # Sequential to list later
+			      $Common::course_info{$codcour}{$env}{$version}{count}++;
 			      my $prefix	        = "";
  			      if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
 			      {	$prefix = $Common::config{$env."_map"}{$key};	}
-			      $Common::course_info{$codcour}{$env}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$level}\n";
+			      $Common::course_info{$codcour}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$level}\n";
 		      }
 	      }
 	}
-	
+
 	my $codcour_label 	= Common::get_label($codcour);
 	$map{COURSE_CODE} 	= $codcour_label;
 	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
@@ -238,10 +246,10 @@ sub read_syllabus_info($$$)
 	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{$lang}{goals}{txt}\n\\end{itemize}";
 	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{$lang}{goals}{txt};
 	
-	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{itemized}\\end{description}";
+	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{description}";
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{itemized};
 	
-	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{itemized}\\end{description}";
+	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{$version}{itemized}\\end{description}";
 	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{itemized};
 
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
@@ -665,61 +673,61 @@ sub gen_book_of_descriptions($)
       Util::print_message("gen_book_of_descriptions ($count courses) OK!");
 }
 
-# ok
-sub gen_list_of_units_by_course()
-{
-	Util::precondition("set_global_variables");
-	my $file_name = Common::get_template("out-list-of-unit-by-course-file");
-	my $output_tex = "";
-	my $count = 0;
-	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	{
-		$output_tex .= get_hidden_chapter_info($semester);
-		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		{
-			#my $codcour_label 	= Common::get_label($codcour);
-			my $i = 0;
-			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
- 			#$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
- 			#$sec_title 	.= "$Common::config{dictionary}{Semester})";
-			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
-			#for($i = 0 ; $i < $Common::course_info{$codcour}{outcomes}{count}; $i++)
-			$output_tex .= "\\subsection{Resultados}\n";
-			$output_tex .= "\\begin{itemize}\n";
-			my $outcomes_txt = "";
-			foreach my $outcome_key (@{$Common::course_info{$codcour}{outcomes}{array}}) # Sequential to list later
-			{
-				my $bloom 	= $Common::course_info{$codcour}{outcomes}{$outcome_key};
-				$outcomes_txt  .= "\\item \\ref{out:Outcome$outcome_key}) \\Outcome$outcome_key"."Short [$bloom, ~~~~~]\n";
-			}
-			if( $Common::course_info{$codcour}{outcomes}{count} == 0 )
-			{	$output_tex .= "\t\\item $Common::config{dictionary}{None}\n";	}
-			$output_tex .= $outcomes_txt;
-			$output_tex .= "\\end{itemize}\n\n";
-
-			$output_tex .= "\\subsection{Unidades}\n";
-			$output_tex .= "\\begin{itemize}\n";
-			my $units_txt = "";
-			for($i = 0 ; $i < $Common::course_info{$codcour}{n_units}; $i++)
-			{
-			      $units_txt .= "\t\\item $Common::course_info{$codcour}{units}{unit_caption}[$i], ";
-			      $units_txt .= "$Common::course_info{$codcour}{units}{hours}[$i] $Common::config{dictionary}{hrs}, ";
-			      $units_txt .= "[$Common::course_info{$codcour}{units}{bloom_level}[$i], ~~~~~]\n";
-			}
-			#if( $Common::course_info{$codcour}{n_units} == 0 )
-			if( $i == 0 )
-			{	$units_txt = "\t\\item $Common::config{dictionary}{None}\n";	}
-			$output_tex .= $units_txt;
-			$output_tex .= "\\end{itemize}\n\n";
-			$count++;
-		}
-		$output_tex .= "\n";
-	}
-	Util::write_file($file_name, $output_tex);
-	system("cp ".Common::get_template("in-Book-of-units-by-course-main-file")." ".Common::get_template("OutputTexDir"));
-	system("cp ".Common::get_template("in-Book-of-units-by-course-face-file")." ".Common::get_template("OutputTexDir"));
-	Util::print_message("gen_list_of_units_by_course $file_name ($count courses) OK!");
-}
+# # ok
+# sub gen_list_of_units_by_course()
+# {
+# 	Util::precondition("set_global_variables");
+# 	my $file_name = Common::get_template("out-list-of-unit-by-course-file");
+# 	my $output_tex = "";
+# 	my $count = 0;
+# 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+# 	{
+# 		$output_tex .= get_hidden_chapter_info($semester);
+# 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+# 		{
+# 			#my $codcour_label 	= Common::get_label($codcour);
+# 			my $i = 0;
+# 			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
+#  			#$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
+#  			#$sec_title 	.= "$Common::config{dictionary}{Semester})";
+# 			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
+# 			#for($i = 0 ; $i < $Common::course_info{$codcour}{outcomes}{count}; $i++)
+# 			$output_tex .= "\\subsection{Resultados}\n";
+# 			$output_tex .= "\\begin{itemize}\n";
+# 			my $outcomes_txt = "";
+# 			foreach my $outcome_key (@{$Common::course_info{$codcour}{outcomes}{$version}{array}}) # Sequential to list later
+# 			{
+# 				my $bloom 	= $Common::course_info{$codcour}{outcomes}{$version}{$outcome_key};
+# 				$outcomes_txt  .= "\\item \\ref{out:Outcome$outcome_key}) \\Outcome$outcome_key"."Short [$bloom, ~~~~~]\n";
+# 			}
+# 			if( $Common::course_info{$codcour}{outcomes}{count} == 0 )
+# 			{	$output_tex .= "\t\\item $Common::config{dictionary}{None}\n";	}
+# 			$output_tex .= $outcomes_txt;
+# 			$output_tex .= "\\end{itemize}\n\n";
+# 
+# 			$output_tex .= "\\subsection{Unidades}\n";
+# 			$output_tex .= "\\begin{itemize}\n";
+# 			my $units_txt = "";
+# 			for($i = 0 ; $i < $Common::course_info{$codcour}{n_units}; $i++)
+# 			{
+# 			      $units_txt .= "\t\\item $Common::course_info{$codcour}{units}{unit_caption}[$i], ";
+# 			      $units_txt .= "$Common::course_info{$codcour}{units}{hours}[$i] $Common::config{dictionary}{hrs}, ";
+# 			      $units_txt .= "[$Common::course_info{$codcour}{units}{bloom_level}[$i], ~~~~~]\n";
+# 			}
+# 			#if( $Common::course_info{$codcour}{n_units} == 0 )
+# 			if( $i == 0 )
+# 			{	$units_txt = "\t\\item $Common::config{dictionary}{None}\n";	}
+# 			$output_tex .= $units_txt;
+# 			$output_tex .= "\\end{itemize}\n\n";
+# 			$count++;
+# 		}
+# 		$output_tex .= "\n";
+# 	}
+# 	Util::write_file($file_name, $output_tex);
+# 	system("cp ".Common::get_template("in-Book-of-units-by-course-main-file")." ".Common::get_template("OutputTexDir"));
+# 	system("cp ".Common::get_template("in-Book-of-units-by-course-face-file")." ".Common::get_template("OutputTexDir"));
+# 	Util::print_message("gen_list_of_units_by_course $file_name ($count courses) OK!");
+# }
 
 sub gen_book_of_bibliography($)
 {
