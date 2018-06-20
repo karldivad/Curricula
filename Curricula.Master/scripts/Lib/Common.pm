@@ -1285,7 +1285,7 @@ sub read_institution_info($)
 	my $OutcomesError = "(read_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n";
 
 	my $txt_copy = $txt;
-	my @outcomes_array = $txt_copy =~ m/\\newcommand\{\\OutcomesList\}(.*?)\n/g;
+	my @outcomes_array = $txt_copy =~ m/\\OutcomesList(\{.*?)\n/g;
 	foreach my $params (@outcomes_array)
 	{
 		my ($version, $outcomeslist) = ($config{OutcomesVersionDefault}, "");
@@ -1293,12 +1293,12 @@ sub read_institution_info($)
 		{	($version, $outcomeslist) = ($1, $2);		}
 		elsif( $params =~ m/\{(.*?)\}/g )
 		{	$outcomeslist = $1; 	
-			$txt_copy =~ s/\\newcommand\{\\OutcomesList\}\{$outcomeslist\}/\\newcommand\{\\OutcomesList\}\{$version\}\{$outcomeslist\}/g;
+			$txt_copy =~ s/\\OutcomesList\{$outcomeslist\}/\\OutcomesList\{$version\}\{$outcomeslist\}/g;
 		}
 		else{	Util::print_error($OutcomesError);	}
 		Util::print_message("this_inst_info{outcomes_list}{$version} = $outcomeslist");
 		if( defined($this_inst_info{outcomes_list}{$version}) && not $this_inst_info{outcomes_list}{$version} eq "" )
-		{	Util::print_error("Many \\newcommand\{\\OutcomesList\} for the same version??? (\"$file\")");	}
+		{	Util::print_error("Many \\OutcomesList for the same version??? (\"$file\")");	}
 		$this_inst_info{outcomes_list}{$version} = $outcomeslist;		
 	}
 	#print Dumper(\%this_inst_info); 	exit;

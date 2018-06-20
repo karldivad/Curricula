@@ -1,14 +1,14 @@
 
 % Semester #1 .
 % CS1100. Introducción a la Ciencia de la Computación (Obligatorio)
-CS1100->ecuadros@utec.edu.pe:T,jfiestas@utec.edu.pe:L,heider.sanchez.pe@gmail.com:L,jbellido@utec.edu.pe:L,jdiazl@utec.edu.pe:L,tchambilla@utec.edu.pe:L,jbueno@utec.edu.pe:L,rrivas@utec.edu.pe:L,jfarfan@utec.edu.pe:L,kenneth@tektonlabs.com:L,ajaflorez@gmail.com:L,pmorriberon@utec.edu.pe:L,kefreen@gmail.com:L,mmelgarz@utec.edu.pe:L,jalvarador@utec.edu.pe:L,rotkyvairam@gmail.com:L
+CS1100->ecuadros@utec.edu.pe:T,jbellido@utec.edu.pe:L,jfiestas@utec.edu.pe:L,heider.sanchez.pe@gmail.com:L,ajaflorez@gmail.com:L,kenneth@tektonlabs.com:L,pmorriberon@utec.edu.pe:L,jdiazl@utec.edu.pe:L,rrivas@utec.edu.pe:L,tchambilla@utec.edu.pe:L,jfarfan@utec.edu.pe:L,kefreen@gmail.com:L,jbueno@utec.edu.pe:L,jalvarador@utec.edu.pe:L,mmelgarz@utec.edu.pe:L,rotkyvairam@gmail.com:L
 % CS1D01. Estructuras Discretas I (Obligatorio)
 CS1D01->jfiestas@utec.edu.pe:T,jrenom@utec.edu.pe:T
 
 
 % Semester #2 .
 % CS1102. Programación Orientada a Objetos I (Obligatorio)
-CS1102->mbermejo@utec.edu.pe:T,ibringas@utec.edu.pe:T,tchambilla@utec.edu.pe:L,rmelgarejo@utec.edu.pe:L
+CS1102->ibringas@utec.edu.pe:T,mbermejo@utec.edu.pe:T,tchambilla@utec.edu.pe:L,rmelgarejo@utec.edu.pe:L
 % CS1D02. Estructuras Discretas II (Obligatorio)
 CS1D02->jfiestas@utec.edu.pe:T
 
