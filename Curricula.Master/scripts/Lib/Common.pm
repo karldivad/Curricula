@@ -534,6 +534,8 @@ sub set_initial_paths()
 	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards.tex";
 	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster.tex";
 	$path_map{"out-list-of-outcomes"}		= $path_map{OutputTexDir}."/list-of-outcomes.tex";
+	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome.tex";
+
         $path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
 	$path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";

@@ -1034,6 +1034,33 @@ sub generate_list_of_outcomes()
 	Util::write_file($output_file, $output_tex);
 }
 
+sub generate_list_of_courses_by_outcome()
+{
+	my $output_txt = "";
+	my $version = $Common::config{OutcomesVersion};
+	foreach my $outcome (split(",", $Common::config{outcomes_list}{$version}))
+	{
+	      my $counter = 0;
+	      my $this_outcome_txt = "";
+	      foreach my $codcour (@{$Common::config{course_by_outcome}{$outcome}})
+	      {
+		    $counter++;
+		    $this_outcome_txt .= "\t\\item ". Common::get_course_link($codcour)."\n";
+	      }
+	      if($counter > 0)
+	      {
+		  $output_txt .= "\\subsection{Outcome: $outcome}\n";
+		  $output_txt .= "\\begin{itemize}\n";
+		  $output_txt .= $this_outcome_txt;
+		  $output_txt .= "\\end{itemize}\n";
+	      }
+	      $output_txt .= "\n";
+	}
+	my $output_file = Common::get_template("list-of-courses-by-outcome");
+	Util::print_message("Generating list_of_courses_by_outcome ok ($output_file)");
+	Util::write_file($output_file, $output_txt);
+}
+
 # ok
 sub generate_outcomes_by_course($$$$$$$)
 {
@@ -1257,11 +1284,12 @@ sub generate_list_of_courses_by_area()
 # 			Util::print_message("Common::config{language_without_accents}=$Common::config{language_without_accents}"); 
 # 			Util::print_message("Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}=$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
 
-			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour_label} ";
-			$this_topic .= " ($semester";
-			$this_topic .= "$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, ";
-			$this_topic .= "$Common::config{dictionary}{Pag}~\\pageref{sec:$codcour_label}";
-			$this_topic .= ")\n";
+			$this_topic .= "\t\t\\item ". Common::get_course_link($codcour)."\n";
+# 			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour_label} ";
+# 			$this_topic .= " ($semester";
+# 			$this_topic .= "$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, ";
+# 			$this_topic .= "$Common::config{dictionary}{Pag}~\\pageref{sec:$codcour_label}";
+# 			$this_topic .= ")\n";
 		}
 		my $area_title = $Common::config{dictionary}{all_areas}{$axe};
  		$area_title =~ s/<ENTER>/ /g;

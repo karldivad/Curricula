@@ -213,6 +213,9 @@ sub read_syllabus_info($$$)
 	foreach my $env ("outcomes", "competences")
 	{
 	      #print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
+	      if( not defined($Common::course_info{$codcour}{$env}{$version}) )
+	      {		next;		}
+	      
 	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{$version}{txt}) )
 	      {
 		      my ($key, $level)     = ("", "");
@@ -227,6 +230,9 @@ sub read_syllabus_info($$$)
  			      if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
 			      {	$prefix = $Common::config{$env."_map"}{$key};	}
 			      $Common::course_info{$codcour}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$level}\n";
+			      if(not defined($Common::config{course_by_outcome}{$key}) )
+			      {		$Common::config{course_by_outcome}{$key} = [];		}
+			      push(@{$Common::config{course_by_outcome}{$key}}, $codcour);
 		      }
 	      }
 	}
@@ -246,14 +252,22 @@ sub read_syllabus_info($$$)
 	$map{FULL_GOALS}	= "\\begin{itemize}\n$Common::course_info{$codcour}{$lang}{goals}{txt}\n\\end{itemize}";
 	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{$lang}{goals}{txt};
 	
-	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{description}";
+	# Outcomes
+	$map{FULL_OUTCOMES}	= "";
+	if( defined($Common::course_info{$codcour}{outcomes}{$version})	)
+	{	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{description}";	}
+	else{	Util::print_warning("There is no outcomes ($version) defined for $codcour ($fullname)"); 	}
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{itemized};
 	
-	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{$version}{itemized}\\end{description}";
+	# Competences
+	$map{FULL_COMPETENCES}	= "";
+	if( defined($Common::course_info{$codcour}{competences}{$version}) )
+	{	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{$version}{itemized}\\end{description}";	}
+	else{	Util::print_warning("There is no competences ($version) defined for $codcour ($fullname)"); 	}
 	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{itemized};
 
+	
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
-
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
 	if( defined($Common::course_info{$codcour}{$lang}{specific_evaluation}) )
 	{	$map{EVALUATION} = $Common::course_info{$codcour}{$lang}{specific_evaluation};	}
@@ -762,6 +776,33 @@ sub gen_book_of_bibliography($)
       Util::print_message("gen_book_of_bibliography ($count courses) OK!");
 }
 
+sub generate_formatted_syllabus($$$)
+{
+      my ($codcour, $source, $target) = (@_);
+      my $active_version = $Common::config{OutcomesVersion};
+      my $source_txt = Util::read_file($source);
+
+      foreach my $env ("outcomes", "competences")
+      {
+	    my $syllabus_in_copy = $source_txt;
+	    while( $syllabus_in_copy =~ m/\\begin\{$env\}\{(.*?)\}\n((?:.|\n)*?)\\end\{$env\}/g)
+	    {	my $version = $1;
+		my $body = $2;
+		if( $version eq $active_version ) # This is an unnecessary environment
+		{	$syllabus_in_copy =~ s/\\begin\{$env\}\{$version\}\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\n$body\\end\{$env\}/g;	}
+		else
+		{	$syllabus_in_copy =~ s/\\begin\{$env\}\{$version\}\n((?:.|\n)*?)\\end\{$env\}//g;	}
+		
+	    }
+	    $source_txt = $syllabus_in_copy;
+      }
+      while ($source_txt =~ m/\n\n\n/ )
+      {		$source_txt =~ s/\n\n\n/\n\n/g;		}
+      
+      Util::print_message("$source->$target (OK)");
+      Util::write_file($target, $source_txt);
+}
+
 sub generate_syllabi_include()
 {
         my $output_file = Common::get_template("out-list-of-syllabi-include-file");
@@ -784,9 +825,8 @@ sub generate_syllabi_include()
 		    my $lang 		= Common::get_template("language_without_accents");
 		    my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
 		    my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, $lang);
-		    my $cp_command = "cp $course_fullpath $OutputTexDir/$codcour-orig-$lang_prefix.tex";
-		    Util::print_message("copying ... cp $course_fullpath $OutputTexDir/$codcour-orig-$lang_prefix.tex");
-		    system($cp_command);
+		    generate_formatted_syllabus($codcour, $course_fullpath, "$OutputTexDir/$codcour-orig-$lang_prefix.tex");
+		    
 		    $course_fullpath =~ s/(.*)\.tex/$1/g;
 		    $output_tex .= "$newpage\\input{$OutputTexDir/$codcour-orig-$lang_prefix}"; 
 		    $output_tex .= "% $codcour $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
