@@ -1,3 +1,6 @@
+You can add this to the ~/.bashrc to make it always available when you log-in.
+export PERL5LIB=/home/ecuadros/Articles/Curricula/Curricula.Master/scripts/Lib/ 
+
 sudo apt-get install ps2eps; ok;
 sudo apt-get install dot2tex;
 sudo apt-get install graphviz; ok;

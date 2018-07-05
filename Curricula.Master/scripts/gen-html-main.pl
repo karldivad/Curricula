@@ -1,8 +1,8 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -w -I /home/ecuadros/Articles/Curricula/Curricula.Master/scripts/
 use strict;
 use Data::Dumper;
-use scripts::Lib::Common;
-use scripts::Lib::GenSyllabi;
+use Lib::Common;
+use Lib::GenSyllabi;
 
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}

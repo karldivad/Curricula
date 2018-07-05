@@ -1,7 +1,8 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -w -I /home/ecuadros/Articles/Curricula/Curricula.Master/scripts/  
+
 use strict;
 use File::Path qw(make_path);
-use scripts::Lib::Common;
+use Lib::Common;
 use Cwd;
 
 $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");

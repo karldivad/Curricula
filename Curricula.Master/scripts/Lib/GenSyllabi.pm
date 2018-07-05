@@ -5,7 +5,7 @@ use Scalar::Util qw(blessed dualvar isdual readonly refaddr reftype
                         tainted weaken isweak isvstring looks_like_number
                         set_prototype);
                         # and other useful utils appearing below
-use scripts::Lib::Common;
+use Lib::Common;
 use strict;
 
 sub get_environment($$$)

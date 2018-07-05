@@ -1,8 +1,9 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -w -I /home/ecuadros/Articles/Curricula/Curricula.Master/scripts/
+
 use strict;
-use scripts::Lib::Common;
-use scripts::Lib::GenSyllabi;
-use scripts::Lib::GeneralInfo;
+use Lib::Common;
+use Lib::GenSyllabi;
+use Lib::GeneralInfo;
 use Data::Dumper;
 
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
@@ -57,9 +58,6 @@ sub generate_general_info()
 # 	GeneralInfo::generate_faculty_info();
  	GeneralInfo::process_equivalences();
 
- 	GeneralInfo::generate_link_for_courses();
-	GeneralInfo::generate_faculty_info();
-	
 # 	generate_sql_for_new_courses();
 # 	
 # 	generate_tables_for_advance();
