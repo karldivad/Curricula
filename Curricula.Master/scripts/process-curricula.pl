@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w -I /home/ecuadros/Articles/Curricula/Curricula.Master/scripts/
+#!/usr/bin/perl -w
 
 use strict;
 use Lib::Common;

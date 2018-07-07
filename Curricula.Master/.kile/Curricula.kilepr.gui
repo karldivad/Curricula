@@ -2,7 +2,7 @@
 kile_livePreviewEnabled=false
 kile_livePreviewStatusUserSpecified=true
 kile_livePreviewTool=LivePreview-PDFLaTeX
-lastDocument=compile1institucion.sh
+lastDocument=
 
 [document-settings,item:../Curricula.in/All.tex/preamble.tex]
 Bookmarks=
@@ -142,7 +142,7 @@ Encoding=UTF-8
 Highlighting=None
 Highlighting Set By User=false
 Indentation Mode=normal
-Mode=
+Mode=Normal
 Mode Set By User=false
 
 [document-settings,item:../Curricula.out/Peru/CS-UCSP/cycle/2016-1/Plan2016/tex/BodyOfKnowledge-Body.tex]
@@ -197,7 +197,7 @@ Mode=Bash
 Mode Set By User=false
 
 [document-settings,item:scripts/Lib/Common.pm]
-Bookmarks=1877,2954,2921,2938
+Bookmarks=1877,2938,2954,2921
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -209,7 +209,7 @@ Mode Set By User=false
 ReadWrite=true
 
 [document-settings,item:scripts/Lib/GenSyllabi.pm]
-Bookmarks=953,88,484
+Bookmarks=953,484,88
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -221,7 +221,7 @@ Mode Set By User=false
 ReadWrite=true
 
 [document-settings,item:scripts/Lib/GeneralInfo.pm]
-Bookmarks=876,198,2136,1000
+Bookmarks=2136,198,1000,876
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -236,8 +236,10 @@ ReadWrite=true
 Bookmarks=
 Encoding=UTF-8
 Highlighting=Perl
+Highlighting Set By User=false
 Indentation Mode=normal
 Mode=Perl
+Mode Set By User=false
 
 [document-settings,item:scripts/clean.sh]
 Bookmarks=
@@ -254,7 +256,7 @@ Indentation Mode=normal
 Mode=Perl
 
 [document-settings,item:scripts/gen-html-main.pl]
-Bookmarks=85,138,49
+Bookmarks=85,49,138
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -316,7 +318,7 @@ Mode=LaTeX
 
 [item:../Curricula.in/All.tex/preamble.tex]
 open=true
-order=12
+order=11
 
 [item:../Curricula.in/config/all.config]
 open=false
@@ -328,7 +330,7 @@ order=12
 
 [item:../Curricula.in/country/Peru/Computing/CS/CS.tex/Main.tex]
 open=true
-order=9
+order=8
 
 [item:../Curricula.in/country/Peru/Computing/CS/UCSP/cycle/2015-1/Plan2010/distribution.txt]
 open=false
@@ -372,7 +374,7 @@ order=7
 
 [item:../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex]
 open=true
-order=10
+order=9
 
 [item:../Curricula.in/lang/Espanol/CS.tex/chap-introduction.tex]
 open=false
@@ -404,11 +406,11 @@ order=12
 
 [item:compile1institucion.sh]
 open=true
-order=7
+order=12
 
 [item:curricula-main.tex]
 open=true
-order=11
+order=10
 
 [item:p.sh]
 open=true
@@ -427,8 +429,8 @@ open=true
 order=3
 
 [item:scripts/Lib/Util.pm]
-open=false
-order=9
+open=true
+order=13
 
 [item:scripts/clean.sh]
 open=false
@@ -452,7 +454,7 @@ order=10
 
 [item:scripts/process-curricula.pl]
 open=true
-order=8
+order=7
 
 [item:scripts/update-analytic-info.pl]
 open=false
@@ -604,14 +606,14 @@ ViMarks=
 
 [view-settings,view=0,item:compile1institucion.sh]
 CursorColumn=0
-CursorLine=56
+CursorLine=147
 JumpList=
 TextFolding=[]
 ViMarks=.,0,0,[,0,0,],-1,-1
 
 [view-settings,view=0,item:curricula-main.tex]
-CursorColumn=22
-CursorLine=6
+CursorColumn=0
+CursorLine=3
 JumpList=
 TextFolding=[]
 ViMarks=.,9,0,[,9,0,],9,0
@@ -624,11 +626,11 @@ TextFolding=[]
 ViMarks=.,74,24,[,74,24,],74,24
 
 [view-settings,view=0,item:scripts/Lib/Common.pm]
-CursorColumn=52
-CursorLine=1287
+CursorColumn=0
+CursorLine=1341
 JumpList=
 TextFolding=[]
-ViMarks=.,1287,53,[,1287,52,],1287,53,a,-1,-1,b,-1,-1,c,-1,-1,d,-1,-1,e,-1,-1,f,-1,-1,g,-1,-1,h,-1,-1,i,2921,0,j,2954,1,k,2938,0,l,1877,0
+ViMarks=.,1341,0,[,1341,0,],1341,1,a,-1,-1,b,-1,-1,c,-1,-1,d,-1,-1,e,-1,-1,f,-1,-1,g,-1,-1,h,-1,-1,i,2921,0,j,2954,1,k,2938,0,l,1877,0
 
 [view-settings,view=0,item:scripts/Lib/GenSyllabi.pm]
 CursorColumn=102
@@ -646,9 +648,10 @@ ViMarks=.,1033,45,[,1033,45,],1033,45,a,-1,-1,b,-1,-1,c,876,0,d,1000,0,e,2136,26
 
 [view-settings,view=0,item:scripts/Lib/Util.pm]
 CursorColumn=0
-CursorLine=91
+CursorLine=7
 JumpList=
-ViMarks=.,74,1,[,75,0,],-1,-1
+TextFolding=[]
+ViMarks=.,4,0,[,4,0,],4,1
 
 [view-settings,view=0,item:scripts/clean.sh]
 CursorColumn=0
@@ -663,18 +666,18 @@ JumpList=
 ViMarks=.,300,0,[,300,0,],300,0
 
 [view-settings,view=0,item:scripts/gen-html-main.pl]
-CursorColumn=52
-CursorLine=265
+CursorColumn=18
+CursorLine=0
 JumpList=
 TextFolding=[]
-ViMarks=.,347,0,[,347,0,],347,1,a,49,0,b,49,27,c,138,0,d,85,0
+ViMarks=.,0,18,[,0,18,],0,18,a,49,0,b,49,27,c,138,0,d,85,0
 
 [view-settings,view=0,item:scripts/gen-scripts.pl]
-CursorColumn=4
-CursorLine=206
+CursorColumn=18
+CursorLine=0
 JumpList=
 TextFolding=[]
-ViMarks=.,196,112,[,196,100,],196,112
+ViMarks=.,0,18,[,0,18,],0,18
 
 [view-settings,view=0,item:scripts/process-bok.pl]
 CursorColumn=1
@@ -683,11 +686,11 @@ JumpList=
 ViMarks=.,11,18,[,11,18,],11,18,a,6,90,b,6,90,c,6,90,d,7,0,e,7,0
 
 [view-settings,view=0,item:scripts/process-curricula.pl]
-CursorColumn=42
-CursorLine=50
+CursorColumn=18
+CursorLine=0
 JumpList=
 TextFolding=[]
-ViMarks=.,50,1,[,50,1,],50,13
+ViMarks=.,0,18,[,0,18,],0,18
 
 [view-settings,view=0,item:scripts/update-analytic-info.pl]
 CursorColumn=0

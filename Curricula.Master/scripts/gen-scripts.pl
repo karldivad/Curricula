@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w -I /home/ecuadros/Articles/Curricula/Curricula.Master/scripts/  
+#!/usr/bin/perl -w 
 
 use strict;
 use File::Path qw(make_path);
@@ -14,9 +14,7 @@ sub gen_batch($$)
 {
 	Util::precondition("read_institutions_list");
 	my ($source,$target) = (@_);
-	open(IN, "<$source") or Util::halt("gen_batch: $source does not open");
-	my $txt = join('', <IN>);
-	close(IN);
+	my $txt = Util::read_file($source);
 	
 	#print "institution=$Common::institution\n";
 	$txt =~ s/<INST>/$Common::institution/g;
@@ -240,7 +238,7 @@ sub gen_batch_files()
 	    $output    = Common::get_template("out-$file-file");
 	    gen_batch($input, $output);
 	    Util::print_message("Creating shorcut: ln -s $output");
-	    system("ln -s $output");
+	    system("cp $output .");
 	}
 	foreach my $file ("gen-eps-files", "gen-graph", "gen-book", "CompileTexFile", "compile-simple-latex")
 	{
@@ -249,6 +247,9 @@ sub gen_batch_files()
 	    $output    = Common::get_template("out-$file-file");
 	    gen_batch($input, $output);
 	}
+	my $command = "cp ". Common::get_template("preamble0-file")." ". Common::get_template("OutputTexDir");
+	Util::print_message($command);
+	system($command);
 }
 
 sub main()

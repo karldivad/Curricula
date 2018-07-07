@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-use scripts::Lib::Common;
+use Lib::Common;
 use strict;
 
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
@@ -23,9 +23,9 @@ sub replace_outcomes()
 
 sub main()
 {
-	Common::set_initial_configuration($Common::command);
-        Common::read_pagerefs();
-	replace_outcomes();
+ 	Common::set_initial_configuration($Common::command);
+#     Common::read_pagerefs();
+# 	replace_outcomes();
 }
 
 main();

@@ -54,12 +54,6 @@ encoding=UTF-8
 highlight=None
 mode=
 
-[item:../Curricula.in/country/Peru/Computing/CS/UCSP/institution-info.tex]
-archive=true
-encoding=UTF-8
-highlight=LaTeX
-mode=LaTeX
-
 [item:../Curricula.in/country/Peru/country.config]
 archive=true
 encoding=UTF-8

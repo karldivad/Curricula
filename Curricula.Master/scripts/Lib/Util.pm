@@ -1,10 +1,10 @@
 package Util;
 use strict;
-# use Term::ANSIColor; # http://pueblo.sourceforge.net/doc/manual/ansi_color_codes.html
-use POSIX;
-use POSIX qw(setsid);
-use POSIX qw(:errno_h :fcntl_h);
 use Carp::Assert;
+# use Term::ANSIColor; # http://pueblo.sourceforge.net/doc/manual/ansi_color_codes.html
+# use POSIX;
+# use POSIX qw(setsid);
+# use POSIX qw(:errno_h :fcntl_h);
 
 our %control	= ();
 # ok
@@ -184,17 +184,17 @@ sub generate_batch_to_gen_figs($)
         print_message("generate_batch_to_gen_figs($output_file) OK!");
 }
 
-my (@start_time, @end_time) = ((), ());
+my ($start_time, $end_time) = ("", "");
 sub begin_time()
-{	@start_time	= time();	}
+{	$start_time	= time();	}
 
 sub end_time()
-{	@end_time	= time();	}
+{	$end_time	= time();	}
 
 sub print_time_elapsed()
 {
 	Util::end_time();
-	my $time_elapsed 	= difftime(@end_time, @start_time);
+	my $time_elapsed 	= $end_time - $start_time;
 	Util::print_message("Time elapsed: $time_elapsed seconds ...");
 }
 

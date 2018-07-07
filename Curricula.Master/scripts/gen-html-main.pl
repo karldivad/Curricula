@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w -I /home/ecuadros/Articles/Curricula/Curricula.Master/scripts/
+#!/usr/bin/perl -w
 use strict;
 use Data::Dumper;
 use Lib::Common;
@@ -282,10 +282,10 @@ sub main()
 	GenSyllabi::process_syllabi();
 	Common::sort_macros();
 	
-	my $output_file = Common::get_template("unified-main-file");
-	my $main_file = Common::get_template("curricula-main");
-	my $maintxt		= Util::read_file($main_file);
-	$maintxt		= Common::clean_file($maintxt);
+	my $output_file     = Common::get_template("unified-main-file");
+	my $main_file       = Common::get_template("curricula-main");
+	my $maintxt		    = Util::read_file($main_file);
+	$maintxt		    = Common::clean_file($maintxt);
 	my $changes 		= 1;
 	my $macros_changed	= 0;
 	my $environments_count	= 0;
@@ -303,7 +303,7 @@ sub main()
 		$maintxt =~ s/\\xrefTextAndPage\{(.*?)\}/\\htmlref\{\\$1\}\{sec:BOK:$1\}/g;
 #		$maintxt =~ s/\\xref\{(.*?)\}/\\ref\{sec:BOK:$1\} \\htmlref\{\csname #1\endcsname\}\{sec:BOK:#1\}
 		Util::print_message("$Common::institution: Environments = $environments_count");
-		Util::write_file($output_file, $maintxt);
+# 		Util::write_file($output_file, $maintxt);
 	}
 # 	Util::print_message("Llego aqui 1!"); exit;
 #         Util::write_file($output_file, $maintxt); exit;

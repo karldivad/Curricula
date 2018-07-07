@@ -257,14 +257,14 @@ sub read_syllabus_info($$$)
 	if( defined($Common::course_info{$codcour}{outcomes}{$version})	)
 	{	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{description}";	}
 	else{	Util::print_warning("There is no outcomes ($version) defined for $codcour ($fullname)"); 	}
-	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{itemized};
+	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{$version}{itemized};
 	
 	# Competences
 	$map{FULL_COMPETENCES}	= "";
 	if( defined($Common::course_info{$codcour}{competences}{$version}) )
 	{	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{$version}{itemized}\\end{description}";	}
 	else{	Util::print_warning("There is no competences ($version) defined for $codcour ($fullname)"); 	}
-	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{itemized};
+	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{$version}{itemized};
 
 	
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
