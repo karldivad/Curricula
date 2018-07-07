@@ -2,7 +2,7 @@
 kile_livePreviewEnabled=false
 kile_livePreviewStatusUserSpecified=true
 kile_livePreviewTool=LivePreview-PDFLaTeX
-lastDocument=
+lastDocument=../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex
 
 [document-settings,item:../Curricula.in/All.tex/preamble.tex]
 Bookmarks=
@@ -166,6 +166,15 @@ Highlighting=LaTeX
 Indentation Mode=normal
 Mode=LaTeX
 
+[document-settings,item:Documentacion/packages needed to run.txt]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=None
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Normal
+Mode Set By User=false
+
 [document-settings,item:compile1institucion.sh]
 Bookmarks=
 Encoding=UTF-8
@@ -318,7 +327,7 @@ Mode=LaTeX
 
 [item:../Curricula.in/All.tex/preamble.tex]
 open=true
-order=11
+order=12
 
 [item:../Curricula.in/config/all.config]
 open=false
@@ -330,7 +339,7 @@ order=12
 
 [item:../Curricula.in/country/Peru/Computing/CS/CS.tex/Main.tex]
 open=true
-order=8
+order=9
 
 [item:../Curricula.in/country/Peru/Computing/CS/UCSP/cycle/2015-1/Plan2010/distribution.txt]
 open=false
@@ -374,7 +383,7 @@ order=7
 
 [item:../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex]
 open=true
-order=9
+order=10
 
 [item:../Curricula.in/lang/Espanol/CS.tex/chap-introduction.tex]
 open=false
@@ -390,7 +399,7 @@ order=4
 
 [item:../Curricula.in/lang/Espanol/dictionary.txt]
 open=true
-order=0
+order=1
 
 [item:../Curricula.out/Peru/CS-UCSP/cycle/2016-1/Plan2016/tex/BodyOfKnowledge-Body.tex]
 open=false
@@ -404,29 +413,33 @@ order=1
 open=false
 order=12
 
+[item:Documentacion/packages needed to run.txt]
+open=true
+order=0
+
 [item:compile1institucion.sh]
 open=true
-order=12
+order=14
 
 [item:curricula-main.tex]
 open=true
-order=10
+order=11
 
 [item:p.sh]
 open=true
-order=1
+order=2
 
 [item:scripts/Lib/Common.pm]
 open=true
-order=5
+order=6
 
 [item:scripts/Lib/GenSyllabi.pm]
 open=true
-order=4
+order=5
 
 [item:scripts/Lib/GeneralInfo.pm]
 open=true
-order=3
+order=4
 
 [item:scripts/Lib/Util.pm]
 open=true
@@ -442,11 +455,11 @@ order=3
 
 [item:scripts/gen-html-main.pl]
 open=true
-order=6
+order=7
 
 [item:scripts/gen-scripts.pl]
 open=true
-order=2
+order=3
 
 [item:scripts/process-bok.pl]
 open=false
@@ -454,7 +467,7 @@ order=10
 
 [item:scripts/process-curricula.pl]
 open=true
-order=7
+order=8
 
 [item:scripts/update-analytic-info.pl]
 open=false
@@ -604,12 +617,19 @@ CursorLine=0
 JumpList=
 ViMarks=
 
-[view-settings,view=0,item:compile1institucion.sh]
+[view-settings,view=0,item:Documentacion/packages needed to run.txt]
 CursorColumn=0
-CursorLine=147
+CursorLine=0
 JumpList=
 TextFolding=[]
-ViMarks=.,0,0,[,0,0,],-1,-1
+ViMarks=.,1,79,[,1,79,],1,79
+
+[view-settings,view=0,item:compile1institucion.sh]
+CursorColumn=0
+CursorLine=56
+JumpList=
+TextFolding=[]
+ViMarks=.,142,0,[,142,0,],142,0
 
 [view-settings,view=0,item:curricula-main.tex]
 CursorColumn=0

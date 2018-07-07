@@ -144,6 +144,12 @@ encoding=ISO-8859-15
 highlight=LaTeX
 mode=LaTeX
 
+[item:Documentacion/packages needed to run.txt]
+archive=true
+encoding=UTF-8
+highlight=None
+mode=Normal
+
 [item:compile1institucion.sh]
 archive=true
 encoding=UTF-8

@@ -102,8 +102,8 @@
 \prefix{Mg}
 \name{Luis Eduardo Talavera Rios}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}
-	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
+	\\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
+	\Master{Espanol}{}{}{}{}{}{}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -351,13 +351,13 @@
 
 
 --BEGIN-PROFESSOR--
-\email{kenneth@tektonlabs.com}
+\email{mlopez@utec.edu.pe}
 \prefix{}
 \name{Kenneth Lopez}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Base de Datos, Administración de Negocios, Big Data }{FGV - Fundação Getúlio Vargas}{Brasil}{2017}
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Estructura de Datos}{PUCP}{Perú}{2010}
-	\Master{English}{Computing}{Computer Science}{Data Base, Business Managing , Big Data }{FGV - Fundação Getúlio Vargas}{Brazil}{2017}
+	\Master{English}{Computing}{Computer Science}{Data Base, Business Managing, Big Data}{FGV - Fundação Getúlio Vargas}{Brazil}{2017}
 	\Bachelor{English}{Computing}{Computer Science}{Data Structures}{PUCP}{Peru}{2010}
 \end{titles}
 \Category{}
@@ -682,9 +682,3 @@
 \Research{Transformación Digital, RPA Robotics Programming Application}
 \courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019}
 --END-PROFESSOR--
-
-
-
-
-
-

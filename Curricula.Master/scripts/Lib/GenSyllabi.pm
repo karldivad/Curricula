@@ -345,11 +345,14 @@ sub read_syllabus_info($$$)
 	if($Common::course_info{$codcour}{lh} > 0)
 	{   $map{LAB_HOURS} = "$Common::course_info{$codcour}{lh} $Common::config{dictionary}{LABORATORY}";	}
 
-	$map{PREREQUISITES} 			= $Common::course_info{$codcour}{code_name_and_sem_prerequisites};
 	if($Common::course_info{$codcour}{n_prereq} == 0)
-	{	$map{PREREQUISITES_JUST_CODES}	= $Common::config{dictionary}{None};								}
+	{	$map{PREREQUISITES_JUST_CODES}	= $Common::config{dictionary}{None};
+        $map{PREREQUISITES}             = $Common::config{dictionary}{None};
+	}
 	else
-	{	$map{PREREQUISITES_JUST_CODES}	= $Common::course_info{$codcour}{prerequisites_just_codes};		}
+	{	$map{PREREQUISITES_JUST_CODES}	= $Common::course_info{$codcour}{prerequisites_just_codes};		
+        $map{PREREQUISITES} 			= $Common::course_info{$codcour}{code_name_and_sem_prerequisites};
+	}
 
 
 	my $syllabus_template = $Common::config{syllabus_template};

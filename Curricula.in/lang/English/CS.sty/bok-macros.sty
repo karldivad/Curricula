@@ -2606,17 +2606,6 @@ The IAS KA is shown in two groups: (1) concepts where the depth is unique to Inf
 	\item \IASDefensiveProgrammingTopicHardware\xspace
 \end{topics}
 }
-\newcommand{\IASDefensiveProgrammingLOExplainWhyAnd}{Explain why input validation and data sanitization is necessary in the face of adversarial control of the input channel. \xspace}
-\newcommand{\IASDefensiveProgrammingLOExplainWhyAndLevel}{Familiarity}
-\newcommand{\IASDefensiveProgrammingLOExplainWhyChoose}{Explain why you might choose to develop a program in a type-safe language like Java, in contrast to an unsafe programming language like C/C++\xspace}
-\newcommand{\IASDefensiveProgrammingLOExplainWhyChooseLevel}{Familiarity}
-\newcommand{\IASDefensiveProgrammingLOClassify}{Classify common input validation errors, and write correct input validation code\xspace}
-\newcommand{\IASDefensiveProgrammingLOClassifyLevel}{Usage}
-\newcommand{\IASDefensiveProgrammingLODemonstrateUsing}{Demonstrate using a high-level programming language how to prevent a race condition from occurring and how to handle an exception\xspace}
-\newcommand{\IASDefensiveProgrammingLODemonstrateUsingLevel}{Usage}
-\newcommand{\IASDefensiveProgrammingLODemonstrateTheGraceful}{Demonstrate the identification and graceful handling of error conditions\xspace}
-\newcommand{\IASDefensiveProgrammingLODemonstrateTheGracefulLevel}{Usage}
-
 \newcommand{\IASDefensiveProgrammingLOExplainTheMisusing}{Explain the risks with misusing interfaces with third-party code and how to correctly use third-party code\xspace}
 \newcommand{\IASDefensiveProgrammingLOExplainTheMisusingLevel}{Familiarity}
 \newcommand{\IASDefensiveProgrammingLODiscussTheUpdate}{Discuss the need to update software to fix security vulnerabilities and the lifecycle management of the fix\xspace}
@@ -2635,13 +2624,19 @@ The IAS KA is shown in two groups: (1) concepts where the depth is unique to Inf
 \newcommand{\IASDefensiveProgrammingLODescribeHowIsProtect}{Describe how memory architecture is used to protect runtime attacks\xspace}
 \newcommand{\IASDefensiveProgrammingLODescribeHowIsProtectLevel}{Familiarity}
 
+\newcommand{\IASDefensiveProgrammingLOExplainWhyAnd}{Explain why input validation and data sanitization is necessary in the face of adversarial control of the input channel. \xspace}
+\newcommand{\IASDefensiveProgrammingLOExplainWhyAndLevel}{Familiarity}
+\newcommand{\IASDefensiveProgrammingLOExplainWhyChoose}{Explain why you might choose to develop a program in a type-safe language like Java, in contrast to an unsafe programming language like C/C++\xspace}
+\newcommand{\IASDefensiveProgrammingLOExplainWhyChooseLevel}{Familiarity}
+\newcommand{\IASDefensiveProgrammingLOClassify}{Classify common input validation errors, and write correct input validation code\xspace}
+\newcommand{\IASDefensiveProgrammingLOClassifyLevel}{Usage}
+\newcommand{\IASDefensiveProgrammingLODemonstrateUsing}{Demonstrate using a high-level programming language how to prevent a race condition from occurring and how to handle an exception\xspace}
+\newcommand{\IASDefensiveProgrammingLODemonstrateUsingLevel}{Usage}
+\newcommand{\IASDefensiveProgrammingLODemonstrateTheGraceful}{Demonstrate the identification and graceful handling of error conditions\xspace}
+\newcommand{\IASDefensiveProgrammingLODemonstrateTheGracefulLevel}{Usage}
+
 \newcommand{\IASDefensiveProgrammingAllLearningOutcomes}{%
 \begin{learningoutcomes}%
-	\item \IASDefensiveProgrammingLOExplainWhyAnd\xspace[\IASDefensiveProgrammingLOExplainWhyAndLevel] %
-	\item \IASDefensiveProgrammingLOExplainWhyChoose\xspace[\IASDefensiveProgrammingLOExplainWhyChooseLevel] %
-	\item \IASDefensiveProgrammingLOClassify\xspace[\IASDefensiveProgrammingLOClassifyLevel] %
-	\item \IASDefensiveProgrammingLODemonstrateUsing\xspace[\IASDefensiveProgrammingLODemonstrateUsingLevel] %
-	\item \IASDefensiveProgrammingLODemonstrateTheGraceful\xspace[\IASDefensiveProgrammingLODemonstrateTheGracefulLevel] %
 	\item \IASDefensiveProgrammingLOExplainTheMisusing\xspace[\IASDefensiveProgrammingLOExplainTheMisusingLevel] %
 	\item \IASDefensiveProgrammingLODiscussTheUpdate\xspace[\IASDefensiveProgrammingLODiscussTheUpdateLevel] %
 	\item \IASDefensiveProgrammingLOListExamples\xspace[\IASDefensiveProgrammingLOListExamplesLevel] %
@@ -2650,6 +2645,11 @@ The IAS KA is shown in two groups: (1) concepts where the depth is unique to Inf
 	\item \IASDefensiveProgrammingLODemonstrateHowTested\xspace[\IASDefensiveProgrammingLODemonstrateHowTestedLevel] %
 	\item \IASDefensiveProgrammingLOUseStatic\xspace[\IASDefensiveProgrammingLOUseStaticLevel] %
 	\item \IASDefensiveProgrammingLODescribeHowIsProtect\xspace[\IASDefensiveProgrammingLODescribeHowIsProtectLevel] %
+	\item \IASDefensiveProgrammingLOExplainWhyAnd\xspace[\IASDefensiveProgrammingLOExplainWhyAndLevel] %
+	\item \IASDefensiveProgrammingLOExplainWhyChoose\xspace[\IASDefensiveProgrammingLOExplainWhyChooseLevel] %
+	\item \IASDefensiveProgrammingLOClassify\xspace[\IASDefensiveProgrammingLOClassifyLevel] %
+	\item \IASDefensiveProgrammingLODemonstrateUsing\xspace[\IASDefensiveProgrammingLODemonstrateUsingLevel] %
+	\item \IASDefensiveProgrammingLODemonstrateTheGraceful\xspace[\IASDefensiveProgrammingLODemonstrateTheGracefulLevel] %
 \end{learningoutcomes}%
 }
 
@@ -4730,16 +4730,16 @@ There are different ways of organizing a networking course. Some educators prefe
 }
 \newcommand{\NCLocalAreaNetworksLODescribeHowForwardedEthernet}{Describe how frames are forwarded in an Ethernet network\xspace}
 \newcommand{\NCLocalAreaNetworksLODescribeHowForwardedEthernetLevel}{Familiarity}
-\newcommand{\NCLocalAreaNetworksLODescribeTheIp}{Describe the interrelations between IP and Ethernet\xspace}
-\newcommand{\NCLocalAreaNetworksLODescribeTheIpLevel}{Familiarity}
 \newcommand{\NCLocalAreaNetworksLODescribeTheIn}{Describe the steps used in one common approach to the multiple access problem\xspace}
 \newcommand{\NCLocalAreaNetworksLODescribeTheInLevel}{Familiarity}
+\newcommand{\NCLocalAreaNetworksLODescribeTheIp}{Describe the interrelations between IP and Ethernet\xspace}
+\newcommand{\NCLocalAreaNetworksLODescribeTheIpLevel}{Familiarity}
 
 \newcommand{\NCLocalAreaNetworksAllLearningOutcomes}{%
 \begin{learningoutcomes}%
 	\item \NCLocalAreaNetworksLODescribeHowForwardedEthernet\xspace[\NCLocalAreaNetworksLODescribeHowForwardedEthernetLevel] %
-	\item \NCLocalAreaNetworksLODescribeTheIp\xspace[\NCLocalAreaNetworksLODescribeTheIpLevel] %
 	\item \NCLocalAreaNetworksLODescribeTheIn\xspace[\NCLocalAreaNetworksLODescribeTheInLevel] %
+	\item \NCLocalAreaNetworksLODescribeTheIp\xspace[\NCLocalAreaNetworksLODescribeTheIpLevel] %
 \end{learningoutcomes}%
 }
 
