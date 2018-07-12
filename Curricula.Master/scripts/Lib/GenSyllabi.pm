@@ -71,11 +71,6 @@ sub process_syllabus_units($$$$)
 		push(@{$Common::course_info{$codcour}{units}{alternative_caption}}, $alternative_caption);
 		push(@{$Common::course_info{$codcour}{units}{bib_items}}   , $unit_bibitems);
 		push(@{$Common::course_info{$codcour}{units}{hours}}       , $unit_hours);
-# 		if($codcour eq "CS1D1")
-# 		{
-# 		    print Dumper (\%{$Common::course_info{$codcour}{units}}); exit;
-# 		    #print Dumper (\%{$Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions}}); exit;
-# 		}
 		push(@{$Common::course_info{$codcour}{units}{level_of_competence}} , $level_of_competence);
 		$Common::course_info{$codcour}{allbibitems} .= "$sep$unit_bibitems";
 
@@ -326,8 +321,6 @@ sub read_syllabus_info($$$)
 	$Common::course_info{$codcour}{docentes_names}  	= $map{PROFESSOR_NAMES};
 	$Common::course_info{$codcour}{docentes_titles}  	= $map{PROFESSOR_TITLES};
 	$Common::course_info{$codcour}{docentes_shortcv} 	= $map{PROFESSOR_SHORT_CVS};
-	#if($codcour eq "FG101")
-	#{     Util::print_message("Professor for course $codcour\n$map{PROFESSOR_SHORT_CVS}");	      exit;	}
 
 	my $horastxt = "";
 	$horastxt 			.= "$Common::course_info{$codcour}{th} HT; " if($Common::course_info{$codcour}{th} > 0);
@@ -345,13 +338,23 @@ sub read_syllabus_info($$$)
 	if($Common::course_info{$codcour}{lh} > 0)
 	{   $map{LAB_HOURS} = "$Common::course_info{$codcour}{lh} $Common::config{dictionary}{LABORATORY}";	}
 
+# 	if( $codcour eq "CS2101" )
+# 	{      
+#             print Dumper( \%{$Common::course_info{$codcour}} ); 
+#             Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
+#             
+#             print Dumper( \%map ); 
+#             print Dumper( \%{$Common::config{map_file_to_course}} );
+#             exit;      
+#     }
+	
 	if($Common::course_info{$codcour}{n_prereq} == 0)
-	{	$map{PREREQUISITES_JUST_CODES}	= $Common::config{dictionary}{None};
-        $map{PREREQUISITES}             = $Common::config{dictionary}{None};
+	{	$map{PREREQUISITES_JUST_CODES}	= $Common::config{dictionaries}{$lang}{None};
+        $map{PREREQUISITES}             = $Common::config{dictionaries}{$lang}{None};
 	}
 	else
 	{	$map{PREREQUISITES_JUST_CODES}	= $Common::course_info{$codcour}{prerequisites_just_codes};		
-        $map{PREREQUISITES} 			= $Common::course_info{$codcour}{code_name_and_sem_prerequisites};
+        $map{PREREQUISITES} 			= "\\begin{itemize}$Common::course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}\\end{itemize}";
 	}
 
 
@@ -369,9 +372,6 @@ sub read_syllabus_info($$$)
 # 	if($sumilla_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 # 	{	$unit_struct = $1;	}
 # 	($map{UNITS_SUMILLA}, $_)                       = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
-# 	if($codcour eq "CS1D1")
-#  	{	print Dumper (\%Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions}); exit;
-#  	}
 	
 	$map{LIST_OF_TOPICS} = $map{SHORT_DESCRIPTION};
 	$map{SHORT_DESCRIPTION} = "\\begin{inparaenum}\n$map{SHORT_DESCRIPTION}\\end{inparaenum}";
@@ -393,10 +393,7 @@ sub read_syllabus_info($$$)
 	{	$map{$_} = $Common::course_info{$codcour}{extra_tags}{$_};		}
 	Util::write_file($fullname, $syllabus_in);
 	# TEXT TO CUT
-# 	if( $codcour eq "FG170" )
-# 	{	print Dumper(\%map);	exit;
-# 	    exit;
-# 	}
+
 	return %map;
 }
 
@@ -480,8 +477,6 @@ sub process_syllabi()
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
 	
-# 	Util::print_message("Common::config{syllabus_template}=\n$Common::config{syllabus_template}"); exit;
-	
 	generate_tex_syllabi_files();
         generate_syllabi_include();
  	gen_batch_to_compile_syllabi();
@@ -517,8 +512,6 @@ sub generate_tex_syllabi_files()
 			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
 			      #Util::print_message("A. Common::course_info{$codcour}{$lang}{specific_evaluation}=\n$Common::course_info{$codcour}{$lang}{specific_evaluation}");	exit;
 			      #Util::print_message("Common::config{syllabus_template}=$Common::config{syllabus_template}");	
-			      #Util::print_warning("map{EVALUATION}=$map{EVALUATION}");	exit;
-			      
 			      
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
@@ -532,7 +525,6 @@ sub generate_tex_syllabi_files()
 			      #eval { system("cp $syllabus_bib $OutputTexDir"); }
 			      #warn $@ if $@;
 			}
-			#print Dumper(\%{$Common::config{dictionaries}{English}}); exit;
 # 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 		}
 	}
@@ -1026,7 +1018,6 @@ sub gen_prerequisites_map($)
 			#$batch_txt	.= "dot -Gcharset=$Common::config{encoding} -Tps $output_file -o $OutputFigDir/$codcour_label.ps; \n";
 			$batch_txt	.= "dot -Tps $output_file -o $OutputFigDir/$codcour_label.ps; \n";
 			$batch_txt	.= "convert $OutputFigDir/$codcour_label.ps $OutputFigDir/$codcour_label.png&\n\n";
-			#exit;
 		}
 	 }
 	 my $batch_map_for_course_file = Common::get_template("out-gen-map-for-course");

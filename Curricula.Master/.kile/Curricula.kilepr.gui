@@ -2,7 +2,7 @@
 kile_livePreviewEnabled=false
 kile_livePreviewStatusUserSpecified=true
 kile_livePreviewTool=LivePreview-PDFLaTeX
-lastDocument=../Curricula.in/lang/Espanol/CS.tex/GeneralInfo.tex
+lastDocument=scripts/Lib/GenSyllabi.pm
 
 [document-settings,item:../Curricula.in/All.tex/preamble.tex]
 Bookmarks=
@@ -206,7 +206,7 @@ Mode=Bash
 Mode Set By User=false
 
 [document-settings,item:scripts/Lib/Common.pm]
-Bookmarks=1877,2938,2954,2921
+Bookmarks=2921,2938,1877,2954
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -218,7 +218,7 @@ Mode Set By User=false
 ReadWrite=true
 
 [document-settings,item:scripts/Lib/GenSyllabi.pm]
-Bookmarks=953,484,88
+Bookmarks=88,490,959
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -230,7 +230,7 @@ Mode Set By User=false
 ReadWrite=true
 
 [document-settings,item:scripts/Lib/GeneralInfo.pm]
-Bookmarks=2136,198,1000,876
+Bookmarks=198,876,2136,1000
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -265,7 +265,7 @@ Indentation Mode=normal
 Mode=Perl
 
 [document-settings,item:scripts/gen-html-main.pl]
-Bookmarks=85,49,138
+Bookmarks=138,49,85
 Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
@@ -618,15 +618,15 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:Documentacion/packages needed to run.txt]
-CursorColumn=0
-CursorLine=0
+CursorColumn=8
+CursorLine=1
 JumpList=
 TextFolding=[]
 ViMarks=.,1,79,[,1,79,],1,79
 
 [view-settings,view=0,item:compile1institucion.sh]
 CursorColumn=0
-CursorLine=56
+CursorLine=131
 JumpList=
 TextFolding=[]
 ViMarks=.,142,0,[,142,0,],142,0
@@ -653,11 +653,11 @@ TextFolding=[]
 ViMarks=.,1341,0,[,1341,0,],1341,1,a,-1,-1,b,-1,-1,c,-1,-1,d,-1,-1,e,-1,-1,f,-1,-1,g,-1,-1,h,-1,-1,i,2921,0,j,2954,1,k,2938,0,l,1877,0
 
 [view-settings,view=0,item:scripts/Lib/GenSyllabi.pm]
-CursorColumn=102
-CursorLine=251
+CursorColumn=59
+CursorLine=348
 JumpList=
 TextFolding=[]
-ViMarks=.,251,92,[,251,92,],251,101,a,484,0,b,88,0,c,953,0
+ViMarks=.,348,58,[,348,57,],348,58,a,490,0,b,88,0,c,959,0
 
 [view-settings,view=0,item:scripts/Lib/GeneralInfo.pm]
 CursorColumn=45

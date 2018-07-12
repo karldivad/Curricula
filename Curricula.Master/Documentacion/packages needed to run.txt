@@ -2,16 +2,19 @@ You can add this to the ~/.bashrc to make it always available when you log-in.
 Ubuntu: export PERL5LIB=/home/ecuadros/Articles/Curricula/Curricula.Master/scripts
 Mac   : export PERL5LIB=/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
 
-sudo apt-get install ps2eps; ok;
-sudo apt-get install latex2html; ok
-sudo apt-get install ps2pdf; (ya viene); xxxxxx
 sudo apt-get install texlive-latex-extra;
 sudo apt-get install texlive-bibtex-extra;
 sudo apt-get install texlive-science;
 sudo apt-get install texlive-lang-spanish
 sudo apt-get install texlive-pstricks
+sudo apt-get install biber
 sudo apt-get install kile
 sudo apt-get install dot2tex;
+
+sudo apt-get install ps2eps; ok;
+sudo apt-get install latex2html; ok
+sudo apt-get install ps2pdf; (ya viene); xxxxxx
+
 sudo apt-get install graphviz; ok;
 sudo apt-get install xpdf ; ok;
 sudo apt-get install gv; ok;

@@ -181,7 +181,10 @@ sub detect_codcour($)
 sub get_label($)
 {
 	my ($codcour) = (@_);
-	if(defined($antialias_info{$codcour})) #ok
+    if( defined($config{map_file_to_course}{$codcour}) )
+    {   $codcour = $config{map_file_to_course}{$codcour};   }
+	
+    if(defined($antialias_info{$codcour})) #ok
 	{	$codcour = $antialias_info{$codcour};		}
 	$codcour = get_alias($codcour); # ok
 	return $codcour; #ok
@@ -247,15 +250,14 @@ sub format_semester_label($)
       return "";
 }
 
-sub get_course_link($)
+sub get_course_link($$)
 {
-	my ($codcour) = (@_);
+	my ($codcour, $lang) = (@_);
 	my $codcour_label = Common::get_label($codcour);
 
-	my $course_full_label	= "$codcour_label. $course_info{$codcour}{course_name}{$config{language_without_accents}}";
-	my $semester 		= $course_info{$codcour}{semester};
-	my $course_link		= "\\htmlref{$course_full_label}{sec:$codcour_label}~";
-	$course_link   		.= "($semester\$^{$config{dictionary}{ordinal_postfix}{$semester}}\$ $config{dictionary}{Sem}-$config{dictionary}{Pag}~\\pageref{sec:$codcour_label})";
+	my $course_full_label	= "$codcour_label. $course_info{$codcour}{course_name}{$lang}";
+	my $course_link	   = "\\htmlref{$course_full_label}{sec:$codcour_label}~";
+	   $course_link   .= "($course_info{$codcour}{semester}\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$course_info{$codcour}{semester}}}\$ $config{dictionaries}{$lang}{Sem}-$config{dictionaries}{$lang}{Pag}~\\pageref{sec:$codcour_label})";
 	return $course_link;
 }
 
@@ -2844,11 +2846,11 @@ sub parse_courses()
 	      #                       {sem}{course_type}{area_country}{area_pie}{dpto}{cod}{alias}{name} {cr}{th}  {ph}  {lh} {ti}{Tot} {labtype}  {req} {rec} {corq}{grp} {axe} %filter
 	      if($course_params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}%(.*)/g)
 	      {
-		  my ($semester, $course_type, $area, $area_pie, $department)     = ($1, $2, $3, $4, $5);
-		  my ($codcour, $codcour_alias, $course_name_es, $course_name_en) = ($6, $7, $8, $9);
-		  my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   		  = ($10, $11, $12, $13, $14, $15, $16);
-		  my ($prerequisites, $recommended, $coreq, $group)   		  = ($17, $18, $19, $20);
-		  my ($axes, $inst_wildcard)			      		  = ($21, $22);
+		  my ($semester, $course_type, $area, $area_pie, $department)      = ($1, $2, $3, $4, $5);
+		  my ($codcour, $codcour_alias, $course_name_es, $course_name_en)  = ($6, $7, $8, $9);
+		  my ($credits, $ht, $hp, $hl, $ti, $tot, $labtype)   		       = ($10, $11, $12, $13, $14, $15, $16);
+		  my ($prerequisites, $recommended, $coreq, $group)   		       = ($17, $18, $19, $20);
+		  my ($axes, $inst_wildcard)			      		               = ($21, $22);
 		  my $coursefile = $codcour;
 
 		  #if( $codcour eq "CS211" )	{	$flag = 1; 	Util::print_warning("codcour = $codcour");	}
@@ -2886,9 +2888,9 @@ sub parse_courses()
 		  if($codcour_alias eq "") {	$codcour_alias = $codcour; 	}
 		  else
 		  {   $codcour = $codcour_alias;
-		      #$antialias_info{$codcour_alias} 	= $codcour;
+		      $antialias_info{$codcour_alias} 	= $codcour;
 		  }
-# 		  Util::print_warning("codcour=$codcour, codcour_alias=$codcour_alias ...");
+#  		  Util::print_warning("codcour=$codcour, codcour_alias=$codcour_alias ..."); exit;
 
 # 		  if( $flag == 1 )	{	Util::print_warning("codcour = $codcour");	
 #  						print Dumper(\%{$course_info{$codcour}});	exit;	
@@ -2961,19 +2963,17 @@ sub parse_courses()
 		  $course_info{$codcour}{lh}             	= $hl if(not $hl eq "");
 
 		  ($course_info{$codcour}{ti}, $course_info{$codcour}{tot})            = (0, 0);
-		  $course_info{$codcour}{ti}              = $ti if(not $ti eq "");
-		  $course_info{$codcour}{tot}             = $tot if(not $tot eq "");
+		  $course_info{$codcour}{ti}                      = $ti if(not $ti eq "");
+		  $course_info{$codcour}{tot}                     = $tot if(not $tot eq "");
 
-		  $course_info{$codcour}{labtype}        	= $labtype;
+		  $course_info{$codcour}{labtype}                 = $labtype;
 
-		  $course_info{$codcour}{full_prerequisites}	= []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, $Common::config{dictionary}{Pag} 87), ...
-		  $course_info{$codcour}{code_name_and_sem_prerequisites} = "";
+          $course_info{$codcour}{prerequisites}           = $prerequisites;
+		  $course_info{$codcour}{full_prerequisites}	  = []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, $Common::config{dictionary}{Pag} 87), ...
+		  $course_info{$codcour}{Espanol}{code_name_and_sem_prerequisites} = "";
+          $course_info{$codcour}{English}{code_name_and_sem_prerequisites} = "";
 		  $course_info{$codcour}{prerequisites_just_codes} = "";
-		  my $sep = "";
-		  foreach my $prereq (split(",", $prerequisites))
-		  {	$course_info{$codcour}{prerequisites_just_codes} .= $sep.get_label($prereq);
-			$sep = ",";
-		  }
+		
 		  $course_info{$codcour}{prerequisites_for_this_course}	= [];
 		  $course_info{$codcour}{courses_after_this_course} 	= [];
 		  $course_info{$codcour}{short_prerequisites}		= ""; # CS101F (1st Sem), CS101O (2nd Sem), ...
@@ -3016,12 +3016,13 @@ sub parse_courses()
 }
 
 # ok
-sub filter_courses()
+sub filter_courses($)
 {
+    my ($lang) = (@_);
 	Util::precondition("set_initial_configuration");
 	Util::precondition("parse_courses");
 	Util::precondition("sort_courses");
- 	my $input_file    = get_template("list-of-courses");
+	my $input_file    = get_template("list-of-courses");
 	Util::print_message("Filtering courses ...");
 
 	$counts{credits}{count} 	= 0;
@@ -3029,19 +3030,20 @@ sub filter_courses()
 	%{$config{used_prefix}}		= ();	$config{number_of_used_prefix}	 = 0;
 	%{$config{used_area_pie}}	= ();	$config{number_of_used_area_pie} = 0;
 
- 	my $courses_count 		= 0;
- 	my $active_semester 		= 0;
- 	my $maxE 			= 0;
- 	my ($elective_axes, $elective_naxes) = ("", 0);
+	my $courses_count 		= 0;
+	my $active_semester 		= 0;
+	my $maxE 			= 0;
+	my ($elective_axes, $elective_naxes) = ("", 0);
 	my $axe 			= "";
 	$config{n_semesters}		= 0;
 
-# 	foreach my $codcour (@codcour_list_sorted)
-# 	{			
-# 		Util::print_message("Codcour $codcour, sem=$course_info{$codcour}{semester}");
-# 	}
-# 	print Dumper (\%{$course_info{CS342}});
-# 	exit;
+	foreach my $codcour (@codcour_list_sorted)
+	{
+		my $coursefile = $course_info{$codcour}{coursefile};
+		#Util::print_message("config{map_file_to_course}{$coursefile} = $codcour;");
+		$config{map_file_to_course}{$coursefile} = $codcour;
+	}
+
 	foreach my $codcour (@codcour_list_sorted)
 	{
 		my $codcour_label = Common::get_label($codcour);
@@ -3051,9 +3053,7 @@ sub filter_courses()
 		      Util::print_error("codcour=$codcour, semester not defined");
 		}
 		my $semester = $course_info{$codcour}{semester};
-		my $coursefile = $course_info{$codcour}{coursefile};
-		#Util::print_message("config{map_file_to_course}{$coursefile} = $codcour;");
-		$config{map_file_to_course}{$coursefile} = $codcour;
+
 		$config{n_semesters} = $semester if($semester > $config{n_semesters});
 		$courses_count++;
 		#print "wildcards = $inst_wildcard\n";
@@ -3116,13 +3116,13 @@ sub filter_courses()
 			}
                         if( not defined($config{electives}{$semester}{$group}{cr}) )
                         {
-                              $config{electives}{$semester}{$group}{cr}    = $Common::course_info{$codcour}{cr};
-                              $config{electives}{$semester}{$group}{prefix}= $Common::course_info{$codcour}{prefix};
-			      $config{electives}{$semester}{$group}{area_pie} = $Common::course_info{$codcour}{area_pie};
-                              #Util::print_message("config{electives}{$semester}{$group}{cr}=$config{electives}{$semester}{$group}{cr}");
-                              #$electives{$group}{prefix}= $Common::course_info{$codcour}{prefix};
-			      $counts{credits}{prefix}{$prefix}     += $Common::course_info{$codcour}{cr};
-			      $counts{credits}{area_pie}{$area_pie} += $Common::course_info{$codcour}{cr};
+                                $config{electives}{$semester}{$group}{cr}    = $Common::course_info{$codcour}{cr};
+                                $config{electives}{$semester}{$group}{prefix}= $Common::course_info{$codcour}{prefix};
+                                $config{electives}{$semester}{$group}{area_pie} = $Common::course_info{$codcour}{area_pie};
+                                #Util::print_message("config{electives}{$semester}{$group}{cr}=$config{electives}{$semester}{$group}{cr}");
+                                #$electives{$group}{prefix}= $Common::course_info{$codcour}{prefix};
+                                $counts{credits}{prefix}{$prefix}     += $Common::course_info{$codcour}{cr};
+                                $counts{credits}{area_pie}{$area_pie} += $Common::course_info{$codcour}{cr};
                         }
                         else
                         {       #Util::halt("config{electives}{$semester}{$group}{cr}=$electives{$group}{cr},  Common::course_info{$codcour}{cr}=$Common::course_info{$codcour}{cr}");
@@ -3145,51 +3145,65 @@ sub filter_courses()
 
 		my $sep 		= "";
 		$course_info{$codcour}{n_prereq} = 0;
-		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites_just_codes}))
+		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites}))
 		{
 			$codreq =~ s/ //g;
-			if($codreq =~ m/$institution=(.*)/)
-			{	  push(@{$course_info{$codcour}{full_prerequisites}}, $1);
-				  $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$1";
+			if($codreq =~ m/(.*?)=(.*)/)
+			{	  
+                my ($inst, $prereq) = ($1, $2);
+                if( $inst eq $institution)
+                {   push(@{$course_info{$codcour}{full_prerequisites}}, $1);
+                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$1";
+                    $course_info{$codcour}{n_prereq}++;
+                }
+                else
+                {	 Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring"); 			}
 			}
-			elsif($codreq =~ m/(.*?)=(.*)/)
-			{	 Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring"); 			}
 			else
-			{
-				if(defined($antialias_info{$codreq}))
-				{	$codreq = $antialias_info{$codreq};	}
-				if(defined($course_info{$codreq}))
-				{
-					my $codreq_label = Common::get_label($codreq);
-					#Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
-					my $course_full_label = "$codreq. $course_info{$codreq}{course_name}{$config{language_without_accents}}";
-					my $semester_prereq = $course_info{$codreq}{semester};
-					push(@{$course_info{$codcour}{full_prerequisites}}, get_course_link($codreq));
+            {
+                $codreq = get_label($codreq);
+                $course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
+                if(defined($course_info{$codreq}))
+                {
+                    my $codreq_label = Common::get_label($codreq);
+                    #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
+                    my $semester_prereq = $course_info{$codreq}{semester};
+                    push(@{$course_info{$codcour}{full_prerequisites}}, get_course_link($codreq, $lang));
 
-					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "$sep\\htmlref{$course_full_label}{sec:$codcour_label}.~";
-					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "($semester_prereq\$^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-					$course_info{$codcour}{code_name_and_sem_prerequisites} .= "$config{dictionary}{Sem})\n";
+                    foreach my $lang_raw ( @{$this_inst_info{SyllabusLangsList}} )
+                    {       my $lang = no_accents($lang_raw);
+                            my $course_full_label = "$codreq. $course_info{$codreq}{course_name}{$lang}";
+                            $course_info{$codcour}{$lang}{code_name_and_sem_prerequisites} .= "$sep\\htmlref{$course_full_label}{sec:$codcour_label}.~";
+                            $course_info{$codcour}{$lang}{code_name_and_sem_prerequisites} .= "($semester_prereq\$^{$config{dictionaries}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})\n";
+                    }
 
-					$course_info{$codcour}{short_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-					$course_info{$codcour}{short_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-					$course_info{$codcour}{short_prerequisites} .= "$config{dictionary}{Sem})";
+                    $course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
+                    $course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+                    $course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
+                    $course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
+                    $course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+                    $course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
 
-					$course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-					$course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-					$course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
-
-					push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
-					push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
-				}
-				else
-				{
-					print Dumper(\%{$course_info{$codcour}});
-					Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
-				}
-			}
+                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
+                    push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
+                    $course_info{$codcour}{n_prereq}++;
+                }
+                else
+                {
+                    print Dumper(\%{$course_info{$codcour}});
+                    Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
+                }
+            }
 			$sep = ", ";
-			$course_info{$codcour}{n_prereq}++;
 		}
+#         if( $codcour eq "CS2101" )
+#         {
+#                 print Dumper( \%{$Common::course_info{$codcour}} ); 
+#                 #Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
+#                 print Dumper( \%{$config{map_file_to_course}} );
+#                 Util::print_message("parse_courses(): prerequisites=$course_info{$codcour}{prerequisites},label=". get_label($course_info{$codcour}{prerequisites}));
+#                 exit;
+#         }
 		if($course_info{$codcour}{n_prereq} == 0)
 		{	$course_info{$codcour}{full_prerequisites} = $config{dictionary}{None};	}
 
@@ -3206,9 +3220,15 @@ sub filter_courses()
 			$counts{hours}{areas}{$axe} += $hours/$course_info{$codcour}{naxes};
 		}
 		$counts{hours}{count} += $hours;
-		#Util::print_message("codcour = $codcour, counts{credits}{count} = $counts{credits}{count}, counts{hours}{count} = $counts{hours}{count}");
-		#Util::print_message("axe=$axe, data{counts_per_standard}{$axe} = $data{counts_per_standard}{$axe}");
-		#exit if($courses_count == 50);
+#         if( $codcour eq "CS2101" )
+#         {
+#                 print Dumper( \%{$Common::course_info{$codcour}} ); 
+#                 Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
+#                 #print Dumper( \%map ); 
+#                 # $config{map_file_to_course}{$coursefile} = $codcour;
+#                 print Dumper( \%{$config{map_file_to_course}} );
+#                 exit;
+#         }
 	}
 
 	foreach $axe (split(",", $elective_axes))
@@ -3267,6 +3287,8 @@ sub filter_courses()
 	$config{ncourses} = $courses_count;
 	Util::check_point("filter_courses");
 	Util::print_message("Read courses = $courses_count ($config{n_semesters} semesters)");
+#     print Dumper( \%{$config{map_file_to_course}} );
+#     exit;
 }
 
 sub sort_courses()
@@ -4233,7 +4255,7 @@ sub process_courses()
     parse_courses();
 # 	print Dumper(\%{$course_info{"MA102"}});
 	sort_courses();
-	filter_courses();
+	filter_courses($config{language_without_accents});
 }
 
 sub setup()
@@ -4247,7 +4269,7 @@ sub setup()
 	read_pagerefs();
 	process_courses();
 
-	$Common::config{parallel} 	= 1;
+	$Common::config{parallel} 	= 0;
 }
 
 sub shutdown()

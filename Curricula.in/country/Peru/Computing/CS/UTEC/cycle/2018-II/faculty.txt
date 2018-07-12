@@ -102,8 +102,8 @@
 \prefix{Mg}
 \name{Luis Eduardo Talavera Rios}
 \begin{titles}
-	\\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
-	\Master{Espanol}{}{}{}{}{}{}
+	\\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}
+	\Master{English}{Empty}{}{}{}{}{}
 \end{titles}
 \Category{}
 \Dedication{TP}
