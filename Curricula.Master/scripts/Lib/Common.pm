@@ -216,7 +216,7 @@ sub get_syllabi_language_icons($$)
 	    $link .= "</a>\n";
 	    $sep = ", ";
 	}
-        return $link;
+    return $link;
 }
 
 sub get_language_icon($)
@@ -2967,17 +2967,18 @@ sub parse_courses()
 		  $course_info{$codcour}{tot}                     = $tot if(not $tot eq "");
 
 		  $course_info{$codcour}{labtype}                 = $labtype;
-
           $course_info{$codcour}{prerequisites}           = $prerequisites;
-		  $course_info{$codcour}{full_prerequisites}	  = []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, $Common::config{dictionary}{Pag} 87), ...
-		  $course_info{$codcour}{Espanol}{code_name_and_sem_prerequisites} = "";
-          $course_info{$codcour}{English}{code_name_and_sem_prerequisites} = "";
+          foreach my $lang ( @{$config{SyllabusLangsList}} )
+		  {
+                $course_info{$codcour}{$lang}{full_prerequisites} = []; # # CS101F. Name1 (1st Sem, $Common::config{dictionary}{Pag} 56), CS101O. Name2 (2nd Sem, Pag 87), ...
+                $course_info{$codcour}{$lang}{code_name_and_sem_prerequisites} = [];
+          }
+          $course_info{$codcour}{code_and_sem_prerequisites}	= "";
+
 		  $course_info{$codcour}{prerequisites_just_codes} = "";
-		
 		  $course_info{$codcour}{prerequisites_for_this_course}	= [];
 		  $course_info{$codcour}{courses_after_this_course} 	= [];
-		  $course_info{$codcour}{short_prerequisites}		= ""; # CS101F (1st Sem), CS101O (2nd Sem), ...
-		  $course_info{$codcour}{code_and_sem_prerequisites}	= "";
+		  $course_info{$codcour}{short_prerequisites}	= ""; # CS101F (1st Sem), CS101O (2nd Sem), ...
 # 		  Util::print_warning("codcour=$codcour, $recommended");
 		  $course_info{$codcour}{recommended}   		= get_label($recommended);
 # 		  Util::print_warning("course_info{$codcour}{recommended}=$course_info{$codcour}{recommended}"); exit;
@@ -3018,7 +3019,7 @@ sub parse_courses()
 # ok
 sub filter_courses($)
 {
-    my ($lang) = (@_);
+    my ($langx) = (@_);
 	Util::precondition("set_initial_configuration");
 	Util::precondition("parse_courses");
 	Util::precondition("sort_courses");
@@ -3152,12 +3153,19 @@ sub filter_courses($)
 			{	  
                 my ($inst, $prereq) = ($1, $2);
                 if( $inst eq $institution)
-                {   push(@{$course_info{$codcour}{full_prerequisites}}, $1);
-                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$1";
+                {   
+                    $course_info{$codcour}{prerequisites_just_codes} .= "$prereq";
+                    foreach my $lang ( @{$config{SyllabusLangsList}} )
+                    {       push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq);
+                            push(@{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $prereq );     
+                    }
+                    $course_info{$codcour}{short_prerequisites} .= $prereq;
+                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$prereq";
+                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $prereq);
                     $course_info{$codcour}{n_prereq}++;
                 }
                 else
-                {	 Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring"); 			}
+                {	 Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring"); 	}
 			}
 			else
             {
@@ -3168,13 +3176,14 @@ sub filter_courses($)
                     my $codreq_label = Common::get_label($codreq);
                     #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
                     my $semester_prereq = $course_info{$codreq}{semester};
-                    push(@{$course_info{$codcour}{full_prerequisites}}, get_course_link($codreq, $lang));
 
-                    foreach my $lang_raw ( @{$this_inst_info{SyllabusLangsList}} )
-                    {       my $lang = no_accents($lang_raw);
-                            my $course_full_label = "$codreq. $course_info{$codreq}{course_name}{$lang}";
-                            $course_info{$codcour}{$lang}{code_name_and_sem_prerequisites} .= "$sep\\htmlref{$course_full_label}{sec:$codcour_label}.~";
-                            $course_info{$codcour}{$lang}{code_name_and_sem_prerequisites} .= "($semester_prereq\$^{$config{dictionaries}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})\n";
+                    foreach my $lang ( @{$config{SyllabusLangsList}} )
+                    {       
+                            push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));
+                            my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour_label}.~";
+                               $temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
+
+                            push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
                     }
 
                     $course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
@@ -3196,17 +3205,18 @@ sub filter_courses($)
             }
 			$sep = ", ";
 		}
-#         if( $codcour eq "CS2101" )
+#         if( $codcour eq "FG601" )
 #         {
 #                 print Dumper( \%{$Common::course_info{$codcour}} ); 
-#                 #Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
-#                 print Dumper( \%{$config{map_file_to_course}} );
+#                 Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
+#                 #print Dumper( \%{$config{map_file_to_course}} );
 #                 Util::print_message("parse_courses(): prerequisites=$course_info{$codcour}{prerequisites},label=". get_label($course_info{$codcour}{prerequisites}));
 #                 exit;
 #         }
 		if($course_info{$codcour}{n_prereq} == 0)
-		{	$course_info{$codcour}{full_prerequisites} = $config{dictionary}{None};	}
-
+		{	    foreach my $lang ( @{$config{SyllabusLangsList}} )
+                {   $course_info{$codcour}{$lang}{full_prerequisites} = $config{dictionary}{None};	}
+        }
 		# Hours Accumulator
 		my $hours = 0;
 		$hours += $course_info{$codcour}{th} if( not $course_info{$codcour}{th} eq "" );

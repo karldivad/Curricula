@@ -98,12 +98,12 @@
 
 
 --BEGIN-PROFESSOR--
-\email{luistlvr1989@gmail.com}
+\email{luistlvr1989@gmail.com}  
 \prefix{Mg}
 \name{Luis Eduardo Talavera Rios}
 \begin{titles}
-	\\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}	\Master{English}{Empty}{}{}{}{}{}	\Master{Espanol}{Empty}{}{}{}{}{}
-	\Master{English}{Empty}{}{}{}{}{}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}
+	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -473,7 +473,7 @@
 
 
 --BEGIN-PROFESSOR--
-\email{aliaga.walter@pucp.edu.pe}
+\email{waliaga@utec.edu.pe}
 \prefix{Dr.}
 \name{Walter Aliaga Aliaga}
 \begin{titles}
@@ -682,3 +682,8 @@
 \Research{Transformación Digital, RPA Robotics Programming Application}
 \courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019}
 --END-PROFESSOR--
+
+
+
+
+

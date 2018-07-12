@@ -337,27 +337,35 @@ sub read_syllabus_info($$$)
 
 	if($Common::course_info{$codcour}{lh} > 0)
 	{   $map{LAB_HOURS} = "$Common::course_info{$codcour}{lh} $Common::config{dictionary}{LABORATORY}";	}
-
-# 	if( $codcour eq "CS2101" )
-# 	{      
-#             print Dumper( \%{$Common::course_info{$codcour}} ); 
-#             Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
-#             
-#             print Dumper( \%map ); 
-#             print Dumper( \%{$Common::config{map_file_to_course}} );
-#             exit;      
-#     }
 	
 	if($Common::course_info{$codcour}{n_prereq} == 0)
 	{	$map{PREREQUISITES_JUST_CODES}	= $Common::config{dictionaries}{$lang}{None};
         $map{PREREQUISITES}             = $Common::config{dictionaries}{$lang}{None};
 	}
 	else
-	{	$map{PREREQUISITES_JUST_CODES}	= $Common::course_info{$codcour}{prerequisites_just_codes};		
-        $map{PREREQUISITES} 			= "\\begin{itemize}$Common::course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}\\end{itemize}";
+	{	
+        $map{PREREQUISITES_JUST_CODES}	= $Common::course_info{$codcour}{prerequisites_just_codes};
+        my $output = "";
+        if( scalar(@{$Common::course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}) == 1 )
+        {   $output = $Common::course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}[0];    }
+        else
+        {
+            foreach my $txt ( @{$Common::course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}} )
+            {   $output .= "\t\t \\item $txt\n";        }
+            $output = "\\begin{itemize}\n$output\\end{itemize}";
+        }
+        $map{PREREQUISITES} 			= $output;
 	}
-
-
+#     if( $codcour eq "FG601" )
+#     {      
+#             print Dumper( \%{$Common::course_info{$codcour}} ); 
+#             Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
+#             
+#             print Dumper( \%map ); 
+# #             print Dumper( \%{$Common::config{map_file_to_course}} );
+#             exit;      
+#     }
+    
 	my $syllabus_template = $Common::config{syllabus_template};
 	my $unit_struct = "";
 	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
@@ -471,7 +479,7 @@ sub process_syllabi()
 	# It generates all the sillabi
 	read_sumilla_template();   # 1st Read template for sumilla
 	read_syllabus_template();  # 2nd Read the syllabus template
-	gen_course_general_info(); # 3th Generate files containing Prerequisites, etc
+	gen_course_general_info($Common::config{language_without_accents}); # 3th Generate files containing Prerequisites, etc
 	gen_prerequisites_map($Common::config{language_without_accents});   # 4th Generate dot files 
 	
 	# 4th: Read evaluation info for this institution
@@ -834,8 +842,9 @@ sub generate_syllabi_include()
         Util::print_message("generate_syllabi_include() OK!");
 }
 
-sub gen_course_general_info()
+sub gen_course_general_info($)
 {
+    my ($lang) = (@_);
 	my $OutputPrereqDir = Common::get_template("OutputPrereqDir");
 	my $OutputFigDir = Common::get_template("OutputFigDir");
 	
@@ -880,7 +889,7 @@ sub gen_course_general_info()
 			else
 			{
 				$prereq_txt .= "\n\t\\begin{itemize}\n";
-				foreach my $course (@{$Common::course_info{$codcour}{full_prerequisites}})
+				foreach my $course (@{$Common::course_info{$codcour}{$lang}{full_prerequisites}})
 				{
 					$prereq_txt .= "\t\t\\item $course\n";
 				}

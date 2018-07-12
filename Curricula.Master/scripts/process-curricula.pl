@@ -50,9 +50,9 @@ sub generate_general_info()
 	GeneralInfo::generate_all_topics_by_course($lang);
 	GeneralInfo::generate_all_outcomes_by_course($lang);
 	GeneralInfo::generate_list_of_outcomes();
-	GeneralInfo::generate_list_of_courses_by_outcome();
+	GeneralInfo::generate_list_of_courses_by_outcome($lang);
 
-	GeneralInfo::generate_list_of_courses_by_area();
+	GeneralInfo::generate_list_of_courses_by_area($lang);
 	GeneralInfo::generate_compatibility_with_standards();
 
 # 	GeneralInfo::generate_faculty_info();

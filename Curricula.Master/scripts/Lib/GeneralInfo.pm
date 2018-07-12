@@ -123,7 +123,8 @@ sub generate_course_tables()
 			}
 			$this_course_info{PREREQ} = "~";
 			if( not $Common::course_info{$codcour}{code_and_sem_prerequisites} eq "" )
-			{	$this_course_info{PREREQ} = $Common::course_info{$codcour}{code_and_sem_prerequisites};		}
+			{	$this_course_info{PREREQ} = $Common::course_info{$codcour}{code_and_sem_prerequisites};		
+			}
 
 			$this_line 	= Common::replace_tags($this_line, $begin_tag, $end_tag, %this_course_info);
 			$this_line 	=~ s/$begin_tag(.*?)$end_tag/~/g;
@@ -771,9 +772,9 @@ sub generate_pie($)
 	#$area_count{$Common::course_info{$codcour}{area}} += $Common::course_info{$codcour}{cr};
 	#$credit_count += $Common::course_info{$codcour}{cr};
 	Util::write_file_to_gen_fig($output_file, $output_txt); 
-	my $fig_file = Common::get_template("OutputFigDir")."/pie-$type*"; 
-	Util::print_message("Removing file: $fig_file ...");
-	system("rm $fig_file");
+# 	my $fig_file = Common::get_template("OutputFigDir")."/pie-$type*"; 
+# 	Util::print_message("Removing file: $fig_file ...");
+# 	system("rm $fig_file");
 # 	exit;
 # 	Util::write_file("File $output_file Generated!", $output_txt);
 }
@@ -1034,8 +1035,9 @@ sub generate_list_of_outcomes()
 	Util::write_file($output_file, $output_tex);
 }
 
-sub generate_list_of_courses_by_outcome()
+sub generate_list_of_courses_by_outcome($)
 {
+    my ($lang) = (@_);
 	my $output_txt = "";
 	my $version = $Common::config{OutcomesVersion};
 	foreach my $outcome (split(",", $Common::config{outcomes_list}{$version}))
@@ -1045,7 +1047,7 @@ sub generate_list_of_courses_by_outcome()
 	      foreach my $codcour (@{$Common::config{course_by_outcome}{$outcome}})
 	      {
 		    $counter++;
-		    $this_outcome_txt .= "\t\\item ". Common::get_course_link($codcour)."\n";
+		    $this_outcome_txt .= "\t\\item ". Common::get_course_link($codcour, $lang)."\n";
 	      }
 	      if($counter > 0)
 	      {
@@ -1264,8 +1266,9 @@ sub generate_all_outcomes_by_course($)
 }
 
 # ok
-sub generate_list_of_courses_by_area()
+sub generate_list_of_courses_by_area($)
 {
+    my ($lang) = (@_);
 	my $output_txt = "\\begin{enumerate}\n";
 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=> $Common::config{sub_areas_priority}{$b}} 
 		keys %{$Common::config{dictionary}{all_areas}})
@@ -1284,7 +1287,7 @@ sub generate_list_of_courses_by_area()
 # 			Util::print_message("Common::config{language_without_accents}=$Common::config{language_without_accents}"); 
 # 			Util::print_message("Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}=$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
 
-			$this_topic .= "\t\t\\item ". Common::get_course_link($codcour)."\n";
+			$this_topic .= "\t\t\\item ". Common::get_course_link($codcour, $lang)."\n";
 # 			$this_topic .= "\t\t\\item \\htmlref{$codcour_label. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour_label} ";
 # 			$this_topic .= " ($semester";
 # 			$this_topic .= "$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}, ";
@@ -1311,7 +1314,7 @@ sub generate_list_of_courses_by_area()
 
 	my $output_file = Common::get_template("out-list-of-courses-per-area-file");
 	Util::write_file($output_file, $output_txt);
-	Util::print_message("generate_list_of_courses_by_area() OK!");
+	Util::print_message("generate_list_of_courses_by_area($lang) OK!");
 	
 }
 
