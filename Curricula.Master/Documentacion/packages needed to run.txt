@@ -1,6 +1,6 @@
 You can add this to the ~/.bashrc to make it always available when you log-in.
 Ubuntu: export PERL5LIB=/home/ecuadros/Articles/Curricula/Curricula.Master/scripts
-Mac   : export PERL5LIB=/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
+Mac   : export PERL5LIB=/usr/local/Cellar/perl/5.26.1/lib/perl5/site_perl/5.26.1:/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
 
 sudo apt-get install texlive-latex-extra;
 sudo apt-get install texlive-bibtex-extra;
@@ -29,9 +29,9 @@ cd /tmp
 wget http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-6/libgcj17_6.4.0-8ubuntu1_amd64.deb \
     http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-defaults/libgcj-common_6.4-3ubuntu1_all.deb \
     http://mirrors.kernel.org/ubuntu/pool/universe/p/pdftk/pdftk_2.02-4build1_amd64.deb \
-    http://mirrors.kernel.org/ubuntu/pool/universe/p/pdftk/pdftk-dbg_2.02-4build1_amd64.deb 
+    http://mirrors.kernel.org/ubuntu/pool/universe/p/pdftk/pdftk-dbg_2.02-4build1_amd64.deb
 echo -e "Packages for pdftk downloaded\n\n"
-# install packages 
+# install packages
 echo -e "\n\n Installing pdftk: \n\n"
 sudo apt-get install ./libgcj17_6.4.0-8ubuntu1_amd64.deb \
     ./libgcj-common_6.4-3ubuntu1_all.deb \
