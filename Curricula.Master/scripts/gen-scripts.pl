@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w 
+#!/usr/bin/perl -w
 
 use strict;
 use File::Path qw(make_path);
@@ -12,95 +12,94 @@ my %list_of_areas  = ();
 # ok
 sub gen_batch($$)
 {
-	Util::precondition("read_institutions_list");
-	my ($source,$target) = (@_);
-	my $txt = Util::read_file($source);
-	
-	#print "institution=$Common::institution\n";
-	$txt =~ s/<INST>/$Common::institution/g;
-	my $filter = $Common::inst_list{$Common::institution}{filter};
-	$txt =~ s/<FILTER>/$filter/g;
-	$txt =~ s/<VERSION>/$Common::inst_list{$Common::institution}{version}/g;
-	$txt =~ s/<AREA>/$Common::inst_list{$Common::institution}{area}/g;
-	my $output_bib_dir = Common::get_template("OutputBinDir");
-	$txt =~ s/<OUTBIN>/$output_bib_dir/g;
+		Util::precondition("read_institutions_list");
+		my ($source,$target) = (@_);
+		my $txt = Util::read_file($source);
 
-	my $InDir = Common::get_template("InDir");
-        $txt =~ s/<IN_DIR>/$InDir/g;
-        
-	my $InTexDir = Common::get_template("InTexDir");
-        $txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
+		#print "institution=$Common::institution\n";
+		$txt =~ s/<INST>/$Common::institution/g;
+		my $filter = $Common::inst_list{$Common::institution}{filter};
+		$txt =~ s/<FILTER>/$filter/g;
+		$txt =~ s/<VERSION>/$Common::inst_list{$Common::institution}{version}/g;
+		$txt =~ s/<AREA>/$Common::inst_list{$Common::institution}{area}/g;
+		my $output_bib_dir = Common::get_template("OutputBinDir");
+		$txt =~ s/<OUTBIN>/$output_bib_dir/g;
 
-        my $InInstDir = Common::get_template("InInstDir");
-        $txt =~ s/<IN_INST_DIR>/$InInstDir/g;
-        
-        my $OutputDir = Common::get_template("OutDir");
-        mkdir -p
-        $txt =~ s/<OUTPUT_DIR>/$OutputDir/g;
-        
-        my $OutputInstDir = Common::get_template("OutputInstDir");
-        $txt =~ s/<OUTPUT_INST_DIR>/$OutputInstDir/g;
+		my $InDir = Common::get_template("InDir");
+		$txt =~ s/<IN_DIR>/$InDir/g;
 
-        my $OutputLogDir = Common::get_template("OutputLogDir");
-        $txt =~ s/<OUT_LOG_DIR>/$OutputLogDir/g;
+		my $InTexDir = Common::get_template("InTexDir");
+		$txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
 
-	my $OutputTexDir = Common::get_template("OutputTexDir");
-	$txt =~ s/<OUTPUT_TEX_DIR>/$OutputTexDir/g;
+		my $InInstDir = Common::get_template("InInstDir");
+		$txt =~ s/<IN_INST_DIR>/$InInstDir/g;
 
-	my $OutputDotDir = Common::get_template("OutputDotDir");
-	$txt =~ s/<OUTPUT_DOT_DIR>/$OutputDotDir/g;
-	
-	my $OutputFigDir = Common::get_template("OutputFigDir");
-	$txt =~ s/<OUTPUT_FIG_DIR>/$OutputFigDir/g;
+		my $OutputDir = Common::get_template("OutDir");
+		$txt =~ s/<OUTPUT_DIR>/$OutputDir/g;
 
-	my $OutputScriptsDir = Common::get_template("OutputScriptsDir");
-	$txt =~ s/<OUTPUT_SCRIPTS_DIR>/$OutputScriptsDir/g;
+		my $OutputInstDir = Common::get_template("OutputInstDir");
+		$txt =~ s/<OUTPUT_INST_DIR>/$OutputInstDir/g;
 
-	my $OutputHtmlDir = Common::get_template("OutputHtmlDir");
-	$txt =~ s/<OUTPUT_HTML_DIR>/$OutputHtmlDir/g;
-	
-	my $OutputCurriculaHtmlFile = Common::get_template("output-curricula-html-file");
-	$txt =~ s/<OUTPUT_CURRICULA_HTML_FILE>/$OutputCurriculaHtmlFile/g;
-	
-	my $OutputIndexHtmlFile = Common::get_template("output-index-html-file");
-	$txt =~ s/<OUTPUT_INDEX_HTML_FILE>/$OutputIndexHtmlFile/g;
-	
-	my $UnifiedMain = Common::get_template("unified-main-file");
-	$UnifiedMain =~ m/(.*)\.tex/;
-	$UnifiedMain = $1;
-	$txt =~ s/<UNIFIED_MAIN_FILE>/$UnifiedMain/g;
+		my $OutputLogDir = Common::get_template("OutputLogDir");
+		$txt =~ s/<OUT_LOG_DIR>/$OutputLogDir/g;
 
-	my $MainFile = Common::get_template("curricula-main");
-	$MainFile =~ m/(.*)\.tex/;
-	$MainFile = $1;
-	$txt =~ s/<MAIN_FILE>/$MainFile/g;
+		my $OutputTexDir = Common::get_template("OutputTexDir");
+		$txt =~ s/<OUTPUT_TEX_DIR>/$OutputTexDir/g;
 
-	my $country_without_accents = Common::get_template("country_without_accents");
-	$txt =~ s/<COUNTRY>/$country_without_accents/g;
+		my $OutputDotDir = Common::get_template("OutputDotDir");
+		$txt =~ s/<OUTPUT_DOT_DIR>/$OutputDotDir/g;
 
-	my $language_without_accents = Common::get_template("language_without_accents");
-	$txt =~ s/<LANG>/$language_without_accents/g;
-	
-	my $InLangBaseDir = Common::get_template("InLangBaseDir");
-	$txt =~ s/<IN_LANG_BASE_DIR>/$InLangBaseDir/g;
-	
-	my $InLangDir = Common::get_template("InLangDir");
-	$txt =~ s/<IN_LANG_DIR>/$InLangDir/g;
+		my $OutputFigDir = Common::get_template("OutputFigDir");
+		$txt =~ s/<OUTPUT_FIG_DIR>/$OutputFigDir/g;
 
-	$txt =~ s/<HTML_FOOTNOTE>/$Common::config{HTMLFootnote}/g;
+		my $OutputScriptsDir = Common::get_template("OutputScriptsDir");
+		$txt =~ s/<OUTPUT_SCRIPTS_DIR>/$OutputScriptsDir/g;
 
-	$txt =~ s/<SEM_ACAD>/$Common::config{Semester}/g;
-	$txt =~ s/<PLAN>/$Common::config{Plan}/g;
-	$txt =~ s/<FIRST_SEM>/$Common::config{SemMin}/g;
-	$txt =~ s/<LAST_SEM>/$Common::config{SemMax}/g;
-	
-	$txt =~ s/<PLAN>/$Common::config{Plan}/g;
+		my $OutputHtmlDir = Common::get_template("OutputHtmlDir");
+		$txt =~ s/<OUTPUT_HTML_DIR>/$OutputHtmlDir/g;
 
-	Util::write_file($target, $txt);
-	Util::print_message("gen_batch: $target created successfully ...");
-	system("chmod 774 $target");
-	#foreach my $inst (sort keys %inst_list)
-	#{	print "[[$inst]] ";	}
+		my $OutputCurriculaHtmlFile = Common::get_template("output-curricula-html-file");
+		$txt =~ s/<OUTPUT_CURRICULA_HTML_FILE>/$OutputCurriculaHtmlFile/g;
+
+		my $OutputIndexHtmlFile = Common::get_template("output-index-html-file");
+		$txt =~ s/<OUTPUT_INDEX_HTML_FILE>/$OutputIndexHtmlFile/g;
+
+		my $UnifiedMain = Common::get_template("unified-main-file");
+		$UnifiedMain =~ m/(.*)\.tex/;
+		$UnifiedMain = $1;
+		$txt =~ s/<UNIFIED_MAIN_FILE>/$UnifiedMain/g;
+
+		my $MainFile = Common::get_template("curricula-main");
+		$MainFile =~ m/(.*)\.tex/;
+		$MainFile = $1;
+		$txt =~ s/<MAIN_FILE>/$MainFile/g;
+
+		my $country_without_accents = Common::get_template("country_without_accents");
+		$txt =~ s/<COUNTRY>/$country_without_accents/g;
+
+		my $language_without_accents = Common::get_template("language_without_accents");
+		$txt =~ s/<LANG>/$language_without_accents/g;
+
+		my $InLangBaseDir = Common::get_template("InLangBaseDir");
+		$txt =~ s/<IN_LANG_BASE_DIR>/$InLangBaseDir/g;
+
+		my $InLangDir = Common::get_template("InLangDir");
+		$txt =~ s/<IN_LANG_DIR>/$InLangDir/g;
+
+		$txt =~ s/<HTML_FOOTNOTE>/$Common::config{HTMLFootnote}/g;
+
+		$txt =~ s/<SEM_ACAD>/$Common::config{Semester}/g;
+		$txt =~ s/<PLAN>/$Common::config{Plan}/g;
+		$txt =~ s/<FIRST_SEM>/$Common::config{SemMin}/g;
+		$txt =~ s/<LAST_SEM>/$Common::config{SemMax}/g;
+
+		$txt =~ s/<PLAN>/$Common::config{Plan}/g;
+
+		Util::write_file($target, $txt);
+		Util::print_message("gen_batch: $target created successfully ...");
+		system("chmod 774 $target");
+		#foreach my $inst (sort keys %inst_list)
+		#{	print "[[$inst]] ";	}
 }
 
 # ok
@@ -126,12 +125,12 @@ sub gen_compileall_script()
 	print OUT "\n$body";
 	close(OUT);
 	system("chmod 774 $compileall_file");
-	Util::print_message("gen_compileall_script ok"); 
+	Util::print_message("gen_compileall_script ok");
 }
 
 # ok
 sub generate_institution()
-{	
+{
 	Util::precondition("read_institutions_list");
 	my $current_inst_file = Common::get_template("out-current-institution-file");
 
@@ -172,12 +171,12 @@ sub generate_institution()
 	$output_txt .= "\\newcommand{\\FinalReport}{$Common::config{dictionary}{FinalReport}}\n";
 	$output_txt .= "\\newcommand{\\LastModification}{$Common::config{dictionary}{LastModification}}\n";
 	$output_txt .= "\\newcommand{\\BibliographySection}{$Common::config{dictionary}{BibliographySection}}\n";
- 
+
 	$output_txt .= "\\newcommand{\\PeopleDir}{\\basedir/$Common::config{InPeopleDir}}\n";
 
 	Util::write_file($current_inst_file, $output_txt);
 	my $output_current_institution = Common::get_template("OutDir")."/tex/current-institution.tex";
-	
+
 	Util::print_message("Creating: $output_current_institution ...");
 	Util::write_file($output_current_institution, $output_txt);
 	Util::print_message("generate_institution ok");
@@ -213,7 +212,7 @@ sub update_acronyms()
 	#print "$basetex/$area-acronyms.tex\n";
 	my $acronym_base = Common::get_template("in-acronyms-base-file");
 	   $out_txt 		 = Util::read_file($acronym_base);
-	
+
 	if($out_txt =~ m/%--LIST-OF-INSTITUTIONS--/)
 	{
 		my $pretxt = "\n%Text generated by gen-scripts.pl ... DO NOT TOUCH !!!\n";
@@ -253,7 +252,7 @@ sub gen_batch_files()
 }
 
 sub main()
-{	
+{
 	Common::set_initial_configuration($Common::command);
 	gen_batch_files();
 	gen_compileall_script();
