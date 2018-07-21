@@ -48,7 +48,7 @@ set OutputScriptsDir=../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/script
 set OutputHtmlDir=../Curricula.out/html/Peru/CS-UTEC/Plan2018
 
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
-# ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g' 
+# ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g'
 
 # sudo addgroup curricula
 #sudo chown -R ecuadros:curricula ./Curricula
@@ -63,7 +63,8 @@ if($pdf == 1) then
       ./scripts/clean.sh
       latex curricula-main;
       #bibtex curricula-main1;
-      
+
+      mkdir -p ../Curricula.out/log
       ./scripts/compbib.sh curricula-main > ../Curricula.out/log/Peru-CS-UTEC-errors-bib.txt;
 
       latex curricula-main;
@@ -73,14 +74,14 @@ if($pdf == 1) then
       dvips curricula-main.dvi -o CS-UTEC.ps;
       echo CS-UTEC;
       ps2pdf CS-UTEC.ps CS-UTEC.pdf;
-      
+
 #     Generate the first page and place it at html dir
       pdftk A=CS-UTEC.pdf cat A1-1 output CS-UTEC-P1.pdf;
       convert CS-UTEC-P1.pdf CS-UTEC-P1.png;
       rm CS-UTEC-P1.pdf;
       mv CS-UTEC-P1.png ../Curricula.out/html/Peru/CS-UTEC/Plan2018/CurriculaMain-P1.png;
       cp CS-UTEC.pdf ../Curricula.out/html/Peru/CS-UTEC/Plan2018/CurriculaMain.pdf;
-      
+
       mv CS-UTEC.pdf "../Curricula.out/pdfs/CS-UTEC Plan2018.pdf";
       rm -rf CS-UTEC.ps;
 endif
@@ -103,7 +104,7 @@ if($html == 1) then
       dvips -o unified-curricula-main.ps unified-curricula-main.dvi;
       ps2pdf unified-curricula-main.ps unified-curricula-main.pdf;
       rm unified-curricula-main.ps unified-curricula-main.dvi;
-    
+
       rm -rf ../Curricula.out/html/Peru/CS-UTEC/Plan2018;
       mkdir -p ../Curricula.out/html/Peru/CS-UTEC/Plan2018/figs;
       cp ../Curricula.in/lang/Espanol/figs/pdf.jpeg ../Curricula.in/lang/Espanol/figs/star.gif ../Curricula.in/lang/Espanol/figs/none.gif ../Curricula.in/lang/Espanol/figs/*.png ../Curricula.out/html/Peru/CS-UTEC/Plan2018/figs/.;
@@ -115,7 +116,7 @@ if($html == 1) then
       -white unified-curricula-main;
       cp "../Curricula.out/html/Peru/CS-UTEC/Plan2018/Curricula_CS_UTEC.html" "../Curricula.out/html/Peru/CS-UTEC/Plan2018/index.html";
       #-split 3 -numbered_footnotes -images_only -timing -html_version latin1 -antialias -no_transparent \
-      
+
 
       ./scripts/update-analytic-info.pl CS-UTEC
       ./scripts/gen-faculty-info.pl CS-UTEC
@@ -134,7 +135,7 @@ mkdir -p ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi;
 cp ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/syllabi/* ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi/.;
 
 # Generate Books
-# 
+#
 # foreach auxbook (../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/BookOf*-*.tex)
 #    set book = `echo $auxbook | sed s/.tex//`
 #    $book = `echo $book | sed s|../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/||`
@@ -146,7 +147,7 @@ cp ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/syllabi/* ../Curricula.o
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-UTEC 2018-II BookOfSyllabi-ES (Plan2018) 1-10";
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-UTEC 2018-II BookOfSyllabi-EN (Plan2018) 1-10";
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-UTEC 2018-II BookOfBibliography-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-UTEC 2018-II BookOfBibliography-EN (Plan2018) 1-10";   
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-UTEC 2018-II BookOfBibliography-EN (Plan2018) 1-10";
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-UTEC 2018-II BookOfDescriptions-ES (Plan2018) 1-10";
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-UTEC 2018-II BookOfDescriptions-EN (Plan2018) 1-10";
 
@@ -159,4 +160,3 @@ more ../Curricula.out/log/Peru-CS-UTEC-time.txt;
 #./scripts/testenv.pl
 beep;
 beep;
-

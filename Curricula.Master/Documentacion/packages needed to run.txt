@@ -1,7 +1,10 @@
 You can add this to the ~/.bashrc to make it always available when you log-in.
 Ubuntu: export PERL5LIB=/home/ecuadros/Articles/Curricula/Curricula.Master/scripts
-Mac   : export PERL5LIB=/usr/local/Cellar/perl/5.26.1/lib/perl5/site_perl/5.26.1:/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
+Mac   :
+export PERL5LIB=/usr/local/Cellar/perl/5.26.1/lib/perl5/site_perl/5.26.1:/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
+export TEXINPUTS=::/usr/local/Cellar/latex2html/2016/texinputs
 
+brew reinstall dpkg
 sudo apt-get install texlive-latex-extra;
 sudo apt-get install texlive-bibtex-extra;
 sudo apt-get install texlive-science;
@@ -19,6 +22,9 @@ sudo apt-get install graphviz; ok;
 sudo apt-get install xpdf ; ok;
 sudo apt-get install gv; ok;
 sudo apt-get install inkscape;
+brew tap homebrew/cask
+brew cask install inkscape
+
 sudo apt-get install csh;
 sudo apt-get install libcarp-assert-perl;
 sudo apt-get install okular;

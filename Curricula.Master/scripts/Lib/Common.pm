@@ -183,7 +183,7 @@ sub get_label($)
 	my ($codcour) = (@_);
     if( defined($config{map_file_to_course}{$codcour}) )
     {   $codcour = $config{map_file_to_course}{$codcour};   }
-	
+
     if(defined($antialias_info{$codcour})) #ok
 	{	$codcour = $antialias_info{$codcour};		}
 	$codcour = get_alias($codcour); # ok
@@ -1297,14 +1297,14 @@ sub read_institution_info($)
 		if( $params =~ m/\{(.*?)\}\{(.*?)\}/g )
 		{	($version, $outcomeslist) = ($1, $2);		}
 		elsif( $params =~ m/\{(.*?)\}/g )
-		{	$outcomeslist = $1; 	
+		{	$outcomeslist = $1;
 			$txt_copy =~ s/\\OutcomesList\{$outcomeslist\}/\\OutcomesList\{$version\}\{$outcomeslist\}/g;
 		}
 		else{	Util::print_error($OutcomesError);	}
 		Util::print_message("this_inst_info{outcomes_list}{$version} = $outcomeslist");
 		if( defined($this_inst_info{outcomes_list}{$version}) && not $this_inst_info{outcomes_list}{$version} eq "" )
 		{	Util::print_error("Many \\OutcomesList for the same version??? (\"$file\")");	}
-		$this_inst_info{outcomes_list}{$version} = $outcomeslist;		
+		$this_inst_info{outcomes_list}{$version} = $outcomeslist;
 	}
 	#print Dumper(\%this_inst_info); 	exit;
 	$txt = $txt_copy;
@@ -1316,7 +1316,7 @@ sub read_institution_info($)
 		$txt .= "\n\\newcommand\{\\OutcomesVersion\}\{$config{OutcomesVersionDefault}\}\n";
 		$this_inst_info{OutcomesVersion} = $config{OutcomesVersionDefault};
 	}
-	
+
         # Read the outcomes list
         if($txt =~ m/\\newcommand\{\\logowidth\}\{(\d*)(.*?)\}/)
         {       $this_inst_info{logowidth}       = $1;
@@ -1342,7 +1342,7 @@ sub read_institution_info($)
 	else
 	{	Util::print_warning("(read_institution_info): there is not \\equivalences in \"$file\"\n");	}
 
-# 	Util::print_message("After ($file)\n$txt"); 
+# 	Util::print_message("After ($file)\n$txt");
 	#print Dumper(\%this_inst_info); 	exit;
 
 	Util::write_file($file, $txt);
@@ -1878,8 +1878,8 @@ sub read_faculty()
 		%{$config{faculty}{$email}{fields}{courses_assigned}} = ();
 		my ($newListOfCourses, $sep) = ("", "");
 		foreach my $codcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
-		{ 
-		      if( defined($config{map_file_to_course}{$codcour}) ) 
+		{
+		      if( defined($config{map_file_to_course}{$codcour}) )
 		      {
 			    $newListOfCourses .= "$sep$config{map_file_to_course}{$codcour}";
 		      }
@@ -1899,10 +1899,10 @@ sub read_faculty()
 		foreach my $codcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
 		{	$Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} = "";
 		}
-# 		{	
+# 		{
 # 		      $onecodcour = get_label($onecodcour);
 # 		      Util::print_message("get_label($onecodcour)=".get_label($onecodcour));
-# 		      $config{faculty}{$email}{fields}{courses_i_could_teach}{$onecodcour} = "";		
+# 		      $config{faculty}{$email}{fields}{courses_i_could_teach}{$onecodcour} = "";
 # 		}
 		#Util::print_message("$config{faculty}{$email}{fields}{shortcv}");
 	}
@@ -2133,12 +2133,12 @@ sub replace_accents_in_file($)
 # 	{	$codcour = $1;		}
 # 	my @contents;
 # 	my $line = "";
-# 
+#
 # 	my $fulltxt = Util::read_file($filename);
 # # 	$fulltxt = replace_accents($fulltxt);
 # # 	while($fulltxt =~ m/\n\n\n/)
 # # 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
-# 
+#
 # # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
 # # 	if( not defined($course_info{$codcour}{course_type}) )
 # # 	{	print "$codcour\n".Dumper(\%{$course_info{$codcour}}); exit;
@@ -2150,7 +2150,7 @@ sub replace_accents_in_file($)
 # # 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
 # # 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 # 	read_outcomes_involved($codcour, $fulltxt);
-# 
+#
 # 	#system("rm $filename");
 # 	@contents = split("\n", $fulltxt);
 # 	my ($count,$inunit)  = (0, 0);
@@ -2164,10 +2164,10 @@ sub replace_accents_in_file($)
 #         my $country_environments_to_insert = $Common::config{"country-environments-to-insert"};
 #         $country_environments_to_insert =~ s/<AREA>/$Common::course_info{$codcour}{prefix}/g;
 #         #$country_environments_to_insert = "hola raton abc";
-# 
+#
 #         my $newtext = "$country_environments_to_insert\n\n\\begin{coursebibliography}";
 #         $output_txt =~ s/\\begin\{coursebibliography\}/$newtext/g;
-# 
+#
 # 	Util::write_file($filename, $output_txt);
 #         #Util::print_message($filename); exit;
 # }
@@ -2176,7 +2176,7 @@ sub replace_accents_in_file($)
 # sub replace_special_characters_in_syllabi()
 # {
 # 	my $base_syllabi = get_template("InSyllabiContainerDir");
-# 
+#
 # # 	foreach my $codcour (@codcour_list_sorted)
 # 	foreach my $localdir (@{$config{SyllabiDirs}})
 # 	{
@@ -2580,14 +2580,14 @@ sub remove_only_and_not_env($)
             my $body2 = replace_special_chars($body1);
             #Util::print_message("$word eq \"Not\" && not $inst eq $institution || $word eq \"Only\" && $inst eq $institution");
             if( ($word eq "Not" && not $inst eq $institution) || ($word eq "Only" && $inst eq $institution) )
-            {    
+            {
                 $text_in =~ s/\\$word$inst\{$body2\}/$body1/g;
                 Util::print_message("\t\tKeeping \\$word$inst\{$firstchars");
             }
             else
             {
                 Util::print_message("\t\t\tIgnoring \\$word$inst\{$firstchars");
-                $text_in =~ s/\\$word$inst\{$body2\}//g;            
+                $text_in =~ s/\\$word$inst\{$body2\}//g;
             }
             if( $firstchars eq "Test Test ")
             {   Util::print_message("$body2"); }
@@ -2836,7 +2836,7 @@ sub parse_courses()
 # 	if(not open(IN, "<$input_file"))
 # 	{  Util::halt("parse_courses: $input_file does not open ...");	}
 # 	print Dumper(\%{$config{valid_institutions}});
-	
+
 	my $flag = 0;
 	my $active_semester = 0;
 	while($file_txt =~ m/\\course(.*)\n/g)
@@ -2892,13 +2892,13 @@ sub parse_courses()
 		  }
 #  		  Util::print_warning("codcour=$codcour, codcour_alias=$codcour_alias ..."); exit;
 
-# 		  if( $flag == 1 )	{	Util::print_warning("codcour = $codcour");	
-#  						print Dumper(\%{$course_info{$codcour}});	exit;	
+# 		  if( $flag == 1 )	{	Util::print_warning("codcour = $codcour");
+#  						print Dumper(\%{$course_info{$codcour}});	exit;
 # 					}
-		  
+
 # 		  my $codcour_alias = get_alias($codcour);
 		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
-		  {	
+		  {
  			  Util::print_message("priority = $priority");
  			  Util::print_message("course_info{$codcour}{priority} = $course_info{$codcour}{priority}");
 			  #if( defined($course_info{$codcour}{priority}) )
@@ -3073,7 +3073,7 @@ sub filter_courses($)
 			$active_semester = $semester;
 			$maxE = 0;
 		}
-		
+
 		#print_message("Processing coursecode=$codcour ...");
 		my $prefix = get_prefix($codcour);
 		if(not defined($config{used_prefix}{$prefix}))   # YES HERE
@@ -3146,73 +3146,82 @@ sub filter_courses($)
 
 		my $sep 		= "";
 		$course_info{$codcour}{n_prereq} = 0;
+		my $new_prerequisites = "";
 		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites}))
 		{
-			$codreq =~ s/ //g;
-			if($codreq =~ m/(.*?)=(.*)/)
-			{	  
-                my ($inst, $prereq) = ($1, $2);
-                if( $inst eq $institution)
-                {   
-                    $course_info{$codcour}{prerequisites_just_codes} .= "$prereq";
-                    foreach my $lang ( @{$config{SyllabusLangsList}} )
-                    {       push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq);
-                            push(@{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $prereq );     
-                    }
-                    $course_info{$codcour}{short_prerequisites} .= $prereq;
-                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$prereq";
-                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $prereq);
-                    $course_info{$codcour}{n_prereq}++;
-                }
-                else
-                {	 Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring"); 	}
-			}
-			else
-            {
-                $codreq = get_label($codreq);
-                $course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
-                if(defined($course_info{$codreq}))
-                {
-                    my $codreq_label = Common::get_label($codreq);
-                    #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
-                    my $semester_prereq = $course_info{$codreq}{semester};
+					$codreq =~ s/ //g;
+					if($codreq =~ m/(.*?)=(.*)/)
+					{
+		                my ($inst, $prereq) = ($1, $2);
+		                if( $inst eq $institution)
+		                {
+												$new_prerequisites .= "$sep$inst=$prereq";
+		                    $course_info{$codcour}{prerequisites_just_codes} .= "$sep$inst=$prereq";
+		                    foreach my $lang ( @{$config{SyllabusLangsList}} )
+		                    {       push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq);
+		                            push(@{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $prereq );
+		                    }
+		                    $course_info{$codcour}{short_prerequisites}         .= "$sep$prereq";
+		                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$prereq";
+		                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $prereq);
+		                    $course_info{$codcour}{n_prereq}++;
+												$codreq = $prereq;
+		                }
+		                else
+		                {	 	Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring");
 
-                    foreach my $lang ( @{$config{SyllabusLangsList}} )
-                    {       
-                            push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));
-                            my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour_label}.~";
-                               $temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
+										}
+					}
+					else
+		      {
+				          $codreq = get_label($codreq);
+									$new_prerequisites .= "$sep$codreq";
+				          $course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
+				          if(defined($course_info{$codreq}))
+				          {
+				              my $codreq_label = Common::get_label($codreq);
+				              #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
+				              my $semester_prereq = $course_info{$codreq}{semester};
 
-                            push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
-                    }
+				              foreach my $lang ( @{$config{SyllabusLangsList}} )
+				              {
+				                      push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));
+				                      my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour_label}.~";
+				                         $temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
 
-                    $course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-                    $course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-                    $course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
-                    $course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-                    $course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-                    $course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
+				                      push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
+				              }
 
-                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
-                    push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
-                    $course_info{$codcour}{n_prereq}++;
-                }
-                else
-                {
-                    print Dumper(\%{$course_info{$codcour}});
-                    Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
-                }
-            }
-			$sep = ", ";
+				              $course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
+				              $course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+				              $course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
+				              $course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
+				              $course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+				              $course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
+
+				              push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
+				              push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
+				              $course_info{$codcour}{n_prereq}++;
+				          }
+				          else
+				          {
+				              print Dumper(\%{$course_info{$codcour}});
+				              Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
+				          }
+		      }
+					$sep = ",";
 		}
-#         if( $codcour eq "FG601" )
-#         {
-#                 print Dumper( \%{$Common::course_info{$codcour}} ); 
+		$course_info{$codcour}{prerequisites} = $new_prerequisites;
+		#if( $codcour eq "FG601" )
+		#{		Util::print_message("course_info{$codcour}{prerequisites}=$course_info{$codcour}{prerequisites}, new=$new_prerequisites");
+		#		exit;
+		#}
+#                 print Dumper( \%{$Common::course_info{$codcour}} );
 #                 Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
 #                 #print Dumper( \%{$config{map_file_to_course}} );
 #                 Util::print_message("parse_courses(): prerequisites=$course_info{$codcour}{prerequisites},label=". get_label($course_info{$codcour}{prerequisites}));
 #                 exit;
-#         }
+
 		if($course_info{$codcour}{n_prereq} == 0)
 		{	    foreach my $lang ( @{$config{SyllabusLangsList}} )
                 {   $course_info{$codcour}{$lang}{full_prerequisites} = $config{dictionary}{None};	}
@@ -3232,9 +3241,9 @@ sub filter_courses($)
 		$counts{hours}{count} += $hours;
 #         if( $codcour eq "CS2101" )
 #         {
-#                 print Dumper( \%{$Common::course_info{$codcour}} ); 
+#                 print Dumper( \%{$Common::course_info{$codcour}} );
 #                 Util::print_message("Common::course_info{$codcour}{n_prereq} = $Common::course_info{$codcour}{n_prereq}");
-#                 #print Dumper( \%map ); 
+#                 #print Dumper( \%map );
 #                 # $config{map_file_to_course}{$coursefile} = $codcour;
 #                 print Dumper( \%{$config{map_file_to_course}} );
 #                 exit;
@@ -3564,7 +3573,7 @@ sub update_page_numbers_for_all_courses_maps()
 {
 	my $OutputDotDir  = Common::get_template("OutputDotDir");
 	foreach my $codcour (@codcour_list_sorted)
-	{	
+	{
 		Common::update_page_numbers("$OutputDotDir/$codcour.dot");
 	}
 }
@@ -3979,9 +3988,9 @@ sub generate_information_4_professor($)
       my $this_professor = $Common::config{faculty_tpl_txt};
       my $more = "";
       my $OutputFacultyFigDir = Common::get_template("OutputFacultyFigDir");
-      
+
       if( -e "$Common::config{InFacultyPhotosDir}/$email.jpg" )
-      {		
+      {
 		system("cp $Common::config{InFacultyPhotosDir}/$email.jpg $OutputFacultyFigDir/.");
 		$Common::config{faculty}{$email}{fields}{photo} = "fig/$email.jpg";
       }
@@ -4001,7 +4010,7 @@ sub generate_information_4_professor($)
       if(not defined($Common::config{faculty_groups}{$concentration}{$degreelevel}) )
       {		 $Common::config{faculty_groups}{$concentration}{$degreelevel} = [];	      }
       push(@{$Common::config{faculty_groups}{$concentration}{$degreelevel}}, $email);
-      
+
       #my $cict = $Common::config{faculty}{"ecuadros\@ucsp.edu.pe"}{fields}{courses_i_could_teach};
       #Util::print_message("Courses I could teach: $cict"); exit;
       my $codcour = "";
@@ -4012,15 +4021,15 @@ sub generate_information_4_professor($)
 		Util::print_warning("Professor $email has assigned course $codcour but he is not able to teach that course ...");
 	    }
       }
-      
+
       foreach $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
       {		if( not defined($Common::course_info{$codcour}) )
 		{
-		    Util::print_warning("Course $codcour assigned to $email does not exist ..."); 
+		    Util::print_warning("Course $codcour assigned to $email does not exist ...");
 		}
       }
-      
-      foreach $codcour ( sort  {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester}} 
+
+      foreach $codcour ( sort  {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester}}
                          keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
       {
 	    my $link = $Common::course_info{$codcour}{link};
@@ -4045,7 +4054,7 @@ sub generate_information_4_professor($)
 		{
 		    $this_professor =~ s/--$field--//g;
 		}
-      }     
+      }
       $this_professor =~ s/--.*?--//g;
       return $this_professor;
 }
@@ -4085,20 +4094,20 @@ sub generate_faculty_info()
 	);
 
 	my $faculty_tpl_file 		= Common::get_template("faculty-template.html");
-	
+
 	$Common::config{faculty_tpl_txt}= Util::read_file($faculty_tpl_file);
-	
+
 	$Common::config{InFacultyPhotosDir} 		= Common::get_template("InFacultyPhotosDir");
 	$Common::config{InFacultyIconsDir}		= Common::get_template("InFacultyIconsDir");
 	$Common::config{NoFaceFile}			= Common::get_template("NoFace-file");
 	$Common::config{OutputFacultyDir} 		= Common::get_template("OutputFacultyDir");
-	
+
 	#my $faculty_output_general_txt 	= "<table style=\"width: 600px;\" border=\"0\" align=\"center\">\n";
 	my $faculty_output_general_txt 	= "\n";
 	my $faculty_general_output 	= Common::get_template("faculty-general-output-html");
 	my $email = "";
 	Util::print_message("Generating faculty file: $faculty_general_output  ...");
-	
+
 	# 1st verify if all professors have concentration ...
 	my $count_of_errors = 0;
 	my $concentration_rank = 100;
@@ -4118,7 +4127,7 @@ sub generate_faculty_info()
 
 	if($count_of_errors > 0)
 	{	Util::print_warning("Some professors ($count_of_errors in total) have not concentration area or have invalid ones ...");		}
-	
+
 	# 2nd sort them by areas, degreelevel, name
 	my @faculty_sorted_by_priority = sort {  ($Common::config{faculty}{$a}{concentration_rank} <=> $Common::config{faculty}{$b}{concentration_rank}) ||
 			     ($Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}) ||
@@ -4136,7 +4145,7 @@ sub generate_faculty_info()
 	    if( scalar (keys %{$Common::config{faculty}{$email}{fields}{courses_assigned}}) > 0 )
 	    {	      $faculty_output_general_txt .= $this_professor;		}
 	}
-	
+
 	# 4th Generate information for the main index of professors by area, etc
 # 	push(@{$Common::config{faculty_groups}{$concentration}{$degreelevel}}, $email);
 
@@ -4144,18 +4153,18 @@ sub generate_faculty_info()
 # 			     ($Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel}) ||
 # 			     ($Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name})
 # 			  } keys %{$Common::config{faculty}};
-	  
+
 # 	print Dumper (\%{$Common::config{faculty_groups}});
 	foreach $concentration (keys %{$Common::config{faculty_groups}})
 	{
-	      if(not defined($Common::config{sort_areas}{$concentration}) ) 
+	      if(not defined($Common::config{sort_areas}{$concentration}) )
 	      {		Util::print_warning("Concentration area \"$concentration\" not defined ...");		}
 	}
-	
+
 	my $index_of_professors = "<table border=\"1\" align=\"center\">\n";
 	foreach $concentration (sort {$Common::config{sort_areas}{$a} <=> $Common::config{sort_areas}{$b}} keys %{$Common::config{faculty_groups}})
  	{	$index_of_professors .= "<th>$concentration</th>\n";		}
-	
+
 
 	$index_of_professors .= "<tr>\n";
  	foreach $concentration (sort {$Common::config{sort_areas}{$a} <=> $Common::config{sort_areas}{$b}} keys %{$Common::config{faculty_groups}})
@@ -4177,7 +4186,7 @@ sub generate_faculty_info()
 				$count++;
 			  }
 		    }
-		    if( $count > 0 ) 
+		    if( $count > 0 )
 		    {
 			$index_of_professors .= "<ul>\n";
 			$index_of_professors .= $this_group_txt;
@@ -4185,21 +4194,21 @@ sub generate_faculty_info()
 		    }
 	      }
 	      #$Common::config{faculty}{$email}{fields}{anchor}
-	      
+
 	      $index_of_professors .= "</td>\n";
  	}
  	$index_of_professors .= "</tr>\n";
  	$index_of_professors .= "</table>\n";
-	
-	
-	
+
+
+
 	Util::print_message("Generating file: $faculty_general_output ...");
 	#$faculty_output_general_txt 	.= "</table>\n";
 	$faculty_output_general_txt 	.= "\n";
 	my $html_output  = "<h2 id=\"top\"></h2>";
 	   $html_output .= "$index_of_professors\n";
 	   $html_output .= "$faculty_output_general_txt";
-	
+
 	Util::write_file($faculty_general_output, $html_output);
 	Util::check_point("generate_faculty_info");
 	Util::print_message("generate_faculty_info OK! ...");
@@ -4213,15 +4222,15 @@ sub generate_link_for_courses()
       }
       Util::print_message("Reading $html_index");
       my $html_file_input 	= Util::read_file($html_index);
-      
+
       for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
-      { 	    
+      {
 	    Util::print_message("Sem: $semester");
 	    foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 	    {
 		  if(defined($Common::antialias_info{$codcour}))
 		  {	$codcour = $Common::antialias_info{$codcour}	}
-		  my $courselabel = Common::get_alias($codcour);	
+		  my $courselabel = Common::get_alias($codcour);
 		  my $link = "";
 #                 <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
 
@@ -4231,7 +4240,7 @@ sub generate_link_for_courses()
 		  #print Dumper(\$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}});
 		  my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
 		  my $coursefullname = "$courselabel. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($course_type)";
-		  
+
 		  printf("Searching link for: %-s ", $coursefullname);
 # 		  while( $html_file =~ m/HREF="(.*?$courselabel.*?html)">/g)
 # 		  {
@@ -4244,12 +4253,12 @@ sub generate_link_for_courses()
 		  {
 			$link = $1;
 			$Common::course_info{$codcour}{link} = $link;
-			
+
 			Util::print_success("$link");
 # 			Util::print_message("codcour=$codcour ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}), link = $link");
 		  }
 		  else
-		  {	
+		  {
 		        Util::print_error("Not found ($Common::course_info{$codcour}{semester} Sem) ... ");
 		        #exit;
 		  }

@@ -48,7 +48,7 @@ set OutputScriptsDir=<OUTPUT_SCRIPTS_DIR>
 set OutputHtmlDir=<OUTPUT_HTML_DIR>
 
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
-# ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g' 
+# ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g'
 
 # sudo addgroup curricula
 #sudo chown -R ecuadros:curricula ./Curricula
@@ -63,7 +63,8 @@ if($pdf == 1) then
       ./scripts/clean.sh
       latex <MAIN_FILE>;
       #bibtex <MAIN_FILE>1;
-      
+
+      mkdir -p <OUT_LOG_DIR>
       ./scripts/compbib.sh <MAIN_FILE> > <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-errors-bib.txt;
 
       latex <MAIN_FILE>;
@@ -73,14 +74,14 @@ if($pdf == 1) then
       dvips <MAIN_FILE>.dvi -o <AREA>-<INST>.ps;
       echo <AREA>-<INST>;
       ps2pdf <AREA>-<INST>.ps <AREA>-<INST>.pdf;
-      
+
 #     Generate the first page and place it at html dir
       pdftk A=<AREA>-<INST>.pdf cat A1-1 output <AREA>-<INST>-P1.pdf;
       convert <AREA>-<INST>-P1.pdf <AREA>-<INST>-P1.png;
       rm <AREA>-<INST>-P1.pdf;
       mv <AREA>-<INST>-P1.png <OUTPUT_HTML_DIR>/CurriculaMain-P1.png;
       cp <AREA>-<INST>.pdf <OUTPUT_HTML_DIR>/CurriculaMain.pdf;
-      
+
       mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST> Plan<PLAN>.pdf";
       rm -rf <AREA>-<INST>.ps;
 endif
@@ -103,7 +104,7 @@ if($html == 1) then
       dvips -o <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi;
       ps2pdf <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.pdf;
       rm <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi;
-    
+
       rm -rf <OUTPUT_HTML_DIR>;
       mkdir -p <OUTPUT_HTML_DIR>/figs;
       cp <IN_LANG_DIR>/figs/pdf.jpeg <IN_LANG_DIR>/figs/star.gif <IN_LANG_DIR>/figs/none.gif <IN_LANG_DIR>/figs/*.png <OUTPUT_HTML_DIR>/figs/.;
@@ -115,7 +116,7 @@ if($html == 1) then
       -white <UNIFIED_MAIN_FILE>;
       cp "<OUTPUT_CURRICULA_HTML_FILE>" "<OUTPUT_INDEX_HTML_FILE>";
       #-split 3 -numbered_footnotes -images_only -timing -html_version latin1 -antialias -no_transparent \
-      
+
 
       ./scripts/update-analytic-info.pl <AREA>-<INST>
       ./scripts/gen-faculty-info.pl <AREA>-<INST>
@@ -134,7 +135,7 @@ mkdir -p <OUTPUT_HTML_DIR>/syllabi;
 cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 
 # Generate Books
-# 
+#
 # foreach auxbook (<OUTPUT_TEX_DIR>/BookOf*-*.tex)
 #    set book = `echo $auxbook | sed s/.tex//`
 #    $book = `echo $book | sed s|<OUTPUT_TEX_DIR>/||`
@@ -146,7 +147,7 @@ cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-ES (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-ES (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";   
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-ES (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 
@@ -159,4 +160,3 @@ more <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-time.txt;
 #./scripts/testenv.pl
 beep;
 beep;
-
