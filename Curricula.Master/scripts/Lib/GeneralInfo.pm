@@ -243,7 +243,7 @@ sub generate_distribution_credits_by_area_by_semester()
 
 	my ($header, $areas_header, $area_sum, $percent)       = ("|X|", "  ", " {\\bf $Common::config{dictionary}{Total}} ", "");
 	my $area;
-	foreach $area (sort {$Common::config{area_priority}{$a} cmp $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
+	foreach $area (sort {$Common::config{area_priority}{$a} <=> $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
 	{
 		$header         .= "c|";
 		my $color		  = $Common::config{colors}{$area}{bgcolor};
@@ -262,7 +262,7 @@ sub generate_distribution_credits_by_area_by_semester()
 	{
 		$table_body .= "{\\bf $Common::config{dictionary}{semester_ordinal}{$semester} $Common::config{dictionary}{Semester}}";
 		my $sum_sem  = 0;
-		foreach $area (sort {$Common::config{area_priority}{$a} cmp $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
+		foreach $area (sort {$Common::config{area_priority}{$a} <=> $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
 		{
 			#print "$area\n";
 			$table_body .= "& ";
@@ -278,7 +278,7 @@ sub generate_distribution_credits_by_area_by_semester()
 		#$Common::counts{map_cred_area}{$semester}{$area}
 	}
 
-	foreach $area (sort {$Common::config{area_priority}{$a} cmp $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
+	foreach $area (sort {$Common::config{area_priority}{$a} <=> $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
 	{	$area_sum =~ s/$area/$Common::counts{credits}{prefix}{$area}/g;
                 my $area_percent = int(1000*$Common::counts{credits}{prefix}{$area}/$Common::config{ncredits})/10.0;
                 $percent =~ s/$area/$area_percent\\%/g;

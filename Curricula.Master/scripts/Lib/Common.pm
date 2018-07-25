@@ -378,22 +378,15 @@ sub set_global_variables()
 	$config{OutputTexDir} 	= "$config{OutputInstDir}/tex";
 	system("mkdir -p $config{OutputInstDir}/syllabi");
 
-	#Util::print_message("Country= $config{country}");
-	#Util::print_message("Country= $config{country_without_accents}");
+	#                             ./Curricula.out/html/Peru/CS-UTEC/Plan 2018
 	$config{OutputHtmlDir} 	   = "$config{OutHtmlBase}/$config{country_without_accents}/$config{area}-$config{institution}/Plan$config{Plan}";
-	#Util::print_message("OutputHtmlDir= $config{OutputHtmlDir}");
-	#exit;
-
-        $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/figs";
-        #system("mkdir -p $config{OutputHtmlDir}");
-        system("mkdir -p $config{OutputHtmlFigsDir}");
-# 	$config{OutputHtmlDir}	       		= "$config{OutputInstDir}/html";
-# 	system("mkdir -p $config{OutputHtmlDir}");
+    $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/figs";
+    system("mkdir -p $config{OutputHtmlFigsDir}");
 
 	my $cwd = getcwd();
 	my $cmd = "ln -f -s $cwd/$config{OutputHtmlDir} $config{OutputInstDir}/html";
 # 	Util::print_message($cmd);
-        system($cmd);
+    system($cmd);
 
 	$config{OutputPrereqDir} 	= "$config{OutputTexDir}/prereq";
 	system("mkdir -p $config{OutputPrereqDir}");

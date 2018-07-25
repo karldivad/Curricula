@@ -1,8 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
-use scripts::Lib::Common;
-#use scripts::Lib::GenSyllabi;
-#use scripts::Lib::GeneralInfo;
+use Lib::Common;
 
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}
@@ -13,28 +11,35 @@ sub insert_analytic_script($)
 {
         my ($file) = (@_);
         my $in = Util::read_file($file);
-        $in =~ s/<\/BODY>/$script<\/BODY>/g;
-        Util::write_file($file, $in);
+        if( $in =~ m/$script<\/BODY>/) # it already contains the script
+        {       return 0;        } 
+        else
+        {       $in =~ s/<\/BODY>/$script<\/BODY>/g;    
+                Util::write_file($file, $in);
+                return 1;
+        }
 }
 
 sub update_html_files()
 {
         $script = Util::read_file(Common::get_template("in-analytics.js-file"))."\n";
-
+        $script = Common::replace_special_chars($script);
         my $dir = Common::get_template("OutputHtmlDir");
         opendir DIR, $dir;
         my @filelist = readdir DIR;
         closedir DIR;
         my $count = 0;
         #insert_analytic_script("$dir/node2.html"); exit;
-        foreach my $htmlfile (@filelist)
+        Util::print_message("Updating files at: $dir");
+        foreach my $htmlfile (sort {$a cmp $b} @filelist)
         {
               if($htmlfile =~ m/.*\.html/)
               {
                     print "$dir/$htmlfile ...                            ";
-                    insert_analytic_script("$dir/$htmlfile");
-                    print "ok ...($count)!                                                                \r";
-                    $count++;
+                    my $bool = insert_analytic_script("$dir/$htmlfile");
+                    if( $bool == 1)     {  ++$count;    print "ok ...($count)!                           \n";   }
+                    else                {               print "         Ignoring ...    \n";                          }
+                    exit;
               }
         }
         Util::print_message("\nTotal $count files updated ...                                     ");
