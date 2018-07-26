@@ -5,13 +5,13 @@ use Lib::Common;
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}
 
-my $script = "";
+my ($script, $script_re) = ("", "");
 
 sub insert_analytic_script($)
 {
         my ($file) = (@_);
         my $in = Util::read_file($file);
-        if( $in =~ m/$script<\/BODY>/) # it already contains the script
+        if( $in =~ m/$script_re<\/BODY>/) # it already contains the script
         {       return 0;        } 
         else
         {       $in =~ s/<\/BODY>/$script<\/BODY>/g;    
@@ -23,7 +23,7 @@ sub insert_analytic_script($)
 sub update_html_files()
 {
         $script = Util::read_file(Common::get_template("in-analytics.js-file"))."\n";
-        $script = Common::replace_special_chars($script);
+        $script_re = Common::replace_special_chars($script);
         my $dir = Common::get_template("OutputHtmlDir");
         opendir DIR, $dir;
         my @filelist = readdir DIR;
@@ -35,11 +35,11 @@ sub update_html_files()
         {
               if($htmlfile =~ m/.*\.html/)
               {
-                    print "$dir/$htmlfile ...                            ";
+                    printf("%-80s", "$dir/$htmlfile ...");
                     my $bool = insert_analytic_script("$dir/$htmlfile");
-                    if( $bool == 1)     {  ++$count;    print "ok ...($count)!                           \n";   }
-                    else                {               print "         Ignoring ...    \n";                          }
-                    exit;
+                    if( $bool == 1)     {  ++$count;    print "ok ...($count)! \n";   }
+                    else                {               print "         Ignoring ...\n";                          }
+                    #exit;
               }
         }
         Util::print_message("\nTotal $count files updated ...                                     ");

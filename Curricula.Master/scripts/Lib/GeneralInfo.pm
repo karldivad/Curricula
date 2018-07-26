@@ -519,6 +519,68 @@ sub generate_description($)
 	Util::print_message("generation_foreach_area: $list_of_areas... OK!");
 }
 
+my %critical_path = ();
+sub initialize_critical_path()
+{
+	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	{
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		{
+			$Common::course_info{$codcour}{critical_path}{visited}  = 1;
+			$Common::course_info{$codcour}{critical_path}{distance} = 0;
+			@{$Common::course_info{$codcour}{critical_path}{path}} = [];
+		}
+	}
+}
+
+sub process_critical_path_for_one_course($)
+{
+	my ($codcour) = (@_);
+	my ($distance) = (0);
+	my %paths = (0 => []);
+	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
+	{
+		my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);
+		push(@{$paths{$distance_child}}, @path_child);
+		if ($distance_child > $distance)
+		{	$distance	= $distance_child;		}
+	}
+	my $nsolutions = scalar( @{$paths{$distance}} );
+	for (my $i = 0; $i < $nsolutions ; $i++)
+	{
+		unshift(@{$paths{$distance}[$i]}, $codcour);
+	}
+	return ($distance+1, @{$paths{$distance}});
+}
+
+sub detect_critical_path()
+{
+	initialize_critical_path();
+	my ($distance_child, @path_child) = process_critical_path_for_one_course("ME0019");
+	Util::print_message("ME0019 distance=$distance_child");
+	print Dumper(\@path_child);
+	exit;
+	#for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	#{
+	#	foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+	#	{
+	#		my $child_longest_distance = 0;
+	#		foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
+	#		{
+	#			my $distance = $Common::course_info{$codcour}{critical_path}{distance};
+	#			my $child_longest_distance_temp = process_critical_path_for_one_course($codpost);
+#
+#				my $codpost_label = Common::get_label($codpost);
+#				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
+#
+#				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
+#				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
+#				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+#			}
+#		}
+#	}
+}
+
 # dot
 sub generate_curricula_in_dot($$)
 {

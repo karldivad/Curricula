@@ -91,7 +91,7 @@
 \Twitter{}
 \Blog{https://sg.linkedin.com/in/yamilet-serrano-71891591}
 \Research{Formal Methods,  Model Checking, Probabilistic Verification}
-\courses{CS1D01,CS1D02,CS2901,CS2902,CS3901}
+\courses{CS1D01,CS1D02,CS1100,CS2901,CS2902,CS3901}
 --END-PROFESSOR--
 
 
@@ -370,7 +370,7 @@
 \Twitter{}
 \Blog{}
 \Research{Programming}
-\courses{CS1100,CS2901,CS2902,CS3909,EG0009}
+\courses{CS1100,CS1102,CS2901,CS2902,CS3909,EG0009}
 --END-PROFESSOR--
 
 
@@ -636,7 +636,7 @@
 \Twitter{}
 \Blog{}
 \Research{Telemedicine, Paliative Care Remote Monitoring}
-\courses{CS1100}
+\courses{CS1100,CS1102}
 --END-PROFESSOR--
 
 

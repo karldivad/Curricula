@@ -480,7 +480,7 @@ sub process_syllabi()
 	read_sumilla_template();   # 1st Read template for sumilla
 	read_syllabus_template();  # 2nd Read the syllabus template
 	gen_course_general_info($Common::config{language_without_accents}); # 3th Generate files containing Prerequisites, etc
-	gen_prerequisites_map($Common::config{language_without_accents});   # 4th Generate dot files
+	gen_prerequisites_map_in_dot($Common::config{language_without_accents});   # 4th Generate dot files
 
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
@@ -919,9 +919,71 @@ sub gen_course_general_info($)
 	 #Util::print_error("TODO: XYZ Aqui falta poner varios silabos en idiomas !");
 }
 
-sub gen_prerequisites_map($)
+my %critical_path = ();
+sub initialize_critical_path()
 {
-        my ($lang) = (@_);
+	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	{
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		{
+			$Common::course_info{$codcour}{critical_path}{visited}  = 1;
+			$Common::course_info{$codcour}{critical_path}{distance} = 0;
+			@{$Common::course_info{$codcour}{critical_path}{path}} = [];
+		}
+	}
+}
+
+sub process_critical_path_for_one_course($)
+{
+	my ($codcour) = (@_);
+	my ($distance) = (0);
+	my %paths = (0 => []);
+	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
+	{
+		my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);
+		push(@{$paths{$distance_child}}, @path_child);
+		if ($distance_child > $distance)
+		{	$distance	= $distance_child;		}
+	}
+	my $nsolutions = scalar( @{$paths{$distance}} );
+	for (my $i = 0; $i < $nsolutions ; $i++)
+	{
+		unshift(@{$paths{$distance}[$i]}, $codcour);
+	}
+	return ($distance+1, @{$paths{$distance}});
+}
+
+sub detect_critical_path()
+{
+	initialize_critical_path();
+	my ($distance_child, @path_child) = process_critical_path_for_one_course("ME0019");
+	Util::print_message("ME0019 distance=$distance_child");
+	print Dumper(\@path_child);
+	exit;
+	#for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	#{
+	#	foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+	#	{
+	#		my $child_longest_distance = 0;
+	#		foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
+	#		{
+	#			my $distance = $Common::course_info{$codcour}{critical_path}{distance};
+	#			my $child_longest_distance_temp = process_critical_path_for_one_course($codpost);
+#
+#				my $codpost_label = Common::get_label($codpost);
+#				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
+#
+#				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
+#				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
+#				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+#			}
+#		}
+#	}
+}
+
+sub gen_prerequisites_map_in_dot($)
+{
+    my ($lang) = (@_);
 	my $size = "big";
 	my $template_file = Common::get_template("in-$size-graph-item.dot");
 	my $course_tpl 	= Util::read_file($template_file);
