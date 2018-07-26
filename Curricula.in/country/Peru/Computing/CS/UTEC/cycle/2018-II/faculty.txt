@@ -683,6 +683,26 @@
 \courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019}
 --END-PROFESSOR--
 
+--BEGIN-PROFESSOR--
+\email{rebusavanzini@gmail.com}
+\prefix{Dr.}
+\name{Renzo Emilio Bustamante Avanzini}
+\begin{titles}
+	\Master{Espanol}{Engineering}{Ingeniería Eléctrica y Computación}{Sub área}{Universidad de Rochester}{Estados Unidos}{2016}
+	\Master{English}{Engineering}{Electrical and Computer Engineering Engineering}{Sub area}{University of Rochester}{USA}{2016}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{}
+\Mobile{+51-943.609.335}
+\facebook{}
+\Twitter{}
+\Blog{}
+\Research{Computer Architecture, High Performance Computing, Memory Systems, Distributed Systems, Reliability}
+\courses{CS2201}
+--END-PROFESSOR--
 
 
 

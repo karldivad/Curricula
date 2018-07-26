@@ -537,27 +537,45 @@ sub process_critical_path_for_one_course($)
 {
 	my ($codcour) = (@_);
 	my ($distance) = (0);
-	my %paths = (0 => []);
+	my %paths = ();
+	Util::print_message("Processing $codcour");
 	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 	{
-		my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);
-		push(@{$paths{$distance_child}}, @path_child);
+		Util::print_message("\t$codpost");
+		my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);		
+		$distance_child++;
+		#unshift(@path_child, $codcour);
+		my $nelem = 0;
+		if( defined($paths{$distance_child}) )
+		{	$nelem = scalar( @{$paths{$distance_child}} );	}
+		$paths{$distance_child}[$nelem][0] = $codcour;
+		my $i=0;
+		foreach (@path_child)
+		{	$paths{$distance_child}[$nelem][$i+1] = $path_child[$i];	
+			$i++;
+		}
 		if ($distance_child > $distance)
 		{	$distance	= $distance_child;		}
 	}
-	my $nsolutions = scalar( @{$paths{$distance}} );
-	for (my $i = 0; $i < $nsolutions ; $i++)
-	{
-		unshift(@{$paths{$distance}[$i]}, $codcour);
+	my $nsolutions = 0;
+	if($distance == 0)
+	{	$distance++;
+		$paths{$distance}[0] = $codcour;
+		Util::print_message("Returning terminal $codcour, max distance=$distance");
+		print Dumper(\%paths);
+		return ($distance, @{$paths{$distance}})
 	}
-	return ($distance+1, @{$paths{$distance}});
+	Util::print_message("Returning from $codcour, max distance=$distance");
+	print Dumper(\%paths);
+	return ($distance, @{$paths{$distance}});
 }
 
 sub detect_critical_path()
 {
 	initialize_critical_path();
-	my ($distance_child, @path_child) = process_critical_path_for_one_course("ME0019");
-	Util::print_message("ME0019 distance=$distance_child");
+	my $test = "CS3P01";
+	my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
+	Util::print_message("$test distance=$distance_child");
 	print Dumper(\@path_child);
 	exit;
 	#for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
