@@ -541,39 +541,43 @@ sub process_critical_path_for_one_course($)
 	Util::print_message("Processing $codcour");
 	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 	{
-		Util::print_message("\t$codpost");
-		my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);		
-		$distance_child++;
-		#unshift(@path_child, $codcour);
-		my $nelem = 0;
-		if( defined($paths{$distance_child}) )
-		{	$nelem = scalar( @{$paths{$distance_child}} );	}
-		$paths{$distance_child}[$nelem][0] = $codcour;
-		my $i=0;
-		foreach (@path_child)
-		{	$paths{$distance_child}[$nelem][$i+1] = $path_child[$i];	
-			$i++;
+				#Util::print_message("\t$codpost");
+				my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);
+				$distance_child++;
+				#unshift(@path_child, $codcour);
+				my $new_path_pos = 0;
+				if( defined($paths{$distance_child}) )
+				{
+						$new_path_pos = scalar( @{$paths{$distance_child}} );
+				}
+				my $i=0;
+				foreach (@path_child)
+				{
+					$paths{$distance_child}[$new_path_pos+$i][0] = $codcour;
+					foreach my $one_codcour (@{$path_child[$i]})
+					{		push(@{$paths{$distance_child}[$new_path_pos+$i]}, $one_codcour);			}
+					$i++;
+				}
+				if ($distance_child > $distance)
+				{	$distance	= $distance_child;		}
 		}
-		if ($distance_child > $distance)
-		{	$distance	= $distance_child;		}
-	}
-	my $nsolutions = 0;
-	if($distance == 0)
-	{	$distance++;
-		$paths{$distance}[0] = $codcour;
-		Util::print_message("Returning terminal $codcour, max distance=$distance");
-		print Dumper(\%paths);
-		return ($distance, @{$paths{$distance}})
-	}
-	Util::print_message("Returning from $codcour, max distance=$distance");
-	print Dumper(\%paths);
-	return ($distance, @{$paths{$distance}});
+		my $nsolutions = 0;
+		if($distance == 0)
+		{		$distance++;
+				$paths{$distance}[0][0] = $codcour;
+				#Util::print_message("Returning terminal $codcour, max distance=$distance");
+				#print Dumper(\%paths);
+				return ($distance, @{$paths{$distance}})
+		}
+		#Util::print_message("Returning from $codcour, max distance=$distance");
+		#print Dumper(\%paths);
+		return ($distance, @{$paths{$distance}});
 }
 
 sub detect_critical_path()
 {
 	initialize_critical_path();
-	my $test = "CS3P01";
+	my $test = "EG0004";
 	my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
 	Util::print_message("$test distance=$distance_child");
 	print Dumper(\@path_child);
