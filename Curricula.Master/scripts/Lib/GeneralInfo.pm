@@ -145,7 +145,7 @@ sub generate_course_tables()
 
 			$this_sem_text .=  "\\multicolumn{$n_columns}{|l|}{$line} \\\\ \\hline\n";
 		}
- 		#Util::print_message("Credits are at column: $cred_column of $n_columns"); exit;
+
 		if($cred_column == 1)
 		{	$this_sem_text .= " $Common::config{credits_this_semester}{$semester} & ";
 			$this_sem_text .= "\\multicolumn{".($n_columns-$cred_column)."}{|l}{} \\\\ \\cline{$cred_column-$cred_column}\n";
@@ -184,8 +184,6 @@ sub generate_course_tables()
  		  $Common::counts{map_cred_area}{$semester}{$area} += $Common::counts{electives}{$semester}{$group}{cr};
  	      }
  	}
-# 	print Dumper \%{$Common::counts{map_cred_area}{9}};
-# 	exit;
 	$output_txt .= "\\noindent\\textbf{$Common::config{dictionary}{TotalNumberOfCreditsMsg}: } \\input{\\OutputTexDir/ncredits}.\n";
 	Util::write_file($output_file, $output_txt);
         $Common::config{ncredits} = $total_credits;
@@ -206,8 +204,6 @@ sub generate_laboratories()
 	{
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
-# 			print Dumper(%{$Common::course_info{$codcour}}); exit;
-			#Util::print_message("$codcour: lh=$Common::course_info{$codcour}{lh}");
 			if($Common::course_info{$codcour}{$cols4labs} > 0)
 			{
 			      if($Common::course_info{$codcour}{labtype} eq "")
@@ -362,7 +358,6 @@ sub generate_bok_index_old()
 		      #	$map{BOK_AREA_INDEX}    .= " ($Common::config{dictionary}{Pag}~\\pageref{$map{CMD_LABEL}})";
 		      $map{BOK_AREA_INDEX}    .= "\\\\\n";
 
-		      #print("map{CMD}=$map{CMD}, map{HOURS}=$map{HOURS}\n"); exit;
 		      $this_area_txt    .= $prev_unit;
 		}
 		($map{CMD}, $map{HOURS}, $map{TOPICS}, $map{OBJECTIVES}, $map{NOBJECTIVES}) = ("\\$cmd", 0, "", "", 0);
@@ -522,15 +517,15 @@ sub generate_description($)
 my %critical_path = ();
 sub initialize_critical_path()
 {
-	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	{
-		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 		{
-			$Common::course_info{$codcour}{critical_path}{visited}  = 1;
-			$Common::course_info{$codcour}{critical_path}{distance} = 0;
-			@{$Common::course_info{$codcour}{critical_path}{path}} = [];
+				foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+				{
+						$Common::course_info{$codcour}{critical_path}{visited}  = 1;
+						$Common::course_info{$codcour}{critical_path}{distance} = 0;
+						#@{$Common::course_info{$codcour}{critical_path}{path}} = [];
+				}
 		}
-	}
 }
 
 sub process_critical_path_for_one_course($)
@@ -538,7 +533,7 @@ sub process_critical_path_for_one_course($)
 	my ($codcour) = (@_);
 	my ($distance) = (0);
 	my %paths = ();
-	Util::print_message("Processing $codcour");
+	#Util::print_message("Processing $codcour");
 	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 	{
 				#Util::print_message("\t$codpost");
@@ -547,26 +542,21 @@ sub process_critical_path_for_one_course($)
 				#unshift(@path_child, $codcour);
 				my $new_path_pos = 0;
 				if( defined($paths{$distance_child}) )
-				{
-						$new_path_pos = scalar( @{$paths{$distance_child}} );
-				}
+				{		$new_path_pos = scalar( @{$paths{$distance_child}} );	}
 				my $i=0;
 				foreach (@path_child)
 				{
-					$paths{$distance_child}[$new_path_pos+$i][0] = $codcour;
-					foreach my $one_codcour (@{$path_child[$i]})
-					{		push(@{$paths{$distance_child}[$new_path_pos+$i]}, $one_codcour);			}
-					$i++;
+						$paths{$distance_child}[$new_path_pos+$i][0] = $codcour;
+						foreach my $one_codcour (@{$path_child[$i]})
+						{		push(@{$paths{$distance_child}[$new_path_pos+$i]}, $one_codcour);			}
+						$i++;
 				}
 				if ($distance_child > $distance)
-				{	$distance	= $distance_child;		}
+				{		$distance	= $distance_child;		}
 		}
-		my $nsolutions = 0;
 		if($distance == 0)
-		{		$distance++;
-				$paths{$distance}[0][0] = $codcour;
-				#Util::print_message("Returning terminal $codcour, max distance=$distance");
-				#print Dumper(\%paths);
+		{
+				$paths{++$distance}[0][0] = $codcour;
 				return ($distance, @{$paths{$distance}})
 		}
 		#Util::print_message("Returning from $codcour, max distance=$distance");
@@ -574,33 +564,46 @@ sub process_critical_path_for_one_course($)
 		return ($distance, @{$paths{$distance}});
 }
 
+sub load_critical_path(@)
+{
+			my (@critical_paths) = (@_);
+			#print Dumper(\@critical_paths);
+			foreach my $_one_path (@critical_paths)
+			{
+					my @one_path = @{$_one_path};
+					#print Dumper(\@one_path);
+					my $ncourses = scalar(@one_path);
+					for(my $i = 0; $i < $ncourses-1 ; $i++ )
+					{		#Util::print_message($one_path[$i]."->".$one_path[$i+1]." *");
+							my ($source, $target) = ($one_path[$i], $one_path[$i+1]);
+							$Common::course_info{$source}{critical_path}{$target}++;
+					}
+			}
+}
+
 sub detect_critical_path()
 {
-	initialize_critical_path();
-	my $test = "EG0004";
-	my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
-	Util::print_message("$test distance=$distance_child");
-	print Dumper(\@path_child);
-	exit;
-	#for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	#{
-	#	foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	#	{
-	#		my $child_longest_distance = 0;
-	#		foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
-	#		{
-	#			my $distance = $Common::course_info{$codcour}{critical_path}{distance};
-	#			my $child_longest_distance_temp = process_critical_path_for_one_course($codpost);
-#
-#				my $codpost_label = Common::get_label($codpost);
-#				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
-#
-#				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
-#				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
-#				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
-#			}
-#		}
-#	}
+			initialize_critical_path();
+			#my $test = "CS1D01";
+			#my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
+			#Util::print_message("$test distance=$distance_child");
+			#print Dumper(\@path_child);
+			my $max_distance = 0;
+			for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+			{
+					foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+					{
+							my ($distance_for_this_course, @path) = process_critical_path_for_one_course($codcour);
+							if( $distance_for_this_course >= $max_distance )
+							{			#if( not defined( $critical_path{$distance_for_this_course} ) )
+										#{		@{$critical_path{$distance_for_this_course}} = [];	}
+										$max_distance = $distance_for_this_course;
+										push(@{$critical_path{$distance_for_this_course}}, @path);
+							}
+					}
+			}
+			load_critical_path(@{$critical_path{$max_distance}});
+			Util::check_point("detect_critical_path");
 }
 
 # dot
@@ -618,15 +621,15 @@ sub generate_curricula_in_dot($$)
 # 	$output_txt .= "\trankdir=TB;\n";
 	$output_txt .= "\tbgcolor=white;\n";
 	$output_txt .= "\t";
-	my $sep = "";
 
+	my $sep = "";
 	# First:	Generate semesters connected on the left
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
-		#print "$semester ...  ";
-		$output_txt .= "$sep";
-		$output_txt .= Common::sem_label($semester);
-		$sep = "->";
+			#print "$semester ...  ";
+			$output_txt .= "$sep";
+			$output_txt .= Common::sem_label($semester);
+			$sep = "->";
 	}
 	$output_txt .= ";\n";
 	my $rank_text = "";
@@ -646,20 +649,20 @@ sub generate_curricula_in_dot($$)
     my %clusters_info = ();
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
-                        my $group = $Common::course_info{$codcour}{group};
-                        my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang)."\n";
-                        if($Common::config{graph_version} == 1 || $group eq "")
-			{       $sem_text .= $this_course_dot;   }
-                        elsif($Common::config{graph_version} >= 2) # related links for elective courses
-                        {       if(not defined($clusters_info{$group}))
-                                {       $clusters_info{$group}{dot} = "";
-				}
-                                $clusters_info{$group}{dot} .= $this_course_dot;
-				push( @{$clusters_info{$group}{courses}}, $codcour);
-                        }
-			#my $codcour_label = Common::get_label($codcour);
-			$sem_rank .= " \"$codcour\";";
-			$ncourses++;
+		      my $group = $Common::course_info{$codcour}{group};
+		      my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang)."\n";
+		      if($Common::config{graph_version} == 1 || $group eq "")
+					{       $sem_text .= $this_course_dot;   }
+		      elsif($Common::config{graph_version} >= 2) # related links for elective courses
+		      {       if(not defined($clusters_info{$group}))
+		            	{       $clusters_info{$group}{dot} = "";
+									}
+		              $clusters_info{$group}{dot} .= $this_course_dot;
+									push( @{$clusters_info{$group}{courses}}, $codcour);
+		      }
+					#my $codcour_label = Common::get_label($codcour);
+					$sem_rank .= " \"$codcour\";";
+					$ncourses++;
 		}
 
     if($Common::config{graph_version} >= 2)
@@ -694,7 +697,7 @@ sub generate_curricula_in_dot($$)
 	{
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{	if( not defined($Common::config{prefix_priority}{$Common::course_info{$codcour}{prefix}}) )
-			{	Util::print_soft_error("Course $codcour ($Common::course_info{$codcour}{semester} Sem) has a prefix ($Common::course_info{$codcour}{prefix}) which haven't prefix_priority defined ...\n See ./Curricula.in/lang/<LANG>/<AREA>.config/<AREA>-All.config ");
+			{	Util::print_soft_error("Course $codcour ($Common::course_info{$codcour}{semester} Sem) has a prefix ($Common::course_info{$codcour}{prefix}) which hasn't prefix_priority defined ...\n See ./Curricula.in/lang/<LANG>/<AREA>.config/<AREA>-All.config ");
 			}
 		}
 
@@ -714,7 +717,11 @@ sub generate_curricula_in_dot($$)
 							}
 							else
 							{
-										$output_txt .= Common::get_label($req)."->".Common::get_label($codcour).";\n";
+										my ($source, $target) = (Common::get_label($req), $codcour);
+										my $critical_path_style = "";
+										if( defined($Common::course_info{$source}{critical_path}{$target}))
+										{			$critical_path_style = " [*]";	}
+										$output_txt .= "$source->$codcour$critical_path_style;\n";
 										#if( $codcour eq "FG601" ){	Util::print_message("B");	}
 							}
 							#if( $codcour eq "FG601" )

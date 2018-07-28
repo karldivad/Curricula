@@ -132,7 +132,6 @@ sub process_syllabus_units($$$$)
 		$all_units_txt .= $thisunit;
 	}
 	Util::check_point("process_syllabus_units");
-	#print Dumper (\%Common::map_hours_unit_by_course); exit;
 	return ($all_units_txt, $unit_captions);
 }
 
@@ -202,8 +201,7 @@ sub read_syllabus_info($$$)
 	      #$Common::course_info{$codcour}{$env}{$version}{array}	= [];
 	      $Common::course_info{$codcour}{$env}{$version}{count}     	= 0;
 	}
-	#Util::print_soft_error("Syllabus after");
-	#Util::print_warning($syllabus_in); exit;
+
 	my $version = $Common::config{OutcomesVersion};
 	foreach my $env ("outcomes", "competences")
 	{
@@ -266,10 +264,6 @@ sub read_syllabus_info($$$)
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
 	if( defined($Common::course_info{$codcour}{$lang}{specific_evaluation}) )
 	{	$map{EVALUATION} = $Common::course_info{$codcour}{$lang}{specific_evaluation};	}
-	#Util::print_message("Common::course_info{$codcour}{$lang}{specific_evaluation}=\n$Common::course_info{$codcour}{$lang}{specific_evaluation}");	exit;
-
-	#Util::print_message("course $codcour\nmap{EVALUATION}=\n$map{EVALUATION}");
-	#exit;
 
 	($map{PROFESSOR_NAMES}, $map{PROFESSOR_SHORT_CVS}, $map{PROFESSOR_JUST_GRADE_AND_FULLNAME}) = ("", "", "");
 	my $sep    = "";
@@ -363,7 +357,6 @@ sub read_syllabus_info($$$)
 #
 #             print Dumper( \%map );
 # #             print Dumper( \%{$Common::config{map_file_to_course}} );
-#             exit;
 #     }
 
 	my $syllabus_template = $Common::config{syllabus_template};
@@ -427,9 +420,6 @@ sub genenerate_tex_syllabus_file($$$$$%)
         #$file_template =~ s/--.*?--//g;
         system("rm $output_file");
 	Util::write_file($output_file, $file_template);
-
-# 	Util::print_message("Syllabi $output_file ... generated ok!");
-# 	Util::print_message($output_file);      exit;
 }
 
 sub read_sumilla_template()
@@ -486,7 +476,7 @@ sub process_syllabi()
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
 
 	generate_tex_syllabi_files();
-        generate_syllabi_include();
+  generate_syllabi_include();
  	gen_batch_to_compile_syllabi();
 
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
@@ -518,8 +508,6 @@ sub generate_tex_syllabi_files()
 			      $map{AREA}	= $Common::config{area};
 			      $map{LANG}	= $lang;
 			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
-			      #Util::print_message("A. Common::course_info{$codcour}{$lang}{specific_evaluation}=\n$Common::course_info{$codcour}{$lang}{specific_evaluation}");	exit;
-			      #Util::print_message("Common::config{syllabus_template}=$Common::config{syllabus_template}");
 
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
@@ -919,68 +907,6 @@ sub gen_course_general_info($)
 	 #Util::print_error("TODO: XYZ Aqui falta poner varios silabos en idiomas !");
 }
 
-my %critical_path = ();
-sub initialize_critical_path()
-{
-	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	{
-		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		{
-			$Common::course_info{$codcour}{critical_path}{visited}  = 1;
-			$Common::course_info{$codcour}{critical_path}{distance} = 0;
-			@{$Common::course_info{$codcour}{critical_path}{path}} = [];
-		}
-	}
-}
-
-sub process_critical_path_for_one_course($)
-{
-	my ($codcour) = (@_);
-	my ($distance) = (0);
-	my %paths = (0 => []);
-	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
-	{
-		my ($distance_child, @path_child) = process_critical_path_for_one_course($codpost);
-		push(@{$paths{$distance_child}}, @path_child);
-		if ($distance_child > $distance)
-		{	$distance	= $distance_child;		}
-	}
-	my $nsolutions = scalar( @{$paths{$distance}} );
-	for (my $i = 0; $i < $nsolutions ; $i++)
-	{
-		unshift(@{$paths{$distance}[$i]}, $codcour);
-	}
-	return ($distance+1, @{$paths{$distance}});
-}
-
-sub detect_critical_path()
-{
-	initialize_critical_path();
-	my ($distance_child, @path_child) = process_critical_path_for_one_course("ME0019");
-	Util::print_message("ME0019 distance=$distance_child");
-	print Dumper(\@path_child);
-	exit;
-	#for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	#{
-	#	foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	#	{
-	#		my $child_longest_distance = 0;
-	#		foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
-	#		{
-	#			my $distance = $Common::course_info{$codcour}{critical_path}{distance};
-	#			my $child_longest_distance_temp = process_critical_path_for_one_course($codpost);
-#
-#				my $codpost_label = Common::get_label($codpost);
-#				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
-#
-#				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
-#				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
-#				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
-#			}
-#		}
-#	}
-}
-
 sub gen_prerequisites_map_in_dot($)
 {
     my ($lang) = (@_);
@@ -1016,18 +942,18 @@ sub gen_prerequisites_map_in_dot($)
 			# Map PREVIOUS courses
 			foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
 			{
-				my $codprev_label = Common::get_label($codprev);
-				$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
+  				my $codprev_label = Common::get_label($codprev);
+  				$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
 
-				$prev_courses_dot .= "\t\"$codprev_label\"->\"$codcour_label\" [lhead=cluster$codcour_label];\n";
-				$min_sem_to_show = $Common::course_info{$codprev}{semester} if($Common::course_info{$codprev}{semester} < $min_sem_to_show);
-				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
+  				$prev_courses_dot .= "\t\"$codprev_label\"->\"$codcour_label\" [lhead=cluster$codcour_label];\n";
+  				$min_sem_to_show = $Common::course_info{$codprev}{semester} if($Common::course_info{$codprev}{semester} < $min_sem_to_show);
+  				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
 			}
 
  			my $this_course_dot = $course_tpl;
  			my %map = ("FONTCOLOR"	=> "black",
-				   "FILLCOLOR"	=> "yellow",
-				   "BORDERCOLOR" => "black");
+                "FILLCOLOR"	=> "yellow",
+                "BORDERCOLOR" => "black");
  			$this_course_dot = Common::replace_tags($this_course_dot, "<", ">", %map);
  			$this_course_dot = Common::generate_course_info_in_dot_with_sem($codcour, $this_course_dot, $lang)."\n";
 
@@ -1035,12 +961,12 @@ sub gen_prerequisites_map_in_dot($)
 			my $post_courses_dot = "";
 			foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 			{
-				my $codpost_label = Common::get_label($codpost);
-				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
+  				my $codpost_label = Common::get_label($codpost);
+  				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
 
-				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
-				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
-				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+  				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
+  				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
+  				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
 			}
 
 			my $sem_col 		= "";
@@ -1049,15 +975,15 @@ sub gen_prerequisites_map_in_dot($)
 			my $sep 		= "";
 			for( my $sem_count = $min_sem_to_show; $sem_count <= $max_sem_to_show; $sem_count++)
 			{
-				my $sem_label = Common::sem_label($sem_count);
-				my $this_sem = "\t{ rank = same; $sem_label; ";
-				foreach my $one_cour (@{$local_list_of_courses_by_semester{$sem_count}})
-				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
-				$same_rank .= "$this_sem }\n";
-				$sem_col .= "$sep$sem_label";
-# 				,fillcolor=black,style=filled,fontcolor=white
-				$sem_definitions .= "\t$sem_label [shape=box];\n";
-				$sep = "->";
+  				my $sem_label = Common::sem_label($sem_count);
+  				my $this_sem = "\t{ rank = same; $sem_label; ";
+  				foreach my $one_cour (@{$local_list_of_courses_by_semester{$sem_count}})
+  				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
+  				$same_rank .= "$this_sem }\n";
+  				$sem_col .= "$sep$sem_label";
+  # 				,fillcolor=black,style=filled,fontcolor=white
+  				$sem_definitions .= "\t$sem_label [shape=box];\n";
+  				$sep = "->";
 			}
 			my $output_tex  = "";
 			# Semester: Ej. 5th Sem.
