@@ -139,7 +139,7 @@ NoteT=Consiste en el promedio de notas de los exámenes cortos individuales, red
 NoteP=Consiste en el promedio de notas de las practicas calificadas grupales, redondeada hacia arriba (esta nota es sobre 9).
 NoteE=Consiste en el resultado de los problemas de esfuerzo individual redondeada hacia arriba (esta nota es sobre 2).
 
-nocorehours        =Sin mínimo de horas
+nocorehours    =Sin mínimo de horas
 corehours	   =horas como mínimo
 ThisSchool	   =Esta carrera
 
@@ -154,6 +154,7 @@ ComparisonWithStandardCaption=Comparación <AREA>-\siglas~Vs. <STANDARD> de <STA
 InstitutionToCompareWith=IEEE-CS/ACM
 Yes 	= Si
 No 	= No
+CriticalPath=Camino crítico
 
 Familiarity=Familiarizarse
 Usage=Usar

@@ -41,7 +41,6 @@ sub generate_general_info()
 	GeneralInfo::generate_pie("hours");
 	GeneralInfo::generate_pie_by_levels();
 
-	GeneralInfo::detect_critical_path();
 	GeneralInfo::generate_curricula_in_dot("small", $lang);
 	system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("out-small-graph-curricula-file"));
 	GeneralInfo::generate_curricula_in_dot("big", $lang);   
@@ -94,6 +93,7 @@ sub main()
 # 	Common::check_preconditions();
 # 	replacecodes();
 
+    GeneralInfo::detect_critical_path();
 	GenSyllabi::process_syllabi();
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{

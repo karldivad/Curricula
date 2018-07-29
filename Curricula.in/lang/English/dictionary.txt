@@ -154,6 +154,8 @@ InstitutionToCompareWith=IEEE-CS/ACM
 Yes 	= Yes
 No 	= No
 
+CriticalPath=Critical path
+
 <HASH name=standards_long_name>
 CE=>Computer Engineering
 CS=>Computer Science
@@ -204,7 +206,6 @@ FG => General<ENTER>Knowledge
 Familiarity=Familiarity
 Usage=Usage
 Assessment=Assessment
-
 
 <HASH name=labels_per_level>
 1=>Introductory

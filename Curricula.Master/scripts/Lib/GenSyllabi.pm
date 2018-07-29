@@ -476,7 +476,7 @@ sub process_syllabi()
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
 
 	generate_tex_syllabi_files();
-  generate_syllabi_include();
+  	generate_syllabi_include();
  	gen_batch_to_compile_syllabi();
 
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
@@ -944,8 +944,13 @@ sub gen_prerequisites_map_in_dot($)
 			{
   				my $codprev_label = Common::get_label($codprev);
   				$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
+				
+				my ($source, $target) = ($codprev_label, $codcour);
+				my ($critical_path_style, $width) = ("", 4);
+				if( defined($Common::course_info{$source}{critical_path}{$target}))
+				{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
 
-  				$prev_courses_dot .= "\t\"$codprev_label\"->\"$codcour_label\" [lhead=cluster$codcour_label];\n";
+  				$prev_courses_dot .= "\t\"$codprev_label\"->\"$codcour_label\" [lhead=cluster$codcour_label$critical_path_style];\n";
   				$min_sem_to_show = $Common::course_info{$codprev}{semester} if($Common::course_info{$codprev}{semester} < $min_sem_to_show);
   				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
 			}
@@ -964,7 +969,12 @@ sub gen_prerequisites_map_in_dot($)
   				my $codpost_label = Common::get_label($codpost);
   				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
 
-  				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label];\n";
+				my ($source, $target) = ($codcour, $codpost);
+				my ($critical_path_style, $width) = ("", 4);
+				if( defined($Common::course_info{$source}{critical_path}{$target}))
+				{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
+
+  				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label$critical_path_style];\n";
   				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
   				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
 			}
@@ -1014,7 +1024,7 @@ sub gen_prerequisites_map_in_dot($)
 			Util::print_message("Generating $output_file ok!");
 			#$batch_txt	.= "dot -Gcharset=$Common::config{encoding} -Tps $output_file -o $OutputFigDir/$codcour_label.ps; \n";
 			$batch_txt	.= "dot -Tps  $output_file -o $OutputFigDir/$codcour_label.ps; \n";
-      $batch_txt	.= "dot -Tpng $output_file -o $OutputFigDir/$codcour_label.png; \n";
+      		$batch_txt	.= "dot -Tpng $output_file -o $OutputFigDir/$codcour_label.png; \n";
 			# $batch_txt	.= "convert $OutputFigDir/$codcour_label.ps $OutputFigDir/$codcour_label.png&\n\n";
 		}
 	 }

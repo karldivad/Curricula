@@ -646,7 +646,7 @@ sub generate_curricula_in_dot($$)
 		$sem_text .= "\t$sem_label";
 		$sem_text .= " [shape=box];\n";
 
-    my %clusters_info = ();
+    	my %clusters_info = ();
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
 		      my $group = $Common::course_info{$codcour}{group};
@@ -665,15 +665,15 @@ sub generate_curricula_in_dot($$)
 					$ncourses++;
 		}
 
-    if($Common::config{graph_version} >= 2)
+    	if($Common::config{graph_version} >= 2)
 		{
 		  foreach my $group (keys %clusters_info)
 		  {
-# 			  $sem_text .= "subgraph cluster$cluster_count$group\n{";
-# 			  $sem_text .= "\n\tlabel = \"$Common::config{dictionary}{Electives}\";\n";
-# Electivo10GH [shape=ellipse, fontcolor=black, style=filled, fillcolor=yellow, label="Electivos"];
-# Electivo10GH->CS393;
-# Electivo10GH->CS362;
+				# 	$sem_text .= "subgraph cluster$cluster_count$group\n{";
+				# 	$sem_text .= "\n\tlabel = \"$Common::config{dictionary}{Electives}\";\n";
+				# Electivo10GH [shape=ellipse, fontcolor=black, style=filled, fillcolor=yellow, label="Electivos"];
+				# Electivo10GH->CS393;
+				# Electivo10GH->CS362;
 			  my $group_name = "$Common::config{dictionary}{Electives}$semester$group";
 			  $sem_text .= "\n#Electives $group\n";
 			  $sem_text .= "\t$group_name"." [shape=ellipse, fontcolor=black, style=filled, fillcolor=yellow, label=\"$Common::config{dictionary}{Electives}\"];\n";
@@ -719,8 +719,9 @@ sub generate_curricula_in_dot($$)
 							{
 										my ($source, $target) = (Common::get_label($req), $codcour);
 										my $critical_path_style = "";
+										my $width = 4;
 										if( defined($Common::course_info{$source}{critical_path}{$target}))
-										{			$critical_path_style = " [*]";	}
+										{			$critical_path_style = " [penwidth=$width]";	}
 										$output_txt .= "$source->$codcour$critical_path_style;\n";
 										#if( $codcour eq "FG601" ){	Util::print_message("B");	}
 							}
