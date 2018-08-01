@@ -71,7 +71,7 @@ sub print_color($)
 sub print_warning($)
 {
 	my ($msg) = (@_);
-	print "\x1b[43m ** WARNING ** : $msg\x1b[0m\n";
+	print "\x1b[44m\x1b[30m ** WARNING ** : $msg\x1b[0m\n";
 }
 
 # https://pypi.python.org/pypi/colorama

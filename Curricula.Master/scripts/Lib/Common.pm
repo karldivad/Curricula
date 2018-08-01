@@ -3148,7 +3148,7 @@ sub filter_courses($)
 		                my ($inst, $prereq) = ($1, $2);
 		                if( $inst eq $institution)
 		                {
-												$new_prerequisites .= "$sep$inst=$prereq";
+							$new_prerequisites .= "$sep$inst=$prereq";
 		                    $course_info{$codcour}{prerequisites_just_codes} .= "$sep$inst=$prereq";
 		                    foreach my $lang ( @{$config{SyllabusLangsList}} )
 		                    {       push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq);
@@ -3156,14 +3156,14 @@ sub filter_courses($)
 		                    }
 		                    $course_info{$codcour}{short_prerequisites}         .= "$sep$prereq";
 		                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$prereq";
-		                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $prereq);
+		                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, "$sep$inst=$prereq");
 		                    $course_info{$codcour}{n_prereq}++;
-												$codreq = $prereq;
+							$codreq = $prereq;
 		                }
 		                else
 		                {	 	Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring");
 
-										}
+						}
 					}
 					else
 		      {
@@ -3473,12 +3473,14 @@ sub change_number_by_text($)
 sub generate_course_info_in_dot($$$)
 {
 	my ($codcour, $this_item, $lang) = (@_);
-#	print "$codcour, priority=$Common::config{prefix_priority}{$Common::course_info{$codcour}{area}} ...";
+	print "$codcour ...\n";
+	if($codcour eq "60Cr") {assert(0);}
 	my $codcour_label = get_label($codcour);
 	my %map = ();
 
 	$map{CODE}	= $codcour_label;
-	my ($newlabel,$nlines) = wrap_label("$codcour_label. $course_info{$codcour}{course_name}{$config{language_without_accents}}");
+	my $codcour_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
+	my ($newlabel,$nlines) = wrap_label("$codcour. ");
 	my @height = (0, 0, 0.6, 0.9, 1.2, 1.5);
 # 	my $height = 0.3*$nlines+0.1*($nlines-1) + 0.3*$config{extralevels}+0.05*($config{extralevels}-1);
 	$map{FULLNAME}	= $newlabel;

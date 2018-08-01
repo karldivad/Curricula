@@ -1,6 +1,7 @@
 package GenSyllabi;
 use warnings;
 use Data::Dumper;
+use Carp::Assert;
 use Scalar::Util qw(blessed dualvar isdual readonly refaddr reftype
                         tainted weaken isweak isvstring looks_like_number
                         set_prototype);
@@ -907,6 +908,25 @@ sub gen_course_general_info($)
 	 #Util::print_error("TODO: XYZ Aqui falta poner varios silabos en idiomas !");
 }
 
+sub generate_link($$$$)
+{
+	my ($source, $target, $course_tpl, $lang) = (@_);
+	my $output_txt = "";
+	if($source =~ m/(.*?)=(.*)/)
+	{
+		my ($inst, $prereq) = ($1, $2);
+		assert( $inst eq $Common::institution);
+		$output_txt .= "\t\"$prereq\"->\"$target\" [lhead=cluster$target];\n";
+		return ($output_txt, 0);
+	}
+	$output_txt .= Common::generate_course_info_in_dot_with_sem($source, $course_tpl, $lang)."\n";
+	my ($critical_path_style, $width) = ("", 4);
+	if( defined($Common::course_info{$source}{critical_path}{$target}))
+	{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
+	$output_txt .= "\t\"$source\"->\"$target\" [lhead=cluster$target$critical_path_style];\n";
+	return ($output_txt, 1);
+}
+
 sub gen_prerequisites_map_in_dot($)
 {
     my ($lang) = (@_);
@@ -941,18 +961,13 @@ sub gen_prerequisites_map_in_dot($)
 			my $prev_courses_dot = "";
 			# Map PREVIOUS courses
 			foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
-			{
-  				my $codprev_label = Common::get_label($codprev);
-  				$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
-				
-				my ($source, $target) = ($codprev_label, $codcour);
-				my ($critical_path_style, $width) = ("", 4);
-				if( defined($Common::course_info{$source}{critical_path}{$target}))
-				{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
-
-  				$prev_courses_dot .= "\t\"$codprev_label\"->\"$codcour_label\" [lhead=cluster$codcour_label$critical_path_style];\n";
-  				$min_sem_to_show = $Common::course_info{$codprev}{semester} if($Common::course_info{$codprev}{semester} < $min_sem_to_show);
-  				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
+			{	my ($output_txt, $regular_course) = generate_link($codprev, $codcour, $course_tpl, $lang);
+				$prev_courses_dot .= $output_txt;
+				if($regular_course == 1 )
+				{	if(	$Common::course_info{$codprev}{semester} < $min_sem_to_show )
+					{	$min_sem_to_show = $Common::course_info{$codprev}{semester} ;	}
+					push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
+				}
 			}
 
  			my $this_course_dot = $course_tpl;
@@ -966,17 +981,25 @@ sub gen_prerequisites_map_in_dot($)
 			my $post_courses_dot = "";
 			foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 			{
-  				my $codpost_label = Common::get_label($codpost);
-  				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
+				my ($output_txt, $regular_course) = generate_link($codcour, $codpost, $course_tpl, $lang);
+				$post_courses_dot .= $output_txt;
+				if($regular_course == 1 )
+				{	if(	$Common::course_info{$codpost}{semester} > $max_sem_to_show )
+					{	$max_sem_to_show = $Common::course_info{$codpost}{semester} ;	}
+					push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+				}
 
-				my ($source, $target) = ($codcour, $codpost);
-				my ($critical_path_style, $width) = ("", 4);
-				if( defined($Common::course_info{$source}{critical_path}{$target}))
-				{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
+  				#my $codpost_label = Common::get_label($codpost);
+  				#$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
 
-  				$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label$critical_path_style];\n";
-  				$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
-  				push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+				#my ($source, $target) = ($codcour, $codpost);
+				#my ($critical_path_style, $width) = ("", 4);
+				#if( defined($Common::course_info{$source}{critical_path}{$target}))
+				#{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
+
+  				#$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label$critical_path_style];\n";
+  				#$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
+  				#push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
 			}
 
 			my $sem_col 		= "";

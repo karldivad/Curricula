@@ -635,7 +635,7 @@ sub generate_curricula_in_dot($$)
 	my $rank_text = "";
 
 	# Second: generate information for each semester
-        my $cluster_count = 0;
+    my $cluster_count = 0;
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
 		my $ncourses = 0;
