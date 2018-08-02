@@ -3474,13 +3474,12 @@ sub generate_course_info_in_dot($$$)
 {
 	my ($codcour, $this_item, $lang) = (@_);
 	print "$codcour ...\n";
-	if($codcour eq "60Cr") {assert(0);}
-	my $codcour_label = get_label($codcour);
+	#if($codcour eq "60Cr") {assert(0);}
 	my %map = ();
 
-	$map{CODE}	= $codcour_label;
+	$map{CODE}	= $codcour;
 	my $codcour_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
-	my ($newlabel,$nlines) = wrap_label("$codcour. ");
+	my ($newlabel,$nlines) = wrap_label("$codcour. $codcour_name");
 	my @height = (0, 0, 0.6, 0.9, 1.2, 1.5);
 # 	my $height = 0.3*$nlines+0.1*($nlines-1) + 0.3*$config{extralevels}+0.05*($config{extralevels}-1);
 	$map{FULLNAME}	= $newlabel;
@@ -3516,7 +3515,7 @@ sub generate_course_info_in_dot($$$)
 
 	$map{NAME}	= $course_info{$codcour}{course_name}{$lang};
 	$map{TYPE}	= $config{dictionary}{$course_info{$codcour}{course_type}};
-	$map{PAGE}	= "--PAGE$codcour_label--";
+	$map{PAGE}	= "--PAGE$codcour--";
 
 	my ($outcome_txt, $sep) = ("", "");
 	foreach my $outcome (@{$course_info{$codcour}{outcomes_array}})
