@@ -919,7 +919,6 @@ sub generate_link($$$$)
 		$output_txt .= "\t\"$prereq\"->\"$target\" [lhead=cluster$target];\n";
 		return ($output_txt, 0);
 	}
-	$output_txt .= Common::generate_course_info_in_dot_with_sem($source, $course_tpl, $lang)."\n";
 	my ($critical_path_style, $width) = ("", 4);
 	if( defined($Common::course_info{$source}{critical_path}{$target}))
 	{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
@@ -961,7 +960,8 @@ sub gen_prerequisites_map_in_dot($)
 			my $prev_courses_dot = "";
 			# Map PREVIOUS courses
 			foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
-			{	my ($output_txt, $regular_course) = generate_link($codprev, $codcour, $course_tpl, $lang);
+			{	$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
+				my ($output_txt, $regular_course) = generate_link($codprev, $codcour, $course_tpl, $lang);
 				$prev_courses_dot .= $output_txt;
 				if($regular_course == 1 )
 				{	if(	$Common::course_info{$codprev}{semester} < $min_sem_to_show )
@@ -981,6 +981,7 @@ sub gen_prerequisites_map_in_dot($)
 			my $post_courses_dot = "";
 			foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 			{
+				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
 				my ($output_txt, $regular_course) = generate_link($codcour, $codpost, $course_tpl, $lang);
 				$post_courses_dot .= $output_txt;
 				if($regular_course == 1 )
