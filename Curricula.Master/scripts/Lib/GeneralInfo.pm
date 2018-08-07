@@ -620,6 +620,7 @@ sub generate_curricula_in_dot($$)
 #  	$output_txt .= "\tranksep=0.9;\n";
 # 	$output_txt .= "\trankdir=TB;\n";
 	$output_txt .= "\tbgcolor=white;\n";
+	$output_txt .= "\tnewrank=true;\n";
 	$output_txt .= "\t";
 
 	my $sep = "";
@@ -647,41 +648,44 @@ sub generate_curricula_in_dot($$)
 		$sem_text .= " [shape=box];\n";
 
     	my %clusters_info = ();
-		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
+		my $codcour = "";
+		foreach $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
-		      my $group = $Common::course_info{$codcour}{group};
-		      my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang)."\n";
-		      if($Common::config{graph_version} == 1 || $group eq "")
-					{       $sem_text .= $this_course_dot;   }
-		      elsif($Common::config{graph_version} >= 2) # related links for elective courses
-		      {       if(not defined($clusters_info{$group}))
-		            	{       $clusters_info{$group}{dot} = "";
-									}
-		              $clusters_info{$group}{dot} .= $this_course_dot;
-									push( @{$clusters_info{$group}{courses}}, $codcour);
-		      }
-					#my $codcour_label = Common::get_label($codcour);
-					$sem_rank .= " \"$codcour\";";
-					$ncourses++;
+		    my $group = $Common::course_info{$codcour}{group};
+		    my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang)."\n";
+		    if($Common::config{graph_version} == 1 || $group eq "")
+			{       $sem_text .= $this_course_dot;   }
+		    elsif($Common::config{graph_version} >= 2) # related links for elective courses
+		    {       if(not defined($clusters_info{$group}))
+		           	{       $clusters_info{$group}{dot} = "";
+					}
+		            $clusters_info{$group}{dot} .= $this_course_dot;
+					push( @{$clusters_info{$group}{courses}}, $codcour);
+		    }
+			#my $codcour_label = Common::get_label($codcour);
+			$sem_rank .= " \"$codcour\";";
+			$ncourses++;
 		}
 
     	if($Common::config{graph_version} >= 2)
 		{
-		  foreach my $group (keys %clusters_info)
-		  {
-				# 	$sem_text .= "subgraph cluster$cluster_count$group\n{";
-				# 	$sem_text .= "\n\tlabel = \"$Common::config{dictionary}{Electives}\";\n";
-				# Electivo10GH [shape=ellipse, fontcolor=black, style=filled, fillcolor=yellow, label="Electivos"];
-				# Electivo10GH->CS393;
-				# Electivo10GH->CS362;
-			  my $group_name = "$Common::config{dictionary}{Electives}$semester$group";
-			  $sem_text .= "\n#Electives $group\n";
-			  $sem_text .= "\t$group_name"." [shape=ellipse, fontcolor=black, style=filled, fillcolor=yellow, label=\"$Common::config{dictionary}{Electives}\"];\n";
-			  $sem_text .= $clusters_info{$group}{dot};
-			  foreach my $onecourse (@{$clusters_info{$group}{courses}})
-			  {	$sem_text .= "\t$group_name->".Common::get_label($onecourse).";\n";	}
-			  $cluster_count++;
-		  }
+			foreach my $group (keys %clusters_info)
+			{
+				$sem_text .= "subgraph cluster$group$cluster_count\n{";
+				$sem_text .= "\tlabel = \"$Common::config{dictionary}{Electives}\";\n";
+				$sem_text .= "\tgraph[color=black,style=dotted,penwidth=2];\n";
+					
+				my $group_name = "$Common::config{dictionary}{Electives}$semester$group";
+				foreach $codcour (@{$clusters_info{$group}{courses}})
+				{
+					my $this_course_dot = Common::generate_course_info_in_dot($codcour, $course_tpl, $lang);
+					$sem_text .= "\t$this_course_dot\n";
+					$sem_rank .= " \"$codcour\";";
+					$ncourses++;
+				}
+				$sem_text .= "}\n";
+				$cluster_count++;
+			}
 		}
 		if( $ncourses > 0 )
 		{
@@ -705,10 +709,6 @@ sub generate_curricula_in_dot($$)
 		{
 				foreach my $req (split(",", $Common::course_info{$codcour}{prerequisites_just_codes}))
 				{
-							# if( $codcour eq "FG601" )
-							# {			Util::print_message("course_info{$codcour}{prerequisites}=$Common::course_info{$codcour}{prerequisites}, req=$req");
-							# 			#exit;
-							# }
 							if( $req =~ m/$Common::institution=(.*)/ )
 							{
 										$output_txt .= "\"$1\"->$codcour;\t\t";
@@ -725,9 +725,6 @@ sub generate_curricula_in_dot($$)
 										$output_txt .= "$source->$codcour$critical_path_style;\n";
 										#if( $codcour eq "FG601" ){	Util::print_message("B");	}
 							}
-							#if( $codcour eq "FG601" )
-							#{				exit;	}
-
 				}
 				if( $Common::config{recommended_prereq_flag} == 1 )
 				{			foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))

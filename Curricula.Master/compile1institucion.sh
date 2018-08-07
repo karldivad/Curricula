@@ -154,7 +154,6 @@ cp ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/syllabi/* ../Curricula.o
 #       ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-UTEC 2018-II BookOfUnitsByCourse (Plan2018) 1-10";
 #       ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-UTEC 2018-II BookOfDeliveryControl (Plan2018) 1-10";
 
-
 date >> ../Curricula.out/log/Peru-CS-UTEC-time.txt;
 more ../Curricula.out/log/Peru-CS-UTEC-time.txt;
 #./scripts/testenv.pl
