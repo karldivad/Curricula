@@ -26,6 +26,10 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 #find . -name "*.tex" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
 
 ./scripts/process-curricula.pl CS-UTEC
+./scripts/update-page-numbers.pl CS-UTEC;
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-graph.sh big &
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-map-for-course.sh
+
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula CS-UTEC-small-graph-curricula ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex;
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/compile-simple-latex.sh Computing-poster CS-UTEC-poster ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex;
 pdftk A=../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster.pdf cat A1-1 output ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster-P1.pdf;
