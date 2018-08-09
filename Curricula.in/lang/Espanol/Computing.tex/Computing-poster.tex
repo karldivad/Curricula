@@ -71,12 +71,8 @@
 {
 	~\\
 	\begin{tabular}{m{<LOGO_WIDTH>}m{1cm}m{<TITLE_WIDTH>}}
- 		\includegraphics[width=<LOGO_WIDTH>,height=9cm]{\InCountryDir/logos/\siglas.eps} & &
+ 		\includegraphics[width=<LOGO_WIDTH>,height=7cm]{\InCountryDir/logos/\siglas.eps} & &
  		\begin{tabular}{m{<TITLE_WIDTH>}}
-		      \begin{minipage}{<TITLE_WIDTH>}
-			      {\bf\Large \FacultadName}
-		      \end{minipage} \\
-		      \vspace{0.5cm}
 		      \begin{tabular}{m{<DEF_WIDTH>}m{2cm}m{<DEF_WIDTH>}}
 			    \begin{minipage}{<DEF_WIDTH>}
 				    {\bf\Large \SchoolFullName} \\
@@ -97,34 +93,32 @@
 					  }
 			    \end{minipage}
 		      \end{tabular}
-		      
  		\end{tabular}
 	\end{tabular}\\
 	\vspace*{0.7cm}
-        \Cblur{\includegraphics[width=0.975\textwidth,height=0.67\textheight]{../fig/big-graph-curricula.ps}} \\
+		\Cblur{\includegraphics[width=0.975\textwidth,height=0.63\textheight]{../fig/big-graph-curricula.ps}} \\
 	%\vspace{0.5cm}	
-	\newcommand{\SkillsTableWidth}{0.65\textwidth}
+	\newcommand{\SkillsTableWidth}{0.6\textwidth}
 	%\hspace{0.05cm}
-        \tiny
-        %\input{\OutputTexDir/all-outcomes-by-course-poster}
-        %\input{\OutputTexDir/outcomes-by-course-1}
-       \begin{tabularx}{0.975\textwidth}{Xm{.5cm}c}
-%               \vspace*{-10.5cm}
-              \Cblur{ \input{\OutputTexDir/all-outcomes-by-course-poster}} & &
-              \Cblur{ 
-		    \begin{tabularx}{28cm}{X}%
-			{\large Definición de Objetivos de Aprendizaje ({\it Learning Outcomes})} 				\\ \hline
-			\vspace{0.5cm}
-			{\footnotesize {\bf Nivel 1 \Familiarity ({\it Familiarity})}: \LearningOutcomesTxtEsFamiliarity} 	\\ \vspace{0.5cm}
-			{\footnotesize {\bf Nivel 2 \Usage ({\it Usage})}: \LearningOutcomesTxtEsUsage} 			\\ \vspace{0.5cm}
-			{\footnotesize {\bf Nivel 3 \Assessment ({\it Assessment})}: \LearningOutcomesTxtEsAssessment} \\ %
-		    \end{tabularx}%
-              }%
-              %\Cblur{\includegraphics[height=10cm]{../fig/Bloom-sequence}}
-              %\Cblur{\includegraphics[height=10cm]{../fig/Bloom}}
-              %{\captionsize Competencias por disciplina} &
-              %{\captionsize Pirámide del Aprendizaje} \\
-        \end{tabularx}
+	%\tiny
+	%\input{\OutputTexDir/all-outcomes-by-course-poster}
+	%\input{\OutputTexDir/outcomes-by-course-1}
+	\newcommand{\EducationalObjectivesWidth}{29cm}
+	\begin{tabularx}{0.975\textwidth}{Xm{.1cm}m{\EducationalObjectivesWidth}}
+			{\tiny \Cblur{\input{\OutputTexDir/all-outcomes-by-course-poster}} } & &
+			\Cblur{ 
+				\begin{tabularx}{\EducationalObjectivesWidth}{X}%
+				{\captionsize \bf Objetivos Educacionales ({\it Educational Objetives})} 				\\ \hline
+				{\scriptsize \vspace{0.1cm}
+				\input{\InTexDir/educational-objectives-list} 
+				}\\ 
+				\end{tabularx}%
+			}
+			%\Cblur{\includegraphics[height=10cm]{../fig/Bloom-sequence}}
+			%\Cblur{\includegraphics[height=10cm]{../fig/Bloom}}
+			%{\captionsize Competencias por disciplina} &
+			%{\captionsize Pirámide del Aprendizaje} \\
+	\end{tabularx}
 }
 {	
 	~\\
@@ -169,12 +163,33 @@
 	\vspace*{0.2cm}\color{white}{\captionsize \bf Perfil internacional de CS} \vspace*{0.2cm}\\ \hrule
 	\hrule \vspace{0.4cm}
 
-	\begin{tabularx}{0.95\textwidth}{cX}
+	\begin{tabularx}{0.95\textwidth}{m{.5cm}Xm{.5cm}Xm{.5cm}}
 % 		\Cblur{\includegraphics[heigth=6.55cm]{../fig/pie-credits.eps}} &
 % 		\Cblur{\includegraphics[heigth=6.55cm]{../fig/pie-by-levels.eps}} \\
-		\Cblur{\includegraphics[height=6.55cm]{../fig/pie-credits.eps}} & \Cblur{\includegraphics[height=6.55cm]{../fig/pie-by-levels.eps}} \\
-		\color{white}{\captionsize \bf Créditos por área} 		& \color{white}{\captionsize \bf Créditos por nivel}
+%		\Cblur{\includegraphics[height=6.55cm]{../fig/pie-credits.eps}} & & \Cblur{\includegraphics[height=6.55cm]{../fig/pie-by-levels.eps}} \\
+%		\color{white}{\captionsize \bf Créditos por área} 				& & \color{white}{\captionsize \bf Créditos por nivel}
+		&
+		\begin{minipage}{0.95\textwidth}
+			\Cblur{\includegraphics[height=6.55cm]{../fig/pie-credits.eps}} \\ 
+			\color{white}{\captionsize \bf Créditos por área}
+		\end{minipage}
+		& &
+		\begin{minipage}{0.95\textwidth}
+			\Cblur{\includegraphics[height=6.55cm]{../fig/pie-by-levels.eps}} \\ 
+			\color{white}{\captionsize \bf Créditos por nivel}
+		\end{minipage}
+		&
  	\end{tabularx}
+}
+
+\Cblur{ 
+	\begin{tabularx}{\textwidth}{X}%
+	{\bf Definición de Objetivos de Aprendizaje ({\it Learning Outcomes})} 				\\ \hline
+		%\vspace{0.01cm}
+		{{\bf Nivel 1 \Familiarity\xspace({\it Familiarity})}: \LearningOutcomesTxtEsFamiliarity} 	\\
+		{{\bf Nivel 2 \Usage\xspace({\it Usage})}: \LearningOutcomesTxtEsUsage} 						\\
+		{{\bf Nivel 3 \Assessment\xspace({\it Assessment})}: \LearningOutcomesTxtEsAssessment} \\ %
+	\end{tabularx}%
 }
 
 \Cblur{\begin{minipage}{\textwidth}{\bf \large \Copyrights}\end{minipage}}
