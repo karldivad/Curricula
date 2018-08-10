@@ -551,18 +551,23 @@ sub gen_batch_to_compile_syllabi()
 	$output .= "if(\$course == \"all\") then\n";
 	$output .= "rm -rf $html_out_dir_syllabi\n";
 	$output .= "endif\n";
-	$output .= "mkdir -p $html_out_dir_syllabi\n";
+	$output .= "mkdir -p $html_out_dir_syllabi\n\n";
 
-	my $tex_out_dir_syllabi	 = Common::get_template("OutputSyllabiDir");
-	$output .= "if(\$course == \"all\") then\n";
-	$output .= "rm -rf $tex_out_dir_syllabi\n";
-	$output .= "endif\n";
-	$output .= "mkdir -p $tex_out_dir_syllabi\n\n";
+	foreach my $TempDir ("OutputSyllabiDir", "OutputFullSyllabiDir")
+	{
+		my $tex_out_dir_syllabi	 = Common::get_template($TempDir);
+		$output .= "if(\$course == \"all\") then\n";
+		$output .= "rm -rf $tex_out_dir_syllabi\n";
+		$output .= "endif\n";
+		$output .= "mkdir -p $tex_out_dir_syllabi\n\n";
+	}
 
 	my ($gen_syllabi, $cp_bib) = ("", "");
 	my $scripts_dir 		= Common::get_template("InScriptsDir");
 	my $output_tex_dir 		= Common::get_template("OutputTexDir");
 	my $OutputInstDir 		= Common::get_template("OutputInstDir");
+	my $OutputSyllabiDir	= Common::get_template("OutputSyllabiDir");
+	my $OutputFullSyllabiDir= Common::get_template("OutputFullSyllabiDir");
 
 	my $syllabus_container_dir 	= Common::get_template("InSyllabiContainerDir");
 	my $count_courses 		= 0;
@@ -574,8 +579,7 @@ sub gen_batch_to_compile_syllabi()
 		$output .= "#Semester #$semester\n";
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
-			my $codcour_label = Common::get_label($codcour);
-			$output .= "if(\$course == \"$codcour\" || \$course == \"$codcour_label\" || \$course == \"all\") then\n";
+			$output .= "if(\$course == \"$codcour\" || \$course == \"$codcour\" || \$course == \"all\") then\n";
 # 			Util::print_message("codcour = $codcour, bibfiles=$Common::course_info{$codcour}{bibfiles}");
 			foreach (split(",", $Common::course_info{$codcour}{bibfiles}))
 			{
@@ -584,7 +588,10 @@ sub gen_batch_to_compile_syllabi()
 			}
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
-				$output .= "$scripts_dir/gen-syllabus.sh $codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix} $OutputInstDir$parallel_sep\n";
+				my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
+				$output .= "$scripts_dir/gen-syllabus.sh $codcour-$lang_prefix $OutputInstDir$parallel_sep\n";
+				my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{Semester}).pdf";
+				$output .= "cp \"$OutputSyllabiDir/$codcour-$lang_prefix.pdf\" \"$fullname\"\n";
 			}
 			$output .= "endif\n\n";
 			$count_courses++;

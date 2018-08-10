@@ -483,6 +483,7 @@ sub set_initial_paths()
         $path_map{OutputDotDir}             = $config{OutputDotDir};
         $path_map{OutputMain4FigDir}		= $config{OutputMain4FigDir};
         $path_map{OutputSyllabiDir}			= $config{OutputInstDir}."/syllabi";
+		$path_map{OutputFullSyllabiDir}		= $config{OutputInstDir}."/full-syllabi";
         $path_map{OutputFacultyDir}			= $config{OutputInstDir}."/faculty";
         $path_map{OutputFacultyFigDir}		= $path_map{OutputFacultyDir}."/fig";			system("mkdir -p $path_map{OutputFacultyFigDir}");
         $path_map{OutputFacultyIconDir}		= $path_map{OutputFacultyDir}."/icon";			system("mkdir -p $path_map{OutputFacultyIconDir}");
@@ -1983,9 +1984,9 @@ sub read_distribution()
 				{
 				      if(not defined($config{distribution}{$codcour_alias}{$professor_email}))
 				      {		$config{distribution}{$codcour_alias}{$professor_role}{$professor_email} = $sequence++;
-						$config{faculty}{$professor_email}{$codcour_alias}{role} = $professor_role;
+						    $config{faculty}{$professor_email}{$codcour_alias}{role} = $professor_role;
 				      }
-        }
+        		}
 				else
 				{
 				      Util::print_warning("No professor information for email:\"$professor_email\" $codcour_alias($codcour) ... just commenting it");
