@@ -56,7 +56,7 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 mkdir -p <OUT_LOG_DIR>
 ./scripts/process-curricula.pl <AREA>-<INST> ;
 <OUTPUT_SCRIPTS_DIR>/gen-eps-files.sh;
-<OUTPUT_SCRIPTS_DIR>/gen-graph.sh small &
+<OUTPUT_SCRIPTS_DIR>/gen-graph.sh small
 
 if($pdf == 1) then
       # latex -interaction=nonstopmode <MAIN_FILE>
@@ -86,9 +86,9 @@ if($pdf == 1) then
       rm -rf <AREA>-<INST>.ps;
 endif
 
-./scripts/update-outcome-itemizes.pl <AREA>-<INST> &
+./scripts/update-outcome-itemizes.pl <AREA>-<INST>
 ./scripts/update-page-numbers.pl <AREA>-<INST>;
-<OUTPUT_SCRIPTS_DIR>/gen-graph.sh big &
+<OUTPUT_SCRIPTS_DIR>/gen-graph.sh big
 <OUTPUT_SCRIPTS_DIR>/gen-map-for-course.sh
 
 if($html == 1) then

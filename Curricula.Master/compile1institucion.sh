@@ -56,7 +56,7 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 mkdir -p ../Curricula.out/log
 ./scripts/process-curricula.pl CS-UTEC ;
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-eps-files.sh;
-../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-graph.sh small &
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-graph.sh small
 
 if($pdf == 1) then
       # latex -interaction=nonstopmode curricula-main
@@ -86,9 +86,9 @@ if($pdf == 1) then
       rm -rf CS-UTEC.ps;
 endif
 
-./scripts/update-outcome-itemizes.pl CS-UTEC &
+./scripts/update-outcome-itemizes.pl CS-UTEC
 ./scripts/update-page-numbers.pl CS-UTEC;
-../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-graph.sh big &
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-graph.sh big
 ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-map-for-course.sh
 
 if($html == 1) then
@@ -153,6 +153,7 @@ cp ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/syllabi/* ../Curricula.o
 
 #       ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-UTEC 2018-II BookOfUnitsByCourse (Plan2018) 1-10";
 #       ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-UTEC 2018-II BookOfDeliveryControl (Plan2018) 1-10";
+
 
 date >> ../Curricula.out/log/Peru-CS-UTEC-time.txt;
 more ../Curricula.out/log/Peru-CS-UTEC-time.txt;
