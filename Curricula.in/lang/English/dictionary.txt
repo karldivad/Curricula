@@ -50,6 +50,7 @@ TheoryEvaluation=Theory evaluation
 Project=Project
 BookSummary=Book Summaries
 SetOfProblems=Set of problems
+Coordinator=Coordinator
 
 HoursPerSession                        = Hours per Session
 LengthOfPeriod                         = Length Of Period 

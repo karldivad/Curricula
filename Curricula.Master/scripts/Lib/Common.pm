@@ -1907,11 +1907,9 @@ sub read_faculty()
 }
 
 our %professor_role_order = ("T" => 1,
-			     "L" => 2,
-			     "-" => 3,
-			    );
-#Util::halt("Aqui pare falta seguir revisando $codcour y luego el course_info{...}");
-
+			     			 "L" => 2,
+			     			 "-" => 3,
+			    			);
 sub read_distribution()
 {
 	Util::precondition("set_initial_paths");
@@ -1968,7 +1966,7 @@ sub read_distribution()
 			}
 			#print "\$config{distribution}{$codcour} ... = ";
 			my $sequence = 1;
-			foreach my $one_professor_assignment (split(",", $emails) )
+			foreach my $one_professor_assignment ( split(",", $emails) )
 			{
 				my $professor_email = "";
 				my $professor_role  = "-";
@@ -2009,7 +2007,6 @@ sub read_distribution()
 	}
 	close IN;
 	#system("rm $distribution_file");
-
 	my $output_txt = "";
 	for(my $semester= 1; $semester <= $config{n_semesters} ; $semester++)
 	{
@@ -2029,40 +2026,45 @@ sub read_distribution()
 			{	my $sep = "";
 				$this_sem_text .= "% $codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
 				$this_sem_text .= "$codcour->";
+				my $faculty_list_of_emails = "";
 				foreach my $role (sort  { $professor_role_order{$a} <=> $professor_role_order{$b} }
-						  keys %{ $Common::config{distribution}{$codcour}})
+						  		  keys %{ $Common::config{distribution}{$codcour}})
 				{
 					#$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence++;
 					foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel} ||
 														$config{faculty}{$a}{$codcour}{sequence} <=> $config{faculty}{$b}{$codcour}{sequence}
 													  }
-								     keys %{$config{distribution}{$codcour}{$role}}
+								     			 keys %{$config{distribution}{$codcour}{$role}}
 								    )
 					{
 						$this_sem_text .= "$sep$professor_email:";
+						$faculty_list_of_emails .= "$sep$professor_email";
 						if(defined($config{faculty}{$professor_email}{$codcour}{role}))
 						{	$this_sem_text .= $config{faculty}{$professor_email}{$codcour}{role};	}
 						else{	$this_sem_text .= "-";		}
 
-	# 					Util::print_message("$this_sem_text ...");
 						$sep = ",";
 						$config{faculty}{$professor_email}{fields}{active} 			= "Yes";
 						$config{faculty}{$professor_email}{fields}{courses_assigned}{$codcour} 	= "";
 					}
 				}
+				Util::print_message("$this_sem_text ...");
+				print "\n";
 				$this_sem_text .= "\n";
 				if( defined($ignored_email{$codcour}) )
-				{
-						$this_sem_text .= "%IGNORED $codcour->$ignored_email{$codcour}\n";
-				}
+				{		$this_sem_text .= "%IGNORED $codcour->$ignored_email{$codcour}\n";			}
+
+				# Set priority among professors
+				$config{faculty_list_of_emails}{$codcour} = $faculty_list_of_emails;
+				$ncourses++;
 			}
-			$ncourses++;
 		}
 		if( $ncourses > 0 )
 		{
 			$output_txt .= "\n% Semester #$semester .\n";
 			$output_txt .= "$this_sem_text\n";
 		}
+		
 	}
 	Util::write_file("$distribution_file", $output_txt);
 	Util::print_message("read_distribution($distribution_file) OK!");

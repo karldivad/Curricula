@@ -231,8 +231,8 @@ sub read_syllabus_info($$$)
 	      }
 	}
 
-	my $codcour_label 	= Common::get_label($codcour);
-	$map{COURSE_CODE} 	= $codcour_label;
+	my $codcour 		= Common::get_label($codcour);
+	$map{COURSE_CODE} 	= $codcour;
 	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
 	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};
 
@@ -277,32 +277,34 @@ sub read_syllabus_info($$$)
 		{
 		      my $count = 0;
 		      my $PROFESSOR_SHORT_CVS = "";
-		      foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
-						$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
-						$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
-					      }
-					keys %{$Common::config{distribution}{$codcour}{$role}})
-		      {
-			      #Util::print_warning("$codcour: $role $email, $Common::config{faculty}{$email}{fields}{degreelevel}, $Common::config{faculty}{$email}{fields}{dedication}, $Common::config{faculty}{$email}{fields}{name}");
-			      #print Dumper(\%{$Common::config{faculty}{$email}{fields}});
-# 			      if(defined($Common::config{faculty}{$email}{fields}{name}))
-# 			      {
-				  if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
-				  {
-				      $map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
-				      $PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name}\n";
-				      $PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
-				      $PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
-				      $PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
-				      $PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
-				      $count++;
+			  my $first = 1;
+			  foreach my $email ( split(",", $Common::config{faculty_list_of_emails}{$codcour}) )
+			  {
+		      #foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
+				#			$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
+				#			$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
+				#		      }
+				#		keys %{$Common::config{distribution}{$codcour}{$role}})
+				# {
+					if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
+				  	{
+						my $coordinator = "";
+						if( $first == 1 )
+						{	$coordinator = "~({\\bf $Common::config{dictionaries}{$lang}{Coordinator}})";	$first = 0;		}
+						$map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
+						$PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name} <$email>$coordinator\n";
+						$PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
+						$PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
+						$PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
+						$PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
+						$count++;
 				      #$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
-				  }
-# 			      }
-			      $sep = ", ";
+				  	}
+				# }
+			    $sep = ", ";
 		      }
 		      if( $count > 0 )
-		      {	      $map{PROFESSOR_SHORT_CVS} .= "\n\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
+		      {	      $map{PROFESSOR_SHORT_CVS} .= "\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
 			      $map{PROFESSOR_SHORT_CVS} .= "\\begin{itemize}[noitemsep]\n";
 			      $map{PROFESSOR_SHORT_CVS} .= $PROFESSOR_SHORT_CVS;
 			      $map{PROFESSOR_SHORT_CVS} .= "\\end{itemize}\n";
@@ -590,8 +592,11 @@ sub gen_batch_to_compile_syllabi()
 			{
 				my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
 				$output .= "$scripts_dir/gen-syllabus.sh $codcour-$lang_prefix $OutputInstDir$parallel_sep\n";
-				my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{Semester}).pdf";
-				$output .= "cp \"$OutputSyllabiDir/$codcour-$lang_prefix.pdf\" \"$fullname\"\n";
+				if(defined($Common::config{distribution}{$codcour}))
+				{
+					my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{Semester}).pdf";
+					$output .= "cp \"$OutputSyllabiDir/$codcour-$lang_prefix.pdf\" \"$fullname\"\n";
+				}
 			}
 			$output .= "endif\n\n";
 			$count_courses++;
