@@ -231,8 +231,8 @@ sub read_syllabus_info($$$)
 	      }
 	}
 
-	my $codcour_label 	= Common::get_label($codcour);
-	$map{COURSE_CODE} 	= $codcour_label;
+	my $codcour 		= Common::get_label($codcour);
+	$map{COURSE_CODE} 	= $codcour;
 	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
 	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};
 
@@ -277,32 +277,34 @@ sub read_syllabus_info($$$)
 		{
 		      my $count = 0;
 		      my $PROFESSOR_SHORT_CVS = "";
-		      foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
-						$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
-						$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
-					      }
-					keys %{$Common::config{distribution}{$codcour}{$role}})
-		      {
-			      #Util::print_warning("$codcour: $role $email, $Common::config{faculty}{$email}{fields}{degreelevel}, $Common::config{faculty}{$email}{fields}{dedication}, $Common::config{faculty}{$email}{fields}{name}");
-			      #print Dumper(\%{$Common::config{faculty}{$email}{fields}});
-# 			      if(defined($Common::config{faculty}{$email}{fields}{name}))
-# 			      {
-				  if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
-				  {
-				      $map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
-				      $PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name}\n";
-				      $PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
-				      $PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
-				      $PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
-				      $PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
-				      $count++;
+			  my $first = 1;
+			  foreach my $email ( split(",", $Common::config{faculty_list_of_emails}{$codcour}) )
+			  {
+		      #foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
+				#			$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
+				#			$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
+				#		      }
+				#		keys %{$Common::config{distribution}{$codcour}{$role}})
+				# {
+					if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
+				  	{
+						my $coordinator = "";
+						if( $first == 1 )
+						{	$coordinator = "~({\\bf $Common::config{dictionaries}{$lang}{Coordinator}})";	$first = 0;		}
+						$map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
+						$PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name} <$email>$coordinator\n";
+						$PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
+						$PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
+						$PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
+						$PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
+						$count++;
 				      #$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
-				  }
-# 			      }
-			      $sep = ", ";
+				  	}
+				# }
+			    $sep = ", ";
 		      }
 		      if( $count > 0 )
-		      {	      $map{PROFESSOR_SHORT_CVS} .= "\n\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
+		      {	      $map{PROFESSOR_SHORT_CVS} .= "\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
 			      $map{PROFESSOR_SHORT_CVS} .= "\\begin{itemize}[noitemsep]\n";
 			      $map{PROFESSOR_SHORT_CVS} .= $PROFESSOR_SHORT_CVS;
 			      $map{PROFESSOR_SHORT_CVS} .= "\\end{itemize}\n";
@@ -551,18 +553,23 @@ sub gen_batch_to_compile_syllabi()
 	$output .= "if(\$course == \"all\") then\n";
 	$output .= "rm -rf $html_out_dir_syllabi\n";
 	$output .= "endif\n";
-	$output .= "mkdir -p $html_out_dir_syllabi\n";
+	$output .= "mkdir -p $html_out_dir_syllabi\n\n";
 
-	my $tex_out_dir_syllabi	 = Common::get_template("OutputSyllabiDir");
-	$output .= "if(\$course == \"all\") then\n";
-	$output .= "rm -rf $tex_out_dir_syllabi\n";
-	$output .= "endif\n";
-	$output .= "mkdir -p $tex_out_dir_syllabi\n\n";
+	foreach my $TempDir ("OutputSyllabiDir", "OutputFullSyllabiDir")
+	{
+		my $tex_out_dir_syllabi	 = Common::get_template($TempDir);
+		$output .= "if(\$course == \"all\") then\n";
+		$output .= "rm -rf $tex_out_dir_syllabi\n";
+		$output .= "endif\n";
+		$output .= "mkdir -p $tex_out_dir_syllabi\n\n";
+	}
 
 	my ($gen_syllabi, $cp_bib) = ("", "");
 	my $scripts_dir 		= Common::get_template("InScriptsDir");
 	my $output_tex_dir 		= Common::get_template("OutputTexDir");
 	my $OutputInstDir 		= Common::get_template("OutputInstDir");
+	my $OutputSyllabiDir	= Common::get_template("OutputSyllabiDir");
+	my $OutputFullSyllabiDir= Common::get_template("OutputFullSyllabiDir");
 
 	my $syllabus_container_dir 	= Common::get_template("InSyllabiContainerDir");
 	my $count_courses 		= 0;
@@ -574,8 +581,7 @@ sub gen_batch_to_compile_syllabi()
 		$output .= "#Semester #$semester\n";
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
-			my $codcour_label = Common::get_label($codcour);
-			$output .= "if(\$course == \"$codcour\" || \$course == \"$codcour_label\" || \$course == \"all\") then\n";
+			$output .= "if(\$course == \"$codcour\" || \$course == \"$codcour\" || \$course == \"all\") then\n";
 # 			Util::print_message("codcour = $codcour, bibfiles=$Common::course_info{$codcour}{bibfiles}");
 			foreach (split(",", $Common::course_info{$codcour}{bibfiles}))
 			{
@@ -584,7 +590,13 @@ sub gen_batch_to_compile_syllabi()
 			}
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
-				$output .= "$scripts_dir/gen-syllabus.sh $codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix} $OutputInstDir$parallel_sep\n";
+				my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
+				$output .= "$scripts_dir/gen-syllabus.sh $codcour-$lang_prefix $OutputInstDir$parallel_sep\n";
+				if(defined($Common::config{distribution}{$codcour}))
+				{
+					my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{Semester}).pdf";
+					$output .= "cp \"$OutputSyllabiDir/$codcour-$lang_prefix.pdf\" \"$fullname\"\n";
+				}
 			}
 			$output .= "endif\n\n";
 			$count_courses++;
@@ -919,7 +931,6 @@ sub generate_link($$$$)
 		$output_txt .= "\t\"$prereq\"->\"$target\" [lhead=cluster$target];\n";
 		return ($output_txt, 0);
 	}
-	$output_txt .= Common::generate_course_info_in_dot_with_sem($source, $course_tpl, $lang)."\n";
 	my ($critical_path_style, $width) = ("", 4);
 	if( defined($Common::course_info{$source}{critical_path}{$target}))
 	{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
@@ -961,7 +972,8 @@ sub gen_prerequisites_map_in_dot($)
 			my $prev_courses_dot = "";
 			# Map PREVIOUS courses
 			foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
-			{	my ($output_txt, $regular_course) = generate_link($codprev, $codcour, $course_tpl, $lang);
+			{	$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
+				my ($output_txt, $regular_course) = generate_link($codprev, $codcour, $course_tpl, $lang);
 				$prev_courses_dot .= $output_txt;
 				if($regular_course == 1 )
 				{	if(	$Common::course_info{$codprev}{semester} < $min_sem_to_show )
@@ -981,6 +993,7 @@ sub gen_prerequisites_map_in_dot($)
 			my $post_courses_dot = "";
 			foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
 			{
+				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
 				my ($output_txt, $regular_course) = generate_link($codcour, $codpost, $course_tpl, $lang);
 				$post_courses_dot .= $output_txt;
 				if($regular_course == 1 )

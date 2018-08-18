@@ -483,6 +483,7 @@ sub set_initial_paths()
         $path_map{OutputDotDir}             = $config{OutputDotDir};
         $path_map{OutputMain4FigDir}		= $config{OutputMain4FigDir};
         $path_map{OutputSyllabiDir}			= $config{OutputInstDir}."/syllabi";
+		$path_map{OutputFullSyllabiDir}		= $config{OutputInstDir}."/full-syllabi";
         $path_map{OutputFacultyDir}			= $config{OutputInstDir}."/faculty";
         $path_map{OutputFacultyFigDir}		= $path_map{OutputFacultyDir}."/fig";			system("mkdir -p $path_map{OutputFacultyFigDir}");
         $path_map{OutputFacultyIconDir}		= $path_map{OutputFacultyDir}."/icon";			system("mkdir -p $path_map{OutputFacultyIconDir}");
@@ -1906,11 +1907,9 @@ sub read_faculty()
 }
 
 our %professor_role_order = ("T" => 1,
-			     "L" => 2,
-			     "-" => 3,
-			    );
-#Util::halt("Aqui pare falta seguir revisando $codcour y luego el course_info{...}");
-
+			     			 "L" => 2,
+			     			 "-" => 3,
+			    			);
 sub read_distribution()
 {
 	Util::precondition("set_initial_paths");
@@ -1933,7 +1932,7 @@ sub read_distribution()
 	my $line_number = 0;
 	my $codcour = "";
 	my $codcour_alias   = "";
-        my %ignored_email = ();
+    my %ignored_email = ();
 	while(<IN>)
 	{
 		$line_number++;
@@ -1945,29 +1944,29 @@ sub read_distribution()
 			my $emails = $2;
 			$codcour =~ s/\s//g;
 			$emails  =~ s/\s//g;
+			$codcour_alias = $codcour;
+			$codcour = get_label($codcour);
 
-			if(defined($antialias_info{$codcour}))
-			{	$codcour = $antialias_info{$codcour}	}
 			if( not defined($course_info{$codcour}) )
 			{
 			      Util::print_error("codcour \"$codcour\" assigned in \"$distribution_file\" does not exist (line: $line_number)... ");
 			}
-			$codcour_alias = get_alias($codcour);
-			if( $codcour_alias eq "" )
+			$codcour = get_alias($codcour);
+			if( $codcour eq "" )
 			{
 			      Util::print_error("$codcour_alias is empty ! codcour=$codcour, $course_info{$codcour}{name}=$course_info{$codcour}{alias}");
 			}
 #
-			if(not defined($config{distribution}{$codcour_alias}))
+			if(not defined($config{distribution}{$codcour}))
 			{
 
-				$config{distribution}{$codcour_alias} = ();
+				$config{distribution}{$codcour} = ();
 				#Util::print_message("Initializing $codcour($codcour_alias) ---");
-				#Util::print_message("I found professor for course $codcour_alias: $emails ...");
+				#Util::print_message("I found professor for course $codcour($codcour_alias): $emails ...");
 			}
 			#print "\$config{distribution}{$codcour} ... = ";
 			my $sequence = 1;
-			foreach my $one_professor_assignment (split(",", $emails) )
+			foreach my $one_professor_assignment ( split(",", $emails) )
 			{
 				my $professor_email = "";
 				my $professor_role  = "-";
@@ -1977,20 +1976,22 @@ sub read_distribution()
 				}
 				else{
 				      $professor_email = $one_professor_assignment;
-				      Util::print_soft_error("distribution error($distribution_file) ... $codcour_alias($codcour):$one_professor_assignment ... no role assigned?");
+				      Util::print_soft_error("distribution error($distribution_file) ... $codcour($codcour_alias):$one_professor_assignment ... no role assigned?");
 				}
  				if( defined($config{faculty}{$professor_email}) )
 				{
-				      if(not defined($config{distribution}{$codcour_alias}{$professor_email}))
-				      {		$config{distribution}{$codcour_alias}{$professor_role}{$professor_email} = $sequence++;
-						$config{faculty}{$professor_email}{$codcour_alias}{role} = $professor_role;
+				      if(not defined($config{distribution}{$codcour}{$professor_email}))
+				      {		$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence;
+						    $config{faculty}{$professor_email}{$codcour}{role} = $professor_role;
+							$config{faculty}{$professor_email}{$codcour}{sequence} = $sequence;
+							$sequence++;
 				      }
-        }
+        		}
 				else
 				{
-				      Util::print_warning("No professor information for email:\"$professor_email\" $codcour_alias($codcour) ... just commenting it");
-                                      $ignored_email{$codcour_alias} = "" if(not defined($ignored_email{$codcour_alias}));
-                                      $ignored_email{$codcour_alias} .= ",$professor_email";
+				    Util::print_warning("No professor information for email:\"$professor_email\" $codcour($codcour_alias) ... just commenting it");
+                    $ignored_email{$codcour}  = "" if(not defined($ignored_email{$codcour}));
+                    $ignored_email{$codcour} .= ",$professor_email";
 				}
 				#print "$professor_email ";
 			}
@@ -2006,7 +2007,6 @@ sub read_distribution()
 	}
 	close IN;
 	#system("rm $distribution_file");
-
 	my $output_txt = "";
 	for(my $semester= 1; $semester <= $config{n_semesters} ; $semester++)
 	{
@@ -2017,48 +2017,54 @@ sub read_distribution()
 		foreach my $codcour (@{$courses_by_semester{$semester}})
 		{
 			#Util::print_message("Regenerating distribution for $codcour ...");
-			if(defined($antialias_info{$codcour}))
-			{	$codcour = $antialias_info{$codcour}	}
-			$codcour_alias = get_alias($codcour);
-			if( not defined($config{distribution}{$codcour_alias}) )
+			$codcour = get_alias($codcour);
+			if( not defined($config{distribution}{$codcour}) )
 			{
 				Util::print_warning("I do not find professor for course $codcour ($codcour_alias) ($semester sem) $course_info{$codcour}{course_name}{$config{language_without_accents}} ...");
 			}
 			else
 			{	my $sep = "";
 				$this_sem_text .= "% $codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
-				$this_sem_text .= "$codcour_alias->";
+				$this_sem_text .= "$codcour->";
+				my $faculty_list_of_emails = "";
 				foreach my $role (sort  { $professor_role_order{$a} <=> $professor_role_order{$b} }
-						  keys %{ $Common::config{distribution}{$codcour_alias}})
+						  		  keys %{ $Common::config{distribution}{$codcour}})
 				{
-					foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel}}
-								     keys %{$config{distribution}{$codcour_alias}{$role}}
+					#$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence++;
+					foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel} ||
+														$config{faculty}{$a}{$codcour}{sequence} <=> $config{faculty}{$b}{$codcour}{sequence}
+													  }
+								     			 keys %{$config{distribution}{$codcour}{$role}}
 								    )
 					{
 						$this_sem_text .= "$sep$professor_email:";
-						if(defined($config{faculty}{$professor_email}{$codcour_alias}{role}))
-						{	$this_sem_text .= $config{faculty}{$professor_email}{$codcour_alias}{role};	}
+						$faculty_list_of_emails .= "$sep$professor_email";
+						if(defined($config{faculty}{$professor_email}{$codcour}{role}))
+						{	$this_sem_text .= $config{faculty}{$professor_email}{$codcour}{role};	}
 						else{	$this_sem_text .= "-";		}
 
-	# 					Util::print_message("$this_sem_text ...");
 						$sep = ",";
 						$config{faculty}{$professor_email}{fields}{active} 			= "Yes";
 						$config{faculty}{$professor_email}{fields}{courses_assigned}{$codcour} 	= "";
 					}
 				}
+				Util::print_message("$this_sem_text ...");
+				print "\n";
 				$this_sem_text .= "\n";
-                                if( defined($ignored_email{$codcour_alias}) )
-                                {
-                                      $this_sem_text .= "%IGNORED $codcour->$ignored_email{$codcour_alias}\n";
-                                }
+				if( defined($ignored_email{$codcour}) )
+				{		$this_sem_text .= "%IGNORED $codcour->$ignored_email{$codcour}\n";			}
+
+				# Set priority among professors
+				$config{faculty_list_of_emails}{$codcour} = $faculty_list_of_emails;
+				$ncourses++;
 			}
-			$ncourses++;
 		}
 		if( $ncourses > 0 )
 		{
 			$output_txt .= "\n% Semester #$semester .\n";
 			$output_txt .= "$this_sem_text\n";
 		}
+		
 	}
 	Util::write_file("$distribution_file", $output_txt);
 	Util::print_message("read_distribution($distribution_file) OK!");
@@ -3474,13 +3480,12 @@ sub generate_course_info_in_dot($$$)
 {
 	my ($codcour, $this_item, $lang) = (@_);
 	print "$codcour ...\n";
-	if($codcour eq "60Cr") {assert(0);}
-	my $codcour_label = get_label($codcour);
+	#if($codcour eq "60Cr") {assert(0);}
 	my %map = ();
 
-	$map{CODE}	= $codcour_label;
+	$map{CODE}	= $codcour;
 	my $codcour_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
-	my ($newlabel,$nlines) = wrap_label("$codcour. ");
+	my ($newlabel,$nlines) = wrap_label("$codcour. $codcour_name");
 	my @height = (0, 0, 0.6, 0.9, 1.2, 1.5);
 # 	my $height = 0.3*$nlines+0.1*($nlines-1) + 0.3*$config{extralevels}+0.05*($config{extralevels}-1);
 	$map{FULLNAME}	= $newlabel;
@@ -3516,7 +3521,7 @@ sub generate_course_info_in_dot($$$)
 
 	$map{NAME}	= $course_info{$codcour}{course_name}{$lang};
 	$map{TYPE}	= $config{dictionary}{$course_info{$codcour}{course_type}};
-	$map{PAGE}	= "--PAGE$codcour_label--";
+	$map{PAGE}	= "--PAGE$codcour--";
 
 	my ($outcome_txt, $sep) = ("", "");
 	foreach my $outcome (@{$course_info{$codcour}{outcomes_array}})

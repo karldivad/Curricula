@@ -25,5 +25,6 @@ convert $MainFile-P1.pdf $MainFile-P1.png;
 rm $MainFile-P1.pdf;
 cd $current_dir;
 mkdir -p <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>
+echo cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
 cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
 

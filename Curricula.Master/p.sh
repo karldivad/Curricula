@@ -20,56 +20,20 @@
 # ./scripts/gen-scripts.pl CS-UTEC
 
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
-./scripts/gen-scripts.pl CS-UTEC
+#./scripts/gen-scripts.pl CS-UTEC
+
+#find . -name "*.bib" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
+#find . -name "*.tex" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
 
 ./scripts/process-curricula.pl CS-UTEC
-latex curricula-main
-latex curricula-main;
-bibtex curricula-main1
-./scripts/compbib.sh curricula-main
-      
-../Curricula.out/Peru/CS-UTEC/cycle/2017-II/Plan2017/scripts/gen-syllabi.sh all;
-../Curricula.out/Peru/CS-UTEC/cycle/2017-II/Plan2017/scripts/gen-syllabi.sh all;
+./scripts/update-page-numbers.pl CS-UTEC;
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-graph.sh big &
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/gen-map-for-course.sh
 
-./scripts/process-curricula.pl CS-UTEC
-dot -Tps ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/dot/CS2102.dot -o ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/fig/CS2102.ps; 
-convert ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/fig/CS2102.ps ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/fig/CS2102.png
-
-
-cp ../Curricula.in/lang/Espanol/cycle/2017-I/Syllabi/Computing/CS/CS1D1.bib ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017/tex
-./scripts/gen-syllabus.sh CS1D1-EN ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
-./scripts/gen-syllabus.sh CS1D1-ES ../Curricula.out/Peru/CS-UTEC/cycle/2017-I/Plan2017
-
-find . -name "*.bib" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
-find . -name "*.tex" -type f -exec iconv -f iso-8859-15 -t utf-8 "{}" -o ./"{}" \;
-
-
-./scripts/process-curricula.pl CS-UTEC
-../Curricula.out/Peru/CS-UTEC/cycle/2017-II/Plan2017/scripts/gen-syllabi.sh GH1013
-../Curricula.out/Peru/CS-UTEC/cycle/2017-II/Plan2017/scripts/gen-book.sh  BookOfSyllabi-ES  	pdflatex "CS-UTEC 2017-II BookOfSyllabi-ES (Plan2017) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2017-II/Plan2017/scripts/gen-book.sh  BookOfSyllabi-EN  	pdflatex "CS-UTEC 2017-II BookOfSyllabi-EN (Plan2017) 1-10";
-
-rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
-rm unified-curricula-main* ;
-./scripts/gen-html-main.pl CS-UTEC
-latex unified-curricula-main
-
-# Peru
-dot -Tps ../../Curricula-Peru/AllPeru-creacion.dot -o ../../Curricula-Peru/AllPeru-creacion.ps
-convert ../../Curricula-Peru/AllPeru-creacion.ps ../../Curricula-Peru/AllPeru-creacion.pdflatex
-
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1100
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1102
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1103
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1D01
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS1D02
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS2B01
-../Curricula.out/Peru/CS-UTEC/cycle/2018-I/Plan2018/scripts/gen-syllabi.sh CS2201
-
-cp Common.pm Common.pm.backup
-cp GeneralInfo.pm GeneralInfo.pm.backup
-cp GenSyllabi.pm GenSyllabi.pm.backup
-
-cp Common.pm.backup      Common.pm
-cp GeneralInfo.pm.backup GeneralInfo.pm
-cp GenSyllabi.pm.backup  GenSyllabi.pm
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula CS-UTEC-small-graph-curricula ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex;
+../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/scripts/compile-simple-latex.sh Computing-poster CS-UTEC-poster ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex;
+pdftk A=../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster.pdf cat A1-1 output ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster-P1.pdf;
+convert ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster-P1.pdf ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/../html/CS-UTEC-poster.png;
+rm ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster-P1.pdf
+cp ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster.pdf ../Curricula.out/pdfs/CS-UTEC/Plan2018/.
+mv ../Curricula.out/Peru/CS-UTEC/cycle/2018-II/Plan2018/tex/CS-UTEC-poster.pdf ../Curricula.out/html/Peru/CS-UTEC/Plan2018/.

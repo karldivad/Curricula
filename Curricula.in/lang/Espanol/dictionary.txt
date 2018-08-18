@@ -49,12 +49,13 @@ TheoryEvaluation=Evaluaciones Teóricas
 Project=Proyecto
 BookSummary=Resumen del libro
 SetOfProblems=Conjuntos de problemas
+Coordinator=Coordinador
 
 HoursPerSession                       = Horas por Sesión
-LengthOfPeriod			      = Duración del Período 
-Book 				      = Libro
-BookOf				      = Libro de
-Author				      = Autor
+LengthOfPeriod			              = Duración del Período 
+Book 				                  = Libro
+BookOf				                  = Libro de
+Author				                  = Autor
 YearsOfPublication                    = Años de Publicación 
 OtherTexts                            = Otros Textos 
 Tittle                                = Título.
