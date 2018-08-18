@@ -3991,7 +3991,7 @@ sub generate_information_4_professor($)
       }
       else
       {		system("cp $Common::config{NoFaceFile} $OutputFacultyFigDir/.");
-		$Common::config{faculty}{$email}{fields}{photo} = "fig/noface.gif";
+		    $Common::config{faculty}{$email}{fields}{photo} = "fig/noface.gif";
       }
       my $email_png = "$OutputFacultyFigDir/$Common::config{faculty}{$email}{fields}{emailwithoutat}.png";
       #http://www.imagemagick.org/script/convert.php
@@ -4062,15 +4062,15 @@ sub generate_faculty_info()
 						     "emailwithoutat" => "<img style=\"width: 16px; height: 16px;\" title=\"email\" alt=\"email\" src=\"icon/email.png\">\n\t<img style=\"height: 16px;\" title=\"email\" alt=\"email\" src=\"fig/",
 						     "phone" => " <img style=\"width: 16px; height: 16px;\" title=\"phone\" alt=\"phone\" src=\"icon/phone.png\">",
 						     "mobile" => " <img style=\"width: 16px; height: 16px;\" title=\"mobile\" alt=\"mobile\" src=\"icon/mobile.png\">",
-					             "office" => " <img style=\"width: 16px; height: 16px;\" title=\"office\" alt=\"office\" src=\"icon/office.png\"> ",
+					         "office" => " <img style=\"width: 16px; height: 16px;\" title=\"office\" alt=\"office\" src=\"icon/office.png\"> ",
 						     "webpage" => "  <a title=\"Webpage\" href=\"",
-					             "facebook" => " <a title=\"Facebook\" href=\"",
+					         "facebook" => " <a title=\"Facebook\" href=\"",
 						     "twitter" => " <a title=\"Twitter\" href=\"https://www.twitter.com/",
 						     "blog" => " <a title=\"Blog\" href=\"",
-					             "research" => " <img style=\"width: 16px; height: 16px;\" title=\"email\" alt=\"email\" src=\"icon/research.png\">",
-					             "courses" => " <img style=\"width: 16px; height: 16px;\" title=\"email\" alt=\"email\" src=\"icon/courses.png\">",
-					             "list_of_courses_assigned" => "<b>Courses assigned:</b>\n<ul>\n",
-					             "other_courses_he_may_teach" => "<b>Other courses he/she can teach:</b>\n<ul>\n"
+					         "research" => " <img style=\"width: 16px; height: 16px;\" title=\"email\" alt=\"email\" src=\"icon/research.png\">",
+					         "courses" => " <img style=\"width: 16px; height: 16px;\" title=\"email\" alt=\"email\" src=\"icon/courses.png\">",
+					         "list_of_courses_assigned" => "<b>Courses assigned:</b>\n<ul>\n",
+					         "other_courses_he_may_teach" => "<b>Other courses he/she can teach:</b>\n<ul>\n"
 	);
 	%{$Common::config{faculty_icons}{after}}  = ("shortcvhtml" => "\t</ul>",
 						     "email" => "",
@@ -4194,8 +4194,6 @@ sub generate_faculty_info()
  	}
  	$index_of_professors .= "</tr>\n";
  	$index_of_professors .= "</table>\n";
-
-
 
 	Util::print_message("Generating file: $faculty_general_output ...");
 	#$faculty_output_general_txt 	.= "</table>\n";
