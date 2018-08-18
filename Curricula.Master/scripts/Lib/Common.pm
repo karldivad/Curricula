@@ -253,11 +253,12 @@ sub format_semester_label($)
 sub get_course_link($$)
 {
 	my ($codcour, $lang) = (@_);
-	my $codcour_label = Common::get_label($codcour);
+	#print $codcour;
+	Util::print_message("Codcour= $codcour");
 
-	my $course_full_label	= "$codcour_label. $course_info{$codcour}{course_name}{$lang}";
-	my $course_link	   = "\\htmlref{$course_full_label}{sec:$codcour_label}~";
-	   $course_link   .= "($course_info{$codcour}{semester}\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$course_info{$codcour}{semester}}}\$ $config{dictionaries}{$lang}{Sem}-$config{dictionaries}{$lang}{Pag}~\\pageref{sec:$codcour_label})";
+	my $course_full_label	= "$codcour. $course_info{$codcour}{course_name}{$lang}";
+	my $course_link	   = "\\htmlref{$course_full_label}{sec:$codcour}~";
+	   $course_link   .= "($course_info{$codcour}{semester}\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$course_info{$codcour}{semester}}}\$ $config{dictionaries}{$lang}{Sem}-$config{dictionaries}{$lang}{Pag}~\\pageref{sec:$codcour})";
 	return $course_link;
 }
 

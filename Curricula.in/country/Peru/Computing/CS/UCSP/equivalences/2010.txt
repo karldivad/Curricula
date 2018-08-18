@@ -1,98 +1,98 @@
-{1}{CS101F}{IntroducciÃ³n a la ProgramaciÃ³n}{4}{CS111}% ProgramaciÃ³n de Video Juegos, 4
+{1}{CS101F}{IntroducciÃÂ³n a la ProgramaciÃÂ³n}{4}{CS111}% ProgramaciÃÂ³n de Video Juegos, 4
 {1}{CS105}{Estructuras Discretas I}{4}{CS1D1}% Estructuras Discretas I, 4
-{1}{CB101}{Ãlgebra y GeometrÃ­a}{5}{MA101}% Ãlgebra y GeometrÃ­a, 5
-{1}{FG102}{MetodologÃ­a del Estudio}{3}{FG102}% MetodologÃ­a del Estudio, 3
-{1}{FG103}{IntroducciÃ³n a la Vida Universitaria}{3}{FG103}% IntroducciÃ³n a la Vida Universitaria, 3
-{1}{FG101}{ComunicaciÃ³n}{3}{FG101}% ComunicaciÃ³n, 3
-{10}{}{}{}{ID101}% InglÃ©s tÃ©cnico profesional, 3
+{1}{CB101}{ÃÂlgebra y GeometrÃÂ­a}{5}{MA101}% ÃÂlgebra y GeometrÃÂ­a, 5
+{1}{FG102}{MetodologÃÂ­a del Estudio}{3}{FG102}% MetodologÃÂ­a del Estudio, 3
+{1}{FG103}{IntroducciÃÂ³n a la Vida Universitaria}{3}{FG103}% IntroducciÃÂ³n a la Vida Universitaria, 3
+{1}{FG101}{ComunicaciÃÂ³n}{3}{FG101}% ComunicaciÃÂ³n, 3
+{10}{}{}{}{ID101}% InglÃÂ©s tÃÂ©cnico profesional, 3
 
-{2}{CS100}{IntroducciÃ³n a la Ciencia de la ComputaciÃ³n}{3}{CS100}% IntroducciÃ³n de Ciencia de la ComputaciÃ³n, 3
-{2}{CS101O}{IntroducciÃ³n a la ProgramaciÃ³n Orientada a Objetos}{5}{CS112}% Ciencia de la ComputaciÃ³n I, 5
+{2}{CS100}{IntroducciÃÂ³n a la Ciencia de la ComputaciÃÂ³n}{3}{CS100}% IntroducciÃÂ³n de Ciencia de la ComputaciÃÂ³n, 3
+{2}{CS101O}{IntroducciÃÂ³n a la ProgramaciÃÂ³n Orientada a Objetos}{5}{CS112}% Ciencia de la ComputaciÃÂ³n I, 5
 {2}{CS106}{Estructuras Discretas II}{4}{CS1D2}% Estructuras Discretas II, 4
-{2}{CB102}{AnÃ¡lisis MatemÃ¡tico I}{5}{MA100}% AnÃ¡lisis MatemÃ¡tico I, 5
-{2}{FG104}{IntroducciÃ³n a la FilosofÃ­a}{3}{FG104}% IntroducciÃ³n a la FilosofÃ­a, 3
-{2}{FG105}{ApreciaciÃ³n de la MÃºsica}{2}{FG105}% ApreciaciÃ³n de la MÃºsica, 2
+{2}{CB102}{AnÃÂ¡lisis MatemÃÂ¡tico I}{5}{MA100}% AnÃÂ¡lisis MatemÃÂ¡tico I, 5
+{2}{FG104}{IntroducciÃÂ³n a la FilosofÃÂ­a}{3}{FG104}% IntroducciÃÂ³n a la FilosofÃÂ­a, 3
+{2}{FG105}{ApreciaciÃÂ³n de la MÃÂºsica}{2}{FG105}% ApreciaciÃÂ³n de la MÃÂºsica, 2
 {2}{FG112}{Matrimonio y Familia}{2}{FG112}% Matrimonio y Familia, 2
 
 
-{3}{CS102O}{Objetos y AbstracciÃ³n de Datos}{4}{CS113}% Ciencia de la ComputaciÃ³n II, 4
-{3}{CS107}{Estructuras Discretas III}{3}{CS1D3}% Ãlgebra Abstracta, 3
-{3}{CB103}{AnÃ¡lisis MatemÃ¡tico II}{5}{MA102}% C1V, 5
-{3}{CS130}{IntroducciÃ³n a Internet}{3}{CS2B1}% Desarrollo Basado en Plataformas, 3
+{3}{CS102O}{Objetos y AbstracciÃÂ³n de Datos}{4}{CS113}% Ciencia de la ComputaciÃÂ³n II, 4
+{3}{CS107}{Estructuras Discretas III}{3}{CS1D3}% ÃÂlgebra Abstracta, 3
+{3}{CB103}{AnÃÂ¡lisis MatemÃÂ¡tico II}{5}{MA102}% C1V, 5
+{3}{CS130}{IntroducciÃÂ³n a Internet}{3}{CS2B1}% Desarrollo Basado en Plataformas, 3
 {3}{CS220T}{Arquitectura de Computadores}{3}{CS221}% Arquitectura de Computadores, 3
-{3}{FG107}{Fundamentos AntropolÃ³gicos de la Ciencia}{2}{FG107}% Fundamentos AntropolÃ³gicos de la Ciencia, 2
-{3}{FG201}{Artes PlÃ¡sticas}{2}{FG201}% Artes PlÃ¡sticas, 2
-{3}{FG202}{ApreciaciÃ³n Literaria}{2}{FG202}% ApreciaciÃ³n Literaria, 2
+{3}{FG107}{Fundamentos AntropolÃÂ³gicos de la Ciencia}{2}{FG107}% Fundamentos AntropolÃÂ³gicos de la Ciencia, 2
+{3}{FG201}{Artes PlÃÂ¡sticas}{2}{FG201}% Artes PlÃÂ¡sticas, 2
+{3}{FG202}{ApreciaciÃÂ³n Literaria}{2}{FG202}% ApreciaciÃÂ³n Literaria, 2
 
 
 
 {4}{CS103O}{Algoritmos y Estructuras de Datos}{4}{CS210}% Algoritmos y Estructuras de Datos, 4
-{4}{CS211T}{TeorÃ­a de la ComputaciÃ³n}{4}{CS211}% TeorÃ­a de la ComputaciÃ³n, 4
+{4}{CS211T}{TeorÃÂ­a de la ComputaciÃÂ³n}{4}{CS211}% TeorÃÂ­a de la ComputaciÃÂ³n, 4
 {4}{CS270T}{Bases de Datos I}{5}{CS271}% Bases de Datos I, 5
-{4}{CB203}{MatemÃ¡tica Probabilidades}{4}{MA203}% EstadÃ­stica y Probabilidades, 4
-{4}{CB201}{AnÃ¡lisis MatemÃ¡tico III}{5}{MA201}% CVV, 5
+{4}{CB203}{MatemÃÂ¡tica Probabilidades}{4}{MA203}% EstadÃÂ­stica y Probabilidades, 4
+{4}{CB201}{AnÃÂ¡lisis MatemÃÂ¡tico III}{5}{MA201}% CVV, 5
 
 
 
-{5}{CS290T}{IngenierÃ­a de Software I}{4}{CS291}% IngenierÃ­a de Software I, 4
-{5}{CS210T}{AnÃ¡lisis y DiseÃ±o de Algoritmos}{4}{CS212}% AnÃ¡lisis y DiseÃ±o de Algoritmos, 4
+{5}{CS290T}{IngenierÃÂ­a de Software I}{4}{CS291}% IngenierÃÂ­a de Software I, 4
+{5}{CS210T}{AnÃÂ¡lisis y DiseÃÂ±o de Algoritmos}{4}{CS212}% AnÃÂ¡lisis y DiseÃÂ±o de Algoritmos, 4
 {5}{CS271T}{Base de Datos II}{3}{CS272}% Bases de Datos II, 3
-{5}{CB306}{AnÃ¡lisis NumÃ©rico}{3}{MA306}% AnÃ¡lisis NumÃ©rico, 3
-{5}{CB111}{FÃ­sica Computacional}{4}{CB111}% FÃ­sica Computacional, 4
-{5}{FG210}{Ãtica}{2}{FG210}% Ãtica, 2
-{10}{FG350}{Liderazgo y DesempeÃ±o}{2}{FG350}% Liderazgo y DesempeÃ±o, 2
+{5}{CB306}{AnÃÂ¡lisis NumÃÂ©rico}{3}{MA306}% AnÃÂ¡lisis NumÃÂ©rico, 3
+{5}{CB111}{FÃÂ­sica Computacional}{4}{CB111}% FÃÂ­sica Computacional, 4
+{5}{FG210}{ÃÂtica}{2}{FG210}% ÃÂtica, 2
+{10}{FG350}{Liderazgo y DesempeÃÂ±o}{2}{FG350}% Liderazgo y DesempeÃÂ±o, 2
 
 
 
-{6}{CS390}{IngenierÃ­a de Software II}{4}{CS292}% IngenierÃ­a de Software II, 4
-{6}{}{}{}{CS311}% ProgramaciÃ³n Competitiva, 4
+{6}{CS390}{IngenierÃÂ­a de Software II}{4}{CS292}% IngenierÃÂ­a de Software II, 4
+{6}{}{}{}{CS311}% ProgramaciÃÂ³n Competitiva, 4
 {6}{CS315}{Estructuras de Datos Avanzadas}{4}{CS312}% Estructuras de Datos Avanzadas, 4
 {6}{CS225T}{Sistemas Operativos}{4}{CS2S1}% Sistemas Operativos, 4
-{6}{CB307}{MatemÃ¡tica Aplicada a la ComputaciÃ³n}{4}{MA307}% MatemÃ¡tica aplicada a la computaciÃ³n, 4
-{6}{FG204}{TeologÃ­a I}{2}{FG204}% TeologÃ­a I, 2
-{3}{FG203}{Oratoria y ExpresiÃ³n Personal}{2}{FG203}% Oratoria y ExpresiÃ³n Personal, 2
+{6}{CB307}{MatemÃÂ¡tica Aplicada a la ComputaciÃÂ³n}{4}{MA307}% MatemÃÂ¡tica aplicada a la computaciÃÂ³n, 4
+{6}{FG204}{TeologÃÂ­a I}{2}{FG204}% TeologÃÂ­a I, 2
+{3}{FG203}{Oratoria y ExpresiÃÂ³n Personal}{2}{FG203}% Oratoria y ExpresiÃÂ³n Personal, 2
 {2}{FG106}{Teatro}{2}{FG106}% Teatro, 2
 
 
 
-{7}{CS343}{Lenguajes de ProgramaciÃ³n}{4}{CS341}% Lenguajes de ProgramaciÃ³n, 4
-{8}{CS230W}{ComputaciÃ³n Centrada en Redes}{3}{CS231}% Redes y ComunicaciÃ³n, 3
-{7}{CS401}{Proyecto I}{2}{CS401}% MetodologÃ­a de la InvestigaciÃ³n en ComputaciÃ³n, 2
-{8}{CS255}{ComputaciÃ³n GrÃ¡fica}{4}{CS251}% ComputaciÃ³n GrÃ¡fica, 4
-{7}{CS314}{Algoritmos Paralelos}{4}{CS3P1}% ComputaciÃ³n Paralela y DistribuÃ­da, 4
-{7}{FG204A}{TeologÃ­a II}{2}{}% TeologÃ­a II, 2
-{8}{CS391}{Calidad de Software}{3}{CS391}% IngenierÃ­a de Software III, 3
+{7}{CS343}{Lenguajes de ProgramaciÃÂ³n}{4}{CS341}% Lenguajes de ProgramaciÃÂ³n, 4
+{8}{CS230W}{ComputaciÃÂ³n Centrada en Redes}{3}{CS231}% Redes y ComunicaciÃÂ³n, 3
+{7}{CS401}{Proyecto I}{2}{CS401}% MetodologÃÂ­a de la InvestigaciÃÂ³n en ComputaciÃÂ³n, 2
+{8}{CS255}{ComputaciÃÂ³n GrÃÂ¡fica}{4}{CS251}% ComputaciÃÂ³n GrÃÂ¡fica, 4
+{7}{CS314}{Algoritmos Paralelos}{4}{CS3P1}% ComputaciÃÂ³n Paralela y DistribuÃÂ­da, 4
+{7}{FG204A}{TeologÃÂ­a II}{2}{}% TeologÃÂ­a II, 2
+{8}{CS391}{Calidad de Software}{3}{CS391}% IngenierÃÂ­a de Software III, 3
 
 
 
 {8}{CS240S}{Compiladores}{4}{CS342}% Compiladores, 4
 {8}{CS402}{Proyecto II}{3}{CS402}% Proyecto de Final de Carrera I, 3
-{7}{CS336}{Seguridad en ComputaciÃ³n}{3}{CS3I1}% Seguridad en ComputaciÃ³n, 3
-{7}{CS250W}{InteracciÃ³n Humano Computador}{3}{CS2H1}% InteracciÃ³n Humano Computador, 3
-{8}{CS280T}{Aspectos Sociales y Profesionales de la ComputaciÃ³n}{2}{CS281}% ComputaciÃ³n en la Sociedad, 2
+{7}{CS336}{Seguridad en ComputaciÃÂ³n}{3}{CS3I1}% Seguridad en ComputaciÃÂ³n, 3
+{7}{CS250W}{InteracciÃÂ³n Humano Computador}{3}{CS2H1}% InteracciÃÂ³n Humano Computador, 3
+{8}{CS280T}{Aspectos Sociales y Profesionales de la ComputaciÃÂ³n}{2}{CS281}% ComputaciÃÂ³n en la Sociedad, 2
 {7}{CS261T}{Inteligencia Artificial}{4}{CS261}% Inteligencia Artificial, 4
 {8}{FG205}{Historia de la Cultura}{3}{FG205}% Historia de la Cultura, 3
 
 
 
 {9}{}{}{}{CS370}% Big Data, 3
-{9}{CB309}{ComputaciÃ³n Molecular BiolÃ³gica}{4}{CB309}% ComputaciÃ³n Molecular BiolÃ³gica, 2
-{9}{}{}{}{CS392}% TÃ³picos Avanzados en IngenierÃ­a de Software, 4
+{9}{CB309}{ComputaciÃÂ³n Molecular BiolÃÂ³gica}{4}{CB309}% ComputaciÃÂ³n Molecular BiolÃÂ³gica, 2
+{9}{}{}{}{CS392}% TÃÂ³picos Avanzados en IngenierÃÂ­a de Software, 4
 {9}{CS403}{Proyecto de Tesis}{3}{CS403}% Proyecto de Final de Carrera II, 3
-{9}{ET101}{FormaciÃ³n de Empresas de Base TecnolÃ³gica I}{3}{ET201}% FormaciÃ³n de Empresas de Base TecnolÃ³gica I, 3
-{9}{CS355}{TÃ³picos en ComputaciÃ³n GrÃ¡fica}{4}{CS351}% TÃ³picos en ComputaciÃ³n GrÃ¡fica, 4
-{9}{CS361}{TÃ³picos en Inteligencia Artificial}{4}{CS361}% TÃ³picos en Inteligencia Artificial, 4
-{9}{FG221}{Historia de la Ciencia y TecnologÃ­a}{2}{FG221}% Historia de la Ciencia y TecnologÃ­a, 2
-{9}{FG301}{EnseÃ±anza Social de la Iglesia}{3}{FG301}% EnseÃ±anza Social de la Iglesia, 3
+{9}{ET101}{FormaciÃÂ³n de Empresas de Base TecnolÃÂ³gica I}{3}{ET201}% FormaciÃÂ³n de Empresas de Base TecnolÃÂ³gica I, 3
+{9}{CS355}{TÃÂ³picos en ComputaciÃÂ³n GrÃÂ¡fica}{4}{CS351}% TÃÂ³picos en ComputaciÃÂ³n GrÃÂ¡fica, 4
+{9}{CS361}{TÃÂ³picos en Inteligencia Artificial}{4}{CS361}% TÃÂ³picos en Inteligencia Artificial, 4
+{9}{FG221}{Historia de la Ciencia y TecnologÃÂ­a}{2}{FG221}% Historia de la Ciencia y TecnologÃÂ­a, 2
+{9}{FG301}{EnseÃÂ±anza Social de la Iglesia}{3}{FG301}% EnseÃÂ±anza Social de la Iglesia, 3
 
 
 
-{10}{CS367}{RobÃtica}{4}{CS362}% RobÃtica, 4
-{10}{}{}{}{CS393}% Sistemas de InfomaciÃ³n, 4
+{10}{CS367}{RobÃÂtica}{4}{CS362}% RobÃÂtica, 4
+{10}{}{}{}{CS393}% Sistemas de InfomaciÃÂ³n, 4
 {10}{CS331}{Claud Computing}{3}{CS3P2}% Cloud Computing, 3
 {10}{CS404}{Seminario de Tesis}{3}{CS404}% Proyecto de Final de Carrera III, 3
-{10}{ET102}{FormaciÃ³n de Empresas de Base TecnolÃ³gica II}{3}{ET301}% FormaciÃ³n de Empresas de Base TecnolÃ³gica II, 3
-{10}{FG220}{AnÃ¡lisis de la Realidad Peruana}{2}{FG220}% AnÃ¡lisis de la Realidad Peruana, 2
-{10}{FG211}{Ãtica Profesional}{2}{FG211}% Ãtica Profesional, 3
-{5}{FG209}{PsicologÃ­a}{2}{}% PsicologÃ­a, 2
-{5}{FG206}{SociologÃ­a}{2}{}% SociologÃ­a, 2
+{10}{ET102}{FormaciÃÂ³n de Empresas de Base TecnolÃÂ³gica II}{3}{ET301}% FormaciÃÂ³n de Empresas de Base TecnolÃÂ³gica II, 3
+{10}{FG220}{AnÃÂ¡lisis de la Realidad Peruana}{2}{FG220}% AnÃÂ¡lisis de la Realidad Peruana, 2
+{10}{FG211}{ÃÂtica Profesional}{2}{FG211}% ÃÂtica Profesional, 3
+{5}{FG209}{PsicologÃÂ­a}{2}{}% PsicologÃÂ­a, 2
+{5}{FG206}{SociologÃÂ­a}{2}{}% SociologÃÂ­a, 2

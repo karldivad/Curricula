@@ -1818,7 +1818,9 @@ sub generate_equivalence_old2new($)
 	while($in_txt =~ m/\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}(.*)/g)
 	{
 		my ($semester, $old_course_codcour, $old_course_name, $old_course_cr, $codcour) = ($1, $2, $3, $4, $5);
-		$codcour = get_label($codcour);
+		$codcour = Common::get_label($codcour);
+
+		#print "$semester -- $old_course_codcour -- $old_course_name -- $old_course_cr -- $codcour \n";
 
 		$Common::general_info{equivalences}{$old_curricula}{$semester}{$old_course_codcour}{old_course_name} 	= $old_course_name;
 		$Common::general_info{equivalences}{$old_curricula}{$semester}{$old_course_codcour}{old_course_cr} 	= $old_course_cr;
@@ -1938,9 +1940,7 @@ sub generate_equivalence_new2old($)
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
 			my %tags = ();
-			#my $codcour_label = Common::get_label($codcour);
-			my $codcour_label = $codcour;
-			$tags{COURSE_CODE} 	= "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour_label}}{sec:$codcour}";
+			$tags{COURSE_CODE} 	= "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour}}{sec:$codcour}";
 			$tags{COURSE_NAME} 	= "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
 			#$Common::course_info{$codcour}{equivalences}{$old_curricula} = "{$semester}{$old_course_codcour}{$old_course_name}{$old_course_cr}
 			if( not $Common::course_info{$codcour}{equivalences}{$old_curricula} )
