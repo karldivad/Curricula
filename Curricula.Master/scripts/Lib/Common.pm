@@ -3324,7 +3324,7 @@ sub sort_courses()
 	foreach my $codcour (@codcour_list_sorted)
 	{
 	      my $semester = $course_info{$codcour}{semester};
-	      # Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
+	      #Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
 	      if(not defined($courses_by_semester{$semester}))
 		{	$courses_by_semester{$semester} = [];		}
 		push(@{$courses_by_semester{$semester}}, $codcour);
