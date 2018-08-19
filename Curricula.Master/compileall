@@ -2,7 +2,6 @@
 
 rm -rf html/CS-ANR CS-ANR-big-main.*
 rm -rf html/CS-CLEI CS-CLEI-big-main.*
-rm -rf html/-PUCP -PUCP-big-main.*
 rm -rf html/CS-SPC CS-SPC-big-main.*
 rm -rf html/CS-UCR CS-UCR-big-main.*
 rm -rf html/CS-UCSP CS-UCSP-big-main.*
@@ -19,10 +18,6 @@ rm -rf html/CS-UTEC CS-UTEC-big-main.*
 ./scripts/updatelog.pl "CLEI: Starting compilation ..."
 ./compile  CS-CLEI 
 ./gen-html CS-CLEI
-
-./scripts/updatelog.pl "PUCP: Starting compilation ..."
-./compile  -PUCP 
-./gen-html -PUCP
 
 ./scripts/updatelog.pl "SPC: Starting compilation ..."
 ./compile  CS-SPC 
