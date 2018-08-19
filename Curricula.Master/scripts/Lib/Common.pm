@@ -254,7 +254,8 @@ sub get_course_link($$)
 {
 	my ($codcour, $lang) = (@_);
 	#print $codcour;
-	Util::print_message("Codcour= $codcour");
+	if($codcour eq "")
+	{	assert(0);	}
 
 	my $course_full_label	= "$codcour. $course_info{$codcour}{course_name}{$lang}";
 	my $course_link	   = "\\htmlref{$course_full_label}{sec:$codcour}~";
@@ -3045,8 +3046,10 @@ sub filter_courses($)
 		$config{map_file_to_course}{$coursefile} = $codcour;
 	}
 
+	#print Dumper(\@codcour_list_sorted); exit;
 	foreach my $codcour (@codcour_list_sorted)
 	{
+		Util::print_message("codcour()=$codcour");
 		my $codcour_label = Common::get_label($codcour);
 		if( not defined($course_info{$codcour}{semester}) )
 		{
@@ -3174,8 +3177,10 @@ sub filter_courses($)
 					}
 					else
 		      {
+				  Util::print_message("codcour=$codcour,codreq=$codreq");
 				          $codreq = get_label($codreq);
-									$new_prerequisites .= "$sep$codreq";
+						  Util::print_message("codcour=$codcour,codreq=$codreq");
+						$new_prerequisites .= "$sep$codreq";
 				          $course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
 				          if(defined($course_info{$codreq}))
 				          {
@@ -3183,6 +3188,7 @@ sub filter_courses($)
 				              #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
 				              my $semester_prereq = $course_info{$codreq}{semester};
 
+							
 				              foreach my $lang ( @{$config{SyllabusLangsList}} )
 				              {
 				                      push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));

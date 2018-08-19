@@ -195,7 +195,7 @@ sub update_acronyms()
 		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $Common::config{discipline}, $Common::config{area}, $inst);
 		if(-e $out_txt_name)
 		{
-                        Util::print_message("Reading: $out_txt_name ...");
+            Util::print_message("Reading: $out_txt_name ...");
 			$out_txt = Util::read_file($out_txt_name);
 			if($out_txt =~ m/\\newcommand\{\\University\}\{(.*?)\}/)
 			{
@@ -204,10 +204,10 @@ sub update_acronyms()
 				$txt .= "\\acro{$inst}{$univ}\n";
 			}
 		}
-                else
-                {
+        else
+        {
                         Util::print_message("File: \"$out_txt_name\" does not exist ...");
-                }
+        }
 	}
 	#print "$basetex/$area-acronyms.tex\n";
 	my $acronym_base = Common::get_template("in-acronyms-base-file");
