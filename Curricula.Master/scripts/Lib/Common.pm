@@ -3020,7 +3020,7 @@ sub parse_courses()
 # ok
 sub filter_courses($)
 {
-    my ($langx) = (@_);
+    my ($_lang) = (@_);
 	Util::precondition("set_initial_configuration");
 	Util::precondition("parse_courses");
 	Util::precondition("sort_courses");
@@ -3032,11 +3032,11 @@ sub filter_courses($)
 	%{$config{used_prefix}}		= ();	$config{number_of_used_prefix}	 = 0;
 	%{$config{used_area_pie}}	= ();	$config{number_of_used_area_pie} = 0;
 
-	my $courses_count 		= 0;
+	my $courses_count 			= 0;
 	my $active_semester 		= 0;
-	my $maxE 			= 0;
+	my $maxE 					= 0;
 	my ($elective_axes, $elective_naxes) = ("", 0);
-	my $axe 			= "";
+	my $axe 					= "";
 	$config{n_semesters}		= 0;
 
 	foreach my $codcour (@codcour_list_sorted)
@@ -3049,8 +3049,7 @@ sub filter_courses($)
 	#print Dumper(\@codcour_list_sorted); exit;
 	foreach my $codcour (@codcour_list_sorted)
 	{
-		Util::print_message("codcour()=$codcour");
-		my $codcour_label = Common::get_label($codcour);
+		#Util::print_message("codcour()=$codcour");
 		if( not defined($course_info{$codcour}{semester}) )
 		{
 		      print Dumper (\%{$course_info{$codcour}});
@@ -3172,49 +3171,48 @@ sub filter_courses($)
 		                }
 		                else
 		                {	 	Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring");
-
 						}
 					}
 					else
-		      {
-				  Util::print_message("codcour=$codcour,codreq=$codreq");
-				          $codreq = get_label($codreq);
-						  Util::print_message("codcour=$codcour,codreq=$codreq");
+					{
+						#Util::print_message("codcour=$codcour,codreq=$codreq");
+						my $prereq_label = get_label($codreq);
+						if($prereq_label eq "")
+						{	Util::print_error("codcour=$codcour,sem=$semester, codreq=$codreq It seems you forgot to active that prereq ($codreq)");	}
+						$codreq = $prereq_label;
+						#Util::print_message("codcour=$codcour,codreq=$codreq");
 						$new_prerequisites .= "$sep$codreq";
-				          $course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
-				          if(defined($course_info{$codreq}))
-				          {
-				              my $codreq_label = Common::get_label($codreq);
-				              #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
-				              my $semester_prereq = $course_info{$codreq}{semester};
+						$course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
+						if(defined($course_info{$codreq}))
+						{
+							#Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
+							my $semester_prereq = $course_info{$codreq}{semester};
+							foreach my $lang ( @{$config{SyllabusLangsList}} )
+							{
+									my $prereq_course_link = get_course_link($codreq, $lang);
+									push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq_course_link);
+									my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour}.~";
+									$temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
+									push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
+							}
 
-							
-				              foreach my $lang ( @{$config{SyllabusLangsList}} )
-				              {
-				                      push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));
-				                      my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour_label}.~";
-				                         $temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
+							$course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq}{sec:$codreq} ";
+							$course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+							$course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
+							$course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq}{sec:$codreq} ";
+							$course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+							$course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
 
-				                      push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
-				              }
-
-				              $course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-				              $course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-				              $course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
-				              $course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-				              $course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-				              $course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
-
-				              push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
-				              push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
-				              $course_info{$codcour}{n_prereq}++;
-				          }
-				          else
-				          {
-				              print Dumper(\%{$course_info{$codcour}});
-				              Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
-				          }
-		      }
+							push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
+							push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
+							$course_info{$codcour}{n_prereq}++;
+						}
+						else
+						{
+							print Dumper(\%{$course_info{$codcour}});
+							Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
+						}
+					}
 					$sep = ",";
 		}
 		$course_info{$codcour}{prerequisites} = $new_prerequisites;
@@ -3602,106 +3600,105 @@ sub parse_bok($)
 	    my ($cmd, $ka)  = ($1, $2);
 	    if($cmd eq "KA") # \KA{AL}{<<Algoritmos y Complejidad>>}{crossref}
 	    {
-		$bok_in =~ m/\{<<(.*?)>>\}\{(.*?)\}/g;
-		my ($body, $crossref)  = ($1, $2);
-		if( $body =~ m/(.*)\.$/ )
-		{	$body = $1;	}
+			$bok_in =~ m/\{<<(.*?)>>\}\{(.*?)\}/g;
+			my ($body, $crossref)  = ($1, $2);
+			if( $body =~ m/(.*)\.$/ )
+			{	$body = $1;	}
 
-		$bok{$lang}{$ka}{name} 	= $body;
-		$bok{$lang}{$ka}{order} 	= $KAorder++;
-		($bok{$lang}{$ka}{nhTier1}, $bok{$lang}{$ka}{nhTier2}) = (0, 0);
-		$counts{$cmd}++;
+			$bok{$lang}{$ka}{name} 	= $body;
+			$bok{$lang}{$ka}{order} 	= $KAorder++;
+			($bok{$lang}{$ka}{nhTier1}, $bok{$lang}{$ka}{nhTier2}) = (0, 0);
+			$counts{$cmd}++;
 
-		#if( not $crossref eq "" )
-		#{	Util::print_message("Area: $ka, cros$bok_output_filesref: \"$crossref\"");		}
- 		#Util::print_message("$body");
+			#if( not $crossref eq "" )
+			#{	Util::print_message("Area: $ka, cros$bok_output_filesref: \"$crossref\"");		}
+			#Util::print_message("$body");
 	    }
 	    elsif( $cmd eq "KADescription")
 	    {
-		$bok_in =~ m/{<<((.|\n)*?)>>}/g;
-		my ($body)  = ($1);
-# 		if( $body =~ m/(.*)\.$/ )
-# 		{	$body = $1;	}
+			$bok_in =~ m/{<<((.|\n)*?)>>}/g;
+			my ($body)  = ($1);
+	# 		if( $body =~ m/(.*)\.$/ )
+	# 		{	$body = $1;	}
 
-		$bok{$lang}{$ka}{description} = $body;
-		$counts{$cmd}++;
+			$bok{$lang}{$ka}{description} = $body;
+			$counts{$cmd}++;
 	    }
 	    elsif( $cmd eq "KU") # \KU{AL}{BasicAnalysis}{<<Análisis Básico>>}{}{#hours Tier1}{#hours Tier2}
 	    {
-		$bok_in =~ m/\{(.*?)\}\{<<(.*?)>>\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g;
-		my ($p2, $body, $crossref, $nhTier1, $nhTier2)  = ($1, $2, $3, $4, $5);
-		if( $body =~ m/(.*)\.$/ )
-		{	$body = $1;	}
+			$bok_in =~ m/\{(.*?)\}\{<<(.*?)>>\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g;
+			my ($p2, $body, $crossref, $nhTier1, $nhTier2)  = ($1, $2, $3, $4, $5);
+			if( $body =~ m/(.*)\.$/ )
+			{	$body = $1;	}
 
-		my $ku 			= "$ka$p2";
-		%{$bok{$lang}{$ka}{KU}{$ku}} 	= ();
-		my $KUPos 		= scalar keys %{$bok{$lang}{$ka}{KU}};
-		$bok{$lang}{$ka}{KU}{$ku}{name}= $ku;
-		$bok{$lang}{$ka}{KU}{$ku}{order}= $KUPos;
-		$bok{$lang}{$ka}{KU}{$ku}{body} = $body;
-		$bok{$lang}{$ka}{KU}{$ku}{nhTier1} 	 = $nhTier1;
-		#Util::print_message("bok{$ka}{nhTier1} 		+= $nhTier1;");
-		$bok{$lang}{$ka}{nhTier1} 		+= $nhTier1;
-		$bok{$lang}{$ka}{KU}{$ku}{nhTier2} 	 = $nhTier2;
-		$bok{$lang}{$ka}{nhTier2} 		+= $nhTier2;
+			my $ku 			= "$ka$p2";
+			%{$bok{$lang}{$ka}{KU}{$ku}} 	= ();
+			my $KUPos 		= scalar keys %{$bok{$lang}{$ka}{KU}};
+			$bok{$lang}{$ka}{KU}{$ku}{name}= $ku;
+			$bok{$lang}{$ka}{KU}{$ku}{order}= $KUPos;
+			$bok{$lang}{$ka}{KU}{$ku}{body} = $body;
+			$bok{$lang}{$ka}{KU}{$ku}{nhTier1} 	 = $nhTier1;
+			#Util::print_message("bok{$ka}{nhTier1} 		+= $nhTier1;");
+			$bok{$lang}{$ka}{nhTier1} 			+= $nhTier1;
+			$bok{$lang}{$ka}{KU}{$ku}{nhTier2} 	 = $nhTier2;
+			$bok{$lang}{$ka}{nhTier2} 			+= $nhTier2;
 
-		$ku_info{$lang}{$ku}{ka} 	= $ka;
-		$ku_info{$lang}{$ku}{nhTier1}	= $nhTier1;
-		$ku_info{$lang}{$ku}{nhTier2}	= $nhTier2;
+			$ku_info{$lang}{$ku}{ka} 		= $ka;
+			$ku_info{$lang}{$ku}{nhTier1}	= $nhTier1;
+			$ku_info{$lang}{$ku}{nhTier2}	= $nhTier2;
 
-		$counts{$cmd}++;
-# 		Util::print_message("KU ($ka, $ku, $KUPos, $crossref, Tier1=$nhTier1, Tier2=$nhTier2) ...");
+			$counts{$cmd}++;
+	# 		Util::print_message("KU ($ka, $ku, $KUPos, $crossref, Tier1=$nhTier1, Tier2=$nhTier2) ...");
 	    }
 	    elsif( $cmd eq "KUDescription") # \KUDescription{AL}{BasicAnalysis}{<<~>>}
 	    {
-		$bok_in =~ m/\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
-		my ($p2, $body)  = ($1, $2);
-		#if( $body =~ m/(.*)\.$/ )
-		#{	$body = $1;	}
+			$bok_in =~ m/\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
+			my ($p2, $body)  = ($1, $2);
+			#if( $body =~ m/(.*)\.$/ )
+			#{	$body = $1;	}
 
-		my $ku			= "$ka$p2";
-		$bok{$lang}{$ka}{KU}{$ku}{description}= $body;
-		$counts{$cmd}++;
-# 		Util::print_message("KU ($ka, $ku, KUDescription) ...");
+			my $ku			= "$ka$p2";
+			$bok{$lang}{$ka}{KU}{$ku}{description}= $body;
+			$counts{$cmd}++;
+	# 		Util::print_message("KU ($ka, $ku, KUDescription) ...");
 	    }
 	    elsif( $cmd eq "KUItem") # \KUItem{AL}{BasicAnalysis}{Core-Tier2}{Recurrence}{crossrefs}{<<Relaciones recurrentes \begion{topic} ... \n \end{topic}.>>}
 	    {
-		$bok_in =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
-		my ($kubase, $tier, $kuposfix, $crossref, $body)  = ($1, $2, $3, $4, $5);
-		#if( $body =~ m/(.*)\.$/ )
-		#{	$body = $1;	}
+			$bok_in =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
+			my ($kubase, $tier, $kuposfix, $crossref, $body)  = ($1, $2, $3, $4, $5);
+			#if( $body =~ m/(.*)\.$/ )
+			#{	$body = $1;	}
 
-		my $ku 			= "$ka$kubase";
-		my $kuitem		= $ku."Topic".$kuposfix;
-		my $KUItemPos 		= scalar keys %{$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}};
-		$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{body}  = $body;
-		$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{order} = $KUItemPos;
-# 		$crossref =~ s/\s//g;
-		$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $crossref;
-# 		if( not $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} eq "" )
-# 		{	Util::print_message("kuitem = $kuitem, bok{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} ... ");
-# 			exit;
-# 		}
-		$counts{$cmd}++;
-
-		#Util::print_message("$cmd, $ka, $kubase, $kuposfix, $tier, $body ...");
+			my $ku 			= "$ka$kubase";
+			my $kuitem		= $ku."Topic".$kuposfix;
+			my $KUItemPos 		= scalar keys %{$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}};
+			$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{body}  = $body;
+			$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{order} = $KUItemPos;
+	# 		$crossref =~ s/\s//g;
+			$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $crossref;
+	# 		if( not $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} eq "" )
+	# 		{	Util::print_message("kuitem = $kuitem, bok{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} = $bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{crossref} ... ");
+	# 			exit;
+	# 		}
+			$counts{$cmd}++;
+			#Util::print_message("$cmd, $ka, $kubase, $kuposfix, $tier, $body ...");
 	    }
 	    elsif( $cmd eq "LO") # \LO{AL}{BasicAnalysis}{Core-Tier1}{Familiarity}{State}{<<Indique la definicion formal de Big O.>>}
 	    {
-		$bok_in =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
-		my ($kubase, $tier, $lolevel, $kuposfix, $body)  = ($1, $2, $3, $4, $5);
-		if( $body =~ m/(.*)\.$/ )
-		{	$body = $1;	}
+			$bok_in =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{<<((.|\n)*?)>>\}/g;
+			my ($kubase, $tier, $lolevel, $kuposfix, $body)  = ($1, $2, $3, $4, $5);
+			if( $body =~ m/(.*)\.$/ )
+			{	$body = $1;	}
 
-		my $ku 			= "$ka$kubase";
-		my $LOitem		= $ku."LO".$kuposfix;
-		my $LOItemPos 		= scalar keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}};
-		$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{body}  	= $body; 		# $tier = Core-Tier1, Core-Tier2, Elective
-		$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{lolevel} = $lolevel; 		# $lolevel = Familiarity
-		$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{order} 	= $LOItemPos;
-		$counts{$cmd}++;
-		#Util::print_message("$cmd, $ka, $kubase, $kuposfix, $tier, $lolevel ...");
-		#Util::print_message("KU ($ka, $ku, $KUPos) ...");
+			my $ku 			= "$ka$kubase";
+			my $LOitem		= $ku."LO".$kuposfix;
+			my $LOItemPos 	= scalar keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}};
+			$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{body}  	= $body; 		# $tier = Core-Tier1, Core-Tier2, Elective
+			$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{lolevel} = $lolevel; 		# $lolevel = Familiarity
+			$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{order} 	= $LOItemPos;
+			$counts{$cmd}++;
+			#Util::print_message("$cmd, $ka, $kubase, $kuposfix, $tier, $lolevel ...");
+			#Util::print_message("KU ($ka, $ku, $KUPos) ...");
 	    }
 	    #Util::print_message("Processing macro #$count: $cmd ...");
 	}
@@ -3881,13 +3878,16 @@ sub gen_bok($)
 		      my $all_lo = "";
 		      $bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{LearningOutcomes}:}\\\\\n";
 		      my $count_of_items = 0;
+			  #$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{body}  	= $body; 		# $tier = Core-Tier1, Core-Tier2, Elective
+			  #$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{lolevel} = $lolevel; 		# $lolevel = Familiarity
+			  #$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{order} 	= $LOItemPos;
 		      foreach my $level (sort {	$bok{$lang}{$ka}{KU}{$ku}{LO}{$a} cmp $bok{$lang}{$ka}{KU}{$ku}{LO}{$b} }
-				         keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}})
+				                 keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}})
 		      {
 				$bok_output_txt .= "\\noindent {\\bf $level:}\n";
 				my $all_the_items = "";
 				my $count_of_items_local = 0;
-			       	foreach my $loitem (sort { $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$a}{order} <=> $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$b}{order} }
+			    foreach my $loitem (sort { $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$a}{order} <=> $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$b}{order} }
 						    keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}{$level}} )
 				{
 					$all_the_items .= "\t\\item \\$loitem\\xspace[\\".$loitem."Level]\\label{sec:BOK:$loitem}\n";
