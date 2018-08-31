@@ -35,7 +35,7 @@ sudo apt-get install texlive-science texlive-latex-extra texlive-bibtex-extra te
 1. Ejecutar los siguientes scripts:
     * `./scripts/gen-scripts.pl CS-UNSA` genera scripts para CS-UNSA en Curricula.out
     * `./compile1institucion.sh Y N` genera la curricula y extras (Y) en .pdf, pero no la parte HTML (N)
-    * ``
+
 1. Imprimir el archivo, distribuir syllabi y descansar hasta el próximo semestre!"
 
 
