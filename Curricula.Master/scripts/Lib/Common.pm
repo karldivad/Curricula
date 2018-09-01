@@ -2899,22 +2899,26 @@ sub parse_courses()
 # 					}
 
 # 		  my $codcour_alias = get_alias($codcour);
-		  if( $course_info{$codcour} ) # This course already exist, then verify if the new course has a higher priority
+		  if( $course_info{$codcour}) # This course already exist, then verify if the new course has a higher priority
 		  {
  			  Util::print_message("priority = $priority");
  			  Util::print_message("course_info{$codcour}{priority} = $course_info{$codcour}{priority}");
+
+			if($course_info{$codcour}{semester} != $semester and defined($course_info{$codcour}{priority})){
+				Util::print_error("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has different semester than $codcour (Sem #$semester, \"$inst_wildcard\")  ... this cant happen... ERROR!!!");
+			}
 			  #if( defined($course_info{$codcour}{priority}) )
-			  #{
-			      if( $priority <= $course_info{$codcour}{priority} )
+			  #{  
+				  if(!$course_info{$codcour}{priority}){
+					  Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has no priority ... ignoring");
+				  }
+			      if( $priority < $course_info{$codcour}{priority} )
 			      {
 				      print "\n";
-					  if($course_info{$codcour}{semester} != $semester){
-						  Util::print_error("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has different semester than $codcour (Sem #$semester, \"$inst_wildcard\")  ... this cant happen... ERROR!!!");
-					  }
 				      Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
-					  
 				      next;
 				  }
+				  
 			  #}
 		  }
 		  $config{n_semesters} = $semester if($semester > $config{n_semesters});
