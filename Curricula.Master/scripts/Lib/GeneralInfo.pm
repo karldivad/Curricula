@@ -1818,7 +1818,6 @@ sub generate_equivalence_old2new($)
 	while($in_txt =~ m/\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}(.*)/g)
 	{
 		my ($semester, $old_course_codcour, $old_course_name, $old_course_cr, $codcour) = ($1, $2, $3, $4, $5);
-		$codcour = Common::get_label($codcour);
 
 		#print "$semester -- $old_course_codcour -- $old_course_name -- $old_course_cr -- $codcour \n";
 
