@@ -528,7 +528,7 @@ sub initialize_critical_path()
 		}
 }
 
-sub process_critical_path_for_one_course($)
+sub process_critical_path_for_one_course    #($)
 {
 	my ($codcour) = (@_);
 	my ($distance) = (0);

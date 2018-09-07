@@ -1203,6 +1203,10 @@ sub read_copyrights($)
 sub read_institution_info($)
 {
 	my ($file) = (@_);
+	if(not -e $file)
+	{	Util::print_error("I cound find institution-info.tex ... did you create it? ($file)");	
+		exit;
+	}
 	my $txt  = Util::read_file($file);
 	my %this_inst_info = ();
 	Util::print_message("Reading read_institution_info ($file) ... ");
