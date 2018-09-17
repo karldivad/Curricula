@@ -772,11 +772,11 @@ sub generate_curricula_in_dot($$)
 # ok
 sub generate_poster($)
 {
-        my ($lang) = (@_);
+    my ($lang) = (@_);
 	my $poster_txt = Util::read_file(Common::get_template("in-poster-file"));
 
-        my $total_left_width = 90; #cm
-        $poster_txt =~ s/<LOGO_WIDTH>/$Common::config{logowidth}$Common::config{logowidth_units}/g;
+    my $total_left_width = 90; #cm
+    $poster_txt =~ s/<LOGO_WIDTH>/$Common::config{logowidth}$Common::config{logowidth_units}/g;
 
  	$Common::config{title_width} = Util::round(($total_left_width-$Common::config{logowidth}) - 1);
  	$poster_txt =~ s/<TITLE_WIDTH>/$Common::config{title_width}$Common::config{logowidth_units}/g;
