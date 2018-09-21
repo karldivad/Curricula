@@ -638,8 +638,8 @@ sub set_initial_paths()
         $path_map{"all-config"}							= $path_map{InDir}."/config/all.config";
         $path_map{"colors"}								= $path_map{InDir}."/config/colors.config";
         $path_map{"discipline-config"}		   			= $path_map{"InDisciplineDir"}."/$config{discipline}.config";
-        $path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
-        $path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
+        $path_map{"in-area-all-config-file"}			= $path_map{"InDisciplineDir"}."/$config{area}.config/$config{area}-All.config";
+        $path_map{"in-area-config-file"}				= $path_map{"InDisciplineDir"}."/$config{area}.config/$config{area}.config";
         $path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
         $path_map{"in-institution-config-file"}			= $path_map{InInstDir}."/institution.config";
         $path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
@@ -1256,8 +1256,8 @@ sub read_institution_info($)
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
 	{
-                $this_inst_info{country}                      = $1;
-                $this_inst_info{country_without_accents} 	= filter_non_valid_chars($this_inst_info{country});
+        $this_inst_info{country}                      = $1;
+        $this_inst_info{country_without_accents} 	= filter_non_valid_chars($this_inst_info{country});
  		#Util::print_message("country=$this_inst_info{country}, country_without_accents=$this_inst_info{country_without_accents}\n"); exit;
 	}
 	else
@@ -1504,7 +1504,7 @@ sub set_initial_configuration($)
 
 	# Read general configuration for all
 	read_config("all-config");
-	print Dumper (\%config);
+	#print Dumper (\%config);
 
 	# Read configuration for this discipline
 	read_discipline_config();
@@ -4285,6 +4285,99 @@ sub generate_link_for_courses()
        }
       print "\n";
 #       exit;
+}
+
+# ok
+sub gen_batch($$)
+{
+		Util::precondition("read_institutions_list");
+		my ($source,$target) = (@_);
+		my $txt = Util::read_file($source);
+
+		#print "institution=$Common::institution\n";
+		$txt =~ s/<INST>/$Common::institution/g;
+		my $filter = $Common::inst_list{$Common::institution}{filter};
+		$txt =~ s/<FILTER>/$filter/g;
+		$txt =~ s/<VERSION>/$Common::inst_list{$Common::institution}{version}/g;
+		$txt =~ s/<AREA>/$Common::inst_list{$Common::institution}{area}/g;
+		my $output_bib_dir = Common::get_template("OutputBinDir");
+		$txt =~ s/<OUTBIN>/$output_bib_dir/g;
+
+		my $InDir = Common::get_template("InDir");
+		$txt =~ s/<IN_DIR>/$InDir/g;
+
+		my $InTexDir = Common::get_template("InTexDir");
+		$txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
+
+		my $InInstDir = Common::get_template("InInstDir");
+		$txt =~ s/<IN_INST_DIR>/$InInstDir/g;
+
+		my $OutputDir = Common::get_template("OutDir");
+		$txt =~ s/<OUTPUT_DIR>/$OutputDir/g;
+
+		my $OutputInstDir = Common::get_template("OutputInstDir");
+		$txt =~ s/<OUTPUT_INST_DIR>/$OutputInstDir/g;
+
+		my $OutputLogDir = Common::get_template("OutputLogDir");
+		$txt =~ s/<OUT_LOG_DIR>/$OutputLogDir/g;
+
+		my $OutputTexDir = Common::get_template("OutputTexDir");
+		$txt =~ s/<OUTPUT_TEX_DIR>/$OutputTexDir/g;
+
+		my $OutputDotDir = Common::get_template("OutputDotDir");
+		$txt =~ s/<OUTPUT_DOT_DIR>/$OutputDotDir/g;
+
+		my $OutputFigDir = Common::get_template("OutputFigDir");
+		$txt =~ s/<OUTPUT_FIG_DIR>/$OutputFigDir/g;
+
+		my $OutputScriptsDir = Common::get_template("OutputScriptsDir");
+		$txt =~ s/<OUTPUT_SCRIPTS_DIR>/$OutputScriptsDir/g;
+
+		my $OutputHtmlDir = Common::get_template("OutputHtmlDir");
+		$txt =~ s/<OUTPUT_HTML_DIR>/$OutputHtmlDir/g;
+
+		my $OutputCurriculaHtmlFile = Common::get_template("output-curricula-html-file");
+		$txt =~ s/<OUTPUT_CURRICULA_HTML_FILE>/$OutputCurriculaHtmlFile/g;
+
+		my $OutputIndexHtmlFile = Common::get_template("output-index-html-file");
+		$txt =~ s/<OUTPUT_INDEX_HTML_FILE>/$OutputIndexHtmlFile/g;
+
+		my $UnifiedMain = Common::get_template("unified-main-file");
+		$UnifiedMain =~ m/(.*)\.tex/;
+		$UnifiedMain = $1;
+		$txt =~ s/<UNIFIED_MAIN_FILE>/$UnifiedMain/g;
+
+		my $MainFile = Common::get_template("curricula-main");
+		$MainFile =~ m/(.*)\.tex/;
+		$MainFile = $1;
+		$txt =~ s/<MAIN_FILE>/$MainFile/g;
+
+		my $country_without_accents = Common::get_template("country_without_accents");
+		$txt =~ s/<COUNTRY>/$country_without_accents/g;
+
+		my $language_without_accents = Common::get_template("language_without_accents");
+		$txt =~ s/<LANG>/$language_without_accents/g;
+
+		my $InLangBaseDir = Common::get_template("InLangBaseDir");
+		$txt =~ s/<IN_LANG_BASE_DIR>/$InLangBaseDir/g;
+
+		my $InLangDir = Common::get_template("InLangDir");
+		$txt =~ s/<IN_LANG_DIR>/$InLangDir/g;
+
+		$txt =~ s/<HTML_FOOTNOTE>/$Common::config{HTMLFootnote}/g;
+
+		$txt =~ s/<SEM_ACAD>/$Common::config{Semester}/g;
+		$txt =~ s/<PLAN>/$Common::config{Plan}/g;
+		$txt =~ s/<FIRST_SEM>/$Common::config{SemMin}/g;
+		$txt =~ s/<LAST_SEM>/$Common::config{SemMax}/g;
+
+		$txt =~ s/<PLAN>/$Common::config{Plan}/g;
+
+		Util::write_file($target, $txt);
+		Util::print_message("gen_batch: $target created successfully ...");
+		system("chmod 774 $target");
+		#foreach my $inst (sort keys %inst_list)
+		#{	print "[[$inst]] ";	}
 }
 
 sub process_courses()
