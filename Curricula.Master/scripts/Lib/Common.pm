@@ -454,7 +454,7 @@ sub set_initial_paths()
     $path_map{InFigDir}                 = $path_map{InLangDir}."/figs";
 	$path_map{InOthersDir}				= $path_map{InLangDir}."/$config{area}.others";
 	$path_map{InHtmlDir}				= $path_map{InLangDir}."/All.html";
-	$path_map{InTexAllDir}				= $path_map{InLangDir}."/All.tex";
+	$path_map{InTexAllDir}				= $path_map{InDir}."/All.tex";
 	$path_map{InDisciplinesBaseDir}		= $path_map{InDir}."/Disciplines";
 	$path_map{InDisciplineDir}			= $path_map{InDisciplinesBaseDir}."/$config{discipline}";
 	$path_map{InDisciplineTexDir}		= $path_map{InDisciplineDir}."/tex";
@@ -503,7 +503,7 @@ sub set_initial_paths()
         $path_map{"preamble0-file"}                 = $path_map{InAllTexDir}."/preamble0.tex";
         $path_map{"list-of-courses"}		   		= $path_map{InTexDir}."/$area$config{CurriculaVersion}-dependencies.tex";
 
-        $path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineTexDir}."/$config{discipline}-acronyms-<LANG>.tex";
+        $path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineTexDir}."/$config{discipline}-acronyms.tex";
         $path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
         $path_map{"out-ncredits-file"}              = $path_map{OutputTexDir}."/ncredits.tex";
         $path_map{"out-nsemesters-file"}            = $path_map{OutputTexDir}."/nsemesters.tex";
@@ -1319,7 +1319,7 @@ sub read_institution_info($)
 	}
 
         # Read the outcomes list
-        if($txt =~ m/\\newcommand\{\\logowidth\}\{(\d*)(.*?)\}/)
+        if($txt =~ m/\\newcommand\{\\logowidth\}\{(.*?)(..)\}/)
         {       $this_inst_info{logowidth}       = $1;
                 $this_inst_info{logowidth_units} = $2;
                 #Util::print_message("this_inst_info{logowidth}=$this_inst_info{logowidth}, this_inst_info{logowidth_units}=$this_inst_info{logowidth_units}"); exit;

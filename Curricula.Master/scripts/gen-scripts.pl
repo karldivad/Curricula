@@ -113,12 +113,12 @@ sub update_acronyms()
 		}
         else
         {
-                        Util::print_message("File: \"$out_txt_name\" does not exist ...");
+            #Util::print_message("File: \"$out_txt_name\" does not exist ...");
         }
 	}
 	#print "$basetex/$area-acronyms.tex\n";
 	my $acronym_base = Common::get_template("in-acronyms-base-file");
-	   $out_txt 		 = Util::read_file($acronym_base);
+	   $out_txt 	 = Util::read_file($acronym_base);
 
 	if($out_txt =~ m/%--LIST-OF-INSTITUTIONS--/)
 	{

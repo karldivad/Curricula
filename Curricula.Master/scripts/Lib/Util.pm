@@ -146,10 +146,10 @@ sub write_file($$)
 my @list_of_files_to_gen_fig;
 sub write_file_to_gen_fig($$)
 {
-        # First: write this file
+    # First: write this file
 	my ($fullname, $txt) = (@_);
 	write_file($fullname, $txt);
-	print_message("write_file_to_gen_fig: $fullname OK!");
+	print_message("writing file: $fullname OK!");
 
 	$fullname =~ m/(.*)\/(.*)\.tex/;
 	my ($dir, $filename) = ($1, $2);
@@ -158,9 +158,9 @@ sub write_file_to_gen_fig($$)
 	my $main_txt = $Common::config{main_to_gen_fig};
 	$main_txt =~ s/<OUTPUT_FILE>/$filename/g;
 	$main_txt =~ s/<ENCODING>/$Common::config{tex_encoding}/g;
-	$main_txt =~ s/<LANG_FOR_LATEX>/$Common::config{LANG_FOR_LATEX}/g kkkkkkk
+	$main_txt =~ s/<LANG_FOR_LATEX>/$Common::config{LANG_FOR_LATEX}/g;
 	write_file("$dir/$filename-main.tex", $main_txt);
-	print_message("write_file_to_gen_fig: $dir/$filename-main.tex OK!");
+	print_message("writing file: $dir/$filename-main.tex OK!");
 	
     # Third: register this main to compile later
 	push(@list_of_files_to_gen_fig, $filename);
