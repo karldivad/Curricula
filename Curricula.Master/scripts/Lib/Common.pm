@@ -501,7 +501,7 @@ sub set_initial_paths()
         # Tex files
         $path_map{"out-current-institution-file"}	= $path_map{OutputInstDir}."/tex/current-institution.tex";
         $path_map{"preamble0-file"}                 = $path_map{InAllTexDir}."/preamble0.tex";
-        $path_map{"list-of-courses"}		   		= $path_map{InTexDir}."/$area$config{CurriculaVersion}-dependencies.tex";
+        $path_map{"list-of-courses"}		   		= $path_map{InDisciplineDir}."/$area$config{CurriculaVersion}-dependencies.tex";
 
         $path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineTexDir}."/$config{discipline}-acronyms.tex";
         $path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
