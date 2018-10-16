@@ -3165,70 +3165,69 @@ sub filter_courses($)
 		my $new_prerequisites = "";
 		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites}))
 		{
-					$codreq =~ s/ //g;
-					if($codreq =~ m/(.*?)=(.*)/)
-					{
-		                my ($inst, $prereq) = ($1, $2);
-		                if( $inst eq $institution)
-		                {
-							$new_prerequisites .= "$sep$inst=$prereq";
-		                    $course_info{$codcour}{prerequisites_just_codes} .= "$sep$inst=$prereq";
-		                    foreach my $lang ( @{$config{SyllabusLangsList}} )
-		                    {       push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq);
-		                            push(@{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $prereq );
-		                    }
-		                    $course_info{$codcour}{short_prerequisites}         .= "$sep$prereq";
-		                    $course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$prereq";
-		                    push( @{$course_info{$codcour}{prerequisites_for_this_course}}, "$sep$inst=$prereq");
-		                    $course_info{$codcour}{n_prereq}++;
-							$codreq = $prereq;
-		                }
-		                else
-		                {	 	Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring");
-
-						}
+			$codreq =~ s/ //g;
+			if($codreq =~ m/(.*?)=(.*)/)
+			{
+				my ($inst, $prereq) = ($1, $2);
+				if( $inst eq $institution)
+				{
+					$new_prerequisites .= "$sep$inst=$prereq";
+					$course_info{$codcour}{prerequisites_just_codes} .= "$sep$inst=$prereq";
+					foreach my $lang ( @{$config{SyllabusLangsList}} )
+					{       push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq);
+							push(@{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $prereq );
 					}
-					else
-		      {
-				  Util::print_message("codcour=$codcour,codreq=$codreq");
-				          $codreq = get_label($codreq);
-						  Util::print_message("codcour=$codcour,codreq=$codreq");
-						$new_prerequisites .= "$sep$codreq";
-				          $course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
-				          if(defined($course_info{$codreq}))
-				          {
-				              my $codreq_label = Common::get_label($codreq);
-				              #Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
-				              my $semester_prereq = $course_info{$codreq}{semester};
+					$course_info{$codcour}{short_prerequisites}         .= "$sep$prereq";
+					$course_info{$codcour}{code_and_sem_prerequisites}  .= "$sep$prereq";
+					push( @{$course_info{$codcour}{prerequisites_for_this_course}}, "$sep$inst=$prereq");
+					$course_info{$codcour}{n_prereq}++;
+					$codreq = $prereq;
+				}
+				else
+				{	 	Util::print_warning("It seems that course $codcour ($semester$config{dictionary}{ordinal_postfix}{$semester} $config{dictionary}{Sem}) has an invalid req ($codreq) ... ignoring");
 
-							
-				              foreach my $lang ( @{$config{SyllabusLangsList}} )
-				              {
-				                      push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));
-				                      my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour_label}.~";
-				                         $temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
+				}
+			}
+			else
+		    {
+				Util::print_message("codcour=$codcour,codreq=$codreq");
+				$codreq = get_label($codreq);
+				Util::print_message("codcour=$codcour,codreq=$codreq");
+				$new_prerequisites .= "$sep$codreq";
+				$course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
+				if(defined($course_info{$codreq}))
+				{
+					my $codreq_label = Common::get_label($codreq);
+					#Util::print_message("codreq=$codreq, codreq_label=$codreq_label");
+					my $semester_prereq = $course_info{$codreq}{semester};
 
-				                      push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
-				              }
+					foreach my $lang ( @{$config{SyllabusLangsList}} )
+					{
+							push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, get_course_link($codreq, $lang));
+							my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour_label}.~";
+								$temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
 
-				              $course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-				              $course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-				              $course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
-				              $course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
-				              $course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
-				              $course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
+							push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
+					}
 
-				              push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
-				              push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
-				              $course_info{$codcour}{n_prereq}++;
-				          }
-				          else
-				          {
-				              print Dumper(\%{$course_info{$codcour}});
-				              Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
-				          }
-		      }
-					$sep = ",";
+					$course_info{$codcour}{short_prerequisites}        .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
+					$course_info{$codcour}{short_prerequisites}        .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+					$course_info{$codcour}{short_prerequisites}        .= "$config{dictionary}{Sem})";
+					$course_info{$codcour}{code_and_sem_prerequisites} .= "$sep\\htmlref{$codreq_label}{sec:$codreq_label} ";
+					$course_info{$codcour}{code_and_sem_prerequisites} .= "(\$$semester_prereq^{$config{dictionary}{ordinal_postfix}{$semester_prereq}}\$~";
+					$course_info{$codcour}{code_and_sem_prerequisites} .= "$config{dictionary}{Sem})";
+
+					push( @{$course_info{$codcour}{prerequisites_for_this_course}}, $codreq);
+					push( @{$course_info{$codreq}{courses_after_this_course}}, $codcour);
+					$course_info{$codcour}{n_prereq}++;
+				}
+				else
+				{
+					print Dumper(\%{$course_info{$codcour}});
+					Util::halt("parse_courses: Course $codcour (sem #$semester) has a prerequisite \"$codreq\" not defined");
+				}
+		    }
+			$sep = ",";
 		}
 		$course_info{$codcour}{prerequisites} = $new_prerequisites;
 		#if( $codcour eq "FG601" )
