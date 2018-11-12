@@ -3062,7 +3062,7 @@ sub filter_courses($)
 	#print Dumper(\@codcour_list_sorted); exit;
 	foreach my $codcour (@codcour_list_sorted)
 	{
-		Util::print_message("codcour()=$codcour");
+		#Util::print_message("codcour()=$codcour");
 		my $codcour_label = Common::get_label($codcour);
 		if( not defined($course_info{$codcour}{semester}) )
 		{
@@ -3190,9 +3190,10 @@ sub filter_courses($)
 			}
 			else
 		    {
-				Util::print_message("codcour=$codcour,codreq=$codreq");
+				my $old_prereq = $codreq;
+				#Util::print_message("codcour=$codcour,codreq=$codreq");
 				$codreq = get_label($codreq);
-				Util::print_message("codcour=$codcour,codreq=$codreq");
+				Util::print_message("codcour=$codcour,$codreq=$old_prereq($codreq)");
 				$new_prerequisites .= "$sep$codreq";
 				$course_info{$codcour}{prerequisites_just_codes} .= "$sep$codreq";
 				if(defined($course_info{$codreq}))
