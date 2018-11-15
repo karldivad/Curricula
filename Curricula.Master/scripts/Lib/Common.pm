@@ -1784,14 +1784,14 @@ sub read_faculty()
 				    }
 				    elsif ( $tail =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/g )
 				    {
-					($concentration, $area, $sub_area_specialization, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);
-					Util::print_warning("Adding language $Common::config{SyllabusLangsList}[0] in $line");
-					$lang = $Common::config{SyllabusLangsList}[0];
+						($concentration, $area, $sub_area_specialization, $institution_of_degree, $country, $year) = ($1, $2, $3, $4, $5, $6, $7);
+						Util::print_warning("Adding language $Common::config{SyllabusLangsList}[0] in $line");
+						$lang = $Common::config{SyllabusLangsList}[0];
 				    }
 				    else{
-					Util::print_soft_error("Faculty $email has an error in the degree \\$degreelevel ... $tail\n");
-					$new_titles .= $line;
-					next;
+						Util::print_soft_error("Faculty $email has an error in the degree \\$degreelevel ... $tail\n");
+						$new_titles .= $line;
+						next;
 				    }
 				    if( $concentration eq "" )
 				    {	$concentration = "Empty";	}

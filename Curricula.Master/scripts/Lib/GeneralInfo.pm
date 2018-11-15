@@ -2090,6 +2090,11 @@ sub generate_information_4_professor($)
       return $this_professor;
 }
 
+sub generate_courses_by_professor()
+{
+	foreach $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
+}
+
 
 # sub generate_tables_for_advance()
 # {
