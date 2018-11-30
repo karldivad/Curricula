@@ -576,14 +576,15 @@ sub set_initial_paths()
         $path_map{"in-syllabus-template-file"}		= $path_map{InInstDir}."/syllabus-template.tex";
         $path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
         $path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/extra/additional-info $config{Semester}.txt";
-        $path_map{"in-distribution-dir"}		= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
-        $path_map{"in-this-semester-dir"}		= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
-        $path_map{"in-distribution-file"}		= $path_map{"in-distribution-dir"}."/distribution.txt";
-        $path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
+        $path_map{"in-distribution-dir"}			= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+        $path_map{"in-this-semester-dir"}			= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+        $path_map{"in-distribution-file"}			= $path_map{"in-distribution-dir"}."/distribution.txt";
+        $path_map{"in-this-semester-evaluation-dir"}= $path_map{"in-this-semester-dir"}."/evaluation";
         $path_map{"in-specific-evaluation-file"}	= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
-        $path_map{"out-only-macros-file"}		= $path_map{OutputTexDir}."/macros-only.tex";
+        $path_map{"out-only-macros-file"}			= $path_map{OutputTexDir}."/macros-only.tex";
 
-        $path_map{"faculty-file"}			= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
+        $path_map{"faculty-file"}					= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
+		$path_map{"out-courses-by-professor-file"}	= $path_map{OutInstDir}."/cycle/$config{Semester}/faculty.txt";
 
         $path_map{"faculty-template.html"}		= $path_map{InFacultyIconsDir}."/faculty.html";
         $path_map{"NoFace-file"}			= $path_map{InFacultyIconsDir}."/noface.gif";
