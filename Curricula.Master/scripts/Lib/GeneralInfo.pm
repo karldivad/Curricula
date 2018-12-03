@@ -528,7 +528,7 @@ sub initialize_critical_path()
 		}
 }
 
-sub process_critical_path_for_one_course($)
+sub process_critical_path_for_one_course    #($)
 {
 	my ($codcour) = (@_);
 	my ($distance) = (0);
@@ -772,11 +772,11 @@ sub generate_curricula_in_dot($$)
 # ok
 sub generate_poster($)
 {
-        my ($lang) = (@_);
+    my ($lang) = (@_);
 	my $poster_txt = Util::read_file(Common::get_template("in-poster-file"));
 
-        my $total_left_width = 90; #cm
-        $poster_txt =~ s/<LOGO_WIDTH>/$Common::config{logowidth}$Common::config{logowidth_units}/g;
+    my $total_left_width = 90; #cm
+    $poster_txt =~ s/<LOGO_WIDTH>/$Common::config{logowidth}$Common::config{logowidth_units}/g;
 
  	$Common::config{title_width} = Util::round(($total_left_width-$Common::config{logowidth}) - 1);
  	$poster_txt =~ s/<TITLE_WIDTH>/$Common::config{title_width}$Common::config{logowidth_units}/g;
@@ -1818,7 +1818,6 @@ sub generate_equivalence_old2new($)
 	while($in_txt =~ m/\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}\{(.*)\}(.*)/g)
 	{
 		my ($semester, $old_course_codcour, $old_course_name, $old_course_cr, $codcour) = ($1, $2, $3, $4, $5);
-		$codcour = Common::get_label($codcour);
 
 		#print "$semester -- $old_course_codcour -- $old_course_name -- $old_course_cr -- $codcour \n";
 
@@ -2089,6 +2088,20 @@ sub generate_information_4_professor($)
       }
       $this_professor =~ s/--.*?--//g;
       return $this_professor;
+}
+
+sub generate_courses_by_professor()
+{
+	my $out_txt = "";
+	my $professor_count = 0;
+	foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
+	{
+		$out_txt .= ""
+	}
+	$out_txt = "\\begin{itemize}\n$out_txt\\end{itemize}\n";
+	my $out_file = Common::get_template("out-courses-by-professor-file);
+	Util::print_message("Generating courses by professor($out_file) OK");
+	Util::write_file($out_file, $out_txt);
 }
 
 
