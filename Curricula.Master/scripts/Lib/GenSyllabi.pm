@@ -12,7 +12,6 @@ use strict;
 sub get_environment($$$)
 {
 	my ($codcour, $txt, $env) = (@_);
-
 	if($txt =~ m/\\begin\{$env\}\s*\n((?:.|\n)*)\\end\{$env\}/g)
 	{	return $1;	}
 # 	Util::print_warning("$codcour does not have $env");

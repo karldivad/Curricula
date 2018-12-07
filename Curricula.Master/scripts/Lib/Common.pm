@@ -584,7 +584,7 @@ sub set_initial_paths()
         $path_map{"out-only-macros-file"}			= $path_map{OutputTexDir}."/macros-only.tex";
 
         $path_map{"faculty-file"}					= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
-		$path_map{"out-courses-by-professor-file"}	= $path_map{OutInstDir}."/cycle/$config{Semester}/faculty.txt";
+		$path_map{"out-courses-by-professor-file"}	= $path_map{OutInstDir}."/cycle/$config{Semester}/courses-by-professor.tex";
 
         $path_map{"faculty-template.html"}		= $path_map{InFacultyIconsDir}."/faculty.html";
         $path_map{"NoFace-file"}			= $path_map{InFacultyIconsDir}."/noface.gif";

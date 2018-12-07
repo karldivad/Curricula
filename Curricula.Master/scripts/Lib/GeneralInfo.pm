@@ -2089,7 +2089,7 @@ sub generate_information_4_professor($)
       $this_professor =~ s/--.*?--//g;
       return $this_professor;
 }
-
+   
 sub generate_courses_by_professor()
 {
 	my $out_txt = "";
