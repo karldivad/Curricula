@@ -146,30 +146,29 @@ sub write_file($$)
 my @list_of_files_to_gen_fig;
 sub write_file_to_gen_fig($$)
 {
-    # First: write this file
+        # First: write this file
 	my ($fullname, $txt) = (@_);
-	write_file($fullname, $txt);
-	print_message("writing file: $fullname OK!");
+        write_file($fullname, $txt);
+        print_message("write_file_to_gen_fig: $fullname OK!");
 
-	$fullname =~ m/(.*)\/(.*)\.tex/;
-	my ($dir, $filename) = ($1, $2);
+        $fullname =~ m/(.*)\/(.*)\.tex/;
+        my ($dir, $filename) = ($1, $2);
 
-	# Second: generate the main to gen the fig
-	my $main_txt = $Common::config{main_to_gen_fig};
-	$main_txt =~ s/<OUTPUT_FILE>/$filename/g;
-	$main_txt =~ s/<ENCODING>/$Common::config{tex_encoding}/g;
-	$main_txt =~ s/<LANG_FOR_LATEX>/$Common::config{LANG_FOR_LATEX}/g;
+        # Second: generate the main to gen the fig
+        my $main_txt = $Common::config{main_to_gen_fig};
+        $main_txt =~ s/<OUTPUT_FILE>/$filename/g;
+        $main_txt =~ s/<ENCODING>/$Common::config{tex_encoding}/g;
 	write_file("$dir/$filename-main.tex", $main_txt);
-	print_message("writing file: $dir/$filename-main.tex OK!");
+	print_message("write_file_to_gen_fig: $dir/$filename-main.tex OK!");
 	
-    # Third: register this main to compile later
+        # Third: register this main to compile later
 	push(@list_of_files_to_gen_fig, $filename);
 }
 
 sub generate_batch_to_gen_figs($)
 {
 	my ($output_file) = (@_);
-    #print_message("generate_batch_to_gen_figs($output_file)");
+        #print_message("generate_batch_to_gen_figs($output_file)");
 	my $output_txt  = "";
 	foreach my $fig_file (@list_of_files_to_gen_fig)
 	{
@@ -180,9 +179,9 @@ sub generate_batch_to_gen_figs($)
                 $output_txt .= "mv $fig_file.eps ../fig/.\n";
                 $output_txt .= "\n";
 	}
-    write_file($output_file, $output_txt);
-    system("chmod 774 $output_file");
-    print_message("generate_batch_to_gen_figs($output_file) OK!");
+        write_file($output_file, $output_txt);
+        system("chmod 774 $output_file");
+        print_message("generate_batch_to_gen_figs($output_file) OK!");
 }
 
 my ($start_time, $end_time) = ("", "");

@@ -230,6 +230,7 @@ sub read_syllabus_info($$$)
 	      }
 	}
 
+	my $codcour 		= Common::get_label($codcour);
 	$map{COURSE_CODE} 	= $codcour;
 	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
 	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};
@@ -508,7 +509,7 @@ sub generate_tex_syllabi_files()
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
 			      $map{AREA}	= $Common::config{area};
 			      $map{LANG}	= $lang;
-			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
+			      $map{LANG_FOR_LATEX}	= $Common::config{lang_for_latex}{$lang};
 
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
