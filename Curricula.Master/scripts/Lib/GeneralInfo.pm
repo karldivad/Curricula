@@ -2090,7 +2090,6 @@ sub generate_information_4_professor($)
       $this_professor =~ s/--.*?--//g;
       return $this_professor;
 }
-<<<<<<< HEAD
    
 sub generate_courses_by_professor()
 {
@@ -2105,8 +2104,6 @@ sub generate_courses_by_professor()
 	Util::print_message("Generating courses by professor($out_file) OK");
 	Util::write_file($out_file, $out_txt);
 }
-=======
->>>>>>> bc43284134880adcb0b29f1793712033f21d3dcf
 
 
 # sub generate_tables_for_advance()
