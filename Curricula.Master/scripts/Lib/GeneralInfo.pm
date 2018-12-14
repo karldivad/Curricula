@@ -2095,14 +2095,18 @@ sub generate_courses_by_professor()
 {
 	my $out_txt = "";
 	my $professor_count = 0;
-	foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
+	foreach my $email (keys %{$Common::config{faculty}} )
 	{
-		$out_txt .= ""
+		foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
+		{
+			$out_txt .= "";
+		}
 	}
 	$out_txt = "\\begin{itemize}\n$out_txt\\end{itemize}\n";
-	my $out_file = Common::get_template("out-courses-by-professor-file);
-	Util::print_message("Generating courses by professor($out_file) OK");
+	my $out_file = Common::get_template("out-courses-by-professor-file");
+	Util::print_message("generate_courses_by_professor: Generating ($out_file) OK");
 	Util::write_file($out_file, $out_txt);
+	exit;
 }
 
 

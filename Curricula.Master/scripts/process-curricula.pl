@@ -56,6 +56,7 @@ sub generate_general_info()
 	GeneralInfo::generate_compatibility_with_standards();
 
 # 	GeneralInfo::generate_faculty_info();
+	GeneralInfo::generate_courses_by_professor();
  	GeneralInfo::process_equivalences();
 
 # 	generate_sql_for_new_courses();

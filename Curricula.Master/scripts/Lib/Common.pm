@@ -583,7 +583,7 @@ sub set_initial_paths()
         $path_map{"out-only-macros-file"}		= $path_map{OutputTexDir}."/macros-only.tex";
 
         $path_map{"faculty-file"}					= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
-		$path_map{"out-courses-by-professor-file"}	= $path_map{OutInstDir}."/cycle/$config{Semester}/courses-by-professor.tex";
+		$path_map{"out-courses-by-professor-file"}	= $path_map{OutputTexDir}."/courses-by-professor.tex";
 
         $path_map{"faculty-template.html"}		= $path_map{InFacultyIconsDir}."/faculty.html";
         $path_map{"NoFace-file"}			= $path_map{InFacultyIconsDir}."/noface.gif";
@@ -1247,7 +1247,7 @@ sub read_institution_info($)
 		{	push( @{$this_inst_info{SyllabusLangsList}}, $lang);	}
 	}
 	else
-	{	Util::print_error("read_institution_info: there is not \\SyllabusLang defined in \"$file\"\n");	}
+	{	Util::print_error("read_institution_info: there is not \\SyllabusLangs defined in \"$file\"\n");	}
 
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
