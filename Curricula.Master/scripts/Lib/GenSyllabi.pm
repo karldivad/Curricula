@@ -230,7 +230,6 @@ sub read_syllabus_info($$$)
 	      }
 	}
 
-	my $codcour 		= Common::get_label($codcour);
 	$map{COURSE_CODE} 	= $codcour;
 	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
 	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};

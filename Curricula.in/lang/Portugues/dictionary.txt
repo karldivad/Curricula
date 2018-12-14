@@ -1,42 +1,97 @@
-SCHOOL    = ESCUELA/DEPARTAMENTO
+SCHOOL    = ESCOLA/DEPARTAMENTO
 COURSE    = CURSO
 DEPARTMENT= DEPARTAMENTO
 SEMESTER  = SEMESTRE
-TYPEOFCOURSE=TYPE DE CURSO
+TYPEOFCOURSE=TIPO DE CURSO
 
-GENERALINFORMATION=INFORMACIÓN GENERAL
-CourseCodeandName=Código del curso y nombre
-HoursTheoryAndLab=Horas de Teoría y Laboratorio
-RATIONALEOFTHECOURSE=FUNDAMENTACIÓN DEL CURSO
-GENERALOBJECTIVE=OBJETIVO GENERAL
-CONTRIBUTIONTOOUTCOMES=CONTRIBUCIÓN A LA RESULTADOS (OUTCOMES)
-SyllabusofCourse=Silabo del curso
-Syllabus=Sílabo
-Bibliography=Bibliografía
-Readings=Lecturas
-CONTENTS=CONTENIDOS
-Content=Contenido
-PERIOD=PERIODO
-AcademicPeriod = Periodo Académico
+GENERALINFORMATION=INFORMAÇÃO GERAL
+CourseCodeandName=Código do curso e nome
+HoursTheoryAndLab=Horas de Teoria e Laboratório
+RATIONALEOFTHECOURSE=FUNDAMENTAÇÃO DO CURSO
+GENERALOBJECTIVE=OBJETIVO GERAL
+CONTRIBUTIONTOOUTCOMES=RESULTADOS DE CONTRIBUIÇÃO
+SyllabusofCourse=Programa de curso
+Syllabus=Sumário
+Bibliography=Bibliografia
+Readings=Leituras
+CONTENTS=CONTEÚDO
+Content=Conteúdo
+PERIOD=PERÍODO
+AcademicPeriod = Periodo Acadêmico
 COURSEAREA= Área
 COURSECODE= Código
 COURSENAME= Curso
 SYLLABI=Syllabi
 THEORY    = HT
+<<<<<<< HEAD
+Theory    = Teoria
+PRACTICE  = HP
+Practice  = Prática
+LABORATORY= HL
+Laboratory= Laboratório
+=======
 Theory    = Teoría
 PRACTICE  = HP
 Practice  = Práctica
 LABORATORY= HL
 Laboratory= Laboratorio
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 CREDITS   = CRÉDITOS
 Credits   = Créditos
 cr        = cr
 CR	  = Cr
+<<<<<<< HEAD
+Prerequisites=Pré-requisitos
+=======
 Prerequisites=Prerrequisitos
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 TYPE      = TIPO
 TypeOfCourse=Tipo de Curso
 PREREQ    = Requisitos
 SUMILLA  = SUMILLA
+<<<<<<< HEAD
+UNIT=UNIDADE
+Unit=Unidade
+Professor=Docente(s)
+AttentionwithAppointment=Atenção com compromisso
+InformationAbouttheCourse=Informacão do curso
+BriefDescription=Breve descriçao do curso 
+Where=Onde
+PerformanceInClass=Desempenho em classe
+TheoryEvaluation=Avaliações Teóricas
+Project=Projeto
+BookSummary=Resumo do livro
+SetOfProblems=Conjuntos de problemas
+Coordinator=Coordenador
+
+HoursPerSession                       = Horas por Sessão
+LengthOfPeriod			              = Duração do Período 
+Book 				                  = Livro
+BookOf				                  = Livro de
+Author				                  = Autor
+YearsOfPublication                    = Anos de Publicação 
+OtherTexts                            = Outros Textos 
+Tittle                                = Título
+CourseInformation                     = Informação do curso
+SpecificGoalsOfTheCourse              = Objetivos específicos do curso
+SpecificCompetencesOfTheCourse        = Competências específicas do curso
+ListOfSubjectsToStudyDuringTheCourse  = Lista de temas a estudar durante o curso
+MethodologyAndMethodOfEvaluation      = Metodologia e método de avaliação
+BriefDescriptionOfCourseContent       = Breve descrição do conteúdo do curso
+Name				      = Nome
+E-mail				      = Correio Eletrônico
+Corequisites                          = Co-Requisitos
+HoursOfAttentionOfTheInstructorOrCoordinatorOfTheCourse = Horas de Atenção do Instrutor ou coordenador do curso
+
+DPTO	  = Dpto
+TOTALHOURS= Horas Totales 
+Syllabus  = Sumário
+SyllabusOf= Sumário de
+Syllabi   = Sumário
+Descriptions=Descrições
+Bibliography=Bibliografia
+Plan	  = Plano
+=======
 UNIT=UNIDAD
 Unit=Unidad
 Professor=Docente(s)
@@ -78,11 +133,23 @@ Syllabi   = Sílabos
 Descriptions=Sumillas
 Bibliography=Bibliografía
 Plan	  = Plan
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 BloomLevel= Nivel Bloom
 
 Semester	   =Semestre
 Sem		   =Sem
 Semesters	   =Semestres
+<<<<<<< HEAD
+Mandatory	   =Obrigatório
+MandatoryShort	   =O
+MandatoryUnit	   =Unidade obrigatória
+Core-Tier1	   =Core Tier1
+Core-Tier2	   =Core Tier2
+Elective	   =Eletivo
+Electives          =Eletivos
+ElectiveShort	   =E
+None		   = Nenhum
+=======
 Mandatory	   =Obligatorio
 MandatoryShort	   =O
 MandatoryUnit	   =Unidad obligatoria
@@ -92,10 +159,84 @@ Elective	   =Electivo
 Electives          =Electivos
 ElectiveShort	   =E
 None		   = Ninguno
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 hours		   = horas
 HOURS		   = HORAS
 hrs		   = hr(s)
 hour		   = hora
+<<<<<<< HEAD
+HoursOfThisCourse  = Horas de curso
+Total		   = Total
+Pag                = Pág
+TeamTitle          = Equipe de Trabalho
+FinalReport	   = Reporte Final
+LastModification   = Última modificação
+Justification	   = Justificação
+GeneralGoals	   = Objetivos Gerais
+Competences	   = Competências
+ContributionToOutcomes=Contribuição para os resultados
+ContributionToSkills=Contribuição para as habilidades de Ciencia da Computação (IEEE)
+Skills		   = Habilidades
+Units		   =Unidades
+KUTitle		   =Unidade de Conhecimento
+KUsTitle	   =Unidades de Conhecimento
+
+Topics             =Tópicos
+ListOfTopics	   =Lista de temas a estudiar durante o curso
+UnitGoals          =Objetivos do Tópico
+LearningOutcomes   =Resultados de Aprendizagem
+LearningLevelExpected=Nível de Aprendizagem Esperado
+CompetencesExpected=Competências esperadas
+CompetencesIEEE	   =Competências (IEEE)
+UnitNotDefined     =Unidade não definida
+BibliographySection=Referências Bibliográficas
+
+MethodologyAndEvaluation=Metodologia e Avaliação
+Methodology		=Metodologia
+THEORY-SESSIONS     =Sessões Teóricas
+THEORY-SESSIONS-CONTENT =As sessões teóricas são realizadas em aulas onde serão realizadas atividades que estimulam uma atividade ativa, com dinâmicas que permitam aos estudantes internalizar os conceitos
+LAB-SESSIONS           =Sessões de Laboratório
+LAB-SESSIONS-CONTENT    =A fim de verificar se os alunos atingiram o conjunto de realizações para cada uma das unidades de aprendizagem, eles realizarão atividades que lhes permitam aplicar os conhecimentos adquiridos durante as sessões teóricas e serão propostos desafios que permitam avaliar o desempenho dos alunos
+ORAL-SESSIONS           =Exposições individuais ou coletivas
+ORAL-SESSIONS-CONTENT   =A participação individual e em equipe é incentivada para apresentar suas ideias, motivando-as com pontos adicionais nas diferentes etapas da avaliação do curso
+READING-SESSIONS         =Leituras
+READING-SESSIONS-CONTENT =Ao longo do curso são fornecidas leituras variadas, as quais são avaliadas. A média das notas das leituras é considerada como a nota de uma prática qualificada. O uso de um ambiente virtual permite que cada aluno acesse acesse as informações do curso e interaja fora da sala de aula com o professor e com os outros alunos
+EVALUATION-SYSTEM        =Sistema de Avaliação
+EVALUATION-CONTENT       =~
+METHODOLOGY-DESCRIPTION  =~
+
+NoteT=Consiste na média das pontuações dos exames curtos individuais, arredondadas para cima (esta nota é de cerca de 9).
+NoteP=Consiste na média das práticas qualificadas em grupo, arredondadas para cima (esta nota é de cerca de 9).
+NoteE=Consiste no resultado de problemas de esforços individuais arredondados para cima (esta nota é de cerca de 2).
+
+nocorehours    =Sem mínimo de horas
+corehours	   =horas mínimas
+ThisSchool	   =Esta carreira
+
+AdviceRecCourses		=Recomenda-se que o aluno tenha tido
+FreeCreditsAdvice		=Outros cursos poderiam ser agregados aqui
+TotalNumberOfCreditsMsg		=Total de créditos da carriera
+DistributionCreditsByArea	=Distribuição de cursos por áreas
+TableOfTopicByCourseCaption	=Tópicos por curso do primeiro ao último semestre
+TableOfOutcomesByCourseCaption  =Resultados esperados por curso do primeiro ao último semestre
+Skill				=Competência
+ComparisonWithStandardCaption=Comparação <AREA>-\siglas~Vs. <STANDARD> de <STANDARD_REF_INSTITUTION>.
+InstitutionToCompareWith=IEEE-CS/ACM
+Yes 	= Sim
+No 	= Não
+CriticalPath=Caminho crítico
+
+Familiarity=Familiaridade
+Usage=Uso
+Assessment=Avaliação
+
+<HASH name=standards_long_name>
+CE=>Engenharia da Computação--{\it Computer Engineering}
+CS=>Ciência da Computação--{\it Computer Science}
+IS=>Sistemas de Informação--{\it Information Systems}
+IT=>Tecnologia da Informação--{\it Information Technology}
+SE=>Engenharia de Software--{\it Software Engineering}
+=======
 HoursOfThisCourse  = Horas del curso
 Total		   = Total
 Pag                = Pág
@@ -167,10 +308,34 @@ CS=>Ciencia de la Computación--{\it Computer Science}
 IS=>Sistemas de Información--{\it Information Systems}
 IT=>Tecnología de Información--{\it Information Technology}
 SE=>Ingeniería de Software--{\it Software Engineering}
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 </HASH>
 
 % Labels for spider charts
 <HASH name=all_areas>
+<<<<<<< HEAD
+CS => Ciência da<ENTER>Computação
+MC => Matemática para<ENTER>Computação
+CB => Ciências<ENTER>Básicas
+SE => Engenharia<ENTER>de Software
+HW => Hardware e<ENTER>Arquitectura
+IT => Tecnologia<ENTER>da Informação
+IS => Sistemas da<ENTER>Informação 
+BM => Conteúdo<ENTER>Empresarial
+FG => Formação<ENTER>Geral
+</HASH>
+
+<HASH name=semester_ordinal>
+1=>Primeiro
+2=>Segundo
+3=>Terceiro
+4=>Quarto
+5=>Quinto
+6=>Sexto
+7=>Sétimo
+8=>Oitavo
+9=>Nono
+=======
 CS => Ciencia de la<ENTER>Computación
 MC => Matemática para<ENTER>Computación
 CB => Ciencias<ENTER>Básicas
@@ -192,6 +357,7 @@ FG => Formación<ENTER>General
 7=>Séptimo
 8=>Octavo
 9=>Noveno
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 10=>Décimo
 </HASH>
 
@@ -209,6 +375,40 @@ FG => Formación<ENTER>General
 </HASH>
 
 <HASH name=labels_per_level>
+<<<<<<< HEAD
+1=>Introdutório
+2=>Intermediário
+3=>Avançado
+4=>Projeto Final
+</HASH>
+
+<HASH name=Acronyms>
+SI=>Sistemas de Informação
+TI=>Tecnologia da Informação
+BD=>Bases de Dados
+POO=>Programação Orientada a Objetos
+ADS=>Análise e Design de Sistemas
+ADA=>Análise e Design de Algoritmos
+#IVU= >Introdução a Vida Universitária
+</HASH>
+
+Mission=Missão
+Definition=Definição
+
+<HASH name=professor_role_label>
+T=>Titular
+L=>Laboratório
+-=>
+</HASH>
+
+DoctorIn=Doutor em
+MasterIn=Mestre em
+
+Modality=Modalidade
+FaceToFace=Presencial
+Blended=Semipresencial (Blended)
+Virtual=A distância
+=======
 1=>Introductorio
 2=>Intermedio
 3=>Avanzado
@@ -241,3 +441,4 @@ Modality=Modalidad
 FaceToFace=Presencial
 Blended=Semipresencial (Blended)
 Virtual=Virtual
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56

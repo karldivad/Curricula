@@ -1,0 +1,37 @@
+\newcommand{\DefineOutcome}[2]{%
+\expandafter\def\csname Outcome#1\endcsname{#2}%
+}
+
+\newcommand{\ShowOutcomeText}[1]{%
+\csname Outcome#1\endcsname %
+}
+
+\newcommand{\ShowOutcome}[2]{%
+{\bf #1)} \csname Outcome#1\endcsname ({\bf \ShowCompetenceLevel{#2}})%
+}
+
+\newcommand{\ShowShortOutcomeLetter}[1]{%
+{\bf #1)} \csname Outcome#1Short\endcsname %
+}
+
+\newcommand{\ShowShortOutcome}[1]{%
+\csname Outcome#1Short\endcsname %
+}
+
+\newcommand{\DefineCompetence}[2]{%
+\expandafter\def\csname #1\endcsname{#2}%
+}
+
+\newcommand{\Competence}[1]{%
+\csname #1\endcsname\label{Competence:#1}%
+}
+\newcommand{\ShowCompetence}[2]{%
+{\bf #1.} \csname #1\endcsname {\bf $\Rightarrow$ Outcome #2}%
+}
+
+\newcommand{\DefineCompetenceLevel}[2]{%
+\expandafter\def\csname CompetenceLevel#1\endcsname{#2}%
+}
+\newcommand{\ShowCompetenceLevel}[1]{%
+\csname CompetenceLevel#1\endcsname%
+}
