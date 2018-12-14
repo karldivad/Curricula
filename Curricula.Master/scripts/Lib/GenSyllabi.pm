@@ -12,7 +12,6 @@ use strict;
 sub get_environment($$$)
 {
 	my ($codcour, $txt, $env) = (@_);
-
 	if($txt =~ m/\\begin\{$env\}\s*\n((?:.|\n)*)\\end\{$env\}/g)
 	{	return $1;	}
 # 	Util::print_warning("$codcour does not have $env");
@@ -509,7 +508,7 @@ sub generate_tex_syllabi_files()
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
 			      $map{AREA}	= $Common::config{area};
 			      $map{LANG}	= $lang;
-			      $map{lang}	= $Common::config{lang_for_latex}{$lang};
+			      $map{LANG_FOR_LATEX}	= $Common::config{lang_for_latex}{$lang};
 
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
