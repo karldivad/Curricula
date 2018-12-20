@@ -585,14 +585,14 @@ sub set_initial_paths()
         $path_map{"faculty-file"}					= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
 		$path_map{"out-courses-by-professor-file"}	= $path_map{OutputTexDir}."/courses-by-professor.tex";
 
-        $path_map{"faculty-template.html"}		= $path_map{InFacultyIconsDir}."/faculty.html";
-        $path_map{"NoFace-file"}			= $path_map{InFacultyIconsDir}."/noface.gif";
+        $path_map{"faculty-template.html"}			= $path_map{InFacultyIconsDir}."/faculty.html";
+        $path_map{"NoFace-file"}					= $path_map{InFacultyIconsDir}."/noface.gif";
 
         $path_map{"faculty-general-output-html"}	= $path_map{OutputFacultyDir}."/faculty.html";
-        $path_map{"in-replacements-file"}		= $path_map{InStyDir}."/replacements.txt";
+        $path_map{"in-replacements-file"}			= $path_map{InStyDir}."/replacements.txt";
 
         $path_map{"output-curricula-html-file"}		= "$path_map{OutputHtmlDir}/Curricula_$config{area}_$config{institution}.html";
-        $path_map{"output-index-html-file"}		= "$path_map{OutputHtmlDir}/index.html";
+        $path_map{"output-index-html-file"}			= "$path_map{OutputHtmlDir}/index.html";
 
         # Batch files
         $path_map{"out-compileall-file"}		= "compileall";
