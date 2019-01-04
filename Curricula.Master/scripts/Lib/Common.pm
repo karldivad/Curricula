@@ -255,11 +255,11 @@ sub get_course_link($$)
 	my ($codcour, $lang) = (@_);
 	#print $codcour;
 	if($codcour eq "")
-	{	assert(0);	}
-
+	{ Util::print_error( "Curso NO Encontrado, posiblemente no esta declarado su prerequisito o no ha sido procesado correctamente!"); assert(0);}
 	my $course_full_label	= "$codcour. $course_info{$codcour}{course_name}{$lang}";
 	my $course_link	   = "\\htmlref{$course_full_label}{sec:$codcour}~";
 	   $course_link   .= "($course_info{$codcour}{semester}\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$course_info{$codcour}{semester}}}\$ $config{dictionaries}{$lang}{Sem}-$config{dictionaries}{$lang}{Pag}~\\pageref{sec:$codcour})";
+
 	return $course_link;
 }
 
@@ -1458,6 +1458,7 @@ sub set_initial_configuration($)
 
 	$config{encoding} 	= "latin1";
 	$config{tex_encoding} 	= "utf8";
+	$config{LANG_FOR_LATEX} = "spanish";
 	$config{COL4LABS} = "lh";
 
     system("mkdir -p $config{out}/tex");

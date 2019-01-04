@@ -24,17 +24,17 @@ endif
 echo "pdf=$pdf, html=$html"
 
 set LogDir=../Curricula.out/log
-date > ../Curricula.out/log/Peru-CS-UNMSM-time.txt
+date > ../Curricula.out/log/Peru-CS-UNSA-time.txt
 #--BEGIN-FILTERS--
-set institution=UNMSM
-setenv CC_Institution UNMSM
-set filter=UNMSM,UNSA,SPC
-setenv CC_Filter UNMSM,UNSA,SPC
+set institution=UNSA
+setenv CC_Institution UNSA
+set filter=UNSA
+setenv CC_Filter UNSA
 set version=final
 setenv CC_Version final
 set area=CS
 setenv CC_Area CS
-set CurriculaParam=CS-UNMSM
+set CurriculaParam=CS-UNSA
 #--END-FILTERS--
 set curriculamain=curricula-main
 setenv CC_Main curricula-main
@@ -42,10 +42,10 @@ set current_dir = `pwd`
 
 set Country=Peru
 set OutputDir=../Curricula.out
-set OutputInstDir=../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018
-set OutputTexDir=../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex
-set OutputScriptsDir=../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts
-set OutputHtmlDir=../Curricula.out/html/Peru/CS-UNMSM/Plan2018
+set OutputInstDir=../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017
+set OutputTexDir=../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex
+set OutputScriptsDir=../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts
+set OutputHtmlDir=../Curricula.out/html/Peru/CS-UNSA/Plan2017
 
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
 # ls IS*.tex | xargs -0 perl -pi -e 's/CATORCE/UNOCUATRO/g'
@@ -54,9 +54,9 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 #sudo chown -R ecuadros:curricula ./Curricula
 
 mkdir -p ../Curricula.out/log
-./scripts/process-curricula.pl CS-UNMSM ;
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-eps-files.sh;
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-graph.sh small
+./scripts/process-curricula.pl CS-UNSA ;
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-eps-files.sh;
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-graph.sh small
 
 if($pdf == 1) then
       # latex -interaction=nonstopmode curricula-main
@@ -65,35 +65,35 @@ if($pdf == 1) then
       #bibtex curricula-main1;
 
       mkdir -p ../Curricula.out/log
-      ./scripts/compbib.sh curricula-main > ../Curricula.out/log/Peru-CS-UNMSM-errors-bib.txt;
+      ./scripts/compbib.sh curricula-main > ../Curricula.out/log/Peru-CS-UNSA-errors-bib.txt;
 
       latex curricula-main;
       latex curricula-main;
 
-      echo CS-UNMSM;
-      dvips curricula-main.dvi -o CS-UNMSM.ps;
-      echo CS-UNMSM;
-      ps2pdf CS-UNMSM.ps CS-UNMSM.pdf;
+      echo CS-UNSA;
+      dvips curricula-main.dvi -o CS-UNSA.ps;
+      echo CS-UNSA;
+      ps2pdf CS-UNSA.ps CS-UNSA.pdf;
 
 #     Generate the first page and place it at html dir
-      pdftk A=CS-UNMSM.pdf cat A1-1 output CS-UNMSM-P1.pdf;
-      convert CS-UNMSM-P1.pdf CS-UNMSM-P1.png;
-      rm CS-UNMSM-P1.pdf;
-      mv CS-UNMSM-P1.png ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/CurriculaMain-P1.png;
-      cp CS-UNMSM.pdf ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/CurriculaMain.pdf;
+      pdftk A=CS-UNSA.pdf cat A1-1 output CS-UNSA-P1.pdf;
+      convert CS-UNSA-P1.pdf CS-UNSA-P1.png;
+      rm CS-UNSA-P1.pdf;
+      mv CS-UNSA-P1.png ../Curricula.out/html/Peru/CS-UNSA/Plan2017/CurriculaMain-P1.png;
+      cp CS-UNSA.pdf ../Curricula.out/html/Peru/CS-UNSA/Plan2017/CurriculaMain.pdf;
 
-      mv CS-UNMSM.pdf "../Curricula.out/pdfs/CS-UNMSM Plan2018.pdf";
-      rm -rf CS-UNMSM.ps;
+      mv CS-UNSA.pdf "../Curricula.out/pdfs/CS-UNSA Plan2017.pdf";
+      rm -rf CS-UNSA.ps;
 endif
 
-./scripts/update-outcome-itemizes.pl CS-UNMSM
-./scripts/update-page-numbers.pl CS-UNMSM;
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-graph.sh big
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-map-for-course.sh
+./scripts/update-outcome-itemizes.pl CS-UNSA
+./scripts/update-page-numbers.pl CS-UNSA;
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-graph.sh big
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-map-for-course.sh
 
 if($html == 1) then
       rm unified-curricula-main* ;
-      ./scripts/gen-html-main.pl CS-UNMSM;
+      ./scripts/gen-html-main.pl CS-UNSA;
       cp ../Curricula.in/css/curricula-main.css unified-curricula-main.css
 
       latex unified-curricula-main;
@@ -105,58 +105,58 @@ if($html == 1) then
       ps2pdf unified-curricula-main.ps unified-curricula-main.pdf;
       rm unified-curricula-main.ps unified-curricula-main.dvi;
 
-      rm -rf ../Curricula.out/html/Peru/CS-UNMSM/Plan2018;
-      mkdir -p ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/figs;
-      cp ../Curricula.in/lang/Espanol/figs/pdf.jpeg ../Curricula.in/lang/Espanol/figs/star.gif ../Curricula.in/lang/Espanol/figs/none.gif ../Curricula.in/lang/Espanol/figs/*.png ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/figs/.;
+      rm -rf ../Curricula.out/html/Peru/CS-UNSA/Plan2017;
+      mkdir -p ../Curricula.out/html/Peru/CS-UNSA/Plan2017/figs;
+      cp ../Curricula.in/lang/Espanol/figs/pdf.jpeg ../Curricula.in/lang/Espanol/figs/star.gif ../Curricula.in/lang/Espanol/figs/none.gif ../Curricula.in/lang/Espanol/figs/*.png ../Curricula.out/html/Peru/CS-UNSA/Plan2017/figs/.;
 
-      latex2html -t "Curricula CS-UNMSM" \
-      -dir "../Curricula.out/html/Peru/CS-UNMSM/Plan2018/" -mkdir \
+      latex2html -t "Curricula CS-UNSA" \
+      -dir "../Curricula.out/html/Peru/CS-UNSA/Plan2017/" -mkdir \
       -toc_stars -local_icons -no_footnode -show_section_numbers -long_title 5 \
       -address "Generado por <A HREF='http://socios.spc.org.pe/ecuadros/'>Ernesto Cuadros-Vargas</A> <ecuadros AT spc.org.pe>,               <A HREF='http://www.spc.org.pe/'>Sociedad Peruana de Computaci&oacute;n-Peru</A>,               <A HREF='http://www.utec.edu.pe/'>Universidad de Ingenier&iacute;a y Tecnolog&iacute;a, Lima-Per&uacute;</A><BR>              basado en el modelo de la Computing Curricula de               <A HREF='http://www.computer.org/'>IEEE-CS</A>/<A HREF='http://www.acm.org/'>ACM</A>" \
       -white unified-curricula-main;
-      cp "../Curricula.out/html/Peru/CS-UNMSM/Plan2018/Curricula_CS_UNMSM.html" "../Curricula.out/html/Peru/CS-UNMSM/Plan2018/index.html";
+      cp "../Curricula.out/html/Peru/CS-UNSA/Plan2017/Curricula_CS_UNSA.html" "../Curricula.out/html/Peru/CS-UNSA/Plan2017/index.html";
       #-split 3 -numbered_footnotes -images_only -timing -html_version latin1 -antialias -no_transparent \
 
 
-      ./scripts/update-analytic-info.pl CS-UNMSM
-      ./scripts/gen-faculty-info.pl CS-UNMSM
+      ./scripts/update-analytic-info.pl CS-UNSA
+      ./scripts/gen-faculty-info.pl CS-UNSA
 endif
 
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula CS-UNMSM-small-graph-curricula ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex;
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/compile-simple-latex.sh Computing-poster CS-UNMSM-poster ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex;
-pdftk A=../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/CS-UNMSM-poster.pdf cat A1-1 output ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/CS-UNMSM-poster-P1.pdf;
-convert ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/CS-UNMSM-poster-P1.pdf ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/../html/CS-UNMSM-poster.png;
-rm ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/CS-UNMSM-poster-P1.pdf
-cp ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/CS-UNMSM-poster.pdf ../Curricula.out/pdfs/CS-UNMSM/Plan2018/.
-mv ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/CS-UNMSM-poster.pdf ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/.
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/compile-simple-latex.sh small-graph-curricula CS-UNSA-small-graph-curricula ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex;
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/compile-simple-latex.sh Computing-poster CS-UNSA-poster ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex;
+pdftk A=../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/CS-UNSA-poster.pdf cat A1-1 output ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/CS-UNSA-poster-P1.pdf;
+convert ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/CS-UNSA-poster-P1.pdf ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/../html/CS-UNSA-poster.png;
+rm ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/CS-UNSA-poster-P1.pdf
+cp ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/CS-UNSA-poster.pdf ../Curricula.out/pdfs/CS-UNSA/Plan2017/.
+mv ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/CS-UNSA-poster.pdf ../Curricula.out/html/Peru/CS-UNSA/Plan2017/.
 
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-syllabi.sh all;
-mkdir -p ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/syllabi;
-cp ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/syllabi/* ../Curricula.out/html/Peru/CS-UNMSM/Plan2018/syllabi/.;
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-syllabi.sh all;
+mkdir -p ../Curricula.out/html/Peru/CS-UNSA/Plan2017/syllabi;
+cp ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/syllabi/* ../Curricula.out/html/Peru/CS-UNSA/Plan2017/syllabi/.;
 
 # Generate Books
 #
-# foreach auxbook (../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/BookOf*-*.tex)
+# foreach auxbook (../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/BookOf*-*.tex)
 #    set book = `echo $auxbook | sed s/.tex//`
-#    $book = `echo $book | sed s|../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/tex/||`
+#    $book = `echo $book | sed s|../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/tex/||`
 #    echo $book
 #    #bibtex $auxfile
-#    ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  $book       	pdflatex "CS-UNMSM 2018-II $book (Plan2018) 1-10";
+#    ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  $book       	pdflatex "CS-UNSA 2018-II $book (Plan2017) 1-10";
 # end
 
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-UNMSM 2018-II BookOfSyllabi-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-UNMSM 2018-II BookOfSyllabi-EN (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-UNMSM 2018-II BookOfBibliography-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-UNMSM 2018-II BookOfBibliography-EN (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-UNMSM 2018-II BookOfDescriptions-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-UNMSM 2018-II BookOfDescriptions-EN (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-UNSA 2018-II BookOfSyllabi-ES (Plan2017) 1-10";
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-UNSA 2018-II BookOfSyllabi-EN (Plan2017) 1-10";
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-UNSA 2018-II BookOfBibliography-ES (Plan2017) 1-10";
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-UNSA 2018-II BookOfBibliography-EN (Plan2017) 1-10";
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-UNSA 2018-II BookOfDescriptions-ES (Plan2017) 1-10";
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-UNSA 2018-II BookOfDescriptions-EN (Plan2017) 1-10";
 
-#       ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-UNMSM 2018-II BookOfUnitsByCourse (Plan2018) 1-10";
-#       ../Curricula.out/Peru/CS-UNMSM/cycle/2018-II/Plan2018/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-UNMSM 2018-II BookOfDeliveryControl (Plan2018) 1-10";
+#       ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-UNSA 2018-II BookOfUnitsByCourse (Plan2017) 1-10";
+#       ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2017/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-UNSA 2018-II BookOfDeliveryControl (Plan2017) 1-10";
 
 
-date >> ../Curricula.out/log/Peru-CS-UNMSM-time.txt;
-more ../Curricula.out/log/Peru-CS-UNMSM-time.txt;
+date >> ../Curricula.out/log/Peru-CS-UNSA-time.txt;
+more ../Curricula.out/log/Peru-CS-UNSA-time.txt;
 #./scripts/testenv.pl
 beep;
 beep;

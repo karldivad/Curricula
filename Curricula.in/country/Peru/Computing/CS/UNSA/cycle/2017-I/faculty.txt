@@ -17,7 +17,7 @@
 \Twitter{@ecuadrosv}
 \Blog{https://ecuadros.blogspot.com}
 \Research{Information Retrieval, Data Structures, Programming, Education in CS}
-\courses{CS1D1}
+\courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--

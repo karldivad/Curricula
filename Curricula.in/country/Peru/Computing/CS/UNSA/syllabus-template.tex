@@ -53,6 +53,7 @@ CODIGO DEL CURSO: --COURSE_CODE--
 
 \addtocounter{SyllabiSectionCount}{1}
 {\bf \arabic{SyllabiSectionCount} Datos Generales}
+\vskip 5pt
 \begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|} \hline
 \multicolumn{8}{|l|}{\textbf{FACULTAD :} \FacultadName}\\ \hline
 \multicolumn{4}{|X|}{\textbf{DEPARTAMENTO :}{\DepartmentShortName} }&
@@ -78,25 +79,33 @@ CODIGO DEL CURSO: --COURSE_CODE--
 
 \addtocounter{SyllabiSectionCount}{1}
 {\bf \arabic{SyllabiSectionCount} Exposición de Motivos}
+\vskip 5pt
 \begin{tabularx}{\textwidth}{|X|}\hline
 --JUSTIFICATION--
 \\ \hline
 \end{tabularx}
+\vskip 5pt
 
 {\bf \arabic{SyllabiSectionCount} Competencias}
+\vskip 5pt
 \begin{tabularx}{\textwidth}{|X|} \hline
 --GOAL--
 \\ \hline
 \end{tabularx}
+\vskip 5pt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addtocounter{SyllabiSectionCount}{1}
+\vskip 5pt
 {\bf \arabic{SyllabiSectionCount} Contenido Temático}
+\vskip 5pt
 \setcounter{SyllabiUnitCount}{0}
 --BEGINUNIT--
 % Inicio unidad
 \addtocounter{SyllabiUnitCount}{1}
+\vskip 5pt
 {\bf \arabic{SyllabiSectionCount} --UNIT_TITLE-- (--HOURS--)}
+\vskip 5pt
 \begin{tabularx}{\textwidth}{|X|X|c|c|c|} \hline
 \textbf{Objetivos Específicos} & \textbf{Contenidos} & \textbf{Horas} & \textbf{Fecha} & \textbf{Avance \%} \\ \hline
 --UNIT_GOAL-- &
@@ -116,7 +125,9 @@ CODIGO DEL CURSO: --COURSE_CODE--
 %\end{description}
 
 \addtocounter{SyllabiSectionCount}{1}
+\vskip 5pt
 {\bf \arabic{SyllabiSectionCount} Actividades}
+\vskip 5pt
 \begin{itemize}
 \item Asignaciones
 \item Controles de Lectura
@@ -143,7 +154,7 @@ CODIGO DEL CURSO: --COURSE_CODE--
 {\bf \arabic{SyllabiSectionCount} Evaluación}
 
 \begin{evaluation}
-\item La nota final ($NF$) se obtiene de la siguiente manera:
+La nota final se obtiene de la siguiente manera:
 \begin{description}
 \item[NE] Nota de Exámenes 60\%, esta nota se divide en
 \begin{itemize}
@@ -158,8 +169,8 @@ NF = 0.6*NE + 0.4*NT
 \end{evaluation}
 
 %\bibliographystyle{--BIBSTYLE--}
-\bibliographystyle{plain}
-\bibliography{--BIBFILE--}
+%\bibliographystyle{plain}
+%\bibliography{--BIBFILE--}
 
 %\addtocounter{SyllabiSectionCount}{1}
 % {\bf \arabic{SyllabiSectionCount} Recursos Bibliográficos}
@@ -186,7 +197,7 @@ NF = 0.6*NE + 0.4*NT
 \cline{2-2}
 &
 \begin{center}
---PROFESSOR_NAMES--~\\
+--PROFESSOR_NAMES--~\\ 
 Docente del curso
 
 \end{center}\\
