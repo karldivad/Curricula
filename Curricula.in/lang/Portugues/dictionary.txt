@@ -23,20 +23,33 @@ COURSECODE= Código
 COURSENAME= Curso
 SYLLABI=Syllabi
 THEORY    = HT
+<<<<<<< HEAD
 Theory    = Teoria
 PRACTICE  = HP
 Practice  = Prática
 LABORATORY= HL
 Laboratory= Laboratório
+=======
+Theory    = Teoría
+PRACTICE  = HP
+Practice  = Práctica
+LABORATORY= HL
+Laboratory= Laboratorio
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 CREDITS   = CRÉDITOS
 Credits   = Créditos
 cr        = cr
 CR	  = Cr
+<<<<<<< HEAD
 Prerequisites=Pré-requisitos
+=======
+Prerequisites=Prerrequisitos
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 TYPE      = TIPO
 TypeOfCourse=Tipo de Curso
 PREREQ    = Requisitos
 SUMILLA  = SUMILLA
+<<<<<<< HEAD
 UNIT=UNIDADE
 Unit=Unidade
 Professor=Docente(s)
@@ -78,11 +91,55 @@ Syllabi   = Sumário
 Descriptions=Descrições
 Bibliography=Bibliografia
 Plan	  = Plano
+=======
+UNIT=UNIDAD
+Unit=Unidad
+Professor=Docente(s)
+AttentionwithAppointment=Atención previa coordinación con el profesor
+InformationAbouttheCourse=Información del curso
+BriefDescription=Breve descripción del curso 
+Where=Donde
+PerformanceInClass=Desempeño en la clase
+TheoryEvaluation=Evaluaciones Teóricas
+Project=Proyecto
+BookSummary=Resumen del libro
+SetOfProblems=Conjuntos de problemas
+Coordinator=Coordinador
+
+HoursPerSession                       = Horas por Sesión
+LengthOfPeriod			              = Duración del Período 
+Book 				                  = Libro
+BookOf				                  = Libro de
+Author				                  = Autor
+YearsOfPublication                    = Años de Publicación 
+OtherTexts                            = Otros Textos 
+Tittle                                = Título.
+CourseInformation                     = Información del curso.
+SpecificGoalsOfTheCourse              = Objetivos específicos del curso.
+SpecificCompetencesOfTheCourse        = Competencias específicas del curso.
+ListOfSubjectsToStudyDuringTheCourse  = Lista de temas a estudiar durante el curso.
+MethodologyAndMethodOfEvaluation      = Metodología y método de evaluación.
+BriefDescriptionOfCourseContent       = Breve descripción del contenido del curso.
+Name				      = Nombre
+E-mail				      = Correo Electrónico 
+Corequisites                          = Co-Requisitos
+HoursOfAttentionOfTheInstructorOrCoordinatorOfTheCourse = Horas de Atención del Instructor o coordinador del curso
+
+DPTO	  = Dpto
+TOTALHOURS= Horas Totales 
+Syllabus  = Sílabo
+SyllabusOf= Silabus de
+Syllabi   = Sílabos
+Descriptions=Sumillas
+Bibliography=Bibliografía
+Plan	  = Plan
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 BloomLevel= Nivel Bloom
 
 Semester	   =Semestre
 Sem		   =Sem
 Semesters	   =Semestres
+<<<<<<< HEAD
 Mandatory	   =Obrigatório
 MandatoryShort	   =O
 MandatoryUnit	   =Unidade obrigatória
@@ -92,10 +149,22 @@ Elective	   =Eletivo
 Electives          =Eletivos
 ElectiveShort	   =E
 None		   = Nenhum
+=======
+Mandatory	   =Obligatorio
+MandatoryShort	   =O
+MandatoryUnit	   =Unidad obligatoria
+Core-Tier1	   =Core Tier1
+Core-Tier2	   =Core Tier2
+Elective	   =Electivo
+Electives          =Electivos
+ElectiveShort	   =E
+None		   = Ninguno
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 hours		   = horas
 HOURS		   = HORAS
 hrs		   = hr(s)
 hour		   = hora
+<<<<<<< HEAD
 HoursOfThisCourse  = Horas de curso
 Total		   = Total
 Pag                = Pág
@@ -167,10 +236,84 @@ CS=>Ciência da Computação--{\it Computer Science}
 IS=>Sistemas de Informação--{\it Information Systems}
 IT=>Tecnologia da Informação--{\it Information Technology}
 SE=>Engenharia de Software--{\it Software Engineering}
+=======
+HoursOfThisCourse  = Horas del curso
+Total		   = Total
+Pag                = Pág
+TeamTitle          = Equipo de Trabajo
+FinalReport	   = Reporte Final
+LastModification   = Última modificación
+Justification	   = Justificación
+GeneralGoals	   = Objetivos Generales
+Competences	   = Competencias
+ContributionToOutcomes=Contribución a los resultados ({\it Outcomes})
+ContributionToSkills=Contribución a las habilidades de Ciencia de la Computación (IEEE)
+Skills		   = Habilidades
+Units		   =Unidades
+KUTitle		   =Unidad de Conocimiento
+KUsTitle	   =Unidades de Conocimiento
+
+Topics             =Tópicos
+ListOfTopics	   =Lista de temas a estudiar en el curso
+UnitGoals          =Objetivos
+LearningOutcomes   =Objetivos de Aprendizaje
+LearningLevelExpected=Nivel de Aprendizaje Esperado
+CompetencesExpected=Competences esperadas
+CompetencesIEEE	   =Competencias (IEEE)
+UnitNotDefined     =Unidad no definida
+BibliographySection=Referencias Bibliográficas
+
+MethodologyAndEvaluation=Metodologia y Evaluación
+Methodology		=Metodología
+THEORY-SESSIONS     =Sesiones Teóricas
+THEORY-SESSIONS-CONTENT =Las sesiones de teoría se llevan a cabo en clases magistrales donde se realizarán actividades que propicien un aprendizaje activo, con dinámicas que permitan a los estudiantes interiorizar los conceptos.
+LAB-SESSIONS           =Sesiones de Laboratorio
+LAB-SESSIONS-CONTENT    =Para verificar que los alumnos hayan alcanzado el logro planteado para cada una de las unidades de aprendizaje, realizarán actividades que les permita aplicar los conocimientos adquiridos durante las sesiones de teoría y se les propondrá retos que permitan evaluar el desempeño de los alumnos.
+ORAL-SESSIONS           =Exposiciones individuales o grupales
+ORAL-SESSIONS-CONTENT   =Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso.
+READING-SESSIONS         =Lecturas
+READING-SESSIONS-CONTENT =A lo largo del curso se proporcionan diferentes lecturas, las cuales son evaluadas. El promedio de las notas de las lecturas es considerado como la nota de una práctica calificada. El uso del campus virtual UTEC Online permite a cada estudiante acceder a la información del curso, e interactuar fuera de aula con el profesor y con los otros estudiantes.
+EVALUATION-SYSTEM        =Sistema de Evaluación
+EVALUATION-CONTENT       =~
+METHODOLOGY-DESCRIPTION  =~
+
+NoteT=Consiste en el promedio de notas de los exámenes cortos individuales, redondeada hacia arriba (esta nota es sobre 9).
+NoteP=Consiste en el promedio de notas de las practicas calificadas grupales, redondeada hacia arriba (esta nota es sobre 9).
+NoteE=Consiste en el resultado de los problemas de esfuerzo individual redondeada hacia arriba (esta nota es sobre 2).
+
+nocorehours    =Sin mínimo de horas
+corehours	   =horas como mínimo
+ThisSchool	   =Esta carrera
+
+AdviceRecCourses		=Se recomienda que el alumno haya llevado
+FreeCreditsAdvice		=Otros cursos (<NFREECREDITS> <CREDITS>) podrían ser agregados aquí
+TotalNumberOfCreditsMsg		=Total de créditos de la carrera
+DistributionCreditsByArea	=Distribución de cursos por áreas
+TableOfTopicByCourseCaption	=Tópicos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER>
+TableOfOutcomesByCourseCaption  =Resultados esperados por curso <BEGIN_SEM> al <END_SEM> <SEMESTER>
+Skill				=Competencia
+ComparisonWithStandardCaption=Comparación <AREA>-\siglas~Vs. <STANDARD> de <STANDARD_REF_INSTITUTION>.
+InstitutionToCompareWith=IEEE-CS/ACM
+Yes 	= Si
+No 	= No
+CriticalPath=Camino crítico
+
+Familiarity=Familiarizarse
+Usage=Usar
+Assessment=Evaluar
+
+<HASH name=standards_long_name>
+CE=>Ingeniería de Computación--{\it Computer Engineering}
+CS=>Ciencia de la Computación--{\it Computer Science}
+IS=>Sistemas de Información--{\it Information Systems}
+IT=>Tecnología de Información--{\it Information Technology}
+SE=>Ingeniería de Software--{\it Software Engineering}
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 </HASH>
 
 % Labels for spider charts
 <HASH name=all_areas>
+<<<<<<< HEAD
 CS => Ciência da<ENTER>Computação
 MC => Matemática para<ENTER>Computação
 CB => Ciências<ENTER>Básicas
@@ -192,6 +335,29 @@ FG => Formação<ENTER>Geral
 7=>Sétimo
 8=>Oitavo
 9=>Nono
+=======
+CS => Ciencia de la<ENTER>Computación
+MC => Matemática para<ENTER>Computación
+CB => Ciencias<ENTER>Básicas
+SE => Ingeniería<ENTER>de Software
+HW => Hardware y<ENTER>Arquitectura
+IT => Tecnología<ENTER>de Información
+IS => Sistemas de<ENTER>Información 
+BM => Contenido<ENTER>Empresarial
+FG => Formación<ENTER>General
+</HASH>
+
+<HASH name=semester_ordinal>
+1=>Primer
+2=>Segundo
+3=>Tercer
+4=>Cuarto
+5=>Quinto
+6=>Sexto
+7=>Séptimo
+8=>Octavo
+9=>Noveno
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 10=>Décimo
 </HASH>
 
@@ -209,6 +375,7 @@ FG => Formação<ENTER>Geral
 </HASH>
 
 <HASH name=labels_per_level>
+<<<<<<< HEAD
 1=>Introdutório
 2=>Intermediário
 3=>Avançado
@@ -241,3 +408,37 @@ Modality=Modalidade
 FaceToFace=Presencial
 Blended=Semipresencial (Blended)
 Virtual=A distância
+=======
+1=>Introductorio
+2=>Intermedio
+3=>Avanzado
+4=>Proyecto Final
+</HASH>
+
+<HASH name=Acronyms>
+SI=>Sistemas de Información
+TI=>Tecnología de la Información
+BD=>Bases de Datos
+POO=>Programación Orientada a Objetos
+ADS=>Análisis y Diseño de Sistemas
+ADA=>Análisis y Diseño de Algoritmos
+#IVU= >Introducción a la Vida Universitaria
+</HASH>
+
+Mission=Misión
+Definition=Definición
+
+<HASH name=professor_role_label>
+T=>Titular
+L=>Laboratorio
+-=>
+</HASH>
+
+DoctorIn=Doctor en
+MasterIn=Master en
+
+Modality=Modalidad
+FaceToFace=Presencial
+Blended=Semipresencial (Blended)
+Virtual=Virtual
+>>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
