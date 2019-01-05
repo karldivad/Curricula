@@ -22,6 +22,10 @@ sudo apt-get install graphviz; ok;
 sudo apt-get install xpdf ; ok;
 sudo apt-get install gv; ok;
 sudo apt-get install inkscape;
+
+# convert does not work correctly with default parameters
+sudo sed -i 's/\(<policy domain="coder" rights=\)"none" \(pattern="PDF" \/>\)/\1"read|write"\2/g' /etc/ImageMagick-6/policy.xml
+
 brew tap homebrew/cask
 brew cask install inkscape
 
