@@ -7,18 +7,42 @@ Generador de curriculas para escuelas profesionales relacionadas a la computaci�
 Versiones probadas utilizadas:
 
 ```
-Ubuntu 16.04
+Ubuntu 16.04 || Ubuntu 18.04
 Perl v5.22.1
 TeX v3.14159265
 ```
 
 ## Instalación
 
-### UBUNTU
-```
-sudo apt-get install texlive-science texlive-latex-extra texlive-bibtex-extra texlive-lang-spanish gv inkscape csh libcarp-assert-perl okular chromium-browser graphviz xpdf dot2tex texlive-pstricks biber kile ps2eps latex2html 
+### Ubuntu
+
+#### Instalando paquetes necesarios:
 
 ```
+sudo apt-get install texlive-science texlive-latex-extra texlive-bibtex-extra texlive-lang-spanish gv inkscape csh libcarp-assert-perl okular chromium-browser graphviz xpdf dot2tex texlive-pstricks biber kile ps2eps latex2html build-essential pdftk
+
+```
+#### Instalando modulo PERL necesario:
+
+```
+sudo cpan install Clone
+```
+
+#### **Solo en Ubuntu 18.04**
+
+No se encuentra el paquete necesario __pdftk__
+
+```
+sudo add-apt-repository ppa:malteworld/ppa
+sudo apt update
+sudo apt install pdftk
+```
+
+
+
+
+
+
 * Exportar librerías propias: `export PERL5LIB=/home/$USER/Curricula/Curricula.Master/scripts/`
 
 
