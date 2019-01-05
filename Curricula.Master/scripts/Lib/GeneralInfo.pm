@@ -2112,6 +2112,7 @@ sub generate_courses_by_professor()
 {
 	my $out_txt = "";
 	my $professor_count = 0;
+		$out_txt .= "{\\bf $Common::config{faculty}{$email}{name}}\n";
 	foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
 	{
 		$out_txt .= ""
