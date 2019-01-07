@@ -1181,7 +1181,7 @@ sub generate_index_for_this_area_old()
 }
 
 # ok
-sub gen_batch($$)
+sub gen_batch($$) 
 {
 	Util::precondition("read_institutions_list");
 	my ($source, $target) = (@_);
