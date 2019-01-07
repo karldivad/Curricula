@@ -28,13 +28,14 @@ our %ku_info			= ();
 our %acc_hours_by_course	= ();
 our %acc_hours_by_unit		= ();
 
-our $prefix_area 		= "";
+our $prefix_area 			= "";
 our $only_macros_file		= "";
 our $compileall_file    	= "";
 
-# our @macro_files 		= ();
+# our @macro_files 			= ();
 our %course_info          	= ();
 our @codcour_list_sorted;
+our %codcour_list_sorted 	= ();
 our %courses_by_semester 	= ();
 our %counts              	= ();
 our %antialias_info 	 	= ();
@@ -3415,19 +3416,22 @@ sub sort_courses()
 	@codcour_list_sorted = sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
  				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
  				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-					   $a cmp $b
+					 $a cmp $b
 				}
 				@codcour_list_sorted;
+
 	#@{$Common::courses_by_semester{$semester}})
-        #$codcour_label
+    #$codcour_label
 	#print Dumper(\@codcour_list_sorted); exit;
+	my $priority = 0;
 	foreach my $codcour (@codcour_list_sorted)
 	{
-	      my $semester = $course_info{$codcour}{semester};
-	      #Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
-	      if(not defined($courses_by_semester{$semester}))
+	    my $semester = $course_info{$codcour}{semester};
+	    #Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
+	    if(not defined($courses_by_semester{$semester}))
 		{	$courses_by_semester{$semester} = [];		}
 		push(@{$courses_by_semester{$semester}}, $codcour);
+		$codcour_list_sorted{$codcour} = $priority++;
 	}
 	Util::check_point("sort_courses");
 }
