@@ -54,7 +54,7 @@ sub generate_general_info()
 	GeneralInfo::generate_list_of_courses_by_area($lang);
 	GeneralInfo::generate_compatibility_with_standards();
 
-	GeneralInfo::generate_courses_by_professor();
+#	GeneralInfo::generate_courses_by_professor();
 	
 # 	GeneralInfo::generate_faculty_info();
 	GeneralInfo::generate_courses_by_professor();

@@ -51,43 +51,38 @@ sub generate_course_tables()
 # 		{    Util::print_message("Common::course_info{$codcour}{course_type} = $Common::course_info{$codcour}{course_type}");
 # 		}
 
-                foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
+        foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
-                        #print "{$semester}{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{$Common::course_info{$codcour}{cr}}{$codcour}% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}, $Common::course_info{$codcour}{cr}\n";
+            #print "{$semester}{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{$Common::course_info{$codcour}{cr}}{$codcour}% $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}, $Common::course_info{$codcour}{cr}\n";
 			my %this_course_info 	= ();
 			#my $codcour_label 	= Common::get_label($codcour);
 			$this_line		= $Common::config{dictionary}{course_fields};
 			my $prefix		= $Common::course_info{$codcour}{prefix};
-			my $pdflink 		= "";
-			$pdflink .= "\\latexhtml{}{%\n";
-                        $pdflink .= "\t\\begin{htmlonly}\n";
-                        $pdflink .= "\t\t\\begin{rawhtml}\n";
-                        $pdflink .= Common::get_syllabi_language_icons("\t\t\t", $codcour);
-                        $pdflink .=  "\t\t\\end{rawhtml}\n";
-                        $pdflink .=  "\t\\end{htmlonly}\n";
-			$pdflink .= "}\n";
+			my $pdflink 	= Common::get_pdf_link($codcour);
+
 # 			Util::print_message("codcour = $codcour, $Common::course_info{$codcour}{bgcolor}");
 			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour}}{sec:$codcour}";
-			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+			$this_course_info{COURSENAME} = Common::GetCourseNameWithLink($codcour, 1, $pdflink);
+#			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
 # 			Util::print_message("codcour=$codcour");
 # 			print Dumper ( \%{$Common::course_info{$codcour}} );
-			if(not $Common::course_info{$codcour}{recommended} eq "")
-			{
-				my ($rec_courses, $sep) = ("", "");
-				foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))
-				{
-# 					print "$rec(A)\n";
-					$rec = Common::get_label($rec);
-					my $semester_rec = $Common::course_info{$rec}{semester};
-					$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
-					$rec_courses .= "($semester_rec";
-					$rec_courses .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester_rec}}\$)";
-					$sep = ", ";
-# 					print "$rec(C)\n";
-				}
-				$this_course_info{COURSENAME} .= "\\footnote{$Common::config{dictionary}{AdviceRecCourses}: $rec_courses.}";
-			}
-			$this_course_info{COURSENAME} .= " ($Common::config{dictionary}{Pag}~\\pageref{sec:$codcour})~$pdflink";
+#			if(not $Common::course_info{$codcour}{recommended} eq "")
+#			{
+#				my ($rec_courses, $sep) = ("", "");
+#				foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))
+#				{
+## 					print "$rec(A)\n";
+#					$rec = Common::get_label($rec);
+#					my $semester_rec = $Common::course_info{$rec}{semester};
+#					$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+#					$rec_courses .= "($semester_rec";
+#					$rec_courses .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester_rec}}\$)";
+#					$sep = ", ";
+## 					print "$rec(C)\n";
+#				}
+#				$this_course_info{COURSENAME} .= "\\footnote{$Common::config{dictionary}{AdviceRecCourses}: $rec_courses.}";
+#			}
+#			$this_course_info{COURSENAME} .= " ($Common::config{dictionary}{Pag}~\\pageref{sec:$codcour})~$pdflink";
 			$this_course_info{COURSEAREA} .= "$Common::course_info{$codcour}{area}";
 			$this_course_info{DPTO}       .= "$Common::course_info{$codcour}{department}";
 
@@ -2094,21 +2089,26 @@ sub generate_courses_by_professor()
 {
 	my $out_txt = "";
 	my $professor_count = 0;
+	#print Dumper(%{$Common::config{faculty}}); exit;
 	foreach my $email (keys %{$Common::config{faculty}} )
 	{	
+		Util::print_message("Processing processor: $email");
 		my $courses_by_professor_count = 0;
 		my $this_professor_list = "";
-		foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} 
-							 sort {$Common::codcour_list_sorted{$a} <=> $Common::codcour_list_sorted{$b})
+		foreach my $codcour (sort {$Common::codcour_list_sorted{$a} <=> $Common::codcour_list_sorted{$b}}
+							keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}})
 		{
-			$this_professor_list .= "\\item $Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour}";
+			$this_professor_list .= "\\item ".Common::GetCourseNameWithLink($codcour, 1, "")."\n";
 			$courses_by_professor_count++;
 		}
 		if($courses_by_professor_count > 0)
-		$out_txt .= "{\\bf $Common::config{faculty}{$email}{fields}{name}}\n";
-
+		{
+			$out_txt .= "{\\bf $Common::config{faculty}{$email}{fields}{name}}\n";
+			$out_txt .= $this_professor_list;
+			$professor_count++;
+		}
 	}
-	$out_txt = "\\begin{itemize}\n$out_txt\\end{itemize}\n";
+	$out_txt = "%Generated by generate_courses_by_professor ... do not touch !!!\n\\begin{itemize}\n$out_txt\\end{itemize}\n";
 	my $out_file = Common::get_template("out-courses-by-professor-file");
 	Util::print_message("generate_courses_by_professor: Generating ($out_file) OK");
 	Util::write_file($out_file, $out_txt); 
