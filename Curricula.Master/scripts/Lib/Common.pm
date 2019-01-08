@@ -542,7 +542,7 @@ sub set_initial_paths()
         $path_map{"preamble0-file"}                 = $path_map{InAllTexDir}."/preamble0.tex";
         $path_map{"list-of-courses"}		   		= $path_map{InDisciplineDir}."/$area$config{CurriculaVersion}-dependencies.tex";
 
-        $path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineDir}."/$config{discipline}-acronyms.tex";
+        $path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineDir}."/tex/$config{discipline}-acronyms.tex";
         $path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
         $path_map{"out-ncredits-file"}              = $path_map{OutputTexDir}."/ncredits.tex";
         $path_map{"out-nsemesters-file"}            = $path_map{OutputTexDir}."/nsemesters.tex";
