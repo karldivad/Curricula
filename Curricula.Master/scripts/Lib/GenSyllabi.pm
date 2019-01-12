@@ -465,6 +465,7 @@ sub process_syllabi()
 {
 	Common::read_faculty();
 	Common::read_distribution();
+	Common::sort_faculty_list();
 	Common::read_aditional_info_for_silabos(); # Days, time for each class, etc.
 
 	# It generates all the sillabi

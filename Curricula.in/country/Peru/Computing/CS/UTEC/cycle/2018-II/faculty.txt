@@ -10,6 +10,7 @@
 \end{titles}
 \Category{Principal}
 \Dedication{TC} 
+\Position{Director}
 \webpage{http://socios.spc.org.pe/ecuadros}
 \Office{Computer Science Program, 5th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500 Ext 4281}

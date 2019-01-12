@@ -57,7 +57,8 @@ sub generate_general_info()
 #	GeneralInfo::generate_courses_by_professor();
 	
 # 	GeneralInfo::generate_faculty_info();
-	GeneralInfo::generate_courses_by_professor();
+	GeneralInfo::generate_courses_by_professor($lang);
+	GeneralInfo::generate_professor_by_course($lang);
  	GeneralInfo::process_equivalences();
 
 # 	generate_sql_for_new_courses();

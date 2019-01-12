@@ -241,3 +241,7 @@ Modality=Modality
 FaceToFace=Face to face
 Blended=Blended
 Virtual=Virtual
+
+CoursesAProfessorCouldTeach=Courses that a teacher could dictate this semester
+ProfessorSkilledToTeachACourse=Professor skilled to teach a course
+ThereIsNoProfessorSkilledForThisCourse=--

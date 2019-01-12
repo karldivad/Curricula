@@ -242,3 +242,7 @@ Modality=Modalidad
 FaceToFace=Presencial
 Blended=Semipresencial (Blended)
 Virtual=Virtual
+
+CoursesAProfessorCouldTeach=Cursos que un profesor tiene habilitación
+ProfessorSkilledToTeachACourse=Profesor capacitado para enseñar por curso
+ThereIsNoProfessorSkilledForThisCourse=--

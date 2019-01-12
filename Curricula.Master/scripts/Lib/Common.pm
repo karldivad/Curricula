@@ -47,6 +47,12 @@ my %Numbers2Text 		= (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "F
 our %template_files = (	"Syllabus" 		=> "in-syllabus-template-file"
 # 			"DeliveryControl" 	=> "in-syllabus-delivery-control-file",
 		      );
+our %professor_role_order = ("T" => 1,
+			     			 "L" => 2,
+			     			 "-" => 3,
+			    			);
+our %position_ranking   = ("Director" => 1, "Professor" => 2);
+our %dedication_ranking = ("TC"       => 1, "TP"        => 2);
 
 # flush stdout with every print -- gives better feedback during
 # long computations
@@ -630,24 +636,25 @@ sub set_initial_paths()
 
         $path_map{"faculty-general-output-html"}		= $path_map{OutputFacultyDir}."/faculty.html";
 		$path_map{"out-courses-by-professor-file"}		= $config{OutputTexDir}."/courses-by-professor.tex";
+		$path_map{"out-professor-by-course-file"}		= $config{OutputTexDir}."/professor-by-course.tex";
         $path_map{"in-replacements-file"}				= $path_map{InStyDir}."/replacements.txt";
 
         $path_map{"output-curricula-html-file"}			= "$path_map{OutputHtmlDir}/Curricula_$config{area}_$config{institution}.html";
         $path_map{"output-index-html-file"}				= "$path_map{OutputHtmlDir}/index.html";
 
         # Batch files
-        $path_map{"out-compileall-file"}		= "compileall";
+        $path_map{"out-compileall-file"}				= "compileall";
         $path_map{"in-compile1institucion-base-file"}	= $path_map{InDir}."/base-scripts/compile1institucion.sh";
-        $path_map{"out-compile1institucion-file"}  	= $path_map{OutputScriptsDir}."/compile1institucion.sh";
+        $path_map{"out-compile1institucion-file"}  		= $path_map{OutputScriptsDir}."/compile1institucion.sh";
         $path_map{"in-gen-html-1institution-base-file"}	= $path_map{InDir}."/base-scripts/gen-html-1institution.sh";
         $path_map{"out-gen-html-1institution-file"} 	= $path_map{OutputScriptsDir}."/gen-html-1institution.sh";
-        $path_map{"in-gen-eps-files-base-file"}		= $path_map{InDir}."/base-scripts/gen-eps-files.sh";
-        $path_map{"out-gen-eps-files-file"} 		= $path_map{OutputScriptsDir}."/gen-eps-files.sh";
-        $path_map{"in-gen-graph-base-file"}		= $path_map{InDir}."/base-scripts/gen-graph.sh";
-        $path_map{"out-gen-graph-file"} 		= $path_map{OutputScriptsDir}."/gen-graph.sh";
-        $path_map{"in-gen-book-base-file"}		= $path_map{InDir}."/base-scripts/gen-book.sh";
-        $path_map{"out-gen-book-file"} 			= $path_map{OutputScriptsDir}."/gen-book.sh";
-        $path_map{"in-CompileTexFile-base-file"}	= $path_map{InDir}."/base-scripts/CompileTexFile.sh";
+        $path_map{"in-gen-eps-files-base-file"}			= $path_map{InDir}."/base-scripts/gen-eps-files.sh";
+        $path_map{"out-gen-eps-files-file"} 			= $path_map{OutputScriptsDir}."/gen-eps-files.sh";
+        $path_map{"in-gen-graph-base-file"}				= $path_map{InDir}."/base-scripts/gen-graph.sh";
+        $path_map{"out-gen-graph-file"} 				= $path_map{OutputScriptsDir}."/gen-graph.sh";
+        $path_map{"in-gen-book-base-file"}				= $path_map{InDir}."/base-scripts/gen-book.sh";
+        $path_map{"out-gen-book-file"} 					= $path_map{OutputScriptsDir}."/gen-book.sh";
+        $path_map{"in-CompileTexFile-base-file"}		= $path_map{InDir}."/base-scripts/CompileTexFile.sh";
         $path_map{"out-CompileTexFile-file"} 			= $path_map{OutputScriptsDir}."/CompileTexFile.sh";
         $path_map{"in-compile-simple-latex-base-file"}	= $path_map{InDir}."/base-scripts/compile-simple-latex.sh";
         $path_map{"out-compile-simple-latex-file"} 		= $path_map{OutputScriptsDir}."/compile-simple-latex.sh";
@@ -676,18 +683,18 @@ sub set_initial_paths()
         $path_map{"in-analytics.js-file"}               = $path_map{InDir}."/analytics.js";
 
         # Config files
-        $path_map{"all-config"}				= $path_map{InDir}."/config/all.config";
-        $path_map{"colors"}				= $path_map{InDir}."/config/colors.config";
-        $path_map{"discipline-config"}		   	= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
-        $path_map{"in-area-all-config-file"}		= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
-        $path_map{"in-area-config-file"}		= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
-        $path_map{"in-country-config-file"}		= GetInCountryBaseDir($config{country_without_accents})."/country.config";
-        $path_map{"in-institution-config-file"}		= $path_map{InInstDir}."/institution.config";
+        $path_map{"all-config"}							= $path_map{InDir}."/config/all.config";
+        $path_map{"colors"}								= $path_map{InDir}."/config/colors.config";
+        $path_map{"discipline-config"}		   			= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
+        $path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
+        $path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
+        $path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
+        $path_map{"in-institution-config-file"}			= $path_map{InInstDir}."/institution.config";
         $path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
-        $path_map{"dictionary"}				= $path_map{InLangDir}."/dictionary.txt";
-        $path_map{SpiderChartInfoDir}			= $path_map{InDisciplineDir}."/SpiderChartInfo";
+        $path_map{"dictionary"}							= $path_map{InLangDir}."/dictionary.txt";
+        $path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
 
-        $path_map{"OutputDisciplinesList-file"}	= $path_map{OutHtmlBase}."/disciplines.html";
+        $path_map{"OutputDisciplinesList-file"}			= $path_map{OutHtmlBase}."/disciplines.html";
 
 	Util::check_point("set_initial_paths");
 }
@@ -1874,7 +1881,9 @@ sub read_faculty()
 		$config{faculty}{$email}{concentration} = "";
 		$config{faculty}{$email}{sub_area_specialization} = ""; # Computing
 		$config{faculty}{$email}{fields}{anchor} = "$emailwithoutat";
-		$config{faculty}{$email}{fields}{active} = "No";
+		$config{faculty}{$email}{fields}{active} = 0;
+		$config{faculty}{$email}{fields}{position}   = "Professor";
+		$config{faculty}{$email}{fields}{dedication} = "TP";
 		%{$config{faculty}{$email}{fields}{courses_assigned}} = ();
 
 		my ($titles_raw, $others) = ("", "");
@@ -2031,6 +2040,7 @@ sub read_faculty()
 		$config{faculty}{$email}{fields}{courses} = $newListOfCourses;
 		foreach my $codcour ( split(",", $config{faculty}{$email}{fields}{courses} ) )
 		{	$Common::config{faculty}{$email}{fields}{courses_i_could_teach}{$codcour} = "";
+			$Common::config{courses_i_could_teach}{$codcour}{$email} = "";
 		}
 # 		{
 # 		      $onecodcour = get_label($onecodcour);
@@ -2039,16 +2049,13 @@ sub read_faculty()
 # 		}
 		#Util::print_message("$config{faculty}{$email}{fields}{shortcv}");
 	}
+										
 	#Util::print_message("$copy_input");
 	Util::write_file($faculty_file, $copy_input);
 	Util::check_point("read_faculty");
 #    	print Dumper(\%{$config{faculty}{"ecuadros\@ucsp.edu.pe"}});
 }
 
-our %professor_role_order = ("T" => 1,
-			     			 "L" => 2,
-			     			 "-" => 3,
-			    			);
 sub read_distribution()
 {
 	Util::precondition("set_initial_paths");
@@ -2183,7 +2190,7 @@ sub read_distribution()
 						else{	$this_sem_text .= "-";		}
 
 						$sep = ",";
-						$config{faculty}{$professor_email}{fields}{active} 			= "Yes";
+						$config{faculty}{$professor_email}{fields}{active} 			= 1;
 						$config{faculty}{$professor_email}{fields}{courses_assigned}{$codcour} 	= "";
 					}
 				}
@@ -2208,6 +2215,29 @@ sub read_distribution()
 	Util::write_file("$distribution_file", $output_txt);
 	Util::print_message("read_distribution($distribution_file) OK!");
 	Util::check_point("read_distribution");
+}
+
+sub sort_faculty_list()
+{
+	Util::precondition("read_faculty");
+	Util::precondition("read_distribution");
+	my $faculty_priority = 0;
+	#foreach my $email (	keys %{$Common::config{faculty}} )
+	#{
+	#	scalar keys %{$Common::config{faculty}{$b}{fields}{courses_assigned}} <=> scalar keys %{$Common::config{faculty}{$a}{fields}{courses_assigned}}
+	#}
+	foreach my $email (	sort { $config{faculty}{$b}{fields}{active}									 <=> $config{faculty}{$a}{fields}{active}								   ||
+							   $Common::config{faculty}{$b}{fields}{degreelevel}                     <=> $Common::config{faculty}{$a}{fields}{degreelevel}	                   ||
+							   $position_ranking{$Common::config{faculty}{$a}{fields}{position}}     <=> $position_ranking{$Common::config{faculty}{$b}{fields}{position}}     ||
+							   $dedication_ranking{$Common::config{faculty}{$a}{fields}{dedication}} <=> $dedication_ranking{$Common::config{faculty}{$b}{fields}{dedication}} ||
+							   $Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
+							  }
+						keys %{$Common::config{faculty}} 
+						)
+	{
+		$Common::config{faculty}{$email}{priority} = $faculty_priority++;
+	}
+	#print Dumper(\%{$Common::config{faculty}{"ecuadros\@utec.edu.pe"}});
 }
 
 # ok
