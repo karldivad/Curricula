@@ -15,24 +15,24 @@ our $discipline  = "";
 
 our $institutions_info_root	= "";
 our $inst_list_file 		= "";
-our %list_of_areas		= ();
+our %list_of_areas			= ();
 our %list_of_courses_per_area   = ();
-our %config 			= ();
-our %general_info		= ();
-our %dictionary			= ();
-our %path_map			= ();
-our %data			= ();
-our %inst_list			= ();
+our %config 				= ();
+our %general_info			= ();
+our %dictionary				= ();
+our %path_map				= ();
+our %data					= ();
+our %inst_list				= ();
 our %map_hours_unit_by_course   = ();
-our %ku_info			= ();
+our %ku_info				= ();
 our %acc_hours_by_course	= ();
 our %acc_hours_by_unit		= ();
 
-our $prefix_area 		= "";
+our $prefix_area 			= "";
 our $only_macros_file		= "";
 our $compileall_file    	= "";
 
-# our @macro_files 		= ();
+# our @macro_files 			= ();
 our %course_info          	= ();
 our @codcour_list_sorted;
 our %codcour_list_priority 	= ();
