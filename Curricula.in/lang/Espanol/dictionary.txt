@@ -246,3 +246,15 @@ Virtual=Virtual
 CoursesAProfessorCouldTeach=Cursos que un profesor tiene habilitación
 ProfessorSkilledToTeachACourse=Profesor capacitado para enseñar por curso
 ThereIsNoProfessorSkilledForThisCourse=--
+
+%%%Spanish
+Exam=Examen
+ExamenAcronym=E
+ContinuousAssessment=Evaluación Continua
+ContinuousAssessmentAcronym=C
+Project=Proyecto
+ProjectAcronym=P
+PracticalTest=Práctica Calificada
+PracticalTestAcronym=PC
+LabExperiments=Laboratorio
+LabExperimentsAcronym=L

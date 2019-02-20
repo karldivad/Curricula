@@ -245,3 +245,15 @@ Virtual=Virtual
 CoursesAProfessorCouldTeach=Courses that a teacher could dictate this semester
 ProfessorSkilledToTeachACourse=Professor skilled to teach a course
 ThereIsNoProfessorSkilledForThisCourse=--
+
+%%%%En ingles
+Examen=Exam
+ExamenAcronym=E
+ContinuousAssessment=Continuous Assessment
+ContinuousAssessmentAcronym=C
+Project=Proyect
+ProjectAcronym=P
+PracticalTest=Practical Test
+PracticalTestAcronym=PT
+LabExperiments=Lab experiments
+LabExperimentsAcronym=L

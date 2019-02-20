@@ -245,3 +245,15 @@ Virtual=A distância
 CoursesAProfessorCouldTeach=Disciplinas que um professor poderia dar aula
 ProfessorSkilledToTeachACourse=Professor skilled to teach a course
 ThereIsNoProfessorSkilledForThisCourse=--
+
+%%%Português
+Exam=Prova
+ExamenAcronym=P
+ContinuousAssessment=Avaliação Contínua
+ContinuousAssessmentAcronym=C
+Project=Projeto
+ProjectAcronym=P
+PracticalTest=Prática
+PracticalTestAcronym=PC
+LabExperiments=Laboratório
+LabExperimentsAcronym=L
