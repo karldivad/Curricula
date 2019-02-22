@@ -90,9 +90,7 @@ sub main()
 	Util::begin_time();
 	Common::setup();
 	#Common::read_bok($Common::config{language_without_accents}); exit;
-	
 	Common::gen_only_macros();
-	
 # 	Common::check_preconditions();
 # 	replacecodes();
 

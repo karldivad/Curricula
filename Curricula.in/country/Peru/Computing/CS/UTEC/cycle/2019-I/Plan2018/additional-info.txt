@@ -1,0 +1,8 @@
+COURSE=CS1100
+OutcomesForOtherTitle=<<CompetencesForEngineering>>
+OutcomesForOtherContentEspanol=spa
+OutcomesForOtherContentEnglish=eng
+COURSE=CS103O
+OutcomesForOtherTitle=<<CompetencesForEngineering>>
+OutcomesForOtherContentEspanol=spa
+OutcomesForOtherContentEnglish=eng

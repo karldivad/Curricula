@@ -127,7 +127,7 @@ UnitNotDefined     =Unidad no definida
 BibliographySection=Referencias Bibliográficas
 
 MethodologyAndEvaluation=Metodologia y Evaluación
-MethodologyAndEvaluationSystem=Metodologia y sietema de evaluación
+MethodologyAndEvaluationSystem=Metodologia y sistema de evaluación
 Methodology		=Metodología
 THEORY-SESSIONS     =Sesiones Teóricas
 THEORY-SESSIONS-CONTENT =Las sesiones de teoría se llevan a cabo en clases magistrales donde se realizarán actividades que propicien un aprendizaje activo, con dinámicas que permitan a los estudiantes interiorizar los conceptos.

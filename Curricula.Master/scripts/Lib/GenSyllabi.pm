@@ -402,25 +402,36 @@ sub read_syllabus_info($$$)
 sub genenerate_tex_syllabus_file($$$$$%)
 {
 	my ($codcour, $file_template, $units_field, $output_file, $lang, %map)   = (@_);
-
 # 	my $unit_struct = "";
 # 	if($file_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 # 	{	$unit_struct = $1;	}
 	$file_template =~ s/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/$map{$units_field}/g;
-
 	$file_template =~ s/\\newcommand\{\\INST\}\{\}/\\newcommand\{\\INST\}\{$Common::institution\}/g;
 	$file_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
-
 	Util::print_message("genenerate_tex_syllabus_file $codcour: $output_file ...");
+
 	for(my $i = 0 ; $i < 2; $i++ )
 	{
 	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
 	    $file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
 	}
-
-        #$file_template =~ s/--.*?--//g;
-        system("rm $output_file");
+	if($file_template =~ m/--OUTCOMES-FOR-OTHERS--/g)
+	{
+		if(defined($Common::course_info{$codcour}{extra_tags}) )
+		{	Util::print_message("$output_file extra tags detected ok!");	
+			my $extra_txt = "\\item {\\bf $Common::course_info{$codcour}{extra_tags}{OutcomesForOtherTitle}} \\\\\n";
+			#Util::print_message("OutcomesForOtherContent$lang=".$Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"});
+			$extra_txt .= $Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"};
+			$file_template =~ s/--OUTCOMES-FOR-OTHERS--/$extra_txt/g;
+			#$extra_txt .= 
+		}
+	}
+    #file_template =~ s/--.*?--//g;
+	if(-e $output_file)
+    {	system("rm $output_file");	}
 	Util::write_file($output_file, $file_template);
+	#Util::print_message("Generating $output_file ok!");
+	#exit;
 }
 
 sub read_sumilla_template()
@@ -528,6 +539,7 @@ sub generate_tex_syllabi_files()
 	}
 	#system("chgrp curricula $OutputTexDir/*");
 	Util::check_point("generate_tex_syllabi_files");
+	exit;
 }
 
 # ok

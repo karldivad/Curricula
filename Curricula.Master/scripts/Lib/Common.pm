@@ -621,7 +621,7 @@ sub set_initial_paths()
         $path_map{"in-sumilla-template-file"}			= $path_map{InInstDir}."/sumilla-template.tex";
         $path_map{"in-syllabus-template-file"}			= $path_map{InInstDir}."/syllabus-template.tex";
         $path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
-        $path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/extra/additional-info $config{Semester}.txt";
+        $path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
         $path_map{"in-distribution-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
         $path_map{"in-this-semester-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
         $path_map{"in-distribution-file"}				= $path_map{"in-distribution-dir"}."/distribution.txt";
@@ -2245,24 +2245,34 @@ sub read_aditional_info_for_silabos()
 {
 	my $file = get_template("in-additional-institution-info-file");
 	Util::print_message("Reading $file ...");
+	
 	open(IN, "<$file") or return;
 	my $codcour = "";
+	my ($label, $body) = ("", "");
 	while(<IN>)
-	{
-		if(m/\s*(.*)\s*=\s*(.*)/)
+	{	my ($line) = ($_);
+		#Util::print_message("codcour=$codcour, label=$label");
+		if(m/\s*(.*)\s*=\s*(.*)\s*/)
 		{
-			my $label = $1;
-			my $body  = $2;
+			($label, $body) = ($1, $2);
+			$body =~ s/\n//g;
 			if( $label eq "COURSE" )
 			{	$codcour = $body;	}
 			else
 			{
-				$course_info{$codcour}{extra_tags}{$label} = "\\specialcell{$body}";
+				#$course_info{$codcour}{extra_tags}{$label} = "\\specialcell{$body}";
+				$course_info{$codcour}{extra_tags}{$label} = $body;
+				#print Dumper(\%{$course_info{$codcour}{extra_tags}});
 				#print "Aditional $codcour > $label=\"$body\"\n";
 			}
 		}
+		else
+		{	$course_info{$codcour}{extra_tags}{$label} .= $line;	}
 	}
 	close IN;
+	#print Dumper(\%{$course_info{CS1100}{extra_tags}});
+	#print Dumper(\%{$course_info{CS103O}{extra_tags}});
+	#exit;
 }
 
 # ok
