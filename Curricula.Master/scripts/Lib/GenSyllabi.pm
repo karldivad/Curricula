@@ -417,8 +417,10 @@ sub genenerate_tex_syllabus_file($$$$$%)
 	}
 	if($file_template =~ m/--OUTCOMES-FOR-OTHERS--/g)
 	{
-		if(defined($Common::course_info{$codcour}{extra_tags}) )
-		{	Util::print_message("$output_file extra tags detected ok!");	
+		my $nkeys = keys %{$Common::course_info{$codcour}{extra_tags}};
+		if($nkeys > 0 )
+		{	Util::print_message("$output_file extra tags detected ok!");
+			print Dumper (\%{$Common::course_info{$codcour}{extra_tags}});	
 			my $extra_txt = "\\item {\\bf $Common::course_info{$codcour}{extra_tags}{OutcomesForOtherTitle}} \\\\\n";
 			#Util::print_message("OutcomesForOtherContent$lang=".$Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"});
 			$extra_txt .= $Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"};
@@ -539,7 +541,6 @@ sub generate_tex_syllabi_files()
 	}
 	#system("chgrp curricula $OutputTexDir/*");
 	Util::check_point("generate_tex_syllabi_files");
-	exit;
 }
 
 # ok

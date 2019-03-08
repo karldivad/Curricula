@@ -47,10 +47,7 @@ my %Numbers2Text 		= (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "F
 our %template_files = (	"Syllabus" 		=> "in-syllabus-template-file"
 # 			"DeliveryControl" 	=> "in-syllabus-delivery-control-file",
 		      );
-our %professor_role_order = ("T" => 1,
-			     			 "L" => 2,
-			     			 "-" => 3,
-			    			);
+our %professor_role_order = ("C" => 0, "T" => 1, "L" => 2, "-" => 3);
 our %position_ranking   = ("Director" => 1, "Professor" => 2);
 our %dedication_ranking = ("TC"       => 1, "TP"        => 2);
 
@@ -1844,14 +1841,14 @@ sub read_faculty()
 	my $faculty_file    		= get_template("faculty-file");
 
 	%{$config{degrees}} 		= ("PosDoc" => 7, "Doctor" => 6,      	"DoctorPT" => 5,
-					   "Master" => 4, "MasterPT" => 3,
-					   "Title"  => 2, "Degree" => 1,	"Bachelor" => 0);
+									"Master" => 4, "MasterPT" => 3,
+									"Title"  => 2, "Degree" => 1,	"Bachelor" => 0);
 	%{$config{degrees_description}} = (0 => "Bachelor",      1 => "Degree", 	1 => "Title",
-					   2 => "Master (Part Time)", 	3 => "Master (Full Time)",
-					   4 => "Doctor (Part Time)", 5 => "Doctor (Full Time)", 6 => "PosDoc");
+										2 => "Master (Part Time)", 	3 => "Master (Full Time)",
+										4 => "Doctor (Part Time)", 5 => "Doctor (Full Time)", 6 => "PosDoc");
 	%{$config{prefix}}  		= ("Bachelor" => "Bach", "Degree" => "Prof.", "Title" => "Prof.",
-					   "MasterPT" => "Mag.", "Master" => "Mag.",
-					   "DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
+									"MasterPT" => "Mag.", "Master" => "Mag.",
+									"DoctorPT" => "Dr.", "Doctor" => "Dr.", "PosDoc" => "Post Doc.");
 	%{$config{sort_areas}} 		= ("Computing" => 1, "Mathematics" => 2, "Science" => 3, "Engineering" => 4, "Enterpreneurship" => 5, "Business" => 6, "Humanities" => 7, "Empty" => 8 );
 
 	%{$config{faculty}} = ();
@@ -2092,10 +2089,9 @@ sub read_distribution()
 			$emails  =~ s/\s//g;
 			$codcour_alias = $codcour;
 			$codcour = get_label($codcour);
-
 			if( not defined($course_info{$codcour}) )
 			{
-			      Util::print_error("codcour \"$codcour\" assigned in \"$distribution_file\" does not exist (line: $line_number)... ");
+			      Util::print_error("codcour \"$codcour\" assigned in \"$distribution_file\" does not exist (line: $line_number) ... ");
 			}
 			$codcour = get_alias($codcour);
 			if( $codcour eq "" )
@@ -2128,6 +2124,7 @@ sub read_distribution()
 				{
 				      if(not defined($config{distribution}{$codcour}{$professor_email}))
 				      {		$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence;
+					  		$config{distribution}{$codcour}{list_of_professors}{$professor_email} = "";
 						    $config{faculty}{$professor_email}{$codcour}{role} = $professor_role;
 							$config{faculty}{$professor_email}{$codcour}{sequence} = $sequence;
 							$sequence++;
@@ -2173,15 +2170,23 @@ sub read_distribution()
 				$this_sem_text .= "% $codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
 				$this_sem_text .= "$codcour->";
 				my $faculty_list_of_emails = "";
-				foreach my $role (sort  { $professor_role_order{$a} <=> $professor_role_order{$b} }
-						  		  keys %{ $Common::config{distribution}{$codcour}})
+				foreach my $professor_email (sort { $professor_role_order{$config{faculty}{$a}{$codcour}{role}} <=> $professor_role_order{$config{faculty}{$b}{$codcour}{role}} ||
+													$Common::config{faculty}{$b}{fields}{degreelevel}           <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
+													$Common::config{faculty}{$a}{$codcour}{sequence}            <=> $Common::config{faculty}{$b}{$codcour}{sequence}
+												  }
+						  		  keys %{ $Common::config{distribution}{$codcour}{list_of_professors}})
 				{
+										          #$config{distribution}{$codcour}{list_of_professors}{$professor_email} = "";
+												  #$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence;
+												  #$config{faculty}{$professor_email}{$codcour}{role} = $professor_role;
+												  #$config{faculty}{$professor_email}{$codcour}{sequence} = $sequence;
 					#$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence++;
-					foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel} ||
-														$config{faculty}{$a}{$codcour}{sequence} <=> $config{faculty}{$b}{$codcour}{sequence}
-													  }
-								     			 keys %{$config{distribution}{$codcour}{$role}}
-								    )
+					#foreach my $professor_email (sort {$config{faculty}{$b}{fields}{degreelevel} <=> $config{faculty}{$a}{fields}{degreelevel} ||
+					#									$config{faculty}{$a}{$codcour}{sequence} <=> $config{faculty}{$b}{$codcour}{sequence}
+					#								  }
+					#							 #keys %{$config{distribution}{$codcour}{list_of_professors}}
+					#			     			 keys %{$config{distribution}{$codcour}{$role}}
+					#			    			)
 					{
 						$this_sem_text .= "$sep$professor_email:";
 						$faculty_list_of_emails .= "$sep$professor_email";
@@ -2266,8 +2271,6 @@ sub read_aditional_info_for_silabos()
 				#print "Aditional $codcour > $label=\"$body\"\n";
 			}
 		}
-		else
-		{	$course_info{$codcour}{extra_tags}{$label} .= $line;	}
 	}
 	close IN;
 	#print Dumper(\%{$course_info{CS1100}{extra_tags}});
@@ -3162,7 +3165,7 @@ sub parse_courses()
 # 		  Util::print_warning("course_info{$codcour}{recommended}=$course_info{$codcour}{recommended}"); exit;
 		  $course_info{$codcour}{corequisites}			= get_label($coreq);
 		  $course_info{$codcour}{group}          		= $group;
-		  %{$course_info{$codcour}{extra_tags}}			= ();
+
 		  $course_info{$codcour}{inst_list}      		= $inst_wildcard;
 		  $course_info{$codcour}{equivalence}			= "";
 		  $course_info{$codcour}{specific_evaluation}		= "";

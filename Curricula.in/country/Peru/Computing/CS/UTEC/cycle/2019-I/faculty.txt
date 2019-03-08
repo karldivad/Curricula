@@ -57,14 +57,14 @@
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Software}{Pontificia Universidad Católica de Chile}{Chile}{2014}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Software Engineering}{Pontificia Universidad Católica de Chile}{Chile}{2014}
-	\Doctor{English}{Computing }{Computer Science}{Software Engineering}{Pontificia Universidad Católica de Chile}{Chile}{2014}
-	\Master{English}{Computing }{Computer Science}{Software Engineering}{Pontificia Universidad Católica de Chile}{Chile}{2014}
+	\Doctor{English}{Computing}{Computer Science}{Software Engineering}{Pontificia Universidad Católica de Chile}{Chile}{2014}
+	\Master{English}{Computing}{Computer Science}{Software Engineering}{Pontificia Universidad Católica de Chile}{Chile}{2014}
 \end{titles}
 \Category{Principal}
 \Dedication{TC}
 \webpage{}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
-\item \Phone{+51-1-2303500 Ext 4723}
+\Phone{+51-1-2303500 Ext 4723}
 \Mobile{+51-949.488.910}
 \facebook{https://web.facebook.com/jesubellido}
 \Twitter{@jesubellido}
@@ -80,7 +80,7 @@
 \name{Yamilet Rosario Serrano Llerena}
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Software}{Universidad Nacional de Singapur}{Singapur}{2018}
-	\Doctor{English}{Computing }{Computer Science}{Software Engineering}{National University of Singapore}{Singapore}{2018}
+	\Doctor{English}{Computing}{Computer Science}{Software Engineering}{National University of Singapore}{Singapore}{2018}
 \end{titles}
 \Category{Principal}
 \Dedication{TC}
@@ -88,7 +88,7 @@
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
 \Mobile{+65 8180 5167}
-\facebook{  }
+\facebook{}
 \Twitter{}
 \Blog{https://sg.linkedin.com/in/yamilet-serrano-71891591}
 \Research{Formal Methods,  Model Checking, Probabilistic Verification}
@@ -103,8 +103,8 @@
 \prefix{Mg}
 \name{Luis Eduardo Talavera Rios}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{ Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}
-	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems }{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}
+	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems}{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -115,7 +115,7 @@
 \facebook{https://www.facebook.com/Luitlvr}
 \Twitter{}
 \Blog{}
-\Research{ Internet of Things} 
+\Research{Internet of Things} 
 \courses{CS2100,CS3P03}
 --END-PROFESSOR--
 
@@ -125,7 +125,7 @@
 \name{Juan Gutierrez Alva}
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{Universidad de São Paulo}{Brasil}{2018}
-	\Doctor{English}{Computing }{Computer Science}{Computer Science}{Universidad de São Paulo}{Brasil}{2018}
+	\Doctor{English}{Computing}{Computer Science}{Computer Science}{Universidad de São Paulo}{Brasil}{2018}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -133,7 +133,7 @@
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
 \Mobile{+55 11 99743-0428}
-\facebook{https://www.facebook.com/profile.php?id=100003199904558 }
+\facebook{https://www.facebook.com/profile.php?id=100003199904558}
 \Twitter{}
 \Blog{}
 \Research{Theory of Computation}
@@ -155,10 +155,10 @@
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
 \Mobile{+51 943 400 216}
-\facebook{  }
+\facebook{}
 \Twitter{}
 \Blog{}
-\Research{ Computer Graphics, parallel,Artificial Intelligence} 
+\Research{Computer Graphics, parallel,Artificial Intelligence} 
 \courses{CS2100,CS2501,CS3501}
 --END-PROFESSOR--
 
@@ -243,8 +243,8 @@
 \prefix{}
 \name{Miguel Paredes}
 \begin{titles}
-	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Aprendizaje automático aplicado/Ciencia de datos, causalidad y predicción }{MIT}{USA}{2018}
-	\Doctor{English}{Computing}{Computer Science}{Applied Machine Learning / Data Science, Causality and Prediction }{MIT}{USA}{2018}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Aprendizaje automático aplicado/Ciencia de datos, causalidad y predicción}{MIT}{USA}{2018}
+	\Doctor{English}{Computing}{Computer Science}{Applied Machine Learning / Data Science, Causality and Prediction}{MIT}{USA}{2018}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -334,7 +334,7 @@
 \prefix{}
 \name{Kenneth Lopez}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{Base de Datos, Administración de Negocios, Big Data }{FGV - Fundação Getúlio Vargas}{Brasil}{2017}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Base de Datos, Administración de Negocios, Big Data}{FGV - Fundação Getúlio Vargas}{Brasil}{2017}
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Estructura de Datos}{PUCP}{Perú}{2010}
 	\Master{English}{Computing}{Computer Science}{Data Base, Business Managing, Big Data}{FGV - Fundação Getúlio Vargas}{Brazil}{2017}
 	\Bachelor{English}{Computing}{Computer Science}{Data Structures}{PUCP}{Peru}{2010}
@@ -431,8 +431,8 @@
 \prefix{Mg}
 \name{Teófilo Chambilla Aquino}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{Web Semántica }{Universidad de Chile}{Chile}{2016}
-	\Master{English}{Computing}{Computer Science}{Semantic Web }{Universidad de Chile}{Chile}{2016}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Web Semántica}{Universidad de Chile}{Chile}{2016}
+	\Master{English}{Computing}{Computer Science}{Semantic Web}{Universidad de Chile}{Chile}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -634,7 +634,7 @@
 \facebook{https://www.facebook.com/ajaflorez}
 \Twitter{@ajaflorez}
 \Blog{}
-\Research{Procesamiento de Lenguaje Natural }
+\Research{Procesamiento de Lenguaje Natural}
 \courses{CS1100,CS1102,CS1103,CS2B01,CS2100,CS2701}
 --END-PROFESSOR--
 
@@ -653,7 +653,7 @@
 \Office{5th floor UTEC. Barranco Lima}
 \Phone{}
 \Mobile{+51994} 001 611}
-\facebook{https://m.facebook.com/rotkyvairam }
+\facebook{https://m.facebook.com/rotkyvairam}
 \Twitter{https://mobile.twitter.com/Rotkyvairam}
 \Blog{}
 \Research{Transformación Digital, RPA Robotics Programming Application}
@@ -665,11 +665,11 @@
 
 --BEGIN-PROFESSOR--
 \email{rbustamante@utec.edu.pe}
-\prefix{Dr.}
+\prefix{Mg.}
 \name{Renzo Emilio Bustamante Avanzini}
 \begin{titles}
-	\Master{Espanol}{Engineering}{Ingeniería Eléctrica y Computación}{Sub área}{Universidad de Rochester}{Estados Unidos}{2016}
-	\Master{English}{Engineering}{Electrical and Computer Engineering Engineering}{Sub area}{University of Rochester}{USA}{2016}
+	\Master{Espanol}{Engineering}{Ingeniería Eléctrica y Computación}{Arquitectura de computadores}{Universidad de Rochester}{Estados Unidos}{2016}
+	\Master{English}{Engineering}{Electrical and Computer Engineering Engineering}{Computer Architecture}{University of Rochester}{USA}{2016}
 \end{titles}
 \Category{}
 \Dedication{TP}
@@ -683,9 +683,11 @@
 \Research{Computer Architecture, High Performance Computing, Memory Systems, Distributed Systems, Reliability}
 \courses{CS2201,CS2S01,CS1100}
 --END-PROFESSOR--
+ 
 
 
 --BEGIN-PROFESSOR--
+ 
 \email{econtreras@utec.edu.pe}
 \prefix{Mg.}
 \name{Estanislao Contreras Chávez}
@@ -708,3 +710,23 @@
 \courses{CS1103,CS1102}
 --END-PROFESSOR--
 
+--BEGIN-PROFESSOR--
+\email{marvin.abisrror@gmail.com}  
+\prefix{Mg}
+\name{Marvin Abisrror Zarate}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Aprendizaje de máquina}{Universidade Federal de Viçosa}{Brasil}{2016}
+	\Master{English}{Computing}{Computer Science}{Machine Learning}{Universidade Federal de Viçosa}{Brasil}{2016}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
+\Phone{+51-1-2303500}
+\Mobile{+51 937800726}
+\facebook{https://www.facebook.com/marvinAbisrror}
+\Twitter{https://twitter.com/marvin4sky}
+\Blog{}
+\Research{Machine learning, heuristic search} 
+\courses{CS2102,CS2601}
+--END-PROFESSOR--
