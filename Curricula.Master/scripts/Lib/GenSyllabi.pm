@@ -151,7 +151,7 @@ sub read_syllabus_info($$$)
 	while($syllabus_in =~ m/\n\n\n/)
 	{	$syllabus_in =~ s/\n\n\n/\n\n/g;	}
 # 	my $codcour_label       = get_alias($codcour);
-	my $course_name = $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}};
+	my $course_name = $Common::course_info{$codcour}{$lang}{course_name};
 	my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
 	my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour} % Common.pm";
 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
@@ -231,13 +231,13 @@ sub read_syllabus_info($$$)
 	}
 
 	$map{COURSE_CODE} 	= $codcour;
-	$map{COURSE_NAME} 	= $Common::course_info{$codcour}{course_name}{$lang};
+	$map{COURSE_NAME} 	= $course_name;
 	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};
 
-	$semester 		= $Common::course_info{$codcour}{semester};
+	$semester 			= $Common::course_info{$codcour}{semester};
 	$map{SEMESTER}    	= $semester;
-	$map{SEMESTER}         .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester}}\$ ";
-	$map{SEMESTER}         .= "$Common::config{dictionary}{Semester}.";
+	$map{SEMESTER}     .= "\$^{$Common::config{dictionary}{ordinal_postfix}{$semester}}\$ ";
+	$map{SEMESTER}     .= "$Common::config{dictionary}{Semester}.";
 	$map{CREDITS}		= $Common::course_info{$codcour}{cr};
 	$map{JUSTIFICATION}	= $Common::course_info{$codcour}{$lang}{justification}{txt};
 
@@ -246,8 +246,9 @@ sub read_syllabus_info($$$)
 
 	# Outcomes
 	$map{FULL_OUTCOMES}	= "";
+	my $EnvforOutcomes = $Common::config{EnvforOutcomes};
 	if( defined($Common::course_info{$codcour}{outcomes}{$version})	)
-	{	$map{FULL_OUTCOMES}	= "\\begin{description}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{description}";	}
+	{	$map{FULL_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
 	else{	Util::print_warning("There is no outcomes ($version) defined for $codcour ($fullname)"); 	}
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{$version}{itemized};
 
@@ -270,49 +271,72 @@ sub read_syllabus_info($$$)
 	{	$codcour = $Common::antialias_info{$codcour}	}
 	if(defined($Common::config{distribution}{$codcour}))
 	{
-		foreach my $role (sort {$Common::professor_role_order{$a} <=> $Common::professor_role_order{$b} }
-		                   keys %{$Common::config{distribution}{$codcour}})
+		my $first = 1;
+		#print Dumper(\%Common::professor_role_order); exit;
+		foreach my $role  ( sort {$Common::professor_role_order{$a} <=> $Common::professor_role_order{$b}}
+							keys %Common::professor_role_order)
 		{
-		      my $count = 0;
-		      my $PROFESSOR_SHORT_CVS = "";
-			  my $first = 1;
-			  foreach my $email ( split(",", $Common::config{faculty_list_of_emails}{$codcour}) )
-			  {
-		      #foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
-				#			$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
-				#			$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
-				#		      }
-				#		keys %{$Common::config{distribution}{$codcour}{$role}})
-				# {
-					if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
-				  	{
-						my $coordinator = "";
-						if( $first == 1 )
-						{	$coordinator = "~({\\bf $Common::config{dictionaries}{$lang}{Coordinator}})";	$first = 0;		}
-						$map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
-						$PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name} <$email>$coordinator\n";
-						$PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
-						$PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
-						$PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
-						$PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
-						$count++;
-				      #$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
-				  	}
-				# }
-			    $sep = ", ";
-		      }
-		      if( $count > 0 )
-		      {	      $map{PROFESSOR_SHORT_CVS} .= "\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
-			      $map{PROFESSOR_SHORT_CVS} .= "\\begin{itemize}[noitemsep]\n";
-			      $map{PROFESSOR_SHORT_CVS} .= $PROFESSOR_SHORT_CVS;
-			      $map{PROFESSOR_SHORT_CVS} .= "\\end{itemize}\n";
-		      }
+			#Util::print_error($role);
+			#exit;
+			#print Dumper(\%{$Common::config{distribution}{$codcour}{$role}});
+			my $count 				= 0;
+			my $PROFESSOR_SHORT_CVS = "";
+			foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
+									 $Common::config{faculty}{$a}{fields}{dedication}  cmp $Common::config{faculty}{$b}{fields}{dedication} ||
+									 $Common::config{faculty}{$a}{fields}{name}        cmp $Common::config{faculty}{$b}{fields}{name}}
+								keys %{$Common::config{distribution}{$codcour}{$role}}
+							  )
+			{
+			#$config{distribution}{$codcour}{$professor_role}{$professor_email} = $sequence;
+			#$config{distribution}{$codcour}{list_of_professors}{$professor_email} = "";
+			#$config{faculty}{$professor_email}{$codcour}{role} = $professor_role;
+			#$config{faculty}{$professor_email}{$codcour}{sequence} = $sequence;
+			
+			#foreach my $role (sort {$Common::professor_role_order{$a} <=> $Common::professor_role_order{$b} }
+			#                   keys %{$Common::config{distribution}{$codcour}})
+			#{
+				
+				#foreach my $email ( split(",", $Common::config{faculty_list_of_emails}{$codcour}) )
+				#{
+				#foreach my $email (sort {$Common::config{faculty}{$b}{fields}{degreelevel} <=> $Common::config{faculty}{$a}{fields}{degreelevel} ||
+					#			$Common::config{faculty}{$a}{fields}{dedication} cmp $Common::config{faculty}{$b}{fields}{dedication} ||
+					#			$Common::config{faculty}{$a}{fields}{name} cmp $Common::config{faculty}{$b}{fields}{name}
+					#		      }
+					#		keys %{$Common::config{distribution}{$codcour}{$role}})
+					# {
+						if( $Common::config{faculty}{$email}{fields}{degreelevel} >= $Common::config{degrees}{MasterPT} )
+						{
+							my $coordinator = "";
+							#if( $role eq "C" )
+							#{	$coordinator = "~({\\bf $Common::config{dictionaries}{$lang}{Coordinator}})";	$first = 0;		}
+							$map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
+							$PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name} <$email>$coordinator\n";
+							$PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
+							$PROFESSOR_SHORT_CVS 	.= "\\begin{itemize}[noitemsep]\n";
+							$PROFESSOR_SHORT_CVS 	.= "$Common::config{faculty}{$email}{fields}{shortcv}{$lang}";
+							$PROFESSOR_SHORT_CVS 	.= "\\end{itemize}\n\n";
+							$count++;
+							#$map{PROFESSOR_JUST_GRADE_AND_FULLNAME} .= "$sep$Common::config{faculty}{$email}{fields}{title} $Common::config{faculty}{$email}{fields}{name}";
+						}
+					#}
+					$sep = ", ";
+			}
+			if( $count > 0 )
+			{	$map{PROFESSOR_SHORT_CVS} .= "\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
+				$map{PROFESSOR_SHORT_CVS} .= "\\begin{itemize}[noitemsep]\n";
+				$map{PROFESSOR_SHORT_CVS} .= $PROFESSOR_SHORT_CVS;
+				$map{PROFESSOR_SHORT_CVS} .= "\\end{itemize}\n";
+				#print Dumper (\%{$Common::config{dictionaries}{$lang}{professor_role_label}});
+				#exit;
+			}
 		}
+		#exit; #role
 	}
 	else
 	{
  		Util::print_soft_error("There is no professor assigned to $codcour (Sem #$Common::course_info{$codcour}{semester})");
 	}
+	#exit;
 	$Common::course_info{$codcour}{docentes_names}  	= $map{PROFESSOR_NAMES};
 	$Common::course_info{$codcour}{docentes_titles}  	= $map{PROFESSOR_TITLES};
 	$Common::course_info{$codcour}{docentes_shortcv} 	= $map{PROFESSOR_SHORT_CVS};
@@ -410,23 +434,27 @@ sub genenerate_tex_syllabus_file($$$$$%)
 	$file_template =~ s/\\newcommand\{\\AREA\}\{\}/\\newcommand\{\\AREA\}\{$Common::area\}/g;
 	Util::print_message("genenerate_tex_syllabus_file $codcour: $output_file ...");
 
-	for(my $i = 0 ; $i < 2; $i++ )
-	{
-	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
-	    $file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
-	}
 	if($file_template =~ m/--OUTCOMES-FOR-OTHERS--/g)
 	{
 		my $nkeys = keys %{$Common::course_info{$codcour}{extra_tags}};
 		if($nkeys > 0 )
 		{	Util::print_message("$output_file extra tags detected ok!");
-			print Dumper (\%{$Common::course_info{$codcour}{extra_tags}});	
-			my $extra_txt = "\\item {\\bf $Common::course_info{$codcour}{extra_tags}{OutcomesForOtherTitle}} \\\\\n";
+			#print Dumper (\%{$Common::course_info{$codcour}{extra_tags}});	
+			$file_template =~ s/<<Competences>>/<<CompetencesForCS>>/g;
+			my $extra_txt = "\\item {\\bf <<CompetencesForEngineering>>} \n";
 			#Util::print_message("OutcomesForOtherContent$lang=".$Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"});
-			$extra_txt .= $Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"};
+			my $EnvforOutcomes = $Common::config{EnvforOutcomes};
+			$extra_txt .= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{$lang}{extra_tags}{OutcomesForOtherContent}\\end{$EnvforOutcomes}\n";
 			$file_template =~ s/--OUTCOMES-FOR-OTHERS--/$extra_txt/g;
 			#$extra_txt .= 
+			#exit;
 		}
+		else{	$file_template =~ s/--OUTCOMES-FOR-OTHERS--//g;}
+	}
+	for(my $i = 0 ; $i < 2; $i++ )
+	{
+	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
+	    $file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
 	}
     #file_template =~ s/--.*?--//g;
 	if(-e $output_file)
@@ -606,7 +634,7 @@ sub gen_batch_to_compile_syllabi()
 				$output .= "$scripts_dir/gen-syllabus.sh $codcour-$lang_prefix $OutputInstDir$parallel_sep\n";
 				if(defined($Common::config{distribution}{$codcour}))
 				{
-					my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($Common::config{Semester}).pdf";
+					my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name} ($Common::config{Semester}).pdf";
 					$output .= "cp \"$OutputSyllabiDir/$codcour-$lang_prefix.pdf\" \"$fullname\"\n";
 				}
 			}
@@ -667,7 +695,7 @@ sub gen_book($$$$)
 		{
 		    my $codcour_label = Common::get_label($codcour);
 		    #-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
-		    $output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,{$codcour. $Common::course_info{$codcour}{course_name}{$lang}},$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}}]";
+		    $output_tex .= "\\includepdf[pages=-,addtotoc={1,section,1,{$codcour. $Common::course_info{$codcour}{$lang}{course_name}},$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}}]";
 		    $output_tex .= "{$prefix$codcour-$Common::config{dictionaries}{$lang}{lang_prefix}$postfix}\n";
 		    $count++;
 		}
@@ -691,7 +719,7 @@ sub gen_book_of_descriptions($)
 	      {
 		      #Util::print_message("codcour = $codcour    ");
 		      #my $codcour_label = Common::get_label($codcour);
-		      my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$lang}";
+		      my $sec_title = "$codcour. $Common::course_info{$codcour}{$lang}{course_name}";
   # 			$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
   # 			$sec_title 	.= "$Common::config{dictionary}{Semester})";
 		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
@@ -719,7 +747,7 @@ sub gen_book_of_bibliography($)
 		      # print "codcour=$codcour ...\n";
 		      my $bibfiles = $Common::course_info{$codcour}{short_bibfiles};
 		      #print "codcour = $codcour    ";
-		      my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$lang} ";
+		      my $sec_title = "$codcour. $Common::course_info{$codcour}{$lang}{course_name} ";
 # 			$sec_title .= "($semester$Common::rom_postfix{$semester} sem)";
 		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
 		      $output_tex .= "\\begin{btUnit}%\n";
@@ -751,7 +779,7 @@ sub gen_book_of_bibliography($)
 # 		{
 # 			#my $codcour_label 	= Common::get_label($codcour);
 # 			my $i = 0;
-# 			my $sec_title = "$codcour. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}";
+# 			my $sec_title = "$codcour. $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name}";
 #  			#$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
 #  			#$sec_title 	.= "$Common::config{dictionary}{Semester})";
 # 			$output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
@@ -822,38 +850,38 @@ sub generate_formatted_syllabus($$$)
 
 sub generate_syllabi_include()
 {
-        my $output_file = Common::get_template("out-list-of-syllabi-include-file");
-        my $output_tex  = "";
+	my $output_file = Common::get_template("out-list-of-syllabi-include-file");
+	my $output_tex  = "";
 
-        $output_tex  .= "%This file is generated automatically ... do not touch !!! (GenSyllabi.pm: generate_syllabi_include()) \n";
-        $output_tex  .= "\\newcounter{conti}\n";
+	$output_tex  .= "%This file is generated automatically ... do not touch !!! (GenSyllabi.pm: generate_syllabi_include()) \n";
+	$output_tex  .= "\\newcounter{conti}\n";
 
-        my $OutputTexDir = Common::get_template("OutputTexDir");
-        my $ncourses    = 0;
+	my $OutputTexDir = Common::get_template("OutputTexDir");
+	my $ncourses    = 0;
 	my $newpage = "";
-        for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-        {
-                $output_tex .= "\n";
-                $output_tex .= "\\addcontentsline{toc}{section}{$Common::config{dictionary}{semester_ordinal}{$semester} ";
-                $output_tex .= "$Common::config{dictionary}{Semester}}\n";
+	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	{
+		$output_tex .= "\n";
+		$output_tex .= "\\addcontentsline{toc}{section}{$Common::config{dictionary}{semester_ordinal}{$semester} ";
+		$output_tex .= "$Common::config{dictionary}{Semester}}\n";
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
-                {
-		    #my $codcour_label = Common::get_label($codcour);
-		    my $lang 		= Common::get_template("language_without_accents");
-		    my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
-		    my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, $lang);
-		    generate_formatted_syllabus($codcour, $course_fullpath, "$OutputTexDir/$codcour-orig-$lang_prefix.tex");
+		{
+			#my $codcour_label = Common::get_label($codcour);
+			my $lang 		= Common::get_template("language_without_accents");
+			my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
+			my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, $lang);
+			generate_formatted_syllabus($codcour, $course_fullpath, "$OutputTexDir/$codcour-orig-$lang_prefix.tex");
 
-		    $course_fullpath =~ s/(.*)\.tex/$1/g;
-		    $output_tex .= "$newpage\\input{$OutputTexDir/$codcour-orig-$lang_prefix}";
-		    $output_tex .= "% $codcour $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}\n";
-		    $ncourses++;
-		    $newpage = "\\newpage";
-                }
-                $output_tex .= "\n";
-        }
-        Util::write_file($output_file, $output_tex);
-        Util::print_message("generate_syllabi_include() OK!");
+			$course_fullpath =~ s/(.*)\.tex/$1/g;
+			$output_tex .= "$newpage\\input{$OutputTexDir/$codcour-orig-$lang_prefix}";
+			$output_tex .= "% $codcour $Common::course_info{$codcour}{$lang}{course_name}\n";
+			$ncourses++;
+			$newpage = "\\newpage";
+		}
+		$output_tex .= "\n";
+	}
+	Util::write_file($output_file, $output_tex);
+	Util::print_message("generate_syllabi_include() OK!");
 }
 
 sub gen_course_general_info($)

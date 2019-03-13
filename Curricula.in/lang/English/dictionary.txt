@@ -233,6 +233,7 @@ Mission=Mission
 Definition=Definition
 
 <HASH name=professor_role_label>
+C=>Coordinator
 T=>Lecturer
 L=>Practice
 -=>
@@ -251,8 +252,8 @@ ProfessorSkilledToTeachACourse=Professor skilled to teach a course
 ThereIsNoProfessorSkilledForThisCourse=--
 
 %%%%En ingles
-Examen=Exam
-ExamenAcronym=E
+Exam=Exam
+ExamAcronym=E
 ContinuousAssessment=Continuous Assessment
 ContinuousAssessmentAcronym=C
 Project=Proyect
@@ -261,3 +262,7 @@ PracticalTest=Practical Test
 PracticalTestAcronym=PT
 LabExperiments=Lab experiments
 LabExperimentsAcronym=L
+FG=FG
+
+CompetencesForEngineering=Competences for Engineering
+CompetencesForCS=Competences for Computer Science

@@ -261,7 +261,7 @@ sub get_course_link($$)
 	if($codcour eq "")
 	{	assert(0);	}
 
-	my $course_full_label	= "$codcour. $course_info{$codcour}{course_name}{$lang}";
+	my $course_full_label	= "$codcour. $course_info{$codcour}{$lang}{course_name}";
 	my $course_link	   = "\\htmlref{$course_full_label}{sec:$codcour}~";
 	   $course_link   .= "($course_info{$codcour}{semester}\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$course_info{$codcour}{semester}}}\$ $config{dictionaries}{$lang}{Sem}-$config{dictionaries}{$lang}{Pag}~\\pageref{sec:$codcour})";
 	return $course_link;
@@ -283,7 +283,7 @@ sub get_pdf_link($)
 sub GetCourseNameWithLink($$$)
 {
     my ($codcour, $recommended, $extra_link) = (@_);
-	my $COURSENAME = "\\htmlref{$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+	my $COURSENAME = "\\htmlref{$Common::course_info{$codcour}{$Common::config{language_without_accents}}}{sec:$codcour}{course_name}";
 # 	Util::print_message("codcour=$codcour");
 # 	print Dumper ( \%{$Common::course_info{$codcour}} );
 	if($recommended == 1 && not $Common::course_info{$codcour}{recommended} eq "")
@@ -293,7 +293,7 @@ sub GetCourseNameWithLink($$$)
 		{
 			$rec = Common::get_label($rec);
 			my $semester_rec = $Common::course_info{$rec}{semester};
-			$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{course_name}{$Common::config{language_without_accents}}}{sec:$codcour}";
+			$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{$Common::config{language_without_accents}}}{sec:$codcour}{course_name}";
 			$rec_courses .= "($semester_rec\$^{$Common::config{dictionary}{ordinal_postfix}{$semester_rec}}\$)";
 			$sep = ", ";
 # 			print "$rec(C)\n";
@@ -312,7 +312,7 @@ sub GetCourseHyperLink($$)
 #     my $link = Common::get_template("LinkToCurriculaBase");
     my $semester = $Common::course_info{$codcour}{semester};
     my $SemesterInfo = "$Common::course_info{$codcour}{semester}$Common::config{dictionary}{ordinal_postfix}{$semester} $Common::config{dictionary}{Sem}";
-    my $hyperlink = "<li><a href=\"$link\">$codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}} ($SemesterInfo)</a></li>\n";
+    my $hyperlink = "<li><a href=\"$link\">$codcour. $course_info{$codcour}{$config{language_without_accents}}{course_name} ($SemesterInfo)</a></li>\n";
     return $hyperlink;
 }
 
@@ -818,6 +818,20 @@ sub read_config_file_details($)
 		}
 	}
         return %map;
+}
+sub add_key_to_dictionary($$$)
+{
+	my ($lang, $key, $value)     		= (@_);
+	$config{dictionary}{$key}    		= $value;
+	$config{dictionaries}{$lang}{$key} 	= $value;
+	#Util::print_warning("config{dictionary}{$key}=$config{dictionary}{$key}, config{dictionaries}{$lang}{$key}=$config{dictionaries}{$lang}{$key}");
+}
+sub concat_key_to_dictionary($$$)
+{
+	my ($lang, $key, $value)     		= (@_);
+	$config{dictionary}{$key}    		.= $value;
+	$config{dictionaries}{$lang}{$key} 	.= $value;
+	#Util::print_warning("config{dictionary}{$key}=$config{dictionary}{$key}, config{dictionaries}{$lang}{$key}=$config{dictionaries}{$lang}{$key}");
 }
 
 # ok
@@ -2101,7 +2115,6 @@ sub read_distribution()
 #
 			if(not defined($config{distribution}{$codcour}))
 			{
-
 				$config{distribution}{$codcour} = ();
 				#Util::print_message("Initializing $codcour($codcour_alias) ---");
 				#Util::print_message("I found professor for course $codcour($codcour_alias): $emails ...");
@@ -2163,11 +2176,11 @@ sub read_distribution()
 			$codcour = get_alias($codcour);
 			if( not defined($config{distribution}{$codcour}) )
 			{
-				Util::print_warning("I do not find professor for course $codcour ($codcour_alias) ($semester sem) $course_info{$codcour}{course_name}{$config{language_without_accents}} ...");
+				Util::print_warning("I do not find professor for course $codcour ($codcour_alias) ($semester sem) $course_info{$codcour}{$config{language_without_accents}}{course_name} ...");
 			}
 			else
 			{	my $sep = "";
-				$this_sem_text .= "% $codcour. $course_info{$codcour}{course_name}{$config{language_without_accents}} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
+				$this_sem_text .= "% $codcour. $course_info{$codcour}{$config{language_without_accents}}{course_name} ($config{dictionary}{$course_info{$codcour}{course_type}})\n";
 				$this_sem_text .= "$codcour->";
 				my $faculty_list_of_emails = "";
 				foreach my $professor_email (sort { $professor_role_order{$config{faculty}{$a}{$codcour}{role}} <=> $professor_role_order{$config{faculty}{$b}{$codcour}{role}} ||
@@ -2264,11 +2277,28 @@ sub read_aditional_info_for_silabos()
 			if( $label eq "COURSE" )
 			{	$codcour = $body;	}
 			else
+			{	if($label =~ m/(OutcomesForOtherContent)(.*)/)
+				{
+					my ($key, $lang) = ($1, $2);
+					$course_info{$codcour}{$lang}{extra_tags}{$key} = $body;
+				}else
+				{
+					#$course_info{$codcour}{extra_tags}{$label} = "\\specialcell{$body}";
+					$course_info{$codcour}{extra_tags}{$label} = $body;
+					#print Dumper(\%{$course_info{$codcour}{extra_tags}});
+					#print "Aditional $codcour > $label=\"$body\"\n";
+				}
+			}
+		}
+		else
+		{
+			if($label =~ m/(OutcomesForOtherContent)(.*)/)
 			{
-				#$course_info{$codcour}{extra_tags}{$label} = "\\specialcell{$body}";
-				$course_info{$codcour}{extra_tags}{$label} = $body;
-				#print Dumper(\%{$course_info{$codcour}{extra_tags}});
-				#print "Aditional $codcour > $label=\"$body\"\n";
+				my ($key, $lang) = ($1, $2);
+				#Util::print_warning("course_info{$codcour}{$lang}{extra_tags}{$key}=$course_info{$codcour}{$lang}{extra_tags}{$key}");
+				$course_info{$codcour}{$lang}{extra_tags}{$key} .= $line;
+				#Util::print_warning("course_info{$codcour}{$lang}{extra_tags}{$key}=$course_info{$codcour}{$lang}{extra_tags}{$key}");
+				#exit;
 			}
 		}
 	}
@@ -2320,26 +2350,26 @@ sub replace_accents_in_file($)
 # # 	while($fulltxt =~ m/\n\n\n/)
 # # 	{	$fulltxt =~ s/\n\n\n/\n\n/g;	}
 #
-# # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{course_name}{$Common::config{language_without_accents}}");
+# # 	Util::print_message("Verifying accents in: $codcour, $course_info{$codcour}{$Common::config{language_without_accents}}{course_name}");
 # # 	if( not defined($course_info{$codcour}{course_type}) )
 # # 	{	print "$codcour\n".Dumper(\%{$course_info{$codcour}}); exit;
 # # 	}
 # # 	my $codcour_label       = get_alias($codcour);
-# # 	my $course_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
-# # 	my $course_type = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
-# # 	my $header      = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
-# # 	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
-# # 	$fulltxt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
-# 	read_outcomes_involved($codcour, $fulltxt);
-#
-# 	#system("rm $filename");
-# 	@contents = split("\n", $fulltxt);
-# 	my ($count,$inunit)  = (0, 0);
-# 	my $output_txt = "";
-# 	foreach $line (@contents)
-# 	{
-# 		$line =~ s/\\\s/\\/g;
-# 		$output_txt .= "$line\n";
+# # 	my $course_na{course_name}me = $course_info{$codcour}{$config{language_without_accents}}{course_name};
+# # 	my $course_ty{course_name}pe = $Common::config{dictionary}{$course_info{$codcour}{course_type}};
+# # 	my $header   {course_name}   = "\n\\course{$codcour_label. $course_name}{$course_type}{$codcour_label} % Common.pm";
+# # 	my $newhead {course_name}	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
+# # 	$fulltxt 	={course_name}~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
+# 	read_outcomes_inv{course_name}olved($codcour, $fulltxt);
+#{course_name}
+# 	#system("rm $file{course_name}name");
+# 	@contents = split{course_name}("\n", $fulltxt);
+# 	my ($count,$inuni{course_name}t)  = (0, 0);
+# 	my $output_txt = {course_name}"";
+# 	foreach $line (@c{course_name}ontents)
+# 	{{course_name}
+# 		$line =~ s/\\{course_name}\s/\\/g;
+# 		$output_txt .{course_name}= "$line\n";
 # 		$count++;
 # 	}
 #         my $country_environments_to_insert = $Common::config{"country-environments-to-insert"};
@@ -3131,8 +3161,8 @@ sub parse_courses()
 # 			$area_priority{$codcour}		= $axes;
 		  $course_info{$codcour}{textcolor}	= $config{colors}{$prefix}{textcolor};
 		  $course_info{$codcour}{bgcolor}		= $config{colors}{$prefix}{bgcolor};
-		  $course_info{$codcour}{course_name}{Espanol} = $course_name_es;
-		  $course_info{$codcour}{course_name}{English} = $course_name_en;
+		  $course_info{$codcour}{Espanol}{course_name} = $course_name_es;
+		  $course_info{$codcour}{English}{course_name} = $course_name_en;
 		  $course_info{$codcour}{area}		= $area;
 		  $course_info{$codcour}{area_pie}	= $area_pie;
 		  $course_info{$codcour}{department}	= $department;
@@ -3371,7 +3401,7 @@ sub filter_courses($)
 							{
 									my $prereq_course_link = get_course_link($codreq, $lang);
 									push(@{$course_info{$codcour}{$lang}{full_prerequisites}}, $prereq_course_link);
-									my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{course_name}{$lang}}{sec:$codcour}.~";
+									my $temp  = "\\htmlref{$codreq. $course_info{$codreq}{$lang}{course_name}}{sec:$codcour}.~";
 									$temp .= "($semester_prereq\$^{$config{dictionaries}{$lang}{ordinal_postfix}{$semester_prereq}}\$~$config{dictionary}{Sem})";
 									push( @{$course_info{$codcour}{$lang}{code_name_and_sem_prerequisites}}, $temp );
 							}
@@ -3666,12 +3696,12 @@ sub change_number_by_text($)
 sub generate_course_info_in_dot($$$)
 {
 	my ($codcour, $this_item, $lang) = (@_);
-	print "$codcour ...\n";
+	#print "$codcour ...\n";
 	#if($codcour eq "60Cr") {assert(0);}
 	my %map = ();
 
 	$map{CODE}	= $codcour;
-	my $codcour_name = $course_info{$codcour}{course_name}{$config{language_without_accents}};
+	my $codcour_name = $course_info{$codcour}{$config{language_without_accents}}{course_name};
 	my ($newlabel,$nlines) = wrap_label("$codcour. $codcour_name");
 	my @height = (0, 0, 0.6, 0.9, 1.2, 1.5);
 # 	my $height = 0.3*$nlines+0.1*($nlines-1) + 0.3*$config{extralevels}+0.05*($config{extralevels}-1);
@@ -3706,7 +3736,7 @@ sub generate_course_info_in_dot($$$)
 	{		$map{HL}	= $course_info{$codcour}{lh};	}
 	else{	$map{HL} 	= "";	}
 
-	$map{NAME}	= $course_info{$codcour}{course_name}{$lang};
+	$map{NAME}	= $course_info{$codcour}{$lang}{course_name};
 	$map{TYPE}	= $config{dictionary}{$course_info{$codcour}{course_type}};
 	$map{PAGE}	= "--PAGE$codcour--";
 
@@ -4424,9 +4454,9 @@ sub generate_link_for_courses()
 		  $Common::course_info{$codcour}{link} = "";
 # 		  <A NAME="tex2html972"
 #   HREF="5_65_CS3P2_Cloud_Computing_.html"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">65</SPAN> CS3P2. Cloud Computing (Obligatorio)</A>
-		  #print Dumper(\$Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}});
+		  #print Dumper(\$Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name});
 		  my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
-		  my $coursefullname = "$courselabel. $Common::course_info{$codcour}{course_name}{$Common::config{language_without_accents}} ($course_type)";
+		  my $coursefullname = "$courselabel. $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name} ($course_type)";
 
 		  printf("Searching link for: %-s ", $coursefullname);
 # 		  while( $html_file =~ m/HREF="(.*?$courselabel.*?html)">/g)

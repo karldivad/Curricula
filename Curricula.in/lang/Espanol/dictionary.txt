@@ -234,6 +234,7 @@ Mission=Misión
 Definition=Definición
 
 <HASH name=professor_role_label>
+C=>Coordinador
 T=>Titular
 L=>Laboratorio
 -=>
@@ -253,7 +254,7 @@ ThereIsNoProfessorSkilledForThisCourse=--
 
 %%%Spanish
 Exam=Examen
-ExamenAcronym=E
+ExamAcronym=E
 ContinuousAssessment=Evaluación Continua
 ContinuousAssessmentAcronym=C
 Project=Proyecto
@@ -262,3 +263,7 @@ PracticalTest=Práctica Calificada
 PracticalTestAcronym=PC
 LabExperiments=Laboratorio
 LabExperimentsAcronym=L
+FG=NF 
+
+CompetencesForEngineering=Competencias para Ingeniería
+CompetencesForCS=Competencias para Ciencia de la Computación
