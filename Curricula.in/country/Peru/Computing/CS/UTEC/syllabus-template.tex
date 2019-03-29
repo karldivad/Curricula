@@ -7,6 +7,8 @@
 \usepackage{ae}
 \usepackage{csquotes}
 \usepackage{amsmath}
+\usepackage{eso-pic,graphicx}
+
 \usepackage{\InStyAllDir/syllabus-final}
 \input{\InLangBaseDir/--LANG--/--AREA--.tex/outcomes-macros}
 \usepackage{\InLangBaseDir/--LANG--/--AREA--.sty/bok-macros} 				% Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
@@ -22,23 +24,24 @@
 \newcommand{\AREA}{}
 
 \begin{document}
+\AddToShipoutPictureBG{\put(0,100){\includegraphics[width=2cm]{\InLogosDir/\INST}}}
 
 \begin{tabularx}{\textwidth}{p{3cm}cX}
 \includegraphics[width=3cm]{\InLogosDir/\INST} 
 &
 \begin{minipage}{0.75\textwidth}
 \begin{center}
-{\noindent\Large\bf\University--LANG--\\
+{\vspace{-3cm}
+    \noindent\Large\bf\University--LANG--\\
 \SchoolFullNameBreak--LANG-- \\
 <<SyllabusofCourse>> \\
 <<AcademicPeriod>> \Semester}
-
-% \section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
-\section*{}\label{sec:--COURSE_CODE--}%
-\addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 \end{center}
 \end{minipage}
 \end{tabularx}
+
+\section*{}\label{sec:--COURSE_CODE--}%
+\addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<CourseCodeandName>>:} --COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--) \label{sec:--COURSE_CODE--}
@@ -47,7 +50,7 @@
 {\noindent\bf \arabic{SyllabiSectionCount}. <<Credits>>:} --CREDITS--
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. <<HoursTheoryAndLab>>:} --HOURS-- (16 <<weeks>>)
+{\noindent\bf \arabic{SyllabiSectionCount}. <<HoursTheoryAndLab>>:} --HOURS-- (<<Weekly>>)
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<ProfessorEmailAndAttentionSchedule>>}\\

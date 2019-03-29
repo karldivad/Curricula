@@ -101,6 +101,7 @@ hrs		   = hr(s)
 hour		   = hora
 HoursOfThisCourse  = Horas del curso
 weeks=semanas
+Weekly=Semanal
 Total		   = Total
 Pag                = Pág
 TeamTitle          = Equipo de Trabajo

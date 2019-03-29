@@ -101,6 +101,7 @@ HOURS		   =HOURS
 hrs		   =hr(s)
 hour		   =hour
 weeks=weeks
+Weekly=Semanal
 HoursOfThisCourse  =Hour of this course
 Total		   =Total
 Pag                =Pg.
