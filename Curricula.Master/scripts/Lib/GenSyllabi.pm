@@ -660,23 +660,29 @@ sub get_hidden_chapter_info($$)
 
 sub write_book_files($$$)
 {
-      my ($InBook, $lang, $output_tex) = (@_);
-	  my $InBookFile = Common::get_template("in-Book-of-$InBook-main-file");
-      system("cp $InBookFile ".Common::get_template("OutputTexDir"));
+	my ($InBook, $lang, $output_tex) = (@_);
+	my $InBookFile     = Common::get_template("in-Book-of-$InBook-main-file");
+	system("cp $InBookFile ".Common::get_template("OutputTexDir"));
+	my $InBookContent = Util::read_file($InBookFile);
 
-      my $InBookContent = Util::read_file($InBookFile);
-      $InBookContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-      my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
-      $OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-      Util::print_message("Generating $OutBookFile ok");
-      Util::write_file($OutBookFile, $InBookContent);
+	$InBookContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
+	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	Util::print_message("Generating $OutBookFile ok! (write_book_files)");
+	Util::write_file($OutBookFile, $InBookContent);
 
-      my $OutputIncludeListFile = Common::get_template("out-$InBook-includelist-file");
-      $OutputIncludeListFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	my $InBookFaceFile = Common::get_template("in-Book-of-$InBook-face-file");
+	if( system("cp $InBookFaceFile ".Common::get_template("OutputTexDir")) >> 8 == 0 )
+	{	Util::print_message("Copied $InBookFaceFile to".Common::get_template("OutputTexDir")."... ok!");	}
 
-      Util::print_message("Generating $OutputIncludeListFile ok! (write_book_files)");
-      Util::write_file($OutputIncludeListFile, $output_tex);
+	my $OutputIncludeListFile = Common::get_template("out-$InBook-includelist-file");
+	$OutputIncludeListFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+
+	Util::print_message("Generating $OutputIncludeListFile ok! (write_book_files)");
+	Util::write_file($OutputIncludeListFile, $output_tex);
+	exit;
 }
+
 # ok
 # GenSyllabi::gen_book("Syllabi", "syllabi/", "");
 # GenSyllabi::gen_book("Syllabi", "../pdf/", "-delivery-control");
