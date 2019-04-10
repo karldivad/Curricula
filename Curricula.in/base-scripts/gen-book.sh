@@ -5,7 +5,7 @@ set MainFile	= $1		# BookOfSyllabi-ES
 set Compiler    = $2    	# pdflatex
 set OutputFile  = "$3"
 
-# ../Curricula2.0.out/Peru/CS-ANR/cycle/2012-2/Plan2012/scripts/gen-book.sh  BookOfSyllabi-ES       	pdflatex "CS-ANR 2012-2 BookOfSyllabi (Plan2012) 1-10"
+# ../Curricula.out/Peru/CS-ANR/cycle/2012-2/Plan2012/scripts/gen-book.sh  BookOfSyllabi-ES       	pdflatex "CS-ANR 2012-2 BookOfSyllabi (Plan2012) 1-10"
 
 #--END-FILTERS--
 set OutputInstDir=<OUTPUT_INST_DIR>
@@ -14,7 +14,7 @@ set current_dir = `pwd`
 # # set semester = `grep -e "\Semester}" $InfoFile | cut -d"{" -f3 | cut -d\\ -f1`
 # set InfoFile	= "<IN_INST_DIR>/institution-info.tex"
 
-echo "<OUTPUT_SCRIPTS_DIR>/CompileTexFile.sh <AREA> <INST> pdflatex $MainFile $OutputInstDir"
+echo "<OUTPUT_SCRIPTS_DIR>/CompileTexFile.sh <AREA> <INST> $Compiler $MainFile $OutputFile"
 <OUTPUT_SCRIPTS_DIR>/CompileTexFile.sh <AREA> <INST> $Compiler $MainFile "$OutputFile";
 
 cd "<OUTPUT_HTML_DIR>";

@@ -1,3 +1,5 @@
+lang_for_latex=english
+
 SCHOOL    = SCHOOL/DEPARTMENT
 COURSE    = COURSE
 DEPARTMENT= DEPARTMENT
@@ -55,9 +57,10 @@ Coordinator=Coordinator
 
 HoursPerSession                        = Hours per Session
 LengthOfPeriod                         = Length Of Period 
-Book 				       = Book
-BookOf				       = Book of
-Author				       = Author
+Book 				                   = Book
+BookOf				                   = Book of
+ShortDescriptionByCourse               = short descriptions by course
+Author				                   = Author
 YearsOfPublication                     = Years of publication
 OtherTexts                             = Other Texts
 Title                                  = Title

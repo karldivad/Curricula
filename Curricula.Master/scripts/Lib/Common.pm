@@ -1608,8 +1608,9 @@ sub set_initial_configuration($)
 
 	$config{encoding} 	= "latin1";
 	$config{tex_encoding} 	= "utf8";
-	$config{lang_for_latex}{Espanol} = "spanish";
-	$config{lang_for_latex}{English} = "english";
+	#$config{lang_for_latex}{Espanol}   = "spanish";
+	#$config{lang_for_latex}{English}   = "english";
+	#$config{lang_for_latex}{Portugues} = "english";
 	$config{COL4LABS} = "lh";
 
         system("mkdir -p $config{out}/tex");

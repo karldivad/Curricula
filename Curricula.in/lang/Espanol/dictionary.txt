@@ -1,3 +1,5 @@
+lang_for_latex=spanish
+
 SCHOOL    = ESCUELA/DEPARTAMENTO
 COURSE    = CURSO
 DEPARTMENT= DEPARTAMENTO
@@ -56,6 +58,7 @@ HoursPerSession                       = Horas por Sesión
 LengthOfPeriod			              = Duración del Período 
 Book 				                  = Libro
 BookOf				                  = Libro de
+ShortDescriptionByCourse              = sumillas
 Author				                  = Autor
 YearsOfPublication                    = Años de Publicación 
 OtherTexts                            = Otros Textos 
@@ -268,3 +271,5 @@ FG=NF
 
 CompetencesForEngineering=Competencias para Ingeniería
 CompetencesForCS=Competencias para Ciencia de la Computación
+
+Compendio de Sumillas

@@ -1,3 +1,5 @@
+lang_for_latex=portuguese
+
 SCHOOL    = ESCOLA/DEPARTAMENTO
 COURSE    = CURSO
 DEPARTMENT= DEPARTAMENTO
@@ -56,6 +58,7 @@ HoursPerSession                       = Horas por Sessão
 LengthOfPeriod			              = Duração do Período 
 Book 				                  = Livro
 BookOf				                  = Livro de
+ShortDescriptionByCourse              = descrições de cada disciplina
 Author				                  = Autor
 YearsOfPublication                    = Anos de Publicação 
 OtherTexts                            = Outros Textos 
@@ -67,8 +70,8 @@ SpecificCompetencesOfTheCourse        = Competências específicas do curso
 ListOfSubjectsToStudyDuringTheCourse  = Lista de temas a estudar durante o curso
 MethodologyAndMethodOfEvaluation      = Metodologia e método de avaliação
 BriefDescriptionOfCourseContent       = Breve descrição do conteúdo do curso
-Name				      = Nome
-E-mail				      = Correio Eletrônico
+Name				                  = Nome
+E-mail				                  = Correio Eletrônico
 Corequisites                          = Co-Requisitos
 HoursOfAttentionOfTheInstructorOrCoordinatorOfTheCourse = Horas de Atenção do Instrutor ou coordenador do curso
 

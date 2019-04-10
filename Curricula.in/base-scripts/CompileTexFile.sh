@@ -30,7 +30,7 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 
 mkdir -p $current_dir/<OUT_LOG_DIR>;
 $latex_prg $MainFile;
-set compbib = "$current_dir/scripts/compbib.sh $MainFile > $current_dir/../Curricula2.0.out/log/$area-$institution-$MainFile-Errors-bib.txt"
+set compbib = "$current_dir/scripts/compbib.sh $MainFile > $current_dir/../Curricula.out/log/$area-$institution-$MainFile-Errors-bib.txt"
 $compbib;
 
 $latex_prg $MainFile;

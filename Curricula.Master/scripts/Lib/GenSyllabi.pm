@@ -550,7 +550,7 @@ sub generate_tex_syllabi_files()
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
 			      $map{AREA}	= $Common::config{area};
 			      $map{LANG}	= $lang;
-			      $map{LANG_FOR_LATEX}	= $Common::config{lang_for_latex}{$lang};
+			      $map{LANG_FOR_LATEX}	= $Common::config{dictionaries}{$lang}{lang_for_latex};
 
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
@@ -663,12 +663,15 @@ sub write_book_files($$$)
 	my ($InBook, $lang, $output_tex) = (@_);
 	my $InBookFile     = Common::get_template("in-Book-of-$InBook-main-file");
 	system("cp $InBookFile ".Common::get_template("OutputTexDir"));
-	my $InBookContent = Util::read_file($InBookFile);
 
+	my $InBookContent = Util::read_file($InBookFile);
 	$InBookContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	$InBookContent =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
 	my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
 	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+
 	Util::print_message("Generating $OutBookFile ok! (write_book_files)");
+	$InBookContent = Common::replace_tags($InBookContent, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
 	Util::write_file($OutBookFile, $InBookContent);
 
 	my $InBookFaceFile = Common::get_template("in-Book-of-$InBook-face-file");
@@ -680,12 +683,11 @@ sub write_book_files($$$)
 
 	Util::print_message("Generating $OutputIncludeListFile ok! (write_book_files)");
 	Util::write_file($OutputIncludeListFile, $output_tex);
-	exit;
 }
 
 # ok
 # GenSyllabi::gen_book("Syllabi", "syllabi/", "");
-# GenSyllabi::gen_book("Syllabi", "../pdf/", "-delivery-control");
+# GenSyllabi::gen_book("Syllabi", "../pdf/", "-delivery-control", $lang);
 sub gen_book($$$$)
 {
 	my ($InBook, $prefix, $postfix, $lang) = (@_);
@@ -709,33 +711,6 @@ sub gen_book($$$$)
 	}
 	write_book_files("Syllabi", $lang, $output_tex);
 # 	Util::print_message("gen_book ($count courses) in $OutputFile OK!");
-}
-
-# ok
-sub gen_book_of_descriptions($)
-{
-      my ($lang) = (@_);
-      Util::precondition("set_global_variables");
-      my $output_tex = "";
-      my $count = 0;
-      for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-      {
-	      $output_tex .= get_hidden_chapter_info($semester, $lang);
-	      foreach my $codcour (sort {$Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}}}  @{$Common::courses_by_semester{$semester}})
-	      {
-		      #Util::print_message("codcour = $codcour    ");
-		      #my $codcour_label = Common::get_label($codcour);
-		      my $sec_title = "$codcour. $Common::course_info{$codcour}{$lang}{course_name}";
-  # 			$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
-  # 			$sec_title 	.= "$Common::config{dictionary}{Semester})";
-		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
-		      $output_tex .= "$Common::course_info{$codcour}{$lang}{justification}{txt}\n\n";
-		      $count++;
-	      }
-	      $output_tex .= "\n";
-      }
-      write_book_files("Descriptions", $lang, $output_tex);
-      Util::print_message("gen_book_of_descriptions ($count courses) OK!");
 }
 
 sub gen_book_of_bibliography($)
@@ -769,6 +744,33 @@ sub gen_book_of_bibliography($)
       }
       write_book_files("Bibliography", $lang, $output_tex);
       Util::print_message("gen_book_of_bibliography ($count courses) OK!");
+}
+
+# ok
+sub gen_book_of_descriptions($)
+{
+      my ($lang) = (@_);
+      Util::precondition("set_global_variables");
+      my $output_tex = "";
+      my $count = 0;
+      for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+      {
+	      $output_tex .= get_hidden_chapter_info($semester, $lang);
+	      foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+	      {
+		      #Util::print_message("codcour = $codcour    ");
+		      #my $codcour_label = Common::get_label($codcour);
+		      my $sec_title = "$codcour. $Common::course_info{$codcour}{$lang}{course_name}";
+  # 			$sec_title 	.= "($semester$Common::config{dictionary}{ordinal_postfix}{$semester} ";
+  # 			$sec_title 	.= "$Common::config{dictionary}{Semester})";
+		      $output_tex .= "\\section{$sec_title}\\label{sec:$codcour}\n";
+		      $output_tex .= "$Common::course_info{$codcour}{$lang}{justification}{txt}\n\n";
+		      $count++;
+	      }
+	      $output_tex .= "\n";
+      }
+      write_book_files("Descriptions", $lang, $output_tex);
+      Util::print_message("gen_book_of_descriptions ($count courses) OK!");
 }
 
 # # ok
