@@ -59,6 +59,7 @@ LengthOfPeriod			              = Duración del Período
 Book 				                  = Libro
 BookOf				                  = Libro de
 ShortDescriptionByCourse              = sumillas
+BibliographyByCourse                  = Bibliografía por curso
 Author				                  = Autor
 YearsOfPublication                    = Años de Publicación 
 OtherTexts                            = Otros Textos 

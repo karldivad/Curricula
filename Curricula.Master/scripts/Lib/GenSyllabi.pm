@@ -669,6 +669,7 @@ sub write_book_files($$$)
 	$InBookContent =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
 	my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
 	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	$InBookContent =~ s/<LANG-EXTENDED>/$lang/g;
 
 	Util::print_message("Generating $OutBookFile ok! (write_book_files)");
 	$InBookContent = Common::replace_tags($InBookContent, "<<", ">>", %{$Common::config{dictionaries}{$lang}});

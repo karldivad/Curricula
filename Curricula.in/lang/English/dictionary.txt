@@ -60,6 +60,7 @@ LengthOfPeriod                         = Length Of Period
 Book 				                   = Book
 BookOf				                   = Book of
 ShortDescriptionByCourse               = short descriptions by course
+BibliographyByCourse                   = Bibliography by course
 Author				                   = Author
 YearsOfPublication                     = Years of publication
 OtherTexts                             = Other Texts
