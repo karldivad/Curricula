@@ -64,7 +64,7 @@ sub print_soft_error($)
 sub print_color($)
 {
 	my ($msg) = (@_);
-	print "\x1b[43m$msg\x1b[40m";
+	print "\x1b[43m$msg\x1b[39m\x1b[49m";
 }
 
 # https://pypi.python.org/pypi/colorama

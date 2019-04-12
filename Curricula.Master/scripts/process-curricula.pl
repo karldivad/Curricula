@@ -30,9 +30,9 @@ sub generate_general_info()
 	Util::precondition("gen_syllabi"); 
 	
 	GeneralInfo::generate_lu_index();
-	GeneralInfo::generate_description("prefix");		# CS: Computer Science, ...
-	GeneralInfo::generate_course_tables(); 			# Tables by semester
-	GeneralInfo::generate_laboratories(); 			# List of Laboratories
+	GeneralInfo::generate_description("prefix");			# CS: Computer Science, ...
+	GeneralInfo::generate_course_tables(); 					# Tables by semester
+	GeneralInfo::generate_laboratories(); 					# List of Laboratories
 # 	GeneralInfo::generate_distribution_area_by_semester();	# Table area by semester
 	GeneralInfo::generate_distribution_credits_by_area_by_semester();
 	
@@ -55,7 +55,6 @@ sub generate_general_info()
 	GeneralInfo::generate_compatibility_with_standards();
 
 #	GeneralInfo::generate_courses_by_professor();
-	
 # 	GeneralInfo::generate_faculty_info();
 	GeneralInfo::generate_courses_by_professor($lang);
 	GeneralInfo::generate_professor_by_course($lang);
@@ -73,10 +72,11 @@ sub generate_general_info()
 
 sub copy_basic_files()
 {
-        #system("cp ".Common::get_template("out-current-institution-file")." ".Common::get_template("OutputTexDir"));
-        system("cp ".Common::get_template("InLogosDir")."/$Common::config{institution}* ".Common::get_template("OutputFigDir"));
-        system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("OutputTexDir"));
-        #system("cp ".Common::get_template("in-pdf-icon-file")." ".Common::get_template("OutputHtmlFigsDir"));
+	##system("cp ".Common::get_template("out-current-institution-file")." ".Common::get_template("OutputTexDir"));
+	#system("cp ".Common::get_template("InLogosDir")."/$Common::config{institution}* ".Common::get_template("OutputFigDir"));
+	#system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("OutputTexDir"));
+	##system("cp ".Common::get_template("in-pdf-icon-file")." ".Common::get_template("OutputHtmlFigsDir"));
+	exit;
 }
 
 sub main()
@@ -101,10 +101,13 @@ sub main()
 	    GenSyllabi::gen_book_of_descriptions($lang);
 	    #GenSyllabi::gen_list_of_units_by_course();
 	    GenSyllabi::gen_book_of_bibliography($lang);
-	}
-	generate_general_info();
+	    GenSyllabi::generate_team_file($lang);
+		Util::print_color("=======");
 
-#         copy_basic_files();
+	}
+	exit;
+	generate_general_info();
+    #copy_basic_files();
 #         Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));
 # 	
 # 	Common::generate_html_index_by_country();

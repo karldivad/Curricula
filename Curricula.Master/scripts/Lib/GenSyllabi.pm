@@ -454,7 +454,7 @@ sub genenerate_tex_syllabus_file($$$$$%)
 	for(my $i = 0 ; $i < 2; $i++ )
 	{
 	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
-	    $file_template = Common::replace_tags($file_template, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
+	    $file_template = Common::translate($file_template, $lang);
 	}
     #file_template =~ s/--.*?--//g;
 	if(-e $output_file)
@@ -672,7 +672,7 @@ sub write_book_files($$$)
 	$InBookContent =~ s/<LANG-EXTENDED>/$lang/g;
 
 	Util::print_message("Generating $OutBookFile ok! (write_book_files)");
-	$InBookContent = Common::replace_tags($InBookContent, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
+	$InBookContent = Common::translate($InBookContent, $lang);
 	Util::write_file($OutBookFile, $InBookContent);
 
 	my $InBookFaceFile = Common::get_template("in-Book-of-$InBook-face-file");
@@ -772,6 +772,20 @@ sub gen_book_of_descriptions($)
       }
       write_book_files("Descriptions", $lang, $output_tex);
       Util::print_message("gen_book_of_descriptions ($count courses) OK!");
+}
+
+sub generate_team_file($)
+{	
+	my ($lang) = (@_);
+	my $TeamContentBase 	= Util::read_file(Common::get_template("InInstDir")."/team.tex");
+	my $OutputTeamFileBase	= Common::get_template("out-team-file");
+	
+	my $TeamContent = Common::translate($TeamContentBase, $lang);
+	$TeamContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	my $OutputTeamFile = $OutputTeamFileBase;
+	$OutputTeamFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	Util::print_message("Generating $OutputTeamFile ok ...");
+	Util::write_file($OutputTeamFile, $TeamContent);
 }
 
 # # ok

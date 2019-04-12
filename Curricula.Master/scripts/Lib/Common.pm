@@ -601,6 +601,8 @@ sub set_initial_paths()
         $path_map{"in-Book-of-Bibliography-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
         $path_map{"out-Bibliography-includelist-file"}	= $path_map{OutputTexDir}."/bibliography-list-<LANG>.tex";
 
+		$path_map{"out-team-file"}						= $path_map{OutputTexDir}."/team-<LANG>.tex";
+
         $path_map{"in-Book-of-units-by-course-main-file"}= $path_map{InAllTexDir}."/BookOfUnitsByCourse.tex";
         $path_map{"in-Book-of-units-by-course-face-file"}= $path_map{InAllTexDir}."/Book-Face.tex";
         $path_map{"out-Syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
@@ -2504,6 +2506,13 @@ sub replace_tags($$$%)
 # 			print Dumper (\$txt);
 # 		}
 	}
+	return $txt;
+}
+
+sub translate($$)
+{
+	my ($txt, $lang) = (@_);
+	$txt = Common::replace_tags($txt, "<<", ">>", %{$Common::config{dictionaries}{$lang}});
 	return $txt;
 }
 
