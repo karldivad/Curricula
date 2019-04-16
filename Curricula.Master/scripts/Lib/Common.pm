@@ -477,7 +477,7 @@ sub set_initial_paths()
 
 	$path_map{"curricula-main"}			= "curricula-main.tex";
 	$path_map{"unified-main-file"}			= "unified-curricula-main.tex";
-        $path_map{"file_for_page_numbers"}		= "curricula-main.aux";
+    $path_map{"file_for_page_numbers"}		= "curricula-main.aux";
 
 	$path_map{"country"}				= $config{country};
 	$path_map{"country_without_accents"}		= $config{country_without_accents};
@@ -515,185 +515,187 @@ sub set_initial_paths()
 
 #############################################################################################################################
 # OutputsDirs
-        $path_map{OutHtmlBase}				= "$config{out}/html";
-        $path_map{OutputInstDir}			= $config{OutputInstDir};
-        $path_map{OutputTexDir}				= $config{OutputTexDir}; #Plan$config{Plan}
-        $path_map{OutputBinDir}				= $config{OutputBinDir};
-        $path_map{OutputLogDir}				= $config{out}."/log";
-        $path_map{OutputHtmlDir}			= $config{OutputHtmlDir};
-        $path_map{OutputHtmlFigsDir}		= $config{OutputHtmlFigsDir};
-        $path_map{OutputHtmlSyllabiDir}		= $config{OutputHtmlDir}."/syllabi";
-        $path_map{OutputFigDir}             = $config{OutputFigDir};
-        $path_map{OutputScriptsDir}			= $config{OutputScriptsDir};
-        $path_map{OutputPrereqDir}          = $config{OutputTexDir}."/prereq";
-        $path_map{OutputDotDir}             = $config{OutputDotDir};
-        $path_map{OutputMain4FigDir}		= $config{OutputMain4FigDir};
-        $path_map{OutputSyllabiDir}			= $config{OutputInstDir}."/syllabi";
-		$path_map{OutputFullSyllabiDir}		= $config{OutputInstDir}."/full-syllabi";
-        $path_map{OutputFacultyDir}			= $config{OutputInstDir}."/faculty";
-        $path_map{OutputFacultyFigDir}		= $path_map{OutputFacultyDir}."/fig";			system("mkdir -p $path_map{OutputFacultyFigDir}");
-        $path_map{OutputFacultyIconDir}		= $path_map{OutputFacultyDir}."/icon";			system("mkdir -p $path_map{OutputFacultyIconDir}");
-        $path_map{LinkToCurriculaBase}		= $config{LinkToCurriculaBase};
+	$path_map{OutHtmlBase}				= "$config{out}/html";
+	$path_map{OutputInstDir}			= $config{OutputInstDir};
+	$path_map{OutputTexDir}				= $config{OutputTexDir}; #Plan$config{Plan}
+	$path_map{OutputBinDir}				= $config{OutputBinDir};
+	$path_map{OutputLogDir}				= $config{out}."/log";
+	$path_map{OutputHtmlDir}			= $config{OutputHtmlDir};
+	$path_map{OutputHtmlFigsDir}		= $config{OutputHtmlFigsDir};
+	$path_map{OutputHtmlSyllabiDir}		= $config{OutputHtmlDir}."/syllabi";
+	$path_map{OutputFigDir}             = $config{OutputFigDir};
+	$path_map{OutputScriptsDir}			= $config{OutputScriptsDir};
+	$path_map{OutputPrereqDir}          = $config{OutputTexDir}."/prereq";
+	$path_map{OutputDotDir}             = $config{OutputDotDir};
+	$path_map{OutputMain4FigDir}		= $config{OutputMain4FigDir};
+	$path_map{OutputSyllabiDir}			= $config{OutputInstDir}."/syllabi";
+	$path_map{OutputFullSyllabiDir}		= $config{OutputInstDir}."/full-syllabi";
+	$path_map{OutputFacultyDir}			= $config{OutputInstDir}."/faculty";
+	$path_map{OutputFacultyFigDir}		= $path_map{OutputFacultyDir}."/fig";			system("mkdir -p $path_map{OutputFacultyFigDir}");
+	$path_map{OutputFacultyIconDir}		= $path_map{OutputFacultyDir}."/icon";			system("mkdir -p $path_map{OutputFacultyIconDir}");
+	$path_map{LinkToCurriculaBase}		= $config{LinkToCurriculaBase};
 
 ################################################################################################################################33
 # Input and Output files
 
-        # People Files
+	# People Files
 
-        # Tex files
-        $path_map{"out-current-institution-file"}	= $path_map{OutputInstDir}."/tex/current-institution.tex";
-        $path_map{"preamble0-file"}                 = $path_map{InAllTexDir}."/preamble0.tex";
-        $path_map{"list-of-courses"}		   		= $path_map{InDisciplineDir}."/$area$config{CurriculaVersion}-dependencies.tex";
+	# Tex files
+	$path_map{"out-current-institution-file"}	= $path_map{OutputInstDir}."/tex/current-institution.tex";
+	$path_map{"preamble0-file"}                 = $path_map{InAllTexDir}."/preamble0.tex";
+	$path_map{"list-of-courses"}		   		= $path_map{InDisciplineDir}."/$area$config{CurriculaVersion}-dependencies.tex";
 
-        $path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineDir}."/tex/$config{discipline}-acronyms.tex";
-        $path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
-        $path_map{"out-ncredits-file"}              = $path_map{OutputTexDir}."/ncredits.tex";
-        $path_map{"out-nsemesters-file"}            = $path_map{OutputTexDir}."/nsemesters.tex";
-
-
-        $path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.tex/outcomes-macros.tex";
-        $path_map{"in-bok-file"}					= $path_map{InTexDir}."/bok.tex";
-        $path_map{"in-bok-macros-file"}				= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros.sty";
-        $path_map{"in-bok-macros-V0-file"}			= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros-V0.sty";
-
-        $path_map{"in-LU-file"}						= $path_map{InTexDir}."/LU.tex";
-
-        $path_map{"out-bok-index-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Index.tex";
-        $path_map{"out-bok-body-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Body.tex";
-        $path_map{"in-macros-order-file"}		= $path_map{InOthersDir}."/macros-order.txt";
-
-        $path_map{"in-main-to-gen-fig"}			= $path_map{InTexAllDir}."/main-to-gen-fig.tex";
-
-        $path_map{"out-tables-foreach-semester-file"}	= $path_map{OutputTexDir}."/tables-by-semester.tex";
-        $path_map{"out-distribution-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-area-by-semester.tex";
-        $path_map{"out-distribution-of-credits-by-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-credits-by-area-by-semester.tex";
+	$path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineDir}."/tex/$config{discipline}-acronyms.tex";
+	$path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
+	$path_map{"out-ncredits-file"}              = $path_map{OutputTexDir}."/ncredits.tex";
+	$path_map{"out-nsemesters-file"}            = $path_map{OutputTexDir}."/nsemesters.tex";
 
 
-        $path_map{"out-pie-credits-file"}		= $path_map{OutputTexDir}."/pie-credits.tex";
-        $path_map{"out-pie-hours-file"}			= $path_map{OutputTexDir}."/pie-hours.tex";
-        $path_map{"out-pie-by-levels-file"}		= $path_map{OutputTexDir}."/pie-by-levels.tex";
+	$path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.tex/outcomes-macros.tex";
+	$path_map{"in-bok-file"}					= $path_map{InTexDir}."/bok.tex";
+	$path_map{"in-bok-macros-file"}				= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros.sty";
+	$path_map{"in-bok-macros-V0-file"}			= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros-V0.sty";
 
-        $path_map{"out-list-of-courses-per-area-file"}	= $path_map{OutputTexDir}."/list-of-courses-per-area.tex";
-        $path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards.tex";
-        $path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster.tex";
-        $path_map{"out-list-of-outcomes"}		= $path_map{OutputTexDir}."/list-of-outcomes.tex";
-        $path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome.tex";
+	$path_map{"in-LU-file"}						= $path_map{InTexDir}."/LU.tex";
 
-        $path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
-        $path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
-        $path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";
+	$path_map{"out-bok-index-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Index.tex";
+	$path_map{"out-bok-body-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Body.tex";
+	$path_map{"in-macros-order-file"}		= $path_map{InOthersDir}."/macros-order.txt";
 
-        $path_map{"in-Book-of-Syllabi-main-file"}	= $path_map{InAllTexDir}."/BookOfSyllabi.tex";
-        $path_map{"out-Book-of-Syllabi-main-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
-        $path_map{"in-Book-of-Syllabi-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
-        $path_map{"out-Syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist-<LANG>.tex";
+	$path_map{"in-main-to-gen-fig"}			= $path_map{InTexAllDir}."/main-to-gen-fig.tex";
 
-        $path_map{"in-Book-of-Syllabi-delivery-control-file"}		= $path_map{InAllTexDir}."/BookOfDeliveryControl.tex";
-        $path_map{"in-Book-of-Syllabi-delivery-control-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
+	$path_map{"out-tables-foreach-semester-file"}	= $path_map{OutputTexDir}."/tables-by-semester.tex";
+	$path_map{"out-distribution-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-area-by-semester.tex";
+	$path_map{"out-distribution-of-credits-by-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-credits-by-area-by-semester.tex";
 
-        $path_map{"in-Book-of-Descriptions-main-file"}	= $path_map{InAllTexDir}."/BookOfDescriptions.tex";
-        $path_map{"out-Book-of-Descriptions-main-file"}	= $path_map{OutputTexDir}."/BookOfDescriptions-<LANG>.tex";
-        $path_map{"in-Book-of-Descriptions-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
-        $path_map{"out-Descriptions-includelist-file"}	= $path_map{OutputTexDir}."/short-descriptions-<LANG>.tex";
 
-        $path_map{"in-Book-of-Bibliography-main-file"}	= $path_map{InAllTexDir}."/BookOfBibliography.tex";
-        $path_map{"out-Book-of-Bibliography-main-file"}	= $path_map{OutputTexDir}."/BookOfBibliography-<LANG>.tex";
-        $path_map{"in-Book-of-Bibliography-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
-        $path_map{"out-Bibliography-includelist-file"}	= $path_map{OutputTexDir}."/bibliography-list-<LANG>.tex";
+	$path_map{"out-pie-credits-file"}		= $path_map{OutputTexDir}."/pie-credits.tex";
+	$path_map{"out-pie-hours-file"}			= $path_map{OutputTexDir}."/pie-hours.tex";
+	$path_map{"out-pie-by-levels-file"}		= $path_map{OutputTexDir}."/pie-by-levels.tex";
 
-		$path_map{"out-team-file"}						= $path_map{OutputTexDir}."/team-<LANG>.tex";
+	$path_map{"out-list-of-courses-per-area-file"}	= $path_map{OutputTexDir}."/list-of-courses-per-area.tex";
+	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards.tex";
+	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster.tex";
+	$path_map{"out-list-of-outcomes"}		= $path_map{OutputTexDir}."/list-of-outcomes.tex";
+	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome.tex";
 
-        $path_map{"in-Book-of-units-by-course-main-file"}= $path_map{InAllTexDir}."/BookOfUnitsByCourse.tex";
-        $path_map{"in-Book-of-units-by-course-face-file"}= $path_map{InAllTexDir}."/Book-Face.tex";
-        $path_map{"out-Syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
+	$path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
+	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
+	$path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";
 
-        $path_map{"in-pdf-icon-file"}			= $path_map{InFigDir}."/pdf.jpeg";
+	$path_map{"in-Book-of-Syllabi-main-file"}	= $path_map{InAllTexDir}."/BookOfSyllabi.tex";
+	$path_map{"out-Book-of-Syllabi-main-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
+	$path_map{"in-Book-of-Syllabi-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
+	$path_map{"out-Syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist-<LANG>.tex";
 
-        $path_map{"out-list-of-unit-by-course-file"}	= $path_map{OutputTexDir}."/list-of-units-by-course.tex";
+	$path_map{"in-Book-of-Syllabi-delivery-control-file"}		= $path_map{InAllTexDir}."/BookOfDeliveryControl.tex";
+	$path_map{"in-Book-of-Syllabi-delivery-control-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
 
-        $path_map{"in-description-foreach-area-file"}   = $path_map{InTexDir}."/description-foreach-area.tex";
-        $path_map{"out-description-foreach-area-file"}  = $path_map{OutputTexDir}."/area-description.tex";
+	$path_map{"in-Book-of-Descriptions-main-file"}	= $path_map{InAllTexDir}."/BookOfDescriptions.tex";
+	$path_map{"out-Book-of-Descriptions-main-file"}	= $path_map{OutputTexDir}."/BookOfDescriptions-<LANG>.tex";
+	$path_map{"in-Book-of-Descriptions-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
+	$path_map{"out-Descriptions-includelist-file"}	= $path_map{OutputTexDir}."/short-descriptions-<LANG>.tex";
 
-        $path_map{"in-description-foreach-prefix-file"}   = $path_map{InTexDir}."/description-foreach-prefix.tex";
-        $path_map{"out-description-foreach-prefix-file"}  = $path_map{OutputTexDir}."/prefix-description.tex";
+	$path_map{"in-Book-of-Bibliography-main-file"}	= $path_map{InAllTexDir}."/BookOfBibliography.tex";
+	$path_map{"out-Book-of-Bibliography-main-file"}	= $path_map{OutputTexDir}."/BookOfBibliography-<LANG>.tex";
+	$path_map{"in-Book-of-Bibliography-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
+	$path_map{"out-Bibliography-includelist-file"}	= $path_map{OutputTexDir}."/bibliography-list-<LANG>.tex";
 
-        $path_map{"in-sumilla-template-file"}			= $path_map{InInstDir}."/sumilla-template.tex";
-        $path_map{"in-syllabus-template-file"}			= $path_map{InInstDir}."/syllabus-template.tex";
-        $path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
-        $path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
-        $path_map{"in-distribution-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
-        $path_map{"in-this-semester-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
-        $path_map{"in-distribution-file"}				= $path_map{"in-distribution-dir"}."/distribution.txt";
-        $path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
-        $path_map{"in-specific-evaluation-file"}		= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
-        $path_map{"out-only-macros-file"}				= $path_map{OutputTexDir}."/macros-only.tex";
+	$path_map{"out-team-file"}						= $path_map{OutputTexDir}."/team-<LANG>.tex";
+	$path_map{"in-config-hdr-foot-sty-file"}        = $path_map{InStyAllDir}."/config-hdr-foot.sty";
+	$path_map{"out-config-hdr-foot-sty-file"}       = $path_map{OutputTexDir}."/config-hdr-foot-<LANG>.sty";
 
-        $path_map{"faculty-file"}						= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
+	$path_map{"in-Book-of-units-by-course-main-file"}= $path_map{InAllTexDir}."/BookOfUnitsByCourse.tex";
+	$path_map{"in-Book-of-units-by-course-face-file"}= $path_map{InAllTexDir}."/Book-Face.tex";
+	$path_map{"out-Syllabi-delivery-control-includelist-file"}= $path_map{OutputTexDir}."/pdf-syllabi-delivery-control-includelist.tex";
 
-        $path_map{"faculty-template.html"}				= $path_map{InFacultyIconsDir}."/faculty.html";
-        $path_map{"NoFace-file"}						= $path_map{InFacultyIconsDir}."/noface.gif";
+	$path_map{"in-pdf-icon-file"}					= $path_map{InFigDir}."/pdf.jpeg";
 
-        $path_map{"faculty-general-output-html"}		= $path_map{OutputFacultyDir}."/faculty.html";
-		$path_map{"out-courses-by-professor-file"}		= $config{OutputTexDir}."/courses-by-professor.tex";
-		$path_map{"out-professor-by-course-file"}		= $config{OutputTexDir}."/professor-by-course.tex";
-        $path_map{"in-replacements-file"}				= $path_map{InStyDir}."/replacements.txt";
+	$path_map{"out-list-of-unit-by-course-file"}	= $path_map{OutputTexDir}."/list-of-units-by-course.tex";
 
-        $path_map{"output-curricula-html-file"}			= "$path_map{OutputHtmlDir}/Curricula_$config{area}_$config{institution}.html";
-        $path_map{"output-index-html-file"}				= "$path_map{OutputHtmlDir}/index.html";
+	$path_map{"in-description-foreach-area-file"}   = $path_map{InTexDir}."/description-foreach-area.tex";
+	$path_map{"out-description-foreach-area-file"}  = $path_map{OutputTexDir}."/area-description.tex";
 
-        # Batch files
-        $path_map{"out-compileall-file"}				= "compileall";
-        $path_map{"in-compile1institucion-base-file"}	= $path_map{InDir}."/base-scripts/compile1institucion.sh";
-        $path_map{"out-compile1institucion-file"}  		= $path_map{OutputScriptsDir}."/compile1institucion.sh";
-        $path_map{"in-gen-html-1institution-base-file"}	= $path_map{InDir}."/base-scripts/gen-html-1institution.sh";
-        $path_map{"out-gen-html-1institution-file"} 	= $path_map{OutputScriptsDir}."/gen-html-1institution.sh";
-        $path_map{"in-gen-eps-files-base-file"}			= $path_map{InDir}."/base-scripts/gen-eps-files.sh";
-        $path_map{"out-gen-eps-files-file"} 			= $path_map{OutputScriptsDir}."/gen-eps-files.sh";
-        $path_map{"in-gen-graph-base-file"}				= $path_map{InDir}."/base-scripts/gen-graph.sh";
-        $path_map{"out-gen-graph-file"} 				= $path_map{OutputScriptsDir}."/gen-graph.sh";
-        $path_map{"in-gen-book-base-file"}				= $path_map{InDir}."/base-scripts/gen-book.sh";
-        $path_map{"out-gen-book-file"} 					= $path_map{OutputScriptsDir}."/gen-book.sh";
-        $path_map{"in-CompileTexFile-base-file"}		= $path_map{InDir}."/base-scripts/CompileTexFile.sh";
-        $path_map{"out-CompileTexFile-file"} 			= $path_map{OutputScriptsDir}."/CompileTexFile.sh";
-        $path_map{"in-compile-simple-latex-base-file"}	= $path_map{InDir}."/base-scripts/compile-simple-latex.sh";
-        $path_map{"out-compile-simple-latex-file"} 		= $path_map{OutputScriptsDir}."/compile-simple-latex.sh";
-        $path_map{"update-page-numbers"}	 			= $path_map{InScriptsDir}."/update-page-numbers.pl";
+	$path_map{"in-description-foreach-prefix-file"}   = $path_map{InTexDir}."/description-foreach-prefix.tex";
+	$path_map{"out-description-foreach-prefix-file"}  = $path_map{OutputTexDir}."/prefix-description.tex";
 
-        $path_map{"out-batch-to-gen-figs-file"}         = $path_map{OutputScriptsDir}."/gen-fig-files.sh";
-        $path_map{"out-gen-syllabi.sh-file"}			= $path_map{OutputScriptsDir}."/gen-syllabi.sh";
-        $path_map{"out-gen-map-for-course"}				= $path_map{OutputScriptsDir}."/gen-map-for-course.sh";
+	$path_map{"in-sumilla-template-file"}			= $path_map{InInstDir}."/sumilla-template.tex";
+	$path_map{"in-syllabus-template-file"}			= $path_map{InInstDir}."/syllabus-template.tex";
+	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
+	$path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
+	$path_map{"in-distribution-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+	$path_map{"in-this-semester-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+	$path_map{"in-distribution-file"}				= $path_map{"in-distribution-dir"}."/distribution.txt";
+	$path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
+	$path_map{"in-specific-evaluation-file"}		= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
+	$path_map{"out-only-macros-file"}				= $path_map{OutputTexDir}."/macros-only.tex";
 
-        # Dot files
-        $path_map{"in-small-graph-item.dot"}			= $path_map{InTemplatesDot}."/small-graph-item$config{graph_version}.dot";
-        $path_map{"in-big-graph-item.dot"}				= $path_map{InTemplatesDot}."/big-graph-item$config{graph_version}.dot";
-        $path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula.dot";
-        $path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula.dot";
+	$path_map{"faculty-file"}						= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
 
-        # Poster files
-        $path_map{"in-poster-file"}						= $path_map{InDisciplineDir}."/tex/$config{discipline}-poster.tex";
-        $path_map{"out-poster-file"}					= $path_map{OutputTexDir}."/$config{discipline}-poster.tex";
-        $path_map{"in-a0poster-sty-file"}               = $path_map{InStyAllDir}."/a0poster.sty";
-        $path_map{"in-poster-macros-sty-file"}          = $path_map{InStyAllDir}."/poster-macros.sty";
-        $path_map{"in-small-graph-curricula-file"}      = $path_map{InTexAllDir}."/small-graph-curricula.tex";
-        $path_map{"out-small-graph-curricula-file"}     = $path_map{OutputTexDir}."/small-graph-curricula.tex";
+	$path_map{"faculty-template.html"}				= $path_map{InFacultyIconsDir}."/faculty.html";
+	$path_map{"NoFace-file"}						= $path_map{InFacultyIconsDir}."/noface.gif";
 
-        # Html
-        $path_map{"in-web-course-template.html-file"} 	= $path_map{InHtmlDir}."/web-course-template.html";
-        $path_map{"in-analytics.js-file"}               = $path_map{InDir}."/analytics.js";
+	$path_map{"faculty-general-output-html"}		= $path_map{OutputFacultyDir}."/faculty.html";
+	$path_map{"out-courses-by-professor-file"}		= $config{OutputTexDir}."/courses-by-professor.tex";
+	$path_map{"out-professor-by-course-file"}		= $config{OutputTexDir}."/professor-by-course.tex";
+	$path_map{"in-replacements-file"}				= $path_map{InStyDir}."/replacements.txt";
 
-        # Config files
-        $path_map{"all-config"}							= $path_map{InDir}."/config/all.config";
-        $path_map{"colors"}								= $path_map{InDir}."/config/colors.config";
-        $path_map{"discipline-config"}		   			= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
-        $path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
-        $path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
-        $path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
-        $path_map{"in-institution-config-file"}			= $path_map{InInstDir}."/institution.config";
-        $path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
-        $path_map{"dictionary"}							= $path_map{InLangDir}."/dictionary.txt";
-        $path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
+	$path_map{"output-curricula-html-file"}			= "$path_map{OutputHtmlDir}/Curricula_$config{area}_$config{institution}.html";
+	$path_map{"output-index-html-file"}				= "$path_map{OutputHtmlDir}/index.html";
 
-        $path_map{"OutputDisciplinesList-file"}			= $path_map{OutHtmlBase}."/disciplines.html";
+	# Batch files
+	$path_map{"out-compileall-file"}				= "compileall";
+	$path_map{"in-compile1institucion-base-file"}	= $path_map{InDir}."/base-scripts/compile1institucion.sh";
+	$path_map{"out-compile1institucion-file"}  		= $path_map{OutputScriptsDir}."/compile1institucion.sh";
+	$path_map{"in-gen-html-1institution-base-file"}	= $path_map{InDir}."/base-scripts/gen-html-1institution.sh";
+	$path_map{"out-gen-html-1institution-file"} 	= $path_map{OutputScriptsDir}."/gen-html-1institution.sh";
+	$path_map{"in-gen-eps-files-base-file"}			= $path_map{InDir}."/base-scripts/gen-eps-files.sh";
+	$path_map{"out-gen-eps-files-file"} 			= $path_map{OutputScriptsDir}."/gen-eps-files.sh";
+	$path_map{"in-gen-graph-base-file"}				= $path_map{InDir}."/base-scripts/gen-graph.sh";
+	$path_map{"out-gen-graph-file"} 				= $path_map{OutputScriptsDir}."/gen-graph.sh";
+	$path_map{"in-gen-book-base-file"}				= $path_map{InDir}."/base-scripts/gen-book.sh";
+	$path_map{"out-gen-book-file"} 					= $path_map{OutputScriptsDir}."/gen-book.sh";
+	$path_map{"in-CompileTexFile-base-file"}		= $path_map{InDir}."/base-scripts/CompileTexFile.sh";
+	$path_map{"out-CompileTexFile-file"} 			= $path_map{OutputScriptsDir}."/CompileTexFile.sh";
+	$path_map{"in-compile-simple-latex-base-file"}	= $path_map{InDir}."/base-scripts/compile-simple-latex.sh";
+	$path_map{"out-compile-simple-latex-file"} 		= $path_map{OutputScriptsDir}."/compile-simple-latex.sh";
+	$path_map{"update-page-numbers"}	 			= $path_map{InScriptsDir}."/update-page-numbers.pl";
+
+	$path_map{"out-batch-to-gen-figs-file"}         = $path_map{OutputScriptsDir}."/gen-fig-files.sh";
+	$path_map{"out-gen-syllabi.sh-file"}			= $path_map{OutputScriptsDir}."/gen-syllabi.sh";
+	$path_map{"out-gen-map-for-course"}				= $path_map{OutputScriptsDir}."/gen-map-for-course.sh";
+
+	# Dot files
+	$path_map{"in-small-graph-item.dot"}			= $path_map{InTemplatesDot}."/small-graph-item$config{graph_version}.dot";
+	$path_map{"in-big-graph-item.dot"}				= $path_map{InTemplatesDot}."/big-graph-item$config{graph_version}.dot";
+	$path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula.dot";
+	$path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula.dot";
+
+	# Poster files
+	$path_map{"in-poster-file"}						= $path_map{InDisciplineDir}."/tex/$config{discipline}-poster.tex";
+	$path_map{"out-poster-file"}					= $path_map{OutputTexDir}."/$config{discipline}-poster.tex";
+	$path_map{"in-a0poster-sty-file"}               = $path_map{InStyAllDir}."/a0poster.sty";
+	$path_map{"in-poster-macros-sty-file"}          = $path_map{InStyAllDir}."/poster-macros.sty";
+	$path_map{"in-small-graph-curricula-file"}      = $path_map{InTexAllDir}."/small-graph-curricula.tex";
+	$path_map{"out-small-graph-curricula-file"}     = $path_map{OutputTexDir}."/small-graph-curricula.tex";
+
+	# Html
+	$path_map{"in-web-course-template.html-file"} 	= $path_map{InHtmlDir}."/web-course-template.html";
+	$path_map{"in-analytics.js-file"}               = $path_map{InDir}."/analytics.js";
+
+	# Config files
+	$path_map{"all-config"}							= $path_map{InDir}."/config/all.config";
+	$path_map{"colors"}								= $path_map{InDir}."/config/colors.config";
+	$path_map{"discipline-config"}		   			= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
+	$path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
+	$path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
+	$path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
+	$path_map{"in-institution-config-file"}			= $path_map{InInstDir}."/institution.config";
+	$path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
+	$path_map{"dictionary"}							= $path_map{InLangDir}."/dictionary.txt";
+	$path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
+
+	$path_map{"OutputDisciplinesList-file"}			= $path_map{OutHtmlBase}."/disciplines.html";
 
 	Util::check_point("set_initial_paths");
 }

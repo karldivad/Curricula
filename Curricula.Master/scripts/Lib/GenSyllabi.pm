@@ -658,6 +658,20 @@ sub get_hidden_chapter_info($$)
 	return $output_tex;
 }
 
+sub generate_fancy_header_file($)
+{
+	my ($lang) = (@_);
+	my $in_fancy_hdr_file = Common::get_template("in-config-hdr-foot-sty-file");
+	my $fancy_hdr_content = Util::read_file($in_fancy_hdr_file);
+	$fancy_hdr_content =~ s/<SchoolFullName>/\\SchoolFullName$lang/g;
+	$fancy_hdr_content =~ s/<<Curricula>>/$Common::config{dictionaries}{$lang}{Curricula}/g;
+	
+	my $out_fancy_hdr_file = Common::get_template("out-config-hdr-foot-sty-file");
+	$out_fancy_hdr_file =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	Util::print_message("Generating $out_fancy_hdr_file ...");
+	Util::write_file($out_fancy_hdr_file, $fancy_hdr_content);
+}
+
 sub write_book_files($$$)
 {
 	my ($InBook, $lang, $output_tex) = (@_);
@@ -684,6 +698,7 @@ sub write_book_files($$$)
 
 	Util::print_message("Generating $OutputIncludeListFile ok! (write_book_files)");
 	Util::write_file($OutputIncludeListFile, $output_tex);
+	generate_fancy_header_file($lang);
 }
 
 # ok
