@@ -103,9 +103,7 @@ sub main()
 	    GenSyllabi::gen_book_of_bibliography($lang);
 	    GenSyllabi::generate_team_file($lang);
 		Util::print_color("=======");
-
 	}
-	exit;
 	generate_general_info();
     #copy_basic_files();
 #         Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));

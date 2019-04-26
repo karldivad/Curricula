@@ -1676,6 +1676,25 @@ sub generate_curves_with_one_standard($)
 	Util::print_message("generate_curves_with_one_standard($standard) OK!");
 }
 
+sub generate_latex_include_for_this_standard($$)
+{
+	my ($standard, $lang) = (@_);
+	my $output_txt .= "\\begin{figure}[H]\n";
+	$output_txt .= "\\centering\n";
+	$output_txt .= "	\\includegraphics[scale=1.0]{\\OutputFigDir/$key-$Common::area-with-$standard}\n";
+
+	my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
+	#Comparacin por rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
+	$caption =~ s/<STANDARD_LONG_NAME>/$Common::config{dictionary}{standards_long_name}{$standard}/g;
+	$caption =~ s/<STANDARD>/$standard/g;
+	$caption =~ s/<STANDARD_REF_INSTITUTION>/$Common::config{dictionary}{InstitutionToCompareWith}/g;
+	$caption =~ s/<AREA>/$Common::config{area}/g;
+	$output_txt .= "	\\caption{$caption}\n";
+	# 		$output_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
+	$output_txt .= "	\\label{fig:comparing-$key-$Common::area-$Common::institution-with-$standard}\n";
+	$output_txt .= "\\end{figure}\n\n";
+}
+
 # ok
 sub generate_compatibility_with_standards()
 {
@@ -1687,36 +1706,31 @@ sub generate_compatibility_with_standards()
 		}
 	}
 
-	my $comparing_txt = "";
-	my %type_of_graph = ("curves" => 1,
-			     "spider" => 1);
+	my $output_txt = "";
 	foreach my $standard (split(",", $Common::config{Standards}))
 	{
-		foreach my $key (sort keys %type_of_graph)
+		foreach my $key (sort keys %{$Common::config{type_of_graph}})
 		{
-			$comparing_txt .= "\\begin{figure}[H]\n";
-			$comparing_txt .= "\\centering\n";
-			$comparing_txt .= "	\\includegraphics[scale=1.0]{\\OutputFigDir/$key-$Common::area-with-$standard}\n";
-
-			my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
-			#Comparacin por rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
-			$caption =~ s/<STANDARD_LONG_NAME>/$Common::config{dictionary}{standards_long_name}{$standard}/g;
-			$caption =~ s/<STANDARD>/$standard/g;
-			$caption =~ s/<STANDARD_REF_INSTITUTION>/$Common::config{dictionary}{InstitutionToCompareWith}/g;
-			$caption =~ s/<AREA>/$Common::config{area}/g;
-			$comparing_txt .= "	\\caption{$caption}\n";
-	# 		$comparing_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
-			$comparing_txt .= "	\\label{fig:comparing-$key-$Common::area-$Common::institution-with-$standard}\n";
-			$comparing_txt .= "\\end{figure}\n\n";
+			foreach my $lang (@{$Common::config{SyllabusLangsList}})
+			{
+				if($key eq "spider" && $Common::config{type_of_graph}{spider} == 1)
+				{	generate_spider_with_one_standard($standard);
+					generate_latex_include_for_this_standard($standard, $lang);		
+				}
+				elsif($key eq "curves" && $Common::config{type_of_graph}{curves} == 1);
+				{	generate_curves_with_one_standard($standard, $lang);
+					generate_latex_include_for_this_standard($standard, $lang);		
+				}
+			}	
 		}
 		# Gen figure file itself
-                # Util::print_message("generate_spider_with_one_standard($standard)");
+        # Util::print_message("generate_spider_with_one_standard($standard)");
 		$Common::config{legend_space} = 0.5;
-		generate_spider_with_one_standard($standard) if($type_of_graph{spider} == 1);
-		generate_curves_with_one_standard($standard) if($type_of_graph{curves} == 1);
+		
 	}
-	Util::write_file(Common::get_template("out-comparing-with-standards-file"), $comparing_txt);
+	Util::write_file(Common::get_template("out-comparing-with-standards-file"), $output_txt);
 	Util::print_message("generate_compatibility_with_standards() OK!");
+	exit;
 }
 
 sub generate_pie_by_levels()
