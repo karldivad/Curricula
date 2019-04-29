@@ -1508,9 +1508,9 @@ sub generate_background_figure_for_one_standard($$$$)
 	return $output_polygon;
 }
 
-sub generate_spider_with_one_standard($)
+sub generate_spider_with_one_standard($$$)
 {
-	my ($standard) = (@_);
+	my ($standard, $lang, $output_file) = (@_);
 	my $output_txt	= "";
 
 	my $range   	 = 5;
@@ -1578,16 +1578,15 @@ sub generate_spider_with_one_standard($)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
-	my $output_file = Common::get_template("OutputTexDir")."/spider-$Common::area-with-$standard.tex";
 	Util::write_file_to_gen_fig($output_file, $output_txt);
 	Util::print_message("generate_spider_with_one_standard($standard) OK!  $output_file");
 	#print Dumper (%{$Common::config{dictionary}{all_areas}}); exit;
-	#Util::print_message("nareas=$nareas, ang_base=$ang_base"); ;
+	#Util::print_message("nareas=$nareas, ang_base=$ang_base");
 }
 
 sub generate_curves_with_one_standard($)
 {
-	my ($standard) = (@_);
+	my ($standard, $lang, $output_file) = (@_);
 	my $output_txt	= "";
 
 	my $range    = 5;
@@ -1671,17 +1670,16 @@ sub generate_curves_with_one_standard($)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
-	my $output_file = "curves-$Common::area-with-$standard";
-	Util::write_file_to_gen_fig(Common::get_template("OutputTexDir")."/$output_file.tex", $output_txt);
+	Util::write_file_to_gen_fig($output_file, $output_txt);
 	Util::print_message("generate_curves_with_one_standard($standard) OK!");
 }
 
 sub generate_latex_include_for_this_standard($$)
 {
-	my ($standard, $lang) = (@_);
+	my ($standard, $lang, $output_file) = (@_);
 	my $output_txt .= "\\begin{figure}[H]\n";
 	$output_txt .= "\\centering\n";
-	$output_txt .= "	\\includegraphics[scale=1.0]{\\OutputFigDir/$key-$Common::area-with-$standard}\n";
+	$output_txt .= "	\\includegraphics[scale=1.0]{$output_file}\n";
 
 	my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
 	#Comparacin por rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
@@ -1693,6 +1691,7 @@ sub generate_latex_include_for_this_standard($$)
 	# 		$output_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
 	$output_txt .= "	\\label{fig:comparing-$key-$Common::area-$Common::institution-with-$standard}\n";
 	$output_txt .= "\\end{figure}\n\n";
+	return $output_txt;
 }
 
 # ok
@@ -1706,20 +1705,22 @@ sub generate_compatibility_with_standards()
 		}
 	}
 
+	my $OutputTexDir = Common::get_template("OutputTexDir");
 	my $output_txt = "";
 	foreach my $standard (split(",", $Common::config{Standards}))
 	{
-		foreach my $key (sort keys %{$Common::config{type_of_graph}})
+		foreach my $type_of_graph (sort keys %{$Common::config{type_of_graph}})
 		{
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
-				if($key eq "spider" && $Common::config{type_of_graph}{spider} == 1)
-				{	generate_spider_with_one_standard($standard);
-					generate_latex_include_for_this_standard($standard, $lang);		
+				my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang.tex";
+				if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
+				{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file");
+					$output_txt .= generate_latex_include_for_this_standard($standard, $lang, "$OutputTexDir/$output_file");		
 				}
-				elsif($key eq "curves" && $Common::config{type_of_graph}{curves} == 1);
+				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1);
 				{	generate_curves_with_one_standard($standard, $lang);
-					generate_latex_include_for_this_standard($standard, $lang);		
+					$output_txt .= generate_latex_include_for_this_standard($standard, $lang);		
 				}
 			}	
 		}
