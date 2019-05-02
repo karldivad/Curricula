@@ -672,6 +672,15 @@ sub generate_fancy_header_file($)
 	Util::write_file($out_fancy_hdr_file, $fancy_hdr_content);
 }
 
+sub ExpandTags($$)
+{
+	my ($InTxt, $lang) = (@_);
+	$InTxt =~ s/<LANG-EXTENDED>/$lang/g;
+	$InTxt =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	$InTxt =~
+	return $InTxt; 
+}
+
 sub write_book_files($$$)
 {
 	my ($InBook, $lang, $output_tex) = (@_);
@@ -681,9 +690,11 @@ sub write_book_files($$$)
 	my $InBookContent = Util::read_file($InBookFile);
 	$InBookContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
 	$InBookContent =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
+	$InBookContent =~ s/<LANG-EXTENDED>/$lang/g;
+	$InBookContent =~ ExpandTags($InBookContent, $lang);
+
 	my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
 	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-	$InBookContent =~ s/<LANG-EXTENDED>/$lang/g;
 
 	Util::print_message("Generating $OutBookFile ok! (write_book_files)");
 	$InBookContent = Common::translate($InBookContent, $lang);

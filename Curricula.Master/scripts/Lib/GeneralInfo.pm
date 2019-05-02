@@ -1578,13 +1578,14 @@ sub generate_spider_with_one_standard($$$)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
+	$output_file = "$output_file.tex";
 	Util::write_file_to_gen_fig($output_file, $output_txt);
 	Util::print_message("generate_spider_with_one_standard($standard) OK!  $output_file");
 	#print Dumper (%{$Common::config{dictionary}{all_areas}}); exit;
 	#Util::print_message("nareas=$nareas, ang_base=$ang_base");
 }
 
-sub generate_curves_with_one_standard($)
+sub generate_curves_with_one_standard($$$)
 {
 	my ($standard, $lang, $output_file) = (@_);
 	my $output_txt	= "";
@@ -1670,11 +1671,12 @@ sub generate_curves_with_one_standard($)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
+	$output_file = "$output_file.tex";
 	Util::write_file_to_gen_fig($output_file, $output_txt);
 	Util::print_message("generate_curves_with_one_standard($standard) OK!");
 }
 
-sub generate_latex_include_for_this_standard($$)
+sub generate_latex_include_for_this_standard($$$)
 {
 	my ($standard, $lang, $output_file) = (@_);
 	my $output_txt .= "\\begin{figure}[H]\n";
@@ -1689,7 +1691,7 @@ sub generate_latex_include_for_this_standard($$)
 	$caption =~ s/<AREA>/$Common::config{area}/g;
 	$output_txt .= "	\\caption{$caption}\n";
 	# 		$output_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
-	$output_txt .= "	\\label{fig:comparing-$key-$Common::area-$Common::institution-with-$standard}\n";
+	$output_txt .= "	\\label{fig:comparing-$output_file}\n";
 	$output_txt .= "\\end{figure}\n\n";
 	return $output_txt;
 }
@@ -1713,14 +1715,15 @@ sub generate_compatibility_with_standards()
 		{
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
-				my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang.tex";
+				my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+				my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang_prefix";
 				if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
 				{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file");
 					$output_txt .= generate_latex_include_for_this_standard($standard, $lang, "$OutputTexDir/$output_file");		
 				}
-				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1);
-				{	generate_curves_with_one_standard($standard, $lang);
-					$output_txt .= generate_latex_include_for_this_standard($standard, $lang);		
+				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)
+				{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file");
+					$output_txt .= generate_latex_include_for_this_standard($standard, $lang, "$OutputTexDir/$output_file");		
 				}
 			}	
 		}
