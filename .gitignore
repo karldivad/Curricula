@@ -2,6 +2,7 @@
 *.zip
 ~*
 .fuse_hidden*
+*.fls
 *.log
 *.dvi
 *.aux

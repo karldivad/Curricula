@@ -40,11 +40,14 @@ sub generate_general_info()
 	GeneralInfo::generate_pie("hours");
 	GeneralInfo::generate_pie_by_levels();
 
-	GeneralInfo::generate_curricula_in_dot("small", $lang);
-	system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("out-small-graph-curricula-file"));
-	GeneralInfo::generate_curricula_in_dot("big", $lang);   
-
-	GeneralInfo::generate_poster($lang);
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+		Util::print_color("Generating Posters in $lang ...");
+		GeneralInfo::generate_curricula_in_dot("small", $lang);
+		#error??? system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::ExpandTags(Common::get_template("out-small-graph-curricula-file"), $lang);
+		GeneralInfo::generate_curricula_in_dot("big", $lang);   
+		GeneralInfo::generate_poster($lang);
+	}
 
 	GeneralInfo::generate_all_topics_by_course($lang);
 	GeneralInfo::generate_all_outcomes_by_course($lang);
@@ -98,12 +101,13 @@ sub main()
 	GenSyllabi::process_syllabi();
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
-	    GenSyllabi::gen_book_of_descriptions($lang);
+	    Util::print_color("Generating books in $lang ...");
+		GenSyllabi::gen_book_of_descriptions($lang);
 	    #GenSyllabi::gen_list_of_units_by_course();
 	    GenSyllabi::gen_book_of_bibliography($lang);
 	    GenSyllabi::generate_team_file($lang);
-		Util::print_color("=======");
 	}
+
 	generate_general_info();
     #copy_basic_files();
 #         Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));

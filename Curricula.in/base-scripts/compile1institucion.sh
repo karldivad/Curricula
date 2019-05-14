@@ -56,7 +56,9 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 mkdir -p <OUT_LOG_DIR>
 ./scripts/process-curricula.pl <AREA>-<INST> ;
 <OUTPUT_SCRIPTS_DIR>/gen-eps-files.sh;
-<OUTPUT_SCRIPTS_DIR>/gen-graph.sh small
+foreach lang (<LIST_OF_LANGS>)
+    <OUTPUT_SCRIPTS_DIR>/gen-graph.sh small $lang
+end
 
 if($pdf == 1) then
       # latex -interaction=nonstopmode <MAIN_FILE>
@@ -88,7 +90,9 @@ endif
 
 ./scripts/update-outcome-itemizes.pl <AREA>-<INST>
 ./scripts/update-page-numbers.pl <AREA>-<INST>;
-<OUTPUT_SCRIPTS_DIR>/gen-graph.sh big
+foreach lang (<LIST_OF_LANGS>)
+    <OUTPUT_SCRIPTS_DIR>/gen-graph.sh big $lang
+end
 <OUTPUT_SCRIPTS_DIR>/gen-map-for-course.sh
 
 if($html == 1) then
@@ -123,12 +127,15 @@ if($html == 1) then
 endif
 
 <OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh small-graph-curricula <AREA>-<INST>-small-graph-curricula <OUTPUT_TEX_DIR>;
-<OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh Computing-poster <AREA>-<INST>-poster <OUTPUT_TEX_DIR>;
-pdftk A=<OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf cat A1-1 output <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf;
-convert <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf <OUTPUT_TEX_DIR>/../html/<AREA>-<INST>-poster.png;
-rm <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-P1.pdf
-cp <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
-mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster.pdf <OUTPUT_HTML_DIR>/.
+
+foreach lang (<LIST_OF_LANGS>)
+    <OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh Computing-poster-$lang <AREA>-<INST>-poster-$lang <OUTPUT_TEX_DIR>;
+    pdftk A=<OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf cat A1-1 output <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf;
+    convert <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf <OUTPUT_TEX_DIR>/../html/<AREA>-<INST>-poster-$lang.png;
+    rm <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf
+    cp <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
+    mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_HTML_DIR>/.
+end
 
 <OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
 mkdir -p <OUTPUT_HTML_DIR>/syllabi;

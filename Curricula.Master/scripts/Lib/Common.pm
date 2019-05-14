@@ -126,6 +126,15 @@ sub replace_special_chars($)
 	return $text;
 }
 
+sub ExpandTags($$)
+{
+	my ($InTxt, $lang) = (@_);
+	$InTxt =~ s/<LANG-EXTENDED>/$lang/g;
+	$InTxt =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	$InTxt =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
+	return $InTxt; 
+}
+
 sub GetInCountryBaseDir($)
 {
     my ($country) =  (@_);
@@ -386,12 +395,12 @@ sub read_pagerefs()
 }
 
 # ok
-sub sem_label($)
+sub sem_label($$)
 {
-	my ($sem) = (@_);
+	my ($sem, $lang) = (@_);
 # 	print "$sem\n";
-	my $rpta  = "\"$sem$config{dictionary}{ordinal_postfix}{$sem} $config{dictionary}{Sem} ";
-	$rpta    .= "($config{credits_this_semester}{$sem} $config{dictionary}{cr})\"";
+	my $rpta  = "\"$sem$config{dictionaries}{$lang}{ordinal_postfix}{$sem} $config{dictionaries}{$lang}{Sem} ";
+	$rpta    .= "($config{credits_this_semester}{$sem} $config{dictionaries}{$lang}{cr})\"";
 	return  $rpta;
 }
 
@@ -668,16 +677,16 @@ sub set_initial_paths()
 	# Dot files
 	$path_map{"in-small-graph-item.dot"}			= $path_map{InTemplatesDot}."/small-graph-item$config{graph_version}.dot";
 	$path_map{"in-big-graph-item.dot"}				= $path_map{InTemplatesDot}."/big-graph-item$config{graph_version}.dot";
-	$path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula.dot";
-	$path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula.dot";
+	$path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula-<LANG>.dot";
+	$path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula-<LANG>.dot";
 
 	# Poster files
 	$path_map{"in-poster-file"}						= $path_map{InDisciplineDir}."/tex/$config{discipline}-poster.tex";
-	$path_map{"out-poster-file"}					= $path_map{OutputTexDir}."/$config{discipline}-poster.tex";
+	$path_map{"out-poster-file"}					= $path_map{OutputTexDir}."/$config{discipline}-poster-<LANG>.tex";
 	$path_map{"in-a0poster-sty-file"}               = $path_map{InStyAllDir}."/a0poster.sty";
 	$path_map{"in-poster-macros-sty-file"}          = $path_map{InStyAllDir}."/poster-macros.sty";
 	$path_map{"in-small-graph-curricula-file"}      = $path_map{InTexAllDir}."/small-graph-curricula.tex";
-	$path_map{"out-small-graph-curricula-file"}     = $path_map{OutputTexDir}."/small-graph-curricula.tex";
+	$path_map{"out-small-graph-curricula-file"}     = $path_map{OutputTexDir}."/small-graph-curricula-<LANG>.tex";
 
 	# Html
 	$path_map{"in-web-course-template.html-file"} 	= $path_map{InHtmlDir}."/web-course-template.html";
@@ -1314,6 +1323,15 @@ sub gen_batch($$)
 
 	my $language_without_accents = Common::get_template("language_without_accents");
 	$txt =~ s/<LANG>/$language_without_accents/g;
+
+	my $ListOfLangsPrefixes = "";
+	my $sep = "";
+	foreach my $lang (@{$config{SyllabusLangsList}})
+	{
+	      $ListOfLangsPrefixes .= "$sep'$config{dictionaries}{$lang}{lang_prefix}'";
+		  $sep = " ";
+	}
+	$txt =~ s/<LIST_OF_LANGS>/$ListOfLangsPrefixes/g;
 	
 	my $InLangBaseDir = Common::get_template("InLangBaseDir");
 	$txt =~ s/<IN_LANG_BASE_DIR>/$InLangBaseDir/g;
@@ -1473,11 +1491,12 @@ sub read_institution_info($)
 	}
 
         # Read the outcomes list
-        if($txt =~ m/\\newcommand\{\\logowidth\}\{(\d*)(.*?)\}/)
+        if($txt =~ m/\\newcommand\{\\logowidth\}\{([0-9]*\.?[0-9]+)(.*?)\}/)
         {       $this_inst_info{logowidth}       = $1;
                 $this_inst_info{logowidth_units} = $2;
                 #Util::print_message("this_inst_info{logowidth}=$this_inst_info{logowidth}, this_inst_info{logowidth_units}=$this_inst_info{logowidth_units}"); exit;
-        }
+				#exit;
+		}
         else
         {       Util::print_error("(read_institution_info): there is not \\logowidth configured in \"$file\" ...\n");
         }
@@ -3713,7 +3732,7 @@ sub generate_course_info_in_dot($$$)
 	my %map = ();
 
 	$map{CODE}	= $codcour;
-	my $codcour_name = $course_info{$codcour}{$config{language_without_accents}}{course_name};
+	my $codcour_name = $course_info{$codcour}{$lang}{course_name};
 	my ($newlabel,$nlines) = wrap_label("$codcour. $codcour_name");
 	my @height = (0, 0, 0.6, 0.9, 1.2, 1.5);
 # 	my $height = 0.3*$nlines+0.1*($nlines-1) + 0.3*$config{extralevels}+0.05*($config{extralevels}-1);
@@ -3724,7 +3743,7 @@ sub generate_course_info_in_dot($$$)
 
 	if($config{graph_version} >= 2)
 	{
-		if( $course_info{$codcour}{short_type} eq $config{dictionary}{MandatoryShort})
+		if( $course_info{$codcour}{short_type} eq $config{dictionaries}{$lang}{MandatoryShort})
 		{	$map{PERIPHERIES}	= 2;
 			$map{SHAPE}			= "record";
 		}
@@ -3735,22 +3754,27 @@ sub generate_course_info_in_dot($$$)
 		$map{SHORTTYPE}	= $course_info{$codcour}{short_type};
 	}
 	$map{BORDERCOLOR} = "white";
-	$map{FILLCOLOR}	= $course_info{$codcour}{bgcolor};
-	$map{CR}		= $course_info{$codcour}{cr};
+	$map{FILLCOLOR}	 = $course_info{$codcour}{bgcolor};
+	$map{NumberOfCr} = $course_info{$codcour}{cr};
+	$map{CR}		 = $config{dictionaries}{$lang}{CR};
 
+	$map{Theory} = $config{dictionaries}{$lang}{Theory};
 	if($course_info{$codcour}{th} > 0)
-	{		$map{HT}	= $course_info{$codcour}{th};	}
-	else{	$map{HT}	= "";	}
+	{		$map{NumberOfTH}	= $course_info{$codcour}{th};	}
+	else{	$map{NumberOfTH}	= "";	}
+	$map{Practice} = $config{dictionaries}{$lang}{Practice};
 	if($course_info{$codcour}{ph} > 0)
-	{		$map{HP}	= $course_info{$codcour}{ph};	}
-	else{	$map{HP}	= "";	}
+	{		$map{NumberOfPH}	= $course_info{$codcour}{ph};	}
+	else{	$map{NumberOfPH}	= "";	}
+	$map{Laboratory} = $config{dictionaries}{$lang}{Laboratory};
 	if($course_info{$codcour}{lh} > 0)
-	{		$map{HL}	= $course_info{$codcour}{lh};	}
-	else{	$map{HL} 	= "";	}
+	{		$map{NumberOfLH}	= $course_info{$codcour}{lh};	}
+	else{	$map{NumberOfLH} 	= "";	}
 
 	$map{NAME}	= $course_info{$codcour}{$lang}{course_name};
-	$map{TYPE}	= $config{dictionary}{$course_info{$codcour}{course_type}};
-	$map{PAGE}	= "--PAGE$codcour--";
+	$map{TYPE}	= $config{dictionaries}{$lang}{$course_info{$codcour}{course_type}};
+	$map{Pag}	= $config{dictionaries}{$lang}{Pag};
+	$map{PAGE}	= "";			#"--PAGE$codcour--";
 
 	my ($outcome_txt, $sep) = ("", "");
 	foreach my $outcome (@{$course_info{$codcour}{outcomes_array}})
@@ -3766,7 +3790,7 @@ sub generate_course_info_in_dot_with_sem($$$)
 	my ($codcour, $this_item, $lang) = (@_);
 	my $output_txt = generate_course_info_in_dot($codcour, $this_item, $lang);
 
-	my $sem_label = "$Common::course_info{$codcour}{semester}$Common::config{dictionary}{ordinal_postfix}{$Common::course_info{$codcour}{semester}} $Common::config{dictionary}{Sem}";
+	my $sem_label = "$Common::course_info{$codcour}{semester}$Common::config{dictionaries}{$lang}{ordinal_postfix}{$Common::course_info{$codcour}{semester}} $Common::config{dictionaries}{$lang}{Sem}";
 # 	$output_txt  =~ s/\(<SEM>\)/\($sem_label\)/g;
 	return $output_txt;
 }

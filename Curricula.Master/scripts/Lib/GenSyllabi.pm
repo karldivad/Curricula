@@ -672,15 +672,6 @@ sub generate_fancy_header_file($)
 	Util::write_file($out_fancy_hdr_file, $fancy_hdr_content);
 }
 
-sub ExpandTags($$)
-{
-	my ($InTxt, $lang) = (@_);
-	$InTxt =~ s/<LANG-EXTENDED>/$lang/g;
-	$InTxt =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-	$InTxt =~
-	return $InTxt; 
-}
-
 sub write_book_files($$$)
 {
 	my ($InBook, $lang, $output_tex) = (@_);
@@ -688,24 +679,23 @@ sub write_book_files($$$)
 	system("cp $InBookFile ".Common::get_template("OutputTexDir"));
 
 	my $InBookContent = Util::read_file($InBookFile);
-	$InBookContent =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
-	$InBookContent =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
-	$InBookContent =~ s/<LANG-EXTENDED>/$lang/g;
-	$InBookContent =~ ExpandTags($InBookContent, $lang);
+	$InBookContent = Common::ExpandTags($InBookContent, $lang);
 
 	my $OutBookFile = Common::get_template("out-Book-of-$InBook-main-file");
-	$OutBookFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	$OutBookFile = Common::ExpandTags($OutBookFile, $lang);
 
-	Util::print_message("Generating $OutBookFile ok! (write_book_files)");
+	Util::print_message("\nGenerating $OutBookFile ok! (write_book_files)");
 	$InBookContent = Common::translate($InBookContent, $lang);
 	Util::write_file($OutBookFile, $InBookContent);
 
 	my $InBookFaceFile = Common::get_template("in-Book-of-$InBook-face-file");
+	my $InBookFaceTxt = Util::read_file($InBookFaceFile);
+	$InBookFaceTxt = Common::ExpandTags($InBookFaceTxt, $lang);
 	if( system("cp $InBookFaceFile ".Common::get_template("OutputTexDir")) >> 8 == 0 )
 	{	Util::print_message("Copied $InBookFaceFile to".Common::get_template("OutputTexDir")."... ok!");	}
 
 	my $OutputIncludeListFile = Common::get_template("out-$InBook-includelist-file");
-	$OutputIncludeListFile =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
+	$OutputIncludeListFile = Common::ExpandTags($OutputIncludeListFile, $lang);
 
 	Util::print_message("Generating $OutputIncludeListFile ok! (write_book_files)");
 	Util::write_file($OutputIncludeListFile, $output_tex);
@@ -1111,7 +1101,7 @@ sub gen_prerequisites_map_in_dot($)
 			my $sep 		= "";
 			for( my $sem_count = $min_sem_to_show; $sem_count <= $max_sem_to_show; $sem_count++)
 			{
-  				my $sem_label = Common::sem_label($sem_count);
+  				my $sem_label = Common::sem_label($sem_count, $lang);
   				my $this_sem = "\t{ rank = same; $sem_label; ";
   				foreach my $one_cour (@{$local_list_of_courses_by_semester{$sem_count}})
   				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}

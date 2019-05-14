@@ -578,34 +578,34 @@ sub load_critical_path(@)
 
 sub detect_critical_path()
 {
-			initialize_critical_path();
-			#my $test = "CS1D01";
-			#my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
-			#Util::print_message("$test distance=$distance_child");
-			#print Dumper(\@path_child);
-			my $max_distance = 0;
-			for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	initialize_critical_path();
+	#my $test = "CS1D01";
+	#my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
+	#Util::print_message("$test distance=$distance_child");
+	#print Dumper(\@path_child);
+	my $max_distance = 0;
+	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
+	{
+			foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 			{
-					foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-					{
-							my ($distance_for_this_course, @path) = process_critical_path_for_one_course($codcour);
-							if( $distance_for_this_course >= $max_distance )
-							{			#if( not defined( $critical_path{$distance_for_this_course} ) )
-										#{		@{$critical_path{$distance_for_this_course}} = [];	}
-										$max_distance = $distance_for_this_course;
-										push(@{$critical_path{$distance_for_this_course}}, @path);
-							}
+					my ($distance_for_this_course, @path) = process_critical_path_for_one_course($codcour);
+					if( $distance_for_this_course >= $max_distance )
+					{			#if( not defined( $critical_path{$distance_for_this_course} ) )
+								#{		@{$critical_path{$distance_for_this_course}} = [];	}
+								$max_distance = $distance_for_this_course;
+								push(@{$critical_path{$distance_for_this_course}}, @path);
 					}
 			}
-			load_critical_path(@{$critical_path{$max_distance}});
-			Util::check_point("detect_critical_path");
+	}
+	load_critical_path(@{$critical_path{$max_distance}});
+	Util::check_point("detect_critical_path");
 }
 
 # dot
 sub generate_curricula_in_dot($$)
 {
 	my ($size, $lang) = (@_);
-	my $output_file = Common::get_template("out-$size-graph-curricula-dot-file");
+	my $output_file = Common::ExpandTags(Common::get_template("out-$size-graph-curricula-dot-file"), $lang);
 	my $course_tpl 	= Util::read_file(Common::get_template("in-$size-graph-item.dot"));
 	my $output_txt = "";
 	$output_txt .= "digraph curricula\n{\n";
@@ -624,7 +624,7 @@ sub generate_curricula_in_dot($$)
 	{
 			#print "$semester ...  ";
 			$output_txt .= "$sep";
-			$output_txt .= Common::sem_label($semester);
+			$output_txt .= Common::sem_label($semester, $lang);
 			$sep = "->";
 	}
 	$output_txt .= ";\n";
@@ -637,7 +637,7 @@ sub generate_curricula_in_dot($$)
 		my $ncourses = 0;
 		my $sem_text = "";
 		my $sem_rank = "";
-		my $sem_label = Common::sem_label($semester);
+		my $sem_label = Common::sem_label($semester, $lang);
 
 		$sem_text .= "\t$sem_label";
 		$sem_text .= " [shape=box];\n";
@@ -779,6 +779,10 @@ sub generate_poster($)
  	$Common::config{def_width} = $Common::config{title_width}/2-1;
  	$poster_txt =~ s/<DEF_WIDTH>/$Common::config{def_width}$Common::config{logowidth_units}/g;
 
+	#Util::print_message("Common::config{title_width}=$Common::config{title_width}");
+	#Util::print_message("Common::config{def_width}=$Common::config{def_width}");
+	#Util::print_message("Common::config{logowidth}=$Common::config{logowidth}");
+
 # 	$Common::config{title_width} = Util::round(($total_left_width-$Common::config{logowidth})/3 + 1);
 # 	$poster_txt =~ s/<TITLE_WIDTH>/$Common::config{title_width}$Common::config{logowidth_units}/g;
 #
@@ -789,10 +793,12 @@ sub generate_poster($)
         # ..........
         # ..........
     $poster_txt = Common::translate($poster_txt, $lang);
-	Util::write_file(Common::get_template("out-poster-file"), $poster_txt);
+	$poster_txt = Common::ExpandTags($poster_txt, $lang);
+	my $OutPosterFile = Common::ExpandTags(Common::get_template("out-poster-file"), $lang);
+	Util::write_file($OutPosterFile, $poster_txt);
 
-        system("cp ".Common::get_template("in-a0poster-sty-file")." ".Common::get_template("OutputTexDir")); ;
-        system("cp ".Common::get_template("in-poster-macros-sty-file")." ".Common::get_template("OutputTexDir")); ;
+	system("cp ".Common::get_template("in-a0poster-sty-file")." ".Common::get_template("OutputTexDir")); ;
+	system("cp ".Common::get_template("in-poster-macros-sty-file")." ".Common::get_template("OutputTexDir")); ;
 
 #         my $cwd = getcwd();
 #         chdir(Common::get_template("OutputFigDir"));
@@ -801,16 +807,15 @@ sub generate_poster($)
 # 	system("rm Bloom-sequence.eps");
 #         system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom-sequence.eps");
 #         chdir($cwd);
-	Util::print_message("generate_poster() OK!");
+	Util::print_message("generate_poster($lang) OK! $OutPosterFile");
 }
-
 
 # ok
 sub generate_pie($)
 {
-	my ($type) = (@_);
+	my ($type)      = (@_);
 	my $output_file = Common::get_template("out-pie-$type-file");
-	my $output_txt = "";
+	my $output_txt  = "";
 
 	$output_txt .= "\\begin{center}\n";
 	$output_txt .= "\\psset{framesep=1pt,unit=1cm}\n";
@@ -1562,9 +1567,10 @@ sub generate_spider_with_one_standard($$$)
 		my $xpe=$xp;
 		#if($i<($nareas/4))||($i>($nareas-$nareas/4)))
  		if ($xp < 0)	{	$xpe-=1;	}
- 		else		{	$xpe+=1;	}
+ 		else			{	$xpe+=1;	}
 
-		my $area_title = $Common::config{dictionary}{all_areas}{$axe};
+		my $area_title = $Common::config{dictionaries}{$lang}{all_areas}{$axe};
+		#Util::print_message("area_title=$area_title"); exit;
  		$area_title =~ s/<ENTER>/ /g;
 		$output_txt .= "\t\\rput[$tb]($xpe,$yp){$area_title}\n";
 		$ang += $leftright*$ang_base;
@@ -1578,7 +1584,6 @@ sub generate_spider_with_one_standard($$$)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
-	$output_file = "$output_file.tex";
 	Util::write_file_to_gen_fig($output_file, $output_txt);
 	Util::print_message("generate_spider_with_one_standard($standard) OK!  $output_file");
 	#print Dumper (%{$Common::config{dictionary}{all_areas}}); exit;
@@ -1671,17 +1676,17 @@ sub generate_curves_with_one_standard($$$)
 	$output_txt .= "\\end{pspicture}\n";
 	$output_txt .= "\\end{center}\n";
 
-	$output_file = "$output_file.tex";
 	Util::write_file_to_gen_fig($output_file, $output_txt);
-	Util::print_message("generate_curves_with_one_standard($standard) OK!");
+	Util::print_message("generate_curves_with_one_standard($standard) OK!  $output_file");
 }
 
-sub generate_latex_include_for_this_standard($$$)
+sub generate_latex_include_for_this_standard($$)
 {
-	my ($standard, $lang, $output_file) = (@_);
+	my ($standard, $output_file_without_extension) = (@_);
+
 	my $output_txt .= "\\begin{figure}[H]\n";
 	$output_txt .= "\\centering\n";
-	$output_txt .= "	\\includegraphics[scale=1.0]{$output_file}\n";
+	$output_txt .= "	\\includegraphics[scale=1.0]{$output_file_without_extension}\n";
 
 	my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
 	#Comparacin por rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
@@ -1691,7 +1696,7 @@ sub generate_latex_include_for_this_standard($$$)
 	$caption =~ s/<AREA>/$Common::config{area}/g;
 	$output_txt .= "	\\caption{$caption}\n";
 	# 		$output_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
-	$output_txt .= "	\\label{fig:comparing-$output_file}\n";
+	$output_txt .= "	\\label{fig:comparing-$output_file_without_extension}\n";
 	$output_txt .= "\\end{figure}\n\n";
 	return $output_txt;
 }
@@ -1706,6 +1711,9 @@ sub generate_compatibility_with_standards()
 			$Common::list_of_courses_per_area{$axe}		= [];
 		}
 	}
+	# Gen figure file itself
+    # Util::print_message("generate_spider_with_one_standard($standard)");
+	$Common::config{legend_space} = 0.5;
 
 	my $OutputTexDir = Common::get_template("OutputTexDir");
 	my $output_txt = "";
@@ -1717,24 +1725,20 @@ sub generate_compatibility_with_standards()
 			{
 				my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
 				my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang_prefix";
+				Util::print_color("Generating $output_file ...");
 				if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
-				{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file");
-					$output_txt .= generate_latex_include_for_this_standard($standard, $lang, "$OutputTexDir/$output_file");		
+				{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
+					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file");		
 				}
-				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)
-				{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file");
-					$output_txt .= generate_latex_include_for_this_standard($standard, $lang, "$OutputTexDir/$output_file");		
+				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
+				{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
+					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file");		
 				}
 			}	
 		}
-		# Gen figure file itself
-        # Util::print_message("generate_spider_with_one_standard($standard)");
-		$Common::config{legend_space} = 0.5;
-		
 	}
 	Util::write_file(Common::get_template("out-comparing-with-standards-file"), $output_txt);
 	Util::print_message("generate_compatibility_with_standards() OK!");
-	exit;
 }
 
 sub generate_pie_by_levels()
