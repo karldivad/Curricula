@@ -583,7 +583,7 @@ sub set_initial_paths()
 	$path_map{"out-pie-by-levels-file"}			= $path_map{OutputTexDir}."/pie-by-levels.tex";
 
 	$path_map{"out-list-of-courses-per-area-file"}	= $path_map{OutputTexDir}."/list-of-courses-per-area.tex";
-	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards.tex";
+	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards-<LANG>.tex";
 	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster-<LANG>.tex";
 	$path_map{"out-list-of-outcomes"}			= $path_map{OutputTexDir}."/list-of-outcomes.tex";
 	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome.tex";

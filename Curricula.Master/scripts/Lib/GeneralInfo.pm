@@ -1119,7 +1119,7 @@ sub generate_list_of_outcomes()
 {
 	my $version 	= $Common::config{OutcomesVersion};
 	my @outcomes_list = split(",", $Common::config{outcomes_list}{$version});
-	my $output_tex  = "\\begin{enumerate}[$outcomes_list[0])]\n";
+	my $output_tex  = "\\begin{enumerate}[label=\\alph*)]\n";
 	foreach my $outcome (@outcomes_list)
 	{	$output_tex  .= "\\item \\ShowOutcomeText{$outcome}\\label{out:Outcome$outcome}\n";		}
 	$output_tex  .= "\\end{enumerate}\n";
@@ -1705,8 +1705,10 @@ sub generate_latex_include_for_this_standard($$$)
 }
 
 # ok
-sub generate_compatibility_with_standards()
+sub generate_compatibility_with_standards($)
 {
+	my ($lang) = (@_);
+	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
 	# First: initialize counter for each standard
 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=> $Common::config{sub_areas_priority}{$b}} keys %{$Common::config{dictionary}{all_areas}})
 	{	if(not defined($Common::data{counts_per_standard}{$axe}))
@@ -1724,26 +1726,21 @@ sub generate_compatibility_with_standards()
 	{
 		foreach my $type_of_graph (sort keys %{$Common::config{type_of_graph}})
 		{
-			foreach my $lang (@{$Common::config{SyllabusLangsList}})
-			{
-				my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-				my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang_prefix";
-				Util::print_color("Generating $output_file ...");
-				if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
-				{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
-				}
-				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
-				{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
-				}
+			my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang_prefix";
+			Util::print_color("Generating $output_file ...");
+			if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
+			{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
+				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
+			}
+			elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
+			{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
+				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
 			}	
 		}
 	}
-	Util::write_file(Common::get_template("out-comparing-with-standards-file"), $output_txt);
-	Util::print_message("generate_compatibility_with_standards() OK!");
-	Util::print_message("Esta generando en EN y ES y debe ser enviado el $lang a la funcion");
-	exit;
+	my $output_file = Common::get_expanded_template("out-comparing-with-standards-file", $lang);
+	Util::write_file($output_file, $output_txt);
+	Util::print_message("generate_compatibility_with_standards($output_file) OK!");
 }
 
 sub generate_pie_by_levels()
