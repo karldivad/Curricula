@@ -300,10 +300,10 @@ sub main()
 	Common::set_initial_configuration($Common::command);
 	my $OutputTexDir = Common::get_template("OutputTexDir");
 
-	my $LU_unprocessed_file = Common::get_template("InTexDir")."/learning-units.tex";
-	my $bok_in_file = Common::get_template("InTexDir")."/IS-bok-in.tex";
+	my $LU_unprocessed_file = Common::get_expanded_template("InTexDir", $lang)."/learning-units.tex";
+	my $bok_in_file 		= Common::get_expanded_template("InTexDir", $lang)."/IS-bok-in.tex";
 	
-	genLU       ($LU_unprocessed_file, Common::get_template("InTexDir")."/LU.tex");
+	genLU       ($LU_unprocessed_file, Common::get_expanded_template("InTexDir", $lang)."/LU.tex"));;
 	genBOK      ($bok_in_file, "$OutputTexDir/IS-bok.tex");
 	genBOKmacros($bok_in_file, Common::get_template("InStyDir")."/bok-macros.sty");
 	genLUmacros ($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty");

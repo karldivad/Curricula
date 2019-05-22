@@ -36,8 +36,10 @@ sub gen_compileall_script()
 }
 
 # ok
-sub generate_institution()
+sub generate_institution($)
 {
+	my ($lang) = (@_);
+	#my $lang = $Common::config{language_without_accents};
 	Util::precondition("read_institutions_list");
 	my $current_inst_file = Common::get_template("out-current-institution-file");
 
@@ -50,6 +52,7 @@ sub generate_institution()
 	$output_txt .= "\\newcommand{\\CountryWithoutAccents}{$Common::config{country_without_accents}}\n";
 	$output_txt .= "\\newcommand{\\Country}{$Common::config{country}}\n";
 	$output_txt .= "\\newcommand{\\LanguageWithoutAccent}{$Common::config{language_without_accents}}\n";
+	$output_txt .= "\\newcommand{\\LANG}{$Common::config{dictionaries}{$lang}{lang_prefix}}\n";
 	$output_txt .= "\n";
 
 	$output_txt .= "\\newcommand{\\basedir}{".getcwd()."}\n";
@@ -57,7 +60,7 @@ sub generate_institution()
 	$output_txt .= "\\newcommand{\\InLangBaseDir}{\\basedir/".Common::get_template("InLangBaseDir")."}\n";
 	$output_txt .= "\\newcommand{\\InLangDir}{\\basedir/".Common::get_template("InLangDir")."}\n";
 	$output_txt .= "\\newcommand{\\InAllTexDir}{\\basedir/".Common::get_template("InAllTexDir")."}\n";
-	$output_txt .= "\\newcommand{\\InTexDir}{\\basedir/".Common::get_template("InTexDir")."}\n";
+	$output_txt .= "\\newcommand{\\InTexDir}{\\basedir/".Common::get_expanded_template("InTexDir", $lang)."}\n";
 	$output_txt .= "\\newcommand{\\InStyDir}{\\basedir/".Common::get_template("InStyDir")."}\n";
 	$output_txt .= "\\newcommand{\\InTexAllDir}{\\basedir/".Common::get_template("InTexAllDir")."}\n";
     $output_txt .= "\\newcommand{\\InStyAllDir}{\\basedir/".Common::get_template("InStyAllDir")."}\n";
@@ -141,22 +144,22 @@ sub gen_batch_files()
 {
 	my $file = "";
 	my ($input, $output) = ("", "");
+	my $lang = Common::get_template("language_without_accents");
 	foreach my $file ("compile1institucion", "gen-html-1institution")
 	{
 	    system("rm $file*");
-	    system("rm ".Common::get_template("out-$file-file"));
 	    $input     = Common::get_template("in-$file-base-file");
 	    $output    = Common::get_template("out-$file-file");
-	    Common::gen_batch($input, $output);
+	    Common::gen_batch($input, $output, $lang);
 	    Util::print_message("Creating shorcut: ln -s $output");
 	    system("cp $output .");
 	}
-	foreach my $file ("gen-eps-files", "gen-graph", "gen-book", "CompileTexFile", "compile-simple-latex")
+	foreach my $file ("gen-eps-files", "gen-graph", "gen-book", "CompileTexFile", "compile-simple-latex", "gen-poster")
 	{
-	    system("rm ".Common::get_template("out-$file-file"));
-	    $input     = Common::get_template("in-$file-base-file");
 	    $output    = Common::get_template("out-$file-file");
-	    Common::gen_batch($input, $output);
+	    system("rm $output");
+		$input     = Common::get_template("in-$file-base-file");
+		Common::gen_batch($input, $output, $lang);
 	}
 	my $command = "cp ". Common::get_template("preamble0-file")." ". Common::get_template("OutputTexDir");
 	Util::print_message($command);
@@ -166,9 +169,10 @@ sub gen_batch_files()
 sub main()
 {
 	Common::set_initial_configuration($Common::command);
+	my $lang = Common::get_template("language_without_accents");
 	gen_batch_files();
 	gen_compileall_script();
-	generate_institution();
+	generate_institution($lang);
 	update_acronyms();
 	Util::print_message("End gen-scripts ...\n");
 }

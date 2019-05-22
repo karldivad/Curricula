@@ -35,8 +35,10 @@ sudo apt-get install csh;
 sudo apt-get install libcarp-assert-perl;
 sudo apt-get install okular;
 
-sudo snap install pdftk; 
+sudo apt-get install mupdf
+sudo apt-get install mupdf-tools
 
+sudo snap install pdftk; 
 sudo gedit /etc/ImageMagick-6/policy.xml
 Comment this line:
 <policy domain="coder" rights="none" pattern="PDF" />

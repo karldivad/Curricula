@@ -129,12 +129,7 @@ endif
 ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula CS-UTEC-small-graph-curricula ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex;
 
 foreach lang ('ES' 'EN')
-    ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/scripts/compile-simple-latex.sh Computing-poster-$lang CS-UTEC-poster-$lang ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex;
-    pdftk A=../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/CS-UTEC-poster-$lang.pdf cat A1-1 output ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/CS-UTEC-poster-$lang-P1.pdf;
-    convert ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/CS-UTEC-poster-$lang-P1.pdf ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/../html/CS-UTEC-poster-$lang.png;
-    rm ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/CS-UTEC-poster-$lang-P1.pdf
-    cp ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/CS-UTEC-poster-$lang.pdf ../Curricula.out/pdfs/CS-UTEC/Plan2018/.
-    mv ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/CS-UTEC-poster-$lang.pdf ../Curricula.out/html/Peru/CS-UTEC/Plan2018/.
+    ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/scripts/gen-poster.sh $lang
 end
 
 ../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/scripts/gen-syllabi.sh all;

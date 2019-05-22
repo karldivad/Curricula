@@ -661,9 +661,10 @@ sub get_hidden_chapter_info($$)
 sub generate_fancy_header_file($)
 {
 	my ($lang) = (@_);
+	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
 	my $in_fancy_hdr_file = Common::get_template("in-config-hdr-foot-sty-file");
 	my $fancy_hdr_content = Util::read_file($in_fancy_hdr_file);
-	$fancy_hdr_content =~ s/<SchoolFullName>/\\SchoolFullName$lang/g;
+	$fancy_hdr_content =~ s/<SchoolFullName>/\\SchoolFullName$lang_prefix/g;
 	$fancy_hdr_content =~ s/<<Curricula>>/$Common::config{dictionaries}{$lang}{Curricula}/g;
 	
 	my $out_fancy_hdr_file = Common::get_template("out-config-hdr-foot-sty-file");

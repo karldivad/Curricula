@@ -470,10 +470,10 @@ sub generate_lu_index()
 }
 
 # Generate the list of involved areas (HU, CS, ID, etc) and theirs descriptions
-sub generate_description($)
+sub generate_description($$)
 {
-	my ($type) = (@_);
-	my ($in_file, $out_file) = (Common::get_template("in-description-foreach-$type-file"), Common::get_template("out-description-foreach-$type-file"));
+	my ($type, $lang) = (@_);
+	my ($in_file, $out_file) = (Common::get_expanded_template("in-description-foreach-$type-file", $lang), Common::get_expanded_template("out-description-foreach-$type-file", $lang));
 	my ($keyforhash) = $type."_priority";
 	my $key_for_used_keys = "used_$type";
 	if( not -e $in_file )
@@ -494,7 +494,8 @@ sub generate_description($)
 	$output .= "\\begin{enumerate}\n";
 
 # 	foreach my $area (sort {$Common::config{prefix_priority}{$a} cmp $Common::config{prefix_priority}{$b}} keys %{$Common::config{used_areas}})
- 	foreach my $key (sort {$Common::config{$keyforhash}{$a}      cmp $Common::config{$keyforhash}{$b}}     keys %{$Common::config{$key_for_used_keys}})
+ 	foreach my $key (sort {$Common::config{$keyforhash}{$a}      cmp $Common::config{$keyforhash}{$b}}     
+	                keys %{$Common::config{$key_for_used_keys}})
  	{
 		if(defined($description{$key}))
 		{
@@ -502,11 +503,11 @@ sub generate_description($)
 			$list_of_areas	.= "$key ";
 		}
 		else
-		{	Util::print_warning("No area description for $key ... See $in_file ...");	}
+		{	Util::print_soft_error("No area description for $key ... See $in_file ...");	}
  	}
 	$output .= "\\end{enumerate}\n";
 	Util::write_file($out_file, $output);
-	Util::print_message("generation_foreach_area: $list_of_areas... OK!");
+	Util::print_message("generation_foreach_area ($out_file): $list_of_areas... OK!");
 }
 
 my %critical_path = ();
@@ -1165,7 +1166,7 @@ sub generate_outcomes_by_course($$$$$$$)
 	my $row_text       = "<color>--outcome-- ";
 	my $first_row_text = "";
 # 	$first_row_text  = "$Common::config{row2} " if($Common::config{graph_version}>= 2);
-	$first_row_text .= "& \\textbf{$Common::config{dictionary}{Skill}/$Common::config{dictionary}{COURSENAME}} ";
+	$first_row_text .= "& \\textbf{$Common::config{dictionaries}{$lang}{Skill}/$Common::config{dictionaries}{$lang}{COURSENAME}} ";
 	#my $sum_row_text   = "Total ";
 	my %sem_per_course = ();
 
@@ -1212,7 +1213,7 @@ sub generate_outcomes_by_course($$$$$$$)
 
 		$extra_header = "";
 		$extra_header = "$Common::config{column2}" if($semester % 2 == 1 && $Common::config{graph_version}>= 2);
-		my $header_label = "$Common::config{dictionary}{semester_ordinal}{$semester} $Common::config{dictionary}{Sem}";
+		my $header_label = "$Common::config{dictionaries}{$lang}{semester_ordinal}{$semester} $Common::config{dictionaries}{$lang}{Sem}";
 		$sem_header .= "& \\multicolumn{$sem_per_course{$semester}}{$sep$extra_header"."c$sep}{$header_label} ";
 	}
 	my $final_sem = $semester-1;
@@ -1337,11 +1338,12 @@ sub generate_outcomes_by_course($$$$$$$)
 sub generate_all_outcomes_by_course($)
 {
 	my ($lang) = (@_);
-	my $rows_per_page = $Common::config{outcomes_rows_per_page};
-	my $sem_per_page  = $Common::config{outcomes_sem_per_page};
-	my $angle	  = 90;
-	my $outfile 	  = Common::get_template("OutputTexDir")."/outcomes-by-course";
-	my $output_txt	  = "";
+	my $lang_prefix 	= $Common::config{dictionaries}{$lang}{lang_prefix};
+	my $rows_per_page 	= $Common::config{outcomes_rows_per_page};
+	my $sem_per_page  	= $Common::config{outcomes_sem_per_page};
+	my $angle	  		= 90;
+	my $outfile 	  	= Common::get_template("OutputTexDir")."/outcomes-by-course-$lang_prefix";
+	my $output_txt	  	= "";
 
 	#$output_txt	.= "\\begin{landscape}\n";
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
@@ -1352,9 +1354,10 @@ sub generate_all_outcomes_by_course($)
 	#$output_txt	.= "\\end{landscape}\n";
 	Util::write_file("$outfile.tex", $output_txt);
 
-	my $big_file 	= Common::get_template("in-all-outcomes-by-course-poster");
+	my $big_file 	= Common::ExpandTags(Common::get_template("in-all-outcomes-by-course-poster"), $lang);
+
 	generate_outcomes_by_course($lang, 1, 10, 500, $big_file, 90, "poster");
-	Util::print_message("generate_all_outcomes_by_course($lang) OK!");
+	Util::print_message("generate_all_outcomes_by_course($lang_prefix) OK!");
 }
 
 # ok
@@ -1599,7 +1602,7 @@ sub generate_curves_with_one_standard($$$)
 	my $bottom   = -3.3;
 	my $nareas   = 0;
 	my $margin = 0.3;
-	foreach my $axe (keys %{$Common::config{dictionary}{all_areas}})
+	foreach my $axe (keys %{$Common::config{dictionaries}{$lang}{all_areas}})
 	{	$nareas++;	}
 
 	my $circles 	 = $range - 1;
@@ -1624,10 +1627,10 @@ sub generate_curves_with_one_standard($$$)
 			  "univ" => "");
 
 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=> $Common::config{sub_areas_priority}{$b}}
-			keys %{$Common::config{dictionary}{all_areas}})
+			         keys %{$Common::config{dictionary}{all_areas}})
 	{
 # 		# Draw labels for each area: \rput[r]{90}(1,-0.2){Hardware y Arquitectura}
-		my @lines = split("<ENTER>", $Common::config{dictionary}{all_areas}{$axe});
+		my @lines = split("<ENTER>", $Common::config{dictionaries}{$lang}{all_areas}{$axe});
 		my $nlines = @lines;
 		my $linewidth = 0.4;
 		my $base = $i-($linewidth*($nlines-1)/2);
@@ -1680,9 +1683,9 @@ sub generate_curves_with_one_standard($$$)
 	Util::print_message("generate_curves_with_one_standard($standard) OK!  $output_file");
 }
 
-sub generate_latex_include_for_this_standard($$)
+sub generate_latex_include_for_this_standard($$$)
 {
-	my ($standard, $output_file_without_extension) = (@_);
+	my ($standard, $output_file_without_extension, $label) = (@_);
 
 	my $output_txt .= "\\begin{figure}[H]\n";
 	$output_txt .= "\\centering\n";
@@ -1696,7 +1699,7 @@ sub generate_latex_include_for_this_standard($$)
 	$caption =~ s/<AREA>/$Common::config{area}/g;
 	$output_txt .= "	\\caption{$caption}\n";
 	# 		$output_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
-	$output_txt .= "	\\label{fig:comparing-$output_file_without_extension}\n";
+	$output_txt .= "	\\label{fig:comparing-$label}\n";
 	$output_txt .= "\\end{figure}\n\n";
 	return $output_txt;
 }
@@ -1728,17 +1731,19 @@ sub generate_compatibility_with_standards()
 				Util::print_color("Generating $output_file ...");
 				if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
 				{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file");		
+					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
 				}
 				elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
 				{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file");		
+					$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
 				}
 			}	
 		}
 	}
 	Util::write_file(Common::get_template("out-comparing-with-standards-file"), $output_txt);
 	Util::print_message("generate_compatibility_with_standards() OK!");
+	Util::print_message("Esta generando en EN y ES y debe ser enviado el $lang a la funcion");
+	exit;
 }
 
 sub generate_pie_by_levels()

@@ -498,7 +498,7 @@ sub set_initial_paths()
 	$path_map{InLangDir}				= $config{InLangDir};
 	$path_map{InLangBaseDir}			= $config{InLangBaseDir};
 	$path_map{InAllTexDir}				= $path_map{InDir}."/All.tex";
-	$path_map{InTexDir}					= $path_map{InLangDir}."/$config{area}.tex";
+	$path_map{InTexDir}					= $path_map{InDir}."/lang/<LANG-EXTENDED>/$config{area}.tex";
 	$path_map{InStyDir}					= $path_map{InLangDir}."/$config{area}.sty";
 	$path_map{InStyAllDir}				= $path_map{InDir}."/All.sty";
 	$path_map{InSyllabiContainerDir}	= $path_map{InLangDir}."/cycle/$config{Semester}/Syllabi";
@@ -560,37 +560,37 @@ sub set_initial_paths()
 	$path_map{"out-nsemesters-file"}            = $path_map{OutputTexDir}."/nsemesters.tex";
 
 
-	$path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG>/$config{area}.tex/outcomes-macros.tex";
+	$path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG-EXTENDED>/$config{area}.tex/outcomes-macros.tex";
 	$path_map{"in-bok-file"}					= $path_map{InTexDir}."/bok.tex";
-	$path_map{"in-bok-macros-file"}				= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros.sty";
-	$path_map{"in-bok-macros-V0-file"}			= $path_map{InLangBaseDir}."/<LANG>/$config{area}.sty/bok-macros-V0.sty";
+	$path_map{"in-bok-macros-file"}				= $path_map{InLangBaseDir}."/<LANG-EXTENDED>/$config{area}.sty/bok-macros.sty";
+	$path_map{"in-bok-macros-V0-file"}			= $path_map{InLangBaseDir}."/<LANG-EXTENDED>/$config{area}.sty/bok-macros-V0.sty";
 
 	$path_map{"in-LU-file"}						= $path_map{InTexDir}."/LU.tex";
 
-	$path_map{"out-bok-index-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Index.tex";
-	$path_map{"out-bok-body-file"}			= $path_map{OutputTexDir}."/BodyOfKnowledge-Body.tex";
-	$path_map{"in-macros-order-file"}		= $path_map{InOthersDir}."/macros-order.txt";
+	$path_map{"out-bok-index-file"}				= $path_map{OutputTexDir}."/BodyOfKnowledge-Index-<LANG>.tex";
+	$path_map{"out-bok-body-file"}				= $path_map{OutputTexDir}."/BodyOfKnowledge-Body-<LANG>.tex";
+	$path_map{"in-macros-order-file"}			= $path_map{InOthersDir}."/macros-order.txt";
 
-	$path_map{"in-main-to-gen-fig"}			= $path_map{InTexAllDir}."/main-to-gen-fig.tex";
+	$path_map{"in-main-to-gen-fig"}				= $path_map{InTexAllDir}."/main-to-gen-fig.tex";
 
 	$path_map{"out-tables-foreach-semester-file"}	= $path_map{OutputTexDir}."/tables-by-semester.tex";
 	$path_map{"out-distribution-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-area-by-semester.tex";
 	$path_map{"out-distribution-of-credits-by-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-credits-by-area-by-semester.tex";
 
 
-	$path_map{"out-pie-credits-file"}		= $path_map{OutputTexDir}."/pie-credits.tex";
-	$path_map{"out-pie-hours-file"}			= $path_map{OutputTexDir}."/pie-hours.tex";
-	$path_map{"out-pie-by-levels-file"}		= $path_map{OutputTexDir}."/pie-by-levels.tex";
+	$path_map{"out-pie-credits-file"}			= $path_map{OutputTexDir}."/pie-credits.tex";
+	$path_map{"out-pie-hours-file"}				= $path_map{OutputTexDir}."/pie-hours.tex";
+	$path_map{"out-pie-by-levels-file"}			= $path_map{OutputTexDir}."/pie-by-levels.tex";
 
 	$path_map{"out-list-of-courses-per-area-file"}	= $path_map{OutputTexDir}."/list-of-courses-per-area.tex";
 	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards.tex";
-	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster.tex";
-	$path_map{"out-list-of-outcomes"}		= $path_map{OutputTexDir}."/list-of-outcomes.tex";
+	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster-<LANG>.tex";
+	$path_map{"out-list-of-outcomes"}			= $path_map{OutputTexDir}."/list-of-outcomes.tex";
 	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome.tex";
 
 	$path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
-	$path_map{"out-equivalences-file"}		= $path_map{OutputTexDir}."/equivalences.tex";
+	$path_map{"out-equivalences-file"}			= $path_map{OutputTexDir}."/equivalences.tex";
 
 	$path_map{"in-Book-of-Syllabi-main-file"}	= $path_map{InAllTexDir}."/BookOfSyllabi.tex";
 	$path_map{"out-Book-of-Syllabi-main-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
@@ -623,10 +623,10 @@ sub set_initial_paths()
 	$path_map{"out-list-of-unit-by-course-file"}	= $path_map{OutputTexDir}."/list-of-units-by-course.tex";
 
 	$path_map{"in-description-foreach-area-file"}   = $path_map{InTexDir}."/description-foreach-area.tex";
-	$path_map{"out-description-foreach-area-file"}  = $path_map{OutputTexDir}."/area-description.tex";
+	$path_map{"out-description-foreach-area-file"}  = $path_map{OutputTexDir}."/area-description-<LANG>.tex";
 
 	$path_map{"in-description-foreach-prefix-file"}   = $path_map{InTexDir}."/description-foreach-prefix.tex";
-	$path_map{"out-description-foreach-prefix-file"}  = $path_map{OutputTexDir}."/prefix-description.tex";
+	$path_map{"out-description-foreach-prefix-file"}  = $path_map{OutputTexDir}."/prefix-description-<LANG>.tex";
 
 	$path_map{"in-sumilla-template-file"}			= $path_map{InInstDir}."/sumilla-template.tex";
 	$path_map{"in-syllabus-template-file"}			= $path_map{InInstDir}."/syllabus-template.tex";
@@ -654,20 +654,31 @@ sub set_initial_paths()
 
 	# Batch files
 	$path_map{"out-compileall-file"}				= "compileall";
+	
 	$path_map{"in-compile1institucion-base-file"}	= $path_map{InDir}."/base-scripts/compile1institucion.sh";
 	$path_map{"out-compile1institucion-file"}  		= $path_map{OutputScriptsDir}."/compile1institucion.sh";
+	
 	$path_map{"in-gen-html-1institution-base-file"}	= $path_map{InDir}."/base-scripts/gen-html-1institution.sh";
 	$path_map{"out-gen-html-1institution-file"} 	= $path_map{OutputScriptsDir}."/gen-html-1institution.sh";
+	
 	$path_map{"in-gen-eps-files-base-file"}			= $path_map{InDir}."/base-scripts/gen-eps-files.sh";
 	$path_map{"out-gen-eps-files-file"} 			= $path_map{OutputScriptsDir}."/gen-eps-files.sh";
+
 	$path_map{"in-gen-graph-base-file"}				= $path_map{InDir}."/base-scripts/gen-graph.sh";
 	$path_map{"out-gen-graph-file"} 				= $path_map{OutputScriptsDir}."/gen-graph.sh";
+	
 	$path_map{"in-gen-book-base-file"}				= $path_map{InDir}."/base-scripts/gen-book.sh";
 	$path_map{"out-gen-book-file"} 					= $path_map{OutputScriptsDir}."/gen-book.sh";
+	
 	$path_map{"in-CompileTexFile-base-file"}		= $path_map{InDir}."/base-scripts/CompileTexFile.sh";
 	$path_map{"out-CompileTexFile-file"} 			= $path_map{OutputScriptsDir}."/CompileTexFile.sh";
+	
 	$path_map{"in-compile-simple-latex-base-file"}	= $path_map{InDir}."/base-scripts/compile-simple-latex.sh";
 	$path_map{"out-compile-simple-latex-file"} 		= $path_map{OutputScriptsDir}."/compile-simple-latex.sh";
+
+	$path_map{"in-gen-poster-base-file"}			= $path_map{InDir}."/base-scripts/gen-poster.sh";
+	$path_map{"out-gen-poster-file"} 				= $path_map{OutputScriptsDir}."/gen-poster.sh";
+	
 	$path_map{"update-page-numbers"}	 			= $path_map{InScriptsDir}."/update-page-numbers.pl";
 
 	$path_map{"out-batch-to-gen-figs-file"}         = $path_map{OutputScriptsDir}."/gen-fig-files.sh";
@@ -796,6 +807,13 @@ sub get_template($)
 	if(defined($path_map{$acro}))
 	{	return $path_map{$acro};	}
 	Util::halt("get_template: Template not recognized ($acro), Did you define it?");
+}
+
+# ok 
+sub get_expanded_template($$)
+{
+	my ($acro, $lang) = (@_);
+	return ExpandTags(get_template($acro), $lang);
 }
 
 sub read_config_file_details($)
@@ -1252,10 +1270,10 @@ sub generate_index_for_this_area_old()
 }
 
 # ok
-sub gen_batch($$) 
+sub gen_batch($$$) 
 {
 	Util::precondition("read_institutions_list");
-	my ($source, $target) = (@_);
+	my ($source, $target, $lang) = (@_);
 	open(IN, "<$source") or Util::halt("gen_batch: $source does not open");
 	my $txt = join('', <IN>);
 	close(IN);
@@ -1265,6 +1283,7 @@ sub gen_batch($$)
 	my $filter = $Common::inst_list{$Common::institution}{filter};
 	$txt =~ s/<FILTER>/$filter/g;
 	$txt =~ s/<VERSION>/$Common::inst_list{$Common::institution}{version}/g;
+	$txt =~ s/<DISCIPLINE>/$Common::config{discipline}/g;
 	$txt =~ s/<AREA>/$Common::inst_list{$Common::institution}{area}/g;
 	my $output_bib_dir = Common::get_template("OutputBinDir");
 	$txt =~ s/<OUTBIN>/$output_bib_dir/g;
@@ -1272,7 +1291,7 @@ sub gen_batch($$)
 	my $InDir = Common::get_template("InDir");
     $txt =~ s/<IN_DIR>/$InDir/g;
         
-	my $InTexDir = Common::get_template("InTexDir");
+	my $InTexDir = Common::get_expanded_template("InTexDir", $lang);
 	$txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
 
 	my $InInstDir = Common::get_template("InInstDir");
@@ -1606,16 +1625,18 @@ sub process_filters()
 	}
 }
 
-sub verify_dependencies()
+sub verify_dependencies($)
 {
-    my @files_to_verify = (get_template("InTexDir")."/abstract-$config{language_without_accents}.tex"    );
+	my ($lang) = (@_);
+	my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
+    my @files_to_verify = (Common::get_expanded_template("InTexDir", $lang)."/abstract-$lang_prefix.tex");
     foreach my $flag (keys %template_files)
     {
-	my $file = get_template($template_files{$flag});
-	if(-e $file)
-	{	$config{flags}{$flag} = 1;	}
-	else
-	{	$config{flags}{$flag} = 0;	}
+		my $file = get_template($template_files{$flag});
+		if(-e $file)
+		{	$config{flags}{$flag} = 1;	}
+		else
+		{	$config{flags}{$flag} = 0;	}
     }
 }
 
@@ -1676,7 +1697,7 @@ sub set_initial_configuration($)
 	set_initial_paths();
 
 	# Verify dependencies
-	verify_dependencies();
+	# verify_dependencies($lang);
 
 	# Read configuration for this discipline
 	read_discipline_config();
@@ -1740,12 +1761,11 @@ sub set_initial_configuration($)
 	{
 		$file =~ s/<STY-AREA>/$InStyDir/g;
 		$file =~ s/<LANG-AREA>/$InLangDir/g;
-
 		read_macros($file);
 	}
 
-	my $outcomes_macros_file = Common::get_template("in-outcomes-macros-file");
-	$outcomes_macros_file =~ s/<LANG>/$Common::config{language_without_accents}/g;
+	my $lang = $Common::config{language_without_accents};
+	my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
 	read_macros($outcomes_macros_file);
 
 # 	read_macros(Common::get_template("in-outcomes-macros-file"));
@@ -1761,9 +1781,13 @@ sub set_initial_configuration($)
 	$config{recommended_prereq} = 1;
 	$config{corequisites}       = 1;
 	$config{verbose}            = 1;
-	$config{except_file}{"config-hdr-foot.tex"}     = "";
+	$config{except_file}{"config-hdr-foot-ES.tex"}     = ""; Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
+	$config{except_file}{"config-hdr-foot-EN.tex"}     = "";
+	$config{except_file}{"config-hdr-foot-BR.tex"}     = "";
 	$config{except_file}{"current-institution.tex"} = "";
-	$config{except_file}{"outcomes-macros.tex"}     = "";
+	$config{except_file}{"outcomes-macros-ES.tex"}     = ""; Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
+	$config{except_file}{"outcomes-macros-EN.tex"}     = "";
+	$config{except_file}{"outcomes-macros-BR.tex"}     = "";
 	$config{except_file}{"custom-colors.tex"}       = "";
 
 	#$config{change_file}{"topics-by-course.tex"}    = "topics-by-course-web.tex";
@@ -3835,8 +3859,7 @@ our %bok = ();
 sub parse_bok($)
 {
 	my ($lang) = (@_);
-	my ($bok_in_file) = (Common::get_template("in-bok-macros-V0-file"));
-	$bok_in_file =~ s/<LANG>/$lang/g;
+	my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang);
  	Util::print_message("Processing $bok_in_file ...");
 	my $bok_in = Util::read_file($bok_in_file);
 	my $output_txt = "";
@@ -4177,16 +4200,15 @@ sub gen_bok($)
 	}
 	$bok_index_txt .= "\\end{multicols}\n";
 
-	my $bok_index_file = Common::get_template("out-bok-index-file");
+	my $bok_index_file = Common::get_expanded_template("out-bok-index-file", $lang);
 	Util::print_message("Creating BOK index file ($bok_index_file) ...");
 	Util::write_file($bok_index_file, $bok_index_txt);
 
-	my $bok_output_file = Common::get_template("out-bok-body-file");
+	my $bok_output_file = Common::get_expanded_template("out-bok-body-file", $lang);
 	Util::print_message("Creating BOK file ($bok_output_file) ...");
 	Util::write_file($bok_output_file, $bok_output_txt);
 
-	my $bok_macros_output_file = Common::get_template("in-bok-macros-file");
-	$bok_macros_output_file =~ s/<LANG>/$lang/g;
+	my $bok_macros_output_file = Common::get_expanded_template("in-bok-macros-file", $lang);
 	Util::print_message("Creating BOK macros file ($bok_macros_output_file) ...");
 	Util::write_file($bok_macros_output_file, $macros_txt);
 

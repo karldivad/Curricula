@@ -1,4 +1,4 @@
-% Danger ... original file is iin base-tex/ this is ONLY a TEMP COPY !!!!!!!!!
+% Danger ... original file is in ../Curricula.in/Disciplines/Computing/tex/ this is ONLY a TEMP COPY !!!!!!!!!
 \documentclass[a0]{a0poster}
 \usepackage[utf8]{inputenc}
 \input{preamble0}
@@ -57,7 +57,7 @@
 \input{\InDir/colors/custom-define-colors}
 
 \begin{document}
-\input{\InTexDir/outcomes-macros}
+\input{<IN_TEX_DIR>/outcomes-macros}
 \input{\InDir/All.tex/expand-outcomes}
 
 % {\small 
@@ -76,12 +76,12 @@
  		\begin{tabular}{m{<TITLE_WIDTH>}}
 		      \begin{tabular}{m{<DEF_WIDTH>}m{2cm}m{<DEF_WIDTH>}}
 			    \begin{minipage}{<DEF_WIDTH>}
-				    {\bf\Large \SchoolFullName} \\
+				    {\bf\Large \SchoolFullName<LANG>} \\
 				    {\bf \large \SchoolURL}\\
 				    \vspace{0.2cm}
 				    \Cblur{
 					    \begin{minipage}{\textwidth}
-						    {\bf \large <<Mission>>: } {\footnotesize \mission}
+						    {\bf \large <<Mission>>: } {\footnotesize \mission<LANG>}
 					    \end{minipage}
 				    }
 			    \end{minipage} & & 
@@ -89,7 +89,7 @@
 			    \begin{minipage}{<DEF_WIDTH>}
 				    \Cblur{
 					    \begin{minipage}{\textwidth}
-						    {\bf \large <<Definition>>:} {\footnotesize \profile}
+						    {\bf \large <<Definition>>:} {\footnotesize \profile<LANG>}
 					    \end{minipage}%
 					  }
 			    \end{minipage}
@@ -106,7 +106,7 @@
 	%\input{\OutputTexDir/outcomes-by-course-1}
 	\newcommand{\EducationalObjectivesWidth}{29cm}
 	\begin{tabularx}{0.975\textwidth}{Xm{.1cm}m{\EducationalObjectivesWidth}}
-			{\tiny \Cblur{\input{\OutputTexDir/all-outcomes-by-course-poster}} } & &
+			{\tiny \Cblur{\input{\OutputTexDir/all-outcomes-by-course-poster-<LANG>}} } & &
 			\Cblur{ 
 				\begin{tabularx}{\EducationalObjectivesWidth}{X}%
 				{\captionsize \bf Objetivos Educacionales ({\it Educational Objectives})} 				\\ \hline
@@ -128,22 +128,22 @@
 	\newcommand{\bigstandard}{0.8\textwidth}
 	\newcommand{\smallstandard}{0.4\textwidth}
 	%\Cblur{\includegraphics[width=\bigstandard]{../fig/curves-\currentarea-with-CS.eps}} \\
-	\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\bigstandard}]{../fig/curves-\currentarea-with-CS.eps}} \\
+	\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\bigstandard}]{../fig/curves-\currentarea-with-CS-<LANG>.eps}} \\
 	\vspace{0.2cm} 
 	\color{white}{\captionsize \bf CS (\siglas) vs CS (ACM/IEEE-CS)}\vspace*{0.2cm}   \\
 	\hrule \vspace{0.2cm} 	
 
 	\begin{tabular}{cc}
-		\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-CE.eps}} &
-        \Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-IS.eps}} \\
+		\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-CE-<LANG>.eps}} &
+        \Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-IS-<LANG>.eps}} \\
 		\color{white}{\captionsize \bf CS (\siglas) vs CE (ACM/IEEE-CS)} & 
 		\color{white}{\captionsize \bf CS (\siglas) vs IS (ACM/IEEE-CS)} 
 	\end{tabular}
 	\hrule \vspace{0.2cm}
 	
 	\begin{tabular}{cc}
-        \Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-SE.eps}} &
-        \Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-IT.eps}} \\
+        \Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-SE-<LANG>.eps}} &
+        \Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={width=\smallstandard}]{../fig/curves-\currentarea-with-IT-<LANG>.eps}} \\
 		\color{white}{\captionsize \bf CS (\siglas) vs SE (ACM/IEEE-CS)} & 
 		\color{white}{\captionsize \bf CS (\siglas) vs IT (ACM/IEEE-CS)} 
  	\end{tabular}

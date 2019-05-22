@@ -129,12 +129,7 @@ endif
 <OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh small-graph-curricula <AREA>-<INST>-small-graph-curricula <OUTPUT_TEX_DIR>;
 
 foreach lang (<LIST_OF_LANGS>)
-    <OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh Computing-poster-$lang <AREA>-<INST>-poster-$lang <OUTPUT_TEX_DIR>;
-    pdftk A=<OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf cat A1-1 output <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf;
-    convert <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf <OUTPUT_TEX_DIR>/../html/<AREA>-<INST>-poster-$lang.png;
-    rm <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf
-    cp <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
-    mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_HTML_DIR>/.
+    <OUTPUT_SCRIPTS_DIR>/gen-poster.sh $lang
 end
 
 <OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;

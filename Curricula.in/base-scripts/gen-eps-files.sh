@@ -91,14 +91,14 @@ foreach graphtype ('curves' 'spider')
 	foreach tmptex ('CE' 'CS' 'IS' 'IT' 'SE')
 		foreach lang (<LIST_OF_LANGS>)
 			set file=$graphtype-$area-with-$tmptex-$lang
-			if( ! -e $current_dir/<OUTPUT_FIG_DIR>/$file.eps && ! -e $current_dir/<OUTPUT_FIG_DIR>/$file.png ) then
+			if( ! -e $current_dir/<OUTPUT_FIG_DIR>/$file.eps || ! -e $current_dir/<OUTPUT_FIG_DIR>/$file.png ) then
 				echo "******************************** Compiling curves and spiders $area-$institution ($file) ...******************************** ";
 				latex $file-main;
 				dvips -o $file.ps $file-main.dvi;
 				ps2eps -f $file.ps;
 				convert $file.eps $file.png;
-				cp $file.eps $file.png $current_dir/<OUTPUT_FIG_DIR>/.;
-				rm -f $file.aux $file.dvi $file.log $file.ps $file.eps $file.png;
+				mv $file.eps $file.png  $current_dir/<OUTPUT_FIG_DIR>/.;
+				rm -f $file-main.aux $file-main.dvi $file-main.log $file.ps;
 				./scripts/updatelog "$tmptex generated";
 				echo "******************************** File ($file) ... OK ! ********************************";
 			else

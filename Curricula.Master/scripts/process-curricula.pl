@@ -30,7 +30,10 @@ sub generate_general_info()
 	Util::precondition("gen_syllabi"); 
 	
 	GeneralInfo::generate_lu_index();
-	GeneralInfo::generate_description("prefix");			# CS: Computer Science, ...
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+		GeneralInfo::generate_description("prefix", $lang);			# CS: Computer Science, ...
+	}
 	GeneralInfo::generate_course_tables(); 					# Tables by semester
 	GeneralInfo::generate_laboratories(); 					# List of Laboratories
 # 	GeneralInfo::generate_distribution_area_by_semester();	# Table area by semester
@@ -47,10 +50,10 @@ sub generate_general_info()
 		#error??? system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::ExpandTags(Common::get_template("out-small-graph-curricula-file"), $lang);
 		GeneralInfo::generate_curricula_in_dot("big", $lang);   
 		GeneralInfo::generate_poster($lang);
+		GeneralInfo::generate_all_outcomes_by_course($lang);
 	}
-
+	
 	GeneralInfo::generate_all_topics_by_course($lang);
-	GeneralInfo::generate_all_outcomes_by_course($lang);
 	GeneralInfo::generate_list_of_outcomes();
 	GeneralInfo::generate_list_of_courses_by_outcome($lang);
 
