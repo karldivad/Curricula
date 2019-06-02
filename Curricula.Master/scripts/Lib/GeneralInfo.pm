@@ -7,9 +7,10 @@ use Cwd;
 use strict;
 
 # ok
-sub generate_course_tables()
+sub generate_course_tables($)
 {
-	my $output_file = Common::get_template("out-tables-foreach-semester-file");
+	my ($lang) = (@_);
+	my $output_file = Common::get_expanded_template("out-tables-foreach-semester-file", $lang);
     my ($begin_tag, $end_tag) = ("<<", ">>");
 	my $output_txt = "";
 	my $total_credits = 0;
@@ -62,7 +63,7 @@ sub generate_course_tables()
 
 # 			Util::print_message("codcour = $codcour, $Common::course_info{$codcour}{bgcolor}");
 			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour}}{sec:$codcour}";
-			$this_course_info{COURSENAME} = Common::GetCourseNameWithLink($codcour, 1, $pdflink);
+			$this_course_info{COURSENAME} = Common::GetCourseNameWithLink($codcour, $lang, 1, $pdflink);
 #			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name}}{sec:$codcour}";
 # 			Util::print_message("codcour=$codcour");
 # 			print Dumper ( \%{$Common::course_info{$codcour}} );
@@ -184,7 +185,7 @@ sub generate_course_tables()
         $Common::config{ncredits} = $total_credits;
         my $ncredits_file = Common::get_template("out-ncredits-file");
 	Util::write_file(Common::get_template("out-ncredits-file"), "$Common::config{ncredits}\\xspace");
-	Util::print_message("generate_course_tables ($output_file) OK!");
+	Util::print_message("generate_course_tables ($lang) ($output_file) OK!");
 
 # 	print Dumper \%{$Common::counts{map_cred_area}{2}};
 # 	print Dumper \%{$Common::counts{map_cred_area}{9}};
@@ -1119,10 +1120,10 @@ sub generate_list_of_outcomes()
 {
 	my $version 	= $Common::config{OutcomesVersion};
 	my @outcomes_list = split(",", $Common::config{outcomes_list}{$version});
-	my $output_tex  = "\\begin{enumerate}[label=\\alph*)]\n";
+	my $output_tex  = "\\begin{description}\n";
 	foreach my $outcome (@outcomes_list)
-	{	$output_tex  .= "\\item \\ShowOutcomeText{$outcome}\\label{out:Outcome$outcome}\n";		}
-	$output_tex  .= "\\end{enumerate}\n";
+	{	$output_tex  .= "\\item {\\bf $outcome)} \\ShowOutcomeText{$outcome}\\label{out:Outcome$outcome}\n";		}
+	$output_tex  .= "\\end{description}\n";
 	my $output_file	= Common::get_template("out-list-of-outcomes");
 	Util::print_message("generate_list_of_outcomes OK! ($output_file)");
 	Util::write_file($output_file, $output_tex);
@@ -1721,6 +1722,7 @@ sub generate_compatibility_with_standards($)
 	$Common::config{legend_space} = 0.5;
 
 	my $OutputTexDir = Common::get_template("OutputTexDir");
+	my $OutputFigDir = Common::get_template("OutputFigDir");
 	my $output_txt = "";
 	foreach my $standard (split(",", $Common::config{Standards}))
 	{
@@ -1730,11 +1732,11 @@ sub generate_compatibility_with_standards($)
 			Util::print_color("Generating $output_file ...");
 			if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
 			{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
+				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigDir/$output_file", $output_file);		
 			}
 			elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
 			{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputTexDir/$output_file", $output_file);		
+				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigDir/$output_file", $output_file);		
 			}	
 		}
 	}
@@ -2137,7 +2139,7 @@ sub generate_courses_by_professor($)
 		foreach my $codcour (sort  {$Common::codcour_list_priority{$a} <=> $Common::codcour_list_priority{$b}}
 							 keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}})
 		{
-			$this_professor_list .= "\t\\item ".Common::GetCourseNameWithLink($codcour, 1, "")."\n";
+			$this_professor_list .= "\t\\item ".Common::GetCourseNameWithLink($codcour, $lang, 1, "")."\n";
 			$courses_by_professor_count++;
 		}
 		if($courses_by_professor_count > 0)
@@ -2155,7 +2157,7 @@ sub generate_courses_by_professor($)
 	    $output_tex .= $out_txt;
 		#$output_tex .= "\\end{itemize}\n";
 	}
-	my $out_file = Common::get_template("out-courses-by-professor-file");
+	my $out_file = Common::get_expanded_template("out-courses-by-professor-file", $lang);
 	Util::print_message("generate_courses_by_professor: Generating ($out_file) OK");
 	Util::write_file($out_file, $output_tex); 
 	#print Dumper(\%{$Common::config{faculty}{"ecuadros\@utec.edu.pe"}});
@@ -2196,7 +2198,7 @@ sub generate_professor_by_course($)
 		}
 		$output_txt .= "\n";
 	}
-	my $out_file = Common::get_template("out-professor-by-course-file");
+	my $out_file = Common::get_expanded_template("out-professor-by-course-file", $lang);
 	Util::print_message("generate_professor_by_course: Generating ($out_file) OK");
 	Util::write_file($out_file, $output_txt); 
 }

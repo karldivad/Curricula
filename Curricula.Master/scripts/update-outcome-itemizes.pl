@@ -5,9 +5,10 @@ use strict;
 if( defined($ENV{'CurriculaParam'}))	{ $Common::command = $ENV{'CurriculaParam'};	}
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}
 
-sub replace_outcomes()
+sub replace_outcomes($)
 {
-	my $file = Common::get_template("in-all-outcomes-by-course-poster");
+	my ($lang) = (@_);
+	my $file = Common::get_expanded_template("in-all-outcomes-by-course-poster", $lang);
 	my $all_outcomes_txt = Util::read_file($file);
 	while( $all_outcomes_txt =~ m/\\ref\{out:Outcome(.*?)\}/g )
 	{
@@ -24,8 +25,9 @@ sub replace_outcomes()
 sub main()
 {
  	Common::set_initial_configuration($Common::command);
-#     Common::read_pagerefs();
-# 	replace_outcomes();
+	my $lang = $Common::config{language_without_accents};
+    Common::read_pagerefs();
+ 	replace_outcomes($lang);
 }
 
 main();

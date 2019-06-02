@@ -161,7 +161,7 @@
 \Twitter{}
 \Blog{}
 \Research{Computer Graphics, parallel,Artificial Intelligence} 
-\courses{CS2100,CS2501,CS3501}
+\courses{CS1100,CS2100,CS2102,CS2501,CS3501}
 --END-PROFESSOR--
 
 
@@ -730,5 +730,5 @@
 \Twitter{https://twitter.com/marvin4sky}
 \Blog{}
 \Research{Machine learning, heuristic search} 
-\courses{CS2102,CS2601}
+\courses{CS1100,CS2102,CS2601}
 --END-PROFESSOR--

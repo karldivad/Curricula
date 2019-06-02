@@ -76,16 +76,16 @@ if($pdf == 1) then
       dvips <MAIN_FILE>.dvi -o <AREA>-<INST>.ps;
       echo <AREA>-<INST>;
       ps2pdf <AREA>-<INST>.ps <AREA>-<INST>.pdf;
+      rm -rf <AREA>-<INST>.ps;
 
 #     Generate the first page and place it at html dir
-      pdftk A=<AREA>-<INST>.pdf cat A1-1 output <AREA>-<INST>-P1.pdf;
-      convert <AREA>-<INST>-P1.pdf <AREA>-<INST>-P1.png;
-      rm <AREA>-<INST>-P1.pdf;
-      mv <AREA>-<INST>-P1.png <OUTPUT_HTML_DIR>/CurriculaMain-P1.png;
+      mutool convert -o <OUTPUT_HTML_DIR>/CurriculaMain-P1.png <AREA>-<INST>.pdf 1-1
+      #pdftk A=<AREA>-<INST>.pdf cat A1-1 output <AREA>-<INST>-P1.pdf;
+      #convert <AREA>-<INST>-P1.pdf <AREA>-<INST>-P1.png;
+      #rm <AREA>-<INST>-P1.pdf;
+      #mv <AREA>-<INST>-P1.png <OUTPUT_HTML_DIR>/CurriculaMain-P1.png;
       cp <AREA>-<INST>.pdf <OUTPUT_HTML_DIR>/CurriculaMain.pdf;
-
       mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST> Plan<PLAN>.pdf";
-      rm -rf <AREA>-<INST>.ps;
 endif
 
 ./scripts/update-outcome-itemizes.pl <AREA>-<INST>

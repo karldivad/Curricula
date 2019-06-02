@@ -46,6 +46,7 @@
 
 \usepackage{comment}
 \usepackage[toc,page]{appendix}
+\usepackage{enumitem}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -53,7 +54,7 @@
 \usepackage{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.in/lang/Espanol/CS.sty/bok-macros}
 
 \usepackage{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.in/All.sty/macros-only-extra}
-\usepackage{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.in/All.sty/config-hdr-foot}
+\usepackage{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/tex/config-hdr-foot-ES}
 
 \definecolor{chartreuse1}{rgb}{0.498039215686275,1,0}
 \definecolor{chartreuse2}{rgb}{0.462745098039216,0.933333333333333,0}
@@ -690,30 +691,30 @@
 \newcommand{\logowidth}{6.3cm}
 \newcommand{\InstitutionURL}{\htmladdnormallink{http://www.utec.edu.pe}{http://www.utec.edu.pe} }
 
-\newcommand{\UniversityEspanol}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a }
-\newcommand{\UniversityEnglish}{University of Engineering and Technology }
+\newcommand{\UniversityES}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a (UTEC) }
+\newcommand{\UniversityEN}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a (UTEC) }
 
-\newcommand{\University}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a }
+\newcommand{\University}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a (UTEC) }
 
-\newcommand{\FacultadNameEspanol}{Facultad de Computaci\'on\\  }
-\newcommand{\FacultadNameEnglish}{}
-\newcommand{\FacultadName}{\FacultadNameEspanol}
+\newcommand{\FacultadNameES}{Facultad de Computaci\'on\\  }
+\newcommand{\FacultadNameEN}{}
+\newcommand{\FacultadName}{\FacultadNameES}
 
-\newcommand{\DepartmentNameEspanol}{Departamento de Ciencia de la Computaci\'on }
-\newcommand{\DepartmentNameEnglish}{Department of Computer Science }
-\newcommand{\DepartmentName}{\DepartmentNameEspanol}
+\newcommand{\DepartmentNameES}{Departamento de Ciencia de la Computaci\'on }
+\newcommand{\DepartmentNameEN}{Department of Computer Science }
+\newcommand{\DepartmentName}{\DepartmentNameES}
 
-\newcommand{\SchoolShortNameEspanol}{Ciencia de la Computaci\'on }
-\newcommand{\SchoolShortNameEnglish}{Computer Science }
-\newcommand{\SchoolShortName}{\SchoolShortNameEspanol}
+\newcommand{\SchoolShortNameES}{Ciencia de la Computaci\'on }
+\newcommand{\SchoolShortNameEN}{Computer Science }
+\newcommand{\SchoolShortName}{\SchoolShortNameES}
 
-\newcommand{\SchoolFullNameEspanol}{Escuela Profesional de \SchoolShortNameEspanol}
-\newcommand{\SchoolFullNameEnglish}{School of \SchoolShortNameEnglish}
-\newcommand{\SchoolFullName}{\SchoolFullNameEspanol}
+\newcommand{\SchoolFullNameES}{Escuela Profesional de \SchoolShortNameES}
+\newcommand{\SchoolFullNameEN}{School of \SchoolShortNameEN}
+\newcommand{\SchoolFullName}{\SchoolFullNameES}
 
-\newcommand{\SchoolFullNameBreakEspanol}{Escuela Profesional de \\ \SchoolShortNameEspanol }
-\newcommand{\SchoolFullNameBreakEnglish}{School of \SchoolShortNameEnglish }
-\newcommand{\SchoolFullNameBreak}{\SchoolFullNameBreakEspanol}
+\newcommand{\SchoolFullNameBreakES}{Escuela Profesional de \\ \SchoolShortNameES }
+\newcommand{\SchoolFullNameBreakEN}{School of \SchoolShortNameEN }
+\newcommand{\SchoolFullNameBreak}{\SchoolFullNameBreakES}
 
 \newcommand{\PosterTitle}{}
 
@@ -739,25 +740,42 @@ en la ciudad de \city-\country.}
 \newcommand{\OtherKeyStones}{}
 
 
-\newcommand{\profile}{
-El perfil profesional de este programa profesional puede ser mejor entendido a partir de
+\newcommand{\profileES}{
+ProfileES El perfil profesional de este programa profesional puede ser mejor entendido a partir de
 \OnlyMainDoc{la Fig. \ref{fig.cs} (P\'ag. \pageref{fig.cs})}\OnlyPoster{las figuras del lado derecho}. 
-Este profesional tiene como centro de su estudio a la computaci\'on. Es decir, tiene a la computaci\'on 
+Este profesional tiene como centro de sus estudios a la computaci\'on. Es decir, tiene a la computaci\'on 
 como fin y no como medio. De acuerdo a la definici\'on de esta \'area, este profesional est\'a llamado 
 directamente a ser un impulsor del desarrollo de nuevas t\'ecnicas computacionales que 
 puedan ser \'utiles a nivel local, nacional e internacional.
 
 Nuestro perfil profesional est\'a orientado a ser generador de puestos de empleo a trav\'es de la innovaci\'on permanente. 
 Nuestra formaci\'on profesional tiene 3 pilares fundamentales: 
-Formaci\'on Humana, un contenido de acuerdo a normas internacionales y una orientaci\'on marcada a la innovaci\'on.
+un contenido de acuerdo a ACM/IEEE-CS Computing Curricula CS2013 and CC2020
+un contenido de acuerdo a normas internacionales, una orientaci\'on marcada a la innovaci\'on y formaci\'on humana.
 }
 
-\newcommand{\mission}{Contribuir al desarrollo cient\'{i}fico, tecnol\'ogico y t\'ecnico del pa\'{i}s,  
+\newcommand{\profileEN}{The professional profile of this professional program can be better understood from 
+\OnlyMainDoc{la Fig. \ref{fig.cs} (P. \pageref{fig.cs})} \OnlyPoster{figures on the right side}. 
+This professional has Computing as the center of his studies. That is, it has computating as an end and not as a means. 
+According to the definition of this area, this professional is called directly to be a promoter of 
+the development of new computational techniques that can be useful at local, national and international level.
+
+Our professional profile is aimed at generating jobs through permanent innovation. Our professional training has three fundamental pillars: 
+a content according to ACM/IEEE-CS Computing Curricula CS2013 and CC2020, a marked orientation to innovation and human/soft skills.
+}
+
+\newcommand{\missionES}{Contribuir al desarrollo cient\'{i}fico, tecnol\'ogico y t\'ecnico del pa\'{i}s  
 formando profesionales competentes, orientados a la creaci\'on de nueva 
 ciencia y tecnolog\'{i}a computacional, como motor que impulse y consolide la industria 
 del software en base a la investigaci\'on cient\'{i}fica y tecnol\'ogica en 
 \'areas innovadoras formando, EN NUESTROS profesionales, un conjunto de habilidades y 
 destrezas para la soluci\'on de problemas computacionales con un compromiso social. }
+
+\newcommand{\missionEN}{To contribute to the scientific, technological and technical development of the country 
+forming competent professionals oriented to the creation of new science and computational technology, 
+as engine that impels and consolidates the software industry based on 
+scientific research and technological in innovative areas, forming, IN OUR professionals, 
+a set of skills for solving computational problems with a social commitment. }
 
  \hypersetup{  
     pdfauthor = {Ernesto Cuadros-Vargas (ecuadros@spc.org.pe)},
@@ -1000,18 +1018,17 @@ ISBN:
 \setcounter{page}{1}
 \pagestyle{plain}
 \begin{center}
-{\bf \Huge Equipo de trabajo}
-\end{center}
+{\bf \Huge Equipo de Trabajo}
 \vspace{1cm}
 
-\begin{center}
-\textbf{Ernesto Cuadros-Vargas (Editor)}\\ 
+\noindent \textbf{Ernesto Cuadros-Vargas (Editor)}\\ 
 Director de Ciencia de la Computaci\'on, \University, \city\\
 Presidente de la Sociedad Peruana de Computaci\'on (SPC) 2001-2007, 2009\\
 Miembro del {\it Steering Committee de ACM/IEEE-CS Computing Curricula for Computer Science (CS2013)}\\
 Miembro del {\it Steering Committee de ACM/IEEE-CS Computing Curricula 2020 (CS2020)}\\
 email: \textit{ecuadros@spc.org.pe}\\
 \textit{http://socios.spc.org.pe/ecuadros}
+
 \end{center}
 
 					 
@@ -1161,7 +1178,7 @@ de la cual nos sentimos orgullosos de formar parte: \textbf{Computaci\'on}.
 \acro{UCSP}{Universidad Cat\'olica San Pablo}
 \acro{UNMSM}{Universidad Nacional Mayor de San Marcos}
 \acro{UNSA}{Universidad Nacional de San Agust\'{i}n}
-\acro{UTEC}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a}
+\acro{UTEC}{Universidad de Ingenier\'{i}a y Tecnolog\'{i}a (UTEC)}
 
 
 \end{acronym}
@@ -1382,7 +1399,7 @@ investigaci\'on.
 \section{Misi\'on}\label{sec:cs-mision}
 \noindent Por lo antes mencionado, nuestra misi\'on es: 
 
-\mission
+\missionES
 
 \section{Visi\'on}\label{sec:cs-vision}
 \begin{itemize}
@@ -1405,24 +1422,24 @@ estrat\'egicos de nuestra sociedad.
 \section{Resultados de la carrera {\it Outcomes}}\label{sec:outcomes}
 Al finalizar esta carrera, el(la) egresado(a), habr\'a  logrado los siguientes resultados ({\it Outcomes}):
 
-\begin{enumerate}[a)]
-\item Aplicar conocimientos de computaci\'on y de matem\'aticas apropiadas para la disciplina. \label{out:Outcomea}
-\item Analizar problemas e identificar y definir los requerimientos computacionales apropiados para su soluci\'on. \label{out:Outcomeb}
-\item Dise\~nar, implementar y evaluar un sistema, proceso, componente o programa computacional para alcanzar las necesidades deseadas. \label{out:Outcomec}
-\item Trabajar efectivamente en equipos para cumplir con un objetivo com\'un. \label{out:Outcomed}
-\item Entender correctamente las implicancias profesionales, \'eticas, legales, de seguridad y sociales de la profesi\'on. \label{out:Outcomee}
-\item Comunicarse efectivamente con audiencias diversas. \label{out:Outcomef}
-\item Analizar el impacto local y global de la computaci\'on sobre los individuos, organizaciones y sociedad. \label{out:Outcomeg}
-\item Incorporarse a un proceso de aprendizaje profesional continuo. \label{out:Outcomeh}
-\item Utilizar t\'ecnicas y herramientas actuales necesarias para la pr\'actica de la computaci\'on. \label{out:Outcomei}
-\item Aplicar la base matem\'atica, principios de algoritmos y la teor\'{i}a de la Ciencia de la Computaci\'on en el modelamiento y dise\~no de sistemas computacionales de tal manera que demuestre comprensi\'on de los puntos de equilibrio involucrados en la opci\'on escogida. \label{out:Outcomej}
-\item Aplicar los principios de desarrollo y dise\~no en la construcci\'on de sistemas de software de complejidad variable. \label{out:Outcomek}
-\item Desarrollar principios investigaci\'on en el \'area de computaci\'on con niveles de competividad internacional. \label{out:Outcomel}
-\item Transformar sus conocimientos del \'area de Ciencia de la Computaci\'on en emprendimientos tecnol\'ogicos. \label{out:Outcomem}
-\item Aplicar conocimientos de humanidades en su labor profesional. \label{out:Outcomen}
-\item Comprender que la formaci\'on de un buen profesional no se desliga ni se opone sino mas bien contribuye al aut\'entico crecimiento personal. Esto requiere de la asimilaci\'on de valores s\'olidos, horizontes espirituales amplios y una visi\'on profunda del entorno cultural. \label{out:Outcome\~n}
-\item Mejorar las condiciones de la sociedad poniendo la tecnolog\'{i}a al servicio del ser humano. \label{out:Outcomeo}
-\end{enumerate}
+\begin{description}
+\item {\bf a)} Aplicar conocimientos de computaci\'on y de matem\'aticas apropiadas para la disciplina. \label{out:Outcomea}
+\item {\bf b)} Analizar problemas e identificar y definir los requerimientos computacionales apropiados para su soluci\'on. \label{out:Outcomeb}
+\item {\bf c)} Dise\~nar, implementar y evaluar un sistema, proceso, componente o programa computacional para alcanzar las necesidades deseadas. \label{out:Outcomec}
+\item {\bf d)} Trabajar efectivamente en equipos para cumplir con un objetivo com\'un. \label{out:Outcomed}
+\item {\bf e)} Entender correctamente las implicancias profesionales, \'eticas, legales, de seguridad y sociales de la profesi\'on. \label{out:Outcomee}
+\item {\bf f)} Comunicarse efectivamente con audiencias diversas. \label{out:Outcomef}
+\item {\bf g)} Analizar el impacto local y global de la computaci\'on sobre los individuos, organizaciones y sociedad. \label{out:Outcomeg}
+\item {\bf h)} Incorporarse a un proceso de aprendizaje profesional continuo. \label{out:Outcomeh}
+\item {\bf i)} Utilizar t\'ecnicas y herramientas actuales necesarias para la pr\'actica de la computaci\'on. \label{out:Outcomei}
+\item {\bf j)} Aplicar la base matem\'atica, principios de algoritmos y la teor\'{i}a de la Ciencia de la Computaci\'on en el modelamiento y dise\~no de sistemas computacionales de tal manera que demuestre comprensi\'on de los puntos de equilibrio involucrados en la opci\'on escogida. \label{out:Outcomej}
+\item {\bf k)} Aplicar los principios de desarrollo y dise\~no en la construcci\'on de sistemas de software de complejidad variable. \label{out:Outcomek}
+\item {\bf l)} Desarrollar principios investigaci\'on en el \'area de computaci\'on con niveles de competividad internacional. \label{out:Outcomel}
+\item {\bf m)} Transformar sus conocimientos del \'area de Ciencia de la Computaci\'on en emprendimientos tecnol\'ogicos. \label{out:Outcomem}
+\item {\bf n)} Aplicar conocimientos de humanidades en su labor profesional. \label{out:Outcomen}
+\item {\bf \~n)} Comprender que la formaci\'on de un buen profesional no se desliga ni se opone sino mas bien contribuye al aut\'entico crecimiento personal. Esto requiere de la asimilaci\'on de valores s\'olidos, horizontes espirituales amplios y una visi\'on profunda del entorno cultural. \label{out:Outcome\~n}
+\item {\bf o)} Mejorar las condiciones de la sociedad poniendo la tecnolog\'{i}a al servicio del ser humano. \label{out:Outcomeo}
+\end{description}
 
 Las competencias y/o resultados \ref{out:Outcomea})-\ref{out:Outcomek}) propuestas en esta malla curricular corresponden a las 
 competencias y/o resultados propuestas por ABET\footnote{http://www.abet.org}.
@@ -1436,51 +1453,51 @@ La lista de competencias profesionales para lso profesionales en computaci\'on e
 De acuerdo al m\'as reciente publicaci\'on en este aspecto \cite{IEEECompetences}, las competencias generales para los profesionales de computaci\'on son las siguientes:
 
 \begin{enumerate}
-\renewcommand{\theenumi}{C\arabic{enumi}}
-\item La comprensi\'on intelectual y la capacidad de aplicar las bases matem\'aticas y la teor\'{i}a de la inform\'atica ({\it Computer Science}).\label{outcome:C1}
-\item Capacidad para tener una perspectiva cr\'{i}tica y creativa para identificar y resolver problemas utilizando el pensamiento computacional.\label{outcome:C2}
-\item Una comprensi\'on intelectual de, y el aprecio por el papel central de los algoritmos y estructuras de datos.\label{outcome:C3}
-\item Una comprensi\'on del hardware de la computadora desde la perspectiva del software, por ejemplo, el uso del procesador, memoria, unidades de disco, pantalla, etc.\label{outcome:C4}
-\item Capacidad para implementar algoritmos y estructuras de datos en el software.\label{outcome:C5}
-\item Capacidad para dise\~nar y poner en pr\'actica las unidades estructurales mayores que utilizan algoritmos y estructuras de datos y las interfaces a trav\'es del cual estas unidades se comunican.\label{outcome:C6}
-\item Ser capaz de aplicar los principios y tecnolog\'{i}as de ingenier\'{i}a de software para asegurar que las implementaciones de software son robustos, fiables y apropiados para su p\'ublico objetivo.\label{outcome:C7}
-\item Entendimiento de lo que las tecnolog\'{i}as actuales pueden y no pueden lograr.\label{outcome:C8}
-\item Comprensi\'on de las limitaciones de la computaci\'on, incluyendo la diferencia entre lo que la computaci\'on es inherentemente incapaz de hacer frente a lo que puede lograrse a trav\'es de un futuro de ciencia y tecnolog\'{i}a.\label{outcome:C9}
-\item Comprensi\'on del impacto en las personas, las organizaciones y la sociedad de la implementaci\'on de soluciones tecnol\'ogicas e intervenciones.\label{outcome:C10}
-\item Entendimiento del concepto del ciclo de vida, incluyendo la importancia de sus fases (planificaci\'on, desarrollo, implementaci\'on y evoluci\'on).\label{outcome:C11}
-\item Entender las implicaciones de ciclo de vida para el desarrollo de todos los aspectos de los sistemas inform\'aticos (incluyendo software, hardware, y la interfaz de la computadora humana).\label{outcome:C12}
-\item Comprender la relaci\'on entre la calidad y la gesti\'on del ciclo de vida.\label{outcome:C13}
-\item Entendimiento del concepto esencial del proceso en lo relacionado con la inform\'atica, especialmente la ejecuci\'on del programa y el funcionamiento del sistema.\label{outcome:C14}
-\item Entendimiento del concepto esencial del proceso, ya que se relaciona con la actividad profesional sobre todo la relaci\'on entre la calidad del producto y el despliegue de los procesos humanos apropiados durante el desarrollo de productos.\label{outcome:C15}
-\item Capacidad para identificar temas avanzados de computaci\'on y de la comprensi\'on de las fronteras de la disciplina.\label{outcome:C16}
-\item Capacidad para expresarse en los medios de comunicaci\'on orales y escritos como se espera de un graduado.\label{outcome:C17}
-\item Capacidad para participar de forma activa y coordinada en un equipo.\label{outcome:C18}
-\item Capacidad para identificar eficazmente los objetivos y las prioridades de su trabajo / \'area / proyecto con indicaci\'on de la acci\'on, el tiempo y los recursos necesarios.\label{outcome:C19}
-\item Posibilidad de conectar la teor\'{i}a y las habilidades aprendidas en la academia a los acontecimientos del mundo real que explican su pertinencia y utilidad.\label{outcome:C20}
-\item Comprender el aspecto profesional, legal, seguridad, asuntos pol\'{i}ticos, humanistas, ambientales, culturales y \'eticos.\label{outcome:C21}
-\item Capacidad para demostrar las actitudes y prioridades que honrar, proteger y mejorar la estatura y la reputaci\'on \'etica de la profesi\'on.\label{outcome:C22}
-\item Capacidad para emprender, completar, y presentar un proyecto final.\label{outcome:C23}
-\item Comprender la necesidad de la formaci\'on permanente y la mejora de habilidades y capacidades.\label{outcome:C24}
-\item Capacidad para comunicarse en un segundo idioma.\label{outcome:C25}
+
+\item C1) La comprensi\'on intelectual y la capacidad de aplicar las bases matem\'aticas y la teor\'{i}a de la inform\'atica ({\it Computer Science}).\label{outcome:C1}
+\item C2) Capacidad para tener una perspectiva cr\'{i}tica y creativa para identificar y resolver problemas utilizando el pensamiento computacional.\label{outcome:C2}
+\item C3) Una comprensi\'on intelectual de, y el aprecio por el papel central de los algoritmos y estructuras de datos.\label{outcome:C3}
+\item C4) Una comprensi\'on del hardware de la computadora desde la perspectiva del software, por ejemplo, el uso del procesador, memoria, unidades de disco, pantalla, etc.\label{outcome:C4}
+\item C5) Capacidad para implementar algoritmos y estructuras de datos en el software.\label{outcome:C5}
+\item C6) Capacidad para dise\~nar y poner en pr\'actica las unidades estructurales mayores que utilizan algoritmos y estructuras de datos y las interfaces a trav\'es del cual estas unidades se comunican.\label{outcome:C6}
+\item C7) Ser capaz de aplicar los principios y tecnolog\'{i}as de ingenier\'{i}a de software para asegurar que las implementaciones de software son robustos, fiables y apropiados para su p\'ublico objetivo.\label{outcome:C7}
+\item C8) Entendimiento de lo que las tecnolog\'{i}as actuales pueden y no pueden lograr.\label{outcome:C8}
+\item C9) Comprensi\'on de las limitaciones de la computaci\'on, incluyendo la diferencia entre lo que la computaci\'on es inherentemente incapaz de hacer frente a lo que puede lograrse a trav\'es de un futuro de ciencia y tecnolog\'{i}a.\label{outcome:C9}
+\item C10) Comprensi\'on del impacto en las personas, las organizaciones y la sociedad de la implementaci\'on de soluciones tecnol\'ogicas e intervenciones.\label{outcome:C10}
+\item C11) Entendimiento del concepto del ciclo de vida, incluyendo la importancia de sus fases (planificaci\'on, desarrollo, implementaci\'on y evoluci\'on).\label{outcome:C11}
+\item C12) Entender las implicaciones de ciclo de vida para el desarrollo de todos los aspectos de los sistemas inform\'aticos (incluyendo software, hardware, y la interfaz de la computadora humana).\label{outcome:C12}
+\item C13) Comprender la relaci\'on entre la calidad y la gesti\'on del ciclo de vida.\label{outcome:C13}
+\item C14) Entendimiento del concepto esencial del proceso en lo relacionado con la inform\'atica, especialmente la ejecuci\'on del programa y el funcionamiento del sistema.\label{outcome:C14}
+\item C15) Entendimiento del concepto esencial del proceso, ya que se relaciona con la actividad profesional sobre todo la relaci\'on entre la calidad del producto y el despliegue de los procesos humanos apropiados durante el desarrollo de productos.\label{outcome:C15}
+\item C16) Capacidad para identificar temas avanzados de computaci\'on y de la comprensi\'on de las fronteras de la disciplina.\label{outcome:C16}
+\item C17) Capacidad para expresarse en los medios de comunicaci\'on orales y escritos como se espera de un graduado.\label{outcome:C17}
+\item C18) Capacidad para participar de forma activa y coordinada en un equipo.\label{outcome:C18}
+\item C19) Capacidad para identificar eficazmente los objetivos y las prioridades de su trabajo / \'area / proyecto con indicaci\'on de la acci\'on, el tiempo y los recursos necesarios.\label{outcome:C19}
+\item C20) Posibilidad de conectar la teor\'{i}a y las habilidades aprendidas en la academia a los acontecimientos del mundo real que explican su pertinencia y utilidad.\label{outcome:C20}
+\item C21) Comprender el aspecto profesional, legal, seguridad, asuntos pol\'{i}ticos, humanistas, ambientales, culturales y \'eticos.\label{outcome:C21}
+\item C22) Capacidad para demostrar las actitudes y prioridades que honrar, proteger y mejorar la estatura y la reputaci\'on \'etica de la profesi\'on.\label{outcome:C22}
+\item C23) Capacidad para emprender, completar, y presentar un proyecto final.\label{outcome:C23}
+\item C24) Comprender la necesidad de la formaci\'on permanente y la mejora de habilidades y capacidades.\label{outcome:C24}
+\item C25) Capacidad para comunicarse en un segundo idioma.\label{outcome:C25}
 \end{enumerate}
 
 \subsection{Competencias Espec\'{i}ficas para Ciencia de la Computaci\'on (\textit{Computer Science})}
 En la carrera de Ciencia de la Computaci\'on (\textit{Computer Science}) \cite{CS2013}, las competencias espec\'{i}ficas son \cite{IEEECompetences}:
 
 \begin{enumerate}
-\renewcommand{\theenumi}{CS\arabic{enumi}}
-\item Modelar y dise\~nar sistemas de computadora de una manera que se demuestre comprensi\'on del balance entre las opciones de dise\~no.\label{outcome:CS1}
-\item Identificar y analizar los criterios y especificaciones apropiadas a los problemas espec\'{i}ficos, y planificar estrategias para su soluci\'on.\label{outcome:CS2}
-\item Analizar el grado en que un sistema basado en el ordenador cumple con los criterios definidos para su uso actual y futuro desarrollo.\label{outcome:CS3}
-\item Implementar la teor\'{i}a apropiada, pr\'acticas y herramientas para la especificaci\'on, dise\~no, implementaci\'on y mantenimiento, as\'{i} como la evaluaci\'on de los sistemas basados en computadoras.\label{outcome:CS4}
-\item Especificar, dise\~nar e implementar sistemas basados en computadoras.\label{outcome:CS5}
-\item Evaluar los sistemas en t\'erminos de atributos de calidad en general y las posibles ventajas y desventajas que se presentan en el problema dado.\label{outcome:CS6}
-\item Aplicar los principios de una gesti\'on eficaz de la informaci\'on, organizaci\'on de la informaci\'on, y las habilidades de recuperaci\'on de informaci\'on a la informaci\'on de diversos tipos, incluyendo texto, im\'agenes, sonido y v\'{i}deo. Esto debe incluir la gesti\'on de los problemas de seguridad.\label{outcome:CS7}
-\item Aplicar los principios de la interacci\'on persona-ordenador para la evaluaci\'on y la construcci\'on de una amplia gama de materiales, incluyendo interfaces de usuario, p\'aginas web, sistemas multimedia y sistemas m\'oviles.\label{outcome:CS8}
-\item Identificar los riesgos (y esto incluye cualquier seguridad o los aspectos de seguridad) que pueden estar involucrados en la operaci\'on de equipo de c\'omputo dentro de un contexto dado.\label{outcome:CS9}
-\item Implementar efectivamente las herramientas que se utilizan para la construcci\'on y la documentaci\'on de software, con especial \'enfasis en la comprensi\'on de todo el proceso involucrado en el uso de computadoras para resolver problemas pr\'acticos. Esto debe incluir herramientas para el control de software, incluyendo el control de versiones y gesti\'on de la configuraci\'on.\label{outcome:CS10}
-\item Ser consciente de la existencia de software a disposici\'on del p\'ublico y la comprensi\'on del potencial de los proyectos de c\'odigo abierto.\label{outcome:CS11}
-\item Operar equipos de computaci\'on y software eficaz de dichos sistemas.\label{outcome:CS12}
+
+\item CS1) Modelar y dise\~nar sistemas de computadora de una manera que se demuestre comprensi\'on del balance entre las opciones de dise\~no.\label{outcome:CS1}
+\item CS2) Identificar y analizar los criterios y especificaciones apropiadas a los problemas espec\'{i}ficos, y planificar estrategias para su soluci\'on.\label{outcome:CS2}
+\item CS3) Analizar el grado en que un sistema basado en el ordenador cumple con los criterios definidos para su uso actual y futuro desarrollo.\label{outcome:CS3}
+\item CS4) Implementar la teor\'{i}a apropiada, pr\'acticas y herramientas para la especificaci\'on, dise\~no, implementaci\'on y mantenimiento, as\'{i} como la evaluaci\'on de los sistemas basados en computadoras.\label{outcome:CS4}
+\item CS5) Especificar, dise\~nar e implementar sistemas basados en computadoras.\label{outcome:CS5}
+\item CS6) Evaluar los sistemas en t\'erminos de atributos de calidad en general y las posibles ventajas y desventajas que se presentan en el problema dado.\label{outcome:CS6}
+\item CS7) Aplicar los principios de una gesti\'on eficaz de la informaci\'on, organizaci\'on de la informaci\'on, y las habilidades de recuperaci\'on de informaci\'on a la informaci\'on de diversos tipos, incluyendo texto, im\'agenes, sonido y v\'{i}deo. Esto debe incluir la gesti\'on de los problemas de seguridad.\label{outcome:CS7}
+\item CS8) Aplicar los principios de la interacci\'on persona-ordenador para la evaluaci\'on y la construcci\'on de una amplia gama de materiales, incluyendo interfaces de usuario, p\'aginas web, sistemas multimedia y sistemas m\'oviles.\label{outcome:CS8}
+\item CS9) Identificar los riesgos (y esto incluye cualquier seguridad o los aspectos de seguridad) que pueden estar involucrados en la operaci\'on de equipo de c\'omputo dentro de un contexto dado.\label{outcome:CS9}
+\item CS10) Implementar efectivamente las herramientas que se utilizan para la construcci\'on y la documentaci\'on de software, con especial \'enfasis en la comprensi\'on de todo el proceso involucrado en el uso de computadoras para resolver problemas pr\'acticos. Esto debe incluir herramientas para el control de software, incluyendo el control de versiones y gesti\'on de la configuraci\'on.\label{outcome:CS10}
+\item CS11) Ser consciente de la existencia de software a disposici\'on del p\'ublico y la comprensi\'on del potencial de los proyectos de c\'odigo abierto.\label{outcome:CS11}
+\item CS12) Operar equipos de computaci\'on y software eficaz de dichos sistemas.\label{outcome:CS12}
 \end{enumerate}
 
 \section{Objetivos de Aprendizaje ({\it Learning Outcomes})}
@@ -1889,9 +1906,18 @@ Al igual que con todas las \'areas de conocimiento, el orden de los temas y sus 
 \end{itemize}
 
 \noindent {\bf Objetivos de Aprendizaje:}\\
-\noindent {\bf Core-Tier1:}
+\noindent {\bf Core-Tier2:}
 \begin{enumerate}
 	\setcounter{enumi}{0}
+	\item Use la notaci\'on formal de la Big O para dar l\'{i}mites superiores asint\'oticos en la complejidad de tiempo y espacio de los algoritmos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOUse}
+	\item Usar la notaci\'on formal Big O para dar l\'{i}mites de casos esperados en el tiempo de complejidad de los algoritmos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOUseBig}
+	\item Explicar el uso de la notaci\'on theta grande, omega grande y o peque\~na para describir la cantidad de trabajo hecho por un algoritmo  [{\bf Familiarizarse}]\label{sec:BOK:ALBasicAnalysisLOExplainThe}
+	\item Usar relaciones recurrentes para determinar el tiempo de complejidad de algoritmos recursivamente definidos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOUseRecurrence}
+	\item Resuelve relaciones de recurrencia b\'asicas, por ejemplo. usando alguna forma del Teorema Maestro  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOSolve}
+\end{enumerate}
+\noindent {\bf Core-Tier1:}
+\begin{enumerate}
+	\setcounter{enumi}{5}
 	\item Explique a que se refiere con ``mejor", ``esperado" y ``peor" caso de comportamiento de un algoritmo  [{\bf Familiarizarse}]\label{sec:BOK:ALBasicAnalysisLOExplain}
 	\item En el contexto de a algoritmos espec\'{i}ficos, identifique las caracter\'{i}sticas de data y/o otras condiciones o suposiciones que lleven a diferentes comportamientos  [{\bf Evaluar}]\label{sec:BOK:ALBasicAnalysisLOIn}
 	\item Determine informalmente el tiempo y el espacio de complejidad de simples algoritmos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLODetermine}
@@ -1899,15 +1925,6 @@ Al igual que con todas las \'areas de conocimiento, el orden de los temas y sus 
 	\item Lista y contraste de clases est\'andares de complejidad  [{\bf Familiarizarse}]\label{sec:BOK:ALBasicAnalysisLOList}
 	\item Realizar est\'udios emp\'{i}ricos para validar una hip\'otesis sobre runtime stemming desde un an\'alisis matem\'atico Ejecute algoritmos con entrada de varios tama\~nos y compare el desempe\~no  [{\bf Evaluar}]\label{sec:BOK:ALBasicAnalysisLOPerform}
 	\item Da ejemplos que ilustran las compensaciones entre espacio y tiempo que se dan en los algoritmos  [{\bf Familiarizarse}]\label{sec:BOK:ALBasicAnalysisLOGive}
-\end{enumerate}
-\noindent {\bf Core-Tier2:}
-\begin{enumerate}
-	\setcounter{enumi}{7}
-	\item Use la notaci\'on formal de la Big O para dar l\'{i}mites superiores asint\'oticos en la complejidad de tiempo y espacio de los algoritmos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOUse}
-	\item Usar la notaci\'on formal Big O para dar l\'{i}mites de casos esperados en el tiempo de complejidad de los algoritmos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOUseBig}
-	\item Explicar el uso de la notaci\'on theta grande, omega grande y o peque\~na para describir la cantidad de trabajo hecho por un algoritmo  [{\bf Familiarizarse}]\label{sec:BOK:ALBasicAnalysisLOExplainThe}
-	\item Usar relaciones recurrentes para determinar el tiempo de complejidad de algoritmos recursivamente definidos  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOUseRecurrence}
-	\item Resuelve relaciones de recurrencia b\'asicas, por ejemplo. usando alguna forma del Teorema Maestro  [{\bf Usar}]\label{sec:BOK:ALBasicAnalysisLOSolve}
 \end{enumerate}
 
 \subsection{AL/Estrategias Algor\'{i}tmicas ~(5 horas Core-Tier1,~1 horas Core-Tier2)}\label{sec:BOK:ALAlgorithmicStrategies}
@@ -1930,23 +1947,23 @@ Un instructor puede optar por cubrir estas estrategias algor\'{i}tmicas en el co
 \end{itemize}
 
 \noindent {\bf Objetivos de Aprendizaje:}\\
-\noindent {\bf Core-Tier1:}
+\noindent {\bf Core-Tier2:}
 \begin{enumerate}
 	\setcounter{enumi}{0}
+	\item Describe varios m\'etodos basados en heur\'{i}sticas para resolver problemas  [{\bf Familiarizarse}]\label{sec:BOK:ALAlgorithmicStrategiesLODescribe}
+	\item Usa en enfoque heur\'{i}stico para resolver un problema determinado  [{\bf Usar}]\label{sec:BOK:ALAlgorithmicStrategiesLOUseATo}
+	\item Describe las compensaciones que se dan entre usar estrategias de fuerza bruta y aquellas basadas en heur\'{i}sticas  [{\bf Evaluar}]\label{sec:BOK:ALAlgorithmicStrategiesLODescribeThe}
+	\item Describe como un enfoque de ramificaci\'on y poda puede ser usado para mejorar el rendimiento de un m\'etodo heur\'{i}stico  [{\bf Familiarizarse}]\label{sec:BOK:ALAlgorithmicStrategiesLODescribeHow}
+\end{enumerate}
+\noindent {\bf Core-Tier1:}
+\begin{enumerate}
+	\setcounter{enumi}{4}
 	\item Para cada una de las estrategias (fuerza bruta, algoritmo goloso, divide y vencer\'as, recursividad en reversa y programaci\'on din\'amica), identifica un ejemplo pr\'actico en el cual se pueda aplicar  [{\bf Familiarizarse}]\label{sec:BOK:ALAlgorithmicStrategiesLOFor}
 	\item Utiliza un enfoque voraz para resolver un problema espec\'{i}fico y determina si la regla escogida lo gu\'{i}a a una soluci\'on \'optima  [{\bf Evaluar}]\label{sec:BOK:ALAlgorithmicStrategiesLOUseA}
 	\item Usa un algoritmo de divide-y-vencer\'as para resolver un determinado problema  [{\bf Usar}]\label{sec:BOK:ALAlgorithmicStrategiesLOUseAConquer}
 	\item Usa recursividad en reversa a fin de resover un problema como en el caso de recorrer un laberinto  [{\bf Usar}]\label{sec:BOK:ALAlgorithmicStrategiesLOUseRecursive}
 	\item Usa programaci\'on din\'amica para resolver un problema determinado  [{\bf Usar}]\label{sec:BOK:ALAlgorithmicStrategiesLOUseDynamic}
 	\item Determina el enfoque algor\'{i}tmico adecuado para un problema  [{\bf Evaluar}]\label{sec:BOK:ALAlgorithmicStrategiesLODetermineAn}
-\end{enumerate}
-\noindent {\bf Core-Tier2:}
-\begin{enumerate}
-	\setcounter{enumi}{6}
-	\item Describe varios m\'etodos basados en heur\'{i}sticas para resolver problemas  [{\bf Familiarizarse}]\label{sec:BOK:ALAlgorithmicStrategiesLODescribe}
-	\item Usa en enfoque heur\'{i}stico para resolver un problema determinado  [{\bf Usar}]\label{sec:BOK:ALAlgorithmicStrategiesLOUseATo}
-	\item Describe las compensaciones que se dan entre usar estrategias de fuerza bruta y aquellas basadas en heur\'{i}sticas  [{\bf Evaluar}]\label{sec:BOK:ALAlgorithmicStrategiesLODescribeThe}
-	\item Describe como un enfoque de ramificaci\'on y poda puede ser usado para mejorar el rendimiento de un m\'etodo heur\'{i}stico  [{\bf Familiarizarse}]\label{sec:BOK:ALAlgorithmicStrategiesLODescribeHow}
 \end{enumerate}
 
 \subsection{AL/Algoritmos y Estructuras de Datos fundamentales ~(9 horas Core-Tier1,~3 horas Core-Tier2)}\label{sec:BOK:ALFundamentalDataStructuresandAlgorithms}
@@ -3446,7 +3463,7 @@ El \'area  de IAS se muestra en dos grupos: (1) conceptos donde la profundidad e
 	\item Econom\'{i}a del mecanismo (la reducci\'on de la base inform\'atica de confianza, minimizar la superficie de ataque)    {\bf Ref:} \htmlref{Dise\~no de Software }{sec:BOK:SESoftwareDesign}, \htmlref{Construcci\'on de Software }{sec:BOK:SESoftwareConstruction}\label{sec:BOK:IASPrinciplesofSecureDesignTopicEconomy}
 	\item Seguridad utilizable.    {\bf Ref:} \htmlref{Fundamentos }{sec:BOK:HCIFoundations}\label{sec:BOK:IASPrinciplesofSecureDesignTopicUsable}
 	\item Componibilidad de seguridad. \label{sec:BOK:IASPrinciplesofSecureDesignTopicSecurityComposability}
-	\item Prevenci\'on, detecci\'on y disuasi\'on.    {\bf Ref:} \htmlref{Confiabilidad a trav\'es de redundancia }{sec:BOK:SFReliabilitythroughRedundancy}, \htmlref{Entrega confiable de datos }{sec:BOK:NCReliableDataDelivery}, \htmlref{Entrega confiable de datos }{sec:BOK:NCReliableDataDelivery}\label{sec:BOK:IASPrinciplesofSecureDesignTopicPrevention}
+	\item Prevenci\'on, detecci\'on y disuasi\'on.    {\bf Ref:} \htmlref{Confiabilidad a trav\'es de redundancia }{sec:BOK:SFReliabilitythroughRedundancy}, \htmlref{Entrega confiable de datos }{sec:BOK:NCReliableDataDelivery}\label{sec:BOK:IASPrinciplesofSecureDesignTopicPrevention}
 \end{itemize}
 
 \noindent {\bf Objetivos de Aprendizaje:}\\
@@ -3486,7 +3503,12 @@ Temas en la programaci\'on defensiva en general no se piensa en el aislamiento, 
 \item Inyecci\'on SQL
 \item Vulnerabilidad XSS
 \end{enumerate}    {\bf Ref:} \htmlref{M\'etodos de Desarrollo }{sec:BOK:SDFDevelopmentMethods}, \htmlref{Construcci\'on de Software }{sec:BOK:SESoftwareConstruction}\label{sec:BOK:IASDefensiveProgrammingTopicExamples}
-	\item Las condiciones de carrera.    {\bf Ref:} \htmlref{Paralelismo }{sec:BOK:SFParallelism}, \htmlref{Arquitecturas paralelas }{sec:BOK:PDParallelArchitecture}, \htmlref{Comunicaci\'on y coordinaci\'on }{sec:BOK:PDCommunicationandCoordination}, \htmlref{Fundamentos de paralelismo }{sec:BOK:PDParallelismFundamentals}\label{sec:BOK:IASDefensiveProgrammingTopicRace}
+	\item Las condiciones de carrera.    {\bf Ref:} \htmlref{Paralelismo }{sec:BOK:SFParallelism}, \htmlref{Arquitecturas paralelas }{sec:BOK:PDParallelArchitecture}, \htmlref{Comunicaci\'on y coordinaci\'on }{sec:BOK:PDCommunicationandCoordination}, \htmlref{Fundamentos de paralelismo }{sec:BOK:PDParallelismFundamentals}, \htmlref{Programaci\'on paralela vs concurrente. Programming}{sec:BOK:SFParallelismTopicParallelProgramming}, \htmlref{Memoria compartida vs memoria distribuida. Vs}{sec:BOK:PDParallelArchitectureTopicSharedVs}, \htmlref{Memoria Compartida. Memory}{sec:BOK:PDCommunicationandCoordinationTopicSharedMemory}, \htmlref{Errores de Programaci\'on ausentes en programaci\'on secuencial:
+\begin{enumerate}
+\item Tipos de Datos ( lectura/escritura simult\'anea o escritura/escritura compartida)
+\item Tipos de Niv\'el m\'as alto (interleavings violating program intention, no determinismo no deseado)
+\item Falta de vida/progreso (deadlock, starvation)
+\end{enumerate} Errors}{sec:BOK:PDParallelismFundamentalsTopicProgrammingErrors}\label{sec:BOK:IASDefensiveProgrammingTopicRace}
 	\item Manejo correcto de las excepciones y comportamientos inesperados.    {\bf Ref:} \htmlref{M\'etodos de Desarrollo }{sec:BOK:SDFDevelopmentMethods}\label{sec:BOK:IASDefensiveProgrammingTopicCorrect}
 \end{itemize}
 
@@ -3580,29 +3602,29 @@ La discusi\'on de la seguridad de red se basa en la comprensi\'on previa sobre c
 
 \noindent {\bf Electivo}
 \begin{itemize}
-	\item Seguridad para redes inal\'ambricas, celulares .    {\bf Ref:} \htmlref{Celulares }{sec:BOK:NCMobility}, \htmlref{Celulares }{sec:BOK:NCMobility}\label{sec:BOK:IASNetworkSecurityTopicSecurity}
+	\item Seguridad para redes inal\'ambricas, celulares .    {\bf Ref:} \htmlref{Celulares }{sec:BOK:NCMobility}\label{sec:BOK:IASNetworkSecurityTopicSecurity}
 	\item Otras redes no cableadas (por ejemplo, ad hoc, sensor, y redes vehiculares)  \label{sec:BOK:IASNetworkSecurityTopicOther}
 	\item Resistencia a la censura. \label{sec:BOK:IASNetworkSecurityTopicCensorship}
 	\item Gesti\'on de la seguridad operativa de la red (por ejemplo, control de acceso a la red configure) \label{sec:BOK:IASNetworkSecurityTopicOperational}
 \end{itemize}
 
 \noindent {\bf Objetivos de Aprendizaje:}\\
-\noindent {\bf Elective:}
+\noindent {\bf Core-Tier2:}
 \begin{enumerate}
 	\setcounter{enumi}{0}
+	\item Describir las diferentes categor\'{i}as de amenazas y ataques en redes  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeTheOfAnd}
+	\item Describir las arquitecturas de criptograf\'{i}a de clave p\'ublica y privada y c\'omo las ICP brindan apoyo a la seguridad en redes  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeThePublic}
+	\item Describir ventajas y limitaciones de las tecnolog\'{i}as de seguridad en cada capa de una torre de red  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeVirtues}
+	\item Identificar los adecuados mecanismos de defensa y sus limitaciones dada una amenaza de red  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLOIdentifyTheMechanism}
+\end{enumerate}
+\noindent {\bf Elective:}
+\begin{enumerate}
+	\setcounter{enumi}{4}
 	\item Discutir las propiedades de la seguridad y sus limitaciones de redes no cableadas  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODiscussSecurity}
 	\item Identificar amenazas adicionales que enfrentan las redes no cableadas  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLOIdentifyTheFaced}
 	\item Describir amenazas que pueden y no pueden ser protegidas en contra del uso de canales de comunicaci\'on seguros  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeThreats}
 	\item Resumir las defensas en contra de la censura en redes  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLOSummarizeDefenses}
 	\item Diagramar una red de seguridad  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODiagram}
-\end{enumerate}
-\noindent {\bf Core-Tier2:}
-\begin{enumerate}
-	\setcounter{enumi}{5}
-	\item Describir las diferentes categor\'{i}as de amenazas y ataques en redes  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeTheOfAnd}
-	\item Describir las arquitecturas de criptograf\'{i}a de clave p\'ublica y privada y c\'omo las ICP brindan apoyo a la seguridad en redes  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeThePublic}
-	\item Describir ventajas y limitaciones de las tecnolog\'{i}as de seguridad en cada capa de una torre de red  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLODescribeVirtues}
-	\item Identificar los adecuados mecanismos de defensa y sus limitaciones dada una amenaza de red  [{\bf Familiarizarse}]\label{sec:BOK:IASNetworkSecurityLOIdentifyTheMechanism}
 \end{enumerate}
 
 \subsection{IAS/Criptograf\'{i}a ~(1 horas Core-Tier2)}\label{sec:BOK:IASCryptography}
@@ -4797,8 +4819,8 @@ IAS / Seguridad de la red, que analiza la seguridad de red y de sus aplicaciones
 \begin{enumerate}
 	\setcounter{enumi}{0}
 	\item Describir como los paquetes son enviados en una red Ethernet  [{\bf Familiarizarse}]\label{sec:BOK:NCLocalAreaNetworksLODescribeHowForwardedEthernet}
-	\item Describir las etapas usadas en un enfoque com\'un para el problema de m\'ultiples accesos  [{\bf Familiarizarse}]\label{sec:BOK:NCLocalAreaNetworksLODescribeTheIn}
 	\item Describir las relaciones entre IP y Ethernet  [{\bf Familiarizarse}]\label{sec:BOK:NCLocalAreaNetworksLODescribeTheIp}
+	\item Describir las etapas usadas en un enfoque com\'un para el problema de m\'ultiples accesos  [{\bf Familiarizarse}]\label{sec:BOK:NCLocalAreaNetworksLODescribeTheIn}
 \end{enumerate}
 
 \subsection{NC/Asignaci\'on de recursos ~(1 horas Core-Tier2)}\label{sec:BOK:NCResourceAllocation}
@@ -4985,7 +5007,7 @@ Un sistema operativo define una abstracci\'on del hardware y gestiona el interca
 \begin{itemize}
 	\item Revisi\'on de la memoria f\'{i}sica y hardware de gesti\'on de memoria. \label{sec:BOK:OSMemoryManagementTopicReview}
 	\item Conjuntos de trabajo y thrashing. \label{sec:BOK:OSMemoryManagementTopicWorking}
-	\item El almacenamiento en cach\'e \label{sec:BOK:OSMemoryManagementTopicCaching}
+	\item El almacenamiento en cach\'e    {\bf Ref:} \htmlref{Organizaci\'on y Arquitectura del Sistema de Memoria }{sec:BOK:ARMemorysystemorganizationandarchitecture}\label{sec:BOK:OSMemoryManagementTopicCaching}
 \end{itemize}
 
 \noindent {\bf Objetivos de Aprendizaje:}\\
@@ -5447,7 +5469,7 @@ Hacer que los estudiantes est\'en familiarizados con las nociones b\'asicas de u
 \noindent {\bf T\'opicos:}\\
 \noindent {\bf Core Tier2}
 \begin{itemize}
-	\item Caminos cr\'{i}ticos, el trabajo y la duraci\'on y la relaci\'on con la ley de Amdahl.    {\bf Ref:} \htmlref{Desempe\~no en paralelo }{sec:BOK:PDParallelPerformance}\label{sec:BOK:PDParallelAlgorithmsAnalysisandProgrammingTopicCritical}
+	\item Caminos cr\'{i}ticos, el trabajo y la duraci\'on y la relaci\'on con la ley de Amdahl.    {\bf Ref:} \htmlref{Desempe\~no en paralelo }{sec:BOK:PDParallelPerformance}, \htmlref{Fundamentos del desarrollo de software (SDF) Performance}{sec:BOK:SDFPerformance}\label{sec:BOK:PDParallelAlgorithmsAnalysisandProgrammingTopicCritical}
 	\item Aceleraci\'on y escalabilidad. \label{sec:BOK:PDParallelAlgorithmsAnalysisandProgrammingTopicSpeed}
 	\item Naturalmente (vergonzosamente) algoritmos paralelos. \label{sec:BOK:PDParallelAlgorithmsAnalysisandProgrammingTopicNaturally}
 	\item Patrones Algoritmicos paralelos (divide-y-conquista, map/reduce, amos-trabajadores, otros)
@@ -5845,8 +5867,8 @@ Las horas-core tier2 ser\'{i}an bien gastadas tanto en los temas estrat\'egicos 
 \begin{itemize}
 	\item Tipos como conjunto de valores junto con un conjunto de operaciones.
 \begin{enumerate}
-\item Tipos primitivos (p.e. numeros, booleanos)
-\item Composici\'on de tipos construidos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
+\item Tipos primitivos (p.e. n\'umeros, booleanos)
+\item Composici\'on de tipos constru\'{i}dos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
 \end{enumerate} \label{sec:BOK:PLBasicTypeSystemsTopicA}
 	\item Asociaci\'on de tipos de variables, argumentos, resultados y campos. \label{sec:BOK:PLBasicTypeSystemsTopicAssociation}
 	\item Tipo de seguridad y los errores causados por el uso de valores de manera incompatible dadas sus tipos previstos. \label{sec:BOK:PLBasicTypeSystemsTopicType}
@@ -5868,7 +5890,7 @@ Las horas-core tier2 ser\'{i}an bien gastadas tanto en los temas estrat\'egicos 
 	\item Beneficios complementarios de tipos est\'aticos y din\'amicos:
 \begin{enumerate}
 \item Errores tempranos vs. errores tard\'{i}os/evitados.
-\item Refuerzo invariante durante el desarrollo y mantenimiento del c\'odigo vs. decisiones pospuestas de tipos durante la la creacion de prototipos y permitir convenientemente la codificaci\'on flexible de patrones tales como colecciones heterog\'eneas.
+\item Refuerzo invariante durante el desarrollo y mantenimiento del c\'odigo vs. decisiones pospuestas de tipos durante la la creaci\'on de prototipos y permitir convenientemente la codificaci\'on flexible de patrones tales como colecciones heterog\'eneas.
 \item Evitar el mal uso del c\'odigo vs. permitir m\'as reuso de c\'odigo.
 \item Detectar programas incompletos vs. permitir que programas incompletos se ejecuten
 \end{enumerate} \label{sec:BOK:PLBasicTypeSystemsTopicComplementary}
@@ -6371,7 +6393,7 @@ Los estudiantes y los instructores tienen que entender los impactos de la especi
 \item Sistemas cliente-servidor 
 \item Sistemas distribuidos
 \item Sistemas paralelas
-\item sistemas basados en Web 
+\item sistemas basados  en Web 
 \item Sistemas de alta integridad
 \item Juegos 
 \item Computaci\'on m\'ovil
@@ -6382,7 +6404,7 @@ Las cuestiones planteadas por cada uno de estos sistemas especializados exigen t
 
 Un efecto importante de la especializaci\'on es que se puede necesitar  tomar decisiones diferentes de material en la ense\~nanza de las aplicaciones de la ingenier\'{i}a de software, como entre los diferentes modelos de procesos, diferentes enfoques para los sistemas de modelamiento, o diferentes opciones de t\'ecnicas para llevar a cabo cualquiera de las actividades clave. Esto se refleja en la asignaci\'on de n\'ucleo y el material electivo, con los temas b\'asicos y los resultados de aprendizaje centrados en los principios que subyacen a las distintas opciones, y los detalles de las diversas alternativas entre las que hay que decidir el material electivo .
 
-Otra divisi\'on de las pr\'acticas de ingenier\'{i}a de software es entre los interesados en la necesidad fundamental de desarrollar sistemas que implementan correctamente la funcionalidad que se requiere, los relacionados con otras cualidades de los sistemas y las compensaciones necesarias para equilibrar estas cualidades. Esta divisi\'on tambi\'en se refleja en la asignaci\'on de n\'ucleo y el material electivo, por lo que los temas y resultados de aprendizaje relacionados con los m\'etodos b\'asicos para el desarrollo de tal sistema se asignan al n\'ucleo y aquellos que se ocupan de otras cualidades y compensaciones entre ellos est\'an asignados al material electivo.
+Otra divisi\'on de las pr\'acticas de ingenier\'{i}a de software es entre los interesados  en la necesidad fundamental de desarrollar sistemas que implementan correctamente la funcionalidad que se requiere, los relacionados con otras cualidades de los sistemas y las compensaciones necesarias para equilibrar estas cualidades. Esta divisi\'on tambi\'en se refleja en la asignaci\'on de n\'ucleo y el material electivo, por lo que los temas y resultados de aprendizaje relacionados con los m\'etodos b\'asicos para el desarrollo de tal sistema se asignan al n\'ucleo y aquellos que se ocupan de otras cualidades y compensaciones entre ellos est\'an asignados al material electivo.
 
 En general, los estudiantes pueden aprender mejor a aplicar gran parte del material definido en el Ingenier\'{i}a Sofware, al participar en un proyecto. Tales proyectos deben exigir a los estudiantes a trabajar en equipo para desarrollar un sistema de software a trav\'es de la mayor cantidad de su ciclo de vida como sea posible. Gran parte de la ingenier\'{i}a de software se dedica a la comunicaci\'on efectiva entre los miembros del equipo y las partes interesadas. La utilizaci\'on de los equipos de proyectos, los proyectos pueden ser lo suficientemente desafiantes para requerir a los estudiantes a utilizar t\'ecnicas de ingenier\'{i}a de software efectivas para desarrollar y practicar sus habilidades de comunicaci\'on. Si bien la organizaci\'on y realizaci\'on de proyectos eficaces en el marco acad\'emico puede ser un reto, la mejor manera de aprender a aplicar la teor\'{i}a de la ingenier\'{i}a del software y el conocimiento est\'a en el entorno pr\'actico de un proyecto. Las horas m\'{i}nimas especificadas para algunas unidades de conocimiento en este documento pueden aparecer insuficientes para lograr los resultados del aprendizaje a nivel de la aplicaci\'on asociada. Se debe entender que estos resultados deben ser alcanzados a trav\'es de la experiencia del proyecto que incluso puede ocurrir m\'as adelante en el plan de estudios que cuando se introducen los temas dentro de la unidad de conocimiento.
 
@@ -7369,8 +7391,8 @@ Comunicaci\'on profesional efectiva de informaci\'on t\'ecnica es rara vez un do
 
 \noindent {\bf Electivo}
 \begin{itemize}
-	\item Tratar con ambientes interculturales.    {\bf Ref:} \htmlref{Internacionalizaci\'on, dise\~no para usuarios de otras culturas, intercultural. }{sec:BOK:HCIUsercentereddesignandtestingTopicInternationalization}\label{sec:BOK:SPProfessionalCommunicationTopicDealing}
-	\item Puntos de equilibrio de riesgos en proyectos de software, en t\'erminos de la tecnolog\'{i}a, la estructura/proceso, la calidad, la gente, el mercado y financiero.    {\bf Ref:} \htmlref{Gesti\'on de Proyectos de Software Topic}{sec:BOK:SESoftwareProjectManagementTopic}\label{sec:BOK:SPProfessionalCommunicationTopicTradeoffs}
+	\item Tratar con ambientes interculturales.    {\bf Ref:} \htmlref{Dise\~no y Testing centrados en el usuario }{sec:BOK:HCIUsercentereddesignandtesting}\label{sec:BOK:SPProfessionalCommunicationTopicDealing}
+	\item Puntos de equilibrio de riesgos en proyectos de software, en t\'erminos de la tecnolog\'{i}a, la estructura/proceso, la calidad, la gente, el mercado y financiero.    {\bf Ref:} \htmlref{Gesti\'on de Proyectos de Software }{sec:BOK:SESoftwareProjectManagement}\label{sec:BOK:SPProfessionalCommunicationTopicTradeoffs}
 \end{itemize}
 
 \noindent {\bf Objetivos de Aprendizaje:}\\
@@ -7495,7 +7517,7 @@ Si bien las pol\'{i}ticas de seguridad, las leyes y los delitos inform\'aticos s
 \noindent {\bf Electivo}
 \begin{itemize}
 	\item Ejemplos de delitos inform\'aticos y reparaci\'on legal para delincuentes inform\'aticos.    {\bf Ref:} \htmlref{Investigaci\'on digital (Digital Forensics) }{sec:BOK:IASDigitalForensics}\label{sec:BOK:SPSecurityPoliciesLawsandComputerCrimesTopicExamples}
-	\item Ingenieria social, robo de identidad y recuperaci\'on.    {\bf Ref:} \htmlref{Factores Humanos y seguridad }{sec:BOK:HCIHumanfactorsandsecurity}\label{sec:BOK:SPSecurityPoliciesLawsandComputerCrimesTopicSocial}
+	\item Ingenieria social, robo de identidad y recuperaci\'on.    {\bf Ref:} \htmlref{Factores Humanos y seguridad }{sec:BOK:HCIHumanfactorsandsecurity}, \htmlref{Interacci\'on Humano-Computador (HCI) HumanFactorsandSecuritytrust}{sec:BOK:HCIHumanFactorsandSecuritytrust}\label{sec:BOK:SPSecurityPoliciesLawsandComputerCrimesTopicSocial}
 	\item T\'opicos relacionados al uso de acceso indebido y las infracciones y materia de seguridad. \label{sec:BOK:SPSecurityPoliciesLawsandComputerCrimesTopicIssues}
 	\item Motivaciones y ramificaciones del ciberterrorismo y el hacking criminal, cracking. \label{sec:BOK:SPSecurityPoliciesLawsandComputerCrimesTopicMotivations}
 	\item Efectos de malware, como virus, worms y Trojan horses. \label{sec:BOK:SPSecurityPoliciesLawsandComputerCrimesTopicEffects}
@@ -8788,7 +8810,7 @@ o) & Poner la tecnolog\'{i}a al servicio del ser humano.  &  &  &  &  &  & \html
 \section{Malla curricular}\label{sec:vision-grafica}
 \vspace{-0.3cm}Este documento tambi\'en puede ser analizado desde el punto de vista de los prerequisitos de forma gr\'afica.
 \begin{figure}[H]
-      \includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/big-graph-curricula}
+      \includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/small-graph-curricula-ES.ps}
       \label{fig:malla-curricular}
       \caption{Malla curricular \SchoolFullName}
 \end{figure}
@@ -9517,72 +9539,72 @@ nos permiten tener una visi\'on gr\'afica de esta malla curricular frente a las 
 carreras presentadas por \htmladdnormallink{IEEE-CS}{http://www.computer.org}/\htmladdnormallink{ACM}{http://www.acm.org} en la \textit{Computing Curricula}
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-CS}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-CS-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. CS de IEEE-CS/ACM.}
-	\label{fig:comparing-curves-CS-UTEC-with-CS}
+	\label{fig:comparing-curves-CS-with-CS-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-CS}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-CS-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. CS de IEEE-CS/ACM.}
-	\label{fig:comparing-spider-CS-UTEC-with-CS}
+	\label{fig:comparing-spider-CS-with-CS-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-CE}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-CE-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. CE de IEEE-CS/ACM.}
-	\label{fig:comparing-curves-CS-UTEC-with-CE}
+	\label{fig:comparing-curves-CS-with-CE-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-CE}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-CE-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. CE de IEEE-CS/ACM.}
-	\label{fig:comparing-spider-CS-UTEC-with-CE}
+	\label{fig:comparing-spider-CS-with-CE-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-IS}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-IS-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. IS de IEEE-CS/ACM.}
-	\label{fig:comparing-curves-CS-UTEC-with-IS}
+	\label{fig:comparing-curves-CS-with-IS-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-IS}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-IS-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. IS de IEEE-CS/ACM.}
-	\label{fig:comparing-spider-CS-UTEC-with-IS}
+	\label{fig:comparing-spider-CS-with-IS-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-IT}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-IT-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. IT de IEEE-CS/ACM.}
-	\label{fig:comparing-curves-CS-UTEC-with-IT}
+	\label{fig:comparing-curves-CS-with-IT-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-IT}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-IT-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. IT de IEEE-CS/ACM.}
-	\label{fig:comparing-spider-CS-UTEC-with-IT}
+	\label{fig:comparing-spider-CS-with-IT-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-SE}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/curves-CS-with-SE-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. SE de IEEE-CS/ACM.}
-	\label{fig:comparing-curves-CS-UTEC-with-SE}
+	\label{fig:comparing-curves-CS-with-SE-ES}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-	\includegraphics{/home/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-SE}
+	\includegraphics{../Curricula.out/Peru/CS-UTEC/cycle/2019-I/Plan2018/fig/spider-CS-with-SE-ES}
 	\caption{Comparaci\'on CS-UTEC~Vs. SE de IEEE-CS/ACM.}
-	\label{fig:comparing-spider-CS-UTEC-with-SE}
+	\label{fig:comparing-spider-CS-with-SE-ES}
 \end{figure}
 
 
@@ -9670,8 +9692,8 @@ Lo t\'opicos incluyen tipos de datos, estructuras de control, funciones, listas,
 \begin{enumerate}
         \item Tipos como conjunto de valores junto con un conjunto de operaciones.
 \begin{enumerate}
-\item Tipos primitivos (p.e. numeros, booleanos)
-\item Composici\'on de tipos construidos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
+\item Tipos primitivos (p.e. n\'umeros, booleanos)
+\item Composici\'on de tipos constru\'{i}dos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
 \end{enumerate} 
         \item Asociaci\'on de tipos de variables, argumentos, resultados y campos. 
 		\item Tipo de seguridad y los errores causados por el uso de valores de manera incompatible dadas sus tipos previstos. 
@@ -10642,8 +10664,8 @@ El curso introducir\'a a los participantes en los diversos temas del \'area de c
 \begin{enumerate}
         \item Tipos como conjunto de valores junto con un conjunto de operaciones.
 \begin{enumerate}
-\item Tipos primitivos (p.e. numeros, booleanos)
-\item Composici\'on de tipos construidos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
+\item Tipos primitivos (p.e. n\'umeros, booleanos)
+\item Composici\'on de tipos constru\'{i}dos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
 \end{enumerate}         
         \item Declaraci\'on de modelos (enlace, visibilidad, alcance y tiempo de vida).
         \item Vista general del chequeo de tipos.
@@ -11818,8 +11840,8 @@ necesarios para desarrollar un sistema de informaci\'on
 \begin{enumerate}
 	\item Tipos como conjunto de valores junto con un conjunto de operaciones.
 \begin{enumerate}
-\item Tipos primitivos (p.e. numeros, booleanos)
-\item Composici\'on de tipos construidos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
+\item Tipos primitivos (p.e. n\'umeros, booleanos)
+\item Composici\'on de tipos constru\'{i}dos de otros tipos (p.e., registros, uniones, arreglos, listas, funciones, referencias)
 \end{enumerate} 
 	\item Asociaci\'on de tipos de variables, argumentos, resultados y campos. 
 	\item Tipo de seguridad y los errores causados por el uso de valores de manera incompatible dadas sus tipos previstos. 
@@ -11837,7 +11859,7 @@ necesarios para desarrollar un sistema de informaci\'on
 	\item Beneficios complementarios de tipos est\'aticos y din\'amicos:
 \begin{enumerate}
 \item Errores tempranos vs. errores tard\'{i}os/evitados.
-\item Refuerzo invariante durante el desarrollo y mantenimiento del c\'odigo vs. decisiones pospuestas de tipos durante la la creacion de prototipos y permitir convenientemente la codificaci\'on flexible de patrones tales como colecciones heterog\'eneas.
+\item Refuerzo invariante durante el desarrollo y mantenimiento del c\'odigo vs. decisiones pospuestas de tipos durante la la creaci\'on de prototipos y permitir convenientemente la codificaci\'on flexible de patrones tales como colecciones heterog\'eneas.
 \item Evitar el mal uso del c\'odigo vs. permitir m\'as reuso de c\'odigo.
 \item Detectar programas incompletos vs. permitir que programas incompletos se ejecuten
 \end{enumerate} 
@@ -20200,7 +20222,7 @@ Software: Emuladores 8088}
 \section*{CS3P03. Internet de las Cosas (Obligatorio) 10mo Sem, Lab: 4 hr(s)}
 \LabAdvanced
 
-\chapter{Profesores \& Coursos}
+\chapter{Profesores \& Cursos}
 
 \section{Cursos que un profesor tiene habilitaci\'on}\label{sec:CoursesAProfessorCouldTeach}
 {\bf Ernesto Cuadros-Vargas}
@@ -20298,6 +20320,11 @@ Software: Emuladores 8088}
 	\item \htmlref{Algoritmos y Estructuras de Datos}{sec:CS2100} 
 	\item \htmlref{Internet de las Cosas}{sec:CS3P03} 
 \end{itemize}
+{\bf Marvin Abisrror Zarate}
+\begin{itemize}
+	\item \htmlref{An\'alisis y Dise\~no de Algoritmos}{sec:CS2102} 
+	\item \htmlref{Inteligencia Artificial}{sec:CS2601} 
+\end{itemize}
 {\bf Patricio Morriber\'on}
 \begin{itemize}
 	\item \htmlref{Introducci\'on a la Ciencia de la Computaci\'on}{sec:CS1100} 
@@ -20308,6 +20335,12 @@ Software: Emuladores 8088}
 	\item \htmlref{Introducci\'on a la Ciencia de la Computaci\'on}{sec:CS1100} 
 	\item \htmlref{Arquitectura de Computadores}{sec:CS2201} 
 	\item \htmlref{Sistemas Operativos}{sec:CS2S01} 
+\end{itemize}
+{\bf Ronald Gonzales Vega}
+\begin{itemize}
+	\item \htmlref{Algoritmos y Estructuras de Datos}{sec:CS2100} 
+	\item \htmlref{Computaci\'on Gr\'afica}{sec:CS2501} 
+	\item \htmlref{T\'opicos en Computaci\'on Gr\'afica}{sec:CS3501} 
 \end{itemize}
 {\bf Ruben Rivas Medina}
 \begin{itemize}
@@ -20327,6 +20360,13 @@ Software: Emuladores 8088}
 \begin{itemize}
 	\item \htmlref{Introducci\'on a la Ciencia de la Computaci\'on}{sec:CS1100} 
 \end{itemize}
+{\bf Jorge Alvarado}
+\begin{itemize}
+	\item \htmlref{Introducci\'on a la Ciencia de la Computaci\'on}{sec:CS1100} 
+	\item \htmlref{Programaci\'on Orientada a Objetos I}{sec:CS1102} 
+	\item \htmlref{Desarrollo Basado en Plataformas}{sec:CS2B01} 
+	\item \htmlref{Bases de Datos I}{sec:CS2701} 
+\end{itemize}
 {\bf Mariano Melgar}
 \begin{itemize}
 	\item \htmlref{Introducci\'on a la Ciencia de la Computaci\'on}{sec:CS1100} 
@@ -20337,12 +20377,6 @@ Software: Emuladores 8088}
 	\item \htmlref{Introducci\'on a la Ciencia de la Computaci\'on}{sec:CS1100} 
 	\item \htmlref{Programaci\'on Orientada a Objetos I}{sec:CS1102} 
 	\item \htmlref{Programaci\'on Orientada a Objetos II}{sec:CS1103} 
-\end{itemize}
-{\bf Ronald Gonzales Vega}
-\begin{itemize}
-	\item \htmlref{Algoritmos y Estructuras de Datos}{sec:CS2100} 
-	\item \htmlref{Computaci\'on Gr\'afica}{sec:CS2501} 
-	\item \htmlref{T\'opicos en Computaci\'on Gr\'afica}{sec:CS3501} 
 \end{itemize}
 
 \section{Profesor capacitado para ense\~nar por curso}\label{sec:ProfessorSkilledToTeachACourse}
@@ -20364,14 +20398,14 @@ Software: Emuladores 8088}
 	\item Ruben Rivas Medina (rrivas@utec.edu.pe)
 	\item Te\'ofilo Chambilla Aquino (tchambilla@utec.edu.pe)
 	\item Alonso Mujica Troncoso (amujica@utec.edu.pe)
+	\item Jorge Alvarado (jalvarador@utec.edu.pe)
 	\item Mariano Melgar (mmelgarz@utec.edu.pe)
 	\item Randiel Melgarejo Diaz (rmelgarejo@utec.edu.pe)
 	\item Jos\'e Alfredo D\'{i}az Le\'on (jdiazl@utec.edu.pe) ({\bf ***})
 	\item Kefreen Ryenz Batista Lacerda (kbatista@utec.edu.pe) ({\bf ***})
 	\item Kenneth Lopez (mlopez@utec.edu.pe) ({\bf ***})
-	\item Jorge Alvarado (jalvarador@utec.edu.pe) ({\bf ***})
 	\item Jos\'e Arellano Pi\~nan (jarellano@utec.edu.pe) ({\bf ***})
-	\item Rotkyuvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
+	\item Rotkyvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsubsection{CS1D01. Estructuras Discretas I}
@@ -20407,11 +20441,11 @@ Software: Emuladores 8088}
 	\item Patricio Morriber\'on (pmorriberon@utec.edu.pe)
 	\item Ruben Rivas Medina (rrivas@utec.edu.pe)
 	\item Te\'ofilo Chambilla Aquino (tchambilla@utec.edu.pe)
+	\item Jorge Alvarado (jalvarador@utec.edu.pe)
 	\item Mariano Melgar (mmelgarz@utec.edu.pe)
 	\item Randiel Melgarejo Diaz (rmelgarejo@utec.edu.pe)
 	\item Isaac Ernesto Bringas (ibringas@utec.edu.pe) ({\bf ***})
 	\item Kenneth Lopez (mlopez@utec.edu.pe) ({\bf ***})
-	\item Jorge Alvarado (jalvarador@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsubsection{CS1D02. Estructuras Discretas II}
@@ -20458,7 +20492,7 @@ Software: Emuladores 8088}
 \begin{itemize}
 	\item Jesus Edwin Bellido Angulo (jbellido@utec.edu.pe)
 	\item Juan Antonio Flores Moroco (jflores@utec.edu.pe)
-	\item Jorge Alvarado (jalvarador@utec.edu.pe) ({\bf ***})
+	\item Jorge Alvarado (jalvarador@utec.edu.pe)
 \end{itemize}
 
 \subsubsection{EN0021. F\'{i}sica II}
@@ -20482,8 +20516,8 @@ Software: Emuladores 8088}
 	\item Heider Sanchez (hsanchez@utec.edu.pe)
 	\item Juan Antonio Flores Moroco (jflores@utec.edu.pe)
 	\item Luis Eduardo Talavera Rios (ltalavera@utec.edu.pe)
-	\item Ruben Rivas Medina (rrivas@utec.edu.pe)
 	\item Ronald Gonzales Vega (rgonzalesveg@utec.edu.pe)
+	\item Ruben Rivas Medina (rrivas@utec.edu.pe)
 \end{itemize}
 
 \subsubsection{CS2101. Teor\'{i}a de la Computaci\'on}
@@ -20498,8 +20532,8 @@ Software: Emuladores 8088}
 	\item Juan Antonio Flores Moroco (jflores@utec.edu.pe)
 	\item Ruben Rivas Medina (rrivas@utec.edu.pe)
 	\item Te\'ofilo Chambilla Aquino (tchambilla@utec.edu.pe)
+	\item Jorge Alvarado (jalvarador@utec.edu.pe)
 	\item Kefreen Ryenz Batista Lacerda (kbatista@utec.edu.pe) ({\bf ***})
-	\item Jorge Alvarado (jalvarador@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsubsection{IN0054. Estad\'{i}stica y Probabilidades}
@@ -20518,7 +20552,9 @@ Software: Emuladores 8088}
 
 \subsection{Quinto Semestre}
 \subsubsection{CS2102. An\'alisis y Dise\~no de Algoritmos}
---
+\begin{itemize}
+	\item Marvin Abisrror Zarate (marvin.abisrror@gmail.com)
+\end{itemize}
 
 \subsubsection{CS2702. Bases de Datos II}
 \begin{itemize}
@@ -20531,7 +20567,7 @@ Software: Emuladores 8088}
 	\item Jesus Edwin Bellido Angulo (jbellido@utec.edu.pe)
 	\item Yamilet Rosario Serrano Llerena (yserrano@utec.edu.pe)
 	\item Kenneth Lopez (mlopez@utec.edu.pe) ({\bf ***})
-	\item Rotkyuvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
+	\item Rotkyvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsubsection{CS2S01. Sistemas Operativos}
@@ -20551,7 +20587,7 @@ Software: Emuladores 8088}
 \begin{itemize}
 	\item Ernesto Cuadros-Vargas (ecuadros@utec.edu.pe)
 	\item Kenneth Lopez (mlopez@utec.edu.pe) ({\bf ***})
-	\item Rotkyuvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
+	\item Rotkyvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsection{Sexto Semestre}
@@ -20595,6 +20631,7 @@ Software: Emuladores 8088}
 \subsubsection{CS2601. Inteligencia Artificial}
 \begin{itemize}
 	\item Heider Sanchez (hsanchez@utec.edu.pe)
+	\item Marvin Abisrror Zarate (marvin.abisrror@gmail.com)
 \end{itemize}
 
 \subsubsection{CS2902. Ingenier\'{i}a de Software II}
@@ -20602,7 +20639,7 @@ Software: Emuladores 8088}
 	\item Jesus Edwin Bellido Angulo (jbellido@utec.edu.pe)
 	\item Yamilet Rosario Serrano Llerena (yserrano@utec.edu.pe)
 	\item Kenneth Lopez (mlopez@utec.edu.pe) ({\bf ***})
-	\item Rotkyuvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
+	\item Rotkyvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsubsection{AM0037. Ciencia de Materiales}
@@ -20650,7 +20687,7 @@ Software: Emuladores 8088}
 \subsubsection{CS3901. Ingenier\'{i}a de Software III}
 \begin{itemize}
 	\item Yamilet Rosario Serrano Llerena (yserrano@utec.edu.pe)
-	\item Rotkyuvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
+	\item Rotkyvairam Gonzales Quinteros (rgonzales@utec.edu.pe) ({\bf ***})
 \end{itemize}
 
 \subsubsection{BI0021. Bioinform\'atica y Bioestad\'{i}stica}
@@ -20689,6 +20726,6 @@ Software: Emuladores 8088}
 \subsubsection{GH0021. Dise\~no de Ficciones}
 --
 
-\bibliography{../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralH/GH2009,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS2H1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BusinessAndManagement/BM101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS3P1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/EG003,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralH/GH2012,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CQ121,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS401,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/FG101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2015,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS272,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS112,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS231,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2020,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS370,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1005,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CF141,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS251,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS221,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1017,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/FG101D,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/MA102,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralH/GH1014,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS3P2,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS210,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS2B1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS212,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS111,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS312,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/MA203,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1002,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS113,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS291,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1006,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1019,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CB320,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2011,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS271,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS2S1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS261,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS211,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2010,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS292,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/MA101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS362,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS1D1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS392,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS311,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS342,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Interdisciplinary/XD101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS3I1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1007,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CB309,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2016}
+\bibliography{../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS251,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS113,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS272,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1017,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS111,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS231,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS1D1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS271,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1019,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS401,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2015,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS370,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS210,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS112,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS291,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralH/GH2012,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS3P1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1007,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/MA203,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1002,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2011,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2016,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS312,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CQ121,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/MA102,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2010,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CF141,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1006,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/FG101D,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralH/GH1014,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS311,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BusinessAndManagement/BM101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS261,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS2H1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS3P2,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS211,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CB320,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH2020,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS2S1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Interdisciplinary/XD101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS3I1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/EG003,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS392,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS2B1,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS221,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/FG101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralH/GH2009,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS292,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/CB309,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS212,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/BasicSciences/MA101,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS362,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/GeneralEducation/GH1005,../Curricula.in/lang/Espanol/cycle/2019-I/Syllabi/Computing/CS/CS342}
 \end{document}
 

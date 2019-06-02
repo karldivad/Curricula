@@ -34,9 +34,9 @@ sub generate_general_info()
 	{
 		GeneralInfo::generate_description("prefix", $lang);			# CS: Computer Science, ...
 	}
-	GeneralInfo::generate_course_tables(); 					# Tables by semester
-	GeneralInfo::generate_laboratories(); 					# List of Laboratories
-# 	GeneralInfo::generate_distribution_area_by_semester();	# Table area by semester
+	GeneralInfo::generate_course_tables($lang); 					# Tables by semester
+	GeneralInfo::generate_laboratories(); 							# List of Laboratories
+# 	GeneralInfo::generate_distribution_area_by_semester();			# Table area by semester
 	GeneralInfo::generate_distribution_credits_by_area_by_semester();
 	
 	GeneralInfo::generate_pie("credits");
@@ -61,11 +61,12 @@ sub generate_general_info()
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 		GeneralInfo::generate_compatibility_with_standards($lang);
+		#	GeneralInfo::generate_courses_by_professor();
+	# 	GeneralInfo::generate_faculty_info();
+		GeneralInfo::generate_courses_by_professor($lang);
+		GeneralInfo::generate_professor_by_course($lang);
 	}
-#	GeneralInfo::generate_courses_by_professor();
-# 	GeneralInfo::generate_faculty_info();
-	GeneralInfo::generate_courses_by_professor($lang);
-	GeneralInfo::generate_professor_by_course($lang);
+
  	GeneralInfo::process_equivalences();
 
 # 	generate_sql_for_new_courses();
@@ -84,7 +85,7 @@ sub copy_basic_files()
 	#system("cp ".Common::get_template("InLogosDir")."/$Common::config{institution}* ".Common::get_template("OutputFigDir"));
 	#system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("OutputTexDir"));
 	##system("cp ".Common::get_template("in-pdf-icon-file")." ".Common::get_template("OutputHtmlFigsDir"));
-	exit;
+	#exit;
 }
 
 sub main()

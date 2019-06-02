@@ -272,13 +272,23 @@ sub main()
 	Util::begin_time();
 	Common::setup();
 	my $lang = $Common::config{language_without_accents};
-	my $outcomes_macros_file = Common::get_template("in-outcomes-macros-file");
+	my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
 	$outcomes_macros_file =~ s/<LANG>/$lang/g;
 	Common::read_special_macros($outcomes_macros_file, "Outcome"); 
 	Common::read_special_macros($outcomes_macros_file, "Competence"); 
 	Common::read_special_macros($outcomes_macros_file, "CompetenceLevel"); 
 	
-	Common::read_bok($Common::config{language_without_accents}); 
+	Common::read_bok($lang);
+	#foreach my $key (sort {$a cmp $b} keys %{$Common::config{macros}})
+	#{	
+	#	if($key =~ m/SDFFundamentalDataStructuresTopic.*/g )
+	#	{
+	#		#print Dumper( \%{$Common::config{macros}{SDFFundamentalDataStructuresTopicAbstract}} );
+	#		#print Dumper( \%{$Common::config{macros}{SDFFundamentalDataStructuresTopicReferences}} );
+	#		Util::print_message("$key=$Common::config{macros}{$key}");
+	#	}
+	#}
+	#exit;
 	GenSyllabi::process_syllabi();
 	Common::sort_macros();
 	
@@ -308,42 +318,43 @@ sub main()
 # 	Util::print_message("Llego aqui 1!"); exit;
 #         Util::write_file($output_file, $maintxt); exit;
         
-        #print Dumper(\%{$Common::config{Competence}}); exit;
-        while( $maintxt =~ m/\\Competence\{(.*?)\}/g )
-        {   my ($competence) = ($1);
+	#print Dumper(\%{$Common::config{Competence}}); exit;
+	while( $maintxt =~ m/\\Competence\{(.*?)\}/g )
+	{   my ($competence) = ($1);
 	    if( not defined($Common::config{Competence}{$1}) )
-	    {	Util::print_error("\\Competence{$competence} not defined  ... ($Common::config{Competence}{$competence})");		}
-	    	my $competence_wsc = Common::replace_special_chars($competence);
-# 	   		Util::print_message("Replacing \\Competence{$competence} ... ($Common::config{Competence}{$competence})");
-	    	$maintxt =~ s/\\Competence\{$competence_wsc\}/$Common::config{Competence}{$competence}\\label\{outcome:$competence\}/g;
-        }
-        $maintxt =~ s/\\Competence\{(.*?)\}/$Common::config{Competence}{$1}\\label\{outcome:$1\}/g;
-		$maintxt =~ s/\\ShowOutcome\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Outcome}{$1} ($Common::config{CompetenceLevel}{$2})/g;
-		$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \{\\bf Outcome: $2\}/g;
-        $maintxt =~ s/\\ShowOutcomeText\{(.*?)\}/$Common::config{Outcome}{$1}/g;
+	    {	Util::print_error("\\Competence{$competence} not defined  ... ($Common::config{Competence}{$competence})");		
+		}
+	    my $competence_wsc = Common::replace_special_chars($competence);
+# 	   	Util::print_message("Replacing \\Competence{$competence} ... ($Common::config{Competence}{$competence})");
+	    $maintxt =~ s/\\Competence\{$competence_wsc\}/$competence\) $Common::config{Competence}{$competence}\\label\{outcome:$competence\}/g;
+    }
+	$maintxt =~ s/\\Competence\{(.*?)\}/$Common::config{Competence}{$1}\\label\{outcome:$1\}/g;
+	$maintxt =~ s/\\ShowOutcome\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Outcome}{$1} ($Common::config{CompetenceLevel}{$2})/g;
+	$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \{\\bf Outcome: $2\}/g;
+	$maintxt =~ s/\\ShowOutcomeText\{(.*?)\}/$Common::config{Outcome}{$1}/g;
 
-        while( $maintxt =~ m/\\ShowShortOutcome\{(.*?)\}/g )
-        {	my $outcome = $1; my $OutcomeShort = $outcome."Short";
-	# 		Util::print_message("Using short outcome: $OutcomeShort");
-			if( $Common::config{Outcome}{$OutcomeShort} )
-			{	$maintxt =~ s/\\ShowShortOutcome\{$outcome\}/$Common::config{Outcome}{$OutcomeShort}/g;	}
-			else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
-        }
-        $maintxt =~ s/\\xspace/ /g;
-        $maintxt =~ s/\\\\ \{/ \{/g;
+	while( $maintxt =~ m/\\ShowShortOutcome\{(.*?)\}/g )
+	{	my $outcome = $1; my $OutcomeShort = $outcome."Short";
+# 		Util::print_message("Using short outcome: $OutcomeShort");
+		if( $Common::config{Outcome}{$OutcomeShort} )
+		{	$maintxt =~ s/\\ShowShortOutcome\{$outcome\}/$Common::config{Outcome}{$OutcomeShort}/g;	}
+		else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
+	}
+	$maintxt =~ s/\\xspace/ /g;
+	$maintxt =~ s/\\\\ \{/ \{/g;
 
-        ($maintxt, $macros_changed) = Common::expand_macros($main_file, $maintxt);
-		foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
-        {	
-	# 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
-			$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
-	#   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;
-			$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;	
-        }
-        
-        my $books_html = Common::generate_books_links();
-        $maintxt =~ s/<BOOKS>/\n$books_html/g;
-        $maintxt = replace_special_cases($maintxt);
+	($maintxt, $macros_changed) = Common::expand_macros($main_file, $maintxt);
+	foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
+	{	
+# 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
+		$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
+#   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;
+		$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;	
+	}
+	
+	my $books_html = Common::generate_books_links();
+	$maintxt =~ s/<BOOKS>/\n$books_html/g;
+	$maintxt = replace_special_cases($maintxt);
 #         $maintxt = replace_outcomes_sequence($maintxt);
 # 	aqui falta;
         

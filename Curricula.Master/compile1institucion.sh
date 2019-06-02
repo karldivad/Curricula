@@ -76,16 +76,16 @@ if($pdf == 1) then
       dvips curricula-main.dvi -o CS-UTEC.ps;
       echo CS-UTEC;
       ps2pdf CS-UTEC.ps CS-UTEC.pdf;
+      rm -rf CS-UTEC.ps;
 
 #     Generate the first page and place it at html dir
-      pdftk A=CS-UTEC.pdf cat A1-1 output CS-UTEC-P1.pdf;
-      convert CS-UTEC-P1.pdf CS-UTEC-P1.png;
-      rm CS-UTEC-P1.pdf;
-      mv CS-UTEC-P1.png ../Curricula.out/html/Peru/CS-UTEC/Plan2018/CurriculaMain-P1.png;
+      mutool convert -o ../Curricula.out/html/Peru/CS-UTEC/Plan2018/CurriculaMain-P1.png CS-UTEC.pdf 1-1
+      #pdftk A=CS-UTEC.pdf cat A1-1 output CS-UTEC-P1.pdf;
+      #convert CS-UTEC-P1.pdf CS-UTEC-P1.png;
+      #rm CS-UTEC-P1.pdf;
+      #mv CS-UTEC-P1.png ../Curricula.out/html/Peru/CS-UTEC/Plan2018/CurriculaMain-P1.png;
       cp CS-UTEC.pdf ../Curricula.out/html/Peru/CS-UTEC/Plan2018/CurriculaMain.pdf;
-
       mv CS-UTEC.pdf "../Curricula.out/pdfs/CS-UTEC Plan2018.pdf";
-      rm -rf CS-UTEC.ps;
 endif
 
 ./scripts/update-outcome-itemizes.pl CS-UTEC

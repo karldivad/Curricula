@@ -132,6 +132,7 @@ sub ExpandTags($$)
 	$InTxt =~ s/<LANG-EXTENDED>/$lang/g;
 	$InTxt =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
 	$InTxt =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
+	$InTxt =~ s/<AREA>/$Common::area/g;
 	return $InTxt; 
 }
 
@@ -289,10 +290,10 @@ sub get_pdf_link($)
 	return $pdflink;
 }
 
-sub GetCourseNameWithLink($$$)
+sub GetCourseNameWithLink($$$$)
 {
-    my ($codcour, $recommended, $extra_link) = (@_);
-	my $COURSENAME = "\\htmlref{$Common::course_info{$codcour}{$Common::config{language_without_accents}}}{sec:$codcour}{course_name}";
+    my ($codcour, $lang, $recommended, $extra_link) = (@_);
+	my $COURSENAME = "\\htmlref{$Common::course_info{$codcour}{$lang}{course_name}}{sec:$codcour}";
 # 	Util::print_message("codcour=$codcour");
 # 	print Dumper ( \%{$Common::course_info{$codcour}} );
 	if($recommended == 1 && not $Common::course_info{$codcour}{recommended} eq "")
@@ -302,7 +303,7 @@ sub GetCourseNameWithLink($$$)
 		{
 			$rec = Common::get_label($rec);
 			my $semester_rec = $Common::course_info{$rec}{semester};
-			$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{$Common::config{language_without_accents}}}{sec:$codcour}{course_name}";
+			$rec_courses .= "$sep\\htmlref{$rec $Common::course_info{$rec}{$lang}{course_name}}{sec:$codcour}";
 			$rec_courses .= "($semester_rec\$^{$Common::config{dictionary}{ordinal_postfix}{$semester_rec}}\$)";
 			$sep = ", ";
 # 			print "$rec(C)\n";
@@ -573,7 +574,7 @@ sub set_initial_paths()
 
 	$path_map{"in-main-to-gen-fig"}				= $path_map{InTexAllDir}."/main-to-gen-fig.tex";
 
-	$path_map{"out-tables-foreach-semester-file"}	= $path_map{OutputTexDir}."/tables-by-semester.tex";
+	$path_map{"out-tables-foreach-semester-file"}	= $path_map{OutputTexDir}."/tables-by-semester-<LANG>.tex";
 	$path_map{"out-distribution-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-area-by-semester.tex";
 	$path_map{"out-distribution-of-credits-by-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-credits-by-area-by-semester.tex";
 
@@ -645,8 +646,8 @@ sub set_initial_paths()
 	$path_map{"NoFace-file"}						= $path_map{InFacultyIconsDir}."/noface.gif";
 
 	$path_map{"faculty-general-output-html"}		= $path_map{OutputFacultyDir}."/faculty.html";
-	$path_map{"out-courses-by-professor-file"}		= $config{OutputTexDir}."/courses-by-professor.tex";
-	$path_map{"out-professor-by-course-file"}		= $config{OutputTexDir}."/professor-by-course.tex";
+	$path_map{"out-courses-by-professor-file"}		= $config{OutputTexDir}."/courses-by-professor-<LANG>.tex";
+	$path_map{"out-professor-by-course-file"}		= $config{OutputTexDir}."/professor-by-course-<LANG>.tex";
 	$path_map{"in-replacements-file"}				= $path_map{InStyDir}."/replacements.txt";
 
 	$path_map{"output-curricula-html-file"}			= "$path_map{OutputHtmlDir}/Curricula_$config{area}_$config{institution}.html";
@@ -963,7 +964,7 @@ sub read_special_macros($$)
 sub read_bok($)
 {
     my ($lang) = (@_);
-    my $bok_macros_file = Common::get_template("in-bok-macros-file");
+    my $bok_macros_file = Common::get_expanded_template("in-bok-macros-file", $lang);
     $bok_macros_file =~ s/<LANG>/$lang/g;
     read_macros($bok_macros_file);
 }
@@ -1781,14 +1782,15 @@ sub set_initial_configuration($)
 	$config{recommended_prereq} = 1;
 	$config{corequisites}       = 1;
 	$config{verbose}            = 1;
-	$config{except_file}{"config-hdr-foot-ES.tex"}     = ""; Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
+	$config{except_file}{"config-hdr-foot-ES.tex"}     = ""; #Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
 	$config{except_file}{"config-hdr-foot-EN.tex"}     = "";
 	$config{except_file}{"config-hdr-foot-BR.tex"}     = "";
-	$config{except_file}{"current-institution.tex"} = "";
-	$config{except_file}{"outcomes-macros-ES.tex"}     = ""; Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
-	$config{except_file}{"outcomes-macros-EN.tex"}     = "";
-	$config{except_file}{"outcomes-macros-BR.tex"}     = "";
-	$config{except_file}{"custom-colors.tex"}       = "";
+	$config{except_file}{"current-institution.tex"}    = "";
+	$config{except_file}{"outcomes-macros.tex"}        = ""; #Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
+	#$config{except_file}{"outcomes-macros-ES.tex"}    = "";
+	#$config{except_file}{"outcomes-macros-EN.tex"}    = "";
+	#$config{except_file}{"outcomes-macros-BR.tex"}    = "";
+	$config{except_file}{"custom-colors.tex"}          = "";
 
 	#$config{change_file}{"topics-by-course.tex"}    = "topics-by-course-web.tex";
 # 	@{$config{bib_files}}	                        = [];

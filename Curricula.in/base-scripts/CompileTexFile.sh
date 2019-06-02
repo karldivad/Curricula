@@ -38,9 +38,10 @@ $latex_prg $MainFile;
 if($latex_prg == "latex") then
   dvips $MainFile.dvi -o $MainFile.ps;
   ps2pdf $MainFile.ps $MainFile.pdf;
+  rm *.aux  *.log *.toc *.blg *.bbl $MainFile.ps $MainFile.dvi
 endif
 
-rm *.aux  *.log *.toc *.blg *.bbl $MainFile.ps $MainFile.dvi;
+rm *.aux  *.log *.toc *.blg *.bbl;
 
 echo "cd $current_dir";
 cd $current_dir;

@@ -34,8 +34,8 @@ if($area == "CS") then
 		    latex $tmptex;
 	    #          dvips -Ppdf -Pcmz -o $tmptex.ps $tmptex;
 		    dvips -o $tmptex.ps $tmptex;
-		    convert $tmptex.eps $tmptex.png;
 		    ps2eps -f $tmptex.ps;
+		    convert $tmptex.eps $tmptex.png;
 		    cp $tmptex.eps $tmptex.png $current_dir/<OUTPUT_FIG_DIR>;
 		    rm -f $tmptex.aux $tmptex.dvi $tmptex.log $tmptex.ps $tmptex.eps $tmptex.png;
 		    ./scripts/updatelog "$tmptex generated";
@@ -96,6 +96,7 @@ foreach graphtype ('curves' 'spider')
 				latex $file-main;
 				dvips -o $file.ps $file-main.dvi;
 				ps2eps -f $file.ps;
+				echo "convert $file.eps $file.png;"
 				convert $file.eps $file.png;
 				mv $file.eps $file.png  $current_dir/<OUTPUT_FIG_DIR>/.;
 				rm -f $file-main.aux $file-main.dvi $file-main.log $file.ps;

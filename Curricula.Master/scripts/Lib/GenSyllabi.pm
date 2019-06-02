@@ -451,6 +451,7 @@ sub genenerate_tex_syllabus_file($$$$$%)
 		}
 		else{	$file_template =~ s/--OUTCOMES-FOR-OTHERS--//g;}
 	}
+	$file_template = Common::ExpandTags($file_template, $lang);
 	for(my $i = 0 ; $i < 2; $i++ )
 	{
 	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
@@ -548,9 +549,7 @@ sub generate_tex_syllabi_files()
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
 			      my %map = read_syllabus_info($codcour, $semester, $lang);
-			      $map{AREA}	= $Common::config{area};
-			      $map{LANG}	= $lang;
-			      $map{LANG_FOR_LATEX}	= $Common::config{dictionaries}{$lang}{lang_for_latex};
+			      $map{AREA}			= $Common::config{area};
 
 			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
 			      #Util::print_message("Generating Syllabus: $output_file");
@@ -591,18 +590,17 @@ sub gen_batch_to_compile_syllabi()
 	my $html_out_dir 		 = Common::get_template("OutputHtmlDir");
 	my $html_out_dir_syllabi = $html_out_dir."/syllabi";
 	$output .= "if(\$course == \"all\") then\n";
-	$output .= "rm -rf $html_out_dir_syllabi\n";
-	$output .= "endif\n";
-	$output .= "mkdir -p $html_out_dir_syllabi\n\n";
+	$output .= "\trm -rf $html_out_dir_syllabi\n";
+	$output .= "\tmkdir -p $html_out_dir_syllabi\n\n";
 
 	foreach my $TempDir ("OutputSyllabiDir", "OutputFullSyllabiDir")
 	{
 		my $tex_out_dir_syllabi	 = Common::get_template($TempDir);
-		$output .= "if(\$course == \"all\") then\n";
-		$output .= "rm -rf $tex_out_dir_syllabi\n";
-		$output .= "endif\n";
-		$output .= "mkdir -p $tex_out_dir_syllabi\n\n";
+		#$output .= "if(\$course == \"all\") then\n";
+		$output .= "\trm -rf $tex_out_dir_syllabi\n";
+		$output .= "\tmkdir -p $tex_out_dir_syllabi\n";
 	}
+	$output .= "endif\n\n";
 
 	my ($gen_syllabi, $cp_bib) = ("", "");
 	my $scripts_dir 		= Common::get_template("InScriptsDir");

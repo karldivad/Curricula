@@ -19,10 +19,13 @@ echo "<OUTPUT_SCRIPTS_DIR>/CompileTexFile.sh <AREA> <INST> $Compiler $MainFile $
 
 cd "<OUTPUT_HTML_DIR>";
 echo "cd <OUTPUT_HTML_DIR>";
-echo "pdftk A=$MainFile.pdf cat A1-1 output $MainFile-P1.pdf";
-pdftk A=$MainFile.pdf cat A1-1 output $MainFile-P1.pdf;
-convert $MainFile-P1.pdf $MainFile-P1.png;
-rm $MainFile-P1.pdf;
+#echo "pdftk A=$MainFile.pdf cat A1-1 output $MainFile-P1.pdf";
+#pdftk A=$MainFile.pdf cat A1-1 output $MainFile-P1.pdf;
+#convert $MainFile-P1.pdf $MainFile-P1.png;
+#rm $MainFile-P1.pdf;
+echo "mutool convert -o $MainFile-P1.png $MainFile.pdf 1-1"
+mutool convert -o $MainFile-P1.png $MainFile.pdf 1-1
+
 cd $current_dir;
 mkdir -p <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>
 echo cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
