@@ -5,7 +5,10 @@ CS-UCSP   : Peru	: Computing  : UCSP       : Plan2006 : final
 CS-UCSP   : Peru	: Computing  : UCSP       : Plan2010 : final
 CS-UCSP   : Peru	: Computing  : UCSP       : Plan2016 : final
 CS-UNSA   : Peru	: Computing  : UNSA       : Plan2017 : final
+
 CS-UTEC   : Peru	: Computing  : UTEC       : Plan2017 : final
+DS-UTEC   : Peru	: Computing  : UTEC       : Plan2020 : final
+
 ******PUCP   : Peru	: Computing  : PUCP       : Plan2017 : final
 CS-ANR    : Peru	: Computing  : SPC        : Plan2010 : final
 CS-UNAM   : Peru	: Computing  : UNSA,SPC   : Plan2014 : final
@@ -33,3 +36,4 @@ CS-USGP   : Ecuador     : Computing  : USGP,SPC   : Plan2010 : final
 IS-SPC : Peru	: Computing  : SPC      : Plan2010 : final
 IS-UCSP: Peru	: Computing  : UCSP     : Plan2010 : final
 IS-UNSA: Peru	: Computing  : UNSA,SPC : Plan2010 : final
+IS-UTEC: Peru	: Computing  : UTEC     : Plan2020 : final

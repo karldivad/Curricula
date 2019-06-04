@@ -513,15 +513,17 @@ sub set_initial_paths()
 	$path_map{InScriptsDir}				= "./scripts";
 	$path_map{InCountryDir}				= GetInCountryBaseDir($path_map{country_without_accents});
 	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex";
+	
 	$path_map{InInstDir}				= $path_map{InCountryDir}."/$config{discipline}/$config{area}/$config{institution}";
 	$path_map{InInstUCSPDir}			= GetInstDir("Peru", "Computing", "CS", "UCSP");
+	$path_map{InInstitutionBaseDir}		= "$path_map{InDir}/institution/$path_map{country_without_accents}/$config{institution}";
 
 	$path_map{InEquivDir}				= $path_map{InInstDir}."/equivalences";
 	$path_map{InLogosDir}				= $path_map{InCountryDir}."/logos";
 	$path_map{InTemplatesDot}			= $path_map{InCountryDir}."/dot";
 	$path_map{InPeopleDir}				= $config{InPeopleDir};
-	$path_map{InFacultyPhotosDir}			= $path_map{InInstDir}."/photos";
-	$path_map{InFacultyIconsDir}			= $path_map{InDir}."/html";
+	$path_map{InFacultyPhotosDir}		= $path_map{InInstDir}."/photos";
+	$path_map{InFacultyIconsDir}		= $path_map{InDir}."/html";
 
 #############################################################################################################################
 # OutputsDirs
@@ -708,10 +710,10 @@ sub set_initial_paths()
 	$path_map{"all-config"}							= $path_map{InDir}."/config/all.config";
 	$path_map{"colors"}								= $path_map{InDir}."/config/colors.config";
 	$path_map{"discipline-config"}		   			= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
-	$path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/$config{area}-All.config";
-	$path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/$config{area}.config";
+	$path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/All.config";
+	$path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/Area.config";
 	$path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
-	$path_map{"in-institution-config-file"}			= $path_map{InInstDir}."/institution.config";
+	$path_map{"in-institution-config-file"}			= $path_map{InInstitutionBaseDir}."/institution.config";
 	$path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
 	$path_map{"dictionary"}							= $path_map{InLangDir}."/dictionary.txt";
 	$path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
