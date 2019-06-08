@@ -891,6 +891,7 @@ sub generate_table_topics_by_course($$$$$$$)
 	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
 
 	Util::precondition("gen_bok");
+	Util::precondition("generate_tex_syllabi_files");
 	my ($sep, $hline) = ($Common::config{sep}, $Common::config{hline});
 	my $col_header     = $sep."cX$sep";
 	my $sem_header     = " & ";
@@ -978,7 +979,11 @@ sub generate_table_topics_by_course($$$$$$$)
 	my $background = $first_backgroud_flag;
     
         #Util::print_message("A");
-        #print Dumper (\%Common::map_hours_unit_by_course); exit;
+    #print Dumper (\%Common::map_hours_unit_by_course); exit;
+	foreach my $ku ( keys %{$Common::map_hours_unit_by_course{$lang}})
+	{	Util::print_message("Common::config{topics_priority}{$ku}=$Common::config{topics_priority}{$ku}");
+	}
+	exit;
 	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %{$Common::map_hours_unit_by_course{$lang}})
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};

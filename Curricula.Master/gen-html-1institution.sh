@@ -20,12 +20,12 @@ set UnifiedMain=unified-curricula-main
 #set UnifiedMain = `echo $FullUnifiedMainFile | sed s/.tex//`
 
 set Country=Peru
-set OutputTexDir=../Curricula.out/Peru/IS-SPC/cycle/2019-I/Plan2018/tex
-set OutputHtmlDir=../Curricula.out/html/Peru/IS-SPC/Plan2018
-set OutputScriptsDir=../Curricula.out/Peru/IS-SPC/cycle/2019-I/Plan2018/scripts
+set OutputTexDir=../Curricula.out/Peru/IS-SPC/cycle/2020-I/Plan2020/tex
+set OutputHtmlDir=../Curricula.out/html/Peru/IS-SPC/Plan2020
+set OutputScriptsDir=../Curricula.out/Peru/IS-SPC/cycle/2020-I/Plan2020/scripts
 
 ./scripts/process-curricula.pl IS-SPC
-../Curricula.out/Peru/IS-SPC/cycle/2019-I/Plan2018/scripts/gen-eps-files.sh IS SPC Peru Espanol
+../Curricula.out/Peru/IS-SPC/cycle/2020-I/Plan2020/scripts/gen-eps-files.sh IS SPC Peru Espanol
 ./scripts/update-page-numbers.pl IS-SPC 
 ./scripts/gen-graph.sh IS SPC Peru Espanol big
 rm unified-curricula-main* 
@@ -40,14 +40,14 @@ dvips -o unified-curricula-main.ps unified-curricula-main.dvi
 ps2pdf unified-curricula-main.ps unified-curricula-main.pdf
 rm unified-curricula-main.ps unified-curricula-main.dvi
 
-rm -rf ../Curricula.out/html/Peru/IS-SPC/Plan2018
-mkdir -p ../Curricula.out/html/Peru/IS-SPC/Plan2018
-mkdir ../Curricula.out/html/Peru/IS-SPC/Plan2018/figs
-cp ./in/lang.Espanol/figs/pdf.jpeg cp ./in/lang.Espanol/figs/star.gif cp ./in/lang.Espanol/figs/none.gif ../Curricula.out/html/Peru/IS-SPC/Plan2018/figs/.
+rm -rf ../Curricula.out/html/Peru/IS-SPC/Plan2020
+mkdir -p ../Curricula.out/html/Peru/IS-SPC/Plan2020
+mkdir ../Curricula.out/html/Peru/IS-SPC/Plan2020/figs
+cp ./in/lang.Espanol/figs/pdf.jpeg cp ./in/lang.Espanol/figs/star.gif cp ./in/lang.Espanol/figs/none.gif ../Curricula.out/html/Peru/IS-SPC/Plan2020/figs/.
 
 latex2html \
 -t "Curricula IS-SPC" \
--dir "../Curricula.out/html/Peru/IS-SPC/Plan2018/" -mkdir \
+-dir "../Curricula.out/html/Peru/IS-SPC/Plan2020/" -mkdir \
 -toc_stars -local_icons -show_section_numbers \
 -address "Generado por <A HREF='http://socios.spc.org.pe/ecuadros/'>Ernesto Cuadros-Vargas</A> <ecuadros AT spc.org.pe>,               <A HREF='http://www.spc.org.pe/'>Sociedad Peruana de Computaci&oacute;n-Peru</A>,               <A HREF='http://www.utec.edu.pe/'>Universidad de Ingenier&iacute;a y Tecnolog&iacute;a, Lima-Per&uacute;</A><BR>              basado en el modelo de la Computing Curricula de               <A HREF='http://www.computer.org/'>IEEE-CS</A>/<A HREF='http://www.acm.org/'>ACM</A>" \
 unified-curricula-main
@@ -55,9 +55,9 @@ unified-curricula-main
 
 ./scripts/update-analytic-info.pl IS-SPC
 
-#../Curricula.out/Peru/IS-SPC/cycle/2019-I/Plan2018/tex/scripts/gen-syllabi.sh
-mkdir ../Curricula.out/html/Peru/IS-SPC/Plan2018/syllabi
-cp ../Curricula.out/Peru/IS-SPC/cycle/2019-I/Plan2018/tex/syllabi/* ../Curricula.out/html/Peru/IS-SPC/Plan2018/syllabi/*
+#../Curricula.out/Peru/IS-SPC/cycle/2020-I/Plan2020/tex/scripts/gen-syllabi.sh
+mkdir ../Curricula.out/html/Peru/IS-SPC/Plan2020/syllabi
+cp ../Curricula.out/Peru/IS-SPC/cycle/2020-I/Plan2020/tex/syllabi/* ../Curricula.out/html/Peru/IS-SPC/Plan2020/syllabi/*
 
 #Redundant withcompile1institution
 # ./scripts/$area-$institution-gen-silabos
