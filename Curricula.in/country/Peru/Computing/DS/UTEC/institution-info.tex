@@ -1,37 +1,19 @@
 \newcommand{\DocumentVersion}{2010}
-\newcommand{\fecha}{2 de Enero de 2017}
+\newcommand{\fecha}{\today}
 \newcommand{\city}{Lima\xspace}
 \newcommand{\country}{Perú\xspace}
 \newcommand{\dictionary}{Español\xspace}
-\newcommand{\SyllabusLangs}{Español,English}
+\newcommand{\SyllabusLangs}{Español} %,English
 \newcommand{\GraphVersion}{2\xspace}
-
-% newcommand{\CurriculaVersion}{1\xspace} % Malla 2006: 1, Malla 2010: 2
-% newcommand{\YYYY}{2006\xspace}          % Plan 2006
-% newcommand{\Range}{8-10}                % Plan 2010 1-8, Plan 2006 7-10
-% newcommand{\SchoolShortName}{Ingeniería Informática\xspace}
-% newcommand{\SchoolFullName}{Escuela Profesional de \SchoolShortName}
-% newcommand{\SchoolFullNameBreak}{\FacultadName\\ Escuela Profesional de \\\SchoolShortName\xspace}
-
-% Para UTEC 2017
-%newcommand{\CurriculaVersion}{2016\xspace} % Malla 2006: 1, Malla 2010: 2
-%newcommand{\YYYY}{2017\xspace}             % Plan 2006
-%newcommand{\Range}{1-10}                   % Plan 2010 1-8, Plan 2006 7-10
-%newcommand{\Semester}{2017-II\xspace}      
 
 %Para UTEC 2018
 \newcommand{\CurriculaVersion}{2018\xspace} % Malla 2006: 1, Malla 2010: 2
-\newcommand{\YYYY}{2018\xspace}             % Plan 2006
+\newcommand{\YYYY}{2020\xspace}             % Plan 2006
 \newcommand{\Range}{1-10}                   % Plan 2010 1-8, Plan 2006 7-10
-\newcommand{\Semester}{2019-I\xspace}      
-
-% convert ./fig/UTEC.jpg ./html/img3.png
-% cp ./fig/big-graph-curricula.png ./html/img18.png
-% convert ../Curricula2.0.out/Peru/CS-UTEC/cycle/2014-1/Plan2010/fig/UTEC.jpg ../Curricula2.0.out/Peru/CS-UTEC/cycle/2014-1/Plan2010/html/img3.png
-% cp ../Curricula2.0.out/Peru/CS-UTEC/cycle/2014-1/Plan2010/fig/big-graph-curricula.png ../Curricula2.0.out/Peru/CS-UTEC/cycle/2014-1/Plan2010/html/img18.png
+\newcommand{\Semester}{2020-I\xspace}      
 
 % newcommand{\OutcomesList}{a,b,c,d,e,f,g,h,i,j,k,l,m,HU,FH,TASDSH}
-\newcommand{\OutcomesVersion}{V1}
+\newcommand{\OutcomesVersion}{V2}
 \OutcomesList{V1}{a,b,c,d,e,f,g,h,i,j,k,l,m,n,ñ,o}
 \OutcomesList{V2}{1,2,3,4,5,6,7,8,9,10}
 
@@ -47,11 +29,11 @@
 \newcommand{\FacultadNameEN}{}
 \newcommand{\FacultadName}{\FacultadNameES}
 
-\newcommand{\DepartmentNameES}{Departamento de Ciencia de la Computación\xspace}
+\newcommand{\DepartmentNameES}{Departamento de Ciencia de Datos\xspace}
 \newcommand{\DepartmentNameEN}{Department of Computer Science\xspace}
 \newcommand{\DepartmentName}{\DepartmentNameES}
 
-\newcommand{\SchoolShortNameES}{Ciencia de la Computación\xspace}
+\newcommand{\SchoolShortNameES}{Ciencia de Datos\xspace}
 \newcommand{\SchoolShortNameEN}{Computer Science\xspace}
 \newcommand{\SchoolShortName}{\SchoolShortNameES}
 
@@ -66,11 +48,11 @@
 \newcommand{\PosterTitle}{}
 
 \newcommand{\SchoolAcro}{EPCC\xspace}
-\newcommand{\SchoolURL}{\htmladdnormallink{http://cs.utec.edu.pe}{http://cs.utec.edu.pe}\xspace}
+\newcommand{\SchoolURL}{\htmladdnormallink{http://ds.utec.edu.pe}{http://ds.utec.edu.pe}\xspace}
 \newcommand{\underlogotext}{}
 
-\newcommand{\GradoAcademico}{Bachiller en Ciencia de la Computación\xspace}
-\newcommand{\TituloProfesional}{Licenciado en Ciencia de la Computación\xspace}
+\newcommand{\GradoAcademico}{Bachiller en Ciencia de Datos\xspace}
+\newcommand{\TituloProfesional}{Licenciado en Ciencia de Datos\xspace}
 \newcommand{\GradosyTitulos}%
 {\begin{description}%
 \item [Grado Académico: ] \GradoAcademico\xspace y% 
@@ -88,16 +70,16 @@ en la ciudad de \city-\country.}
 
 
 \newcommand{\profileES}{%
-ProfileES El perfil profesional de este programa profesional puede ser mejor entendido a partir de
-\OnlyMainDoc{la Fig. \ref{fig.cs} (Pág. \pageref{fig.cs})}\OnlyPoster{las figuras del lado derecho}. 
-Este profesional tiene como centro de sus estudios a la computación. Es decir, tiene a la computación 
-como fin y no como medio. De acuerdo a la definición de esta área, este profesional está llamado 
-directamente a ser un impulsor del desarrollo de nuevas técnicas computacionales que 
+El perfil profesional de este programa profesional puede ser mejor entendido a partir de ...
+
+Este profesional tiene como centro de sus estudios al tratamiento y estudio de los datos.
+De acuerdo a la definición de esta área, este profesional está llamado 
+directamente a ser un impulsor del desarrollo de nuevas técnicas computacionales derivadas del tratamiento de datos que
 puedan ser útiles a nivel local, nacional e internacional.
 
-Nuestro perfil profesional está orientado a ser generador de puestos de empleo a través de la innovación permanente. 
+Nuestro perfil profesional está orientado a ser líder en el tratamiento y estudios de datos. 
 Nuestra formación profesional tiene 3 pilares fundamentales: 
-un contenido de acuerdo a ACM/IEEE-CS Computing Curricula CS2013 and CC2020
+un contenido de acuerdo a ACM/IEEE-CS Computing Curricula CC2020
 un contenido de acuerdo a normas internacionales, una orientación marcada a la innovación y formación humana.
 }
 
@@ -108,18 +90,16 @@ According to the definition of this area, this professional is called directly t
 the development of new computational techniques that can be useful at local, national and international level.
 
 Our professional profile is aimed at generating jobs through permanent innovation. Our professional training has three fundamental pillars: 
-a content according to ACM/IEEE-CS Computing Curricula CS2013 and CC2020, a marked orientation to innovation and human/soft skills.
+a content according to ACM/IEEE-CS Computing Curricula CC2020, a marked orientation to innovation and human/soft skills.
 }
 
 \newcommand{\missionES}{Contribuir al desarrollo científico, tecnológico y técnico del país  
-formando profesionales competentes, orientados a la creación de nueva 
-ciencia y tecnología computacional, como motor que impulse y consolide la industria 
-del software en base a la investigación científica y tecnológica en 
-áreas innovadoras formando, EN NUESTROS profesionales, un conjunto de habilidades y 
-destrezas para la solución de problemas computacionales con un compromiso social.\xspace}
+formando profesionales competentes, orientados al tratamiento y transformación de datos como motor que impulse y consolide el desarrollo de diversas industrias 
+incluyendo la investigación científica y tecnológica alrededor de los datos.
+Además buscamos formar profesionales  un conjunto de habilidades y 
+destrezas para la solución de problemas alrededor del tratamiento y transformación de grandes volumens de datos con un compromiso social.\xspace}
 
 \newcommand{\missionEN}{To contribute to the scientific, technological and technical development of the country 
-forming competent professionals oriented to the creation of new science and computational technology, 
-as engine that impels and consolidates the software industry based on 
-scientific research and technological in innovative areas, forming, IN OUR professionals, 
-a set of skills for solving computational problems with a social commitment.\xspace}
+forming competent professionals oriented to process and transformation of data as the engine to push and consolidate creation of new industries 
+including research and technology arounf data. 
+Besides, we also aim to have students with a groups of skills to solve problems around treatment of big data with a social commitment.\xspace}

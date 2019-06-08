@@ -58,7 +58,32 @@ sub process_syllabus_units($$$$)
 	$Common::course_info{$codcour}{units}{bloom_level}	= [];
 	$Common::course_info{$codcour}{units}{topics}    	= [];
 	$Common::course_info{$codcour}{units}{unitgoals}	= [];
-
+	
+	my $units_adjusted = "";
+	foreach my $line (split("\n", $syllabus_in))
+	{
+		if($line =~ m/\\begin\{unit\}(.*)(\r|\n)*$/ )
+		{
+			my $params = $1;
+			if($params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/ )
+			{
+				#Util::print_color("codcour=$codcour, $line good line !");
+			}
+			elsif($params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/ )
+			{
+				my ($p1, $p2, $p3, $p4) 	= ($1, $2, $3, $4);
+				my ($pm1, $pm2, $pm3, $pm4) = (Common::replace_special_chars($p1), Common::replace_special_chars($p2), Common::replace_special_chars($p3), Common::replace_special_chars($p4));
+				Util::print_warning("codcour=$codcour\n\\begin\{unit\}$params wrong number of parameters?"),
+				$syllabus_in =~ s/\\begin\{unit\}\{$pm1\}\{$pm2\}\{$pm3\}\{$pm4\}/\\begin\{unit\}\{$p1\}\{\}\{$p2\}\{$p3\}\{$p4\}/g;
+				Util::print_color("Changed to:\n$line\n");
+			}
+			else
+			{
+				Util::print_error("codcour=$codcour, did you invented a new format for units? ($line)");
+			}
+			$units_adjusted .= $line;
+		}
+	}
 	my $sep = "";
 	while($syllabus_in =~ m/\\begin\{unit\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\s*((?:.|\n)*?)\\end\{unit\}/g)
 	{
@@ -132,7 +157,7 @@ sub process_syllabus_units($$$$)
 		$all_units_txt .= $thisunit;
 	}
 	Util::check_point("process_syllabus_units");
-	return ($all_units_txt, $unit_captions);
+	return ($all_units_txt, $unit_captions, $syllabus_in );
 }
 
 # ok
@@ -388,7 +413,8 @@ sub read_syllabus_info($$$)
 	my $unit_struct = "";
 	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 	{	$unit_struct = $1;	}
-	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
+	my $syllabus_adjusted = "";
+	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}, $syllabus_adjusted) = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
 # 	if($codcour eq "CS1D1")
 #  	{	print Dumper (\%Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions});
 #  	}
@@ -417,9 +443,16 @@ sub read_syllabus_info($$$)
 
 	foreach (keys %{$Common::course_info{$codcour}{extra_tags}})
 	{	$map{$_} = $Common::course_info{$codcour}{extra_tags}{$_};		}
-	Util::write_file($fullname, $syllabus_in);
-	# TEXT TO CUT
 
+	if( not $syllabus_adjusted eq $syllabus_in )
+	{
+		system("cp $fullname $fullname.bak");
+		$syllabus_in = $syllabus_adjusted;
+		Util::print_color("Syllabus adjusted ... see old file at: $fullname.bak");
+		Util::write_file($fullname, $syllabus_in);
+	}
+	else
+	{	Util::write_file($fullname, $syllabus_in);	}
 	return %map;
 }
 
@@ -882,7 +915,7 @@ sub generate_formatted_syllabus($$$)
       while ($source_txt =~ m/\n\n\n/ )
       {		$source_txt =~ s/\n\n\n/\n\n/g;		}
 
-      Util::print_message("$source->$target (OK)");
+      Util::print_message("$source -> $target (OK)");
       Util::write_file($target, $source_txt);
 }
 
