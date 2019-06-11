@@ -25,26 +25,41 @@ sub process_syllabus_units($$$$)
 	my %accu_hours     				= ();
 
 	#                        \begin{unit}{\AL}{}   {Guttag13,Thompson11,Zelle10}{2}{C1,C5}
-	$unit_count = 0;
-	while($syllabus_in =~ m/(\\begin\{unit\}.*?\s*(?:.|\n)*?\\end\{unit\})/g)
+	$unit_count       = 0;
+	my $units_adjusted = "";
+	foreach my $line (split("\n", $syllabus_in))
 	{
-		my $this_unit = $1;
-		$unit_count++;
-		#                        \begin{unit}{\AL}{}   {Guttag13,Thompson11,Zelle10}{2}{C1,C5}
-		if( not $this_unit =~ m/\\begin\{unit\}\{.*?\}\{.*?\}\{.*?\}\{.*?\}\s*(?:.|\n)*?\\end\{unit\}/g )
-		{    Util::print_warning("Codcour=$codcour, Unit $unit_count out of format:\n$this_unit\n");
+		if($line =~ m/\\begin\{unit\}(.*)(\r|\n)*$/ )
+		{
+			my $params = $1;
+			$unit_count++;
+			if($params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/ )
+			{
+				#Util::print_color("codcour=$codcour, $line good line !");
+			}
+			elsif($params =~ m/\{(.*?)\}\{(.*?)\}\{(.*?)\}\{(.*?)\}/ )
+			{
+				my ($p1, $p2, $p3, $p4) 	= ($1, $2, $3, $4);
+				my ($pm1, $pm2, $pm3, $pm4) = (Common::replace_special_chars($p1), Common::replace_special_chars($p2), Common::replace_special_chars($p3), Common::replace_special_chars($p4));
+				Util::print_warning("codcour=$codcour\n\\begin\{unit\}$params wrong number of parameters?"),
+				$syllabus_in =~ s/\\begin\{unit\}\{$pm1\}\{$pm2\}\{$pm3\}\{$pm4\}/\\begin\{unit\}\{$p1\}\{\}\{$p2\}\{$p3\}\{$p4\}/g;
+				Util::print_color("Changed to:\n$line\n");
+			}
+			else
+			{
+				Util::print_error("codcour=$codcour, did you invented a new format for units? ($line)");
+			}
+			if($line =~ m/\\begin\{unit\}\{.*?\}\{.*?\}\{.*?\}\{(.*?)\}\{.*?\}\s*((?:.|\n)*?)\\end\{unit\}/)
+			{
+				$unit_count++;
+				my $nhours 	= $1;
+				$total_hours   += $nhours;
+				if( not looks_like_number($nhours) )
+				{	Util::print_warning("Codcour=$codcour, Unit $unit_count, number of hours is wrong ($nhours)");		}
+				$accu_hours{$unit_count}  = $total_hours;
+			}
+			$units_adjusted .= $line;
 		}
-	}
-
-	$unit_count = 0;
-	while($syllabus_in =~ m/\\begin\{unit\}\{.*?\}\{.*?\}\{.*?\}\{(.*?)\}\{.*?\}\s*((?:.|\n)*?)\\end\{unit\}/g)
-	{
-		$unit_count++;
-		my $nhours 	= $1;
-		$total_hours   += $nhours;
-		if( not looks_like_number($nhours) )
-		{	Util::print_warning("Codcour=$codcour, Unit $unit_count, number of hours is wrong ($nhours)");		}
-		$accu_hours{$unit_count}  = $total_hours;
 	}
 
 	my $all_units_txt     = "";
@@ -80,19 +95,18 @@ sub process_syllabus_units($$$$)
 		$map{UNIT_BIBITEMS}	= $unit_bibitems;
 
 		$map{LEVEL_OF_COMPETENCE}	= $level_of_competence;
-		my $codcour_label = Common::get_label($codcour);
 		if($unit_caption =~ m/^\\(.*)/)
 		{
 			$unit_caption = $1;
-			#Util::print_message("Course: $codcour_label: \\$unit_caption found ...");
+			#Util::print_message("Course: $codcour: \\$unit_caption found ...");
 			#print Dumper (\%$Common::config{topics_priority}); exit;
-			if(not defined($Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour_label}))
-			{	$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour_label} = 0;		}
-			$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour_label} += $unit_hours;
+			if(not defined($Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour}))
+			{	$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour} = 0;		}
+			$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour} += $unit_hours;
 
-			if(not defined($Common::acc_hours_by_course{$lang}{$codcour_label}))
-			{	$Common::acc_hours_by_course{$lang}{$codcour_label}  = 0;						}
-			$Common::acc_hours_by_course{$lang}{$codcour_label} += $unit_hours;
+			if(not defined($Common::acc_hours_by_course{$lang}{$codcour}))
+			{	$Common::acc_hours_by_course{$lang}{$codcour}  = 0;						}
+			$Common::acc_hours_by_course{$lang}{$codcour} += $unit_hours;
 
 			if(not defined($Common::acc_hours_by_course{$lang}{$unit_caption}))
 			{	$Common::acc_hours_by_unit{$lang}{$unit_caption}  = 0;						}
@@ -132,7 +146,7 @@ sub process_syllabus_units($$$$)
 		$all_units_txt .= $thisunit;
 	}
 	Util::check_point("process_syllabus_units");
-	return ($all_units_txt, $unit_captions);
+	return ($all_units_txt, $unit_captions, $syllabus_in );
 }
 
 # ok
@@ -388,7 +402,8 @@ sub read_syllabus_info($$$)
 	my $unit_struct = "";
 	if($syllabus_template =~ m/--BEGINUNIT--\s*\n((?:.|\n)*)--ENDUNIT--/)
 	{	$unit_struct = $1;	}
-	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}) = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
+	my $syllabus_adjusted = "";
+	($map{UNITS_SYLLABUS}, $map{SHORT_DESCRIPTION}, $syllabus_adjusted) = process_syllabus_units($codcour, $lang, $syllabus_in, $unit_struct);
 # 	if($codcour eq "CS1D1")
 #  	{	print Dumper (\%Common::map_hours_unit_by_course{$lang}{DSSetsRelationsandFunctions});
 #  	}
@@ -417,9 +432,16 @@ sub read_syllabus_info($$$)
 
 	foreach (keys %{$Common::course_info{$codcour}{extra_tags}})
 	{	$map{$_} = $Common::course_info{$codcour}{extra_tags}{$_};		}
-	Util::write_file($fullname, $syllabus_in);
-	# TEXT TO CUT
 
+	if( not $syllabus_adjusted eq $syllabus_in )
+	{
+		system("cp $fullname $fullname.bak");
+		$syllabus_in = $syllabus_adjusted;
+		Util::print_color("Syllabus adjusted ... see old file at: $fullname.bak");
+		Util::write_file($fullname, $syllabus_in);
+	}
+	else
+	{	Util::write_file($fullname, $syllabus_in);	}
 	return %map;
 }
 
@@ -882,7 +904,7 @@ sub generate_formatted_syllabus($$$)
       while ($source_txt =~ m/\n\n\n/ )
       {		$source_txt =~ s/\n\n\n/\n\n/g;		}
 
-      Util::print_message("$source->$target (OK)");
+      Util::print_message("$source -> $target (OK)");
       Util::write_file($target, $source_txt);
 }
 

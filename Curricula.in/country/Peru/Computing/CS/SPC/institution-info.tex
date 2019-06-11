@@ -1,36 +1,58 @@
 \newcommand{\DocumentVersion}{V2.0}
 \newcommand{\fecha}{\today}
-\newcommand{\YYYY}{2010\xspace}
-\newcommand{\Semester}{2010-1\xspace}
-\newcommand{\city}{Arequipa\xspace}
+\newcommand{\city}{Lima\xspace}
 \newcommand{\country}{Perú\xspace}
 \newcommand{\dictionary}{Español\xspace}
+\newcommand{\SyllabusLangs}{Español}
 \newcommand{\GraphVersion}{2\xspace}
+
 \newcommand{\CurriculaVersion}{2\xspace}
-\newcommand{\OutcomesList}{a,b,c,d,e,f,g,h,i,j,k,l,m,HU}
+\newcommand{\YYYY}{2010\xspace}
+\newcommand{\Range}{1-10}              % Plan 2010 1-8, Plan 2006 7-10
+\newcommand{\Semester}{2010-1\xspace}
+
+
+\newcommand{\OutcomesVersion}{V2}
+\OutcomesList{V1}{a,b,c,d,e,f,g,h,i,j,k,l,m,n,ñ,o}
+\OutcomesList{V2}{1,2,3,4,5,6,7,8,9,10}
+
+
 \newcommand{\logowidth}{7cm}
-
-% convert ../Curricula2.0.out/Peru/CS-SPC/cycle/2010-1/Plan2010/fig/SPC.eps                 ../Curricula2.0.out/Peru/CS-SPC/cycle/2010-1/Plan2010/html/img3.png 
-% cp      ../Curricula2.0.out/Peru/CS-SPC/cycle/2010-1/Plan2010/fig/big-graph-curricula.png ../Curricula2.0.out/Peru/CS-SPC/cycle/2010-1/Plan2010/html/img33.png
-
-\newcommand{\University}{Sociedad Peruana de Computación\xspace}
 \newcommand{\InstitutionURL}{http://www.spc.org.pe\xspace}
-\newcommand{\underlogotext}{}
 
-\newcommand{\FacultadName}{Computación\xspace}
-\newcommand{\DepartmentName}{Ciencia de la Computación\xspace}
-\newcommand{\SchoolFullName}{Programa Profesional de Ciencia de la Computación (\DocumentVersion)}
-\newcommand{\SchoolFullNameBreak}{Facultad de Computación\\ Programa Profesional de\\ ({\bf Ciencia de la Computación}) (\DocumentVersion)\xspace}
-\newcommand{\SchoolShortName}{({\bf Ciencia de la Computación})\xspace}
-\newcommand{\SchoolAcro}{PPII\xspace}
-\newcommand{\SchoolURL}{http://www.spc.org.pe/education/PCC/Peru/CS-SPC/}
+\newcommand{\UniversityES}{Sociedad Peruana de Computación\xspace}
+\newcommand{\UniversityEN}{Peruvian Computer Society\xspace}
+\newcommand{\University}{Sociedad Peruana de Computación\xspace}
+
+\newcommand{\FacultadNameES}{Computación\xspace}
+\newcommand{\FacultadNameEN}{Computing\xspace}
+\newcommand{\FacultadName}{\FacultadNameES}
+
+\newcommand{\DepartmentNameES}{Departamento de Ciencia de la Computación\xspace}
+\newcommand{\DepartmentNameEN}{Department of Computer Science\xspace}
+\newcommand{\DepartmentName}{\DepartmentNameES}
+
+\newcommand{\SchoolFullNameES}{Escuela Profesional de \SchoolShortNameES}
+\newcommand{\SchoolFullNameEN}{School of \SchoolShortNameEN}
+\newcommand{\SchoolFullName}{\SchoolFullNameES}
+
+\newcommand{\SchoolFullNameBreakES}{Escuela Profesional de \\ \SchoolShortNameES\xspace}
+\newcommand{\SchoolFullNameBreakEN}{School of \SchoolShortNameEN\xspace}
+\newcommand{\SchoolFullNameBreak}{\SchoolFullNameBreakES}
+
+\newcommand{\PosterTitle}{}
+
+\newcommand{\SchoolAcro}{PPCC\xspace}
+\newcommand{\SchoolURL}{http://education.spc.org.pe/Peru/CS-SPC/}
+
+\newcommand{\underlogotext}{}
 
 \newcommand{\GradoAcademico}{Bachiller en Ciencia de la Computación\xspace}
 \newcommand{\TituloProfesional}{Licenciado en Ciencia de la Computación\xspace}
 \newcommand{\GradosyTitulos}%
 {\begin{description}%
 \item [Grado Académico: ] \GradoAcademico y%
-\item [TÃ­tulo Profesional: ] \TituloProfesional%
+\item [Tí­tulo Profesional: ] \TituloProfesional%
 \end{description}%
 }
 
@@ -41,12 +63,9 @@
 En la actualidad esta carrera está siendo orientada a Ciencia de la Computación, 
 el Bachillerato ya está con esta denominación y el tÃ­tulo profesional está en proceso de cambio.}
 
-\newcommand{\OtherKeyStones}%
-{Un pilar que merece especial consideración en el caso de la \University 
-es el aspecto de valores humanos, básicos y cristianos debido a que forman 
-parte fundamental de los lineamientos básicos de la existencia de la institución.\xspace}
+\newcommand{\OtherKeyStones}{}
 
-\newcommand{\profile}{%
+\newcommand{\profileES}{%
 El perfil profesional de este programa profesional puede ser mejor entendido a partir de
 \OnlyMainDoc{la Fig. \ref{fig.cs} (Pág. \pageref{fig.cs})}\OnlyPoster{las figuras del lado derecho}. 
 Este profesional tiene como centro de su estudio a la computación. Es decir, tiene a la computación 
@@ -58,5 +77,27 @@ Nuestro perfil profesional está orientado a ser generador de puestos de empleo 
 Nuestra formación profesional tiene 2 pilares fundamentales: 
 Un contenido de acuerdo a recomendaciones internacionales y una orientación marcada a la innovación.
 }
+
+\newcommand{\profileEN}{The professional profile of this professional program can be better understood from 
+\OnlyMainDoc{la Fig. \ref{fig.cs} (P. \pageref{fig.cs})} \OnlyPoster{figures on the right side}. 
+This professional has Computing as the center of his studies. That is, it has computating as an end and not as a means. According to the definition of this area, this professional is called directly to be a promoter of 
+the development of new computational techniques that can be useful at local, national and international level.
+
+Our professional profile is aimed at generating jobs through permanent innovation. Our professional training has three fundamental pillars: 
+a content according to ACM/IEEE-CS Computing Curricula CS2013 and CC2020, a marked orientation to innovation and human/soft skills.
+}
+
+\newcommand{\missionES}{Contribuir al desarrollo científico, tecnológico y técnico del país  
+formando profesionales competentes, orientados a la creación de nueva 
+ciencia y tecnología computacional, como motor que impulse y consolide la industria 
+del software en base a la investigación científica y tecnológica en 
+áreas innovadoras formando, EN NUESTROS profesionales, un conjunto de habilidades y 
+destrezas para la solución de problemas computacionales con un compromiso social.\xspace}
+
+\newcommand{\missionEN}{To contribute to the scientific, technological and technical development of the country 
+forming competent professionals oriented to the creation of new science and computational technology, 
+as engine that impels and consolidates the software industry based on 
+scientific research and technological in innovative areas, forming, IN OUR professionals, 
+a set of skills for solving computational problems with a social commitment.\xspace}
 
 \input{\InDir/copyrights}

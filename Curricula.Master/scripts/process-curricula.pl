@@ -22,8 +22,7 @@ sub generate_general_info()
 	      Util::print_message("*******************************************************************************************************");
 	      Util::print_message("                                  Generating BOK in $lang ...");
 	      Util::print_message("*******************************************************************************************************");
-	      Common::parse_bok($lang);
-	      Common::gen_bok($lang);
+		  Common::generate_bok($lang);
 	}
 	my $lang = $Common::config{language_without_accents};
 	Common::read_all_min_max();

@@ -581,6 +581,7 @@ sub load_critical_path(@)
 sub detect_critical_path()
 {
 	initialize_critical_path();
+	return;
 	#my $test = "CS1D01";
 	#my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
 	#Util::print_message("$test distance=$distance_child");
@@ -885,11 +886,12 @@ sub get_bigtables_by_course_caption($$$$)
 	return $caption;
 }
 
-# ok
 sub generate_table_topics_by_course($$$$$$$)
 {
 	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
 
+	Util::precondition("gen_bok");
+	Util::precondition("generate_tex_syllabi_files");
 	my ($sep, $hline) = ($Common::config{sep}, $Common::config{hline});
 	my $col_header     = $sep."cX$sep";
 	my $sem_header     = " & ";
@@ -975,9 +977,13 @@ sub generate_table_topics_by_course($$$$$$$)
 
 	my $first_backgroud_flag = $Common::config{first_backgroud_flag};
 	my $background = $first_backgroud_flag;
-        Util::precondition("generate_bok");
+    
         #Util::print_message("A");
-        #print Dumper (\%Common::map_hours_unit_by_course); exit;
+    #print Dumper (\%Common::map_hours_unit_by_course); exit;
+	foreach my $ku ( keys %{$Common::map_hours_unit_by_course{$lang}})
+	{	Util::print_message("Common::config{topics_priority}{$ku}=$Common::config{topics_priority}{$ku}");
+	}
+	exit;
 	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %{$Common::map_hours_unit_by_course{$lang}})
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
