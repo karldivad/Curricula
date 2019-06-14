@@ -803,13 +803,13 @@ sub generate_poster($)
 	system("cp ".Common::get_template("in-a0poster-sty-file")." ".Common::get_template("OutputTexDir")); ;
 	system("cp ".Common::get_template("in-poster-macros-sty-file")." ".Common::get_template("OutputTexDir")); ;
 
-#         my $cwd = getcwd();
-#         chdir(Common::get_template("OutputFigDir"));
-#         system("rm Bloom.eps");
-#         system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom.eps");
-# 	system("rm Bloom-sequence.eps");
-#         system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom-sequence.eps");
-#         chdir($cwd);
+    my $cwd = getcwd();
+    chdir(Common::get_template("OutputFigDir"));
+    system("rm Bloom.eps");
+    system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom.eps");
+	system("rm Bloom-sequence.eps");
+    system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom-sequence.eps");
+    chdir($cwd);
 	Util::print_message("generate_poster($lang) OK! $OutPosterFile");
 }
 
@@ -980,11 +980,14 @@ sub generate_table_topics_by_course($$$$$$$)
     
         #Util::print_message("A");
     #print Dumper (\%Common::map_hours_unit_by_course); exit;
+	my %list_of_valid_ku = ();
 	foreach my $ku ( keys %{$Common::map_hours_unit_by_course{$lang}})
-	{	Util::print_message("Common::config{topics_priority}{$ku}=$Common::config{topics_priority}{$ku}");
+	{	if( not defined($Common::config{topics_priority}{$ku}) )
+		{	Util::print_color("generate_table_topics_by_course: ignoring $ku for generate_table_topics_by_course ...");	}
+		else
+		{	$list_of_valid_ku{$ku} = "";	}
 	}
-	exit;
-	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %{$Common::map_hours_unit_by_course{$lang}})
+	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %list_of_valid_ku)
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
 		#Util::print_message("B");

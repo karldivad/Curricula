@@ -24,7 +24,7 @@ sub process_syllabus_units($$$$)
 	my ($unit_count, $total_hours) 			= (0, 0);
 	my %accu_hours     				= ();
 
-	#                        \begin{unit}{\AL}{}   {Guttag13,Thompson11,Zelle10}{2}{C1,C5}
+	# \begin{unit}{\AL}{}   {Guttag13,Thompson11,Zelle10}{2}{C1,C5}
 	$unit_count       = 0;
 	my $units_adjusted = "";
 	foreach my $line (split("\n", $syllabus_in))
@@ -100,9 +100,15 @@ sub process_syllabus_units($$$$)
 			$unit_caption = $1;
 			#Util::print_message("Course: $codcour: \\$unit_caption found ...");
 			#print Dumper (\%$Common::config{topics_priority}); exit;
-			if(not defined($Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour}))
-			{	$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour} = 0;		}
-			$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour} += $unit_hours;
+
+			#if( not defined($Common::config{topics_priority}{$unit_caption}) )
+			#{	Util::print_color("process_syllabus_units: course: $codcour ignoring unit \\$unit_caption for map_hours_unit_by_course ...");	}
+			#else
+			#{
+				if(not defined($Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour}))
+				{	$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour} = 0;		}
+				$Common::map_hours_unit_by_course{$lang}{$unit_caption}{$codcour} += $unit_hours;
+			#}
 
 			if(not defined($Common::acc_hours_by_course{$lang}{$codcour}))
 			{	$Common::acc_hours_by_course{$lang}{$codcour}  = 0;						}

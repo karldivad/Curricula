@@ -1,37 +1,34 @@
 \input{\InTexDir/outcomes-macros}
-\input{\InTexAllDir/expand-outcomes}
-
-\input{\InTexDir/firstpage}                             \newpage
-\input{\InTexDir/copyright}                             \newpage
-\input{\InInstDir/team}                                 \newpage
-\input{\InTexDir/abstract-\LanguageWithoutAccent}       \newpage
-
-\pagenumbering{Roman}
+\input{\InDir/All.tex/expand-outcomes}
+ 
+\input{\InTexDir/firstpage}				\newpage
+\input{\InTexDir/copyright}				\newpage
+ 
+\pagenumbering{roman}
 \setcounter{page}{1}
-\setmyfancyheader
-\setmyfancyfoot
-\pagestyle{fancy}
-
+\pagestyle{plain}
+\input{\OutputTexDir/team-ES}					\newpage 
+\input{\InTexDir/abstract-\LanguageWithoutAccent}	\newpage
+ 
 \tableofcontents
 \listoffigures
 \listoftables
-
-\chapter*{Reconocimientos}
-\input{\InInstDir/ack}                                  \newpage
-\input{\OutputTexDir/acronyms}                          \newpage
-
-% \include{empty}
-
+  
+\input{\InInstDir/ack}			\newpage
+\input{\OutputTexDir/acronyms}		\newpage
+. \newpage
+ 
 \begin{btUnit}
-%\part{parte}
+\pagestyle{plain}
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\OnlySPC{\input{\InTexDir/about-this-document}}
+%\OnlySPC{\input{\InTexDir/about-this-document}}
 \input{\InTexDir/chap-introduction}
 
+% % %\part{Otra parte}
 \input{\InTexDir/BodyOfKnowledge}
-\input{\InTexDir/GeneralInfo} %and sumillas
+%\input{\InTexDir/GeneralInfo} %and sumillas
  
 \begin{btSect}{curricula-main}
 \section*{\BibliographySection}
@@ -39,8 +36,8 @@
 \end{btSect}
 \end{btUnit}
 
-\chapter{Contenido detallado por curso}\label{chap:syllabi}
-\input{\OutputTexDir/list-of-syllabi}
+%\chapter{Contenido detallado por curso}\label{chap:syllabi}
+%\input{\OutputTexDir/list-of-syllabi}
  
 % \OnlyUCSP{\input{\InTexDir/equivalence}}
  
