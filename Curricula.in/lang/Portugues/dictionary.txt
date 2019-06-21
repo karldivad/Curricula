@@ -241,6 +241,7 @@ Definition=Definição
 
 <HASH name=professor_role_label>
 C=>Coordenador
+CompetencesForEngineering=Competências para Engenharia
 T=>Titular
 L=>Laboratório
 -=>
