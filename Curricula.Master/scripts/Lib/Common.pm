@@ -4889,7 +4889,7 @@ sub generate_bok($)
 {
 	my ($lang) = (@_);
 	$Common::config{topics_priority_counter} = 0;
-	if($config{area} eq "CS")
+	if($config{area} eq "CS" | $config{area} eq "DS" )
 	{
 		Common::parse_bok($lang);
 		Common::gen_bok($lang);
@@ -4901,7 +4901,11 @@ sub generate_bok($)
 	}
 	else
 	{
-		Util::print_error("generate_bok($lang): $config{area} not defined ...");
+		my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang);
+		if( -e $bok_in_file )
+		{	Util::print_error("generate_bok($lang): I found the file: ($bok_in_file) but there is no instructions to process it ...");		}
+		else
+		{	Util::print_error("generate_bok($lang): I have not BOK for $config{area} ($bok_in_file) ...");	}
 	}
 }
 sub process_courses()

@@ -53,7 +53,7 @@ CB111->rubel7523@hotmail.com
 % CS211T(CS211T). Teoría de la Computación (Obligatorio)
 =======
 %  Semester #4 .
-%  CS211T(CS211T). TeorÃ­a de la Computación (Obligatorio)
+%  CS211T(CS211T). Teoría de la Computación (Obligatorio)
 >>>>>>> 0f6bbfe56a6b22769d2e7ab8b9a5af6c8c32bc56
 CS211T->dennisbarrios@gmail.com
 % CS103O(CS103O). Algoritmos y Estructuras de Datos (Obligatorio)

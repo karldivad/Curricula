@@ -1,1 +1,0 @@
-java ToLatex < description-in.txt > description-out.txt

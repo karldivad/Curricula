@@ -48,9 +48,9 @@
 \prefix{Mag.}
 \name{Marc-Antoine Le Guen}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{UniversitÃÂ­ Aix-Marseille}{Francia}{2013}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{Universití Aix-Marseille}{Francia}{2013}
 	\Degree{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{IUT Arles}{Francia}{2011}
-	\Master{English}{Computing}{Ciencia de la Computación}{Computación Gráfica}{UniversitÃÂ­ Aix-Marseille}{Francia}{2013}
+	\Master{English}{Computing}{Ciencia de la Computación}{Computación Gráfica}{Universití Aix-Marseille}{Francia}{2013}
 	\Degree{English}{Computing}{Ciencia de la Computación}{Computación Gráfica}{IUT Arles}{Francia}{2011}
 \end{titles}
 \Category{}
@@ -114,10 +114,10 @@
 \prefix{Mg.}
 \name{Jessica Elizabeth Acevedo Flores}
 \begin{titles}
-	\Master{Espanol}{Computing}{Computer engineering}{}{Universidad Nacional de Ciencias y TecnologÃÂ­a de Taiwán}{China}{2007}
-	\Degree{Espanol}{Computing}{Ingeniería Electrónica}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2004}
-	\Master{English}{Computing}{Computer engineering}{}{Universidad Nacional de Ciencias y TecnologÃÂ­a de Taiwán}{China}{2007}
-	\Degree{English}{Computing}{Ingeniería Electrónica}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2004}
+	\Master{Espanol}{Computing}{Computer engineering}{}{Universidad Nacional de Ciencias y Tecnología de Taiwán}{China}{2007}
+	\Degree{Espanol}{Computing}{Ingeniería Electrónica}{}{Universidad Católica Santa María}{Perú}{2004}
+	\Master{English}{Computing}{Computer engineering}{}{Universidad Nacional de Ciencias y Tecnología de Taiwán}{China}{2007}
+	\Degree{English}{Computing}{Ingeniería Electrónica}{}{Universidad Católica Santa María}{Perú}{2004}
 \end{titles}
 \Category{}
 \webpage{}
@@ -204,11 +204,11 @@
 \prefix{Dr.}
 \name{Dennis Barrios Aranibar}
 \begin{titles}
-	\Doctor{Espanol}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2009}
-	\Master{Espanol}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2005}
+	\Doctor{Espanol}{Ingeniería Eléctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2009}
+	\Master{Espanol}{Ingeniería Eléctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2005}
 	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{UNSA}{Perú}{2000}
-	\Doctor{English}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2009}
-	\Master{English}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2005}
+	\Doctor{English}{Ingeniería Eléctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2009}
+	\Master{English}{Ingeniería Eléctrica y de Computación}{}{Robótica}{UFRN}{Brasil}{2005}
 	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{UNSA}{Perú}{2000}
 \end{titles}
 \Category{}
@@ -225,14 +225,14 @@
 --BEGIN-PROFESSOR--
 \email{rpatino@ucsp.edu.pe}
 \prefix{}
-\name{Raquel PatiÃÂ±o Escarcina}
+\name{Raquel Patiño Escarcina}
 \begin{titles}
-	\Doctor{Espanol}{Computing}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
-	\Master{Espanol}{Computing}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2004}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2000}
-	\Doctor{English}{Computing}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
-	\Master{English}{Computing}{Ingeniería ElÃÂ©ctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2004}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2000}
+	\Doctor{Espanol}{Computing}{Ingeniería Eléctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
+	\Master{Espanol}{Computing}{Ingeniería Eléctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2004}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2000}
+	\Doctor{English}{Computing}{Ingeniería Eléctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2009}
+	\Master{English}{Computing}{Ingeniería Eléctrica y de Computación}{}{Universidade Federal do Rio Grande do Norte}{Brasil}{2004}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -251,8 +251,8 @@
 \prefix{}
 \name{Miriam Berrios Garaycochea}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1997}
-	\Degree{English}{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1997}
+	\Degree{Espanol}{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad Católica Santa María}{Perú}{1997}
+	\Degree{English}{Humanities}{Ingeniera de Industria Alimentarias}{}{Universidad Católica Santa María}{Perú}{1997}
 \end{titles}
 \Category{}
 \webpage{}
@@ -273,11 +273,11 @@
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencias de la Ingeniería}{}{Pontificia Universidad Católica de Chile}{Chile}{2011}
 	\Master{Espanol}{Computing}{Ingeniería}{}{Pontificia Universidad Católica de Chile}{Chile}{2010}
-	\Master{Espanol}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2009}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1998}
+	\Master{Espanol}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa María}{Perú}{2009}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{1998}
 	\Doctor{English}{Computing}{Ciencias de la Ingeniería}{}{Pontificia Universidad Católica de Chile}{Chile}{2011}
-	\Master{English}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2009}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1998}
+	\Master{English}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa María}{Perú}{2009}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{1998}
 \end{titles}
 \Category{}
 \webpage{}
@@ -297,9 +297,9 @@
 \name{Igor Fernando Calizaya Catacora}
 \begin{titles}
 	\Master{Espanol}{Computing}{Information Systems Management}{ISO27001}{University of Greenwich}{Inglaterra}{2012}
-	\Degree{Espanol}{Computing}{Ingeniero Informático}{BiometrÃÂ­a}{Universidad Católica San Pablo}{Perú}{2008}
+	\Degree{Espanol}{Computing}{Ingeniero Informático}{Biometría}{Universidad Católica San Pablo}{Perú}{2008}
 	\Master{English}{Computing}{Information Systems Management}{ISO27001}{University of Greenwich}{Inglaterra}{2012}
-	\Degree{English}{Computing}{Ingeniero Informático}{BiometrÃÂ­a}{Universidad Católica San Pablo}{Perú}{2008}
+	\Degree{English}{Computing}{Ingeniero Informático}{Biometría}{Universidad Católica San Pablo}{Perú}{2008}
 \end{titles}
 \Category{}
 \webpage{}
@@ -318,8 +318,8 @@
 \prefix{}
 \name{Jhon Humberto Cano Chávez}
 \begin{titles}
-	\Degree{Espanol}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2000}
-	\Degree{English}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2000}
+	\Degree{Espanol}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa María}{Perú}{2000}
+	\Degree{English}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa María}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -336,12 +336,12 @@
 --BEGIN-PROFESSOR--
 \email{ccastelo@ucsp.edu.pe}
 \prefix{}
-\name{CÃÂ©sar Christian Castelo Fernández}
+\name{César Christian Castelo Fernández}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{}{Universidad Estadual de Campinas-Unicamp}{Brasil}{2011}
-	\Degree{Espanol}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2009}
+	\Degree{Espanol}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa María}{Perú}{2009}
 	\Master{English}{Computing}{Ciencia de la Computación}{}{Universidad Estadual de Campinas-Unicamp}{Brasil}{2011}
-	\Degree{English}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2009}
+	\Degree{English}{Computing}{Ingeniería de Sistemas}{}{Universidad Católica Santa María}{Perú}{2009}
 \end{titles}
 \Category{}
 \webpage{}
@@ -358,7 +358,7 @@
 --BEGIN-PROFESSOR--
 \email{r.castro@ucsp.edu.pe}
 \prefix{}
-\name{Rodolfo JosÃÂ© Castro Salinas}
+\name{Rodolfo José Castro Salinas}
 \begin{titles}
 	\Master{Espanol}{Humanities}{Ciencias del Matrimonio y la Familia}{}{Pontificio Instituto Juan Pablo II}{Italia}{2008}
 	\Degree{Espanol}{Humanities}{Administración de negocios}{}{Universidad Católica San Pablo}{Perú}{2004}
@@ -395,7 +395,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Procesamiento de VÃÂ­deos}
+\Research{Procesamiento de Vídeos}
 \courses{}
 --END-PROFESSOR--
 
@@ -404,10 +404,10 @@
 \prefix{}
 \name{Angel Evaristo Chávez Contreras}
 \begin{titles}
-	\Master{Espanol}{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid EspaÃÂ±a}{EspaÃÂ±a}{2004}
-	\Degree{Espanol}{Humanities}{Bachiller en Educación}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2002}
-	\Master{English}{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid EspaÃÂ±a}{EspaÃÂ±a}{2004}
-	\Degree{English}{Humanities}{Bachiller en Educación}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2002}
+	\Master{Espanol}{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid España}{España}{2004}
+	\Degree{Espanol}{Humanities}{Bachiller en Educación}{}{Universidad Nacional de San Agustín}{Perú}{2002}
+	\Master{English}{Humanities}{Asesoramiento educativo familiar}{}{Centro universitario Villanueva Adscrito a la Complutense de Madrid España}{España}{2004}
+	\Degree{English}{Humanities}{Bachiller en Educación}{}{Universidad Nacional de San Agustín}{Perú}{2002}
 \end{titles}
 \Category{}
 \webpage{}
@@ -424,10 +424,10 @@
 --BEGIN-PROFESSOR--
 \email{jvcondori@ucsp.edu.pe}
 \prefix{}
-\name{JosÃÂ© Victor Condori Condori}
+\name{José Victor Condori Condori}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2001}
-	\Degree{English}{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2001}
+	\Degree{Espanol}{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San Agustín}{Perú}{2001}
+	\Degree{English}{Humanities}{Licenciado en Historia}{}{Universidad Nacional de San Agustín}{Perú}{2001}
 \end{titles}
 \Category{}
 \webpage{}
@@ -447,10 +447,10 @@
 \begin{titles}
 	\Doctor{Espanol}{Mathematics}{Matemáticas}{}{ICMC-USP}{Brasil}{2007}
 	\Master{Espanol}{Mathematics}{Matemáticas}{}{Universidad Católica del Norte}{Chile}{2003}
-	\Degree{Espanol}{Mathematics}{Bachiller en Matemática}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2000}
+	\Degree{Espanol}{Mathematics}{Bachiller en Matemática}{}{Universidad Nacional de San Agustín}{Perú}{2000}
 	\Doctor{English}{Mathematics}{Matemáticas}{}{ICMC-USP}{Brasil}{2007}
 	\Master{English}{Mathematics}{Matemáticas}{}{Universidad Católica del Norte}{Chile}{2003}
-	\Degree{English}{Mathematics}{Bachiller en Matemática}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2000}
+	\Degree{English}{Mathematics}{Bachiller en Matemática}{}{Universidad Nacional de San Agustín}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -467,12 +467,12 @@
 --BEGIN-PROFESSOR--
 \email{ana.maria.cuadros@ucsp.edu.pe}
 \prefix{}
-\name{Ana MarÃÂ­a Cuadros Valdivia}
+\name{Ana María Cuadros Valdivia}
 \begin{titles}
-	\DoctorPT{Espanol}{Computing}{Ciencia de la Computación}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2013}
+	\DoctorPT{Espanol}{Computing}{Ciencia de la Computación}{}{Universidad Nacional San Agustín}{Perú}{2013}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{}{ICMC-USP}{Brasil}{2007}
 	\Degree{Espanol}{Computing}{Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{2008}
-	\DoctorPT{English}{Computing}{Ciencia de la Computación}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2013}
+	\DoctorPT{English}{Computing}{Ciencia de la Computación}{}{Universidad Nacional San Agustín}{Perú}{2013}
 	\Master{English}{Computing}{Ciencia de la Computación}{}{ICMC-USP}{Brasil}{2007}
 	\Degree{English}{Computing}{Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{2008}
 \end{titles}
@@ -484,7 +484,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Visualización CientÃÂ­fica}
+\Research{Visualización Científica}
 \courses{}
 --END-PROFESSOR--
 
@@ -508,7 +508,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Computación Gráfica, GeometrÃÂ­a Computacional, Generación de mallas, Visualización CientÃÂ­fica y MÃÂ©dica, Reconstrucción Tridimensional, Estructuras de datos, Programación genÃÂ©rica, Programación paralela.}
+\Research{Computación Gráfica, Geometría Computacional, Generación de mallas, Visualización Científica y Médica, Reconstrucción Tridimensional, Estructuras de datos, Programación genérica, Programación paralela.}
 \courses{}
 --END-PROFESSOR--
 
@@ -537,7 +537,7 @@
 --BEGIN-PROFESSOR--
 \email{ldiaz@ucsp.edu.pe}
 \prefix{}
-\name{Luis Fernando DÃÂ­az Basurco}
+\name{Luis Fernando Díaz Basurco}
 \begin{titles}
 	\Master{Espanol}{Mathematics}{Matemática}{}{Pontificia Universidad Católica del Perú}{Perú}{1990}
 	\Master{English}{Mathematics}{Matemática}{}{Pontificia Universidad Católica del Perú}{Perú}{1990}
@@ -558,7 +558,7 @@
 --BEGIN-PROFESSOR--
 \email{agarciacalderon@ucsp.edu.pe}
 \prefix{}
-\name{Adriana Maria Irene GarcÃÂ­a Calderón Barreda}
+\name{Adriana Maria Irene García Calderón Barreda}
 \begin{titles}
 	\Degree{Espanol}{Humanities}{}{}{}{Perú}{}
 	\Degree{English}{Humanities}{}{}{}{Perú}{}
@@ -598,14 +598,14 @@
 --BEGIN-PROFESSOR--
 \email{jcgutierrezc@ucsp.edu.pe}
 \prefix{}
-\name{Juan Carlos GutiÃÂ©rrez Cáceres}
+\name{Juan Carlos Gutiérrez Cáceres}
 \begin{titles}
-	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2013}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{}{Universidad Nacional de San Agustín}{Perú}{2013}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{}{ICMC-USP}{Brasil}{2003}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{}
-	\Doctor{English}{Computing}{Ciencia de la Computación}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2013}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional de San Agustín}{Perú}{}
+	\Doctor{English}{Computing}{Ciencia de la Computación}{}{Universidad Nacional de San Agustín}{Perú}{2013}
 	\Master{English}{Computing}{Ciencia de la Computación}{}{ICMC-USP}{Brasil}{2003}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Nacional de San Agustín}{Perú}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -625,8 +625,8 @@
 \name{Alvaro Henry Mamani Aliaga}
 \begin{titles}
 	\Degree{Espanol}{Computing}{Bachiller Ingeniería de Sistemas}{}{UNSA}{Perú}{2006}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{Sistemas DistribuÃÂ­dos}{IME-USP}{Brasil}{2011}
-	\Master{English}{Computing}{Ciencia de la Computación}{Sistemas DistribuÃÂ­dos}{IME-USP}{Brasil}{2011}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Sistemas Distribuídos}{IME-USP}{Brasil}{2011}
+	\Master{English}{Computing}{Ciencia de la Computación}{Sistemas Distribuídos}{IME-USP}{Brasil}{2011}
 	\Degree{English}{Computing}{Bachiller Ingeniería de Sistemas}{}{UNSA}{Perú}{2006}
 \end{titles}
 \Category{}
@@ -666,8 +666,8 @@
 \prefix{}
 \name{Rubel Dorjin Linares Málaga}
 \begin{titles}
-	\Degree{Espanol}{Mathematics}{Licenciado en FÃÂ­sica}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2002}
-	\Degree{English}{Mathematics}{Licenciado en FÃÂ­sica}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2002}
+	\Degree{Espanol}{Mathematics}{Licenciado en Física}{}{Universidad Nacional de San Agustín}{Perú}{2002}
+	\Degree{English}{Mathematics}{Licenciado en Física}{}{Universidad Nacional de San Agustín}{Perú}{2002}
 \end{titles}
 \Category{}
 \webpage{}
@@ -687,9 +687,9 @@
 \name{Gina Lovon Alvarado}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ingeniería de Software}{}{Universidad de Tarapacá}{Chile}{2012}
-	\Degree{Espanol}{Computing}{Ingeniera de Sistemas}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2012}
+	\Degree{Espanol}{Computing}{Ingeniera de Sistemas}{}{Universidad Nacional de San Agustín}{Perú}{2012}
 	\Master{English}{Computing}{Ingeniería de Software}{}{Universidad de Tarapacá}{Chile}{2012}
-	\Degree{English}{Computing}{Ingeniera de Sistemas}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2012}
+	\Degree{English}{Computing}{Ingeniera de Sistemas}{}{Universidad Nacional de San Agustín}{Perú}{2012}
 \end{titles}
 \Category{}
 \webpage{}
@@ -750,9 +750,9 @@
 \name{Renato Javier Marroquin Mogrovejo}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{}{Pontificia Universidad de Rio de Janeiro}{Brasil}{2011}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2007}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{2007}
 	\Master{English}{Computing}{Ciencia de la Computación}{}{Pontificia Universidad de Rio de Janeiro}{Brasil}{2011}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2007}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{2007}
 \end{titles}
 \Category{}
 \webpage{}
@@ -791,11 +791,11 @@
 \prefix{}
 \name{Silvia Matuk Kervaye}
 \begin{titles}
-	\Doctor{Espanol}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1995}
-	\Master{Espanol}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1992}
+	\Doctor{Espanol}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa María}{Perú}{1995}
+	\Master{Espanol}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa María}{Perú}{1992}
 	\Degree{Espanol}{Humanities}{Ciencias Humanas}{}{Pontificia Universidad Católica del Perú}{Perú}{1966}
-	\Doctor{English}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1995}
-	\Master{English}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1992}
+	\Doctor{English}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa María}{Perú}{1995}
+	\Master{English}{Humanities}{Ciencias Humanas}{}{Universidad Católica Santa María}{Perú}{1992}
 	\Degree{English}{Humanities}{Ciencias Humanas}{}{Pontificia Universidad Católica del Perú}{Perú}{1966}
 \end{titles}
 \Category{}
@@ -813,7 +813,7 @@
 --BEGIN-PROFESSOR--
 \email{dmayori@ucsp.edu.pe}
 \prefix{}
-\name{Deisy Virginia MayorÃÂ­ Velásquez}
+\name{Deisy Virginia Mayorí Velásquez}
 \begin{titles}
 	\Degree{Espanol}{Mathematics}{}{}{}{}{}
 	\Degree{English}{Mathematics}{}{}{}{}{}
@@ -835,10 +835,10 @@
 \prefix{}
 \name{Gonzalo Pablo Medina Bravo}
 \begin{titles}
-	\Master{Espanol}{Humanities}{Derecho}{PolÃÂ­tica Jurisdiccional}{PUCP}{Perú}{2009}
+	\Master{Espanol}{Humanities}{Derecho}{Política Jurisdiccional}{PUCP}{Perú}{2009}
 	\Degree{Espanol}{Humanidades}{Humanidades}{Historia}{UCSP}{Perú}{2011}
 	\Degree{Espanol}{Humanidades}{Humanidades}{Docencia Universitaria Católica}{UCSP}{Perú}{2011}
-	\Master{English}{Humanities}{Derecho}{PolÃÂ­tica Jurisdiccional}{PUCP}{Perú}{2009}
+	\Master{English}{Humanities}{Derecho}{Política Jurisdiccional}{PUCP}{Perú}{2009}
 	\Degree{English}{Humanidades}{Humanidades}{Docencia Universitaria Católica}{UCSP}{Perú}{2011}
 \end{titles}
 \Category{}
@@ -858,10 +858,10 @@
 \prefix{}
 \name{Tatiana Beatriz Medina Sanchez}
 \begin{titles}
-	\Master{Espanol}{Humanities}{Artes}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{}
-	\Degree{Espanol}{Humanities}{Arquitecta}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{}
-	\Master{English}{Humanities}{Artes}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{}
-	\Degree{English}{Humanities}{Arquitecta}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{}
+	\Master{Espanol}{Humanities}{Artes}{}{Universidad Nacional de San Agustín}{Perú}{}
+	\Degree{Espanol}{Humanities}{Arquitecta}{}{Universidad Nacional de San Agustín}{Perú}{}
+	\Master{English}{Humanities}{Artes}{}{Universidad Nacional de San Agustín}{Perú}{}
+	\Degree{English}{Humanities}{Arquitecta}{}{Universidad Nacional de San Agustín}{Perú}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -880,8 +880,8 @@
 \prefix{}
 \name{Renzo Hernán Medina Zeballos}
 \begin{titles}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2000}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2000}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{2000}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -937,14 +937,14 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Procesamiento de VÃÂ­deos}
+\Research{Procesamiento de Vídeos}
 \courses{}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
 \email{hernan.alvarez@ucsp.edu.pe}
 \prefix{}
-\name{Hernán Humberto ÃÂlvarez Valera}
+\name{Hernán Humberto Álvarez Valera}
 \begin{titles}
 	\Bachelor{Espanol}{Computing}{Bachiller de Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{2013}
 	\Bachelor{English}{Computing}{Bachiller de Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{2013}
@@ -966,8 +966,8 @@
 \prefix{}
 \name{Jorge Homero Neyra Araoz}
 \begin{titles}
-	\Bachelor{Espanol}{Computing}{Bachiller de Ingeniería de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2006}
-	\Bachelor{English}{Computing}{Bachiller de Ingeniería de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2006}
+	\Bachelor{Espanol}{Computing}{Bachiller de Ingeniería de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2006}
+	\Bachelor{English}{Computing}{Bachiller de Ingeniería de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -984,10 +984,10 @@
 --BEGIN-PROFESSOR--
 \email{dnina@ucsp.edu.pe}
 \prefix{}
-\name{DugÃÂ©n Paúl Nina Ortiz}
+\name{Dugén Paúl Nina Ortiz}
 \begin{titles}
 	\Doctor{Espanol}{Matemáticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2011}\Master{Mathematics}{Matemáticas}{}
-	\Degree{English}{Mathematics}{Matemáticas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2003}
+	\Degree{English}{Mathematics}{Matemáticas}{}{Universidad Nacional San Agustín}{Perú}{2003}
 	\Degree{Espanol}{Empty}{}{}{}{}{}
 	\Doctor{English}{Matemáticas}{}{Universidade Federal do Rio de Janeiro}{Brasil}(2011}\Master{Mathematics}{Matemáticas}{}
 \end{titles}
@@ -1008,10 +1008,10 @@
 \prefix{}
 \name{Luz Marina Ramos Quispe}
 \begin{titles}
-	\Master{Espanol}{Matemáticas}{EstadÃÂ­stica}{Universidade Estadual de Campinas}{Brasil}(2015}	\Degree{Espanol}{Mathematics}{Matemáticas}
-	\Degree{English}{Mathematics}{Matemáticas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2009}
+	\Master{Espanol}{Matemáticas}{Estadística}{Universidade Estadual de Campinas}{Brasil}(2015}	\Degree{Espanol}{Mathematics}{Matemáticas}
+	\Degree{English}{Mathematics}{Matemáticas}{}{Universidad Nacional San Agustín}{Perú}{2009}
 	\Degree{Espanol}{Empty}{}{}{}{}{}
-	\Master{English}{Matemáticas}{EstadÃÂ­stica}{Universidade Estadual de Campinas}{Brasil}(2015}	\Degree{Espanol}{Mathematics}{Matemáticas}
+	\Master{English}{Matemáticas}{Estadística}{Universidade Estadual de Campinas}{Brasil}(2015}	\Degree{Espanol}{Mathematics}{Matemáticas}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1029,7 +1029,7 @@
 --BEGIN-PROFESSOR--
 \email{pnunezp@ucsp.edu.pe}
 \prefix{}
-\name{Paloma Moreika NuÃÂ±ez Portugal}
+\name{Paloma Moreika Nuñez Portugal}
 \begin{titles}
 	\Degree{Espanol}{Humanities}{}{}{}{}{}
 	\Degree{English}{Humanities}{}{}{}{}{}
@@ -1053,10 +1053,10 @@
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{}{Universidade de Sao Paulo}{Brasil}{2011}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{}{Universidade Federal de Mato Grosso do Sul - UFMS}{Brasil}{2004}
-	\Degree{Espanol}{Computing}{Bachiller en Ingeniería de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2000}
+	\Degree{Espanol}{Computing}{Bachiller en Ingeniería de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2000}
 	\Doctor{English}{Computing}{Ciencia de la Computación}{}{Universidade de Sao Paulo}{Brasil}{2011}
 	\Master{English}{Computing}{Ciencia de la Computación}{}{Universidade Federal de Mato Grosso do Sul - UFMS}{Brasil}{2004}
-	\Degree{English}{Computing}{Bachiller en Ingeniería de Sistemas}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2000}
+	\Degree{English}{Computing}{Bachiller en Ingeniería de Sistemas}{}{Universidad Nacional San Agustín}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1075,8 +1075,8 @@
 \prefix{}
 \name{Christian Paúl Ortiz Martinez}
 \begin{titles}
-	\Degree{Espanol}{Mathematics}{Matemática}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2006}
-	\Degree{English}{Mathematics}{Matemática}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2006}
+	\Degree{Espanol}{Mathematics}{Matemática}{}{Universidad Nacional de San Agustín}{Perú}{2006}
+	\Degree{English}{Mathematics}{Matemática}{}{Universidad Nacional de San Agustín}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1115,8 +1115,8 @@
 \prefix{}
 \name{Luis Alberto Pacheco Abarca}
 \begin{titles}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1133,7 +1133,7 @@
 --BEGIN-PROFESSOR--
 \email{fpacheco@ucsp.edu.pe}
 \prefix{}
-\name{Flor de MarÃÂ­a Pacheco Tejada}
+\name{Flor de María Pacheco Tejada}
 \begin{titles}
 	\Degree{Espanol}{Humanities}{}{}{}{}{}
 	\Degree{English}{Humanities}{}{}{}{}{}
@@ -1155,10 +1155,10 @@
 \prefix{}
 \name{Libertad Alejandra Paredes Valdivia}
 \begin{titles}
-	\Master{Espanol}{Humanities}{Educación Superior}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1990}
-	\Degree{Espanol}{Humanities}{Licenciada en Lengua Literatura y FilosofÃÂ­a}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1975}
-	\Master{English}{Humanities}{Educación Superior}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1990}
-	\Degree{English}{Humanities}{Licenciada en Lengua Literatura y FilosofÃÂ­a}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{1975}
+	\Master{Espanol}{Humanities}{Educación Superior}{}{Universidad Católica Santa María}{Perú}{1990}
+	\Degree{Espanol}{Humanities}{Licenciada en Lengua Literatura y Filosofía}{}{Universidad Católica Santa María}{Perú}{1975}
+	\Master{English}{Humanities}{Educación Superior}{}{Universidad Católica Santa María}{Perú}{1990}
+	\Degree{English}{Humanities}{Licenciada en Lengua Literatura y Filosofía}{}{Universidad Católica Santa María}{Perú}{1975}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1175,10 +1175,10 @@
 --BEGIN-PROFESSOR--
 \email{efalvarez@ucsp.edu.pe}
 \prefix{}
-\name{Edwing Fausto ÃÂlvarez Fernández}
+\name{Edwing Fausto Álvarez Fernández}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Licenciado en Educación}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2000}
-	\Degree{English}{Humanities}{Licenciado en Educación}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2000}
+	\Degree{Espanol}{Humanities}{Licenciado en Educación}{}{Universidad Nacional de San Agustín}{Perú}{2000}
+	\Degree{English}{Humanities}{Licenciado en Educación}{}{Universidad Nacional de San Agustín}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1195,10 +1195,10 @@
 --BEGIN-PROFESSOR--
 \email{susana.chaina@ucsp.edu.pe}
 \prefix{}
-\name{Susana Giovanna ChaiÃÂ±a Mamani}
+\name{Susana Giovanna Chaiña Mamani}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Licenciada en PsicologÃÂ­a}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2010}
-	\Degree{English}{Humanities}{Licenciada en PsicologÃÂ­a}{}{Universidad Nacional de San AgustÃÂ­n}{Perú}{2010}
+	\Degree{Espanol}{Humanities}{Licenciada en Psicología}{}{Universidad Nacional de San Agustín}{Perú}{2010}
+	\Degree{English}{Humanities}{Licenciada en Psicología}{}{Universidad Nacional de San Agustín}{Perú}{2010}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1217,8 +1217,8 @@
 \prefix{}
 \name{Gail Mar Linares Pomareda De Bocchio}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Licenciada en EnfermerÃÂ­a}{}{Universidad Peruana Cayetano Heredia}{Perú}{1999}
-	\Degree{English}{Humanities}{Licenciada en EnfermerÃÂ­a}{}{Universidad Peruana Cayetano Heredia}{Perú}{1999}
+	\Degree{Espanol}{Humanities}{Licenciada en Enfermería}{}{Universidad Peruana Cayetano Heredia}{Perú}{1999}
+	\Degree{English}{Humanities}{Licenciada en Enfermería}{}{Universidad Peruana Cayetano Heredia}{Perú}{1999}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1237,8 +1237,8 @@
 \prefix{}
 \name{Alfredo Paz Valderrama}
 \begin{titles}
-	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2000}
-	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa MarÃÂ­a}{Perú}{2000}
+	\Degree{Espanol}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{2000}
+	\Degree{English}{Computing}{Ingeniero de Sistemas}{}{Universidad Católica Santa María}{Perú}{2000}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1255,7 +1255,7 @@
 --BEGIN-PROFESSOR--
 \email{jpenarrieta@ucsp.edu.pe}
 \prefix{}
-\name{JosÃÂ© Alonso PeÃÂ±arrieta Escobedo}
+\name{José Alonso Peñarrieta Escobedo}
 \begin{titles}
 	\Degree{Espanol}{Computing}{Ingeniero Informático}{}{Universidad Católica San Pablo}{Perú}{2008}
 	\Degree{English}{Computing}{Ingeniero Informático}{}{Universidad Católica San Pablo}{Perú}{2008}
@@ -1275,7 +1275,7 @@
 --BEGIN-PROFESSOR--
 \email{guillermo.laures@ucsp.edu.pe}
 \prefix{}
-\name{Guillermo Laures GarcÃÂ­a}
+\name{Guillermo Laures García}
 \begin{titles}
 	\Degree{Espanol}{Computing}{Bachiller en Ciencia de la Computación}{}{Universidad Católica San Pablo}{Perú}{2012}
 	\Degree{English}{Computing}{Bachiller en Ciencia de la Computación}{}{Universidad Católica San Pablo}{Perú}{2012}
@@ -1319,10 +1319,10 @@
 \prefix{}
 \name{Hugo Mario Ramos Salinas}
 \begin{titles}
-	\Master{Espanol}{Humanities}{Artes}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{}
-	\Degree{Espanol}{Humanities}{Bachiller en Arquitectura}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{1992}
-	\Master{English}{Humanities}{Artes}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{}
-	\Degree{English}{Humanities}{Bachiller en Arquitectura}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{1992}
+	\Master{Espanol}{Humanities}{Artes}{}{Universidad Nacional San Agustín}{Perú}{}
+	\Degree{Espanol}{Humanities}{Bachiller en Arquitectura}{}{Universidad Nacional San Agustín}{Perú}{1992}
+	\Master{English}{Humanities}{Artes}{}{Universidad Nacional San Agustín}{Perú}{}
+	\Degree{English}{Humanities}{Bachiller en Arquitectura}{}{Universidad Nacional San Agustín}{Perú}{1992}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1341,12 +1341,12 @@
 \prefix{}
 \name{Jose Manuel Rodriguez Canales}
 \begin{titles}
-	\Doctor{Espanol}{Empty}{Ciencias Sociales} {Universidad Católica de Santa MarÃÂ­a}{Perú}{}	\Master{Espanol}{Humanities}{}
-	\Degree{Espanol}{Humanities}{}{TeologÃÂ­a}{Facultad de TeologÃÂ­a Pontificia y Civil de Lima}{Perú}{}
-	\Master{English}{Humanities}{}{TeologÃÂ­a}{Facultad de TeologÃÂ­a Pontificia y Civil de Lima}{Perú}{}
-	\Degree{English}{Humanities}{}{TeologÃÂ­a}{Facultad de TeologÃÂ­a Pontificia y Civil de Lima}{Perú}{}
+	\Doctor{Espanol}{Empty}{Ciencias Sociales} {Universidad Católica de Santa María}{Perú}{}	\Master{Espanol}{Humanities}{}
+	\Degree{Espanol}{Humanities}{}{Teología}{Facultad de Teología Pontificia y Civil de Lima}{Perú}{}
+	\Master{English}{Humanities}{}{Teología}{Facultad de Teología Pontificia y Civil de Lima}{Perú}{}
+	\Degree{English}{Humanities}{}{Teología}{Facultad de Teología Pontificia y Civil de Lima}{Perú}{}
 	\Master{Espanol}{Empty}{}{}{}{}{}
-	\Doctor{English}{Empty}{Ciencias Sociales} {Universidad Católica de Santa MarÃÂ­a}{Perú}{}	\Master{Espanol}{Humanities}{}
+	\Doctor{English}{Empty}{Ciencias Sociales} {Universidad Católica de Santa María}{Perú}{}	\Master{Espanol}{Humanities}{}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1363,11 +1363,11 @@
 --BEGIN-PROFESSOR--
 \email{mlrodriguez@ucsp.edu.pe}
 \prefix{}
-\name{MarÃÂ­a Lourdes RodrÃÂ­guez Manrique}
+\name{María Lourdes Rodríguez Manrique}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Lic.en Educación}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{2000}
-	\Degree{Espanol}{Humanities}{Lic.en AntropologÃÂ­a}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{1990}
-	\Degree{English}{Humanities}{Lic.en AntropologÃÂ­a}{}{Universidad Nacional San AgustÃÂ­n}{Perú}{1990}
+	\Degree{Espanol}{Humanities}{Lic.en Educación}{}{Universidad Nacional San Agustín}{Perú}{2000}
+	\Degree{Espanol}{Humanities}{Lic.en Antropología}{}{Universidad Nacional San Agustín}{Perú}{1990}
+	\Degree{English}{Humanities}{Lic.en Antropología}{}{Universidad Nacional San Agustín}{Perú}{1990}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1399,7 +1399,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{Visualización CientÃÂ­fica}
+\Research{Visualización Científica}
 \courses{}
 --END-PROFESSOR--
 
@@ -1423,10 +1423,10 @@
 --BEGIN-PROFESSOR--
 \email{mlrodriguez@ucsp.edu.pe}
 \prefix{}
-\name{MarÃÂÃÂ­a Lourdes RodrÃÂÃÂ­guez Manrique}
+\name{María Lourdes Rodríguez Manrique}
 \begin{titles}
-	\Degree{Espanol}{Humanities}{Lic.en EducaciÃÂÃÂ³n}{}{Universidad Nacional San AgustÃÂÃÂ­n}{PerÃÂÃÂº}{2000}
-	\Degree{Espanol}{Humanities}{Lic.en AntropologÃÂÃÂ­a}{}{Universidad Nacional San AgustÃÂÃÂ­n}{PerÃÂÃÂº}{1990}
+	\Degree{Espanol}{Humanities}{Lic.en Educación}{}{Universidad Nacional San Agustín}{Perú}{2000}
+	\Degree{Espanol}{Humanities}{Lic.en Antropología}{}{Universidad Nacional San Agustín}{Perú}{1990}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1445,8 +1445,8 @@
 \prefix{}
 \name{Frizzi Alejandra San Roman Salazar}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la ComputaciÃÂÃÂ³n}{}{Universidade de Sao Paulo}{Brasil}{2012}
-	\Degree{Espanol}{Computing}{IngenierÃÂÃÂ­a InformÃÂÃÂ¡tica}{}{Universidad CatÃÂÃÂ³lica San Pablo}{PerÃÂÃÂº}{2006}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{}{Universidade de Sao Paulo}{Brasil}{2012}
+	\Degree{Espanol}{Computing}{Ingeniería Informática}{}{Universidad Católica San Pablo}{Perú}{2006}
 \end{titles}
 \Category{}
 \webpage{}
@@ -1456,7 +1456,7 @@
 \facebook{}
 \Twitter{}
 \Blog{}
-\Research{VisualizaciÃÂÃÂ³n CientÃÂÃÂ­fica}
+\Research{Visualización Científica}
 \courses{}
 --END-PROFESSOR--
 
