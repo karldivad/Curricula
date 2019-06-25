@@ -173,8 +173,9 @@ sub read_syllabus_info($$$)
 # 	my $codcour_label       = get_alias($codcour);
 	my $course_name = $Common::course_info{$codcour}{$lang}{course_name};
 	my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
-	my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour} % Common.pm";
-	my $newhead 	= "\\begin{syllabus}\n$header\n\n\\begin{justification}";
+	my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour}\n";
+	$header        .= "% Source file: $fullname\n";
+	my $newhead 	= "\\begin{syllabus}\n$header\n\\begin{justification}";
 	$syllabus_in 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 # 	Common::read_outcomes_involved($codcour, $fulltxt);
 
@@ -184,7 +185,6 @@ sub read_syllabus_info($$$)
 # 	Util::print_message("Replaced $count_old_macros old macros in file: \"$fullname\"") if($count_old_macros > 0);
 
 	my %map = ();
-
 	$map{SOURCE_FILE_NAME} = $fullname;
 	$Common::course_info{$codcour}{unitcount}	= 0;
 	foreach my $env ("justification", "goals")

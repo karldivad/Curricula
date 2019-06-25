@@ -42,7 +42,7 @@ our %counts              	= ();
 our %antialias_info 	 	= ();
 our %list_of_courses_per_axe	= ();
 
-my %Numbers2Text 		= (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "FOUR",
+my %Numbers2Text = (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "FOUR",
 				   5 => "FIVE", 6 => "SIX", 7 => "SEVEN", 8 => "EIGHT", 9 => "NINE"
 				  );
 our %template_files = (	"Syllabus" 		=> "in-syllabus-template-file"
@@ -4736,9 +4736,9 @@ sub generate_IS_BOK($$)
 		my $topic_name = $2;
 		my $topic_body = $3;
 		
-		Util::print_message("topic_code = $topic_code, topic_name = $topic_name, topic_body=$topic_body");
+		#Util::print_message("topic_code = $topic_code, topic_name = $topic_name, topic_body=$topic_body");
 		$topic_body = process_IS_topics($topic_body);
-		Util::print_color("topic_body");
+		#Util::print_color("topic_body");
 		
 		my $topic_env = "boktopic";
 		$topic_body =~ s/\(begin_topics\)/\\begin{$topic_env}/g;
@@ -4796,7 +4796,7 @@ sub generate_IS_BOK_macros($$)
 			my $topic_area = $1;
 			my $topic_code = $2;
 			my $topic_name = $3;
-			#Util::print_message("topic_code = $topic_code, topic_name=$topic_name");
+			Util::print_message("topic_code = $topic_code, topic_name=$topic_name");
 
 			$prefix[$BLK2] = $topic_code;
 			$prefix[$BLK3] = 0;
@@ -4879,6 +4879,7 @@ sub process_IS_BOK($)
 	generate_IS_LU			($LU_unprocessed_file, Common::get_expanded_template("InTexDir", $lang)."/LU.tex");
 	generate_IS_BOK_macros	($bok_in_file, Common::get_template("InStyDir")."/bok-macros.sty");
 	generate_IS_LU_macros 	($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty");
+	
 	my $replacements_file = Common::get_template("in-replacements-file");
 	Util::print_message("Generating: $replacements_file ... OK!");
     Util::write_file($replacements_file, $replacements);

@@ -5,7 +5,7 @@ export PERL5LIB=/media/psf/Articles/Curricula/Curricula.Master/scripts
 
 export PERL5LIB=/usr/local/Cellar/perl/5.26.1/lib/perl5/site_perl/5.26.1:/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
 export TEXINPUTS=::/usr/local/Cellar/latex2html/2016/texinputs
-
+g­a
 brew reinstall dpkg
 sudo apt-get install texlive-latex-extra;
 sudo apt-get install texlive-bibtex-extra;
