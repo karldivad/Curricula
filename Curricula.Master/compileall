@@ -3,14 +3,14 @@
 rm -rf html/-ANR -ANR-big-main.*
 rm -rf html/-CLEI -CLEI-big-main.*
 rm -rf html/-SBC -SBC-big-main.*
-rm -rf html/DS-SPC DS-SPC-big-main.*
+rm -rf html/IS-SPC IS-SPC-big-main.*
 rm -rf html/-UCR -UCR-big-main.*
-rm -rf html/-UCSP -UCSP-big-main.*
+rm -rf html/IS-UCSP IS-UCSP-big-main.*
 rm -rf html/-UNAM -UNAM-big-main.*
 rm -rf html/-UNMSM -UNMSM-big-main.*
-rm -rf html/-UNSA -UNSA-big-main.*
+rm -rf html/IS-UNSA IS-UNSA-big-main.*
 rm -rf html/-USGP -USGP-big-main.*
-rm -rf html/DS-UTEC DS-UTEC-big-main.*
+rm -rf html/IS-UTEC IS-UTEC-big-main.*
 
 ./scripts/updatelog.pl "ANR: Starting compilation ..."
 ./compile  -ANR 
@@ -25,16 +25,16 @@ rm -rf html/DS-UTEC DS-UTEC-big-main.*
 ./gen-html -SBC
 
 ./scripts/updatelog.pl "SPC: Starting compilation ..."
-./compile  DS-SPC 
-./gen-html DS-SPC
+./compile  IS-SPC 
+./gen-html IS-SPC
 
 ./scripts/updatelog.pl "UCR: Starting compilation ..."
 ./compile  -UCR 
 ./gen-html -UCR
 
 ./scripts/updatelog.pl "UCSP: Starting compilation ..."
-./compile  -UCSP 
-./gen-html -UCSP
+./compile  IS-UCSP 
+./gen-html IS-UCSP
 
 ./scripts/updatelog.pl "UNAM: Starting compilation ..."
 ./compile  -UNAM 
@@ -45,14 +45,14 @@ rm -rf html/DS-UTEC DS-UTEC-big-main.*
 ./gen-html -UNMSM
 
 ./scripts/updatelog.pl "UNSA: Starting compilation ..."
-./compile  -UNSA 
-./gen-html -UNSA
+./compile  IS-UNSA 
+./gen-html IS-UNSA
 
 ./scripts/updatelog.pl "USGP: Starting compilation ..."
 ./compile  -USGP 
 ./gen-html -USGP
 
 ./scripts/updatelog.pl "UTEC: Starting compilation ..."
-./compile  DS-UTEC 
-./gen-html DS-UTEC
+./compile  IS-UTEC 
+./gen-html IS-UTEC
 

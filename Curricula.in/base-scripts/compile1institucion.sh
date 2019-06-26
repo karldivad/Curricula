@@ -85,7 +85,8 @@ if($pdf == 1) then
       #rm <AREA>-<INST>-P1.pdf;
       #mv <AREA>-<INST>-P1.png <OUTPUT_HTML_DIR>/CurriculaMain-P1.png;
       cp <AREA>-<INST>.pdf <OUTPUT_HTML_DIR>/CurriculaMain.pdf;
-      mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST> Plan<PLAN>.pdf";
+      mkdir -p "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>"
+      mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/<AREA>-<INST> Plan<PLAN>.pdf";
 endif
 
 ./scripts/update-outcome-itemizes.pl <AREA>-<INST>
