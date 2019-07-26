@@ -6,6 +6,7 @@ use Clone 'clone';
 use Lib::Util;
 use Cwd;
 use strict;
+use Scalar::Util qw(looks_like_number);
 
 our $command     = "";
 our $institution = "";
@@ -3381,6 +3382,8 @@ sub filter_courses($)
 		      {		$data{counts_per_standard}{$axe} 		= 0;
 				$list_of_courses_per_axe{$axe}{courses} 	= [];
 		      }
+			  if( not looks_like_number($course_info{$codcour}{cr}) )
+			  {	Util::print_error("course_info{$codcour}{cr} ($course_info{$codcour}{semester} Sem) is NOT a number ! ...");	}
 		      $data{counts_per_standard}{$axe}     += $course_info{$codcour}{cr}/$course_info{$codcour}{naxes};
 		      push(@{$list_of_courses_per_axe{$axe}{courses}}, $codcour);
 		}
@@ -3550,7 +3553,10 @@ sub filter_courses($)
 		{
 			if($course_info{$codcour}{course_type} eq "Mandatory")
 			{
-					assert($course_info{$codcour}{group} eq "");
+					if( not $course_info{$codcour}{group} eq "")
+					{
+						Util::print_error("Course: $codcour is $course_info{$codcour}{course_type} ... its group MUST be empty ... ");
+					}
 					$Common::config{credits_this_semester}{$semester} += $course_info{$codcour}{cr};
 					#Util::print_message("Sem=$semester,acu=$Common::config{credits_this_semester}{$semester}, course_info{$codcour}{cr}=$course_info{$codcour}{cr}");
 			}
@@ -4004,6 +4010,15 @@ sub parse_bok($)
 sub format_ku_label($$)
 {
 	my ($lang, $ku) = (@_);
+	if(not defined($Common::ku_info{$lang}{$ku}{ka}))
+	{
+		my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang);
+ 		Util::print_message("Processing $bok_in_file ...");
+		
+		Util::print_warning("Not defined Common::ku_info{$lang}{$ku}{ka}=$Common::ku_info{$lang}{$ku}{ka} (see file: $bok_in_file ...)");
+		print Dumper(\%{$Common::ku_info{$lang}});
+		exit;
+	}
 	my $ka = $Common::ku_info{$lang}{$ku}{ka};
 
 	my $ku_label = "$ka \\$bok{$lang}{$ka}{KU}{$ku}{name}";

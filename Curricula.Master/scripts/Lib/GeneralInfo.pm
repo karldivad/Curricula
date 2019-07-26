@@ -633,6 +633,9 @@ sub generate_curricula_in_dot($$)
 	$output_txt .= ";\n";
 	my $rank_text = "";
 
+	#Second: generate the label for this graph
+	$output_txt .= "\t\"$Common::config{area}-$Common::config{institution}\" [fillcolor=black, style=filled, fontcolor=white, fontsize=30,peripheries=2];\n";
+
 	# Second: generate information for each semester
     my $cluster_count = 0;
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
