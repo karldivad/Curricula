@@ -4004,7 +4004,6 @@ sub parse_bok($)
 # 	foreach my $key (keys %{$bok{Espanol}{SP}{KU}})
 # 	{	Util::print_warning("key=$key");	}
  	#print Dumper (\%{$Common::bok{"Espanol"}{DS}{KU}});
- 	#exit;
 }
 
 sub format_ku_label($$)
@@ -4909,6 +4908,7 @@ sub generate_bok($)
 	{
 		Common::parse_bok($lang);
 		Common::gen_bok($lang);
+		exit;
 	}
 	elsif($config{area} eq "IS")
 	{
