@@ -40,7 +40,7 @@
 \Category{Principal}
 \Dedication{TC}
 \webpage{}
-\Office{Computer Science Program, 2rd floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
 \Phone{+51-51-2305000 Ext 4283}
 \Mobile{+51-992751554}
 \facebook{https://www.facebook.com/mariahilda.bermejorios}
@@ -63,7 +63,7 @@
 \Category{Principal}
 \Dedication{TC}
 \webpage{}
-\Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500 Ext 4723}
 \Mobile{+51-949.488.910}
 \facebook{https://web.facebook.com/jesubellido}
@@ -85,7 +85,7 @@
 \Category{Principal}
 \Dedication{TC}
 \webpage{http://www.comp.nus.edu.sg/~yserrano/About_Me.html}
-\Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
 \Mobile{+65 8180 5167}
 \facebook{}
@@ -725,10 +725,154 @@
 \webpage{}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
-\Mobile{+51 937800726}
+\Mobile{+51-937.800.726}
 \facebook{https://www.facebook.com/marvinAbisrror}
 \Twitter{https://twitter.com/marvin4sky}
 \Blog{}
 \Research{Machine learning, heuristic search} 
 \courses{CS1100,CS2102,CS2601}
 --END-PROFESSOR--
+
+
+
+
+
+
+
+
+
+
+
+
+--BEGIN-PROFESSOR--
+\email{richardqa@gmail.com}  
+\prefix{Mg}
+\name{Javier Richard Quinto Ancieta}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ingeniería en Computación}{Redes de Computadoras}{Universidad Estatal de Campinas - UNICAMP}{Brasil}{2015}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Telecomunicaciones}{UIGV}{Perú}{2009}
+	\Master{English}{Computing}{Computer Engineering}{Networking}{UNICAMP}{Brasil}{2015}
+	\Bachelor{Espanol}{Computing}{Computer Engineering}{Telecommunications Engineering}{UIGV}{Perú}{2009}
+	\Bachelor{English}{Computing}{Computer Engineering}{Telecommunications Engineering}{UIGV}{Perú}{2009}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
+\Phone{+51-1-2303500}
+\Mobile{+51 943207713}
+\facebook{https://www.facebook.com/jrichardqa}
+\Twitter{https://twitter.com/richardqa}
+\Blog{www.opennetsoft.com}
+\Research{technological innovation,cloud computing,cibersecuritynetworking} 
+\courses{CS2301,CS3P02,CS3101,CS2901}
+--END-PROFESSOR--
+
+
+
+
+--BEGIN-PROFESSOR--
+\email{aocsa.cs@gmail.com}  
+\prefix{PhD}
+\name{Alexander Ocsa }
+\begin{titles}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Análisis de datos con GPUs}{UNSA}{Perú}{2017}
+	\Doctor{English}{Computing}{Computer Science}{GPU Data Analytics}{UNSA}{Perú}{2017}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Recuperación de Información y GPGPU}{USP-ICMC}{Brasil}{2011}
+	\Master{English}{Computing}{Computer Science}{Information Retrieval and GPGPU}{USP-ICMC}{Brasil}{2011}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-945.302.065}
+\facebook{ }
+\Twitter{aocsa}
+\Blog{aocsa.dev}
+\Research{Data Structures, Databases, GPU Data Analytics,  High Performance Computing} 
+\courses{CS3102,CS2100,CS2702,CS2102,CS3700,CS3P01}
+--END-PROFESSOR--
+
+--BEGIN-PROFESSOR--
+\email{carlos.arias@ucsp.edu.pe}  
+\prefix{Mg}
+\name{Carlos Mauricio Aure Arias Chipana}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{UCSP}{Perú}{2019}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{UCSP}{Perú}{2013}
+	\Master{English}{Computing}{Computer Science}{Computer graphics}{UCSP}{Perú}{2019}
+	\Bachelor{English}{Computing}{Computer Science}{Computer Science}{UCSP}{Perú}{2009}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-978.978.182}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{Vision Computacional} 
+\courses{CS3102,CS2100,CS2702,CS2102,CS3700,CS3P01}
+--END-PROFESSOR--
+
+
+
+
+
+
+--BEGIN-PROFESSOR--
+\email{fernando.nunez@pucp.pe}  
+\prefix{Mg}
+\name{Fernando Augusto Nuñez Calderón}
+\begin{titles}
+	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
+	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
+	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
+	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
+	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-993.496.980}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{CS3903}
+--END-PROFESSOR--
+
+-BEGIN-PROFESSOR--
+\email{fernando.nunez@pucp.pe}  
+\prefix{Mg}
+\name{Fernando Augusto Nuñez Calderón}
+\begin{titles}
+	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
+	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
+	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
+	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
+	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-993.496.980}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{CS3903}
+--END-PROFESSOR--
+
+
+
+
+

@@ -4908,7 +4908,7 @@ sub generate_bok($)
 	{
 		Common::parse_bok($lang);
 		Common::gen_bok($lang);
-		exit;
+		#exit;
 	}
 	elsif($config{area} eq "IS")
 	{
