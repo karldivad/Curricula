@@ -3551,6 +3551,7 @@ sub filter_courses($)
 
 		foreach my $codcour (@{$courses_by_semester{$semester}})
 		{
+			print Dumper( \%{$course_info{$codcour}} );
 			if($course_info{$codcour}{course_type} eq "Mandatory")
 			{
 					if( not $course_info{$codcour}{group} eq "")
@@ -3562,6 +3563,7 @@ sub filter_courses($)
 			}
 			else
 			{
+				Util::print_color("course_info{$codcour}{group}=\"$course_info{$codcour}{group}\", course_info{$codcour}{course_type}=$course_info{$codcour}{course_type} (Sem=$semester) It is an elective course. It MUST have a group ...");
 				assert(not $course_info{$codcour}{group} eq "");
 				my $group = $course_info{$codcour}{group};
 				if( not defined($config{semester_electives}{$semester}{$group}{list}) )
@@ -4927,6 +4929,7 @@ sub generate_bok($)
 sub process_courses()
 {
     parse_courses();
+#	print Dumper( \%{$course_info{CS111}} ); exit;
 # 	print Dumper(\%{$course_info{"MA102"}});
 	sort_courses();
 	filter_courses($config{language_without_accents});

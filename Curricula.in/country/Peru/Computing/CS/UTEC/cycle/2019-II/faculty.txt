@@ -817,11 +817,6 @@
 \courses{CS3102,CS2100,CS2702,CS2102,CS3700,CS3P01}
 --END-PROFESSOR--
 
-
-
-
-
-
 --BEGIN-PROFESSOR--
 \email{fernando.nunez@pucp.pe}  
 \prefix{Mg}
@@ -844,15 +839,15 @@
 \Twitter{}
 \Blog{}
 \Research{} 
-\courses{CS3903}
+\courses{CS3903,CS1100}
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
-\email{jgonzales@utec.edu.pe}  
+\email{jgonzalez@utec.edu.pe}  
 \prefix{Mg}
 \name{Jorge Luis Gonzales Reaño}
 \begin{titles}
-	\Master{Espanol}{Espanol}{MBA}{Ciencia de la Computación}{Microelectrónica}{POLIUSP}{Brasil}{2013}
+	\Master{Espanol}{Espanol}{MBA}{Ciencia de la Computación}{Microelectrónica{POLIUSP}{Brasil}{2013}
 	\Bachelor{Espanol}{Computing}{Ingeniería Electrónica}{}{UPAO}{Perú}{2008}
 	\Master{English}{Computing}{Computer Science}{Microelectronics}{POLIUSP}{Brazil}{2013}
 	\Bachelor{English}{Computing}{Electronic Engineering}{}{UPAO}{Perú}{2008}
@@ -867,7 +862,38 @@
 \Twitter{}
 \Blog{}
 \Research{} 
-\courses{CS2201,CS2S01}
+\courses{CS2S01,CS2201}
+--END-PROFESSOR--
+
+
+
+
+
+
+
+-BEGIN-PROFESSOR--
+\email{}  
+\prefix{}
+\name{}
+\begin{titles}
+	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
+	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
+	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
+	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
+	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+\end{titles}
+\Category{}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-993.496.980}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{}
 --END-PROFESSOR--
 
 
