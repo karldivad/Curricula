@@ -659,7 +659,7 @@
 \Twitter{https://mobile.twitter.com/Rotkyvairam}
 \Blog{}
 \Research{Transformación Digital, RPA Robotics Programming Application}
-\courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019}
+\courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019,CS2201}
 --END-PROFESSOR--
 
 
@@ -847,29 +847,27 @@
 \courses{CS3903}
 --END-PROFESSOR--
 
--BEGIN-PROFESSOR--
-\email{fernando.nunez@pucp.pe}  
+--BEGIN-PROFESSOR--
+\email{jgonzales@utec.edu.pe}  
 \prefix{Mg}
-\name{Fernando Augusto Nuñez Calderón}
+\name{Jorge Luis Gonzales Reaño}
 \begin{titles}
-	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
-	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
-	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
-	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
-	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
-	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+	\Master{Espanol}{Espanol}{MBA}{Ciencia de la Computación}{Microelectrónica{POLIUSP}{Brasil}{2013}
+	\Bachelor{Espanol}{Computing}{Ingeniería Electrónica}{}{UPAO}{Perú}{2008}
+	\Master{English}{Computing}{Computer Science}{Microelectronics}{POLIUSP}{Brazil}{2013}
+	\Bachelor{English}{Computing}{Electronic Engineering}{}{UPAO}{Perú}{2008}
 \end{titles}
 \Category{}
 \Dedication{TP}
 \webpage{}
 \Office{}
 \Phone{+51-1-2303500}
-\Mobile{+51-993.496.980}
+\Mobile{+51-922.495.594}
 \facebook{ }
 \Twitter{}
 \Blog{}
 \Research{} 
-\courses{CS3903}
+\courses{CS2201,CS2S01}
 --END-PROFESSOR--
 
 
