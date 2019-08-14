@@ -852,7 +852,7 @@
 \prefix{Mg}
 \name{Jorge Luis Gonzales Reaño}
 \begin{titles}
-	\Master{Espanol}{Espanol}{MBA}{Ciencia de la Computación}{Microelectrónica{POLIUSP}{Brasil}{2013}
+	\Master{Espanol}{Espanol}{MBA}{Ciencia de la Computación}{Microelectrónica}{POLIUSP}{Brasil}{2013}
 	\Bachelor{Espanol}{Computing}{Ingeniería Electrónica}{}{UPAO}{Perú}{2008}
 	\Master{English}{Computing}{Computer Science}{Microelectronics}{POLIUSP}{Brazil}{2013}
 	\Bachelor{English}{Computing}{Electronic Engineering}{}{UPAO}{Perú}{2008}

@@ -3461,7 +3461,7 @@ sub filter_courses($)
 				#Util::print_message("codcour=$codcour,codreq=$codreq");
 				my $prereq_label = get_label($codreq);
 				if($prereq_label eq "")
-				{	Util::print_error("codcour=$codcour,sem=$semester, codreq=$codreq It seems you forgot to active that prereq ($codreq)");	}
+				{	Util::print_error("codcour=$codcour,sem=$semester, codreq=$codreq It seems you forgot to active that prereq ($codreq) See: $input_file");	}
 				$codreq = $prereq_label;
 				#Util::print_message("codcour=$codcour,codreq=$codreq");
 				$new_prerequisites .= "$sep$codreq";
