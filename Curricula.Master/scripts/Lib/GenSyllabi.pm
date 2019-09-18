@@ -546,11 +546,9 @@ sub process_syllabi()
 
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
-
 	generate_tex_syllabi_files();
   	generate_syllabi_include();
  	gen_batch_to_compile_syllabi();
-
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 	    gen_book("Syllabi", "../syllabi/", "", $lang);

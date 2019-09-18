@@ -19,11 +19,8 @@ sub generate_general_info()
 {
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
-	      Util::print_message("*******************************************************************************************************");
-	      Util::print_message("                                  Generating BOK in $lang ...");
-	      Util::print_message("*******************************************************************************************************");
-		  Common::generate_bok($lang);
 	}
+	
 	my $lang = $Common::config{language_without_accents};
 	Common::read_all_min_max();
 	Util::precondition("gen_syllabi"); 
@@ -53,9 +50,10 @@ sub generate_general_info()
 	}
 	
 	GeneralInfo::generate_all_topics_by_course($lang);
+	Util::print_message("Check point ... generate_general_info() ...");  exit;
 	GeneralInfo::generate_list_of_outcomes();
 	GeneralInfo::generate_list_of_courses_by_outcome($lang);
-
+ 
 	GeneralInfo::generate_list_of_courses_by_area($lang);
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
@@ -96,14 +94,21 @@ sub main()
 # 	exit;
 	
 	Util::begin_time();
-	Common::setup();
-	#Common::read_bok($Common::config{language_without_accents}); exit;
+	Common::setup(); 
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+	      Util::print_message("Reading BOK in $lang ...");
+		  Common::read_bok($lang);
+	      Util::print_message("Generating BOK in $lang ...");
+	      Common::generate_bok($lang);
+	}  
 	Common::gen_only_macros();
 # 	Common::check_preconditions();
 # 	replacecodes();
 
-    GeneralInfo::detect_critical_path();
+    GeneralInfo::detect_critical_path();   
 	GenSyllabi::process_syllabi();
+	
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 	    Util::print_color("Generating books in $lang ...");
@@ -112,13 +117,13 @@ sub main()
 	    GenSyllabi::gen_book_of_bibliography($lang);
 	    GenSyllabi::generate_team_file($lang);
 	}
-
+	
 	generate_general_info();
     #copy_basic_files();
 #         Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));
 # 	
 # 	Common::generate_html_index_by_country();
-	Util::print_time_elapsed();
+	   Util::print_time_elapsed();
 	Util::print_message("process-curricula finished ok ...");
  	#print Dumper(\%{$Common::config{faculty}{"acuadros\@ucsp.edu.pe"}});
  	Common::shutdown();

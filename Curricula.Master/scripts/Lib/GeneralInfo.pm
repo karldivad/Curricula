@@ -990,16 +990,18 @@ sub generate_table_topics_by_course($$$$$$$)
 		else
 		{	$list_of_valid_ku{$ku} = "";	}
 	}
+	
 	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %list_of_valid_ku)
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
-		#Util::print_message("B");
-#  		print "unit_name= $ku, priority= $Common::config{topics_priority}{$ku}\n";
+		Util::print_message("ABC ka=$ka");
+  		print "ka=$ka, unit_name= $ku, priority= $Common::config{topics_priority}{$ku}\n";
 		if( not defined($Common::config{topics_priority}{$ku}) )
 		{	print " falta $ku ";	}
 		#print "\n";
 		$current_row 	= $row_text;
 		my $temp 	= "$ku";
+		#Util::print_message("ABC Check point ... GeneralInfo::generate_table_topics_by_course() ...");  exit;
 		my $ku_label	= Common::format_ku_label($lang, $ku);
 		my $pdflink 	= Common::get_small_icon("none.gif", "");
 

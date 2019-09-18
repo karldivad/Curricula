@@ -921,20 +921,20 @@ sub read_macros($)
     my $count = 0;
     while($bok_txt =~ m/\\newcommand\{\\(.*?)\}((\s|\n)*?)\{/g)
     {
-	my ($cmd)  = ($1);
-	my $cPar   = 1;
-	my $body   = "";
-	while($cPar > 0)
-	{
-		$bok_txt =~ m/((.|\s))/g;
-		$cPar++ if($1 eq "{");
-		$cPar-- if($1 eq "}");
-		$body      .= $1 if($cPar > 0);
-	}
-	$Common::config{macros}{$cmd} = $body;
-# 	if( $cmd eq "SPONEAllTopics")
-# 	{	Util::print_message("*****\n$body\n*****");	exit;	}
-	$count++;
+		my ($cmd)  = ($1);
+		my $cPar   = 1;
+		my $body   = "";
+		while($cPar > 0)
+		{
+			$bok_txt =~ m/((.|\s))/g;
+			$cPar++ if($1 eq "{");
+			$cPar-- if($1 eq "}");
+			$body      .= $1 if($cPar > 0);
+		}
+		$Common::config{macros}{$cmd} = $body;
+	# 	if( $cmd eq "SPONEAllTopics")
+	# 	{	Util::print_message("*****\n$body\n*****");	exit;	}
+		$count++;
     }
     Util::print_message("read_macros ($file_name) $count macros processed ... OK!");
 }
@@ -969,6 +969,7 @@ sub read_bok($)
 {
     my ($lang) = (@_);
     my $bok_macros_file = Common::get_expanded_template("in-bok-macros-file", $lang);
+	Util::print_message("read_bok($lang) ... Reading $bok_macros_file");
     $bok_macros_file =~ s/<LANG>/$lang/g;
     read_macros($bok_macros_file);
 }
@@ -3551,7 +3552,7 @@ sub filter_courses($)
 
 		foreach my $codcour (@{$courses_by_semester{$semester}})
 		{
-			print Dumper( \%{$course_info{$codcour}} );
+			#print Dumper( \%{$course_info{$codcour}} );
 			if($course_info{$codcour}{course_type} eq "Mandatory")
 			{
 					if( not $course_info{$codcour}{group} eq "")
@@ -3882,8 +3883,8 @@ our %bok = ();
 sub parse_bok($)
 {
 	my ($lang) = (@_);
-	my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang);
- 	Util::print_message("Processing $bok_in_file ...");
+	my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang); 
+ 	Util::print_message("Processing $bok_in_file ..."); exit; #ABC
 	my $bok_in = Util::read_file($bok_in_file);
 	my $output_txt = "";
 
@@ -4011,17 +4012,17 @@ sub parse_bok($)
 sub format_ku_label($$)
 {
 	my ($lang, $ku) = (@_);
+	#my $ka = $Common::ku_info{$lang}{$ku}{ka};
 	if(not defined($Common::ku_info{$lang}{$ku}{ka}))
 	{
-		my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang);
- 		Util::print_message("Processing $bok_in_file ...");
+		my $bok_in_file = Common::get_expanded_template("in-bok-macros-file", $lang);
+ 		Util::print_message("format_ku_label($lang, $ku) ... Processing $bok_in_file ...");
 		
 		Util::print_warning("Not defined Common::ku_info{$lang}{$ku}{ka}=$Common::ku_info{$lang}{$ku}{ka} (see file: $bok_in_file ...)");
 		print Dumper(\%{$Common::ku_info{$lang}});
 		exit;
 	}
 	my $ka = $Common::ku_info{$lang}{$ku}{ka};
-
 	my $ku_label = "$ka \\$bok{$lang}{$ka}{KU}{$ku}{name}";
 	my $nhours_txt = "";
 	my $sep = "";
@@ -4895,7 +4896,7 @@ sub process_IS_BOK($)
 	generate_IS_LU			($LU_unprocessed_file, Common::get_expanded_template("InTexDir", $lang)."/LU.tex");
 	generate_IS_BOK_macros	($bok_in_file, Common::get_template("InStyDir")."/bok-macros.sty");
 	generate_IS_LU_macros 	($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty");
-	
+	exit;
 	my $replacements_file = Common::get_template("in-replacements-file");
 	Util::print_message("Generating: $replacements_file ... OK!");
     Util::write_file($replacements_file, $replacements);
@@ -4928,7 +4929,7 @@ sub generate_bok($)
 }
 sub process_courses()
 {
-    parse_courses();
+    parse_courses(); 
 #	print Dumper( \%{$course_info{CS111}} ); exit;
 # 	print Dumper(\%{$course_info{"MA102"}});
 	sort_courses();
