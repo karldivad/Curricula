@@ -50,7 +50,7 @@ sub generate_general_info()
 	}
 	
 	GeneralInfo::generate_all_topics_by_course($lang);
-	Util::print_message("Check point ... generate_general_info() ...");  exit;
+	#Util::print_message("Check point ... generate_general_info() ...");  exit;
 	GeneralInfo::generate_list_of_outcomes();
 	GeneralInfo::generate_list_of_courses_by_outcome($lang);
  
@@ -101,7 +101,8 @@ sub main()
 		  Common::read_bok($lang);
 	      Util::print_message("Generating BOK in $lang ...");
 	      Common::generate_bok($lang);
-	}  
+	}
+	   
 	Common::gen_only_macros();
 # 	Common::check_preconditions();
 # 	replacecodes();

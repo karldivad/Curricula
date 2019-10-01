@@ -3887,7 +3887,7 @@ sub parse_bok($)
 {
 	my ($lang) = (@_);
 	my $bok_in_file = Common::get_expanded_template("in-bok-macros-V0-file", $lang); 
- 	Util::print_message("Processing $bok_in_file ..."); exit; #ABC
+ 	Util::print_message("Processing $bok_in_file ...");  #ABC
 	my $bok_in = Util::read_file($bok_in_file);
 	my $output_txt = "";
 
@@ -4898,8 +4898,8 @@ sub process_IS_BOK($)
 	generate_IS_BOK      	($bok_in_file, "$OutputTexDir/IS-bok.tex");
 	generate_IS_LU			($LU_unprocessed_file, Common::get_expanded_template("InTexDir", $lang)."/LU.tex");
 	generate_IS_BOK_macros	($bok_in_file,         Common::get_template("InStyDir")."/bok-macros.sty", $lang);
-	generate_IS_LU_macros 	($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty",  $lang);
-	exit;
+	generate_IS_LU_macros 	($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty", $lang);
+
 	my $replacements_file = Common::get_template("in-replacements-file");
 	Util::print_message("Generating: $replacements_file ... OK!");
     Util::write_file($replacements_file, $replacements);
@@ -4914,7 +4914,6 @@ sub generate_bok($)
 	{
 		Common::parse_bok($lang);
 		Common::gen_bok($lang);
-		#exit;
 	}
 	elsif($config{area} eq "IS")
 	{
