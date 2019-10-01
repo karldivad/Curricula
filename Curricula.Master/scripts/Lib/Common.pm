@@ -3564,7 +3564,10 @@ sub filter_courses($)
 			}
 			else
 			{
-				Util::print_color("course_info{$codcour}{group}=\"$course_info{$codcour}{group}\", course_info{$codcour}{course_type}=$course_info{$codcour}{course_type} (Sem=$semester) It is an elective course. It MUST have a group ...");
+				if( $course_info{$codcour}{group} eq "" )
+				{	Util::print_color("course_info{$codcour}{group}=\"$course_info{$codcour}{group}\", course_info{$codcour}{course_type}=$course_info{$codcour}{course_type} (Sem=$semester) It is an elective course. It MUST have a group ...");	
+					Util::print_error("Error !");
+				}
 				assert(not $course_info{$codcour}{group} eq "");
 				my $group = $course_info{$codcour}{group};
 				if( not defined($config{semester_electives}{$semester}{$group}{list}) )
@@ -4679,9 +4682,9 @@ sub generate_IS_LU($$)
 	Util::print_message("generate_IS_LU ($in_file => $out_file) ($count LU processed) (ready for Chapter BOK!) OK!");
 }
 
-sub generate_IS_LU_macros($$)
+sub generate_IS_LU_macros($$$)
 {
-	my ($in_file, $out_file) = (@_);
+	my ($in_file, $out_file, $lang) = (@_);
 	Util::precondition("generate_IS_LU");
 	my $fulltxt = Util::read_file($in_file);
 	$fulltxt =~ s/\n\n/\n/g;
@@ -4792,9 +4795,9 @@ sub generate_IS_BOK($$)
 }
 
 # pending
-sub generate_IS_BOK_macros($$)
+sub generate_IS_BOK_macros($$$)
 {
-	my ($in_file, $out_file) = (@_);
+	my ($in_file, $out_file, $lang) = (@_);
 	my $fulltxt = Util::read_file($in_file);
 	$fulltxt =~ s/\n\n/\n/g;
 
@@ -4894,8 +4897,8 @@ sub process_IS_BOK($)
 	#$Common::config{topics_priority}{$ku} = $Common::config{topics_priority_counter}++;
 	generate_IS_BOK      	($bok_in_file, "$OutputTexDir/IS-bok.tex");
 	generate_IS_LU			($LU_unprocessed_file, Common::get_expanded_template("InTexDir", $lang)."/LU.tex");
-	generate_IS_BOK_macros	($bok_in_file, Common::get_template("InStyDir")."/bok-macros.sty");
-	generate_IS_LU_macros 	($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty");
+	generate_IS_BOK_macros	($bok_in_file,         Common::get_template("InStyDir")."/bok-macros.sty", $lang);
+	generate_IS_LU_macros 	($LU_unprocessed_file, Common::get_template("InStyDir")."/LU-macros.sty",  $lang);
 	exit;
 	my $replacements_file = Common::get_template("in-replacements-file");
 	Util::print_message("Generating: $replacements_file ... OK!");
