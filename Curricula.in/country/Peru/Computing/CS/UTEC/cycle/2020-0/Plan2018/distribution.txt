@@ -1,0 +1,15 @@
+
+% Semester #2 .
+% CS1D02. Estructuras Discretas II (Obligatorio)
+CS1D02->jfiestas@utec.edu.pe:T
+
+
+% Semester #4 .
+% CS2101. Teoría de la Computación (Obligatorio)
+CS2101->jfiestas@utec.edu.pe:T
+
+
+% Semester #6 .
+% CS2301. Redes y Comunicaciones (Obligatorio)
+CS2301->jquinto@utec.edu.pe:T
+
