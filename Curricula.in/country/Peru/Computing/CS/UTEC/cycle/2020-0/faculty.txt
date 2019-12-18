@@ -854,12 +854,6 @@
 \courses{CS2S01,CS2201}
 --END-PROFESSOR--
 
-
-
-
-
-
-
 -BEGIN-PROFESSOR--
 \email{}  
 \prefix{}
@@ -884,8 +878,3 @@
 \Research{} 
 \courses{}
 --END-PROFESSOR--
-
-
-
-
-

@@ -994,8 +994,8 @@ sub generate_table_topics_by_course($$$$$$$)
 	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %list_of_valid_ku)
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
-		Util::print_message("ABC ka=$ka");
-  		print "ka=$ka, unit_name= $ku, priority= $Common::config{topics_priority}{$ku}\n";
+		#Util::print_message("ABC ka=$ka");
+  		#print "ka=$ka, unit_name= $ku, priority= $Common::config{topics_priority}{$ku}\n";
 		if( not defined($Common::config{topics_priority}{$ku}) )
 		{	print " falta $ku ";	}
 		#print "\n";
