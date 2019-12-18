@@ -617,16 +617,23 @@ sub gen_batch_to_compile_syllabi()
 	my $html_out_dir_syllabi = $html_out_dir."/syllabi";
 	$output .= "if(\$course == \"all\") then\n";
 	$output .= "\trm -rf $html_out_dir_syllabi\n";
-	$output .= "\tmkdir -p $html_out_dir_syllabi\n\n";
 
 	foreach my $TempDir ("OutputSyllabiDir", "OutputFullSyllabiDir")
 	{
 		my $tex_out_dir_syllabi	 = Common::get_template($TempDir);
 		#$output .= "if(\$course == \"all\") then\n";
 		$output .= "\trm -rf $tex_out_dir_syllabi\n";
-		$output .= "\tmkdir -p $tex_out_dir_syllabi\n";
 	}
 	$output .= "endif\n\n";
+
+	$output .= "mkdir -p $html_out_dir_syllabi\n";
+	foreach my $TempDir ("OutputSyllabiDir", "OutputFullSyllabiDir")
+	{
+		my $tex_out_dir_syllabi	 = Common::get_template($TempDir);
+		#$output .= "if(\$course == \"all\") then\n";
+		$output .= "mkdir -p $tex_out_dir_syllabi\n";
+	}
+	$output .= "\n";
 
 	my ($gen_syllabi, $cp_bib) = ("", "");
 	my $scripts_dir 		= Common::get_template("InScriptsDir");
