@@ -11,7 +11,7 @@ use Scalar::Util qw(looks_like_number);
 our $command     = "";
 our $institution = "";
 our $filter      = "";
-our $area	 = "";
+our $area	 	 = "";
 our $version	 = "";
 our $discipline  = "";
 
@@ -487,14 +487,14 @@ sub set_initial_paths()
 	Util::precondition("set_global_variables");
 	assert(defined($config{language_without_accents}) and defined($config{discipline}));
 
-	$path_map{"curricula-main"}			= "curricula-main.tex";
+	$path_map{"curricula-main"}				= "curricula-main.tex";
 	$path_map{"unified-main-file"}			= "unified-curricula-main.tex";
     $path_map{"file_for_page_numbers"}		= "curricula-main.aux";
 
-	$path_map{"country"}				= $config{country};
-	$path_map{"country_without_accents"}		= $config{country_without_accents};
-	$path_map{"language"}				= $config{language};
-	$path_map{"language_without_accents"}		= $config{language_without_accents};
+	$path_map{"country"}					= $config{country};
+	$path_map{"country_without_accents"}	= $config{country_without_accents};
+	$path_map{"language"}					= $config{language};
+	$path_map{"language_without_accents"}	= $config{language_without_accents};
 
 ################################################################################################################
 # InputsDirs
@@ -516,7 +516,7 @@ sub set_initial_paths()
 	$path_map{InCountryDir}				= GetInCountryBaseDir($path_map{country_without_accents});
 	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex";
 	
-	$path_map{InInstDir}				= $path_map{InCountryDir}."/$config{discipline}/$config{area}/$config{institution}";
+	$path_map{InInstDir}				= GetInstDir($path_map{InCountryDir}, $config{discipline}, $config{area}, $config{institution});
 	$path_map{InInstUCSPDir}			= GetInstDir("Peru", "Computing", "CS", "UCSP");
 	$path_map{InInstitutionBaseDir}		= "$path_map{InDir}/institution/$path_map{country_without_accents}/$config{institution}";
 
@@ -734,7 +734,7 @@ sub get_file_name($)
 # ok
 sub read_discipline_config()
 {
-	my %discipline_cfg	= read_config_file("discipline-config");
+	my %discipline_cfg	= read_config_file(get_template("discipline-config"));
 	#print Dumper (\%discipline_cfg); exit;
 	my ($key, $value);
 	while ( ($key, $value)  = each(%discipline_cfg) )
@@ -873,9 +873,8 @@ sub concat_key_to_dictionary($$$)
 # ok
 sub read_config_file($)
 {
-	my ($tpl) 		= (@_);
- 	my $filename 		= get_template($tpl);
-	return read_config_file_details($filename);
+	my ($file) 		= (@_);
+	return read_config_file_details($file);
 }
 
 sub read_dictionary_file($)
@@ -888,8 +887,8 @@ sub read_dictionary_file($)
 # ok
 sub read_config($)
 {
-	my ($tpl) = (@_);
-	my %map = read_config_file($tpl);
+	my ($file) = (@_);
+	my %map = read_config_file($file);
 	my ($key, $value);
 	while ( ($key, $value) = each(%map))
 	{
@@ -1408,7 +1407,19 @@ sub read_institution_info($)
 	my $txt  = Util::read_file($file);
 	my %this_inst_info = ();
 	Util::print_message("Reading read_institution_info ($file) ... ");
-# 	print "^^^^^^^^^^^^^^^^^^^^^^^^^\n$txt\n^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
+
+    # Read PlanConfig
+	my $PlanConfig = "";
+	if($txt =~ m/\\newcommand\{\\PlanConfig\}\{(.*?)\}/)
+	{	$PlanConfig = $1;			}
+
+	my %PlanConfigVars = read_config_file(get_template("InInstDir")."/$PlanConfig.tex");
+	print "read_institution_info: 1418\n";
+	print Dumper(\%PlanConfigVars); exit;
+
+	while ( my ($key, $value) = each(%PlanConfigVars) )
+	{	$config{dictionary}{$key} = $value; 	}
+
 	# Read the Semester
 	if($txt =~ m/\\newcommand\{\\Semester\}\{(.*?)\\.*?\}/)
 	{	$this_inst_info{Semester} = $1;			}
@@ -1663,7 +1674,7 @@ sub set_initial_configuration($)
 	#$config{lang_for_latex}{Portugues} = "english";
 	$config{COL4LABS} = "lh";
 
-        system("mkdir -p $config{out}/tex");
+    system("mkdir -p $config{out}/tex");
 
 	# Parse the command
 	parse_input_command($command);
@@ -1671,9 +1682,9 @@ sub set_initial_configuration($)
 	read_institutions_list();
 	$config{discipline}	  	= $inst_list{$config{institution}}{discipline};
 
-	$config{InInstDir} 				= GetInstDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
-	$path_map{"this-institutions-info-file"}	= GetInstitutionInfo($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
-	$path_map{"copyrights"}				= "$config{in}/copyrights.tex";
+	$config{InInstDir} 	= $path_map{InInstDir} = GetInstDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
+	$path_map{"this-institutions-info-file"}   = GetInstitutionInfo($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
+	$path_map{"copyrights"}			= "$config{in}/copyrights.tex";
 
 	# Read copyrights
 	my %copyrights_vars = read_copyrights( get_template("copyrights") );
@@ -1709,20 +1720,20 @@ sub set_initial_configuration($)
 	read_discipline_config();
 # 	print Dumper(\@{$config{SyllabiDirs}}); exit;
 
-	read_config("all-config");
+	read_config(get_template("all-config"));
 
 
 	$path_map{"crossed-reference-file"}		= $config{main_file}.".aux";
-	read_config("in-area-all-config-file"); # i.e. CS-All.config
- 	read_config("in-area-config-file");     # i.e. CS.config
-	read_config("in-institution-config-file");     # i.e. institution.config
+	read_config(get_template("in-area-all-config-file")); # i.e. CS-All.config
+ 	read_config(get_template("in-area-config-file"));     # i.e. CS.config
+	read_config(get_template("in-institution-config-file"));     # i.e. institution.config
 	#Util::print_message("CS=$config{dictionary}{AreaDescription}{CS}"); exit;
 
-	%{$config{temp_colors}} = read_config_file("colors");
+	%{$config{temp_colors}} = read_config_file(get_template("colors"));
 
 	# Read dictionary for this language
 
-	%{$config{dictionary}} = read_config_file("dictionary");
+	%{$config{dictionary}} = read_config_file(get_template("dictionary"));
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
 	      my $lang_prefix = "";
@@ -1737,7 +1748,7 @@ sub set_initial_configuration($)
 # 	print Dumper(\%{$config{dictionaries}{English}});
 
 	# Read specific config for its country
-	my %countryvars = read_config_file("in-country-config-file");
+	my %countryvars = read_config_file(get_template("in-country-config-file"));
 	while ( my ($key, $value) = each(%countryvars) )
 	{	$config{dictionary}{$key} = $value; 	}
 
@@ -1745,7 +1756,7 @@ sub set_initial_configuration($)
 	my $inst_config_file = get_template("in-institution-config-file");
 	if( -e $inst_config_file )
 	{
-	    my %instvars = read_config_file("in-institution-config-file");
+	    my %instvars = read_config_file(get_template("in-institution-config-file"));
 	    while ( my ($key, $value) = each(%instvars) )
 	    {	$config{$key} = $value; 	}
 	}
