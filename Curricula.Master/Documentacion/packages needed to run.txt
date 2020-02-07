@@ -52,6 +52,11 @@ sudo apt-get update && sudo apt-get install medibuntu-keyring && sudo apt-get up
 
 sudo apt install aptitude
 
+https://tex.stackexchange.com/questions/52988/avoid-linebreaks-in-latex-console-log-output-or-increase-columns-in-terminal
+error_line = 254
+half_error_line = 238
+max_print_line = 250
+sudo vi /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 **************************************************
 brew install ps2eps;
 * apt-get install dot2tex;

@@ -198,11 +198,11 @@ sub read_syllabus_info($$$)
 	my %macro_for_env = ("outcomes" => "ShowOutcome", "competences"=>"ShowCompetence");
 	foreach my $env ("outcomes", "competences")
 	{
-	      my $version = $Common::config{OutcomesVersionDefault};
-	      my $body = "";
-	      my $syllabus_in_copy = $syllabus_in;
-	      while( $syllabus_in_copy =~ m/\\begin\{$env\}(.*?)\n((?:.|\n)*?)\\end\{$env\}/g) # legacy version of this environment
-	      {		my $version_brute = $1;
+		my $version = $Common::config{OutcomesVersionDefault};
+		my $body = "";
+		my $syllabus_in_copy = $syllabus_in;
+		while( $syllabus_in_copy =~ m/\\begin\{$env\}(.*?)\n((?:.|\n)*?)\\end\{$env\}/g) # legacy version of this environment
+		{	my $version_brute = $1;
 			$body = $2;
 # 			Util::print_message("Version detected ($env) \"$version_brute\"");
 			$version = $version_brute;
@@ -215,11 +215,11 @@ sub read_syllabus_info($$$)
 				$syllabus_in_copy =~ s/\\begin\{$env\}\s*.*?\s*\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\{$version\}\n$body\\end\{$env\}/g;
 			}
 			$Common::course_info{$codcour}{$env}{$version}{txt} 	= $body;
-	      }
-	      $syllabus_in = $syllabus_in_copy;
-	      $Common::course_info{$codcour}{$env}{$version}{itemized}	= "";
-	      #$Common::course_info{$codcour}{$env}{$version}{array}	= [];
-	      $Common::course_info{$codcour}{$env}{$version}{count}     	= 0;
+		}
+		$syllabus_in = $syllabus_in_copy;
+		$Common::course_info{$codcour}{$env}{$version}{itemized}	= "";
+		#$Common::course_info{$codcour}{$env}{$version}{array}	= [];
+		$Common::course_info{$codcour}{$env}{$version}{count}     	= 0;
 	}
 
 	my $version = $Common::config{OutcomesVersion};
@@ -227,7 +227,9 @@ sub read_syllabus_info($$$)
 	{
 	      #print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
 	      if( not defined($Common::course_info{$codcour}{$env}{$version}) )
-	      {		next;		}
+	      {		Util::print_message("read_syllabus_info($codcour, $semester, $lang): Not defined Common::course_info{$codcour}{$env}{$version}");	
+			  	next;		
+		  }
 
 	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{$version}{txt}) )
 	      {
@@ -448,6 +450,7 @@ sub read_syllabus_info($$$)
 	}
 	else
 	{	Util::write_file($fullname, $syllabus_in);	}
+	
 	return %map;
 }
 
@@ -498,14 +501,14 @@ sub read_sumilla_template()
 	my $syllabus_file = Common::get_template("in-syllabus-template-file");
 	if(not -e $syllabus_file)
 	{
-	    Util::print_warning("It seems that you forgot the template sumilla file ... \"$syllabus_file\"");
-	    my $InstDir = Common::get_template("InInstDir");
-	    system("mkdir -p \"$InstDir\"");
-	    my $UCSPDir = Common::get_template("InInstUCSPDir");
-	    my $command = "cp \"$UCSPDir/syllabus-template.tex\" \"$InstDir/.\"";
-	    Util::print_warning("Executing command: $command");
-	    system($command);
-	    Util::halt("I just created template sumilla file \"$syllabus_file\" based on CS-UCSP");
+	    Util::print_error("It seems that you forgot the template sumilla file ... \"$syllabus_file\"");
+	    #my $InProgramDir = Common::get_template("InProgramDir");
+	    #system("mkdir -p \"$InProgramDir\"");
+	    #my $UCSPDir = Common::get_template("InInstUCSPDir");
+	    #my $command = "cp \"$UCSPDir/syllabus-template.tex\" \"$InProgramDir/.\"";
+	    #Util::print_warning("Executing command: $command");
+	    #system($command);
+	    #Util::halt("I just created template sumilla file \"$syllabus_file\" based on CS-UCSP");
 
 	}
 	$Common::config{sumilla_template} = Util::read_file($syllabus_file);
@@ -825,7 +828,7 @@ sub gen_book_of_descriptions($)
 sub generate_team_file($)
 {	
 	my ($lang) = (@_);
-	my $TeamContentBase 	= Util::read_file(Common::get_template("InInstDir")."/team.tex");
+	my $TeamContentBase 	= Util::read_file(Common::get_template("InProgramDir")."/team.tex");
 	my $OutputTeamFileBase	= Common::get_template("out-team-file");
 	
 	my $TeamContent = Common::translate($TeamContentBase, $lang);
@@ -894,29 +897,33 @@ sub generate_team_file($)
 
 sub generate_formatted_syllabus($$$)
 {
-      my ($codcour, $source, $target) = (@_);
-      my $active_version = $Common::config{OutcomesVersion};
-      my $source_txt = Util::read_file($source);
+	my ($codcour, $source, $target) = (@_);
+	my $active_version = $Common::config{OutcomesVersion};
+	my $source_txt = Util::read_file($source);
 
-      foreach my $env ("outcomes", "competences")
-      {
-	    my $syllabus_in_copy = $source_txt;
-	    while( $syllabus_in_copy =~ m/\\begin\{$env\}\{(.*?)\}\n((?:.|\n)*?)\\end\{$env\}/g)
-	    {	my $version = $1;
-		my $body = $2;
-		if( $version eq $active_version ) # This is an unnecessary environment
-		{	$syllabus_in_copy =~ s/\\begin\{$env\}\{$version\}\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\n$body\\end\{$env\}/g;	}
-		else
-		{	$syllabus_in_copy =~ s/\\begin\{$env\}\{$version\}\n((?:.|\n)*?)\\end\{$env\}//g;	}
+	foreach my $env ("outcomes", "competences")
+	{
+		my $syllabus_in_copy = $source_txt;
+		while( $syllabus_in_copy =~ m/\\begin\{$env\}\{(.*?)\}\s*\n((?:.|\n)*?)\\end\{$env\}/g)
+		{	my $version = $1;
+			my $body = $2;
+			if( $version eq $active_version ) # This is a necessary environment
+			{	$syllabus_in_copy =~ s/\\begin\{$env\}\{$version\}\s*\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\n$1\\end\{$env\}/g;	}
+			else
+			{	$syllabus_in_copy =~ s/\\begin\{$env\}\{$version\}\s*\n((?:.|\n)*?)\\end\{$env\}\s*\n//g;	}
 
-	    }
-	    $source_txt = $syllabus_in_copy;
-      }
-      while ($source_txt =~ m/\n\n\n/ )
-      {		$source_txt =~ s/\n\n\n/\n\n/g;		}
+		}
+		$source_txt = $syllabus_in_copy;
+	}
+	while ($source_txt =~ m/\n\n\n/ )
+	{		$source_txt =~ s/\n\n\n/\n\n/;		}
 
-      Util::print_message("$source -> $target (OK)");
-      Util::write_file($target, $source_txt);
+	Util::print_message("$source -> $target (OK)");
+	Util::write_file($target, $source_txt);
+	#if($codcour eq "IN0054")
+	#{	Util::print_message("generate_formatted_syllabus($codcour, $source, $target)");
+	#	exit;	
+	#}
 }
 
 sub generate_syllabi_include()

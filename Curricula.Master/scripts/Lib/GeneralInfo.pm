@@ -474,12 +474,14 @@ sub generate_lu_index()
 sub generate_description($$)
 {
 	my ($type, $lang) = (@_);
-	my ($in_file, $out_file) = (Common::get_expanded_template("in-description-foreach-$type-file", $lang), Common::get_expanded_template("out-description-foreach-$type-file", $lang));
+	my ($in_file, $out_file) = (Common::get_expanded_template("in-description-foreach-$type-file" , $lang), 
+								Common::get_expanded_template("out-description-foreach-$type-file", $lang));
 	my ($keyforhash) = $type."_priority";
 	my $key_for_used_keys = "used_$type";
 	if( not -e $in_file )
 	{	Util::print_message("I can not find file \"$in_file\" did you create it?");	 }
 
+	Util::print_message("Reading $in_file ...");
 	my $txt = Util::read_file($in_file);
 	my %description  = ();
 	foreach (split("\n", $txt))
@@ -1166,7 +1168,7 @@ sub generate_list_of_courses_by_outcome($)
 	      }
 	      $output_txt .= "\n";
 	}
-	my $output_file = Common::get_template("list-of-courses-by-outcome");
+	my $output_file = Common::get_expanded_template("list-of-courses-by-outcome", $lang);
 	Util::print_message("Generating list_of_courses_by_outcome ok ($output_file)");
 	Util::write_file($output_file, $output_txt);
 }
@@ -1280,9 +1282,15 @@ sub generate_outcomes_by_course($$$$$$$)
 		$current_row = $row_text;
 
 		my $new_txt = "";
+		#@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_defs} = values %outcomes_defs;
+		#print Dumper( \%{$Common::config{macros}{outcomes}} );
+		#Util::print_message("Lang=$lang");
+		#Util::print_message("Common::config{macros}{outcomes}{$lang}{outcome$outcome}=".$Common::config{macros}{outcomes}{$lang}{"outcome$outcome"});
+		#Util::print_message("Common::config{macros}{outcomes}{$lang}{outcome$outcome"."Short}=".$Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"});
+		#exit;
 		if($background_flag == 1 && $Common::config{graph_version}>= 2)
-		{	$new_txt = "$outcome) & \\ShowShortOutcome{$outcome}";		}
-		else{	$new_txt = "$Common::config{cell} $outcome) & $Common::config{cell} \\ShowShortOutcome{$outcome}";		}
+		{	$new_txt = "$outcome) & ". $Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"};		}
+		else{	$new_txt = "$Common::config{cell} $outcome) & $Common::config{cell} ". $Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"};		}
 
 		$current_row =~ s/--outcome--/$new_txt/g;
 		my $sum_row = 1;
@@ -1369,8 +1377,7 @@ sub generate_all_outcomes_by_course($)
 	#$output_txt	.= "\\end{landscape}\n";
 	Util::write_file("$outfile.tex", $output_txt);
 
-	my $big_file 	= Common::ExpandTags(Common::get_template("in-all-outcomes-by-course-poster"), $lang);
-
+	my $big_file 	= Common::get_expanded_template("in-all-outcomes-by-course-poster", $lang);
 	generate_outcomes_by_course($lang, 1, 10, 500, $big_file, 90, "poster");
 	Util::print_message("generate_all_outcomes_by_course($lang_prefix) OK!");
 }

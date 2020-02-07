@@ -138,6 +138,15 @@ sub ExpandTags($$)
 	return $InTxt; 
 }
 
+sub copy_file_expanding_tags($$$)
+{
+	my ($InFile, $OutFile, $lang) = (@_);
+	my $infile_txt = Util::read_file($InFile);
+	$infile_txt = ExpandTags($infile_txt, $lang);
+	Util::print_message("Copying and expanding to $lang: $InFile -> $OutFile");
+	Util::write_file($OutFile, $infile_txt);
+}
+
 sub GetInCountryBaseDir($)
 {
     my ($country) =  (@_);
@@ -147,19 +156,19 @@ sub GetInCountryBaseDir($)
 sub GetOutCountryBaseDir($)
 {
     my ($country) =  (@_);
-    return $path_map{InDir}."/country/".filter_non_valid_chars($country);
+    return $path_map{OutDir}."/country/".filter_non_valid_chars($country);
 }
 
-sub GetInstDir($$$$)
+sub GetProgramInDir($$$$)
 {
 	my ($country, $discipline, $area, $inst) = (@_);
 	return GetInCountryBaseDir($country)."/$discipline/$area/$inst";
 }
 
-sub GetInstitutionInfo($$$$)
+sub GetInstitutionInfo($$)
 {
-	my ($country, $discipline, $area, $inst) = (@_);
-	return GetInstDir($country, $discipline, $area, $inst)."/institution-info.tex";
+	my ($country, $inst) = (@_);
+	return GetInCountryBaseDir($country)."/institutions/$inst.tex";
 }
 
 sub filter_non_valid_chars($)
@@ -514,17 +523,17 @@ sub set_initial_paths()
 	$path_map{InDisciplineDir}			= $path_map{InDisciplinesBaseDir}."/$config{discipline}";
 	$path_map{InScriptsDir}				= "./scripts";
 	$path_map{InCountryDir}				= GetInCountryBaseDir($path_map{country_without_accents});
+	$path_map{InInstConfigDir}			= "$path_map{InCountryDir}/institutions";
 	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex";
 	
-	$path_map{InInstDir}				= GetInstDir($path_map{InCountryDir}, $config{discipline}, $config{area}, $config{institution});
-	$path_map{InInstUCSPDir}			= GetInstDir("Peru", "Computing", "CS", "UCSP");
+	$path_map{InInstUCSPDir}			= GetProgramInDir("Peru", "Computing", "CS", "UCSP");
 	$path_map{InInstitutionBaseDir}		= "$path_map{InDir}/institution/$path_map{country_without_accents}/$config{institution}";
 
-	$path_map{InEquivDir}				= $path_map{InInstDir}."/equivalences";
+	$path_map{InEquivDir}				= $path_map{InProgramDir}."/equivalences";
 	$path_map{InLogosDir}				= $path_map{InCountryDir}."/logos";
 	$path_map{InTemplatesDot}			= $path_map{InCountryDir}."/dot";
 	$path_map{InPeopleDir}				= $config{InPeopleDir};
-	$path_map{InFacultyPhotosDir}		= $path_map{InInstDir}."/photos";
+	$path_map{InFacultyPhotosDir}		= $path_map{InProgramDir}."/photos";
 	$path_map{InFacultyIconsDir}		= $path_map{InDir}."/html";
 
 #############################################################################################################################
@@ -549,7 +558,7 @@ sub set_initial_paths()
 	$path_map{OutputFacultyIconDir}		= $path_map{OutputFacultyDir}."/icon";			system("mkdir -p $path_map{OutputFacultyIconDir}");
 	$path_map{LinkToCurriculaBase}		= $config{LinkToCurriculaBase};
 
-################################################################################################################################33
+################################################################################################################################
 # Input and Output files
 
 	# People Files
@@ -591,14 +600,14 @@ sub set_initial_paths()
 	$path_map{"out-comparing-with-standards-file"}	= $path_map{OutputTexDir}."/comparing-with-standards-<LANG>.tex";
 	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster-<LANG>.tex";
 	$path_map{"out-list-of-outcomes"}			= $path_map{OutputTexDir}."/list-of-outcomes.tex";
-	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome.tex";
+	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome-<LANG>.tex";
 
 	$path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
 	$path_map{"out-equivalences-file"}			= $path_map{OutputTexDir}."/equivalences.tex";
 
 	$path_map{"in-Book-of-Syllabi-main-file"}	= $path_map{InAllTexDir}."/BookOfSyllabi.tex";
-	$path_map{"out-Book-of-Syllabi-main-file"}		= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
+	$path_map{"out-Book-of-Syllabi-main-file"}	= $path_map{OutputTexDir}."/BookOfSyllabi-<LANG>.tex";
 	$path_map{"in-Book-of-Syllabi-face-file"}	= $path_map{InAllTexDir}."/Book-Face.tex";
 	$path_map{"out-Syllabi-includelist-file"}	= $path_map{OutputTexDir}."/pdf-syllabi-includelist-<LANG>.tex";
 
@@ -633,18 +642,18 @@ sub set_initial_paths()
 	$path_map{"in-description-foreach-prefix-file"}   = $path_map{InTexDir}."/description-foreach-prefix.tex";
 	$path_map{"out-description-foreach-prefix-file"}  = $path_map{OutputTexDir}."/prefix-description-<LANG>.tex";
 
-	$path_map{"in-sumilla-template-file"}			= $path_map{InInstDir}."/sumilla-template.tex";
-	$path_map{"in-syllabus-template-file"}			= $path_map{InInstDir}."/syllabus-template.tex";
-	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InInstDir}."/syllabus-delivery-control.tex";
-	$path_map{"in-additional-institution-info-file"}= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
-	$path_map{"in-distribution-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
-	$path_map{"in-this-semester-dir"}				= $path_map{InInstDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+	$path_map{"in-sumilla-template-file"}			= $path_map{InProgramDir}."/sumilla-template.tex";
+	$path_map{"in-syllabus-template-file"}			= $path_map{InProgramDir}."/syllabus-template.tex";
+	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InProgramDir}."/syllabus-delivery-control.tex";
+	$path_map{"in-additional-institution-info-file"}= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
+	$path_map{"in-distribution-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+	$path_map{"in-this-semester-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}";
 	$path_map{"in-distribution-file"}				= $path_map{"in-distribution-dir"}."/distribution.txt";
 	$path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
 	$path_map{"in-specific-evaluation-file"}		= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
 	$path_map{"out-only-macros-file"}				= $path_map{OutputTexDir}."/macros-only.tex";
 
-	$path_map{"faculty-file"}						= $path_map{InInstDir}."/cycle/$config{Semester}/faculty.txt";
+	$path_map{"faculty-file"}						= $path_map{InProgramDir}."/cycle/$config{Semester}/faculty.txt";
 
 	$path_map{"faculty-template.html"}				= $path_map{InFacultyIconsDir}."/faculty.html";
 	$path_map{"NoFace-file"}						= $path_map{InFacultyIconsDir}."/noface.gif";
@@ -916,6 +925,7 @@ sub read_macros($)
 {
     my ($file_name) = (@_);
     my $bok_txt 	  = clean_file(Util::read_file($file_name));
+	my %macros = ();
 
     my $count = 0;
     while($bok_txt =~ m/\\newcommand\{\\(.*?)\}((\s|\n)*?)\{/g)
@@ -930,12 +940,41 @@ sub read_macros($)
 			$cPar-- if($1 eq "}");
 			$body      .= $1 if($cPar > 0);
 		}
-		$Common::config{macros}{$cmd} = $body;
+		$macros{$cmd} = $body;
 	# 	if( $cmd eq "SPONEAllTopics")
 	# 	{	Util::print_message("*****\n$body\n*****");	exit;	}
 		$count++;
     }
     Util::print_message("read_macros ($file_name) $count macros processed ... OK!");
+	return %macros;
+}
+
+sub read_outcomes($)
+{
+    my ($file_name) = (@_);
+    my $bok_txt 	  = clean_file(Util::read_file($file_name));
+	my %macros = ();
+
+    my $count = 0;
+    while($bok_txt =~ m/\\Define(.*?)\{(.*?)\}\{/g)
+    {
+		my ($cmd, $code)  = (lc $1, $2);
+		my $cPar   = 1;
+		my $body   = "";
+		while($cPar > 0)
+		{
+			$bok_txt =~ m/((.|\s))/g;
+			$cPar++ if($1 eq "{");
+			$cPar-- if($1 eq "}");
+			$body      .= $1 if($cPar > 0);
+		}
+		$macros{"$cmd$code"} = $body;
+	# 	if( $cmd eq "SPONEAllTopics")
+	# 	{	Util::print_message("*****\n$body\n*****");	exit;	}
+		$count++;
+    }
+    Util::print_message("read_outcomes ($file_name) $count macros processed ... OK!");
+	return %macros;
 }
 
 sub read_special_macros($$)
@@ -970,7 +1009,8 @@ sub read_bok($)
     my $bok_macros_file = Common::get_expanded_template("in-bok-macros-file", $lang);
 	Util::print_message("read_bok($lang) ... Reading $bok_macros_file");
     $bok_macros_file =~ s/<LANG>/$lang/g;
-    read_macros($bok_macros_file);
+    my %macros = read_macros($bok_macros_file);
+	@{$Common::config{macros}}{keys %macros} = values %macros;
 }
 
 sub read_replacements()
@@ -1299,8 +1339,8 @@ sub gen_batch($$$)
 	my $InTexDir = Common::get_expanded_template("InTexDir", $lang);
 	$txt =~ s/<IN_TEX_DIR>/$InTexDir/g;
 
-	my $InInstDir = Common::get_template("InInstDir");
-	$txt =~ s/<IN_INST_DIR>/$InInstDir/g;
+	my $InProgramDir = Common::get_template("InProgramDir");
+	$txt =~ s/<IN_INST_DIR>/$InProgramDir/g;
 	
 	my $OutputDir = Common::get_template("OutDir");
 	$txt =~ s/<OUTPUT_DIR>/$OutputDir/g;
@@ -1401,46 +1441,61 @@ sub read_copyrights($)
 }
 
 # ok
-sub read_institution_info($)
+sub process_institution_info($$)
 {
-	my ($file) = (@_);
-	my $txt  = Util::read_file($file);
+	Aqui me quede: hay que partir esta funcion en dos process porque regraba el archivo luego de leerlo y aumentarle cosas ...
+	my ($txt, $file) = (@_);
 	my %this_inst_info = ();
-	Util::print_message("Reading read_institution_info ($file) ... ");
 
     # Read PlanConfig
 	my $PlanConfig = "";
 	if($txt =~ m/\\newcommand\{\\PlanConfig\}\{(.*?)\}/)
 	{	$PlanConfig = $1;			}
+	my $PlanConfigFile = get_template("InProgramDir")."/$PlanConfig.tex";
+	my %PlanConfigVars = read_macros($PlanConfigFile);
 
-	my %PlanConfigVars = read_config_file(get_template("InInstDir")."/$PlanConfig.tex");
-	print "read_institution_info: 1418\n";
-	print Dumper(\%PlanConfigVars); exit;
-
-	while ( my ($key, $value) = each(%PlanConfigVars) )
-	{	$config{dictionary}{$key} = $value; 	}
-
+	###################################################################################################
 	# Read the Semester
-	if($txt =~ m/\\newcommand\{\\Semester\}\{(.*?)\\.*?\}/)
-	{	$this_inst_info{Semester} = $1;			}
+	if(defined($PlanConfigVars{Semester}))
+	{	($PlanConfigVars{Semester}) = ($this_inst_info{Semester}) = ($PlanConfigVars{Semester} =~ m/(.*)\\.*/);
+	}
 	else
-	{	Util::print_error("Error (read_institution_info): there is no Semester configured in \"$file\"\n");	}
+	{	Util::print_error("Error (process_institution_info): there is no Semester configured in \"$file\"\n");	}
+	Util::print_message("Semester=$this_inst_info{Semester} ...");
 
+	###################################################################################################
 	# Read the Active Plan
-	if($txt =~ m/\\newcommand\{\\YYYY\}\{(.*?)\\.*?\}/)
-	{	$this_inst_info{YYYY} = $1;
-		$this_inst_info{Plan} = $1;
+	if( defined($PlanConfigVars{YYYY}) )
+	{	($this_inst_info{YYYY}) = ($PlanConfigVars{YYYY} =~ m/(.*)\\.*/);
+		 $this_inst_info{Plan}	=  $PlanConfigVars{YYYY} = $this_inst_info{YYYY};
 	}
 	else
-	{	Util::print_error("Error (read_institution_info): there is no YYYY (Plan) configured in \"$file\"\n");	}
+	{	Util::print_error("Error (process_institution_info): there is no YYYY (Plan) configured in \"$file\"\n");	}
+	Util::print_message("YYYY=$this_inst_info{YYYY} ...");
 
-	# Read the Range of semesters to generate
-	if($txt =~ m/\\newcommand\{\\Range\}\{(.*?)-(.*?)\}/) # \newcommand{\Range}{4-7} %Plan
-	{	$this_inst_info{SemMin} = $1;
-		$this_inst_info{SemMax} = $2;
-	}
+	###################################################################################################
+	# Read the Range of semesters to generate 
+	if(defined($PlanConfigVars{Range})) # \newcommand{\Range}{4-7} %Plan
+	{	($this_inst_info{SemMin}, $this_inst_info{SemMax}) = ($PlanConfigVars{Range} =~ m/(\d*)-(\d*)/);	}
 	else
-	{	Util::print_warning("(read_institution_info): does not contain Range of semesters to generate (assuming all) \n");	}
+	{	Util::print_warning("(process_institution_info): does not contain Range of semesters to generate (assuming all) \n");	}
+	Util::print_message("Range:$PlanConfigVars{Range},SemMin=$this_inst_info{SemMin}, SemMax=$this_inst_info{SemMax} ...");
+
+	###################################################################################################
+	# Read the CurriculaVersion 
+	if(defined($PlanConfigVars{CurriculaVersion}))
+	{	($PlanConfigVars{CurriculaVersion}) = ($this_inst_info{CurriculaVersion}) = ($PlanConfigVars{CurriculaVersion} =~ m/(.*)\\.*/);		}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\CurriculaVersion configured in \"$file\" ... assuming 3 ...\n");
+		$this_inst_info{CurriculaVersion} = 3;
+	}
+	Util::print_message("CurriculaVersion=$this_inst_info{CurriculaVersion} ...");
+	################################
+	#@{$Common::config{macros}}{keys %PlanConfigVars} = values %PlanConfigVars;
+	
+	################################
+	foreach my $key (keys %PlanConfigVars)
+	{	Util::print_message("Common::config{macros}{$key} = $Common::config{macros}{$key} ...");	}
 
 	# Read the dictionary
 	if($txt =~ m/\\newcommand\{\\dictionary\}\{(.*?)\\.*?\}/)
@@ -1448,7 +1503,7 @@ sub read_institution_info($)
 		$this_inst_info{language} 			= $1;
 	}
 	else
-	{	Util::print_error("read_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
+	{	Util::print_error("process_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
 
 	# Read the dictionary
 	if($txt =~ m/\\newcommand\{\\SyllabusLangs\}\{(.*?)\}/)
@@ -1459,7 +1514,7 @@ sub read_institution_info($)
 		{	push( @{$this_inst_info{SyllabusLangsList}}, $lang);	}
 	}
 	else
-	{	Util::print_error("read_institution_info: there is not \\SyllabusLang defined in \"$file\"\n");	}
+	{	Util::print_error("process_institution_info: there is not \\SyllabusLang defined in \"$file\"\n");	}
 
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
@@ -1469,7 +1524,7 @@ sub read_institution_info($)
  		#Util::print_message("country=$this_inst_info{country}, country_without_accents=$this_inst_info{country_without_accents}\n"); exit;
 	}
 	else
-	{	Util::print_error("Error (read_institution_info): there is not \\country configured in \"$file\"\n");	}
+	{	Util::print_error("Error (process_institution_info): there is not \\country configured in \"$file\"\n");	}
 
 	# Read the GraphVersion
 	$this_inst_info{graph_version} = 1;
@@ -1484,19 +1539,11 @@ sub read_institution_info($)
 		}
 	}
 	else
-	{	Util::print_warning("(read_institution_info): there is not \\GraphVersion configured in \"$file\" ... assuming 1 ...\n");
-	}
-
-	# Read the CurriculaVersion
-	if($txt =~ m/\\newcommand\{\\CurriculaVersion\}\{(.*?)\\.*?\}/)
-	{	$this_inst_info{CurriculaVersion} = $1;		}
-	else
-	{	Util::print_warning("(read_institution_info): there is not \\CurriculaVersion configured in \"$file\" ... assuming 3 ...\n");
-		$this_inst_info{CurriculaVersion} = 3;
+	{	Util::print_warning("(process_institution_info): there is not \\GraphVersion configured in \"$file\" ... assuming 1 ...\n");
 	}
 
 	# Read the outcomes list
-	my $OutcomesError = "(read_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n";
+	my $OutcomesError = "(process_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n";
 
 	my $txt_copy = $txt;
 	my @outcomes_array = $txt_copy =~ m/\\OutcomesList(\{.*?)\n/g;
@@ -1521,7 +1568,7 @@ sub read_institution_info($)
 	if($txt =~ m/\\newcommand\{\\OutcomesVersion\}\{(.*?)\}/g)
 	{	$this_inst_info{OutcomesVersion} = $1;		}
 	else
-	{	Util::print_warning("(read_institution_info): there is not \\OutcomesVersion configured in \"$file\" ... assuming $config{OutcomesVersionDefault} ...\n");
+	{	Util::print_warning("(process_institution_info): there is not \\OutcomesVersion configured in \"$file\" ... assuming $config{OutcomesVersionDefault} ...\n");
 		$txt .= "\n\\newcommand\{\\OutcomesVersion\}\{$config{OutcomesVersionDefault}\}\n";
 		$this_inst_info{OutcomesVersion} = $config{OutcomesVersionDefault};
 	}
@@ -1534,13 +1581,13 @@ sub read_institution_info($)
 				#exit;
 		}
         else
-        {       Util::print_error("(read_institution_info): there is not \\logowidth configured in \"$file\" ...\n");
+        {       Util::print_error("(process_institution_info): there is not \\logowidth configured in \"$file\" ...\n");
         }
 
 #         if($txt =~ m/\\newcommand{\\Copyrights}{(.*?)}/)
 #         {       $this_inst_info{Copyrights} = $1;             }
 #         else
-#         {       Util::print_error("(read_institution_info): there is not \\Copyrights configured in \"$file\" ...\n");
+#         {       Util::print_error("(process_institution_info): there is not \\Copyrights configured in \"$file\" ...\n");
 #         }
 	# Read equivalences
 	$this_inst_info{equivalences} = "";
@@ -1550,13 +1597,13 @@ sub read_institution_info($)
 		#Util::print_message("this_inst_info{equivalences} = $this_inst_info{equivalences}"); exit;
 	}
 	else
-	{	Util::print_warning("(read_institution_info): there is not \\equivalences in \"$file\"\n");	}
+	{	Util::print_warning("(process_institution_info): there is not \\equivalences in \"$file\"\n");	}
 
 # 	Util::print_message("After ($file)\n$txt");
 	#print Dumper(\%this_inst_info); 	exit;
 
 	Util::write_file($file, $txt);
-	Util::check_point("read_institution_info");
+	Util::check_point("process_institution_info");
 	Util::print_message("institution_info ($file) ... OK !");
 	return %this_inst_info;
 }
@@ -1682,20 +1729,32 @@ sub set_initial_configuration($)
 	read_institutions_list();
 	$config{discipline}	  	= $inst_list{$config{institution}}{discipline};
 
-	$config{InInstDir} 	= $path_map{InInstDir} = GetInstDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
-	$path_map{"this-institutions-info-file"}   = GetInstitutionInfo($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
-	$path_map{"copyrights"}			= "$config{in}/copyrights.tex";
+    #Util::print_message("inst_list{$config{institution}}{country}=$inst_list{$config{institution}}{country}");
+
+	$config{InProgramDir} 	= $path_map{InProgramDir} 	= GetProgramInDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
+	$path_map{"this-institutions-info-file"}   			= GetInCountryBaseDir($inst_list{$config{institution}}{country})."/institutions/$config{institution}.tex";
+	$path_map{"this-program-info-file"}					= get_template("InProgramDir")."/program-info.tex";
+	$path_map{"copyrights"}								= "$config{in}/copyrights.tex";
 
 	# Read copyrights
 	my %copyrights_vars = read_copyrights( get_template("copyrights") );
-	foreach my $key (keys %copyrights_vars)
-	{	$config{$key} = $copyrights_vars{$key};	}
+	foreach my $key (keys %copyrights_vars)	{	$config{$key} = $copyrights_vars{$key};	}
 
-	# Read the config for this institution (lang, country, etc)
-	my %inst_vars = read_institution_info( get_template("this-institutions-info-file") );
+	# Read the config for this institution (name, URL)
+	my $institution_file = get_template("this-institutions-info-file");
+	Util::print_message("set_initial_configuration: Reading $institution_file ... ");
+	my $institution_txt = Util::read_file( $institution_file );
+
+	# Read the config for this program (lang, country, etc)
+	my $program_file = get_template("this-program-info-file");
+	Util::print_message("set_initial_configuration: Reading $program_file ... ");
+	my $program_txt  = Util::read_file( $program_file );
+
+	my %inst_vars = process_institution_info( $institution_txt."\n".$program_txt, $institution_file."\n".$program_file );
 	foreach my $key (keys %inst_vars)
 	{	$config{$key} = $inst_vars{$key};	}
-# 	print Dumper(\%config); exit;
+
+ 	print Dumper(\%config); exit;
 
 	$config{equivalences} =~ s/ //g;
 # 	Util::print_message("config{equivalences} = \"$config{equivalences}\""); exit;
@@ -1778,19 +1837,26 @@ sub set_initial_configuration($)
 	{
 		$file =~ s/<STY-AREA>/$InStyDir/g;
 		$file =~ s/<LANG-AREA>/$InLangDir/g;
-		read_macros($file);
+		my %macros = read_macros($file);
+		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
-
-	my $lang = $Common::config{language_without_accents};
-	my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
-	read_macros($outcomes_macros_file);
-
-# 	read_macros(Common::get_template("in-outcomes-macros-file"));
-# 	print Dumper(\%{$Common::config{macros}}); exit;
-
-	read_macros(Common::get_template("out-current-institution-file")) if(-e Common::get_template("out-current-institution-file"));
+	foreach my $lang (@{$config{SyllabusLangsList}})
+	{
+		#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
+		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
+		Util::print_message("Reading outcomes ($outcomes_macros_file)");
+		my %outcomes_macros = read_macros($outcomes_macros_file);
+		@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
+		my %outcomes_defs = read_outcomes($outcomes_macros_file);
+		@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_defs} = values %outcomes_defs;
+		#print Dumper( \%outcomes_defs );
+	}
+	#print Dumper( \%{$Common::config{macros}{outcomes}} );
+	if(-e Common::get_template("out-current-institution-file"))
+	{	my %macros = read_macros(Common::get_template("out-current-institution-file"));
+		@{$Common::config{macros}}{keys %macros} = values %macros;
+	}
 	read_replacements();
-
 	$config{macros}{siglas}        = $institution;
 	$config{macros}{spcbibstyle}   = $config{bibstyle};
 	sort_macros();
@@ -3307,7 +3373,9 @@ sub parse_courses()
 	Util::print_message("config{SemMin} = $config{SemMin}, config{SemMax} = $config{SemMax}");
 	Util::check_point("parse_courses");
 	Util::print_message("Read courses = $courses_count ($config{n_semesters} semesters)");
-    Util::write_file(Common::get_template("out-nsemesters-file"), "$config{n_semesters}\\xspace");
+	my $file = Common::get_template("out-nsemesters-file");
+	Util::print_message("3312 Creating $file ...");
+    Util::write_file($file, "$config{n_semesters}\\xspace");
 }
 
 # ok

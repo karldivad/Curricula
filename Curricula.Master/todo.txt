@@ -1,3 +1,7 @@
+Separate Institution and Program (pending) See: process_institution_info 
+
+
+
 verificar los jpg  que se estan creando en el in de UCSP
 
 CS-UTEC (cuando se corre esta linea(./scripts/process-curricula.pl CS-UTEC) se regenera el 

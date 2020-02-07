@@ -1,43 +1,5 @@
-\newcommand{\ContribInitMsg}{Esta disciplina contribuye al logro de los siguientes resultados de la carrera\xspace}
-\newcommand{\CompetencesInitMsg}{Esta disciplina contribuye a la formación de las siguientes competencias del área de computación (IEEE)\xspace}
-
-\newcommand{\DefineOutcome}[2]{%
-\expandafter\def\csname Outcome#1\endcsname{#2}%
-}
-
-\newcommand{\ShowOutcomeText}[1]{%
-\csname Outcome#1\endcsname %
-}
-
-\newcommand{\ShowOutcome}[2]{%
-{\bf #1)} \csname Outcome#1\endcsname ({\bf \ShowCompetenceLevel{#2}})%
-}
-
-\newcommand{\ShowShortOutcomeLetter}[1]{%
-{\bf #1)} \csname Outcome#1Short\endcsname %
-}
-
-\newcommand{\ShowShortOutcome}[1]{%
-\csname Outcome#1Short\endcsname %
-}
-
-\newcommand{\DefineCompetence}[2]{%
-\expandafter\def\csname #1\endcsname{#2}%
-}
-
-\newcommand{\Competence}[1]{%
-\csname #1\endcsname\label{Competence:#1}%
-}
-\newcommand{\ShowCompetence}[2]{%
-{\bf #1.} \csname #1\endcsname {\bf $\Rightarrow$ Outcome #2}%
-}
-
-\newcommand{\DefineCompetenceLevel}[2]{%
-\expandafter\def\csname CompetenceLevel#1\endcsname{#2}%
-}
-\newcommand{\ShowCompetenceLevel}[1]{%
-\csname CompetenceLevel#1\endcsname%
-}
+\newcommand{\ContribInitMsg}{This discipline contributes to the achievement of the following outcomes\xspace}
+\newcommand{\CompetencesInitMsg}{This discipline contributes to the the following competences in the area of computing (IEEE)\xspace}
 
 \DefineOutcome{a}{An ability to apply knowledge of mathematics, science.\xspace}
 \DefineOutcome{aShort}{Apply computer and math skills.\xspace}
@@ -61,7 +23,7 @@
 \DefineOutcome{gShort}{Analyze the local and global impact of computing.\xspace}
 
 \DefineOutcome{h}{A recognition of the need for, and an ability to engage in life-long learning.\xspace}
-\DefineOutcome{hShort}{Learn continuously.\xspace}
+\DefineOutcome{hShort}{Lifelong learning.\xspace}
 
 \DefineOutcome{i}{An ability to use the techniques, skills, and modern computing tools necessary for computing practice.\xspace}
 \DefineOutcome{iShort}{Use current techniques and tools.\xspace}

@@ -20,12 +20,12 @@ set UnifiedMain=unified-curricula-main
 #set UnifiedMain = `echo $FullUnifiedMainFile | sed s/.tex//`
 
 set Country=Peru
-set OutputTexDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex
+set OutputTexDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex
 set OutputHtmlDir=../Curricula.out/html/Peru/CS-UTEC/Plan2018
-set OutputScriptsDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts
+set OutputScriptsDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts
 
 ./scripts/process-curricula.pl CS-UTEC
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-eps-files.sh CS UTEC Peru Espanol
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-eps-files.sh CS UTEC Peru Espanol
 ./scripts/update-page-numbers.pl CS-UTEC 
 ./scripts/gen-graph.sh CS UTEC Peru Espanol big
 rm unified-curricula-main* 
@@ -55,9 +55,9 @@ unified-curricula-main
 
 ./scripts/update-analytic-info.pl CS-UTEC
 
-#../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex/scripts/gen-syllabi.sh
+#../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex/scripts/gen-syllabi.sh
 mkdir ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi
-cp ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex/syllabi/* ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi/*
+cp ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex/syllabi/* ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi/*
 
 #Redundant withcompile1institution
 # ./scripts/$area-$institution-gen-silabos

@@ -42,9 +42,9 @@ set current_dir = `pwd`
 
 set Country=Peru
 set OutputDir=../Curricula.out
-set OutputInstDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018
-set OutputTexDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex
-set OutputScriptsDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts
+set OutputInstDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018
+set OutputTexDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex
+set OutputScriptsDir=../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts
 set OutputHtmlDir=../Curricula.out/html/Peru/CS-UTEC/Plan2018
 
 rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp
@@ -55,9 +55,9 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot
 
 mkdir -p ../Curricula.out/log
 ./scripts/process-curricula.pl CS-UTEC ;
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-eps-files.sh;
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-eps-files.sh;
 foreach lang ('ES' 'EN')
-    ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-graph.sh small $lang
+    ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-graph.sh small $lang
 end
 
 if($pdf == 1) then
@@ -92,9 +92,9 @@ endif
 ./scripts/update-outcome-itemizes.pl CS-UTEC
 ./scripts/update-page-numbers.pl CS-UTEC;
 foreach lang ('ES' 'EN')
-    ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-graph.sh big $lang
+    ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-graph.sh big $lang
 end
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-map-for-course.sh
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-map-for-course.sh
 
 if($html == 1) then
       rm unified-curricula-main* ;
@@ -127,35 +127,35 @@ if($html == 1) then
       ./scripts/gen-faculty-info.pl CS-UTEC
 endif
 
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula CS-UTEC-small-graph-curricula ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex;
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula-ES CS-UTEC-small-graph-curricula-ES ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex;
 
 foreach lang ('ES' 'EN')
-    ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-poster.sh $lang
+    ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-poster.sh $lang
 end
 
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-syllabi.sh all;
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-syllabi.sh all;
 mkdir -p ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi;
-cp ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/syllabi/* ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi/.;
+cp ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/syllabi/* ../Curricula.out/html/Peru/CS-UTEC/Plan2018/syllabi/.;
 
 # Generate Books
 #
-# foreach auxbook (../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex/BookOf*-*.tex)
+# foreach auxbook (../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex/BookOf*-*.tex)
 #    set book = `echo $auxbook | sed s/.tex//`
-#    $book = `echo $book | sed s|../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/tex/||`
+#    $book = `echo $book | sed s|../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex/||`
 #    echo $book
 #    #bibtex $auxfile
-#    ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  $book       	pdflatex "CS-UTEC 2020-0 $book (Plan2018) 1-10";
+#    ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  $book       	pdflatex "CS-UTEC 2020-I $book (Plan2018) 1-10";
 # end
 
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-UTEC 2020-0 BookOfSyllabi-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-UTEC 2020-0 BookOfSyllabi-EN (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-UTEC 2020-0 BookOfBibliography-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-UTEC 2020-0 BookOfBibliography-EN (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-UTEC 2020-0 BookOfDescriptions-ES (Plan2018) 1-10";
-../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-UTEC 2020-0 BookOfDescriptions-EN (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-UTEC 2020-I BookOfSyllabi-ES (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-UTEC 2020-I BookOfSyllabi-EN (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-UTEC 2020-I BookOfBibliography-ES (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-UTEC 2020-I BookOfBibliography-EN (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-UTEC 2020-I BookOfDescriptions-ES (Plan2018) 1-10";
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-UTEC 2020-I BookOfDescriptions-EN (Plan2018) 1-10";
 
-#       ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-UTEC 2020-0 BookOfUnitsByCourse (Plan2018) 1-10";
-#       ../Curricula.out/Peru/CS-UTEC/cycle/2020-0/Plan2018/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-UTEC 2020-0 BookOfDeliveryControl (Plan2018) 1-10";
+#       ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-UTEC 2020-I BookOfUnitsByCourse (Plan2018) 1-10";
+#       ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-UTEC 2020-I BookOfDeliveryControl (Plan2018) 1-10";
 
 
 date >> ../Curricula.out/log/Peru-CS-UTEC-time.txt;

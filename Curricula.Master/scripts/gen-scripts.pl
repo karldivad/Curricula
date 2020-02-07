@@ -66,9 +66,10 @@ sub generate_institution($)
     $output_txt .= "\\newcommand{\\InStyAllDir}{\\basedir/".Common::get_template("InStyAllDir")."}\n";
 
 	$output_txt .= "\\newcommand{\\InCountryDir}{\\basedir/".Common::get_template("InCountryDir")."}\n";
+	$output_txt .= "\\newcommand{\\InInstConfigDir}{\\basedir/".Common::get_template("InInstConfigDir")."}\n";
 	$output_txt .= "\\newcommand{\\InCountryTexDir}{\\basedir/".Common::get_template("InCountryTexDir")."}\n";
 	$output_txt .= "\\newcommand{\\InSPCDir}{\\basedir/".Common::get_template("InCountryDir")."/$Common::config{discipline}/$Common::config{area}/SPC}\n";
- 	$output_txt .= "\\newcommand{\\InInstDir}{\\basedir/".Common::get_template("InInstDir")."}\n";
+ 	$output_txt .= "\\newcommand{\\InProgramDir}{\\basedir/".Common::get_template("InProgramDir")."}\n";
 	$output_txt .= "\\newcommand{\\InLogosDir}{\\basedir/".Common::get_template("InLogosDir")."}\n";
 
 	$output_txt .= "\\newcommand{\\OutputTexDir}{\\basedir/".Common::get_template("OutputTexDir")."}\n";
@@ -107,7 +108,7 @@ sub update_acronyms()
 	foreach my $inst (sort keys %Common::inst_list)
 	{
 		#system("mv institutions-info/institutions-$inst.tex institutions-info/info-$inst.tex");
-		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $Common::config{discipline}, $Common::config{area}, $inst);
+		my $out_txt_name = Common::GetInstitutionInfo($Common::inst_list{$inst}{country}, $inst);
 		if(-e $out_txt_name)
 		{
             Util::print_message("Reading: $out_txt_name ...");

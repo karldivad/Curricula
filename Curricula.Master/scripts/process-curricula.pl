@@ -42,6 +42,21 @@ sub generate_general_info()
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 		Util::print_color("Generating Posters in $lang ...");
+		foreach my $size ("small")
+		{	
+			GeneralInfo::generate_curricula_in_dot($size, $lang);
+			my $InFile  = Common::get_template("in-$size-graph-curricula-file"); 					# "in-small-graph-curricula-file",	"in-big-graph-curricula-file"
+			my $OutFile = Common::get_expanded_template("out-$size-graph-curricula-file", $lang);	# "out-small-graph-curricula-file", "out-big-graph-curricula-file"
+			Common::copy_file_expanding_tags($InFile, $OutFile, $lang);
+		}
+		GeneralInfo::generate_curricula_in_dot("big", $lang); 
+		GeneralInfo::generate_poster($lang);
+		GeneralInfo::generate_all_outcomes_by_course($lang);
+	}
+
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+		Util::print_color("Generating Posters in $lang ...");
 		GeneralInfo::generate_curricula_in_dot("small", $lang);
 		#error??? system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::ExpandTags(Common::get_template("out-small-graph-curricula-file"), $lang);
 		GeneralInfo::generate_curricula_in_dot("big", $lang);   
