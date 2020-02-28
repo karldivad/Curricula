@@ -854,6 +854,6 @@
 \facebook{ }
 \Twitter{}
 \Blog{}
-\Research{Graphic Computer} 
+\Research{Computer Graphics} 
 \courses{CS1100}
 --END-PROFESSOR--
