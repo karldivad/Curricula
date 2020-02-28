@@ -75,47 +75,5 @@ CS2H01->carias@utec.edu.pe:C,carias@utec.edu.pe:T,carias@utec.edu.pe:L
 %CS3P01 Computación Paralela y Distribuída
 CS3P01->jfiestas@utec.edu.pe:C,jfiestas@utec.edu.pe:T, jfiestas@utec.edu.pe:L
 
-%CS2501 Computación Gráfica
-CS2501-> 
-
 %CS2601 Inteligencia Artificial
 CS2601-> mparedes@utec.edu.pe:C,mparedes@utec.edu.pe:T,hsanchez@utec.edu.pe:L
-
-%CS2902 Ingeniería de Software II
-CS2902-> 
-
-
-% Semester #8 
-% FG2052 Experiencia de la vida Real
-FG2052->
-
-
-% Semester #9 
-%CS3700 Big Data
-CS3700->
-
-%CS3I01 Seguridad en Computación
-CS3I01->
-
-%CS3501 Tópicos en Computación Gráfica
-CS3501->
-
-%CS3602 Robótica
-CS3602->
-
-%BI0021  Bioinformática y Bioestadística
-BI0021->
-
-%ET1001 Formación de Empresas de Base Tecnológica I
-ET1001->
-
-
-% Semester #10 
-
-%CS3P02 Cloud Computing
-CS3P02->
-% CS3P03  Internet de las Cosas
-CS3P03->
-
-%ET1002  Formación de Empresas de Base Tecnológica II
-ET1002->

@@ -177,7 +177,7 @@
 \Dedication{TP}
 \webpage{http://randielmelgarejo.wordpress.com}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
-\Phone{}
+\Phone{+51 999 910 953, +51 973 855 155}
 \Mobile{+51-999.910.953}
 \facebook{}
 \Twitter{}
@@ -199,8 +199,8 @@
 \Dedication{TP}
 \webpage{}
 \Office{}
-\Phone{}
-\Mobile{+51-963.390.576}
+\Phone{+51 963 390 576}
+\Mobile{+51 963 390 576}
 \facebook{}
 \Twitter{@heider_cs}
 \Blog{}
@@ -223,8 +223,8 @@
 \Dedication{TP}
 \webpage{}
 \Office{Sala de profesores}
-\Phone{}
-\Mobile{+51-959173435}
+\Phone{+51 959 173 435}
+\Mobile{+51 959 173 435}
 \facebook{}
 \Twitter{}
 \Blog{}
@@ -235,7 +235,7 @@
 
 --BEGIN-PROFESSOR--
 \email{mparedes@utec.edu.pe}
-\prefix{}
+\prefix{Dr.}
 \name{Miguel Paredes}
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Aprendizaje automático aplicado/Ciencia de datos, causalidad y predicción}{MIT}{USA}{2018}
@@ -245,19 +245,19 @@
 \Dedication{TP}
 \webpage{}
 \Office{Begonias 415 Piso 8, San Isidro}
-\Phone{}
-\Mobile{+51-924569555}
+\Phone{+1 857 248 1211}
+\Mobile{+51 924 569 555, +1 857 248 1211}
 \facebook{}
 \Twitter{}
 \Blog{}
 \Research{Machine Learning, Econometric, Causal Effects, Prediction vs. Causation, Randomized Experiments}
-\courses{}
+\courses{CS2601,CS3602}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--
 \email{amujica@utec.edu.pe}
-\prefix{}
+\prefix{Bach}
 \name{Alonso Mujica Troncoso}
 \begin{titles}
 	\Bachelor{Espanol}{Business}{Ingeniería}{Ingeniería Industrial}{Universidad de Lima}{Perú}{2012}
@@ -291,7 +291,7 @@
 \Dedication{TP}
 \webpage{}
 \Office{}
-\Phone{}
+\Phone{+51Z 979 316 482}
 \Mobile{+51 979316482}
 \facebook{https://www.facebook.com/jes.lord.7}
 \Twitter{}
@@ -329,7 +329,7 @@
 
 --BEGIN-PROFESSOR--
 \email{mlopez@utec.edu.pe}
-\prefix{}
+\prefix{Mg.}
 \name{Kenneth Lopez}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Base de Datos, Administración de Negocios, Big Data}{FGV - Fundação Getúlio Vargas}{Brasil}{2017}
@@ -377,7 +377,7 @@
 
 --BEGIN-PROFESSOR--
 \email{mmelgarz@utec.edu.pe}
-\prefix{}
+\prefix{Bach}
 \name{Mariano Melgar}
 \begin{titles}
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniero Informático}{USIL}{Perú}{2006}
@@ -515,7 +515,7 @@
 
 --BEGIN-PROFESSOR--
 \email{jalvarador@utec.edu.pe}
-\prefix{}
+\prefix{Bach}
 \name{Jorge Alvarado}
 \begin{titles}
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{UNMSM}{Perú}{2005}
@@ -751,12 +751,12 @@
 \Dedication{TP}
 \webpage{}
 \Office{}
-\Phone{+51-1-2303500}marvin
+\Phone{+51-1-2303500}
 \Mobile{+51-945.302.065}
 \facebook{ }
 \Twitter{aocsa}
 \Blog{aocsa.dev}
-\Research{Data Structures, Databases, GPU Data Analytics,  High Performance Computing} 
+\Research{Data Structures, Databases, GPU Data Analytics, High Performance Computing} 
 \courses{CS3102, CS2100,  CS272, CS212, CS3700, CS3P01}
 --END-PROFESSOR--
 
@@ -806,7 +806,7 @@
 \facebook{ }
 \Twitter{}
 \Blog{}
-\Research{} 
+\Research{Information System} 
 \courses{CS3903}
 --END-PROFESSOR--
 
@@ -830,7 +830,7 @@
 \facebook{ }
 \Twitter{}
 \Blog{}
-\Research{} 
+\Research{Computer Architecture} 
 \courses{CS2S01,CS2201}
 --END-PROFESSOR--
 
@@ -854,32 +854,6 @@
 \facebook{ }
 \Twitter{}
 \Blog{}
-\Research{} 
+\Research{Graphic Computer} 
 \courses{CS1100}
---END-PROFESSOR--
-
-
---BEGIN-PROFESSOR--
-\email{}  
-\prefix{}
-\name{}
-\begin{titles}
-	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
-	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
-	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
-	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
-	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
-	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
-\end{titles}
-\Category{Auxiliar}
-\Dedication{TP}
-\webpage{}
-\Office{}
-\Phone{+51-1-2303500}
-\Mobile{+51-993.496.980}
-\facebook{ }
-\Twitter{}
-\Blog{}
-\Research{} 
-\courses{CS3903}
 --END-PROFESSOR--
