@@ -16,59 +16,65 @@ CS1D02->yserrano@utec.edu.pe:C,yserrano@utec.edu.pe:T,yserrano@utec.edu.pe:L
 
 
 % Semester #3
+% CS1103. Programación Orientada a Objetos II (Obligatorio)
+CS1103->rrivas@utec.edu.pe:T,rrivas@utec.edu.pe:L,carias@utec.edu.pe:T,mabisrror@utec.edu.pe:L
+
 % CS2201. Arquitectura de Computadoras (Obligatorio)
 CS2201->jgonzalez@utec.edu.pe:C,jgonzalez@utec.edu.pe:T,jgonzalez@utec.edu.pe:L
 
 % CS2B01. Desarrollo Basado en Plataformas (Obligatorio)
 CS2B01->jbellido@utec.edu.pe:C,jbellido@utec.edu.pe:T,jbellido@utec.edu.pe:L
 
-% CS1103. Programación Orientada a Objetos II (Obligatorio)
-CS1103->rrivas@utec.edu.pe:T,rrivas@utec.edu.pe:L,carias@utec.edu.pe:T,mabisrror@utec.edu.pe:L
-
 
 % Semester #4 
+%CS2100 Algoritmos y Estructura de Datos
+CS2100->ltalavera@utec.edu.pe:C,ltalavera@utec.edu.pe:T,ltalavera@utec.edu.pe:L,carias@utec.edu.pe:T
+
 %CS2101. Teoria de la Computación
 CS2101->jgutierreza@utec.edu.pe:C,jgutierreza@utec.edu.pe:T,jgutierreza@utec.edu.pe:L
 
 %CS2701 Base de datos I
 CS2701->tchambilla@utec.edu.pe:T,tchambilla@utec.edu.pe:L
 
-%CS2100 Algoritmos y Estructura de Datos
-CS2100->ltalavera@utec.edu.pe:C,ltalavera@utec.edu.pe:T,ltalavera@utec.edu.pe:L,carias@utec.edu.pe:T
-
 
 % Semester #5 
-%CS2901 Ingeniería de Software I
-CS2901->jbellido@utec.edu.pe:C,jbellido@utec.edu.pe:T,jbellido@utec.edu.pe:L
-
-%CS3402 Compiladores
-CS3402->jfiestas@utec.edu.pe:C,jfiestas@utec.edu.pe:T,jfiestas@utec.edu.pe:L
-
-%CS2S01 Sistemas Operativos
-CS2S01->jgonzalez@utec.edu.pe:C,jgonzalez@utec.edu.pe:T,jgonzalez@utec.edu.pe:L
+%CS2102 Análisis y Diseño de Algoritmos
+CS2102->carias@utec.edu.pe:L
 
 %CS2702 Base de Datos II
 CS2702-> hsanchez@utec.edu.pe:T,hsanchez@utec.edu.pe:L
 
-%CS2102 Análisis y Diseño de Algoritmos
-CS2102->carias@utec.edu.pe:L
+%CS2901 Ingeniería de Software I
+CS2901->jbellido@utec.edu.pe:C,jbellido@utec.edu.pe:T,jbellido@utec.edu.pe:L
+
+%CS2S01 Sistemas Operativos
+CS2S01->jgonzalez@utec.edu.pe:C,jgonzalez@utec.edu.pe:T,jgonzalez@utec.edu.pe:L
+
+%CS3402 Compiladores
+CS3402->jfiestas@utec.edu.pe:C,jfiestas@utec.edu.pe:T,jfiestas@utec.edu.pe:L
 
 
 % Semester #6 
-%CS3102 Estructuras de Datos Avanzadas
-CS3102->ecuadros@utec.edu.pe:C,ecuadros@utec.edu.pe:T,carias@utec.edu.pe:L
-
-%CS3903 Sistemas de Información
-CS3903->fnunez@utec.edu.pe:C,fnunez@utec.edu.pe:T,fnunez@utec.edu.pe:L
-
 %CS2301 Redes y Comunicaciones
 CS2301->jquinto@utec.edu.pe:C,jquinto@utec.edu.pe:T,jquinto@utec.edu.pe:L
 
 %CS3101 Programación Competitiva
 CS3101->aocsa@utec.edu.pe:C,aocsa@utec.edu.pe:T,aocsa@utec.edu.pe:L
 
+%CS3102 Estructuras de Datos Avanzadas
+CS3102->ecuadros@utec.edu.pe:C,ecuadros@utec.edu.pe:T,carias@utec.edu.pe:L
+
+%CS3903 Sistemas de Información
+CS3903->fnunez@utec.edu.pe:C,fnunez@utec.edu.pe:T,fnunez@utec.edu.pe:L
+
 
 % Semester #7 
+%CS2H01 Interaccion Humano Computador
+CS2H01->carias@utec.edu.pe:C,carias@utec.edu.pe:T,carias@utec.edu.pe:L
+
+%CS3P01 Computación Paralela y Distribuída
+CS3P01->jfiestas@utec.edu.pe:C,jfiestas@utec.edu.pe:T, jfiestas@utec.edu.pe:L
+
 %CS2501 Computación Gráfica
 CS2501-> 
 
@@ -77,12 +83,6 @@ CS2601-> mparedes@utec.edu.pe:C,mparedes@utec.edu.pe:T,hsanchez@utec.edu.pe:L
 
 %CS2902 Ingeniería de Software II
 CS2902-> 
-
-%CS3P01 Computación Paralela y Distribuída
-CS3P01->jfiestas@utec.edu.pe:C,jfiestas@utec.edu.pe:T, jfiestas@utec.edu.pe:L
-
-%CS2H01 Interaccion Humano Computador
-CS2H01->carias@utec.edu.pe:C,carias@utec.edu.pe:T,carias@utec.edu.pe:L
 
 
 % Semester #8 
@@ -94,28 +94,28 @@ FG2052->
 %CS3700 Big Data
 CS3700->
 
-%CS3501 Tópicos en Computación Gráfica
-CS3501->
-
-%BI0021  Bioinformática y Bioestadística
-BI0021->
-
 %CS3I01 Seguridad en Computación
 CS3I01->
 
-%ET1001 Formación de Empresas de Base Tecnológica I
-ET1001->
+%CS3501 Tópicos en Computación Gráfica
+CS3501->
 
 %CS3602 Robótica
 CS3602->
 
+%BI0021  Bioinformática y Bioestadística
+BI0021->
+
+%ET1001 Formación de Empresas de Base Tecnológica I
+ET1001->
+
 
 % Semester #10 
-% CS3P03  Internet de las Cosas
-CS3P03->
 
 %CS3P02 Cloud Computing
 CS3P02->
+% CS3P03  Internet de las Cosas
+CS3P03->
 
 %ET1002  Formación de Empresas de Base Tecnológica II
 ET1002->
