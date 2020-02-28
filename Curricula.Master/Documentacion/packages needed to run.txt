@@ -5,8 +5,11 @@ export PERL5LIB=/media/psf/Articles/Curricula/Curricula.Master/scripts
 
 export PERL5LIB=/usr/local/Cellar/perl/5.26.1/lib/perl5/site_perl/5.26.1:/Users/ecuadros/Articles/Curricula/Curricula.Master/scripts
 export TEXINPUTS=::/usr/local/Cellar/latex2html/2016/texinputs
-g­a
-brew reinstall dpkg
+
+sudo apt-get install zsh
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 sudo apt-get install texlive-latex-extra;
 sudo apt-get install texlive-bibtex-extra;
 sudo apt-get install texlive-science;
@@ -58,6 +61,7 @@ half_error_line = 238
 max_print_line = 250
 sudo vi /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 **************************************************
+brew reinstall dpkg
 brew install ps2eps;
 * apt-get install dot2tex;
 brew install graphviz;
