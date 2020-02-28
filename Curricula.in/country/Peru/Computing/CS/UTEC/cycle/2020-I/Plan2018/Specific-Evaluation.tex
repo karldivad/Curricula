@@ -1,9 +1,9 @@
+%%%%%%%%%%%%%%
+%%% Informacion de formula de evaluacioon de cada curso
+%%%%%%%%%%%%%%
 
-%%% Informacion en Espanol
-
-
-%%% Estructuras Discretas 1
-\begin{evaluation}{CS1D01}{Espanol}{THEORY,LAB,ORAL,READING}
+  %%% Estructuras Discretas 1 - Español
+  \begin{evaluation}{CS1D01}{Espanol}{THEORY,LAB,ORAL,READING}
   Sea $[\cdot]$  el redondeo al entero más cercano. La nota final $NF$ es calculada de la siguiente manera:
   \[ NF =
       \begin{cases}
@@ -21,8 +21,27 @@
   \noindent Para aprobar el curso, el alumno debe obtener 11 o más en la nota final $NF$.
   \end{evaluation}
  
+  %%% Estructuras Discretas 1 - Ingles
+  \begin{evaluation}{CS1D01}{English}{THEORY,LAB,ORAL,READING}
+  Given $[\cdot]$ means the round to the nearest integer.  The final grade $FG$ is calculated under the following conditions:
+  \[ FG =
+      \begin{cases}
+      10  &  \quad \text{if} \min (<<ExamAcronym>>,<<PracticalTestAcronym>>,<<ContinuousAssessmentAcronym>>) < 11  \text{ and }  [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}] \geq 11 \\
+      [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}]     & \quad \text{otherwise}
+      \end{cases}
+  \]
  
-  %%% Estructuras Discretas II
+     \begin{description}
+         \item [<<ExamAcronym>> :] <<Exam>>. <<ExamAcronym>> is the average, rounded to the nearest integer, of exams about definitions. This grade is individually assigned.
+         \item [<<PracticalTestAcronym>>: ] <<PracticalTest>>.  <<PracticalTestAcronym>> is the average, rounded to the nearest integer, of practical tests. This grade is individually assigned or based on group effort.
+         \item [<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>. <<ContinuousAssessmentAcronym>> is the average, rounded to the nearest integer, of continuous assessment. This grade covers the class participation and effort problems. Lastly, <<ContinuousAssessmentAcronym>> is individually assigned.
+     \end{description}
+ 
+  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+  \end{evaluation}
+ 
+ 
+  %%% Estructuras Discretas II - Español
   \begin{evaluation}{CS1D02}{Espanol}{THEORY,LAB,ORAL,READING}
   Sea $[\cdot]$  el redondeo al entero más cercano. La nota final $NF$ es calculada de la siguiente manera:
   \[ NF =
@@ -41,8 +60,27 @@
   \noindent Para aprobar el curso, el alumno debe obtener 11 o más en la nota final $NF$.
   \end{evaluation}
  
+  %%% Estructuras Discretas II - Ingles
+  \begin{evaluation}{CS1D02}{English}{THEORY,LAB,ORAL,READING}
+  Given $[\cdot]$ means the round to the nearest integer.  The final grade $FG$ is calculated under the following conditions:
+  \[ FG =
+      \begin{cases}
+      10  &  \quad \text{if} \min (<<ExamAcronym>>,<<PracticalTestAcronym>>,<<ContinuousAssessmentAcronym>>) < 11  \text{ and }  [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}] \geq 11 \\
+      [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}]     & \quad \text{otherwise}
+      \end{cases}
+  \]
  
-  %% Introduccion a la Ciencia de la Computación - ok
+     \begin{description}
+         \item [<<ExamAcronym>> :] <<Exam>>. <<ExamAcronym>> is the average, rounded to the nearest integer, of exams about definitions. This grade is individually assigned.
+         \item [<<PracticalTestAcronym>>: ] <<PracticalTest>>.  <<PracticalTestAcronym>> is the average, rounded to the nearest integer, of practical tests. This grade is individually assigned or based on group effort.
+         \item [<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>. <<ContinuousAssessmentAcronym>> is the average, rounded to the nearest integer, of continuous assessment. This grade covers the class participation and effort problems. Lastly, <<ContinuousAssessmentAcronym>> is individually assigned.
+     \end{description}
+ 
+  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+  \end{evaluation}
+ 
+
+  %% Introduccion a la Ciencia de la Computación - Español
   \begin{evaluation}{CS1100}{Espanol}{THEORY,LAB,ORAL}
   La nota final $NF$ se obtiene a través de:
  
@@ -70,383 +108,7 @@
  
   \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
   \end{evaluation}
- 
- 
-  %% Programación Orientada a Objetos 1 - ok
-  \begin{evaluation}{CS1102}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de: \\
- 
-  \begin{tabular}{cl}
-    <<FG>> =  & $0.25*<<ExamAcronym>>_{1}$ +\\
-              & $0.15*<<ExamAcronym>>_{2}$ +\\
-              & $0.15*<<ExamAcronym>>_{3}$ +\\
-              & $0.05*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-              & $0.05*<<ContinuousAssessmentAcronym>>_{2}$ +\\
-              & $0.10*<<PracticalTestAcronym>>_{1}$ +\\
-              & $0.10*<<PracticalTestAcronym>>_{2}$ + \\
-              & $0.15*<<ProjectAcronym>>_{1}$
-  \end{tabular}
 
-  \noindent <<Where>>:
-  \begin{description}
-         \item[<<ExamAcronym>> :] <<Exam>> (3). <<ExamAcronym>>1 corresponde a evaluaciones de las clases desarrolladas en el Auditorio. No se requiere impresión. <<ExamAcronym>>2 y <<ExamAcronym>>3 requieren impresión
-         \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
-             \begin{itemize}
-                \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
-                 \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
-             \end{itemize}
-    \item[<<PracticalTestAcronym>> :] <<PracticalTest>> (2)
-    \item[<<ProjectAcronym>> :] <<Project>> (1)
-  \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
- 
- 
- 
-  %% Programación Orientada a Objetos II - Ok
-  \begin{evaluation}{CS1103}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
-
-  \begin{tabular}{cl}
-   <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-            & $0.10*<<ContinuousAssessmentAcronym>>_{2}$  +\\ 
-            & $0.05*<<PracticalTestAcronym>>_{1} + 0.10*<<PracticalTestAcronym>>_{2}$ + \\
-            & $0.15*<<PracticalTestAcronym>>_{3} + 0.15*<<PracticalTestAcronym>>_{4}$  + \\
-            & $0.15*<<ProjectAcronym>>_{1} + 0.20*<<ProjectAcronym>>_{2} $
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-     \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
-      \begin{itemize}
-             \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
-             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
-       \end{itemize}
-    \item[<<PracticalTestAcronym>>:]<<PracticalTest>> (4)
-    \item[<<ProjectAcronym>>:] <<Project>> (2)
-  \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
- 
-  %%% Desarrollo Basado en Plataformas - ok
-  \begin{evaluation}{CS2B01}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ depende de cuatro rubros:
-
-  \begin{tabular}{cl}
-   <<FG>> = & $0.2*<<ProjectAcronym>>_{1}  + 0.2*<<ProjectAcronym>>_{2}$ +\\
-            & $0.1*<<LabExperimentsAcronym>>_{1}$ + \\
-            & $0.1*<<LabExperimentsAcronym>>_{2}$  + \\
-            & $0.2*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-            & $0.2*<<ContinuousAssessmentAcronym>>_{2}$
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-         \item[<<ProjectAcronym>> :] <<Project>> (2)
-         \item[<<LabExperimentsAcronym>> :] <<LabExperiments>> (2)
-        \item[<<ContinuousAssessmentAcronym>>] <<ContinuousAssessment>> (2):
-       \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Lecturas
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Lecturas
-       \end{itemize}
-  \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
- 
-  %%%  Arquitectura de Computadores - Ok
-  \begin{evaluation}{CS2201}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-   <<FG>> = & $0.05*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-            & $0.05*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-            & $0.10*<<PracticalTestAcronym>> + 0.30*<<ProjectAcronym>>$ + \\
-            & $0.20*<<LabExperimentsAcronym>>$ + \\
-            & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ExamAcronym>>_{2}$
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-   \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-   \begin{itemize}
-      \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas
-      \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas
-   \end{itemize}
-   \item[<<PracticalTestAcronym>>:] <<PracticalTest>> (1)
-   \item[<<ProjectAcronym>>:] <<Project>> (1)
-   \item[<<LabExperimentsAcronym>>:] <<LabExperiments>> (1)
-   \item[<<ExamAcronym>>:] <<Exam>> (2), <<ExamAcronym>>1 y <<ExamAcronym>>2  los dos textos requieren impresión
-   \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
-  %%% Algoritmos y Estructura de Datos -OK
-  \begin{evaluation}{CS2100}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
-
-  \begin{tabular}{cl}
-   <<FG>> = & $0.2*<<ExamAcronym>>_{1} + 0.2*<<ExamAcronym>>_{2}$ + \\
-            & $0.2*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-            & $0.2*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-            & $0.1*<<ProjectAcronym>>_{1} + 0.1*<<ProjectAcronym>>_{2}$
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-     \item[<<ContinuousAssessmentAcronym>>:] <<ContinuousAssessment>>(2):
-     \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Quizzes
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Quizzes
-       \end{itemize}
-     \item[<<ProjectAcronym>>:] <<Project>> (2)
-     \item[<<ExamAcronym>>:] <<Exam>> (2). <<ExamAcronym>>1 y <<ExamAcronym>>2, ambos textos requieren impresión
-  \end{description}
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
-  %% Base De Datos I - OK
-  \begin{evaluation}{CS2701}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-    <<FG>> =  & $0.10*<<PracticalTestAcronym>>_{1} + 0.10*<<PracticalTestAcronym>>_{2}$ + \\
-              & $0.10*<<PracticalTestAcronym>>_{3} + 0.10*<<PracticalTestAcronym>>_{4}$ +\\
-              & $0.10*<<ProjectAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{2}$ + \\
-              & $0.07*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-              & $0.08*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-              & $0.2*<<ExamAcronym>>_{1}$
-  \end{tabular}
- 
-  \noindent <<Where>>:
-  \begin{description}
-      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-  \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Participación activa en clase
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Participación activa en clase
-       \end{itemize}
-      \item[<<PracticalTestAcronym>>:] <<PracticalTest>>(4)
-      \item[<<ProjectAcronym>>:] <<Project>> (2)   
-      \item[<<ExamAcronym>>:] <<Exam>>(1) <<ExamAcronym>>1 3l texto requieren impresión
-
-  \end{description}
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
-  %%% Teoría de la Computación - ok
-  \begin{evaluation}{CS2101}{Espanol}{THEORY,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-      <<FG>> = & $0.3* <<ExamAcronym>>_{1} + 0.3* <<ExamAcronym>>_{2}$ + \\         
-               & $0.2*<<ProjectAcronym>>$ +\\
-               & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-              & $0.10*<<ContinuousAssessmentAcronym>>_{2}$  \\
-
-
- \end{tabular}
-
-    \noindent <<Where>>:
-  \begin{description}
-      \item[<<ExamAcronym>>:] <<Exam>> (2), Todos los textos requieren impresión
-      \item[<<ProjectAcronym>>:] <<Project>> (1)
-      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-      \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
-             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) 
-       \end{itemize}
-  \end{description}
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
- 
-  %% Análisis y Diseño de Algoritmos - OK
-  \begin{evaluation}{CS2102}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-      <<FG>> = & $0.20*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{1}$ + \\
-               & $0.20*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-               & $0.15*<<ExamAcronym>>_{2} + 0.15*<<ProjectAcronym>>_{2}$
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-            \item[ <<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-            \begin{itemize}
-                \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Participación activa en clase
-                \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Participación activa en clase
-            \end{itemize}
-      \item[<<ExamAcronym>> :] <<Exam>> (2) Ambos textos requieren impresión
-      \item[<<ProjectAcronym>>:] <<Project>> (2)
- 
-  \end{description}
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $FG$.
-  \end{evaluation}
- 
-  %% Ing. de Software - Ok
-  \begin{evaluation}{CS2901}{Espanol}{THEORY,LAB,ORAL}
-  La nota final $NF$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-      <<FG>> = & $0.40*<<ProjectAcronym>>$ + \\
-               & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ +  \\
-               & $0.40*<<ExamAcronym>>_{1}$
-  \end{tabular}
- 
-  \noindent <<Where>>:
-  \begin{description}
-     \item[<<ProjectAcronym>>:] <<Project>> (1)
-     \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>>(2):
-      \begin{itemize}
-            \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Quizzes + Participación activa en clase
-             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Quizzes + Participación activa en clase
-       \end{itemize}
-     \item[<<ExamAcronym>>:] <<Exam>> (1) Al finalizar el ciclo, El texto requiere impresión
-  \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
-  %% Base De Datos II - OK
-  \begin{evaluation}{CS2702}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
-
-  \begin{tabular}{cl}
-    <<FG>> = & $0.10*<<PracticalTestAcronym>>_{1} + 0.10*<<PracticalTestAcronym>>_{2}$ + \\
-             & $0.10*<<PracticalTestAcronym>>_{3} + 0.10*<<PracticalTestAcronym>>_{4}$ + \\
-             & $0.13*<<ProjectAcronym>>_{1} + 0.13*<<ProjectAcronym>>_{2}$ + \\
-& $0.14*<<ProjectAcronym>>_{3}$ +\\
-             & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-             & $0.10*<<ContinuousAssessmentAcronym>>_{2}$
-  \end{tabular}
- 
-  \noindent <<Where>>:
-  \begin{description}
-  \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-  \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Participación activa en clase
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Participación activa en clase
-       \end{itemize}
-      \item[<<PracticalTestAcronym>>:] <<PracticalTest>> (4)
-      \item[<<ProjectAcronym>>:] <<Project>> (3)    
-  \end{description}
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
- 
- 
-  %%% Sistemas Operativos - OK
-  \begin{evaluation}{CS2S01}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-     <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-              & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-              & $0.25*<<LabExperimentsAcronym>>_{1}$ + \\
-              & $0.25*<<LabExperimentsAcronym>>_{2}$  + \\
-              & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ExamAcronym>>_{2}$
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-  \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-  \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) :  Tareas +   Quizzes
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas +  Quizzes
-       \end{itemize}
-   \item[<<LabExperimentsAcronym>>:] <<LabExperiments>> (2)
-   \item[<<ExamAcronym>>:] <<Exam>> (2). <<ExamAcronym>>1 y <<ExamAcronym>>2. Ambos textos requieren impresión
-  
-  \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
- 
- 
-  %%%% Curso: Compiladores - OK
-  \begin{evaluation}{CS3402}{Espanol}{THEORY,LAB,ORAL,READING}
-  La nota final $NF$ se obtiene a través de:
-
-  \begin{tabular}{cl}
-   <<FG>> = ~ & $0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-              & $0.30*<<ExamAcronym>>_{1}$ + \\
-              & $0.20*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-              & $0.30*<<ExamAcronym>>_{2}$
-  \end{tabular}
-
-  \noindent <<Where>>:
-  \begin{description}
-      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>>(2):
-  \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Quizzes
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Quizzes
-    \end{itemize}
-      \item[<<ExamAcronym>>:] <<Exam>> (2). <<ExamAcronym>>1 y <<ExamAcronym>>2 ambos textos requieren impresión
-  \end{description}
-  \end{evaluation}
- 
-
- 
-
- 
-
-
-
-
-  %%%%%%%%%%%%%%
-  %%% Información en Ingles
-  %%%%%%%%%%%%%%
- 
- 
-  %%% Estructuras Discretas 1 en ingles
-  \begin{evaluation}{CS1D01}{English}{THEORY,LAB,ORAL,READING}
-  Given $[\cdot]$ means the round to the nearest integer.  The final grade $FG$ is calculated under the following conditions:
-  \[ FG =
-      \begin{cases}
-      10  &  \quad \text{if} \min (<<ExamAcronym>>,<<PracticalTestAcronym>>,<<ContinuousAssessmentAcronym>>) < 11  \text{ and }  [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}] \geq 11 \\
-      [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}]     & \quad \text{otherwise}
-      \end{cases}
-  \]
- 
-     \begin{description}
-         \item [<<ExamAcronym>> :] <<Exam>>. <<ExamAcronym>> is the average, rounded to the nearest integer, of exams about definitions. This grade is individually assigned.
-         \item [<<PracticalTestAcronym>>: ] <<PracticalTest>>.  <<PracticalTestAcronym>> is the average, rounded to the nearest integer, of practical tests. This grade is individually assigned or based on group effort.
-         \item [<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>. <<ContinuousAssessmentAcronym>> is the average, rounded to the nearest integer, of continuous assessment. This grade covers the class participation and effort problems. Lastly, <<ContinuousAssessmentAcronym>> is individually assigned.
-     \end{description}
- 
-  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
-  \end{evaluation}
- 
- 
-  %%% Estructuras Discretas II en ingles
-   \begin{evaluation}{CS1D02}{English}{THEORY,LAB,ORAL,READING}
-  Given $[\cdot]$ means the round to the nearest integer.  The final grade $FG$ is calculated under the following conditions:
-  \[ FG =
-      \begin{cases}
-      10  &  \quad \text{if} \min (<<ExamAcronym>>,<<PracticalTestAcronym>>,<<ContinuousAssessmentAcronym>>) < 11  \text{ and }  [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}] \geq 11 \\
-      [\div{<<ExamAcronym>>+<<PracticalTestAcronym>>+<<ContinuousAssessmentAcronym>>}{3}]     & \quad \text{otherwise}
-      \end{cases}
-  \]
- 
-     \begin{description}
-         \item [<<ExamAcronym>> :] <<Exam>>. <<ExamAcronym>> is the average, rounded to the nearest integer, of exams about definitions. This grade is individually assigned.
-         \item [<<PracticalTestAcronym>>: ] <<PracticalTest>>.  <<PracticalTestAcronym>> is the average, rounded to the nearest integer, of practical tests. This grade is individually assigned or based on group effort.
-         \item [<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>. <<ContinuousAssessmentAcronym>> is the average, rounded to the nearest integer, of continuous assessment. This grade covers the class participation and effort problems. Lastly, <<ContinuousAssessmentAcronym>> is individually assigned.
-     \end{description}
- 
-  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
-  \end{evaluation}
- 
   %% Introduccion a la Ciencia de la Computación - Ingles
   \begin{evaluation}{CS1100}{English}{THEORY,LAB,ORAL}
   The final grade $FG$ is obtained through of:
@@ -477,12 +139,41 @@
   \end{evaluation}
  
  
+  %% Programación Orientada a Objetos 1 - Español
+  \begin{evaluation}{CS1102}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de: \\
  
-  %% Programación Orientada a Objetos 1 - ingles
+  \begin{tabular}{cl}
+    <<FG>> =  & $0.25*<<ExamAcronym>>_{1}$ +\\
+              & $0.15*<<ExamAcronym>>_{2}$ +\\
+              & $0.15*<<ExamAcronym>>_{3}$ +\\
+              & $0.05*<<ContinuousAssessmentAcronym>>_{1}$ +\\
+              & $0.05*<<ContinuousAssessmentAcronym>>_{2}$ +\\
+              & $0.10*<<PracticalTestAcronym>>_{1}$ +\\
+              & $0.10*<<PracticalTestAcronym>>_{2}$ + \\
+              & $0.15*<<ProjectAcronym>>_{1}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+         \item[<<ExamAcronym>> :] <<Exam>> (3). <<ExamAcronym>>1 corresponde a evaluaciones de las clases desarrolladas en el Auditorio. No se requiere impresión. <<ExamAcronym>>2 y <<ExamAcronym>>3 requieren impresión
+         \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
+             \begin{itemize}
+                \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
+                 \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
+             \end{itemize}
+    \item[<<PracticalTestAcronym>> :] <<PracticalTest>> (2)
+    \item[<<ProjectAcronym>> :] <<Project>> (1)
+  \end{description}
+ 
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %% Programación Orientada a Objetos 1 - Ingles
   \begin{evaluation}{CS1102}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
-\begin{tabular}{cl}
+  \begin{tabular}{cl}
     <<FG>> =  & $0.25*<<ExamAcronym>>_{1}$ +\\
               & $0.15*<<ExamAcronym>>_{2}$ +\\
               & $0.15*<<ExamAcronym>>_{3}$ +\\
@@ -509,8 +200,33 @@
   \end{evaluation}
  
  
+  %% Programación Orientada a Objetos II - Español
+  \begin{evaluation}{CS1103}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
+
+  \begin{tabular}{cl}
+   <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+            & $0.10*<<ContinuousAssessmentAcronym>>_{2}$  +\\ 
+            & $0.05*<<PracticalTestAcronym>>_{1} + 0.10*<<PracticalTestAcronym>>_{2}$ + \\
+            & $0.15*<<PracticalTestAcronym>>_{3} + 0.15*<<PracticalTestAcronym>>_{4}$  + \\
+            & $0.15*<<ProjectAcronym>>_{1} + 0.20*<<ProjectAcronym>>_{2} $
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+     \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
+      \begin{itemize}
+             \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
+             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
+       \end{itemize}
+    \item[<<PracticalTestAcronym>>:]<<PracticalTest>> (4)
+    \item[<<ProjectAcronym>>:] <<Project>> (2)
+  \end{description}
  
-  %% Programación Orientada a Objetos II - ingles 
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %% Programación Orientada a Objetos II - Ingles 
   \begin{evaluation}{CS1103}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -537,7 +253,33 @@
   \end{evaluation}
  
  
-  %%% Desarrollo Basado en Plataformas - ingles
+  %%% Desarrollo Basado en Plataformas - Español
+  \begin{evaluation}{CS2B01}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ depende de cuatro rubros:
+
+  \begin{tabular}{cl}
+   <<FG>> = & $0.2*<<ProjectAcronym>>_{1}  + 0.2*<<ProjectAcronym>>_{2}$ +\\
+            & $0.1*<<LabExperimentsAcronym>>_{1}$ + \\
+            & $0.1*<<LabExperimentsAcronym>>_{2}$  + \\
+            & $0.2*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+            & $0.2*<<ContinuousAssessmentAcronym>>_{2}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+         \item[<<ProjectAcronym>> :] <<Project>> (2)
+         \item[<<LabExperimentsAcronym>> :] <<LabExperiments>> (2)
+        \item[<<ContinuousAssessmentAcronym>>] <<ContinuousAssessment>> (2):
+       \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Lecturas
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Lecturas
+       \end{itemize}
+  \end{description}
+ 
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %%% Desarrollo Basado en Plataformas - Ingles
   \begin{evaluation}{CS2B01}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ depends of 4 intermediary grades :
  
@@ -562,10 +304,37 @@
  
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
+
+
+  %%%  Arquitectura de Computadores - Español
+  \begin{evaluation}{CS2201}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
  
+  \begin{tabular}{cl}
+   <<FG>> = & $0.05*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+            & $0.05*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+            & $0.10*<<PracticalTestAcronym>> + 0.30*<<ProjectAcronym>>$ + \\
+            & $0.20*<<LabExperimentsAcronym>>$ + \\
+            & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ExamAcronym>>_{2}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+   \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+   \begin{itemize}
+      \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas
+      \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas
+   \end{itemize}
+   \item[<<PracticalTestAcronym>>:] <<PracticalTest>> (1)
+   \item[<<ProjectAcronym>>:] <<Project>> (1)
+   \item[<<LabExperimentsAcronym>>:] <<LabExperiments>> (1)
+   \item[<<ExamAcronym>>:] <<Exam>> (2), <<ExamAcronym>>1 y <<ExamAcronym>>2  los dos textos requieren impresión
+   \end{description}
  
- 
-  %%%  Arquitectura de Computadores - ingles
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+
+ %%%  Arquitectura de Computadores - Ingles
   \begin{evaluation}{CS2201}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -592,9 +361,33 @@
  
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
+
+
+  %%% Algoritmos y Estructura de Datos - Español
+  \begin{evaluation}{CS2100}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
+
+  \begin{tabular}{cl}
+   <<FG>> = & $0.2*<<ExamAcronym>>_{1} + 0.2*<<ExamAcronym>>_{2}$ + \\
+            & $0.2*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+            & $0.2*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+            & $0.1*<<ProjectAcronym>>_{1} + 0.1*<<ProjectAcronym>>_{2}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+     \item[<<ContinuousAssessmentAcronym>>:] <<ContinuousAssessment>>(2):
+     \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Quizzes
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Quizzes
+       \end{itemize}
+     \item[<<ProjectAcronym>>:] <<Project>> (2)
+     \item[<<ExamAcronym>>:] <<Exam>> (2). <<ExamAcronym>>1 y <<ExamAcronym>>2, ambos textos requieren impresión
+  \end{description}
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
  
- 
-  %%% Algoritmos y Estructura de Datos -ingles OK
+  %%% Algoritmos y Estructura de Datos - Ingles
   \begin{evaluation}{CS2100}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -618,7 +411,36 @@
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
  
+
+  %% Base De Datos I - Español
+  \begin{evaluation}{CS2701}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
  
+  \begin{tabular}{cl}
+    <<FG>> =  & $0.10*<<PracticalTestAcronym>>_{1} + 0.10*<<PracticalTestAcronym>>_{2}$ + \\
+              & $0.10*<<PracticalTestAcronym>>_{3} + 0.10*<<PracticalTestAcronym>>_{4}$ +\\
+              & $0.10*<<ProjectAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{2}$ + \\
+              & $0.07*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+              & $0.08*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+              & $0.2*<<ExamAcronym>>_{1}$
+  \end{tabular}
+ 
+  \noindent <<Where>>:
+  \begin{description}
+      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+  \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Participación activa en clase
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Participación activa en clase
+       \end{itemize}
+      \item[<<PracticalTestAcronym>>:] <<PracticalTest>>(4)
+      \item[<<ProjectAcronym>>:] <<Project>> (2)   
+      \item[<<ExamAcronym>>:] <<Exam>>(1) <<ExamAcronym>>1 3l texto requieren impresión
+
+  \end{description}
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+
+   
   %% Base De Datos I - ingles
   \begin{evaluation}{CS2701}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
@@ -641,22 +463,48 @@
        \end{itemize}
       \item[<<PracticalTestAcronym>>:] <<PracticalTest>>(4)
       \item[<<ProjectAcronym>>:] <<Project>> (2)  
-\item[<<ExamAcronym>>:] <<Exam>>(1) <<ExamAcronym>>1, text require printing 
-  \end{description}
-  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
-  \end{evaluation}
+  \item[<<ExamAcronym>>:] <<Exam>>(1) <<ExamAcronym>>1, text require printing 
+    \end{description}
+    \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+    \end{evaluation}
+
  
- 
-%%% Teoría de la Computación - en ingles 
-  \begin{evaluation}{CS2101}{English}{THEORY,ORAL,READING}
-The final grade $FG$ is obtained through of:
+  %%% Teoría de la Computación - Español
+  \begin{evaluation}{CS2101}{Espanol}{THEORY,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
  
   \begin{tabular}{cl}
       <<FG>> = & $0.3* <<ExamAcronym>>_{1} + 0.3* <<ExamAcronym>>_{2}$ + \\         
                & $0.2*<<ProjectAcronym>>$ +\\
                & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$  \\
- \end{tabular}
+
+
+  \end{tabular}
+
+    \noindent <<Where>>:
+  \begin{description}
+      \item[<<ExamAcronym>>:] <<Exam>> (2), Todos los textos requieren impresión
+      \item[<<ProjectAcronym>>:] <<Project>> (1)
+      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+      \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
+             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) 
+       \end{itemize}
+  \end{description}
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %%% Teoría de la Computación - Ingles 
+  \begin{evaluation}{CS2101}{English}{THEORY,ORAL,READING}
+  The final grade $FG$ is obtained through of:
+ 
+  \begin{tabular}{cl}
+      <<FG>> = & $0.3* <<ExamAcronym>>_{1} + 0.3* <<ExamAcronym>>_{2}$ + \\         
+               & $0.2*<<ProjectAcronym>>$ +\\
+               & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+              & $0.10*<<ContinuousAssessmentAcronym>>_{2}$  \\
+  \end{tabular}
 
     \noindent <<Where>>:
   \begin{description}
@@ -668,12 +516,36 @@ The final grade $FG$ is obtained through of:
              \item <<ContinuousAssessmentAcronym>>2 (weeks 8 - 15) 
        \end{itemize}
   \end{description}
-\noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
  
 
+  %% Análisis y Diseño de Algoritmos - Español
+  \begin{evaluation}{CS2102}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
  
-  %% Análisis y Diseño de Algoritmos -ingles  OK
+  \begin{tabular}{cl}
+      <<FG>> = & $0.20*<<ContinuousAssessmentAcronym>>_{1}$ +\\
+               & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{1}$ + \\
+               & $0.20*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+               & $0.15*<<ExamAcronym>>_{2} + 0.15*<<ProjectAcronym>>_{2}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+            \item[ <<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+            \begin{itemize}
+                \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Participación activa en clase
+                \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Participación activa en clase
+            \end{itemize}
+      \item[<<ExamAcronym>> :] <<Exam>> (2) Ambos textos requieren impresión
+      \item[<<ProjectAcronym>>:] <<Project>> (2)
+ 
+  \end{description}
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $FG$.
+  \end{evaluation}
+ 
+   %% Análisis y Diseño de Algoritmos - Ingles
   \begin{evaluation}{CS2102}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -696,10 +568,34 @@ The final grade $FG$ is obtained through of:
   \end{description}
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
+
+
+  %% Ing. de Software - Español
+  \begin{evaluation}{CS2901}{Espanol}{THEORY,LAB,ORAL}
+  La nota final $NF$ se obtiene a través de:
  
+  \begin{tabular}{cl}
+      <<FG>> = & $0.40*<<ProjectAcronym>>$ + \\
+               & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ +  \\
+               & $0.40*<<ExamAcronym>>_{1}$
+  \end{tabular}
  
+  \noindent <<Where>>:
+  \begin{description}
+     \item[<<ProjectAcronym>>:] <<Project>> (1)
+     \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>>(2):
+      \begin{itemize}
+            \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Quizzes + Participación activa en clase
+             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Quizzes + Participación activa en clase
+       \end{itemize}
+     \item[<<ExamAcronym>>:] <<Exam>> (1) Al finalizar el ciclo, El texto requiere impresión
+  \end{description}
  
-  %% Ing. de Software - ingles Ok
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %% Ing. de Software - Ingles
   \begin{evaluation}{CS2901}{English}{THEORY,LAB,ORAL}
   The final grade $FG$ is obtained through of:
  
@@ -723,9 +619,35 @@ The final grade $FG$ is obtained through of:
  
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
+
+
+  %% Base De Datos II - Español
+  \begin{evaluation}{CS2702}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
+
+  \begin{tabular}{cl}
+    <<FG>> = & $0.10*<<PracticalTestAcronym>>_{1} + 0.10*<<PracticalTestAcronym>>_{2}$ + \\
+             & $0.10*<<PracticalTestAcronym>>_{3} + 0.10*<<PracticalTestAcronym>>_{4}$ + \\
+             & $0.13*<<ProjectAcronym>>_{1} + 0.13*<<ProjectAcronym>>_{2}$ + \\
+             & $0.14*<<ProjectAcronym>>_{3}$ +\\
+             & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
+             & $0.10*<<ContinuousAssessmentAcronym>>_{2}$
+  \end{tabular}
  
+  \noindent <<Where>>:
+  \begin{description}
+  \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+  \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Tareas + Participación activa en clase
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas + Participación activa en clase
+       \end{itemize}
+      \item[<<PracticalTestAcronym>>:] <<PracticalTest>> (4)
+      \item[<<ProjectAcronym>>:] <<Project>> (3)    
+  \end{description}
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
  
-  %% Base De Datos II - ingles OK
+ %% Base De Datos II - Ingles
   \begin{evaluation}{CS2702}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -754,9 +676,34 @@ The final grade $FG$ is obtained through of:
   \end{evaluation}
  
  
+  %%% Sistemas Operativos - Español
+  \begin{evaluation}{CS2S01}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
  
-  %%% Sistemas Operativos - ingles OK
+  \begin{tabular}{cl}
+     <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
+              & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+              & $0.25*<<LabExperimentsAcronym>>_{1}$ + \\
+              & $0.25*<<LabExperimentsAcronym>>_{2}$  + \\
+              & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ExamAcronym>>_{2}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+  \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+  \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) :  Tareas +   Quizzes
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Tareas +  Quizzes
+       \end{itemize}
+   \item[<<LabExperimentsAcronym>>:] <<LabExperiments>> (2)
+   \item[<<ExamAcronym>>:] <<Exam>> (2). <<ExamAcronym>>1 y <<ExamAcronym>>2. Ambos textos requieren impresión
+  
+  \end{description}
  
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %%% Sistemas Operativos - Ingles
   \begin{evaluation}{CS2S01}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -781,9 +728,31 @@ The final grade $FG$ is obtained through of:
  
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
+
  
+  %%%% Curso: Compiladores - Español
+  \begin{evaluation}{CS3402}{Espanol}{THEORY,LAB,ORAL,READING}
+  La nota final $NF$ se obtiene a través de:
+
+  \begin{tabular}{cl}
+   <<FG>> = ~ & $0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+              & $0.30*<<ExamAcronym>>_{1}$ + \\
+              & $0.20*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+              & $0.30*<<ExamAcronym>>_{2}$
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>>(2):
+  \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) : Quizzes
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) : Quizzes
+    \end{itemize}
+      \item[<<ExamAcronym>>:] <<Exam>> (2). <<ExamAcronym>>1 y <<ExamAcronym>>2 ambos textos requieren impresión
+  \end{description}
+  \end{evaluation}
  
-  %%%% Curso: Compiladores - ingles  OK
+  %%%% Curso: Compiladores - Ingles
   \begin{evaluation}{CS3402}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -805,32 +774,8 @@ The final grade $FG$ is obtained through of:
   \end{description}
   \end{evaluation}
  
- %%%% Curso:Estructuras de Datos Avanzadas - ingles  OK
- \begin{evaluation}{CS3102}{English}{THEORY,LAB,ORAL,READING}
-  The final grade $FG$ is obtained through of:
- 
-  \begin{tabular}{cl}
-      <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-               & $0.10*<<ExamAcronym>>_{1}$ +\\
-               & $0.10*<<ExamAcronym>>_{2}$ + \\
-               & $0.60*<<ProjectAcronym>>$ + \\
-  \end{tabular}
 
-  \noindent <<Where>>:
-  \begin{description}
-      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-            \begin{itemize}
-               \item  <<ContinuousAssessmentAcronym>>1 (weeks 1 - 7)  : Quizzes
-                \item <<ContinuousAssessmentAcronym>>2 (weeks 8 - 15) : Quizzes
-            \end{itemize}
-      \item[<<ExamAcronym>> :] <<Exam>> (2), <<ExamAcronym>>1 and <<ExamAcronym>>2. Both text require printing
-      \item[<<ProjectAcronym>>:] <<Project>> 
-  \end{description}
-\noindent To pass the course you must obtain 11 or more in the final grade $FG$.
-  \end{evaluation}
-
-%%%% Curso:Estructuras de Datos Avanzadas - español  OK
+  %%%% Curso:Estructuras de Datos Avanzadas - Español
    \begin{evaluation}{CS3102}{Espanol}{THEORY,LAB,ORAL,READING}
   La nota final $NF$ se obtiene a través de: 
  
@@ -852,10 +797,37 @@ The final grade $FG$ is obtained through of:
       \item[<<ExamAcronym>> :] <<Exam>> (2), <<ExamAcronym>>1 y <<ExamAcronym>>2. Ambos textos requieren de impresión
       \item[<<ProjectAcronym>>:] <<Project>> 
   \end{description}
-\noindent Para aprobar el curso se requiere obtener 11 o más en la nota final $NF$.
+  \noindent Para aprobar el curso se requiere obtener 11 o más en la nota final $NF$.
   \end{evaluation}
 
- %% Programacion Competitiva en español - ok
+
+ %%%% Curso:Estructuras de Datos Avanzadas - Ingles
+ \begin{evaluation}{CS3102}{English}{THEORY,LAB,ORAL,READING}
+  The final grade $FG$ is obtained through of:
+ 
+  \begin{tabular}{cl}
+      <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
+               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ + \\
+               & $0.10*<<ExamAcronym>>_{1}$ +\\
+               & $0.10*<<ExamAcronym>>_{2}$ + \\
+               & $0.60*<<ProjectAcronym>>$ + \\
+  \end{tabular}
+
+  \noindent <<Where>>:
+  \begin{description}
+      \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+            \begin{itemize}
+               \item  <<ContinuousAssessmentAcronym>>1 (weeks 1 - 7)  : Quizzes
+                \item <<ContinuousAssessmentAcronym>>2 (weeks 8 - 15) : Quizzes
+            \end{itemize}
+      \item[<<ExamAcronym>> :] <<Exam>> (2), <<ExamAcronym>>1 and <<ExamAcronym>>2. Both text require printing
+      \item[<<ProjectAcronym>>:] <<Project>> 
+  \end{description}
+  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+  \end{evaluation}
+
+
+ %% Programacion Competitiva en Español
   \begin{evaluation}{CS3101}{Espanol}{THEORY,LAB,ORAL,READING}
   La nota final $NF$ se obtiene a través de: \\
  
@@ -882,9 +854,9 @@ The final grade $FG$ is obtained through of:
   \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
   \end{evaluation}
 
-%% Programacion Competitiva en ingles - ok
+  %% Programacion Competitiva en Ingles
   \begin{evaluation}{CS3101}{English}{THEORY,LAB,ORAL,READING}
-The final grade $NF$ is obtained through of:\\
+  The final grade $NF$ is obtained through of:\\
  
   \begin{tabular}{cl}
     <<FG>> =  & $0.20*<<ExamAcronym>>_{1}$ +\\
@@ -909,7 +881,7 @@ The final grade $NF$ is obtained through of:\\
   \end{evaluation}
 
 
-  %%%  Redes y Comunicaciones en espanol - Ok
+  %%%  Redes y Comunicaciones - Espanol
   \begin{evaluation}{CS2301}{Espanol}{THEORY,LAB,ORAL,READING}
   La nota final $NF$ se obtiene a través de:
  
@@ -936,8 +908,7 @@ The final grade $NF$ is obtained through of:\\
   \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
   \end{evaluation}
 
-
-  %%%  Redes y Comunicaciones en ingles - Ok
+  %%%  Redes y Comunicaciones - Ingles
   \begin{evaluation}{CS2301}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:\\
  
@@ -963,8 +934,34 @@ The final grade $NF$ is obtained through of:\\
  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
 
-
-%%%  CS3903 Sistemas de Informacion - ingles
+ 
+  %%%  CS3903 Sistemas de Información - Espanol
+  \begin{evaluation}{CS3903}{Espanol}{THEORY,LAB,ORAL,READING}
+  El promedio final $FG$ se obtiene a través de:
+ 
+  \begin{tabular}{cl}
+      <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
+               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ +\\
+               & $0.30*<<ProjectAcronym>>$ + \\
+               & $0.25*<<LabExperimentsAcronym>>$ + \\
+               & $0.25*<<ExamAcronym>>_{1}$
+  \end{tabular}
+ 
+  \noindent <<Where>>:
+  \begin{description}
+  \item[<<ContinuousAssessmentAcronym>>:] <<ContinuousAssessment>> (2):
+       \begin{itemize}
+             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7
+              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) 
+       \end{itemize}
+   \item[<<ProjectAcronym>>:]  <<Project>> (1)
+   \item[<<LabExperimentsAcronym>>:] <<LabExperiments>> (1)
+   \item[<<ExamAcronym>>:] <<Exam>>(1) El texto requiere de impresión
+  \end{description}
+  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+  \end{evaluation}
+ 
+  %%%  CS3903 Sistemas de Informacion - Ingles
   \begin{evaluation}{CS3903}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
@@ -990,32 +987,5 @@ The final grade $NF$ is obtained through of:\\
  
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
- 
-%%%  CS3903 Sistemas de Información - espanol
-  \begin{evaluation}{CS3903}{Espanol}{THEORY,LAB,ORAL,READING}
-  El promedio final $FG$ se obtiene a través de:
- 
-  \begin{tabular}{cl}
-      <<FG>> = & $0.10*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.10*<<ContinuousAssessmentAcronym>>_{2}$ +\\
-               & $0.30*<<ProjectAcronym>>$ + \\
-               & $0.25*<<LabExperimentsAcronym>>$ + \\
-               & $0.25*<<ExamAcronym>>_{1}$
-  \end{tabular}
- 
-  \noindent <<Where>>:
-  \begin{description}
-  \item[<<ContinuousAssessmentAcronym>>:] <<ContinuousAssessment>> (2):
-       \begin{itemize}
-             \item  <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7
-              \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15) 
-       \end{itemize}
-   \item[<<ProjectAcronym>>:]  <<Project>> (1)
-   \item[<<LabExperimentsAcronym>>:] <<LabExperiments>> (1)
-   \item[<<ExamAcronym>>:] <<Exam>>(1) El texto requiere de impresión
-  \end{description}
-\noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
- 
 
 

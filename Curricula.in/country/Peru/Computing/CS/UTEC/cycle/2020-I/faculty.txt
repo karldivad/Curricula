@@ -40,7 +40,7 @@
 \Category{Principal}
 \Dedication{TC}
 \webpage{}
-\Office{Computer Science Program, 2rd floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
 \Phone{+51-51-2305000 Ext 4283}
 \Mobile{+51-992751554}
 \facebook{https://www.facebook.com/mariahilda.bermejorios}
@@ -49,6 +49,7 @@
 \Research{Education in CS,Technologies in educational processes, Game Based Learning}
 \courses{CS1100,CS1102}
 --END-PROFESSOR--
+
 
 --BEGIN-PROFESSOR--
 \email{jbellido@utec.edu.pe}
@@ -63,7 +64,7 @@
 \Category{Principal}
 \Dedication{TC}
 \webpage{}
-\Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500 Ext 4723}
 \Mobile{+51-949.488.910}
 \facebook{https://web.facebook.com/jesubellido}
@@ -85,7 +86,7 @@
 \Category{Principal}
 \Dedication{TC}
 \webpage{http://www.comp.nus.edu.sg/~yserrano/About_Me.html}
-\Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
 \Mobile{+65 8180 5167}
 \facebook{}
@@ -96,8 +97,6 @@
 --END-PROFESSOR--
 
 
-
-
 --BEGIN-PROFESSOR--
 \email{ltalavera@utec.edu.pe}  
 \prefix{Mg}
@@ -106,7 +105,7 @@
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Redes y Sistemas Distribuidos}{Pontificia Universidad Catolica de Rio de Janeiro}{Brasil}{2016}
 	\Master{English}{Computing}{Computer Science}{Networks and Distributed Systems}{Pontifical Catholic University of Rio de Janeiro, Rio de Janeiro}{Brasil}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
@@ -119,6 +118,7 @@
 \courses{CS2100,CS3P03}
 --END-PROFESSOR--
 
+
 --BEGIN-PROFESSOR--
 \email{jgutierreza@utec.edu.pe}
 \prefix{Dr.}
@@ -127,7 +127,7 @@
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{Universidad de São Paulo}{Brasil}{2018}
 	\Doctor{English}{Computing}{Computer Science}{Computer Science}{Universidad de São Paulo}{Brasil}{2018}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
@@ -148,10 +148,10 @@
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{Universidad Católica San Pablo de Arequipa}{Perú}{2017}
 	\Master{English}{Computing}{Computer Science}{Computer Graphics and imaging}{San Pablo Catholic University}{Peru}{2017}
-	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{Universidad Catolica San Pablo}{Perú}{2014}
+           \Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{Universidad Catolica San Pablo}{Perú}{2014}
 	\Bachelor{English}{Computing}{Computer Science}{Computer Science}{Universidad Catolica San Pablo}{Peru}{2017}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
@@ -161,11 +161,8 @@
 \Twitter{}
 \Blog{}
 \Research{Computer Graphics, parallel,Artificial Intelligence} 
-\courses{CS1100,CS2100,CS2102,CS2501,CS3501}
+\courses{CS1100,CS2100, CS2102,CS2501,CS3501}
 --END-PROFESSOR--
-
-
-
 
 
 --BEGIN-PROFESSOR--
@@ -176,7 +173,7 @@
 	\Bachelor{Espanol}{Computing}{Ciencias}{Ingeniería de Sistemas}{FIIS-UNI}{Perú}{2013}
 	\Bachelor{English}{Computing}{Science}{System Engineering}{FIIS-UNI}{Peru}{2013}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{http://randielmelgarejo.wordpress.com}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
@@ -190,8 +187,6 @@
 --END-PROFESSOR--
 
 
-
-
 --BEGIN-PROFESSOR--
 \email{hsanchez@utec.edu.pe}
 \prefix{Dr.}
@@ -200,7 +195,7 @@
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Minería de Datos}{UChile}{Chile}{2017}
 	\Doctor{English}{Computing}{Computer Science}{Data Mining}{UChile}{Chile}{2017}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{}
@@ -214,8 +209,6 @@
 --END-PROFESSOR--
 
 
-
-
 --BEGIN-PROFESSOR--
 \email{pmorriberon@utec.edu.pe}
 \prefix{MBA.}
@@ -226,7 +219,7 @@
 	\Master{Espanol}{Computing}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
 	\Master{English}{Computing}{MBA}{Master Business Administration}{Tecnológico de Monterrey}{Mexico}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Sala de profesores}
@@ -236,19 +229,19 @@
 \Twitter{}
 \Blog{}
 \Research{Innovación, EdTech}
-\courses{CS1102,CS1100}
+\courses{CS1100,CS1102}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--
-\email{mparedes@utec.com.pe}
+\email{mparedes@utec.edu.pe}
 \prefix{}
 \name{Miguel Paredes}
 \begin{titles}
 	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Aprendizaje automático aplicado/Ciencia de datos, causalidad y predicción}{MIT}{USA}{2018}
 	\Doctor{English}{Computing}{Computer Science}{Applied Machine Learning / Data Science, Causality and Prediction}{MIT}{USA}{2018}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Begonias 415 Piso 8, San Isidro}
@@ -261,6 +254,7 @@
 \courses{}
 --END-PROFESSOR--
 
+
 --BEGIN-PROFESSOR--
 \email{amujica@utec.edu.pe}
 \prefix{}
@@ -269,7 +263,7 @@
 	\Bachelor{Espanol}{Business}{Ingeniería}{Ingeniería Industrial}{Universidad de Lima}{Perú}{2012}
 	\Bachelor{English}{Business}{Engineering}{Industrial Engineering}{Universidad de Lima}{Peru}{2013}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{https://www.linkedin.com/in/alonso-mujica-677a2a51/}
 \Office{Computer Science Program, 2nd floor, UTEC, Barranco Lima}
@@ -282,6 +276,7 @@
 \courses{CS1100}
 --END-PROFESSOR--
 
+
 --BEGIN-PROFESSOR--
 \email{ibringas@utec.edu.pe}
 \prefix{Msc}
@@ -292,7 +287,7 @@
 	\Master{English}{Computing}{Science}{Algorithms}{FIIS-UNI}{Peru}{2010}
 	\Bachelor{English}{Computing}{Science}{System Engineering}{FIIS-UNI}{Peru}{1995}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{}
@@ -304,6 +299,7 @@
 \Research{Programming}
 \courses{CS1102,CS1103}
 --END-PROFESSOR--
+
 
 --BEGIN-PROFESSOR--
 \email{rrivas@utec.edu.pe}
@@ -317,7 +313,7 @@
 	\Bachelor{Espanol}{Ingeniería}{Ingeniería}{Ingeniero Agrícola}{Universidad Nacional Agraria}{Perú}{1992}
 	\Bachelor{English}{Engineering}{Engineering}{Agricultural engineer}{Universidad Nacional Agraria}{Peru}{1992}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{NA}
@@ -341,7 +337,7 @@
 	\Master{English}{Computing}{Computer Science}{Data Base, Business Managing, Big Data}{FGV - Fundação Getúlio Vargas}{Brazil}{2017}
 	\Bachelor{English}{Computing}{Computer Science}{Data Structures}{PUCP}{Peru}{2010}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Computer Science Program, 2rd floor, UTEC. Barranco Lima}
@@ -355,7 +351,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{kbatista@utec.edu.pe}
 \prefix{MBA.}
@@ -366,7 +361,7 @@
 	\Bachelor{Espanol}{Computing}{Análise de Sistemas de Informações}{}{FIP}{Brasil}{2006}
 	\Bachelor{English}{Computing}{Análise de Sistemas de Informações}{}{FIP}{Brasil}{2006}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{https://kefreen.com/}
 \Office{Calle las Orquideas, 444, Piso 7}
@@ -380,7 +375,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{mmelgarz@utec.edu.pe}
 \prefix{}
@@ -389,7 +383,7 @@
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniero Informático}{USIL}{Perú}{2006}
 	\Bachelor{English}{Computing}{Computer Science}{Ingeniero Informático}{USIL}{Peru}{2006}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{http://notengo.com}
 \Office{Notengo}
@@ -403,8 +397,6 @@
 --END-PROFESSOR--
 
 
-
-
 --BEGIN-PROFESSOR--
 \email{jarellano@utec.edu.pe}
 \prefix{Bach}
@@ -413,7 +405,7 @@
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniero de Sistemas de Información}{UPC}{Perú}{2013}
 	\Bachelor{English}{Computing}{Computer Science}{Information System}{UPC}{Peru}{2013}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{http://www.linkedin.com/in/jap90}
 \Office{P206, Innovation & Quality Education, 2nd floor, UTEC. Barranco Lima}
@@ -427,7 +419,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{tchambilla@utec.edu.pe}
 \prefix{Mg}
@@ -436,7 +427,7 @@
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Web Semántica}{Universidad de Chile}{Chile}{2016}
 	\Master{English}{Computing}{Computer Science}{Semantic Web}{Universidad de Chile}{Chile}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{http://tchambil.blogspot.pe/}
 \Office{}
@@ -450,9 +441,6 @@
 --END-PROFESSOR--
 
 
-
-
-
 --BEGIN-PROFESSOR--
 \email{waliaga@utec.edu.pe}
 \prefix{Dr.}
@@ -463,7 +451,7 @@
 	\Doctor{English}{Engineering}{Electrical Engineering}{Sub área}{Coppe-UFRJ}{Brazil}{2017}
 	\Master{English}{Engineering}{Electrical Engineering}{Sub área}{PUC-Rio}{Brazil}{2010}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{https://www.utec.edu.pe/carreras-de-ingenieria/ciencia-de-la-computacion}
 \Office{}
@@ -477,7 +465,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{jdiazl@utec.edu.pe}
 \prefix{Mg.}
@@ -488,7 +475,7 @@
 	\Master{English}{Computing}{Ciencia de la Computación}{Information Technology}{Universidades Esan y Ramón Llull}{Perú/España}{2009}
 	\Bachelor{English}{Economy}{Economy}{}{Universidad de Lima}{Perú}{1981}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{}
@@ -502,7 +489,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{jfarfan@utec.edu.pe}
 \prefix{MSc.}
@@ -513,7 +499,7 @@
 	\Master{English}{Computing}{Information Technology}{Strategic Management in Information Technology}{Universidad de Piura}{Perú}{2015}
 	\Bachelor{English}{Computing}{Computer Science}{Ingeniero de Sistemas}{UCSM}{Peru}{1995}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{https://www.linkedin.com/in/jaimefarfan/}
 \Office{Departamento de Tecnología Digital y Gestión. Tecsup. Santa Anita Lima}
@@ -527,7 +513,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{jalvarador@utec.edu.pe}
 \prefix{}
@@ -536,7 +521,7 @@
 	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{UNMSM}{Perú}{2005}
 	\Bachelor{English}{Computing}{Computer Science}{Ingeniería de Sistemas}{UNMSM}{Peru}{2005}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{https://newscomputing.wordpress.com}
 \Office{Sala de profesores}
@@ -550,7 +535,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{jrenom@utec.edu.pe}
 \prefix{Dr.}
@@ -559,7 +543,7 @@
 	\Doctor{Espanol}{Mathematics}{Matemáticas}{Teoría de Grafos, Simulación, Probabilidades}{Universidad Simón Bolívar}{Venezuela}{2016}
 	\Doctor{English}{Mathematics}{Math}{Graph Theory, Simulation, Probabilities}{Universidad Simón Bolívar}{Venezuela}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{510 UTEC, Barranco, Lima}
@@ -573,7 +557,6 @@
 --END-PROFESSOR--
 
 
-
 --BEGIN-PROFESSOR--
 \email{jfiestas@utec.edu.pe}
 \prefix{Dr.}
@@ -582,7 +565,7 @@
 	\Doctor{Espanol}{Science}{Ciencias Naturales}{Astrofísica}{Heidelberg}{Germany}{2006}
 	\Doctor{English}{Science}{Natural Science}{Astrophysics}{Heidelberg}{Germany}{2006}
 \end{titles}     
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{https://www.utec.edu.pe/page/30/profesores/688}
 \Office{CS, UTEC, Barranco, Lima}
@@ -592,9 +575,8 @@
 \Twitter{}
 \Blog{https://www.utec.edu.pe/page/30/profesores/688}
 \Research{Computer simulation, High Performance Computing, GPU}
-\courses{CS1D01,CS1D02,CS1100,CS1102,CS1103,CS3700,CS3P01,CS3402}
+\courses{CS1D01,CS1D02,CS1100,CS1102,CS2101,CS1103,CS3700,CS3P01,CS3402}
 --END-PROFESSOR--
-
 
 
 --BEGIN-PROFESSOR--
@@ -627,7 +609,7 @@
 	\Master{Espanol}{Computing}{Ciencia}{Ciencia e Informática}{Algoritmos}{Universidad Nacional del Altiplano - Puno}{Perú}
 	\Master{English}{Computing}{Science}{Science and Computing}{Algorithms}{Universidad Nacional del Altiplano - Puno}{Peru}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{5th floor UTEC. Barranco Lima}
@@ -649,7 +631,7 @@
 	\Bachelor{Espanol}{Business}{Administración}{Especialización en Banca y Finanzas}{Universidad Inca Garcilazo de la Vega}{Perú}{2016}
 	\Bachelor{English}{Business}{Administration}{Banking and finances}{Universidad Inca Garcilazo de la Vega}{Perú}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{5th floor UTEC. Barranco Lima}
@@ -659,10 +641,8 @@
 \Twitter{https://mobile.twitter.com/Rotkyvairam}
 \Blog{}
 \Research{Transformación Digital, RPA Robotics Programming Application}
-\courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019}
+\courses{CS1100,EG0004,GH0007,GH0008,CS2901,EG0009,CS3903,CS2902,CS3901,GH0019,CS2201}
 --END-PROFESSOR--
-
-
 
 
 --BEGIN-PROFESSOR--
@@ -673,7 +653,7 @@
 	\Master{Espanol}{Engineering}{Ingeniería Eléctrica y Computación}{Arquitectura de computadores}{Universidad de Rochester}{Estados Unidos}{2016}
 	\Master{English}{Engineering}{Electrical and Computer Engineering Engineering}{Computer Architecture}{University of Rochester}{USA}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{}
@@ -685,11 +665,9 @@
 \Research{Computer Architecture, High Performance Computing, Memory Systems, Distributed Systems, Reliability}
 \courses{CS2201,CS2S01,CS1100}
 --END-PROFESSOR--
- 
 
 
 --BEGIN-PROFESSOR--
- 
 \email{econtreras@utec.edu.pe}
 \prefix{Mg.}
 \name{Estanislao Contreras Chávez}
@@ -699,7 +677,7 @@
 	\Master{English}{Computing}{Information Technology}{Information Technology Management}{ESAN}{Perú}{2009}
 	\Master{English}{Computing}{Information Technology}{Information Technology Management}{La Salle International Business School - Universitat Ramon Llull}{Spain}{2009}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{}
@@ -712,6 +690,7 @@
 \courses{CS1103,CS1102}
 --END-PROFESSOR--
 
+
 --BEGIN-PROFESSOR--
 \email{marvin.abisrror@gmail.com}  
 \prefix{Mg}
@@ -720,15 +699,187 @@
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Aprendizaje de máquina}{Universidade Federal de Viçosa}{Brasil}{2016}
 	\Master{English}{Computing}{Computer Science}{Machine Learning}{Universidade Federal de Viçosa}{Brasil}{2016}
 \end{titles}
-\Category{}
+\Category{Auxiliar}
 \Dedication{TP}
 \webpage{}
 \Office{Computer Science Program, 6th floor, UTEC. Barranco Lima}
 \Phone{+51-1-2303500}
-\Mobile{+51 937800726}
+\Mobile{+51-937.800.726}
 \facebook{https://www.facebook.com/marvinAbisrror}
 \Twitter{https://twitter.com/marvin4sky}
 \Blog{}
 \Research{Machine learning, heuristic search} 
 \courses{CS1100,CS2102,CS2601}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{jquinto@utec.edu.pe}  
+\prefix{Mg}
+\name{Javier Richard Quinto Ancieta}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ingeniería en Computación}{Redes de Computadoras}{Universidad Estatal de Campinas - UNICAMP}{Brasil}{2015}
+\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Telecomunicaciones}{UIGV}{Perú}{2009}
+\Master{English}{Computing}{Computer Engineering}{Networking}{UNICAMP}{Brasil}{2015}
+\Bachelor{Englishl}{Computing}{Computer Engineering}{Telecommunications Engineering}{UIGV}{Perú}{2009}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{Computer Science Program, 3th floor, UTEC. Barranco Lima}
+\Phone{+51-1-2303500}
+\Mobile{+51 943207713}
+\facebook{https://www.facebook.com/jrichardqa}
+\Twitter{https://twitter.com/richardqa}
+\Blog{www.opennetsoft.com}
+\Research{technological innovation,cloud computing,cibersecuritynetworking} 
+\courses{CS2301,CS3P02,CS3101,CS2901}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{aocsa.cs@gmail.com}  
+\prefix{PhD}
+\name{Alexander Ocsa }
+\begin{titles}
+	\Doctor{Espanol}{Computing}{Ciencia de la Computación}{Análisis de datos con GPUs}{UNSA}{Perú}{2017}
+	\Doctor{English}{Computing}{Computer Science}{GPU Data Analytics}{UNSA}{Perú}{2017}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Recuperación de Información y GPGPU}{USP-ICMC}{Brasil}{2011}
+	\Master{English}{Computing}{Computer Science}{Information Retrieval and GPGPU}{USP-ICMC}{Brasil}{2011}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}marvin
+\Mobile{+51-945.302.065}
+\facebook{ }
+\Twitter{aocsa}
+\Blog{aocsa.dev}
+\Research{Data Structures, Databases, GPU Data Analytics,  High Performance Computing} 
+\courses{CS3102, CS2100,  CS272, CS212, CS3700, CS3P01}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{carlos.arias@utec.edu.pe}  
+\prefix{Mg}
+\name{Carlos Mauricio Aure Arias Chipana}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{UCSP}{Perú}{2019}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{UCSP}{Perú}{2013}
+	\Master{English}{Computing}{Computer Science}{Computer graphics}{UCSP}{Perú}{2019}
+	\Bachelor{English}{Computing}{Computer Science}{Computer Science}{UCSP}{Perú}{2009}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-978.978.182}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{Vision Computacional} 
+\courses{CS3102, CS2100,  CS272, CS212, CS3700, CS3P01, CS2H01}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{fernando.nunez@pucp.pe}  
+\prefix{Mg}
+\name{Fernando Augusto Nuñez Calderón}
+\begin{titles}
+	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
+	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
+	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
+	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
+	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-993.496.980}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{CS3903}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{jgonzalez@utec.edu.pe}  
+\prefix{Mg}
+\name{Jorge Luis Gonzales Reaño}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Microelectrónica}{POLIUSP}{Brasil}{2013}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería Electrónica}{UPAO}{Perú}{2008}
+	\Master{English}{Computing}{Computer Science}{Microelectronics}{POLIUSP}{Brazil}{2013}
+	\Bachelor{English}{Computing}{Computer Science}{Electronic Engineering}{UPAO}{Perú}{2008}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-922.495.594}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{CS2S01,CS2201}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{henrygallegosv@gmail.com}  
+\prefix{Mg}
+\name{Henry Giovanny Gallegos Velgara}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Informática}{PUC-RIO}{Brasil}{2012}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{UNSA}{Perú}{2009}
+	\Master{English}{Computing}{Computer Science}{Computing}{PUC-RIO}{Brazil}{2012}
+	\Bachelor{English}{Computing}{Computer Science}{System Engineering}{UNSA}{Perú}{2009}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-987.606.095}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{CS1100}
+--END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{}  
+\prefix{}
+\name{}
+\begin{titles}
+	\Master{Espanol}{MBA}{Administración Estratégica de Empresas}{Gestión Estratégica de Negocios}{PUCP}{Perúl}{2013}
+	\Master{Espanol}{MBA}{Master Internacional}{Liderazgo}{EADA}{España}{2015}
+	\Bachelor{Espanol}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+	\Master{English}{MBA}{Master Business Administration}{Strategic Business Management}{PUCP}{Perú}{2013}
+	\Master{English}{MBA}{International Master}{Leadership}{EADA}{España}{2015}
+	\Bachelor{English}{Computing}{Ingeniería Informática}{}{PUCP}{Perú}{1995}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-993.496.980}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{} 
+\courses{CS3903}
 --END-PROFESSOR--
