@@ -148,7 +148,7 @@
 \begin{titles}
 	\Master{Espanol}{Computing}{Ciencia de la Computación}{Computación Gráfica}{Universidad Católica San Pablo de Arequipa}{Perú}{2017}
 	\Master{English}{Computing}{Computer Science}{Computer Graphics and imaging}{San Pablo Catholic University}{Peru}{2017}
-           \Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{Universidad Catolica San Pablo}{Perú}{2014}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ciencia de la Computación}{Universidad Catolica San Pablo}{Perú}{2014}
 	\Bachelor{English}{Computing}{Computer Science}{Computer Science}{Universidad Catolica San Pablo}{Peru}{2017}
 \end{titles}
 \Category{Auxiliar}
@@ -161,7 +161,7 @@
 \Twitter{}
 \Blog{}
 \Research{Computer Graphics, parallel,Artificial Intelligence} 
-\courses{CS1100,CS2100, CS2102,CS2501,CS3501}
+\courses{CS1100,CS2100,CS2102,CS2501,CS3501}
 --END-PROFESSOR--
 
 
@@ -692,7 +692,7 @@
 
 
 --BEGIN-PROFESSOR--
-\email{marvin.abisrror@gmail.com}  
+\email{mabisrror@utec.edu.pe}  
 \prefix{Mg}
 \name{Marvin Abisrror Zarate}
 \begin{titles}
@@ -719,9 +719,10 @@
 \name{Javier Richard Quinto Ancieta}
 \begin{titles}
 	\Master{Espanol}{Computing}{Ingeniería en Computación}{Redes de Computadoras}{Universidad Estatal de Campinas - UNICAMP}{Brasil}{2015}
-\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Telecomunicaciones}{UIGV}{Perú}{2009}
-\Master{English}{Computing}{Computer Engineering}{Networking}{UNICAMP}{Brasil}{2015}
-\Bachelor{Englishl}{Computing}{Computer Engineering}{Telecommunications Engineering}{UIGV}{Perú}{2009}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Telecomunicaciones}{UIGV}{Perú}{2009}
+	\Master{English}{Computing}{Computer Engineering}{Networking}{UNICAMP}{Brasil}{2015}
+	\Bachelor{Espanol}{Computing}{Computer Engineering}{Telecommunications Engineering}{UIGV}{Perú}{2009}
+	\Bachelor{English}{Computing}{Computer Engineering}{Telecommunications Engineering}{UIGV}{Perú}{2009}
 \end{titles}
 \Category{Auxiliar}
 \Dedication{TP}
@@ -738,7 +739,7 @@
 
 
 --BEGIN-PROFESSOR--
-\email{aocsa.cs@gmail.com}  
+\email{aocsa@utec.edu.pe}  
 \prefix{PhD}
 \name{Alexander Ocsa }
 \begin{titles}
@@ -757,12 +758,12 @@
 \Twitter{aocsa}
 \Blog{aocsa.dev}
 \Research{Data Structures, Databases, GPU Data Analytics, High Performance Computing} 
-\courses{CS3102, CS2100,  CS272, CS212, CS3700, CS3P01}
+\courses{CS3102,CS2100,CS2702,CS2102,CS3700,CS3P01}
 --END-PROFESSOR--
 
 
 --BEGIN-PROFESSOR--
-\email{carlos.arias@utec.edu.pe}  
+\email{carias@utec.edu.pe}  
 \prefix{Mg}
 \name{Carlos Mauricio Aure Arias Chipana}
 \begin{titles}
@@ -781,7 +782,7 @@
 \Twitter{}
 \Blog{}
 \Research{Vision Computacional} 
-\courses{CS3102, CS2100,  CS272, CS212, CS3700, CS3P01, CS2H01}
+\courses{CS3102,CS2100,CS2702,CS2102,CS3700,CS3P01,CS2H01}
 --END-PROFESSOR--
 
 
@@ -836,7 +837,7 @@
 
 
 --BEGIN-PROFESSOR--
-\email{henrygallegosv@gmail.com}  
+\email{hgallegos@utec.edu.pe}  
 \prefix{Mg}
 \name{Henry Giovanny Gallegos Velgara}
 \begin{titles}

@@ -1443,7 +1443,7 @@ sub read_copyrights($)
 # ok
 sub process_institution_info($$)
 {
-	Aqui me quede: hay que partir esta funcion en dos process porque regraba el archivo luego de leerlo y aumentarle cosas ...
+	# TODO Aqui me quede: hay que partir esta funcion en dos process porque regraba el archivo luego de leerlo y aumentarle cosas ...
 	my ($txt, $file) = (@_);
 	my %this_inst_info = ();
 
@@ -1602,7 +1602,10 @@ sub process_institution_info($$)
 # 	Util::print_message("After ($file)\n$txt");
 	#print Dumper(\%this_inst_info); 	exit;
 
-	Util::write_file($file, $txt);
+	# TODO
+	Util::print_warning("process_institution_info() I am not updating this file anymore ... See \\OutcomesList above");
+	#Util::write_file($file, $txt);
+	
 	Util::check_point("process_institution_info");
 	Util::print_message("institution_info ($file) ... OK !");
 	return %this_inst_info;
@@ -1754,7 +1757,7 @@ sub set_initial_configuration($)
 	foreach my $key (keys %inst_vars)
 	{	$config{$key} = $inst_vars{$key};	}
 
- 	print Dumper(\%config); exit;
+ 	#print Dumper(\%config); exit;
 
 	$config{equivalences} =~ s/ //g;
 # 	Util::print_message("config{equivalences} = \"$config{equivalences}\""); exit;
