@@ -47,8 +47,8 @@ my %Numbers2Text = (0 => "OH",   1 => "ONE", 2 => "TWO", 3 => "THREE", 4 => "FOU
 				   5 => "FIVE", 6 => "SIX", 7 => "SEVEN", 8 => "EIGHT", 9 => "NINE"
 				  );
 our %template_files = (	"Syllabus" 		=> "in-syllabus-template-file"
-# 			"DeliveryControl" 	=> "in-syllabus-delivery-control-file",
-		      );
+# 						"DeliveryControl" 	=> "in-syllabus-delivery-control-file",
+						);
 our %professor_role_order = ("C" => 0, "T" => 1, "L" => 2, "-" => 3);
 our %position_ranking   = ("Director" => 1, "Professor" => 2);
 our %dedication_ranking = ("TC"       => 1, "TP"        => 2);
@@ -644,6 +644,8 @@ sub set_initial_paths()
 
 	$path_map{"in-sumilla-template-file"}			= $path_map{InProgramDir}."/sumilla-template.tex";
 	$path_map{"in-syllabus-template-file"}			= $path_map{InProgramDir}."/syllabus-template.tex";
+	$path_map{"in-syllabus-program-template-file"}	= $path_map{InProgramDir}."/cycle/$config{Semester}/syllabus-template.tex";
+
 	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InProgramDir}."/syllabus-delivery-control.tex";
 	$path_map{"in-additional-institution-info-file"}= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
 	$path_map{"in-distribution-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}";
