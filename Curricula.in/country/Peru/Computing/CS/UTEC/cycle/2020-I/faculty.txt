@@ -815,12 +815,12 @@
 --BEGIN-PROFESSOR--
 \email{jgonzalez@utec.edu.pe}  
 \prefix{Mg}
-\name{Jorge Luis Gonzales Reaño}
+\name{Jorge Luis González Reaño}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{Microelectrónica}{POLIUSP}{Brasil}{2013}
-	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería Electrónica}{UPAO}{Perú}{2008}
-	\Master{English}{Computing}{Computer Science}{Microelectronics}{POLIUSP}{Brazil}{2013}
-	\Bachelor{English}{Computing}{Computer Science}{Electronic Engineering}{UPAO}{Perú}{2008}
+	\Master{Espanol}{Engineering}{Ingeniería Eléctrica}{}{USP}{Brasil}{2013}
+	\Bachelor{Espanol}{Engineering}{Ingeniería Eléctrica}{Ingeniería Eléctrica}{UPAO}{Perú}{2008}
+	\Master{English}{Engineering}{Electrical Engineering}{}{USP}{Brazil}{2013}
+	\Bachelor{English}{Engineering}{Electrical Engineering}{Electronic Engineering}{UPAO}{Perú}{2008}
 \end{titles}
 \Category{Auxiliar}
 \Dedication{TP}
