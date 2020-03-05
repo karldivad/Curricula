@@ -26,7 +26,7 @@
 \newcommand{\AREA}{}
 
 \begin{document}
-\AddToShipoutPictureBG{\put(0,100){\includegraphics[width=2cm]{\InInstDir/stamp1}}}
+\AddToShipoutPictureBG{\put(0,100){\includegraphics[width=2cm]{\InProgramDir/stamp1}}}
 
 \begin{tabularx}{\textwidth}{p{3cm}cX}
 \includegraphics[width=3cm]{\InLogosDir/\INST} 
@@ -50,11 +50,15 @@
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<GENERALINFORMATION>>} \\
-
-{\noindent\bf \arabic{SyllabiSectionCount}.1 <<Credits>>:} --CREDITS--
-
-\addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. <<HoursTheoryAndLab>>:} --HOURS-- (<<Weekly>>)
+    {\noindent\bf \arabic{SyllabiSectionCount}.1 <<Credits>>:} --CREDITS--
+%\addtocounter{SyllabiSectionCount}{1}
+    {\noindent\bf \arabic{SyllabiSectionCount}.2 <<TheoryHours>>:} --HT-- (<<Weekly>>) \\
+    {\noindent\bf \arabic{SyllabiSectionCount}.3 <<LabHours>>:} --HL-- (<<Weekly>>) \\
+    {\noindent\bf \arabic{SyllabiSectionCount}.4 <<Durationoftheperiod>>:} 16 <<weeks>> \\
+    {\noindent\bf \arabic{SyllabiSectionCount}.5 <<Condition>>:} --COURSE_TYPE--  \\
+    {\noindent\bf \arabic{SyllabiSectionCount}.6 <<Modality>>:} <<FaceToFace>>  \\
+    {\noindent\bf \arabic{SyllabiSectionCount}.7 <<Prerequisites>>:}  \\
+    --PREREQUISITES--
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<ProfessorEmailAndAttentionSchedule>>}\\
