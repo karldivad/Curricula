@@ -858,3 +858,26 @@
 \Research{Computer Graphics} 
 \courses{CS1100}
 --END-PROFESSOR--
+
+--BEGIN-PROFESSOR--
+\email{hgallegos@utec.edu.pe}  
+\prefix{Mg}
+\name{Henry Giovanny Gallegos Velgara}
+\begin{titles}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Informática}{PUC-RIO}{Brasil}{2012}
+	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{UNSA}{Perú}{2009}
+	\Master{English}{Computing}{Computer Science}{Computing}{PUC-RIO}{Brazil}{2012}
+	\Bachelor{English}{Computing}{Computer Science}{System Engineering}{UNSA}{Perú}{2009}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{+51-1-2303500}
+\Mobile{+51-987.606.095}
+\facebook{ }
+\Twitter{}
+\Blog{}
+\Research{Computer Graphics} 
+\courses{CS1100}
+--END-PROFESSOR--
