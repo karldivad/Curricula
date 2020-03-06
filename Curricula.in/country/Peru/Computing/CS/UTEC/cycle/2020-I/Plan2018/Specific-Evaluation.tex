@@ -6,59 +6,91 @@
   \begin{evaluation}{CS1100}{Espanol}{THEORY,LAB,ORAL}
   La nota final $NF$ se obtiene a través de:
  
-  \begin{tabular}{cl}
-    <<FG>>  =~ & $0.30*<<ExamAcronym>>_{1}$  + \\
-               & $0.05*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.05*<<ContinuousAssessmentAcronym>>_{2}$  \\
-               & $0.09*(<<PracticalTestAcronym>>_{1} + <<PracticalTestAcronym>>_{2}$ +\\
-               & $<<PracticalTestAcronym>>_{3} + <<PracticalTestAcronym>>_{4})$ + \\
-               & $0.04*<<ProjectAcronym>>_{1} + 0.08*<<ProjectAcronym>>_{2}$ +\\
-               & $0.12*<<ProjectAcronym>>_{3}$
-  \end{tabular}
+\begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
+\multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Laboratory>>} \\ \cline{2-3}
+& % Formula para Teoria va dentro del tabular
+    \begin{minipage}{0.95\textwidth}
+    \begin{tabular}{l}
+        $0.30*<<ExamAcronym>>_{1}$  + \\
+        $0.05*<<ContinuousAssessmentAcronym>>_{1}$
+        \end{tabular} 
+    \end{minipage} 
+& % Formula para Laboratorio va dentro del tabular
+    \begin{minipage}{0.95\textwidth}
+    \begin{tabular}{l}
+        $0.05*<<ContinuousAssessmentAcronym>>_{2}$  \\
+        $0.09*(<<PracticalTestAcronym>>_{1} + <<PracticalTestAcronym>>_{2} + <<PracticalTestAcronym>>_{3} + <<PracticalTestAcronym>>_{4})$ + \\
+        $0.04*<<ProjectAcronym>>_{1} + 0.08*<<ProjectAcronym>>_{2} + 0.12*<<ProjectAcronym>>_{3}$
+        \end{tabular} 
+    \end{minipage}                 \\ \cline{2-3}
+
+& % Theory % goes here 
+35\% 
+& % Lab % goes here
+65\% \\ \cline{2-3}
+& \multicolumn{2}{|c|}{100\%}  \\ \hline
+\end{tabularx}
  
-  \noindent <<Where>>:
-  \begin{description}
-     \item[<<ExamAcronym>> :] <<Exam>> (1). <<ExamAcronym>>1 corresponde a evaluaciones de las clases desarrolladas en el Auditorio.  No se requiere impresión
+\vspace{2mm}
+\noindent <<Where>>:
+\begin{description}
+    \item[<<ExamAcronym>> :] <<Exam>> (1). <<ExamAcronym>>1 corresponde a evaluaciones de las clases desarrolladas en el Auditorio.  No se requiere impresión
     \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
-      \begin{itemize}
-             \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
-             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
-       \end{itemize}
+    \begin{itemize}
+            \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
+            \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
+    \end{itemize}
     \item[<<PracticalTestAcronym>> :] <<PracticalTest>>  (4)
     \item[<<ProjectAcronym>> :] <<Project>> (3)
-  \end{description}
- 
-  \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
+\end{description}
+
+\noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
+\end{evaluation}
 
   %% Introduccion a la Ciencia de la Computación - Ingles
-  \begin{evaluation}{CS1100}{English}{THEORY,LAB,ORAL}
-  The final grade $FG$ is obtained through of:
- 
-  \begin{tabular}{cl}
-    <<FG>>  =  & $0.30*<<ExamAcronym>>_{1}$  + \\
-               & $0.05*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.05*<<ContinuousAssessmentAcronym>>_{2}$ +\\
-               & $0.09*(<<PracticalTestAcronym>>_{1} + <<PracticalTestAcronym>>_{2}$ +\\
-               & $<<PracticalTestAcronym>>_{3} + <<PracticalTestAcronym>>_{4})$ +\\
-               & $0.04*<<ProjectAcronym>>_{1} + 0.08*<<ProjectAcronym>>_{2}$ +\\
-               & $0.12*<<ProjectAcronym>>_{3}$
-  \end{tabular}
- 
-  \noindent <<Where>>:
-  \begin{description}
-  \item[<<ExamAcronym>> :] <<Exam>> (1). <<ExamAcronym>>1 corresponds to evaluations of the classes developed in the Auditorium. No printing required
-   \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
-      \begin{itemize}
-             \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
-             \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
-       \end{itemize}
-  \item[<<PracticalTestAcronym>> :] <<PracticalTest>> (4)
-  \item[<<ProjectAcronym>> :] <<Project>> (3)
-  \end{description}
- 
-  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
-  \end{evaluation}
+\begin{evaluation}{CS1100}{English}{THEORY,LAB,ORAL}
+The final grade $FG$ is obtained through of:
+
+\begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
+\multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Laboratory>>} \\ \cline{2-3}
+& % Formula para Teoria va dentro del tabular
+\begin{minipage}{0.95\textwidth}
+\begin{tabular}{l}
+    $0.30*<<ExamAcronym>>_{1}$  + \\
+    $0.05*<<ContinuousAssessmentAcronym>>_{1}$
+    \end{tabular} 
+\end{minipage} 
+& % Formula para Laboratorio va dentro del tabular
+\begin{minipage}{0.95\textwidth}
+\begin{tabular}{l}
+    $0.05*<<ContinuousAssessmentAcronym>>_{2}$  \\
+    $0.09*(<<PracticalTestAcronym>>_{1} + <<PracticalTestAcronym>>_{2} + <<PracticalTestAcronym>>_{3} + <<PracticalTestAcronym>>_{4})$ + \\
+    $0.04*<<ProjectAcronym>>_{1} + 0.08*<<ProjectAcronym>>_{2} + 0.12*<<ProjectAcronym>>_{3}$
+    \end{tabular} 
+\end{minipage}                 \\ \cline{2-3}
+
+& % Theory % goes here 
+35\% 
+& % Lab % goes here
+65\% \\ \cline{2-3}
+& \multicolumn{2}{|c|}{100\%}  \\ \hline
+\end{tabularx}
+
+\vspace{2mm}
+\noindent <<Where>>:
+\begin{description}
+\item[<<ExamAcronym>> :] <<Exam>> (1). <<ExamAcronym>>1 corresponds to evaluations of the classes developed in the Auditorium. No printing required
+\item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2):
+    \begin{itemize}
+            \item <<ContinuousAssessmentAcronym>>1 (semanas 1 - 7) 
+            \item <<ContinuousAssessmentAcronym>>2 (semanas 8 - 15)
+    \end{itemize}
+\item[<<PracticalTestAcronym>> :] <<PracticalTest>> (4)
+\item[<<ProjectAcronym>> :] <<Project>> (3)
+\end{description}
+
+\noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+\end{evaluation}
   
 
   %%% Estructuras Discretas 1 - Español
