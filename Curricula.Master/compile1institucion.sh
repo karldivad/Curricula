@@ -127,7 +127,7 @@ if($html == 1) then
       ./scripts/gen-faculty-info.pl CS-UTEC
 endif
 
-../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula-ES CS-UTEC-small-graph-curricula-ES ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex;
+../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/compile-simple-latex.sh small-graph-curricula CS-UTEC-small-graph-curricula ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/tex;
 
 foreach lang ('ES' 'EN')
     ../Curricula.out/Peru/CS-UTEC/cycle/2020-I/Plan2018/scripts/gen-poster.sh $lang

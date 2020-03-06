@@ -1644,17 +1644,17 @@ sub read_specific_evaluacion_info()
 			    }
 			    foreach my $lang (split(",", $listoflangs))
 			    {
-				  if(not defined($config{dictionaries}{$lang}{lang_prefix}) )
-				  {	Util::print_error("$cc($codcour) has an undefined Language($lang) !...");		}
-				  my $evaluation_header = "\\vspace{2mm}\n";
-				  $evaluation_header .= "{\\noindent\\bf <<EVALUATION-SYSTEM>>:}\\\\\n";
-				  $Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$evaluation_header$eval\n";
-				  #$Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$eval\n";
+					if(not defined($config{dictionaries}{$lang}{lang_prefix}) )
+					{	Util::print_error("$cc($codcour) has an undefined Language($lang) !...");		}
+					my $evaluation_header = "\\vspace{2mm}\n";
+					$evaluation_header .= "{\\noindent\\bf <<EVALUATION-SYSTEM>>:}\\\\\n";
+					$Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$evaluation_header$eval\n";
+					#$Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$eval\n";
 
-				  Util::print_warning("$cc($codcour) specific_evaluation ($lang) detected!");
-				  #Util::print_message("$Common::course_info{$codcour}{$lang}{specific_evaluation}"); exit;
-				  #if($codcour eq "CS111") { 	Util::print_message("C. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
-				  #Util::print_message("$Common::course_info{$codcour}{specific_evaluation}");
+					Util::print_warning("$cc($codcour) specific_evaluation ($lang) detected!");
+					#Util::print_message("$Common::course_info{$codcour}{$lang}{specific_evaluation}"); exit;
+					#if($codcour eq "CS111") { 	Util::print_message("C. Common::course_info{$codcour}{specific_evaluation}=\n$Common::course_info{$codcour}{specific_evaluation}");	exit;}
+					#Util::print_message("$Common::course_info{$codcour}{specific_evaluation}");
 			    }
 		      }
 		      else
