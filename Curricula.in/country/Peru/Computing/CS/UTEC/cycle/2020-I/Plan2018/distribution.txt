@@ -3,7 +3,7 @@
 % CS1100. Introducción a la Ciencia de la Computación (Obligatorio)
 CS1100->ecuadros@utec.edu.pe:T,jalvarador@utec.edu.pe:L
 % CS1D01. Estructuras Discretas I (Obligatorio)
-CS1D01->jfiestas@utec.edu.pe:L,jrenom@utec.edu.pe:L,yserrano@utec.edu.pe:L
+CS1D01->jfiestas@utec.edu.pe:L,jrenom@utec.edu.pe:L
 
 
 % Semester #2 .
@@ -51,6 +51,8 @@ CS2301->jquinto@utec.edu.pe:L
 CS3101->aocsa@utec.edu.pe:L
 % CS3102. Estructuras de Datos Avanzadas (Obligatorio)
 CS3102->ecuadros@utec.edu.pe:T,carias@utec.edu.pe:L
+% CS3903. Sistemas de Infomación (Obligatorio)
+CS3903->fnunez@utec.edu.pe:L
 
 
 % Semester #7 .
@@ -59,5 +61,5 @@ CS2H01->carias@utec.edu.pe:L
 % CS3P01. Computación Paralela y Distribuída (Obligatorio)
 CS3P01->jfiestas@utec.edu.pe:L
 % CS2601. Inteligencia Artificial (Electivo)
-CS2601->mparedes@utec.edu.pe:T
+CS2601->mparedes@utec.edu.pe:T,pshiguihara@utec.edu.pe:L
 

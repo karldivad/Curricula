@@ -787,7 +787,7 @@
 
 
 --BEGIN-PROFESSOR--
-\email{fernando.nunez@pucp.pe}  
+\email{fnunez@utec.edu.pe}  
 \prefix{Mg}
 \name{Fernando Augusto Nuñez Calderón}
 \begin{titles}
@@ -860,24 +860,22 @@
 --END-PROFESSOR--
 
 --BEGIN-PROFESSOR--
-\email{hgallegos@utec.edu.pe}  
+\email{pshiguihara@utec.edu.pe}  
 \prefix{Mg}
-\name{Henry Giovanny Gallegos Velgara}
+\name{Pedro Nelson Shiguihara Juárez}
 \begin{titles}
-	\Master{Espanol}{Computing}{Ciencia de la Computación}{Informática}{PUC-RIO}{Brasil}{2012}
-	\Bachelor{Espanol}{Computing}{Ciencia de la Computación}{Ingeniería de Sistemas}{UNSA}{Perú}{2009}
-	\Master{English}{Computing}{Computer Science}{Computing}{PUC-RIO}{Brazil}{2012}
-	\Bachelor{English}{Computing}{Computer Science}{System Engineering}{UNSA}{Perú}{2009}
+	\Master{Espanol}{Computing}{Ciencia de la Computación}{Inteligencia artificial}{USP}{Brasil}{2013}
+	\Master{English}{Computing}{Computer Science}{Artificial Intelligence}{USP}{Brazil}{2013}
 \end{titles}
 \Category{Auxiliar}
 \Dedication{TP}
-\webpage{}
+\webpage{https://scholar.google.com/citations?user=CCWhntIAAAAJ&hl=es}
 \Office{}
-\Phone{+51-1-2303500}
-\Mobile{+51-987.606.095}
-\facebook{ }
-\Twitter{}
+\Phone{}
+\Mobile{991484729}
+\facebook{https://www.facebook.com/pedro.shiguihara}
+\Twitter{https://twitter.com/pshiguihara}
 \Blog{}
-\Research{Computer Graphics} 
-\courses{CS1100}
+\Research{Artificial Intelligence, Machine Learning, Data Science, Programming Languages, Natural Language Processing} 
+\courses{CS2601}
 --END-PROFESSOR--
