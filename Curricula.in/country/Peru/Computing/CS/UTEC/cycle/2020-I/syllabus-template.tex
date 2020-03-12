@@ -47,27 +47,35 @@
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<COURSE>>}\label{sec:--COURSE_CODE--} \\
---COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--) 
+\indent --COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--) 
+\vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. <<GENERALINFORMATION>>} \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.1 <<Credits>>:} --CREDITS-- \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.2 <<TheoryHours>>:} --HT-- (<<Weekly>>) \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.3 <<LabHours>>:} --HL-- (<<Weekly>>) \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.4 <<Durationoftheperiod>>:} 16 <<weeks>> \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.5 <<Condition>>:} --COURSE_TYPE--  \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.6 <<Modality>>:} <<FaceToFace>>  \\
-    {\noindent\bf \arabic{SyllabiSectionCount}.7 <<Prerequisites>>:}  \\
-    --PREREQUISITES--
+\begin{tabularx}{\textwidth}{lcX}
+    \indent {\bf \arabic{SyllabiSectionCount}.1 <<Credits>>}             & : & --CREDITS-- \\
+    \indent {\bf \arabic{SyllabiSectionCount}.2 <<TheoryHours>>}         & : & --THEORY_HOURS-- \\
+    \indent {\bf \arabic{SyllabiSectionCount}.3 <<LabHours>>}            & : & --LAB_HOURS-- \\
+    \indent {\bf \arabic{SyllabiSectionCount}.4 <<Durationoftheperiod>>} & : & 16 <<weeks>> \\
+    \indent {\bf \arabic{SyllabiSectionCount}.5 <<Condition>>}           & : & --COURSE_TYPE--  \\
+    \indent {\bf \arabic{SyllabiSectionCount}.6 <<Modality>>}            & : & <<FaceToFace>>  \\
+    \indent {\bf \arabic{SyllabiSectionCount}.7 <<Prerequisites>>}       & : & 
+        \begin{minipage}{0.95\textwidth}
+            --PREREQUISITES--
+        \end{minipage} \\
+\end{tabularx}
+\vspace{2mm}  
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Professors>>}}\\
 --PROFESSOR_SHORT_CVS--
 <<AttentionwithAppointment>>
+\vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Introductiontothecourse>>}}\\
 --JUSTIFICATION--
+\vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Goals>>}}
@@ -112,24 +120,34 @@
 %\item {\bf <<LearningOutcomes>>}
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Workplan>>}}\\
-{\noindent\bf \arabic{SyllabiSectionCount}.1 <<Methodology>>}\\
-<<ORAL-SESSIONS-CONTENT>>
+{\indent\bf \arabic{SyllabiSectionCount}.1 <<Methodology>>}
 
-% Comentar para Discretas I y II
-<<READING-SESSIONS-CONTENT>>
+\indent <<ORAL-SESSIONS-CONTENT>>
+
+% Comentar READING-SESSIONS para Discretas I y II
+\indent <<READING-SESSIONS-CONTENT>>
 \vspace{2mm}
 
-{\noindent\bf \arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>} \\
-<<THEORY-SESSIONS-CONTENT>>
+{\indent\bf \arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>}
+
+\indent <<THEORY-SESSIONS-CONTENT>>
 \vspace{2mm}
 
-% Descomentar para Discretas I y II
-% {\noindent\bf \arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>} \\
-% <<PRACTICAL-SESSIONS-CONTENT>>
+% Descomentar PRACTICAL-SESSIONS para Discretas I y II
+% {\indent\bf \arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>}
+
+% \indent <<PRACTICAL-SESSIONS-CONTENT>>
 % \vspace{2mm}
 
+% Comentar LAB-SESSIONS para Discretas I y II
+{\indent\bf \arabic{SyllabiSectionCount}.3 <<LAB-SESSIONS>>}
+
+\indent <<LAB-SESSIONS-CONTENT>>
+\vspace{2mm}
+
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Planning>>}}\\
+{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Planning>>}}
+
 \begin{tabularx}{\textwidth}{|l|l|l|X|}                 \hline
     %\multicolumn{4}{|l|}{\uppercase{Name}} \\ \hline
     \uppercase{<<Date>>}  & \uppercase{<<Time>>} & \uppercase{<<SessionType>>} & \uppercase{<<Professor>>} \\ \hline
@@ -140,7 +158,7 @@
 \addtocounter{SyllabiSectionCount}{1}
 {\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<EVALUATION-SYSTEM>>}}\\
 \begin{evaluation}
- ********* EVALUATION MISSING ********
+    \colorbox{yellow}{\textcolor{red}{********* EVALUATION MISSING ********}}
 \end{evaluation}
 
 \vspace{2mm}

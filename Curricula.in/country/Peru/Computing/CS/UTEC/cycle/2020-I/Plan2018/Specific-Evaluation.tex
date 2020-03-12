@@ -27,8 +27,8 @@ La nota final $NF$ se obtiene a través de:
 40\% 
 & % Lab % goes here
 60\% \\ \cline{2-3}
-& \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-& \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+& \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+& \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
 \end{tabularx}
   
 \vspace{2mm}
@@ -73,8 +73,8 @@ The final grade $FG$ is obtained through of:
 40\% 
 & % Lab % goes here
 60\% \\ \cline{2-3}
-& \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-& \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+& \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+& \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
 \end{tabularx}
   
 \vspace{2mm}
@@ -94,7 +94,7 @@ The final grade $FG$ is obtained through of:
 \end{evaluation}
   
 
-  %%% Estructuras Discretas 1 - Español
+  %%% Estructuras Discretas I - Español
   \begin{evaluation}{CS1D01}{Espanol}{THEORY,PRACTICAL}
   La nota final $NF$ se obtiene a través de:
 
@@ -103,27 +103,36 @@ The final grade $FG$ is obtained through of:
   & % Formula para Teoria va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $0.20*<<ExamAcronym>>_{1}$  + \\
+          $\text{\textbf{T}} = 0.20*<<ExamAcronym>>_{1}$  + \\
           $0.20*<<ExamAcronym>>_{2}$  + \\
           $0.20*<<ExamAcronym>>_{3}$  
-          \end{tabular} 
-      \end{minipage} 
+          \end{tabular}
+      \end{minipage}
   & % Formula para Laboratorio va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+          $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
           $0.20*<<ContinuousAssessmentAcronym>>_{2}$ 
-      \end{tabular} 
+      \end{tabular}
       \end{minipage}                 \\ \cline{2-3}
 
-  & % Theory % goes here 
+  & % Theory % goes here
   60\% 
   & % Lab % goes here
   40\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se haría si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{
+    \begin{math}
+      NF =
+      \begin{cases}
+        \text{\textbf{T}} + \text{\textbf{P}}   & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11   \\
+        \min(10,\text{\textbf{T}} + \text{\textbf{P}})    & \quad \text{En caso contrario}
+      \end{cases}
+    \end{math}
+  } \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
-      
+
   \vspace{2mm}
   \noindent <<Where>>:
   \begin{description}
@@ -138,34 +147,43 @@ The final grade $FG$ is obtained through of:
   \noindent Para aprobar el curso, el alumno debe obtener 11 o más en la nota final $NF$.
   \end{evaluation}
  
-  %%% Estructuras Discretas 1 - Ingles
+  %%% Estructuras Discretas I - Ingles
   \begin{evaluation}{CS1D01}{English}{THEORY,PRACTICAL}
     The final grade $FG$ is obtained through of:
 
-  \begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
+    \begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
     \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Practice>>} \\ \cline{2-3}
     & % Formula para Teoria va dentro del tabular
         \begin{minipage}{0.95\textwidth}
         \begin{tabular}{l}
-            $0.20*<<ExamAcronym>>_{1}$  + \\
+            $\text{\textbf{T}} = 0.20*<<ExamAcronym>>_{1}$  + \\
             $0.20*<<ExamAcronym>>_{2}$  + \\
             $0.20*<<ExamAcronym>>_{3}$  
-            \end{tabular} 
-        \end{minipage} 
+            \end{tabular}
+        \end{minipage}
     & % Formula para Laboratorio va dentro del tabular
         \begin{minipage}{0.95\textwidth}
         \begin{tabular}{l}
-            $0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+            $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
             $0.20*<<ContinuousAssessmentAcronym>>_{2}$ 
-        \end{tabular} 
+        \end{tabular}
         \end{minipage}                 \\ \cline{2-3}
   
-    & % Theory % goes here 
+    & % Theory % goes here
     60\% 
     & % Lab % goes here
     40\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation would be done if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{
+      \begin{math}
+        NF =
+        \begin{cases}
+          \text{\textbf{T}} + \text{\textbf{P}}   & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11   \\
+          \min(10,\text{\textbf{T}} + \text{\textbf{P}})   & \quad \text{En caso contrario}
+        \end{cases}
+      \end{math}
+    } \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation would be done if both parties are approved.}}  \\ \hline
     \end{tabularx}
         
     \vspace{2mm}
@@ -191,72 +209,90 @@ The final grade $FG$ is obtained through of:
   & % Formula para Teoria va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $0.15*<<ExamAcronym>>_{1}$  + \\
+          $\text{\textbf{T}} = 0.15*<<ExamAcronym>>_{1}$  + \\
           $0.15*<<ExamAcronym>>_{2}$  + \\
           $0.15*<<ExamAcronym>>_{3}$  + \\
           $0.15*<<ExamAcronym>>_{4}$
-          \end{tabular} 
-      \end{minipage} 
+          \end{tabular}
+      \end{minipage}
   & % Formula para Laboratorio va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-          $0.20*<<ContinuousAssessmentAcronym>>_{2}$ 
-      \end{tabular} 
+          $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+          $0.20*<<ContinuousAssessmentAcronym>>_{2}$
+      \end{tabular}
       \end{minipage}                 \\ \cline{2-3}
 
-  & % Theory % goes here 
+  & % Theory % goes here
   60\% 
   & % Lab % goes here
   40\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se haría si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{
+    \begin{math}
+      NF =
+      \begin{cases}
+        \text{\textbf{T}} + \text{\textbf{P}}  & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11  \\
+        \min(10,\text{\textbf{T}} + \text{\textbf{P}})     & \quad \text{En caso contrario}
+      \end{cases}
+    \end{math}
+  } \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
-      
+
   \vspace{2mm}
   \noindent <<Where>>:
   \begin{description}
-    \item[<<ExamAcronym>> :] <<Unit>> 1($<<ExamAcronym>>_{1}$), <<Unit>> 2($<<ExamAcronym>>_{2}, <<ExamAcronym>>_{3}$) y <<Unit>> 3($<<ExamAcronym>>_{4}$) 
+    \item[<<ExamAcronym>> :] <<Unit>> 1($<<ExamAcronym>>_{1}$), <<Unit>> 2($<<ExamAcronym>>_{2}, <<ExamAcronym>>_{3}$) y <<Unit>> 3($<<ExamAcronym>>_{4}$)
     \item[<<ContinuousAssessmentAcronym>>:]<<ContinuousAssessment>>(2): Comprende trabajos grupales, participación activa en clase, test de ejercicios.
     \begin{itemize}
-          \item <<ContinuousAssessmentAcronym>>1 (Semanas 1 - 8) 
+          \item <<ContinuousAssessmentAcronym>>1 (Semanas 1 - 8)
           \item <<ContinuousAssessmentAcronym>>2 (Semanas 9 - 15)
     \end{itemize}
   \end{description}
- 
+
   \noindent Para aprobar el curso, el alumno debe obtener 11 o más en la nota final $NF$.
-  \end{evaluation}
+\end{evaluation}
  
   %%% Estructuras Discretas II - Ingles
   \begin{evaluation}{CS1D02}{English}{THEORY,ORAL,PRACTICAL}
   The final grade $FG$ is obtained through of:
 
   \begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
-  \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Practice>>} \\ \cline{2-3}
-  & % Formula para Teoria va dentro del tabular
-      \begin{minipage}{0.95\textwidth}
-      \begin{tabular}{l}
-          $0.15*<<ExamAcronym>>_{1}$  + \\
-          $0.15*<<ExamAcronym>>_{2}$  + \\
-          $0.15*<<ExamAcronym>>_{3}$  + \\
-          $0.15*<<ExamAcronym>>_{4}$
-          \end{tabular} 
-      \end{minipage} 
-  & % Formula para Laboratorio va dentro del tabular
-      \begin{minipage}{0.95\textwidth}
-      \begin{tabular}{l}
-          $0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-          $0.20*<<ContinuousAssessmentAcronym>>_{2}$ 
-      \end{tabular} 
-      \end{minipage}                 \\ \cline{2-3}
-
-  & % Theory % goes here 
-  60\% 
-  & % Lab % goes here
-  40\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation would be done if both parties are approved.}  \\ \hline
-  \end{tabularx}
+    \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Practice>>} \\ \cline{2-3}
+    & % Formula para Teoria va dentro del tabular
+        \begin{minipage}{0.95\textwidth}
+        \begin{tabular}{l}
+            $\text{\textbf{T}} = 0.15*<<ExamAcronym>>_{1}$  + \\
+            $0.15*<<ExamAcronym>>_{2}$  + \\
+            $0.15*<<ExamAcronym>>_{3}$  + \\
+            $0.15*<<ExamAcronym>>_{4}$
+            \end{tabular}
+        \end{minipage}
+    & % Formula para Laboratorio va dentro del tabular
+        \begin{minipage}{0.95\textwidth}
+        \begin{tabular}{l}
+            $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
+            $0.20*<<ContinuousAssessmentAcronym>>_{2}$
+        \end{tabular}
+        \end{minipage}                 \\ \cline{2-3}
+  
+    & % Theory % goes here
+    60\% 
+    & % Lab % goes here
+    40\% \\ \cline{2-3}
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{
+      \begin{math}
+        NF =
+        \begin{cases}
+          \text{\textbf{T}} + \text{\textbf{P}}  & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11  \\
+          \min(10,\text{\textbf{T}} + \text{\textbf{P}})     & \quad \text{En caso contrario}
+        \end{cases}
+      \end{math}
+    } \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation would be done if both parties are approved.}}  \\ \hline
+    \end{tabularx}
       
   \vspace{2mm}
   \noindent <<Where>>:
@@ -298,8 +334,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -344,8 +380,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -394,8 +430,8 @@ The final grade $FG$ is obtained through of:
   35\% 
   & % Lab % goes here
   65\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -442,8 +478,8 @@ The final grade $FG$ is obtained through of:
     35\% 
     & % Lab % goes here
     65\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
       
     \vspace{2mm}
@@ -489,8 +525,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -537,8 +573,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{\textbf{The weighting of the evaluation will be made if both parties are approved.}}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -583,8 +619,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%} \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%} \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -626,8 +662,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -673,8 +709,8 @@ The final grade $FG$ is obtained through of:
     45\% 
     & % Lab % goes here
     55\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
     \end{tabularx}
     
     \vspace{2mm}
@@ -719,8 +755,8 @@ The final grade $FG$ is obtained through of:
     45\% 
     & % Lab % goes here
     55\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%} \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%} \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
     
     \vspace{2mm}
@@ -764,8 +800,8 @@ The final grade $FG$ is obtained through of:
   60\% 
   & % Lab % goes here
   40\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
   
   \vspace{2mm}
@@ -804,8 +840,8 @@ The final grade $FG$ is obtained through of:
     60\% 
     & % Lab % goes here
     40\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
     
     \vspace{2mm}
@@ -843,8 +879,8 @@ The final grade $FG$ is obtained through of:
   60\% 
   & % Lab % goes here
   40\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
   
   \vspace{2mm}
@@ -889,8 +925,8 @@ The final grade $FG$ is obtained through of:
   60\% 
   & % Lab % goes here
   40\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
   \end{tabularx}
   
   \vspace{2mm}
@@ -906,32 +942,51 @@ The final grade $FG$ is obtained through of:
       \end{itemize}
   \end{description}
 
-    \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
-    \end{evaluation}
+  \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
+  \end{evaluation}
  
 
   %% Análisis y Diseño de Algoritmos - Español
   \begin{evaluation}{CS2102}{Espanol}{THEORY,LAB,ORAL,READING}
   La nota final $NF$ se obtiene a través de:
  
-  \begin{tabular}{cl}
-      <<FG>> = & $0.20*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{1}$ + \\
-               & $0.20*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-               & $0.15*<<ExamAcronym>>_{2} + 0.15*<<ProjectAcronym>>_{2}$
-  \end{tabular}
-
+  \begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
+  \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Laboratory>>} \\ \cline{2-3}
+  & % Formula para Teoria va dentro del tabular
+      \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+          $0.15*<<ExamAcronym>>_{1}$ + \\  
+          $0.15*<<ExamAcronym>>_{2}$
+      \end{tabular} 
+      \end{minipage} 
+  & % Formula para Laboratorio va dentro del tabular
+      \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+          $0.20*<<ContinuousAssessmentAcronym>>_{1} + 0.20*<<ContinuousAssessmentAcronym>>_{2}$  +\\
+          $0.15*<<ProjectAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{2}$
+          \end{tabular} 
+      \end{minipage}                 \\ \cline{2-3}
+  
+  & % Theory % goes here 
+  30\% 
+  & % Lab % goes here
+  70\% \\ \cline{2-3}
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
+  \end{tabularx}
+  
+  \vspace{2mm}
   \noindent <<Where>>:
   \begin{description}
-            \item[ <<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
-            \begin{itemize}
-                \item <<ContinuousAssessmentAcronym>>1 (Semanas 1 - 7) : Tareas + Participación activa en clase
-                \item <<ContinuousAssessmentAcronym>>2 (Semanas 8 - 15) : Tareas + Participación activa en clase
-            \end{itemize}
-      \item[<<ExamAcronym>> :] <<Exam>> (2) Ambos textos requieren impresión.
-      \item[<<ProjectAcronym>>:] <<Project>> (2)
- 
+    \item[<<ProjectAcronym>>:] <<Project>> (2)   
+    \item[<<ExamAcronym>>:] <<Exam>>(2) 
+    \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>> (2):
+        \begin{itemize}
+              \item  <<ContinuousAssessmentAcronym>>1 (Semanas 1 - 7)
+              \item <<ContinuousAssessmentAcronym>>2 (Semanas 8 - 15)
+        \end{itemize}
   \end{description}
+  
   \noindent Para aprobar el curso hay que obtener 11 o más en la nota final $NF$.
   \end{evaluation}
  
@@ -939,23 +994,43 @@ The final grade $FG$ is obtained through of:
   \begin{evaluation}{CS2102}{English}{THEORY,LAB,ORAL,READING}
   The final grade $FG$ is obtained through of:
  
-  \begin{tabular}{cl}
-      <<FG>> = & $0.20*<<ContinuousAssessmentAcronym>>_{1}$ +\\
-               & $0.15*<<ExamAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{1}$ + \\
-               & $0.20*<<ContinuousAssessmentAcronym>>_{2}$ + \\
-               & $0.15*<<ExamAcronym>>_{2} + 0.15*<<ProjectAcronym>>_{2}$
-  \end{tabular}
-
+  \begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
+  \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Laboratory>>} \\ \cline{2-3}
+  & % Formula para Teoria va dentro del tabular
+      \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+          $0.15*<<ExamAcronym>>_{1}$ + \\  
+          $0.15*<<ExamAcronym>>_{2}$
+      \end{tabular} 
+      \end{minipage} 
+  & % Formula para Laboratorio va dentro del tabular
+      \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+          $0.20*<<ContinuousAssessmentAcronym>>_{1} + 0.20*<<ContinuousAssessmentAcronym>>_{2}$  +\\
+          $0.15*<<ProjectAcronym>>_{1} + 0.15*<<ProjectAcronym>>_{2}$
+          \end{tabular} 
+      \end{minipage}                 \\ \cline{2-3}
+  
+  & % Theory % goes here 
+  30\% 
+  & % Lab % goes here
+  70\% \\ \cline{2-3}
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
+  \end{tabularx}
+  
+  \vspace{2mm}
   \noindent <<Where>>:
   \begin{description}
-            \item[ <<ContinuousAssessmentAcronym>>:] <<ContinuousAssessment>>(2):
-            \begin{itemize}
-                \item  <<ContinuousAssessmentAcronym>>1 (weeks 1 - 7) : Homework + performance in class
-                \item <<ContinuousAssessmentAcronym>>2 (weeks 8 - 15) : Homework + performance in class
-       \end{itemize}
-      \item[<<ExamAcronym>> :] <<Exam>> (2), Both texts requiere printing.
-      \item[<<ProjectAcronym>> :] <<Project>> (2)
+    \item[<<ProjectAcronym>>:] <<Project>> (2)  
+    \item[<<ExamAcronym>>:] <<Exam>>(1) 
+    \item[<<ContinuousAssessmentAcronym>> :] <<ContinuousAssessment>>(2):
+      \begin{itemize}
+            \item  <<ContinuousAssessmentAcronym>>1 (weeks 1 - 7) 
+            \item <<ContinuousAssessmentAcronym>>2 (weeks 8 - 15) 
+      \end{itemize}
   \end{description}
+
   \noindent To pass the course you must obtain 11 or more in the final grade $FG$.
   \end{evaluation}
 
@@ -987,8 +1062,8 @@ The final grade $FG$ is obtained through of:
   30\% 
   & % Lab % goes here
   70\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
   
   \vspace{2mm}
@@ -1033,8 +1108,8 @@ The final grade $FG$ is obtained through of:
     30\% 
     & % Lab % goes here
     70\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
     
     \vspace{2mm}
@@ -1075,7 +1150,7 @@ The final grade $FG$ is obtained through of:
           \end{tabular} 
       \end{minipage}                 \\ \cline{2-3}
   
-      & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+      & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
   
   \vspace{2mm}
@@ -1127,7 +1202,7 @@ The final grade $FG$ is obtained through of:
             \end{tabular} 
         \end{minipage}                 \\ \cline{2-3}
     
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
     
     \vspace{2mm}
@@ -1184,8 +1259,8 @@ The final grade $FG$ is obtained through of:
   30\% 
   & % Lab % goes here
   70\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}}  \\ \hline
   \end{tabularx}
       
   \vspace{2mm}
@@ -1229,8 +1304,8 @@ The final grade $FG$ is obtained through of:
   30\% 
   & % Lab % goes here
   70\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{\textbf{The weighting of the evaluation will be made if both parties are approved.}}}  \\ \hline
   \end{tabularx}
       
   \vspace{2mm}
@@ -1275,8 +1350,8 @@ The final grade $FG$ is obtained through of:
   35\% 
   & % Lab % goes here
   65\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -1321,8 +1396,8 @@ The final grade $FG$ is obtained through of:
   35\% 
   & % Lab % goes here
   65\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -1423,8 +1498,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -1469,8 +1544,8 @@ The final grade $FG$ is obtained through of:
     40\% 
     & % Lab % goes here
     60\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
       
     \vspace{2mm}
@@ -1516,8 +1591,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -1558,8 +1633,8 @@ The final grade $FG$ is obtained through of:
   40\% 
   & % Lab % goes here
   60\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -1653,8 +1728,8 @@ The final grade $FG$ is obtained through of:
     35\% 
     & % Lab % goes here
     65\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
     \end{tabularx}
       
     \vspace{2mm}
@@ -1699,8 +1774,8 @@ The final grade $FG$ is obtained through of:
     35\% 
     & % Lab % goes here
     65\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
      
     \vspace{2mm}
@@ -1749,8 +1824,8 @@ The final grade $FG$ is obtained through of:
   35\% 
   & % Lab % goes here
   65\% \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-  & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+  & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+  & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
     
   \vspace{2mm}
@@ -1791,8 +1866,8 @@ The final grade $FG$ is obtained through of:
     35\% 
     & % Lab % goes here
     65\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
       
     \vspace{2mm}
@@ -1832,8 +1907,8 @@ The final grade $FG$ is obtained through of:
     40\% 
     & % Lab % goes here
     60\% \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-    & \multicolumn{2}{|c|}{La ponderación de la evaluación se hará si ambas partes están aprobadas.}  \\ \hline
+    & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+    & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
     \end{tabularx}
       
     \vspace{2mm}
@@ -1878,8 +1953,8 @@ The final grade $FG$ is obtained through of:
       40\% 
       & % Lab % goes here
       60\% \\ \cline{2-3}
-      & \multicolumn{2}{|c|}{100\%}  \\ \cline{2-3}
-      & \multicolumn{2}{|c|}{The weighting of the evaluation will be made if both parties are approved.}  \\ \hline
+      & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
+      & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
       \end{tabularx}
         
       \vspace{2mm}

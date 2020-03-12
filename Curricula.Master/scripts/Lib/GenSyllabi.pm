@@ -368,16 +368,16 @@ sub read_syllabus_info($$$)
 	$horastxt 			.= "$Common::course_info{$codcour}{ph} HP; " if($Common::course_info{$codcour}{ph} > 0);
 	$horastxt 			.= "$Common::course_info{$codcour}{lh} HL; " if($Common::course_info{$codcour}{lh} > 0);
 	$map{HOURS}			 = $horastxt;
-	($map{THEORY_HOURS}, $map{PRACTICE_HOURS}, $map{LAB_HOURS})	= ("", "", "");
+	($map{THEORY_HOURS}, $map{PRACTICE_HOURS}, $map{LAB_HOURS})	= ("-", "-", "-");
 
 	if($Common::course_info{$codcour}{th} > 0)
-	{   $map{THEORY_HOURS} = "$Common::course_info{$codcour}{th} $Common::config{dictionary}{THEORY}";	}
+	{   $map{THEORY_HOURS} = "$Common::course_info{$codcour}{th} (<<Weekly>>)";	}
 
 	if($Common::course_info{$codcour}{ph} > 0)
-	{   $map{PRACTICE_HOURS} = "$Common::course_info{$codcour}{ph} $Common::config{dictionary}{PRACTICE}";	}
+	{   $map{PRACTICE_HOURS} = "$Common::course_info{$codcour}{ph} (<<Weekly>>)";	}
 
 	if($Common::course_info{$codcour}{lh} > 0)
-	{   $map{LAB_HOURS} = "$Common::course_info{$codcour}{lh} $Common::config{dictionary}{LABORATORY}";	}
+	{   $map{LAB_HOURS} = "$Common::course_info{$codcour}{lh} (<<Weekly>>)";	}
 
 	if($Common::course_info{$codcour}{n_prereq} == 0)
 	{	$map{PREREQUISITES_JUST_CODES}	= $Common::config{dictionaries}{$lang}{None};
