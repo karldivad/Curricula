@@ -688,7 +688,9 @@ sub gen_batch_to_compile_syllabi()
 				$output .= "$scripts_dir/gen-syllabus.sh $codcour-$lang_prefix $OutputInstDir$parallel_sep\n";
 				if(defined($Common::config{distribution}{$codcour}))
 				{
-					my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name} ($Common::config{Semester}).pdf";
+					                                    #2020-1-QI0027-química general.doc
+					my $fullname = "$OutputFullSyllabiDir/$Common::config{Semester} $codcour-$lang_prefix - $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name}.pdf";
+					#my $fullname = "$OutputFullSyllabiDir/$codcour-$lang_prefix - $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name} ($Common::config{Semester}).pdf";
 					$output .= "cp \"$OutputSyllabiDir/$codcour-$lang_prefix.pdf\" \"$fullname\"\n";
 				}
 			}
