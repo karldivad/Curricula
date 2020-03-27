@@ -1,7 +1,7 @@
 
 % Semester #1 .
 % CS1100. Introducción a la Ciencia de la Computación (Obligatorio)
-CS1100->ecuadros@utec.edu.pe:T,hsanchez@utec.edu.pe:L,pshiguihara@utec.edu.pe:L,jalvarador@utec.edu.pe:L
+CS1100->ecuadros@utec.edu.pe:T,hsanchez@utec.edu.pe:L,pshiguihara@utec.edu.pe:L,jalvarador@utec.edu.pe:L,amorantep@utec.edu.pe:L
 % CS1D01. Estructuras Discretas I (Obligatorio)
 CS1D01->jfiestas@utec.edu.pe:L,jrenom@utec.edu.pe:L
 

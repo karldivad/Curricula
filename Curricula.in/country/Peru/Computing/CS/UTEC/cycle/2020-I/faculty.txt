@@ -881,3 +881,25 @@
 \Research{Artificial Intelligence, Machine Learning, Data Science, Programming Languages, Natural Language Processing} 
 \courses{CS2601}
 --END-PROFESSOR--
+
+
+--BEGIN-PROFESSOR--
+\email{amorantep@utec.edu.pe}  
+\prefix{Mg}
+\name{Alan Victor Raul Morante Ponce}
+\begin{titles}
+	\Master{Espanol}{Administration}{Administración de Empresas}{Administración de Empresas}{UP}{Peru}{2019}
+	\Master{English}{Administration}{Business Administration}{Business Administration}{UP}{Peru}{2019}
+\end{titles}
+\Category{Auxiliar}
+\Dedication{TP}
+\webpage{}
+\Office{}
+\Phone{}
+\Mobile{959103114}
+\facebook{https://www.facebook.com/alan.morante}
+\Twitter{https://twitter.com/amorantep}
+\Blog{}
+\Research{Artificial Intelligence, Data Science, Informatic Security} 
+\courses{CS2601}
+--END-PROFESSOR--

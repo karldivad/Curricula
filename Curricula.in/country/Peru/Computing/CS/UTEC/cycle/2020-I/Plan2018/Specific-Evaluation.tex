@@ -103,16 +103,16 @@ The final grade $FG$ is obtained through of:
   & % Formula para Teoria va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $\text{\textbf{T}} = 0.20*<<ExamAcronym>>_{1}$  + \\
-          $0.20*<<ExamAcronym>>_{2}$  + \\
-          $0.20*<<ExamAcronym>>_{3}$  
+          $\text{\textbf{T}} = [<<ExamAcronym>>_{1}$  +
+          $<<ExamAcronym>>_{2}$  +
+          $<<ExamAcronym>>_{3}]/3$
           \end{tabular}
       \end{minipage}
   & % Formula para Laboratorio va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-          $0.20*<<ContinuousAssessmentAcronym>>_{2}$ 
+          $\text{\textbf{P}} = [<<ContinuousAssessmentAcronym>>_{1}$ +
+          $<<ContinuousAssessmentAcronym>>_{2}]/2$
       \end{tabular}
       \end{minipage}                 \\ \cline{2-3}
 
@@ -125,8 +125,8 @@ The final grade $FG$ is obtained through of:
     \begin{math}
       NF =
       \begin{cases}
-        \text{\textbf{T}} + \text{\textbf{P}}   & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11   \\
-        \min(10,\text{\textbf{T}} + \text{\textbf{P}})    & \quad \text{En caso contrario}
+        10     & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) < 11 \text{ y } 0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}} \geq 11 \\
+        0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}}  & \quad \text{En caso contrario}
       \end{cases}
     \end{math}
   } \\ \cline{2-3}
@@ -155,19 +155,19 @@ The final grade $FG$ is obtained through of:
     \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Practice>>} \\ \cline{2-3}
     & % Formula para Teoria va dentro del tabular
         \begin{minipage}{0.95\textwidth}
-        \begin{tabular}{l}
-            $\text{\textbf{T}} = 0.20*<<ExamAcronym>>_{1}$  + \\
-            $0.20*<<ExamAcronym>>_{2}$  + \\
-            $0.20*<<ExamAcronym>>_{3}$  
-            \end{tabular}
-        \end{minipage}
-    & % Formula para Laboratorio va dentro del tabular
-        \begin{minipage}{0.95\textwidth}
-        \begin{tabular}{l}
-            $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-            $0.20*<<ContinuousAssessmentAcronym>>_{2}$ 
-        \end{tabular}
-        \end{minipage}                 \\ \cline{2-3}
+      \begin{tabular}{l}
+          $\text{\textbf{T}} = [<<ExamAcronym>>_{1}$  +
+          $<<ExamAcronym>>_{2}$  +
+          $<<ExamAcronym>>_{3}]/3$
+          \end{tabular}
+      \end{minipage}
+  & % Formula para Laboratorio va dentro del tabular
+      \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+          $\text{\textbf{P}} = [<<ContinuousAssessmentAcronym>>_{1}$ +
+          $<<ContinuousAssessmentAcronym>>_{2}]/2$
+      \end{tabular}
+      \end{minipage}                 \\ \cline{2-3}
   
     & % Theory % goes here
     60\% 
@@ -178,8 +178,8 @@ The final grade $FG$ is obtained through of:
       \begin{math}
         NF =
         \begin{cases}
-          \text{\textbf{T}} + \text{\textbf{P}}   & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11   \\
-          \min(10,\text{\textbf{T}} + \text{\textbf{P}})   & \quad \text{En caso contrario}
+          10     & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) < 11 \text{ y } 0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}} \geq 11 \\
+        0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}}  & \quad \text{Otherwise}
         \end{cases}
       \end{math}
     } \\ \cline{2-3}
@@ -209,17 +209,17 @@ The final grade $FG$ is obtained through of:
   & % Formula para Teoria va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $\text{\textbf{T}} = 0.15*<<ExamAcronym>>_{1}$  + \\
-          $0.15*<<ExamAcronym>>_{2}$  + \\
-          $0.15*<<ExamAcronym>>_{3}$  + \\
-          $0.15*<<ExamAcronym>>_{4}$
+          $\text{\textbf{T}} = [<<ExamAcronym>>_{1}$  +
+          $<<ExamAcronym>>_{2}$  +
+          $<<ExamAcronym>>_{3}$ +
+          $<<ExamAcronym>>_{4}]/4$
           \end{tabular}
       \end{minipage}
   & % Formula para Laboratorio va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-          $0.20*<<ContinuousAssessmentAcronym>>_{2}$
+          $\text{\textbf{P}} = [<<ContinuousAssessmentAcronym>>_{1}$ +
+          $<<ContinuousAssessmentAcronym>>_{2}]/2$
       \end{tabular}
       \end{minipage}                 \\ \cline{2-3}
 
@@ -232,8 +232,8 @@ The final grade $FG$ is obtained through of:
     \begin{math}
       NF =
       \begin{cases}
-        \text{\textbf{T}} + \text{\textbf{P}}  & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11  \\
-        \min(10,\text{\textbf{T}} + \text{\textbf{P}})     & \quad \text{En caso contrario}
+        10     & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) < 11 \text{ y } 0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}} \geq 11 \\
+        0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}}  & \quad \text{En caso contrario}
       \end{cases}
     \end{math}
   } \\ \cline{2-3}
@@ -261,22 +261,22 @@ The final grade $FG$ is obtained through of:
   \begin{tabularx}{0.9\textwidth}{|X|p{0.35\textwidth}|p{0.35\textwidth}|} \hline
     \multirow{4}{*}{\uppercase{<<Evaluation>>}} & \uppercase{<<Theory>>} & \uppercase{<<Practice>>} \\ \cline{2-3}
     & % Formula para Teoria va dentro del tabular
-        \begin{minipage}{0.95\textwidth}
-        \begin{tabular}{l}
-            $\text{\textbf{T}} = 0.15*<<ExamAcronym>>_{1}$  + \\
-            $0.15*<<ExamAcronym>>_{2}$  + \\
-            $0.15*<<ExamAcronym>>_{3}$  + \\
-            $0.15*<<ExamAcronym>>_{4}$
-            \end{tabular}
-        \end{minipage}
+    \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+        $\text{\textbf{T}} = [<<ExamAcronym>>_{1}$  +
+        $<<ExamAcronym>>_{2}$  +
+        $<<ExamAcronym>>_{3}$  +
+        $<<ExamAcronym>>_{4}]/4$
+      \end{tabular}
+    \end{minipage}
     & % Formula para Laboratorio va dentro del tabular
-        \begin{minipage}{0.95\textwidth}
-        \begin{tabular}{l}
-            $\text{\textbf{P}} = 0.20*<<ContinuousAssessmentAcronym>>_{1}$ + \\
-            $0.20*<<ContinuousAssessmentAcronym>>_{2}$
-        \end{tabular}
-        \end{minipage}                 \\ \cline{2-3}
-  
+      \begin{minipage}{0.95\textwidth}
+      \begin{tabular}{l}
+          $\text{\textbf{P}} = [<<ContinuousAssessmentAcronym>>_{1}$ +
+          $<<ContinuousAssessmentAcronym>>_{2}]/2$
+      \end{tabular}
+    \end{minipage}                 \\ \cline{2-3}
+    
     & % Theory % goes here
     60\% 
     & % Lab % goes here
@@ -286,8 +286,8 @@ The final grade $FG$ is obtained through of:
       \begin{math}
         NF =
         \begin{cases}
-          \text{\textbf{T}} + \text{\textbf{P}}  & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) > 11  \\
-          \min(10,\text{\textbf{T}} + \text{\textbf{P}})     & \quad \text{En caso contrario}
+          10     & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) < 11 \text{ y } 0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}} \geq 11 \\
+          0.6*\text{\textbf{T}} + 0.4*\text{\textbf{P}}  & \quad \text{Otherwise}
         \end{cases}
       \end{math}
     } \\ \cline{2-3}
@@ -522,9 +522,9 @@ The final grade $FG$ is obtained through of:
       \end{tabular} 
       \end{minipage}                 \\ \cline{2-3}
   & % Theory % goes here 
-  40\% 
+  30\% 
   & % Lab % goes here
-  60\% \\ \cline{2-3}
+  70\% \\ \cline{2-3}
   & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
   & \multicolumn{2}{c|}{\textbf{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}}  \\ \hline
   \end{tabularx}
@@ -570,9 +570,9 @@ The final grade $FG$ is obtained through of:
       \end{tabular} 
       \end{minipage}                 \\ \cline{2-3}
   & % Theory % goes here 
-  40\% 
+  30\% 
   & % Lab % goes here
-  60\% \\ \cline{2-3}
+  70\% \\ \cline{2-3}
   & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
   & \multicolumn{2}{c|}{\textbf{\textbf{The weighting of the evaluation will be made if both parties are approved.}}}  \\ \hline
   \end{tabularx}
@@ -783,23 +783,23 @@ The final grade $FG$ is obtained through of:
   & % Formula para Teoria va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $0.15* <<ExamAcronym>>_{1}$ + \\  
-          $0.15* <<ExamAcronym>>_{2}$ + \\ 
-          $0.15* <<ExamAcronym>>_{3}$ + \\  
-          $0.15* <<ExamAcronym>>_{4}$
+          $0.20* <<ExamAcronym>>_{2}$ + \\ 
+          $0.20* <<ExamAcronym>>_{3}$ + \\  
+          $0.20* <<ExamAcronym>>_{1}$ + \\  
+          $0.20* <<ExamAcronym>>_{4}$
       \end{tabular} 
       \end{minipage} 
   & % Formula para Laboratorio va dentro del tabular
       \begin{minipage}{0.95\textwidth}
       \begin{tabular}{l}
-          $0.40*<<ProjectAcronym>>_{1}$
+          $0.20*<<ProjectAcronym>>_{1}$
           \end{tabular} 
       \end{minipage}                 \\ \cline{2-3}
   
   & % Theory % goes here 
-  60\% 
+  80\% 
   & % Lab % goes here
-  40\% \\ \cline{2-3}
+  20\% \\ \cline{2-3}
   & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
   & \multicolumn{2}{c|}{\textbf{La ponderación de la evaluación se haría si ambas partes están aprobadas.}}  \\ \hline
   \end{tabularx}
@@ -823,23 +823,23 @@ The final grade $FG$ is obtained through of:
     & % Formula para Teoria va dentro del tabular
         \begin{minipage}{0.95\textwidth}
         \begin{tabular}{l}
-            $0.15* <<ExamAcronym>>_{1}$ + \\  
-            $0.15* <<ExamAcronym>>_{2}$ + \\ 
-            $0.15* <<ExamAcronym>>_{3}$ + \\  
-            $0.15* <<ExamAcronym>>_{4}$
+            $0.20* <<ExamAcronym>>_{1}$ + \\  
+            $0.20* <<ExamAcronym>>_{2}$ + \\ 
+            $0.20* <<ExamAcronym>>_{3}$ + \\  
+            $0.20* <<ExamAcronym>>_{4}$
         \end{tabular} 
         \end{minipage} 
     & % Formula para Laboratorio va dentro del tabular
         \begin{minipage}{0.95\textwidth}
         \begin{tabular}{l}
-            $0.40*<<ProjectAcronym>>_{1}$
+            $0.20*<<ProjectAcronym>>_{1}$
             \end{tabular} 
         \end{minipage}                 \\ \cline{2-3}
     
     & % Theory % goes here 
-    60\% 
+    80\% 
     & % Lab % goes here
-    40\% \\ \cline{2-3}
+    20\% \\ \cline{2-3}
     & \multicolumn{2}{c|}{100\%}  \\ \cline{2-3}
     & \multicolumn{2}{c|}{\textbf{The weighting of the evaluation will be made if both parties are approved.}}  \\ \hline
     \end{tabularx}
@@ -1230,7 +1230,7 @@ The final grade $FG$ is obtained through of:
         FG =
         \begin{cases}
           \text{\textbf{10}}   & \quad \text{Si } \min(\text{\textbf{T}},\text{\textbf{P}}) < 11 \text{ and }  [\frac{\textbf{P} + \text{\textbf{T}}}{2}] \geq  11\\
-          [\frac{\textbf{P} + \text{\textbf{T}}}{2}]    & \quad \text{En caso contrario}
+          [\frac{\textbf{P} + \text{\textbf{T}}}{2}]    & \quad \text{Otherwise}
         \end{cases}
       \end{math}
     } \\ \cline{2-3}
