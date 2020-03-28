@@ -1,7 +1,7 @@
 
 % Semester #1 .
 % CS1100. Introducción a la Ciencia de la Computación (Obligatorio)
-CS1100->ecuadros@utec.edu.pe:T,jalvarador@utec.edu.pe:L
+CS1100->ecuadros@utec.edu.pe:T,hsanchez@utec.edu.pe:L,pshiguihara@utec.edu.pe:L,jalvarador@utec.edu.pe:L,amorantep@utec.edu.pe:L
 % CS1D01. Estructuras Discretas I (Obligatorio)
 CS1D01->jfiestas@utec.edu.pe:L,jrenom@utec.edu.pe:L
 
@@ -24,7 +24,7 @@ CS2B01->jbellido@utec.edu.pe:L
 
 % Semester #4 .
 % CS2100. Algoritmos y Estructuras de Datos (Obligatorio)
-CS2100->ltalavera@utec.edu.pe:L,carias@utec.edu.pe:L
+CS2100->ltalavera@utec.edu.pe:L,carias@utec.edu.pe:L,rgonzalesveg@utec.edu.pe:L
 % CS2101. Teoría de la Computación (Obligatorio)
 CS2101->jgutierreza@utec.edu.pe:L
 % CS2701. Bases de Datos I (Obligatorio)
@@ -33,15 +33,15 @@ CS2701->tchambilla@utec.edu.pe:L
 
 % Semester #5 .
 % CS2102. Análisis y Diseño de Algoritmos (Obligatorio)
-CS2102->carias@utec.edu.pe:L
+CS2102->rgonzalesveg@utec.edu.pe:T,carias@utec.edu.pe:L
 % CS2702. Bases de Datos II (Obligatorio)
 CS2702->hsanchez@utec.edu.pe:L
 % CS2901. Ingeniería de Software I (Obligatorio)
-CS2901->jbellido@utec.edu.pe:L
+CS2901->yserrano@utec.edu.pe:L,jbellido@utec.edu.pe:L
 % CS2S01. Sistemas Operativos (Obligatorio)
 CS2S01->jgonzalez@utec.edu.pe:L
 % CS3402. Compiladores (Obligatorio)
-CS3402->jfiestas@utec.edu.pe:L
+CS3402->fnunez@utec.edu.pe:L
 
 
 % Semester #6 .
@@ -57,7 +57,7 @@ CS3903->fnunez@utec.edu.pe:L
 
 % Semester #7 .
 % CS2H01. Interacción Humano Computador (Obligatorio)
-CS2H01->carias@utec.edu.pe:L
+CS2H01->carias@utec.edu.pe:T
 % CS3P01. Computación Paralela y Distribuída (Obligatorio)
 CS3P01->jfiestas@utec.edu.pe:L
 % CS2601. Inteligencia Artificial (Electivo)
