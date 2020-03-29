@@ -3,12 +3,14 @@ lang_for_latex=english
 Curricula   =Curricula
 SCHOOL      = SCHOOL/DEPARTMENT
 COURSE      = COURSE
+Course      = Course
 DEPARTMENT  = DEPARTMENT
 SEMESTER    = SEMESTER
 TYPEOFCOURSE=TYPE OF COURSE
 Condition=Type of course
 
 GENERALINFORMATION=GENERAL INFORMATION
+GeneralInformation=General information
 CourseCodeandName=Code and Name
 HoursTheoryAndLab=Hours of theory and Lab
 RATIONALEOFTHECOURSE=RATIONALE OF THE COURSE

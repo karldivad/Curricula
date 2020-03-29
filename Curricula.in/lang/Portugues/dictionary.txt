@@ -2,13 +2,15 @@ lang_for_latex=portuguese
 
 Curricula   = Curriculo
 SCHOOL      = ESCOLA/DEPARTAMENTO
-COURSE      = CURSO
+COURSE      = DISCIPLINA
+Course      = Disciplina
 DEPARTMENT  = DEPARTAMENTO
 SEMESTER    = SEMESTRE
 TYPEOFCOURSE=TIPO DE CURSO
 Condition=Tipo de disciplina
 
 GENERALINFORMATION=INFORMAÇAO GERAL
+GeneralInformation=Informação geral
 CourseCodeandName=Código do curso e nome
 HoursTheoryAndLab=Horas de Teoria e Laboratório
 RATIONALEOFTHECOURSE=FUNDAMENTAÇíO DO CURSO

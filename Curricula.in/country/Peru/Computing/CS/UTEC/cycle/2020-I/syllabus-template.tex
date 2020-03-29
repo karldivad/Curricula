@@ -26,7 +26,20 @@
 \newcommand{\INST}{}
 \newcommand{\AREA}{}
 
+\newcommand{\addsectiontoidx}[1]%
+{ \addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. #1}%
+  {\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{#1}} \\  %
+}
+\newcommand{\addsubsectiontoidx}[1]%
+{ \addcontentsline{toc}{subsection}{#1}%
+  {\indent\bf #1} \\ %
+}
+
 \begin{document}
+
+\tableofcontents
+\newpage
+
 \AddToShipoutPictureBG{\put(0,100){\includegraphics[width=2cm]{\InProgramDir/stamp1}}}
 
 \begin{tabularx}{\textwidth}{p{3cm}cX}
@@ -42,19 +55,21 @@
 \end{minipage}
 \end{tabularx}
 
-\tableofcontents
-
-\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
-\addcontentsline{toc}{section}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
+%\addtocounter{SyllabiSectionCount}{1}
+%\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
+%\addcontentsline{toc}{section}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. <<COURSE>>}\label{sec:--COURSE_CODE--} \\
+\addsectiontoidx{<<Course>>} \label{sec:--COURSE_CODE--} \\
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. <<COURSE>>}
+%{\noindent\bf \arabic{SyllabiSectionCount}. <<COURSE>>}\label{sec:--COURSE_CODE--} \\
 \indent --COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--) 
 \vspace{2mm}
 
-\addcontentsline{toc}{section}{<<GENERALINFORMATION>>}
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. <<GENERALINFORMATION>>} \\
+\addsectiontoidx{<<GeneralInformation>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. <<GENERALINFORMATION>>}
+%{\noindent\bf \arabic{SyllabiSectionCount}. <<GENERALINFORMATION>>} \\
 \begin{tabularx}{\textwidth}{lcX}
     \indent {\bf \arabic{SyllabiSectionCount}.1 <<Credits>>}             & : & --CREDITS-- \\
     \indent {\bf \arabic{SyllabiSectionCount}.2 <<TheoryHours>>}         & : & --THEORY_HOURS-- \\
@@ -70,28 +85,39 @@
 \vspace{2mm}  
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Professors>>}}\\
+\addsectiontoidx{<<Professors>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Professors>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Professors>>}}\\
 --PROFESSOR_SHORT_CVS--
 <<AttentionwithAppointment>>
 \vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Introductiontothecourse>>}}\\
+\addsectiontoidx{<<Introductiontothecourse>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Introductiontothecourse>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Introductiontothecourse>>}}\\
 --JUSTIFICATION--
 \vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Goals>>}}
+
+\addsectiontoidx{<<Goals>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Goals>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Goals>>}}
 --FULL_GOALS--
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Competences>>}}
+\addsectiontoidx{<<Competences>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Competences>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Competences>>}}
 --FULL_OUTCOMES--
 
 --OUTCOMES-FOR-OTHERS--
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<TopicsOfCourse>>}}
+\addsectiontoidx{<<Topics>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Topics>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount}. \uppercase{<<Topics>>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{SyllabiUnitCount}{0}
 --BEGINUNIT--
@@ -122,8 +148,13 @@
 
 %\item {\bf <<LearningOutcomes>>}
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Workplan>>}}\\
-{\indent\bf \arabic{SyllabiSectionCount}.1 <<Methodology>>}
+\addsectiontoidx{<<Workplan>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Workplan>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Workplan>>}}\\
+
+\addsubsectiontoidx{\arabic{SyllabiSectionCount}.1 <<Methodology>>}
+%addcontentsline{toc}{subsection}{\arabic{SyllabiSectionCount}.1 <<Methodology>>}
+%{\indent\bf \arabic{SyllabiSectionCount}.1 <<Methodology>>}
 
 \indent <<ORAL-SESSIONS-CONTENT>>
 
@@ -131,13 +162,17 @@
 % \indent <<READING-SESSIONS-CONTENT>>
 % \vspace{2mm}
 
-{\indent\bf \arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>}
+\addsubsectiontoidx{\arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>}
+%\addcontentsline{toc}{subsection}{\arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>}
+%{\indent\bf \arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>}
 
 \indent <<THEORY-SESSIONS-CONTENT>>
 \vspace{2mm}
 
 % Descomentar PRACTICAL-SESSIONS para Discretas I y II
-{\indent\bf \arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>}
+\addsubsectiontoidx{\arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>}
+%\addcontentsline{toc}{subsection}{\arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>}
+%{\indent\bf \arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>}
 
 \indent <<PRACTICAL-SESSIONS-CONTENT>>
 \vspace{2mm}
@@ -149,7 +184,9 @@
 % \vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Planning>>}}
+\addsectiontoidx{<<Planning>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<Planning>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<Planning>>}}
 
 \begin{tabularx}{\textwidth}{|l|l|l|X|}                 \hline
     %\multicolumn{4}{|l|}{\uppercase{Name}} \\ \hline
@@ -159,14 +196,18 @@
 \vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
-{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<EVALUATION-SYSTEM>>}}\\
+\addsectiontoidx{<<EVALUATION-SYSTEM>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. \uppercase{<<EVALUATION-SYSTEM>>}}
+%{\noindent\bf \arabic{SyllabiSectionCount} \uppercase{<<EVALUATION-SYSTEM>>}}\\
 \begin{evaluation}
     \colorbox{yellow}{\textcolor{red}{********* EVALUATION MISSING ********}}
 \end{evaluation}
 
 \vspace{2mm}
 \addtocounter{SyllabiSectionCount}{1} 
-{\noindent\bf \arabic{SyllabiSectionCount}. <<BasicBibliography>>}
+\addsectiontoidx{<<BasicBibliography>>}
+%\addcontentsline{toc}{section}{\arabic{SyllabiSectionCount}. <<BasicBibliography>>}
+%{\noindent\bf \arabic{SyllabiSectionCount}. <<BasicBibliography>>}
 \defbibheading{bibliography}[\bibname]{}
 \printbibliography
 
