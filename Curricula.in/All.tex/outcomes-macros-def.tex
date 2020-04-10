@@ -7,11 +7,11 @@
 }
 
 \newcommand{\ShowOutcome}[2]{%
-{\bf #1)} \csname Outcome#1\endcsname ({\bf \ShowCompetenceLevel{#2}})%
+\textbf{#1)} \csname Outcome#1\endcsname (\textbf{\ShowCompetenceLevel{#2}})%
 }
 
 \newcommand{\ShowShortOutcomeLetter}[1]{%
-{\bf #1)} \csname Outcome#1Short\endcsname %
+\textbf{#1)} \csname Outcome#1Short\endcsname %
 }
 
 \newcommand{\ShowShortOutcome}[1]{%
@@ -26,7 +26,7 @@
 \csname #1\endcsname\label{Competence:#1}%
 }
 \newcommand{\ShowCompetence}[2]{%
-{\bf #1.} \csname #1\endcsname {\bf $\Rightarrow$ Outcome #2}%
+\textbf{#1.} \csname #1\endcsname \textbf{$\Rightarrow$ Outcome #2}%
 }
 
 \newcommand{\DefineCompetenceLevel}[2]{%

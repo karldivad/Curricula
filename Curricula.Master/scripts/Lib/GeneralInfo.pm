@@ -40,8 +40,8 @@ sub generate_course_tables($)
 
 # 		$this_sem_text .= "Code & Course & Area & HT & HP & HL & Cr & T & Prerequisites             \\\\ \\hline\n";
  		my $course_headers= $Common::config{dictionary}{course_fields};
-		$course_headers =~ s/$begin_tag/{\\bf $begin_tag/g;
-		$course_headers =~ s/$end_tag/$end_tag}/g;
+		$course_headers =~ s/$begin_tag/\\textbf\{$begin_tag/g;    # aqui
+		$course_headers =~ s/$end_tag/$end_tag\}/g;
  		$this_sem_text .= Common::replace_tags($course_headers, $begin_tag, $end_tag, %{$Common::config{dictionary}});
 
 		$this_sem_text .= "\n";
@@ -233,13 +233,13 @@ sub generate_distribution_credits_by_area_by_semester()
 	my $table_end1  = "\\end{tabularx}\n";
 	my $table_end2  = "\\end{table}\n\n";
 
-	my ($header, $areas_header, $area_sum, $percent)       = ("|X|", "  ", " {\\bf $Common::config{dictionary}{Total}} ", "");
+	my ($header, $areas_header, $area_sum, $percent)       = ("|X|", "  ", " \\textbf{$Common::config{dictionary}{Total}} ", "");
 	my $area;
 	foreach $area (sort {$Common::config{area_priority}{$a} <=> $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
 	{
 		$header         .= "c|";
 		my $color		  = $Common::config{colors}{$area}{bgcolor};
-		$areas_header   .= "& \\colorbox{$color}{{\\bf $area}}";
+		$areas_header   .= "& \\colorbox{$color}{\\textbf{$area}}";
 		$Common::counts{credits}{prefix}{$area} = 0;
 		$area_sum .= " & $area";
 		$percent  .= " & $area";
@@ -252,7 +252,7 @@ sub generate_distribution_credits_by_area_by_semester()
 	my $table_body= "";
 	for(my $semester=1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
-		$table_body .= "{\\bf $Common::config{dictionary}{semester_ordinal}{$semester} $Common::config{dictionary}{Semester}}";
+		$table_body .= "\\textbf{$Common::config{dictionary}{semester_ordinal}{$semester} $Common::config{dictionary}{Semester}}";
 		my $sum_sem  = 0;
 		foreach $area (sort {$Common::config{area_priority}{$a} <=> $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
 		{
@@ -437,7 +437,7 @@ sub generate_bok_index_old()
 # End
 	my $BOKArea 	 = $cur_area."BOKArea";
 	$bok_body  	.= "\\subsection{$cur_area. $Common::config{macros}{$BOKArea}$map{BOK_AREA_HOURS_LABEL}}\\label{sec:BOK-$cur_area}\n";
-	$bok_body	.= "\\noindent{\\bf $map{BOK_AREA_INDEX}}\n\n";
+	$bok_body	.= "\\noindent\\textbf{$map{BOK_AREA_INDEX}}\n\n";
 	$bok_body  	.= "\\$cur_area"."Description\n\n";
 	$bok_body  	.= $this_area_txt;
 
@@ -902,7 +902,7 @@ sub generate_table_topics_by_course($$$$$$$)
 	my $sem_header     = " & ";
 	my $row_text       = "<color> --mandatory-- & --unit-- ";
 	#my $row_text       = "<color>--unit-- ";
-	my $ku_and_course_title = "{\\bf $Common::config{dictionary}{KUsTitle}}";
+	my $ku_and_course_title = "\\textbf{$Common::config{dictionary}{KUsTitle}}";
 
 	my $first_row_text = "";
 	$first_row_text  = "$Common::config{row2} " if($Common::config{graph_version}>= 2);
@@ -1138,7 +1138,7 @@ sub generate_list_of_outcomes()
 	my @outcomes_list = split(",", $Common::config{outcomes_list}{$version});
 	my $output_tex  = "\\begin{description}\n";
 	foreach my $outcome (@outcomes_list)
-	{	$output_tex  .= "\\item {\\bf $outcome)} \\ShowOutcomeText{$outcome}\\label{out:Outcome$outcome}\n";		}
+	{	$output_tex  .= "\\item \\textbf{$outcome)} \\ShowOutcomeText{$outcome}\\label{out:Outcome$outcome}\n";		}
 	$output_tex  .= "\\end{description}\n";
 	my $output_file	= Common::get_template("out-list-of-outcomes");
 	Util::print_message("generate_list_of_outcomes OK! ($output_file)");
@@ -2165,7 +2165,7 @@ sub generate_courses_by_professor($)
 		}
 		if($courses_by_professor_count > 0)
 		{
-			$out_txt .= "{\\bf $name}\n";
+			$out_txt .= "\\textbf{$name}\n";
 			$out_txt .= "\\begin{itemize}\n$this_professor_list\\end{itemize}\n";
 			$professor_count++;
 		}
@@ -2206,7 +2206,7 @@ sub generate_professor_by_course($)
 		{
 			my $number_of_courses_assigned = scalar keys %{$Common::config{faculty}{$email}{fields}{courses_assigned}};
 			if( $number_of_courses_assigned == 0 )
-			{	$professor_list .= "\t\\item $Common::config{faculty}{$email}{fields}{name} ($email) ({\\bf ***})\n";
+			{	$professor_list .= "\t\\item $Common::config{faculty}{$email}{fields}{name} ($email) (\\textbf{***})\n";
 				next;	
 			}
 			$professor_list .= "\t\\item $Common::config{faculty}{$email}{fields}{name} ($email)\n";

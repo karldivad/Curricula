@@ -26,7 +26,7 @@ sub replace_outcomes_sequence($)
 # 	      if( $outcome_in =~ m/\\item (.*)\\label\{out:Outcome(.*?)\}/g )
 # 	      {
 # 	          my ($txt, $letter) = ($1, $2);
-# 		  $output .= "\\item {\\bf $letter} $txt\\label\{out:Outcome$letter\}\n";
+# 		  $output .= "\\item \\textbf{ $letter} $txt\\label\{out:Outcome$letter\}\n";
 # 	      }
 # 	}
 # # 	print Dumper($output); exit;
@@ -212,9 +212,9 @@ sub replace_special_cases($)
 
     $maintxt =~ s/\\begin\{LearningUnit\}//g;
     $maintxt =~ s/\\end\{LearningUnit\}//g;
-    $maintxt =~ s/\\begin\{LUGoal\}/\\begin\{enumerate\}\[ \\bf I:\]/g;
+    $maintxt =~ s/\\begin\{LUGoal\}/\\begin\{enumerate\}\[ \\textbf\{I:\}\]/g;
     $maintxt =~ s/\\end\{LUGoal\}/\\end\{enumerate\}/g;
-    $maintxt =~ s/\\begin\{LUObjective\}/\\begin\{enumerate\}\[ \\bf I:\]/g;
+    $maintxt =~ s/\\begin\{LUObjective\}/\\begin\{enumerate\}\[ \\textbf\{I:\}\]/g;
     $maintxt =~ s/\\end\{LUObjective\}/\\end\{enumerate\}/g;
 
     my %columns_header = ();
@@ -330,7 +330,7 @@ sub main()
     }
 	$maintxt =~ s/\\Competence\{(.*?)\}/$Common::config{Competence}{$1}\\label\{outcome:$1\}/g;
 	$maintxt =~ s/\\ShowOutcome\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Outcome}{$1} ($Common::config{CompetenceLevel}{$2})/g;
-	$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \{\\bf Outcome: $2\}/g;
+	$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \\textbf\{Outcome: $2\}/g;
 	$maintxt =~ s/\\ShowOutcomeText\{(.*?)\}/$Common::config{Outcome}{$1}/g;
 
 	while( $maintxt =~ m/\\ShowShortOutcome\{(.*?)\}/g )
@@ -346,10 +346,10 @@ sub main()
 	($maintxt, $macros_changed) = Common::expand_macros($main_file, $maintxt);
 	foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
 	{	
-# 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
-		$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
-#   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;
-		$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;	
+# 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[\\textbf\{$Common::config{macros}{$learningoutcome}}\]/g;
+		$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[\\textbf\{$Common::config{macros}{$learningoutcome}}\]/g;
+#   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\(\\textbf\{$Common::config{macros}{$learningoutcome}}\)/g;
+		$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\(\\textbf\{$Common::config{macros}{$learningoutcome}}\)/g;	
 	}
 	
 	my $books_html = Common::generate_books_links();

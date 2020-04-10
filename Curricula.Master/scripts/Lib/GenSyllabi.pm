@@ -330,7 +330,7 @@ sub read_syllabus_info($$$)
 						{
 							my $coordinator = "";
 							#if( $role eq "C" )
-							#{	$coordinator = "~({\\bf $Common::config{dictionaries}{$lang}{Coordinator}})";	$first = 0;		}
+							#{	$coordinator = "~(\\textbf{$Common::config{dictionaries}{$lang}{Coordinator}})";	$first = 0;		}
 							$map{PROFESSOR_NAMES} 	.= "$Common::config{faculty}{$email}{fields}{name} ";
 							$PROFESSOR_SHORT_CVS	.= "\\item $Common::config{faculty}{$email}{fields}{name} <$email>$coordinator\n";
 							$PROFESSOR_SHORT_CVS 	.= "\\vspace{-0.2cm}\n";
@@ -344,7 +344,7 @@ sub read_syllabus_info($$$)
 					$sep = ", ";
 			}
 			if( $count > 0 )
-			{	$map{PROFESSOR_SHORT_CVS} .= "\\noindent {\\bf $Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
+			{	$map{PROFESSOR_SHORT_CVS} .= "\\noindent \\textbf{$Common::config{dictionaries}{$lang}{professor_role_label}{$role}}\n";
 				$map{PROFESSOR_SHORT_CVS} .= "\\begin{itemize}[noitemsep]\n";
 				$map{PROFESSOR_SHORT_CVS} .= $PROFESSOR_SHORT_CVS;
 				$map{PROFESSOR_SHORT_CVS} .= "\\end{itemize}\n";
@@ -472,7 +472,7 @@ sub genenerate_tex_syllabus_file($$$$$%)
 		{	Util::print_message("$output_file extra tags detected ok!");
 			#print Dumper (\%{$Common::course_info{$codcour}{extra_tags}});	
 			$file_template =~ s/<<Competences>>/<<CompetencesForCS>>/g;
-			my $extra_txt = "\\item {\\bf <<CompetencesForEngineering>>} \n";
+			my $extra_txt = "\\item \\textbf{<<CompetencesForEngineering>>} \n";
 			#Util::print_message("OutcomesForOtherContent$lang=".$Common::course_info{$codcour}{extra_tags}{"OutcomesForOtherContent$lang"});
 			my $EnvforOutcomes = $Common::config{EnvforOutcomes};
 			$extra_txt .= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{$lang}{extra_tags}{OutcomesForOtherContent}\\end{$EnvforOutcomes}\n";
@@ -616,6 +616,10 @@ sub generate_tex_syllabi_files()
 		}
 	}
 	#system("chgrp curricula $OutputTexDir/*");
+	my $firstpage_file = Common::get_template("in-syllabus-first-page-file");
+	my $command = "cp $firstpage_file $OutputTexDir/.";
+	Util::print_message($command);
+	system($command);
 	Util::check_point("generate_tex_syllabi_files");
 }
 
@@ -999,33 +1003,33 @@ sub gen_course_general_info($)
 
 			my $codcour_label = Common::get_label($codcour);
 			# Semester: 5th Sem.
-			$normal_header .= "\\item {\\bf $Common::config{dictionary}{Semester}}: ";
+			$normal_header .= "\\item \\textbf{$Common::config{dictionary}{Semester}}: ";
 			$normal_header .= "$semester\$^{$Common::config{dictionary}{ordinal_postfix}{$semester}}\$ ";
 			$normal_header .= "$Common::config{dictionary}{Sem}. ";
 
 			# Credits
-			$normal_header .= "{\\bf $Common::config{dictionary}{Credits}}: $Common::course_info{$codcour}{cr}\n";
+			$normal_header .= "\\textbf{$Common::config{dictionary}{Credits}}: $Common::course_info{$codcour}{cr}\n";
 
 			# Hours of this course
-			$normal_header .= "\\item {\\bf $Common::config{dictionary}{HoursOfThisCourse}}: ";
+			$normal_header .= "\\item \\textbf{$Common::config{dictionary}{HoursOfThisCourse}}: ";
 			if($Common::course_info{$codcour}{th} > 0)
-			{	$normal_header .= "{\\bf $Common::config{dictionary}{Theory}}: $Common::course_info{$codcour}{th} $Common::config{dictionary}{hours}; ";	}
+			{	$normal_header .= "\\textbf{$Common::config{dictionary}{Theory}}: $Common::course_info{$codcour}{th} $Common::config{dictionary}{hours}; ";	}
 			if($Common::course_info{$codcour}{ph} > 0)
-			{	$normal_header .= "{\\bf $Common::config{dictionary}{Practice}}: $Common::course_info{$codcour}{ph} $Common::config{dictionary}{hours}; ";	}
+			{	$normal_header .= "\\textbf{$Common::config{dictionary}{Practice}}: $Common::course_info{$codcour}{ph} $Common::config{dictionary}{hours}; ";	}
 			if($Common::course_info{$codcour}{lh} > 0)
-			{	$normal_header .= "{\\bf $Common::config{dictionary}{Laboratory}}: $Common::course_info{$codcour}{lh} $Common::config{dictionary}{hours}; ";	}
+			{	$normal_header .= "\\textbf{$Common::config{dictionary}{Laboratory}}: $Common::course_info{$codcour}{lh} $Common::config{dictionary}{hours}; ";	}
 			$normal_header .= "\n";
 
 			my $syllabus_link = "";
 			$syllabus_link .= "\t\\begin{htmlonly}\n";
-			$syllabus_link .= "\t\\item {\\bf $Common::config{dictionary}{Syllabus}}:\n";
+			$syllabus_link .= "\t\\item \\textbf{$Common::config{dictionary}{Syllabus}}:\n";
 			$syllabus_link .= "\t\t\\begin{rawhtml}\n";
 			$syllabus_link .= Common::get_syllabi_language_icons("\t\t\t", $codcour_label)."-";
 			$syllabus_link .=  "\t\t\\end{rawhtml}\n";
 			$syllabus_link .=  "\t\\end{htmlonly}\n";
 			$normal_header .= $syllabus_link;
 
-			my $prereq_txt = "\\item {\\bf $Common::config{dictionary}{Prerequisites}}: ";
+			my $prereq_txt = "\\item \\textbf{$Common::config{dictionary}{Prerequisites}}: ";
 			if($Common::course_info{$codcour}{n_prereq} == 0)
 			{	$prereq_txt .= "$Common::config{dictionary}{None}\n";	}
 			else

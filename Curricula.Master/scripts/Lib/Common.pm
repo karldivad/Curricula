@@ -645,6 +645,7 @@ sub set_initial_paths()
 	$path_map{"in-sumilla-template-file"}			= $path_map{InProgramDir}."/sumilla-template.tex";
 	$path_map{"in-syllabus-template-file"}			= $path_map{InProgramDir}."/syllabus-template.tex";
 	$path_map{"in-syllabus-program-template-file"}	= $path_map{InProgramDir}."/cycle/$config{Semester}/syllabus-template.tex";
+	$path_map{"in-syllabus-first-page-file"}		= $path_map{InProgramDir}."/cycle/$config{Semester}/syllabus-Page*";
 
 	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InProgramDir}."/syllabus-delivery-control.tex";
 	$path_map{"in-additional-institution-info-file"}= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
@@ -1638,7 +1639,7 @@ sub read_specific_evaluacion_info()
 			    my $output_parts = "";
 			    foreach my $onepart (split(",", $parts))
 			    {
-				  $output_parts .= "{\\noindent\\bf <<$onepart-SESSIONS>>:}\\\\\n";
+				  $output_parts .= "{\\noindent\\textbf{<<$onepart-SESSIONS>>:}}\\\\\n";
 				  $output_parts .= "<<$onepart-SESSIONS-CONTENT>>\n";
 				  $output_parts .= "\n\\vspace{2mm}\n";
 			    }
@@ -1647,7 +1648,7 @@ sub read_specific_evaluacion_info()
 					if(not defined($config{dictionaries}{$lang}{lang_prefix}) )
 					{	Util::print_error("$cc($codcour) has an undefined Language($lang) !...");		}
 					my $evaluation_header = "\\vspace{2mm}\n";
-					$evaluation_header .= "{\\noindent\\bf <<EVALUATION-SYSTEM>>:}\\\\\n";
+					$evaluation_header .= "{\\noindent\\textbf{<<EVALUATION-SYSTEM>>:}}\\\\\n";
 					$Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$evaluation_header$eval\n";
 					#$Common::course_info{$codcour}{$lang}{specific_evaluation} = "$output_parts\n$eval\n";
 
@@ -4158,7 +4159,7 @@ sub gen_bok($)
 		$bok_output_txt .= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 		$bok_output_txt .= "% Knowledge Area: $ka\n";
 		$bok_output_txt .= "\\section{\\$macro}\\label{sec:BOK:$ka}\n";
-		$bok_index_txt .= "{\\bf \\ref{sec:BOK:$ka} \\htmlref{\\$macro}{sec:BOK:$ka}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ka})}\n";
+		$bok_index_txt .= "\\textbf{\\ref{sec:BOK:$ka} \\htmlref{\\$macro}{sec:BOK:$ka}\\xspace ($Common::config{dictionary}{Pag}.~\\pageref{sec:BOK:$ka})}\n";
 		my $hours_by_ku_file = "$ka-hours-by-ku";
 
 		$macro = $ka."BOKDescription";
@@ -4227,7 +4228,7 @@ sub gen_bok($)
 		      my $level_txt 	= "";
 		      #$bok{$lang}{$ka}{KU}{$ku}{items}{$tier}{$kuitem}{body}
 		      my $alltopics = "";
-		      $bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{Topics}:}\\\\\n";
+		      $bok_output_txt .= "\\noindent \\textbf{$Common::config{dictionary}{Topics}:}\\\\\n";
 		      foreach my $level (sort {$a cmp $b}
 				         keys %{$bok{$lang}{$ka}{KU}{$ku}{items}})
 		      {
@@ -4249,13 +4250,13 @@ sub gen_bok($)
 						#Util::print_message("xref_txt = $xref_txt"); exit;
 					}
 					if( not $xref_txt eq "" )
-					{	$xref_txt = "\\xspace \\\\ {\\bf Ref:} $xref_txt";		}
+					{	$xref_txt = "\\xspace \\\\ \\textbf{Ref:} $xref_txt";		}
 					$list_of_items .= "\t\\item \\$kuitem$xref_txt\\label{sec:BOK:$kuitem}\n";
 					$macros_txt	.= "\\newcommand{\\$kuitem}{$bok{$lang}{$ka}{KU}{$ku}{items}{$level}{$kuitem}{body}\\xspace}\n";
 					$alltopics 	.= "\t\\item \\$kuitem\\xspace\n";
 					#$macros_txt	.= "\\newcommand{\\$kuitem"."Level}{$level}\n";
 				}
-				$bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{$level}}\n";
+				$bok_output_txt .= "\\noindent \\textbf{$Common::config{dictionary}{$level}}\n";
 				$bok_output_txt .= "\\begin{itemize}\n";
 				$bok_output_txt .= $list_of_items;
 				$bok_output_txt .= "\\end{itemize}\n\n";
@@ -4270,7 +4271,7 @@ sub gen_bok($)
 		      #$bok{$lang}{$ka}{KU}{$ku}{LO}{$p4}{$LOitem}{body}  = $body; 	# $p4 = Familiarity
 		      #$bok{$lang}{$ka}{KU}{$ku}{LO}{$p4}{$LOitem}{order} = $LOItemPos;
 		      my $all_lo = "";
-		      $bok_output_txt .= "\\noindent {\\bf $Common::config{dictionary}{LearningOutcomes}:}\\\\\n";
+		      $bok_output_txt .= "\\noindent \\textbf{$Common::config{dictionary}{LearningOutcomes}:}\\\\\n";
 		      my $count_of_items = 0;
 			  #$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{body}  	= $body; 		# $tier = Core-Tier1, Core-Tier2, Elective
 			  #$bok{$lang}{$ka}{KU}{$ku}{LO}{$tier}{$LOitem}{lolevel} = $lolevel; 		# $lolevel = Familiarity
@@ -4278,7 +4279,7 @@ sub gen_bok($)
 		      foreach my $level (sort {	$bok{$lang}{$ka}{KU}{$ku}{LO}{$a} cmp $bok{$lang}{$ka}{KU}{$ku}{LO}{$b} }
 				                 keys %{$bok{$lang}{$ka}{KU}{$ku}{LO}})
 		      {
-				$bok_output_txt .= "\\noindent {\\bf $level:}\n";
+				$bok_output_txt .= "\\noindent \\textbf{$level:}\n";
 				my $all_the_items = "";
 				my $count_of_items_local = 0;
 			    foreach my $loitem (sort { $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$a}{order} <=> $bok{$lang}{$ka}{KU}{$ku}{LO}{$level}{$b}{order} }
@@ -4314,7 +4315,7 @@ sub gen_bok($)
 		#Util::print_message("Generating $hours_by_ku_file ...");
 		my $hours_by_ku_table = "\\begin{center}\n";
 		$hours_by_ku_table .= "\\begin{tabularx}{\\textwidth}{|X|p{1cm}|p{1cm}|p{1.4cm}|}\\hline\n";
-		$hours_by_ku_table .=  "{\\bf \\acf{KA}} & {\\bf ".$Common::config{dictionary}{"Core-Tier1"}."} & {\\bf ".$Common::config{dictionary}{"Core-Tier2"}."} & {\\bf $Common::config{dictionary}{Elective}} \\\\ \\hline\n";
+		$hours_by_ku_table .=  "\\textbf{\\acf{KA}} & \\textbf{".$Common::config{dictionary}{"Core-Tier1"}."} & \\textbf{".$Common::config{dictionary}{"Core-Tier2"}."} & \\textbf{$Common::config{dictionary}{Elective}} \\\\ \\hline\n";
 		$hours_by_ku_table .=  $hours_by_ku_rows;
 		$hours_by_ku_table .= "\\end{tabularx}\n";
 		$hours_by_ku_table .= "\\end{center}\n";
