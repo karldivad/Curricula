@@ -195,8 +195,12 @@ sub read_syllabus_info($$$)
 	# 1st: Get general information from this syllabus
 	#Util::print_soft_error("Syllabus before ($fullname)");
 	#Util::print_warning($syllabus_in);
-	my %macro_for_env = ("outcomes" => "ShowOutcome", "competences"=>"ShowCompetence");
-	foreach my $env ("outcomes", "competences")
+	my %macro_for_env = ("outcomes"           => "ShowOutcome", 
+						 "competences"        => "ShowCompetence",
+						 "specificoutcomes"	  => "ShowSpecificOutcome",
+						);
+	my @env_list = ("outcomes", "competences", "specificoutcomes");
+	foreach my $env (@env_list)
 	{
 		my $version = $Common::config{OutcomesVersionDefault};
 		my $body = "";
@@ -204,7 +208,7 @@ sub read_syllabus_info($$$)
 		while( $syllabus_in_copy =~ m/\\begin\{$env\}(.*?)\n((?:.|\n)*?)\\end\{$env\}/g) # legacy version of this environment
 		{	my $version_brute = $1;
 			$body = $2;
-# 			Util::print_message("Version detected ($env) \"$version_brute\"");
+ 			#Util::print_message("Version detected $codcour ($env) \"$version_brute\"");
 			$version = $version_brute;
 			$version =~ s/ //g;
 			if( $version =~ m/\{(.*?)\}/g ) # We have already an existing version
@@ -215,41 +219,49 @@ sub read_syllabus_info($$$)
 				$syllabus_in_copy =~ s/\\begin\{$env\}\s*.*?\s*\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\{$version\}\n$body\\end\{$env\}/g;
 			}
 			$Common::course_info{$codcour}{$env}{$version}{txt} 	= $body;
+			#Util::print_message("Common::course_info{$codcour}{$env}{$version}{txt}=\n$body");
 		}
+		if( not defined($Common::course_info{$codcour}{$env}{$version}{txt}) )
+		{	$Common::course_info{$codcour}{$env}{$version}{txt} = "";	}
+
 		$syllabus_in = $syllabus_in_copy;
 		$Common::course_info{$codcour}{$env}{$version}{itemized}	= "";
 		#$Common::course_info{$codcour}{$env}{$version}{array}	= [];
 		$Common::course_info{$codcour}{$env}{$version}{count}     	= 0;
 	}
+	#if($codcour eq "CS1D01")	{	exit;	}
 
 	my $version = $Common::config{OutcomesVersion};
-	foreach my $env ("outcomes", "competences")
+	foreach my $env (@env_list)
 	{
-	      #print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
-	      if( not defined($Common::course_info{$codcour}{$env}{$version}) )
-	      {		Util::print_message("read_syllabus_info($codcour, $semester, $lang): Not defined Common::course_info{$codcour}{$env}{$version}");	
-			  	next;		
-		  }
-
-	      foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{$version}{txt}) )
-	      {
-		      my ($key, $level)     = ("", "");
-		      my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*?)\\}\\{(.*?)\\}";
-		      if( $one_line =~ m/$reg_exp/g )
-		      {
-			      ($key, $level) = ($1, $2);
-			      $Common::course_info{$codcour}{$env}{$version}{$key} = $2; # Instead of "" we must put the level of this outcome/LO
-			      #push(@{$Common::course_info{$codcour}{$env}{$version}{array}}, $key); # Sequential to list later
-			      $Common::course_info{$codcour}{$env}{$version}{count}++;
-			      my $prefix	        = "";
- 			      if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
-			      {	$prefix = $Common::config{$env."_map"}{$key};	}
-			      $Common::course_info{$codcour}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$level}\n";
-			      if(not defined($Common::config{course_by_outcome}{$key}) )
-			      {		$Common::config{course_by_outcome}{$key} = [];		}
-			      push(@{$Common::config{course_by_outcome}{$key}}, $codcour);
-		      }
-	      }
+		#print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
+		if( not defined($Common::course_info{$codcour}{$env}{$version}) )
+		{	Util::print_message("read_syllabus_info($codcour, $semester, $lang): Not defined Common::course_info{$codcour}{$env}{$version}");	
+			next;		
+		}
+		$Common::course_info{$codcour}{$env}{$version}{count} = 0;
+		foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{$version}{txt}) )
+		{
+			my ($key, $tail)     = ("", "");
+			my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*?)\\}\\{(.*)\\}";
+			if( $one_line =~ m/$reg_exp/g )
+			{
+				($key, $tail) = ($1, $2);
+				$Common::course_info{$codcour}{$env}{$version}{$key} = $tail; # Instead of "" we must put the level of this outcome/LO
+				#push(@{$Common::course_info{$codcour}{$env}{$version}{array}}, $key); # Sequential to list later
+				$Common::course_info{$codcour}{$env}{$version}{count}++;
+				my $prefix	        = "";
+				if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
+				{	$prefix = $Common::config{$env."_map"}{$key};	}
+				$Common::course_info{$codcour}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$tail}\n";
+				if( $env eq "outcomes")
+				{
+					if(not defined($Common::config{course_by_outcome}{$key}) )
+					{		$Common::config{course_by_outcome}{$key} = [];		}
+					push(@{$Common::config{course_by_outcome}{$key}}, $codcour);
+				}
+			}
+		}
 	}
 
 	$map{COURSE_CODE} 	= $codcour;
@@ -267,12 +279,23 @@ sub read_syllabus_info($$$)
 	$map{GOALS_ITEMS}	= $Common::course_info{$codcour}{$lang}{goals}{txt};
 
 	# Outcomes
-	$map{FULL_OUTCOMES}	= "";
 	my $EnvforOutcomes = $Common::config{EnvforOutcomes};
+	$map{FULL_OUTCOMES}	= "";
 	if( defined($Common::course_info{$codcour}{outcomes}{$version})	)
 	{	$map{FULL_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
 	else{	Util::print_warning("There is no outcomes ($version) defined for $codcour ($fullname)"); 	}
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{$version}{itemized};
+
+	# Specific outcomes
+	$map{FULL_SPECIFIC_OUTCOMES}	= "";
+	if($Common::course_info{$codcour}{specificoutcomes}{$version}{count} == 0)
+	{	Util::print_warning("Course $codcour ... no {specificoutcomes}{$version} detected ... assuming an empty one!"); 
+		$Common::course_info{$codcour}{specificoutcomes}{$version}{itemized} = "\\item \\colorbox{red}{<<NoSpecificOutcomes>>}\n";
+	}
+	if( defined($Common::course_info{$codcour}{specificoutcomes}{$version})	)
+	{	$map{FULL_SPECIFIC_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{specificoutcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
+	else{	Util::print_warning("There is no specific outcomes ($version) defined for $codcour ($fullname)"); 	}
+	$map{SPECIFIC_OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{specificoutcomes}{$version}{itemized};
 
 	# Competences
 	$map{FULL_COMPETENCES}	= "";
@@ -281,12 +304,17 @@ sub read_syllabus_info($$$)
 	else{	Util::print_warning("There is no competences ($version) defined for $codcour ($fullname)"); 	}
 	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{$version}{itemized};
 
-
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
 	if( defined($Common::course_info{$codcour}{$lang}{specific_evaluation}) )
 	{	$map{EVALUATION} = $Common::course_info{$codcour}{$lang}{specific_evaluation};	}
 
+	#if($codcour eq "CS1D01")
+	#{	#Util::print_message("Common::course_info{$codcour}{specificoutcomes}{$version}=");
+	#	print Dumper(\%map);
+	#	Util::print_message("map{SPECIFIC_OUTCOMES_ITEMS}=\"$map{SPECIFIC_OUTCOMES_ITEMS}\"...");
+	#	exit;
+	#}
 	($map{PROFESSOR_NAMES}, $map{PROFESSOR_SHORT_CVS}, $map{PROFESSOR_JUST_GRADE_AND_FULLNAME}) = ("", "", "");
 	my $sep    = "";
 	if(defined($Common::antialias_info{$codcour}))
@@ -498,6 +526,7 @@ sub genenerate_tex_syllabus_file($$$$$%)
 
 sub read_sumilla_template()
 {
+	return;
 	my $syllabus_file = Common::get_template("in-syllabus-template-file");
 	$Common::config{sumilla_template} = "";
 	if(-e $syllabus_file)
@@ -568,9 +597,10 @@ sub process_syllabi()
 	gen_prerequisites_map_in_dot($Common::config{language_without_accents});   # 4th Generate dot files
 
 	# 4th: Read evaluation info for this institution
-	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation
+	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation  	
 	generate_tex_syllabi_files();
-  	generate_syllabi_include();
+	generate_syllabi_include();
+	
  	gen_batch_to_compile_syllabi();
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{

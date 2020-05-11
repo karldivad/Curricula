@@ -895,7 +895,7 @@ sub generate_table_topics_by_course($$$$$$$)
 {
 	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
 
-	Util::precondition("gen_bok");
+	#Util::precondition("gen_bok");
 	Util::precondition("generate_tex_syllabi_files");
 	my ($sep, $hline) = ($Common::config{sep}, $Common::config{hline});
 	my $col_header     = $sep."cX$sep";

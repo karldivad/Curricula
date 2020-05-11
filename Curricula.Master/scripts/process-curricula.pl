@@ -5,6 +5,7 @@ use Lib::Common;
 use Lib::GenSyllabi;
 use Lib::GeneralInfo;
 use Data::Dumper;
+use Text::Balanced qw(extract_multiple extract_bracketed);
 
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}
 
@@ -78,11 +79,8 @@ sub generate_general_info()
 		GeneralInfo::generate_courses_by_professor($lang);
 		GeneralInfo::generate_professor_by_course($lang);
 	}
-
  	GeneralInfo::process_equivalences();
-
 # 	generate_sql_for_new_courses();
-# 	
 # 	generate_tables_for_advance();
 # 	generate_courses_for_advance();
 # 
@@ -101,23 +99,41 @@ sub copy_basic_files()
 }
 
 sub main()
-{
-# 	my $codcour = "CS242";
-# 	print Dumper (\%{$Common::course_info{$codcour}});
-# 	if( defined($Common::course_info{$codcour}{alias}{abc}{xyz}) )
-# 	{	print Dumper (\%{$Common::course_info{$codcour}});	}
-# 	exit;
-	
+{	
+	#my ($in, $out) 	= ("./test-in.tex", "./test-out.tex");
+	#my $file_txt 	= Util::read_file($in);
+	#$file_txt 		= Util::trim_comments($file_txt);
+	#Util::write_file($out, $file_txt);
+	##my $str = "abc {{xyz} abc} {xyz} {abc} {{xyz}} abc";
+	#my $str = $file_txt;
+	##print "$str\n";
+	#my $i = 0;
+	##my @tokens = $str =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g;
+	##foreach my $token (@tokens)
+	#while($str =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g )
+	#{	my ($token) = ($&);
+	#	print "\x1b[43m\x1b[30m$i:\x1b[39m\x1b[49m ";
+	#	print "$token\n";
+	#	$i++;
+	#}
+	##while ($str =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g)
+	##{	print "\x1b[43m\x1b[30m$i:\x1b[39m\x1b[49m ";
+	##	print "$&\n";
+	##	$i++;
+	##}
+	#exit;
+	#exit;
+
 	Util::begin_time();
 	Common::setup(); 
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
-	      Util::print_message("Reading BOK in $lang ...");
-		  Common::read_bok($lang);
-	      Util::print_message("Generating BOK in $lang ...");
-	      Common::generate_bok($lang);
-	}
-	   
+		Util::print_message("Generating BOK in $lang ...");
+	    #Common::generate_bok($lang);
+		#$Util::flag = 100;
+	    Util::print_message("Reading BOK in $lang ...");
+		Common::read_bok($lang);  
+	} 
 	Common::gen_only_macros();
 # 	Common::check_preconditions();
 # 	replacecodes();

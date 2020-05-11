@@ -523,12 +523,13 @@ sub set_initial_paths()
 	$path_map{InDisciplineDir}			= $path_map{InDisciplinesBaseDir}."/$config{discipline}";
 	$path_map{InScriptsDir}				= "./scripts";
 	$path_map{InCountryDir}				= GetInCountryBaseDir($path_map{country_without_accents});
-	$path_map{InInstConfigDir}			= "$path_map{InCountryDir}/institutions";
 	$path_map{InCountryTexDir}			= GetInCountryBaseDir($path_map{country_without_accents})."/$config{discipline}/$config{area}/$config{area}.tex";
+	$path_map{InProgramTexDir}			= "$path_map{InCountryDir}/$config{discipline}/$config{area}/$config{institution}";
 	
 	$path_map{InInstUCSPDir}			= GetProgramInDir("Peru", "Computing", "CS", "UCSP");
 	$path_map{InInstitutionBaseDir}		= "$path_map{InDir}/institution/$path_map{country_without_accents}/$config{institution}";
-
+	$path_map{InInstConfigDir}			= $path_map{InInstitutionBaseDir};
+	
 	$path_map{InEquivDir}				= $path_map{InProgramDir}."/equivalences";
 	$path_map{InLogosDir}				= $path_map{InCountryDir}."/logos";
 	$path_map{InTemplatesDot}			= $path_map{InCountryDir}."/dot";
@@ -927,35 +928,105 @@ sub sort_macros()
 sub read_macros($)
 {
     my ($file_name) = (@_);
-    my $bok_txt 	  = clean_file(Util::read_file($file_name));
+	Util::print_message("Reading macros ( $file_name ) ...");
+	my $bok_txt 	  = Util::read_file($file_name);
+	$bok_txt 		  = Util::trim_comments($bok_txt);
 	my %macros = ();
-
-    my $count = 0;
-    while($bok_txt =~ m/\\newcommand\{\\(.*?)\}((\s|\n)*?)\{/g)
+	my @tokens = ();
+	while($bok_txt =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g )
+	{	my ($token) = ($&);
+		push(@tokens, $token);
+	}
+	my $ntokens = scalar @tokens;
+	Util::print_message("ntokens=$ntokens");
+    if(not $ntokens % 3 == 0)
+	{	Util::print_message("Something suspicious (#tokens($ntokens) is not multiple of 3) ... verify read_macros($file_name) ...");	}
+	#print Dumper (\@tokens);
+	#if($Util::flag == 100) {	Util::print_soft_error("Llegó 000 ! ($file_name) ...");  
+	#	Util::print_soft_error("macros{finaltest}=\n$macros{finaltest} ...");
+	#	exit;	
+	#}
+	my ($count) = (0);
+	Util::print_message("count=$count, ntokens=$ntokens ...");
+    while($count < $ntokens)
     {
-		my ($cmd)  = ($1);
-		my $cPar   = 1;
-		my $body   = "";
-		while($cPar > 0)
+		#print "\x1b[43m\x1b[30m$count:\x1b[39m\x1b[49m ";
+		if($tokens[$count] eq "\\newcommand")
 		{
-			$bok_txt =~ m/((.|\s))/g;
-			$cPar++ if($1 eq "{");
-			$cPar-- if($1 eq "}");
-			$body      .= $1 if($cPar > 0);
+			my ($key, $body) = ("", "");
+			if( $tokens[$count+1] =~ m/\{\\(.*)\}/g )
+			{	$key = $1;	}
+			else{	Util::print_message("Something wrong1 @"."read_macros($file_name)! count=$count, tokens[$count]=$tokens[$count]");	}
+			if( $tokens[$count+2] =~ m/\{((.|\n)*)\}/sg )
+			{	$body = $1;	}
+			else{	Util::print_message("Something wrong2 @"."read_macros($file_name)! count=$count, key=$key,tokens[$count]=\"$tokens[$count]\"");	}
+			$macros{$key} = $body;
+			$count += 2;
+		}
+		else
+		{
+			Util::print_message("Something wrong3 @"."read_macros($file_name)! count=$count, tokens[$count]=\"$tokens[$count]\" \nI was expecting a newcommand");
+		}
+		++$count;
+	}
+	#print Dumper (\%macros);
+    Util::print_message("read_macros($file_name) ". (keys %macros) ." processed ... OK!");
+	if($Util::flag == 100)
+	{	
+		#Util::print_soft_error("Llegó ! ($file_name) ...");  
+		#Util::print_soft_error("macros{finaltest}=\n$macros{finaltest} ...");
+		#exit;	
+	}
+	return %macros;
+}
+
+# ok
+sub read_macros_old($)
+{
+    my ($file_name) = (@_);
+	Util::print_message("Reading macros ( $file_name ) ...");
+	my $bok_txt 	  = Util::read_file($file_name);
+	if($Util::flag == 100) {	Util::print_soft_error("Llegó ! ($file_name) ...");  exit;	}
+	#exit;	
+    
+	my %macros = ();
+    my ($count) = (0);
+    while($bok_txt =~ m/\\newcommand\{\\(.*?)\}\{((?:.|\n)*)/)
+    {
+		my ($cmd)  		= ($1);
+		my ($bok_txt) 	= ($2);
+		my ($len) 		= (length($bok_txt));
+		my @chars 		= split("", $bok_txt);
+		Util::print_message("macro $cmd detected ! (". scalar(@chars) . ")");
+		Util::print_message($bok_txt."\n");
+		my ($cPar)   	 = (1);
+		my ($body)   	 = ("");
+		my ($char_count) = (0);
+		while($cPar > 0 && $char_count < $len)
+		{
+			my ($new_char) = ($chars[$char_count]);
+			if   ($new_char eq "{"){	$cPar++;			}
+			elsif($new_char eq "}"){	$cPar--;	if($cPar == 0) {last;}		}
+			$body .= $new_char;
+			$char_count++;
+		}
+		if($cPar > 0)
+		{	
+			Util::print_color("cmd=$cmd\n} is missing?! ...");
+			Util::print_color("body=\n$body");
+			Util::print_error("Error");
 		}
 		$macros{$cmd} = $body;
-	# 	if( $cmd eq "SPONEAllTopics")
-	# 	{	Util::print_message("*****\n$body\n*****");	exit;	}
 		$count++;
     }
-    Util::print_message("read_macros ($file_name) $count macros processed ... OK!");
+    Util::print_message("read_macros_old ( $file_name ) $count macros processed ... OK!");
 	return %macros;
 }
 
 sub read_outcomes($)
 {
     my ($file_name) = (@_);
-    my $bok_txt 	  = clean_file(Util::read_file($file_name));
+    my $bok_txt 	  = Util::read_file($file_name);
 	my %macros = ();
 
     my $count = 0;
@@ -1012,6 +1083,7 @@ sub read_bok($)
     my $bok_macros_file = Common::get_expanded_template("in-bok-macros-file", $lang);
 	Util::print_message("read_bok($lang) ... Reading $bok_macros_file");
     $bok_macros_file =~ s/<LANG>/$lang/g;
+	#$Util::flag = 100;
     my %macros = read_macros($bok_macros_file);
 	@{$Common::config{macros}}{keys %macros} = values %macros;
 }
@@ -1494,7 +1566,7 @@ sub process_institution_info($$)
 	}
 	Util::print_message("CurriculaVersion=$this_inst_info{CurriculaVersion} ...");
 	################################
-	#@{$Common::config{macros}}{keys %PlanConfigVars} = values %PlanConfigVars;
+	@{$Common::config{macros}}{keys %PlanConfigVars} = values %PlanConfigVars;
 	
 	################################
 	foreach my $key (keys %PlanConfigVars)
@@ -1522,8 +1594,8 @@ sub process_institution_info($$)
 	# Read the country
 	if($txt =~ m/\\newcommand\{\\country\}\{(.*?)\\.*?\}/)
 	{
-                $this_inst_info{country}                      = $1;
-                $this_inst_info{country_without_accents} 	= filter_non_valid_chars($this_inst_info{country});
+		$this_inst_info{country}                      = $1;
+		$this_inst_info{country_without_accents} 	= filter_non_valid_chars($this_inst_info{country});
  		#Util::print_message("country=$this_inst_info{country}, country_without_accents=$this_inst_info{country_without_accents}\n"); exit;
 	}
 	else
@@ -1576,16 +1648,16 @@ sub process_institution_info($$)
 		$this_inst_info{OutcomesVersion} = $config{OutcomesVersionDefault};
 	}
 
-        # Read the outcomes list
-        if($txt =~ m/\\newcommand\{\\logowidth\}\{([0-9]*\.?[0-9]+)(.*?)\}/)
-        {       $this_inst_info{logowidth}       = $1;
-                $this_inst_info{logowidth_units} = $2;
-                #Util::print_message("this_inst_info{logowidth}=$this_inst_info{logowidth}, this_inst_info{logowidth_units}=$this_inst_info{logowidth_units}"); exit;
-				#exit;
-		}
-        else
-        {       Util::print_error("(process_institution_info): there is not \\logowidth configured in \"$file\" ...\n");
-        }
+	# Read the outcomes list
+	if($txt =~ m/\\newcommand\{\\logowidth\}\{([0-9]*\.?[0-9]+)(.*?)\}/)
+	{       $this_inst_info{logowidth}       = $1;
+			$this_inst_info{logowidth_units} = $2;
+			#Util::print_message("this_inst_info{logowidth}=$this_inst_info{logowidth}, this_inst_info{logowidth_units}=$this_inst_info{logowidth_units}"); exit;
+			#exit;
+	}
+	else
+	{       Util::print_error("(process_institution_info): there is not \\logowidth configured in \"$file\" ...\n");
+	}
 
 #         if($txt =~ m/\\newcommand{\\Copyrights}{(.*?)}/)
 #         {       $this_inst_info{Copyrights} = $1;             }
@@ -1596,7 +1668,7 @@ sub process_institution_info($$)
 	$this_inst_info{equivalences} = "";
 	if($txt =~ m/\\newcommand\{\\equivalences\}\{(.*?)\}/)
 	{
-                $this_inst_info{equivalences}	= $1;
+        $this_inst_info{equivalences}	= $1;
 		#Util::print_message("this_inst_info{equivalences} = $this_inst_info{equivalences}"); exit;
 	}
 	else
@@ -1851,10 +1923,10 @@ sub set_initial_configuration($)
 		#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
 		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
 		Util::print_message("Reading outcomes ($outcomes_macros_file)");
-		my %outcomes_macros = read_macros($outcomes_macros_file);
+		my %outcomes_macros = read_outcomes($outcomes_macros_file);
 		@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
-		my %outcomes_defs = read_outcomes($outcomes_macros_file);
-		@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_defs} = values %outcomes_defs;
+		#my %outcomes_defs = read_outcomes($outcomes_macros_file);
+		@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
 		#print Dumper( \%outcomes_defs );
 	}
 	#print Dumper( \%{$Common::config{macros}{outcomes}} );
@@ -4334,6 +4406,8 @@ sub gen_bok($)
 
 	my $bok_macros_output_file = Common::get_expanded_template("in-bok-macros-file", $lang);
 	Util::print_message("Creating BOK macros file ($bok_macros_output_file) ...");
+
+	$macros_txt .= "\\newcommand{\\finaltest}{...}\n";
 	Util::write_file($bok_macros_output_file, $macros_txt);
 
 	Util::check_point("gen_bok");

@@ -20,7 +20,7 @@ sudo apt-get install dot2tex;
 
 sudo apt-get install ps2eps; ok;
 sudo apt-get install latex2html; ok
-sudo apt-get install ps2pdf; (ya viene); xxxxxx *** uanble to locate *** 
+sudo apt-get install ps2pdf; (ya viene); xxxxxx *** unable to locate *** 
 
 sudo apt-get install graphviz; ok;
 sudo apt-get install xpdf ; ok;
