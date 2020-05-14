@@ -527,7 +527,7 @@ sub set_initial_paths()
 	$path_map{InProgramTexDir}			= "$path_map{InCountryDir}/$config{discipline}/$config{area}/$config{institution}";
 	
 	$path_map{InInstUCSPDir}			= GetProgramInDir("Peru", "Computing", "CS", "UCSP");
-	$path_map{InInstitutionBaseDir}		= "$path_map{InDir}/institution/$path_map{country_without_accents}/$config{institution}";
+	$path_map{InInstitutionBaseDir}		= "$path_map{InDir}/country/$path_map{country_without_accents}/institutions";
 	$path_map{InInstConfigDir}			= $path_map{InInstitutionBaseDir};
 	
 	$path_map{InEquivDir}				= $path_map{InProgramDir}."/equivalences";
@@ -728,7 +728,7 @@ sub set_initial_paths()
 	$path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/All.config";
 	$path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/Area.config";
 	$path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
-	$path_map{"in-institution-config-file"}			= $path_map{InInstitutionBaseDir}."/institution.config";
+	$path_map{"in-institution-config-file"}			= $path_map{InInstConfigDir}."/$config{institution}.config";
 	$path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
 	$path_map{"dictionary"}							= $path_map{InLangDir}."/dictionary.txt";
 	$path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";

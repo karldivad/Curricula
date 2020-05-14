@@ -1,7 +1,7 @@
 \begin{syllabus}
 
 \course{CS1102. Objects oriented programming I}{Obligatorio}{CS1102}
-% Source file: ../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS112.tex
+% Source file: ../Curricula.in/lang/English/cycle/2020-I/Syllabi/Computing/CS/CS112.tex
 
 \begin{justification}
 This is the second course in the sequence of introductory courses in computer science.
@@ -38,7 +38,7 @@ The course will introduce students in the various topics of the area of computin
     \item \ShowCompetence{CS3}{6}
 \end{competences}
 
-\begin{unit}{General overwiew of Programming Languages}{}{Stroustrup2013,Deitel17}{1}{C1}
+\begin{unit}{General overwiew of Programming Languages}{}{Stroustrup2013,Deitel17}{1}{a}
     \begin{topics}
         \item Brief review of programming paradigms.
         \item Comparison between functional programming and imperative programming.
@@ -49,29 +49,42 @@ The course will introduce students in the various topics of the area of computin
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\PLBasicTypeSystems}{}{Stroustrup2013,Deitel17}{2}{C1,C2,CS1}
+\begin{unit}{\OSVirtualMachines}{}{Stroustrup2013,Deitel17}{1}{a,b}
     \begin{topics}
-        \item \PLBasicTypeSystemsTopicA
+        \item The virtual machine concept.
+        \item \OSVirtualMachinesTopicTypes.
+        \item Intermediate languages.
+    \end{topics}
+    \begin{learningoutcomes}
+        \item \OSVirtualMachinesLOExplainTheVirtual [\Familiarity]
+        \item \OSVirtualMachinesLODifferentiateEmulation [\Familiarity]
+        \item \OSVirtualMachinesLOEvaluateVirtualization [\Assessment]
+    \end{learningoutcomes}
+\end{unit}
+
+\begin{unit}{\PLBasicTypeSystems}{}{Stroustrup2013,Deitel17}{2}{a,b,i}
+    \begin{topics}
+        \item \PLBasicTypeSystemsTopicA        
         \item Model statement (link, visibility, scope and life time).
         \item General view of type checking.
     \end{topics}
     \begin{learningoutcomes}
-        \item \PLBasicTypeSystemsLOForBoth [\Familiarity]
-        \item \PLBasicTypeSystemsLOForA [\Familiarity]
-        \item \PLBasicTypeSystemsLODescribeExamples [\Familiarity]
-        \item \PLBasicTypeSystemsLOForMultiple [\Usage]
-        \item \PLBasicTypeSystemsLOGiveAnThat [\Familiarity]
-        \item \PLBasicTypeSystemsLOUseTypes [\Usage]
-        \item \PLBasicTypeSystemsLOExplainHowDefine [\Familiarity]
-        \item \PLBasicTypeSystemsLOWriteDown [\Usage]
-        \item \PLBasicTypeSystemsLOExplainWhyType [\Familiarity]
-        \item \PLBasicTypeSystemsLODefineAndPieces [\Usage]
-        \item \PLBasicTypeSystemsLODiscussTheGenerics [\Familiarity]
-        \item \PLBasicTypeSystemsLOExplainMultiple [\Familiarity]
+        \item \PLBasicTypeSystemsLOForBoth [\Familiarity] 
+        \item \PLBasicTypeSystemsLOForA [\Familiarity] 
+        \item \PLBasicTypeSystemsLODescribeExamples [\Familiarity] 
+        \item \PLBasicTypeSystemsLOForMultiple [\Usage] 
+        \item \PLBasicTypeSystemsLOGiveAnThat [\Familiarity] 
+        \item \PLBasicTypeSystemsLOUseTypes [\Usage] 
+        \item \PLBasicTypeSystemsLOExplainHowDefine [\Familiarity] 
+        \item \PLBasicTypeSystemsLOWriteDown [\Usage] 
+        \item \PLBasicTypeSystemsLOExplainWhyType [\Familiarity] 
+        \item \PLBasicTypeSystemsLODefineAndPieces [\Usage] 
+        \item \PLBasicTypeSystemsLODiscussTheGenerics [\Familiarity] 
+        \item \PLBasicTypeSystemsLOExplainMultiple [\Familiarity] 
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\SDFFundamentalProgrammingConcepts}{}{Stroustrup2013,Deitel17}{6}{C1,C2,CS2}
+\begin{unit}{\SDFFundamentalProgrammingConcepts}{}{Stroustrup2013,Deitel17}{6}{a,b,i}
     \begin{topics}
         \item \SDFFundamentalProgrammingConceptsTopicBasic
         \item \SDFFundamentalProgrammingConceptsTopicVariables
@@ -93,7 +106,7 @@ The course will introduce students in the various topics of the area of computin
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\PLObjectOrientedProgramming}{}{Stroustrup2013,Deitel17}{10}{C2,C24,CS1,CS2}
+\begin{unit}{\PLObjectOrientedProgramming}{}{Stroustrup2013,Deitel17}{10}{a,b,i}
     \begin{topics}
         \item \PLObjectOrientedProgrammingTopicObject
         \item \PLObjectOrientedProgrammingTopicObjectOriented
@@ -116,7 +129,7 @@ The course will introduce students in the various topics of the area of computin
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\SDFAlgorithmsandDesign}{}{Stroustrup2013,Deitel17}{3}{C1,C2,C23,CS6}
+\begin{unit}{\SDFAlgorithmsandDesign}{}{Stroustrup2013,Deitel17}{3}{a,b,i}
     \begin{topics}
         \item \SDFAlgorithmsandDesignTopicProblem
         \item \SDFAlgorithmsandDesignTopicTheRole
@@ -125,20 +138,20 @@ The course will introduce students in the various topics of the area of computin
     \end{topics}
     \begin{learningoutcomes}
         \item \SDFAlgorithmsandDesignLODiscussTheAlgorithms [\Familiarity]
-        \item \SDFAlgorithmsandDesignLODiscussHowMay [\Familiarity]
-        \item \SDFAlgorithmsandDesignLOCreateAlgorithms [\Usage]
-        \item \SDFAlgorithmsandDesignLOUseAToAnd [\Usage]
-        \item \SDFAlgorithmsandDesignLOImplementTest [\Usage]
+        \item \SDFAlgorithmsandDesignLODiscussHowMay [\Familiarity] 
+        \item \SDFAlgorithmsandDesignLOCreateAlgorithms [\Usage] 
+        \item \SDFAlgorithmsandDesignLOUseAToAnd [\Usage] 
+        \item \SDFAlgorithmsandDesignLOImplementTest [\Usage] 
         \item \SDFAlgorithmsandDesignLODetermineWhetherOr [\Assessment] %	eval
-        \item \SDFAlgorithmsandDesignLOImplementAConquer [\Usage]
-        \item \SDFAlgorithmsandDesignLOApplyTheDecomposition [\Usage]
-        \item \SDFAlgorithmsandDesignLOIdentifyTheAnd [\Usage]
-        \item \SDFAlgorithmsandDesignLOImplementAData [\Usage]
+        \item \SDFAlgorithmsandDesignLOImplementAConquer [\Usage] 
+        \item \SDFAlgorithmsandDesignLOApplyTheDecomposition [\Usage] 
+        \item \SDFAlgorithmsandDesignLOIdentifyTheAnd [\Usage] 
+        \item \SDFAlgorithmsandDesignLOImplementAData [\Usage] 
         \item \SDFAlgorithmsandDesignLOIdentifyTheAndMultiple [\Assessment]
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\ALAlgorithmicStrategies}{}{Stroustrup2013,Deitel17}{3}{C1,C2,C24,CS1}
+\begin{unit}{\ALAlgorithmicStrategies}{}{Stroustrup2013,Deitel17}{3}{a,b,i}
     \begin{topics}
         \item \ALAlgorithmicStrategiesTopicBrute%
 	\item \ALAlgorithmicStrategiesTopicGreedy%
@@ -157,7 +170,7 @@ The course will introduce students in the various topics of the area of computin
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\ALBasicAnalysis}{}{Stroustrup2013,Deitel17}{2}{C1,C2,C24,CS1}
+\begin{unit}{\ALBasicAnalysis}{}{Stroustrup2013,Deitel17}{2}{a,b,i}
     \begin{topics}
         \item \ALBasicAnalysisTopicDifferences
     \end{topics}
@@ -166,7 +179,7 @@ The course will introduce students in the various topics of the area of computin
     \end{learningoutcomes}
 \end{unit}
 
-\begin{unit}{\ALFundamentalDataStructuresandAlgorithms}{}{Stroustrup2013,Deitel17}{6}{C1,C2,C24,CS1}
+\begin{unit}{\ALFundamentalDataStructuresandAlgorithms}{}{Stroustrup2013,Deitel17}{6}{a,b,i}
     \begin{topics}
         \item \ALFundamentalDataStructuresandAlgorithmsTopicSimple
         \item \ALFundamentalDataStructuresandAlgorithmsTopicSequential
