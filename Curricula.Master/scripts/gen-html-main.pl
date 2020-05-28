@@ -313,32 +313,32 @@ sub main()
         {   my ($competence) = ($1);
 	    if( not defined($Common::config{Competence}{$1}) )
 	    {	Util::print_error("\\Competence{$competence} not defined  ... ($Common::config{Competence}{$competence})");		}
-	    my $competence_wsc = Common::replace_special_chars($competence);
-# 	    Util::print_message("Replacing \\Competence{$competence} ... ($Common::config{Competence}{$competence})");
-	    $maintxt =~ s/\\Competence\{$competence_wsc\}/$Common::config{Competence}{$competence}\\label\{outcome:$competence\}/g;
+	    	my $competence_wsc = Common::replace_special_chars($competence);
+# 	   		Util::print_message("Replacing \\Competence{$competence} ... ($Common::config{Competence}{$competence})");
+	    	$maintxt =~ s/\\Competence\{$competence_wsc\}/$Common::config{Competence}{$competence}\\label\{outcome:$competence\}/g;
         }
         $maintxt =~ s/\\Competence\{(.*?)\}/$Common::config{Competence}{$1}\\label\{outcome:$1\}/g;
- 	$maintxt =~ s/\\ShowOutcome\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Outcome}{$1} ($Common::config{CompetenceLevel}{$2})/g;
- 	$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \{\\bf Outcome: $2\}/g;
+		$maintxt =~ s/\\ShowOutcome\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Outcome}{$1} ($Common::config{CompetenceLevel}{$2})/g;
+		$maintxt =~ s/\\ShowCompetence\{(.*?)\}\{(.*?)\}/[$1)] $Common::config{Competence}{$1} \$\\Rightarrow\$ \{\\bf Outcome: $2\}/g;
         $maintxt =~ s/\\ShowOutcomeText\{(.*?)\}/$Common::config{Outcome}{$1}/g;
 
         while( $maintxt =~ m/\\ShowShortOutcome\{(.*?)\}/g )
         {	my $outcome = $1; my $OutcomeShort = $outcome."Short";
-# 		Util::print_message("Using short outcome: $OutcomeShort");
-		if( $Common::config{Outcome}{$OutcomeShort} )
-		{	$maintxt =~ s/\\ShowShortOutcome\{$outcome\}/$Common::config{Outcome}{$OutcomeShort}/g;	}
-		else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
+	# 		Util::print_message("Using short outcome: $OutcomeShort");
+			if( $Common::config{Outcome}{$OutcomeShort} )
+			{	$maintxt =~ s/\\ShowShortOutcome\{$outcome\}/$Common::config{Outcome}{$OutcomeShort}/g;	}
+			else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
         }
         $maintxt =~ s/\\xspace/ /g;
         $maintxt =~ s/\\\\ \{/ \{/g;
 
         ($maintxt, $macros_changed) = Common::expand_macros($main_file, $maintxt);
-	foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
+		foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
         {	
-# 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
-  		$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
-#   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;
- 		$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;	
+	# 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
+			$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[{\\bf $Common::config{macros}{$learningoutcome}}\]/g;
+	#   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;
+			$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\({\\bf $Common::config{macros}{$learningoutcome}}\)/g;	
         }
         
         my $books_html = Common::generate_books_links();

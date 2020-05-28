@@ -2092,10 +2092,10 @@ sub generate_information_4_professor($)
    
 sub generate_courses_by_professor()
 {
-	my $out_txt = ;
+	my $out_txt = "";
 	my $professor_count = 0;
 	foreach my $email (keys %{$Common::config{faculty}} )
-	{	$out_txt .= "{\\bf $config{faculty}{$email}{fields}{name}}\n";
+	{	$out_txt .= "{\\bf $Common::config{faculty}{$email}{fields}{name}}\n";
 		foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
 		{
 			$out_txt .= "";
@@ -2107,21 +2107,6 @@ sub generate_courses_by_professor()
 	Util::write_file($out_file, $out_txt); 
 	exit;
 }
-
-sub generate_courses_by_professor()
-{
-	my $out_txt = "";
-	my $professor_count = 0;
-	foreach my $codcour (keys %{$Common::config{faculty}{$email}{fields}{courses_i_could_teach}} )
-	{
-		$out_txt .= ""
-	}
-	$out_txt = "\\begin{itemize}\n$out_txt\\end{itemize}\n";
-	my $out_file = Common::get_template("out-courses-by-professor-file);
-	Util::print_message("Generating courses by professor($out_file) OK");
-	Util::write_file($out_file, $out_txt);
-}
-
 
 # sub generate_tables_for_advance()
 # {

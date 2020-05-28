@@ -20,14 +20,14 @@ set UnifiedMain=unified-curricula-main
 #set UnifiedMain = `echo $FullUnifiedMainFile | sed s/.tex//`
 
 set Country=Peru
-set OutputTexDir=../Curricula.out/Peru/CS-UNMSM/cycle/2014-1/Plan2014/tex
-set OutputHtmlDir=../Curricula.out/html/Peru/CS-UNMSM/Plan2014
-set OutputScriptsDir=../Curricula.out/Peru/CS-UNMSM/cycle/2014-1/Plan2014/scripts
+set OutputTexDir=../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2010/tex
+set OutputHtmlDir=../Curricula.out/html/Peru/CS-UNSA/Plan2010
+set OutputScriptsDir=../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2010/scripts
 
-./scripts/process-curricula.pl CS-UNMSM
-../Curricula.out/Peru/CS-UNMSM/cycle/2014-1/Plan2014/scripts/gen-eps-files.sh CS UNMSM Peru Espanol
-./scripts/update-page-numbers.pl CS-UNMSM 
-./scripts/gen-graph.sh CS UNMSM Peru Espanol big
+./scripts/process-curricula.pl CS-UNSA
+../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2010/scripts/gen-eps-files.sh CS UNSA Peru Espanol
+./scripts/update-page-numbers.pl CS-UNSA 
+./scripts/gen-graph.sh CS UNSA Peru Espanol big
 rm unified-curricula-main* 
 ./scripts/gen-html-main.pl CS-UNSA
 
@@ -40,14 +40,14 @@ dvips -o unified-curricula-main.ps unified-curricula-main.dvi
 ps2pdf unified-curricula-main.ps unified-curricula-main.pdf
 rm unified-curricula-main.ps unified-curricula-main.dvi
 
-rm -rf ../Curricula.out/html/Peru/CS-UNMSM/Plan2014
-mkdir -p ../Curricula.out/html/Peru/CS-UNMSM/Plan2014
-mkdir ../Curricula.out/html/Peru/CS-UNMSM/Plan2014/figs
-cp ./in/lang.Espanol/figs/pdf.jpeg cp ./in/lang.Espanol/figs/star.gif cp ./in/lang.Espanol/figs/none.gif ../Curricula.out/html/Peru/CS-UNMSM/Plan2014/figs/.
+rm -rf ../Curricula.out/html/Peru/CS-UNSA/Plan2010
+mkdir -p ../Curricula.out/html/Peru/CS-UNSA/Plan2010
+mkdir ../Curricula.out/html/Peru/CS-UNSA/Plan2010/figs
+cp ./in/lang.Espanol/figs/pdf.jpeg cp ./in/lang.Espanol/figs/star.gif cp ./in/lang.Espanol/figs/none.gif ../Curricula.out/html/Peru/CS-UNSA/Plan2010/figs/.
 
 latex2html \
--t "Curricula CS-UNMSM" \
--dir "../Curricula.out/html/Peru/CS-UNMSM/Plan2014/" -mkdir \
+-t "Curricula CS-UNSA" \
+-dir "../Curricula.out/html/Peru/CS-UNSA/Plan2010/" -mkdir \
 -toc_stars -local_icons -show_section_numbers \
 -address "Generado por <A HREF='http://socios.spc.org.pe/ecuadros/'>Ernesto Cuadros-Vargas</A> <ecuadros AT spc.org.pe>,               <A HREF='http://www.spc.org.pe/'>Sociedad Peruana de Computaci&oacute;n-Peru</A>,               <A HREF='http://www.utec.edu.pe/'>Universidad de Ingenier&iacute;a y Tecnolog&iacute;a, Lima-Per&uacute;</A><BR>              basado en el modelo de la Computing Curricula de               <A HREF='http://www.computer.org/'>IEEE-CS</A>/<A HREF='http://www.acm.org/'>ACM</A>" \
 unified-curricula-main
@@ -55,9 +55,9 @@ unified-curricula-main
 
 ./scripts/update-analytic-info.pl CS-UNSA
 
-#../Curricula.out/Peru/CS-UNMSM/cycle/2014-1/Plan2014/tex/scripts/gen-syllabi.sh
-mkdir ../Curricula.out/html/Peru/CS-UNMSM/Plan2014/syllabi
-cp ../Curricula.out/Peru/CS-UNMSM/cycle/2014-1/Plan2014/tex/syllabi/* ../Curricula.out/html/Peru/CS-UNMSM/Plan2014/syllabi/*
+#../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2010/tex/scripts/gen-syllabi.sh
+mkdir ../Curricula.out/html/Peru/CS-UNSA/Plan2010/syllabi
+cp ../Curricula.out/Peru/CS-UNSA/cycle/2018-II/Plan2010/tex/syllabi/* ../Curricula.out/html/Peru/CS-UNSA/Plan2010/syllabi/*
 
 #Redundant withcompile1institution
 # ./scripts/$area-$institution-gen-silabos

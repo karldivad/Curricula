@@ -11,7 +11,6 @@
 {2}{CB102}{Cálculo en una variable   }{4}{MA1701210}% Cálculo en una Variable , 5
 {2}{ID102}{Lengua Extranjera II}{5}{ID1701212}% Inglés técnico profesional II , 3
 {2}{CS100}{Introducción a la Ciencia de la Computación   }{3}{FG1701216}% Introducción a la Ciencia de la Computación, 3
-{2}{CS100}{Introducción a la Ciencia de la Computación   }{3}{FG1701215}% Introducción a la Ciencia de la Computación, 3
 
 
 
