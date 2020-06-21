@@ -79,7 +79,7 @@ if($pdf == 1) then
       rm -rf <AREA>-<INST>.ps;
 
 #     Generate the first page and place it at html dir
-      mutool convert -o <OUTPUT_HTML_DIR>/CurriculaMain-P1.png <AREA>-<INST>.pdf 1-1
+      mutool convert -o <OUTPUT_HTML_DIR>/CurriculaMain-P%d.png <AREA>-<INST>.pdf 1-1
       #pdftk A=<AREA>-<INST>.pdf cat A1-1 output <AREA>-<INST>-P1.pdf;
       #convert <AREA>-<INST>-P1.pdf <AREA>-<INST>-P1.png;
       #rm <AREA>-<INST>-P1.pdf;

@@ -24,7 +24,7 @@ echo "cd <OUTPUT_HTML_DIR>";
 #convert $MainFile-P1.pdf $MainFile-P1.png;
 #rm $MainFile-P1.pdf;
 echo "mutool convert -o $MainFile-P1.png $MainFile.pdf 1-1"
-mutool convert -o $MainFile-P1.png $MainFile.pdf 1-1
+mutool convert -o $MainFile-P%d.png $MainFile.pdf 1-1
 
 cd $current_dir;
 mkdir -p <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>

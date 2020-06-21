@@ -134,7 +134,9 @@ sub ExpandTags($$)
 	$InTxt =~ s/<LANG-EXTENDED>/$lang/g;
 	$InTxt =~ s/<LANG>/$Common::config{dictionaries}{$lang}{lang_prefix}/g;
 	$InTxt =~ s/<LANG_FOR_LATEX>/$Common::config{dictionaries}{$lang}{lang_for_latex}/g;
+	$InTxt =~ s/<DISCIPLINE>/$Common::config{discipline}/g;
 	$InTxt =~ s/<AREA>/$Common::area/g;
+	$InTxt =~ s/<INST>/$Common::institution/g;
 	return $InTxt; 
 }
 
@@ -377,6 +379,30 @@ sub read_pages()
         #return %pages_map;
 }
 
+sub read_dot_template($$)
+{
+	my ($size, $lang) = (@_);
+	my @dot_files = ("in-country-graph-item.dot", "in-discipline-graph-item.dot", 
+					 "in-area-graph-item.dot"   , "in-institution-graph-item.dot");
+	#my $dot_txt = "";
+	my $dot_file = "";
+	foreach my $one_dot_file (@dot_files)
+	{
+		my $template_file = Common::get_template($one_dot_file);
+		#Util::print_message("template_file=$template_file");
+		$template_file = Common::ExpandTags($template_file, $lang);
+		$template_file =~ s/<SIZE>/$size/g;
+		if( -e $template_file )
+		{	Util::print_message("template_file=$template_file exists !");
+			$dot_file = $template_file;
+			#$dot_txt = Util::read_file($template_file);
+		}
+		else
+		{	Util::print_warning("template_file=$template_file does not exist ! no problem");	}
+	}
+	return $dot_file;
+}
+
 sub read_outcomes_labels()
 {
         my $filename     = Common::get_template("file_for_page_numbers");
@@ -567,7 +593,7 @@ sub set_initial_paths()
 	# Tex files
 	$path_map{"out-current-institution-file"}	= $path_map{OutputInstDir}."/tex/current-institution.tex";
 	$path_map{"preamble0-file"}                 = $path_map{InAllTexDir}."/preamble0.tex";
-	$path_map{"list-of-courses"}		   		= $path_map{InDisciplineDir}."/$area$config{CurriculaVersion}-dependencies.tex";
+	$path_map{"list-of-courses"}		   		= $path_map{InDisciplineDir}."/$area/$area$config{CurriculaVersion}-dependencies.tex";
 
 	$path_map{"in-acronyms-base-file"}			= $path_map{InDisciplineDir}."/tex/$config{discipline}-acronyms.tex";
 	$path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
@@ -704,8 +730,12 @@ sub set_initial_paths()
 	$path_map{"out-gen-map-for-course"}				= $path_map{OutputScriptsDir}."/gen-map-for-course.sh";
 
 	# Dot files
-	$path_map{"in-small-graph-item.dot"}			= $path_map{InTemplatesDot}."/small-graph-item$config{graph_version}.dot";
-	$path_map{"in-big-graph-item.dot"}				= $path_map{InTemplatesDot}."/big-graph-item$config{graph_version}.dot";
+	#$path_map{"in-country-small-graph-item.dot"}	= $path_map{InCountryDir}."/dot/small-graph-item$config{graph_version}.dot";
+	$path_map{"in-country-graph-item.dot"}			= $path_map{InCountryDir}."/dot/<SIZE>-graph-item$config{graph_version}.dot";
+	$path_map{"in-discipline-graph-item.dot"}		= $path_map{InDisciplineDir}."/dot/<SIZE>-graph-item$config{graph_version}.dot";
+	$path_map{"in-area-graph-item.dot"}				= $path_map{InDisciplineDir}."/<AREA>/<SIZE>-graph-item$config{graph_version}.dot";
+	$path_map{"in-institution-graph-item.dot"}		= $path_map{InProgramDir}."/<AREA>/<SIZE>-graph-item$config{graph_version}.dot";
+	
 	$path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula-<LANG>.dot";
 	$path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula-<LANG>.dot";
 
@@ -925,22 +955,20 @@ sub sort_macros()
 }
 
 # ok
-sub read_macros($)
+sub parse_macros($)
 {
-    my ($file_name) = (@_);
-	Util::print_message("Reading macros ( $file_name ) ...");
-	my $bok_txt 	  = Util::read_file($file_name);
-	$bok_txt 		  = Util::trim_comments($bok_txt);
+	my ($txt) = (@_);
+	$txt 		  = Util::trim_comments($txt);
 	my %macros = ();
 	my @tokens = ();
-	while($bok_txt =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g )
+	while($txt =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g )
 	{	my ($token) = ($&);
 		push(@tokens, $token);
 	}
 	my $ntokens = scalar @tokens;
 	Util::print_message("ntokens=$ntokens");
-    if(not $ntokens % 3 == 0)
-	{	Util::print_message("Something suspicious (#tokens($ntokens) is not multiple of 3) ... verify read_macros($file_name) ...");	}
+    #if(not $ntokens % 3 == 0)
+	#{	Util::print_message("Something suspicious (#tokens($ntokens) is not multiple of 3) ... verify read_macros($file_name) ...");	}
 	#print Dumper (\@tokens);
 	#if($Util::flag == 100) {	Util::print_soft_error("Llegó 000 ! ($file_name) ...");  
 	#	Util::print_soft_error("macros{finaltest}=\n$macros{finaltest} ...");
@@ -956,21 +984,23 @@ sub read_macros($)
 			my ($key, $body) = ("", "");
 			if( $tokens[$count+1] =~ m/\{\\(.*)\}/g )
 			{	$key = $1;	}
-			else{	Util::print_message("Something wrong1 @"."read_macros($file_name)! count=$count, tokens[$count]=$tokens[$count]");	}
+			else{	#Util::print_message("Something wrong1 @"."read_macros($file_name)! count=$count, tokens[$count]=$tokens[$count]");	
+			}
 			if( $tokens[$count+2] =~ m/\{((.|\n)*)\}/sg )
 			{	$body = $1;	}
-			else{	Util::print_message("Something wrong2 @"."read_macros($file_name)! count=$count, key=$key,tokens[$count]=\"$tokens[$count]\"");	}
+			else{	#Util::print_message("Something wrong2 @"."read_macros($file_name)! count=$count, key=$key,tokens[$count]=\"$tokens[$count]\"");	
+			}
 			$macros{$key} = $body;
 			$count += 2;
 		}
 		else
 		{
-			Util::print_message("Something wrong3 @"."read_macros($file_name)! count=$count, tokens[$count]=\"$tokens[$count]\" \nI was expecting a newcommand");
+			#Util::print_message("Something wrong3 @"."read_macros($file_name)! count=$count, tokens[$count]=\"$tokens[$count]\" \nI was expecting a newcommand");
 		}
 		++$count;
 	}
 	#print Dumper (\%macros);
-    Util::print_message("read_macros($file_name) ". (keys %macros) ." processed ... OK!");
+    #Util::print_message("read_macros($file_name) ". (keys %macros) ." processed ... OK!");
 	if($Util::flag == 100)
 	{	
 		#Util::print_soft_error("Llegó ! ($file_name) ...");  
@@ -980,64 +1010,31 @@ sub read_macros($)
 	return %macros;
 }
 
-# ok
-sub read_macros_old($)
+sub read_macros($)
 {
     my ($file_name) = (@_);
 	Util::print_message("Reading macros ( $file_name ) ...");
-	my $bok_txt 	  = Util::read_file($file_name);
-	if($Util::flag == 100) {	Util::print_soft_error("Llegó ! ($file_name) ...");  exit;	}
-	#exit;	
-    
-	my %macros = ();
-    my ($count) = (0);
-    while($bok_txt =~ m/\\newcommand\{\\(.*?)\}\{((?:.|\n)*)/)
-    {
-		my ($cmd)  		= ($1);
-		my ($bok_txt) 	= ($2);
-		my ($len) 		= (length($bok_txt));
-		my @chars 		= split("", $bok_txt);
-		Util::print_message("macro $cmd detected ! (". scalar(@chars) . ")");
-		Util::print_message($bok_txt."\n");
-		my ($cPar)   	 = (1);
-		my ($body)   	 = ("");
-		my ($char_count) = (0);
-		while($cPar > 0 && $char_count < $len)
-		{
-			my ($new_char) = ($chars[$char_count]);
-			if   ($new_char eq "{"){	$cPar++;			}
-			elsif($new_char eq "}"){	$cPar--;	if($cPar == 0) {last;}		}
-			$body .= $new_char;
-			$char_count++;
-		}
-		if($cPar > 0)
-		{	
-			Util::print_color("cmd=$cmd\n} is missing?! ...");
-			Util::print_color("body=\n$body");
-			Util::print_error("Error");
-		}
-		$macros{$cmd} = $body;
-		$count++;
-    }
-    Util::print_message("read_macros_old ( $file_name ) $count macros processed ... OK!");
-	return %macros;
+	my $txt	= Util::read_file($file_name);
+	return parse_macros($txt);
 }
 
 sub read_outcomes($)
 {
     my ($file_name) = (@_);
-    my $bok_txt 	  = Util::read_file($file_name);
-	my %macros = ();
+    my $txt 	= Util::read_file($file_name);
+	my %macros 	= parse_macros($txt);
+	#Util::print_message("file_name=$file_name ...");
+	#print Dumper(\%macros); exit;
 
     my $count = 0;
-    while($bok_txt =~ m/\\Define(.*?)\{(.*?)\}\{/g)
+    while($txt =~ m/\\Define(.*?)\{(.*?)\}\{/g)
     {
 		my ($cmd, $code)  = (lc $1, $2);
 		my $cPar   = 1;
 		my $body   = "";
 		while($cPar > 0)
 		{
-			$bok_txt =~ m/((.|\s))/g;
+			$txt =~ m/((.|\s))/g;
 			$cPar++ if($1 eq "{");
 			$cPar-- if($1 eq "}");
 			$body      .= $1 if($cPar > 0);
@@ -1521,6 +1518,194 @@ sub process_institution_info($$)
 	# TODO Aqui me quede: hay que partir esta funcion en dos process porque regraba el archivo luego de leerlo y aumentarle cosas ...
 	my ($txt, $file) = (@_);
 	my %this_inst_info = ();
+	my %macros = parse_macros($txt);
+	#print Dumper(\%macros); exit;
+
+    # Read PlanConfig
+	my $PlanConfig = "";
+	if($txt =~ m/\\newcommand\{\\PlanConfig\}\{(.*?)\}/)
+	{	$PlanConfig = $1;			}
+	my $PlanConfigFile = get_template("InProgramDir")."/$PlanConfig.tex";
+	my %PlanConfigVars = read_macros($PlanConfigFile);
+
+	###################################################################################################
+	# Read the Semester
+	if(defined($PlanConfigVars{Semester}))
+	{	($PlanConfigVars{Semester}) = ($this_inst_info{Semester}) = ($PlanConfigVars{Semester} =~ m/(.*)\\.*/);
+	}
+	else
+	{	Util::print_error("Error (process_institution_info): there is no Semester configured in \"$file\"\n");	}
+	Util::print_message("Semester=$this_inst_info{Semester} ...");
+
+	###################################################################################################
+	# Read the Active Plan
+	if( defined($PlanConfigVars{YYYY}) )
+	{	($this_inst_info{YYYY}) = ($PlanConfigVars{YYYY} =~ m/(.*)\\.*/);
+		 $this_inst_info{Plan}	=  $PlanConfigVars{YYYY} = $this_inst_info{YYYY};
+	}
+	else
+	{	Util::print_error("Error (process_institution_info): there is no YYYY (Plan) configured in \"$file\"\n");	}
+	Util::print_message("YYYY=$this_inst_info{YYYY} ...");
+
+	###################################################################################################
+	# Read the Range of semesters to generate 
+	if(defined($PlanConfigVars{Range})) # \newcommand{\Range}{4-7} %Plan
+	{	($this_inst_info{SemMin}, $this_inst_info{SemMax}) = ($PlanConfigVars{Range} =~ m/(\d*)-(\d*)/);	}
+	else
+	{	Util::print_warning("(process_institution_info): does not contain Range of semesters to generate (assuming all) \n");	}
+	Util::print_message("Range:$PlanConfigVars{Range},SemMin=$this_inst_info{SemMin}, SemMax=$this_inst_info{SemMax} ...");
+
+	###################################################################################################
+	# Read the CurriculaVersion 
+	if(defined($PlanConfigVars{CurriculaVersion}))
+	{	($PlanConfigVars{CurriculaVersion}) = ($this_inst_info{CurriculaVersion}) = ($PlanConfigVars{CurriculaVersion} =~ m/(.*)\\.*/);		}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\CurriculaVersion configured in \"$file\" ... assuming 3 ...\n");
+		$this_inst_info{CurriculaVersion} = 3;
+	}
+	Util::print_message("CurriculaVersion=$this_inst_info{CurriculaVersion} ...");
+	################################
+	@{$Common::config{macros}}{keys %PlanConfigVars} = values %PlanConfigVars;
+
+	################################
+	foreach my $key (keys %PlanConfigVars)
+	{	Util::print_message("Common::config{macros}{$key} = $Common::config{macros}{$key} ...");	}
+
+	# Read the dictionary
+	if(defined($macros{dictionary}))
+	{	if($macros{dictionary} =~ m/(.*?)\\.*?/)
+		{	$this_inst_info{language_without_accents} 	= no_accents($1);
+			$this_inst_info{language} 			= $1;
+		}
+	}
+	else
+	{	Util::print_error("process_institution_info: there is not \\dictionary configured in \"$file\"\n");	}
+
+	# Read the GraphVersion
+	$this_inst_info{graph_version} = 1;
+	$this_inst_info{sep} = "|";
+	$this_inst_info{hline} = "\\hline";
+	if( defined($macros{GraphVersion}) )
+	{	if($macros{GraphVersion} =~ m/(.*?)\\.*?/)
+		{	$this_inst_info{graph_version} = $1;
+			if($this_inst_info{graph_version} == 2)
+			{	$this_inst_info{sep} = "";
+				$this_inst_info{hline} = "";
+			}
+		}
+		else
+		{	Util::print_warning("(process_institution_info): there is not \\GraphVersion configured in \"$file\" ... assuming 1 ...\n");
+		}
+	}
+
+	# Read the outcomes list
+	my $OutcomesError = "(process_institution_info): there is not \\OutcomesList configured in \"$file\" ...\n";
+
+	my $txt_copy = $txt;
+	my @outcomes_array = $txt_copy =~ m/\\OutcomesList(\{.*?)\n/g;
+	foreach my $params (@outcomes_array)
+	{
+		my ($version, $outcomeslist) = ($config{OutcomesVersionDefault}, "");
+		if( $params =~ m/\{(.*?)\}\{(.*?)\}/g )
+		{	($version, $outcomeslist) = ($1, $2);		}
+		elsif( $params =~ m/\{(.*?)\}/g )
+		{	$outcomeslist = $1;
+			$txt_copy =~ s/\\OutcomesList\{$outcomeslist\}/\\OutcomesList\{$version\}\{$outcomeslist\}/g;
+		}
+		else{	Util::print_error($OutcomesError);	}
+		Util::print_message("this_inst_info{outcomes_list}{$version} = $outcomeslist");
+		if( defined($this_inst_info{outcomes_list}{$version}) && not $this_inst_info{outcomes_list}{$version} eq "" )
+		{	Util::print_error("Many \\OutcomesList for the same version??? (\"$file\")");	}
+		$this_inst_info{outcomes_list}{$version} = $outcomeslist;
+	}
+
+	#print Dumper(\%this_inst_info); 	exit;
+	$txt = $txt_copy;
+	# Read the OutcomesVersion
+	if(defined($macros{OutcomesVersion}))
+	{	$this_inst_info{OutcomesVersion} = $macros{OutcomesVersion};		}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\OutcomesVersion configured in \"$file\" ... assuming $config{OutcomesVersionDefault} ...\n");
+		$txt .= "\n\\newcommand\{\\OutcomesVersion\}\{$config{OutcomesVersionDefault}\}\n";
+		$this_inst_info{OutcomesVersion} = $config{OutcomesVersionDefault};
+	}
+
+	# Read the logowidth
+	if( defined($macros{logowidth}) )
+	{	if( $macros{logowidth} =~ m/(\d*\.?\d*)(.*)/)
+		{       $this_inst_info{logowidth}       = $1;
+				$this_inst_info{logowidth_units} = $2;
+				#Util::print_message("macros{logowidth}=$macros{logowidth}");
+				#Util::print_message("this_inst_info{logowidth}=$this_inst_info{logowidth}, this_inst_info{logowidth_units}=$this_inst_info{logowidth_units}"); exit;
+				#exit;
+		}
+		else
+		{       Util::print_error("(process_institution_info): there is not \\logowidth configured in \"$file\" ...\n");
+		}
+	}
+#         if($txt =~ m/\\newcommand{\\Copyrights}{(.*?)}/)
+#         {       $this_inst_info{Copyrights} = $1;             }
+#         else
+#         {       Util::print_error("(process_institution_info): there is not \\Copyrights configured in \"$file\" ...\n");
+#         }
+	$this_inst_info{SyllabusLangs} 					= $macros{SyllabusLangs};
+	$this_inst_info{SyllabusLangs} 					=~ s/ //g;
+	$this_inst_info{SyllabusLangs_without_accents} 	= no_accents($this_inst_info{SyllabusLangs});
+	my @lang_prefixes = ();
+	foreach my $lang ( split(",", $this_inst_info{SyllabusLangs_without_accents}) )
+	{	push( @{$this_inst_info{SyllabusLangsList}}, $lang);
+		my $lang_prefix = "";
+	      if( $lang =~ m/(..)/g )
+	      {		$lang_prefix = uc($1);	      }
+	      #%{$config{dictionaries}{$lang}} 		= read_dictionary_file($lang);
+	      push(@lang_prefixes, $lang_prefix);
+		  #Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}"); 
+	}
+	my @keys = ("fecha", "city", "country", "doctitle", "AbstractIntro", "OtherKeyStones",
+				"equivalences", "underlogotext", 
+				"SchoolURL", "InstitutionURL", "SyllabusLangs");
+	for my $extra_key ( "mission", "profile", "vision", 
+						"AcademicDegreeIssued", "TitleIssued", "AcademicDegreeAndTitle",
+						"SchoolFullName", "SchoolShortName", "SchoolFullNameBreak",
+					   "FacultadName", "DepartmentName", "University")
+	{	foreach my $lang_prefix (@lang_prefixes)
+		{	push( @keys, "$extra_key$lang_prefix");
+		}
+		push( @keys, $extra_key);
+	}
+	#print Dumper(\@keys);	exit;	
+
+	foreach my $key (@keys)
+	{	$this_inst_info{$key} = "";
+		if( defined($macros{$key}) )
+		{
+			$this_inst_info{$key}	= $macros{$key};
+			#Util::print_message("this_inst_info{$key} = $this_inst_info{$key}"); exit;
+		}
+		else
+		{	Util::print_warning("(process_institution_info): there is not \\$key in \"$file\"\n");	}
+	}
+	# Now post processing some of them
+	if(	$this_inst_info{country} =~ m/(.*?)\\.*?/ )
+	{	$this_inst_info{country} = $1;	}
+	$this_inst_info{country_without_accents} 	= filter_non_valid_chars($this_inst_info{country});
+
+# 	Util::print_message("After ($file)\n$txt");
+	# TODO
+	Util::print_warning("process_institution_info() I am not updating this file anymore ... See \\OutcomesList above");
+	#Util::write_file($file, $txt);
+	
+	Util::check_point("process_institution_info");
+	Util::print_message("institution_info ($file) ... OK !");
+	#print Dumper(\%this_inst_info); exit;
+	return %this_inst_info;
+}
+
+sub process_institution_info_old($$)
+{
+	# TODO Aqui me quede: hay que partir esta funcion en dos process porque regraba el archivo luego de leerlo y aumentarle cosas ...
+	my ($txt, $file) = (@_);
+	my %this_inst_info = ();
 
     # Read PlanConfig
 	my $PlanConfig = "";
@@ -1674,6 +1859,41 @@ sub process_institution_info($$)
 	else
 	{	Util::print_warning("(process_institution_info): there is not \\equivalences in \"$file\"\n");	}
 
+	# Read underlogotext
+	$this_inst_info{underlogotext} = "";
+	if($txt =~ m/\\newcommand\{\\underlogotext\}\{(.*?)\}/)
+	{   $this_inst_info{underlogotext}	= $1;	}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\underlogotext in \"$file\"\n");	}
+
+	# Read doctitle
+	$this_inst_info{doctitle} = "";
+	if($txt =~ m/\\newcommand\{\\doctitle\}\{(.*?)\}/)
+	{   $this_inst_info{doctitle}	= $1;	}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\doctitle in \"$file\"\n");	}
+
+	# Read SchoolFullNameES
+	$this_inst_info{SchoolFullNameES} = "";
+	if($txt =~ m/\\newcommand\{\\SchoolFullNameES\}\{(.*?)\}/)
+	{   $this_inst_info{SchoolFullNameES}	= $1;	}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\SchoolFullNameES in \"$file\"\n");	}
+
+	# Read SchoolShortNameES
+	$this_inst_info{SchoolFullNameES} = "";
+	if($txt =~ m/\\newcommand\{\\SchoolShortNameES\}\{(.*?)\}/)
+	{   $this_inst_info{SchoolShortNameES}	= $1;	}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\SchoolShortNameES in \"$file\"\n");	}
+
+	# Read SchoolURL
+	$this_inst_info{SchoolURL} = "";
+	if($txt =~ m/\\newcommand\{\\SchoolURL\}\{(.*?)\}/)
+	{   $this_inst_info{SchoolURL}	= $1;	}
+	else
+	{	Util::print_warning("(process_institution_info): there is not \\SchoolURL in \"$file\"\n");	}
+
 # 	Util::print_message("After ($file)\n$txt");
 	#print Dumper(\%this_inst_info); 	exit;
 
@@ -1786,13 +2006,13 @@ sub verify_dependencies($)
 sub set_initial_configuration($)
 {
 	my ($command) = (@_);
-	$config{projectname} = "Curricula";
+	$config{projectname} 	= "Curricula";
 	($config{in}, $config{out})		= ("../$config{projectname}.in", "../$config{projectname}.out");
 	$config{OutcomesVersionDefault} = "V1";
 	($path_map{InDir}, $path_map{OutDir})	= ($config{in}, $config{out});
-	$config{macros_file} = "";
+	$config{macros_file} 	= "";
 
-	$config{encoding} 	= "latin1";
+	$config{encoding} 		= "latin1";
 	$config{tex_encoding} 	= "utf8";
 	#$config{lang_for_latex}{Espanol}   = "spanish";
 	#$config{lang_for_latex}{English}   = "english";
@@ -1810,7 +2030,7 @@ sub set_initial_configuration($)
     #Util::print_message("inst_list{$config{institution}}{country}=$inst_list{$config{institution}}{country}");
 
 	$config{InProgramDir} 	= $path_map{InProgramDir} 	= GetProgramInDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
-	$path_map{"this-institutions-info-file"}   			= GetInCountryBaseDir($inst_list{$config{institution}}{country})."/institutions/$config{institution}.tex";
+	$path_map{"this-institution-info-file"}   			= GetInCountryBaseDir($inst_list{$config{institution}}{country})."/institutions/$config{institution}.tex";
 	$path_map{"this-program-info-file"}					= get_template("InProgramDir")."/program-info.tex";
 	$path_map{"copyrights"}								= "$config{in}/copyrights.tex";
 
@@ -1819,7 +2039,7 @@ sub set_initial_configuration($)
 	foreach my $key (keys %copyrights_vars)	{	$config{$key} = $copyrights_vars{$key};	}
 
 	# Read the config for this institution (name, URL)
-	my $institution_file = get_template("this-institutions-info-file");
+	my $institution_file = get_template("this-institution-info-file");
 	Util::print_message("set_initial_configuration: Reading $institution_file ... ");
 	my $institution_txt = Util::read_file( $institution_file );
 
@@ -1827,13 +2047,14 @@ sub set_initial_configuration($)
 	my $program_file = get_template("this-program-info-file");
 	Util::print_message("set_initial_configuration: Reading $program_file ... ");
 	my $program_txt  = Util::read_file( $program_file );
-
+	
 	my %inst_vars = process_institution_info( $institution_txt."\n".$program_txt, $institution_file."\n".$program_file );
 	foreach my $key (keys %inst_vars)
-	{	$config{$key} = $inst_vars{$key};	}
+	{	$config{$key} = $inst_vars{$key};
+		$config{macros}{$key} = $inst_vars{$key};
+	}
 
  	#print Dumper(\%config); exit;
-
 	$config{equivalences} =~ s/ //g;
 # 	Util::print_message("config{equivalences} = \"$config{equivalences}\""); exit;
 
@@ -1859,27 +2080,26 @@ sub set_initial_configuration($)
 
 	read_config(get_template("all-config"));
 
-
 	$path_map{"crossed-reference-file"}		= $config{main_file}.".aux";
-	read_config(get_template("in-area-all-config-file")); # i.e. CS-All.config
- 	read_config(get_template("in-area-config-file"));     # i.e. CS.config
-	read_config(get_template("in-institution-config-file"));     # i.e. institution.config
+	read_config(get_template("in-area-all-config-file")); 		# i.e. CS-All.config
+ 	read_config(get_template("in-area-config-file"));     		# i.e. CS.config
+	read_config(get_template("in-institution-config-file"));    # i.e. institution.config
 	#Util::print_message("CS=$config{dictionary}{AreaDescription}{CS}"); exit;
-
 	%{$config{temp_colors}} = read_config_file(get_template("colors"));
 
 	# Read dictionary for this language
-
 	%{$config{dictionary}} = read_config_file(get_template("dictionary"));
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
-	      my $lang_prefix = "";
-	      if( $lang =~ m/(..)/g )
-	      {		$lang_prefix = uc($1);	      }
-	      %{$config{dictionaries}{$lang}} 		= read_dictionary_file($lang);
-	      $config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
-	      #Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
+		
+		my $lang_prefix = "";
+		if( $lang =~ m/(..)/g )
+		{		$lang_prefix = uc($1);	      }
+		%{$config{dictionaries}{$lang}} 		= read_dictionary_file($lang);
+		$config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
+		#Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
 	}
+
 # 	print Dumper(\%{$config{dictionary}});
 # 	print Dumper(\%{$config{dictionaries}{Espanol}});
 # 	print Dumper(\%{$config{dictionaries}{English}});
@@ -1898,7 +2118,6 @@ sub set_initial_configuration($)
 	    {	$config{$key} = $value; 	}
 	}
 	#Util::print_message("config{COL4LABS}=$config{COL4LABS}"); exit;
-
 	$config{"country-environments-to-insert"} = "";
 	my $file_to_insert = Common::get_template("in-country-environments-to-insert-file");
 	if(-e $file_to_insert)
@@ -1918,18 +2137,22 @@ sub set_initial_configuration($)
 		my %macros = read_macros($file);
 		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
-	foreach my $lang (@{$config{SyllabusLangsList}})
-	{
-		#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
-		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
-		Util::print_message("Reading outcomes ($outcomes_macros_file)");
-		my %outcomes_macros = read_outcomes($outcomes_macros_file);
-		@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
-		#my %outcomes_defs = read_outcomes($outcomes_macros_file);
-		@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
-		#print Dumper( \%outcomes_defs );
-	}
-	#print Dumper( \%{$Common::config{macros}{outcomes}} );
+
+	#foreach my $lang (@{$config{SyllabusLangsList}})
+	my $lang = $config{language_without_accents};
+	#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
+	my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
+	Util::print_message("Reading outcomes ($outcomes_macros_file)");
+	my %outcomes_macros = read_outcomes($outcomes_macros_file);
+	@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
+	foreach my $key (keys %outcomes_macros)
+	{	$Common::config{macros}{$key} = $outcomes_macros{$key};		}
+	#@{$Common::config{macros}{keys %outcomes_macros}}        = values %outcomes_macros;
+	#if( $config{language_without_accents} eq $lang )
+	#my %outcomes_defs = read_outcomes($outcomes_macros_file);
+	@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
+	#print Dumper( \%outcomes_defs );
+
 	if(-e Common::get_template("out-current-institution-file"))
 	{	my %macros = read_macros(Common::get_template("out-current-institution-file"));
 		@{$Common::config{macros}}{keys %macros} = values %macros;
@@ -1947,6 +2170,8 @@ sub set_initial_configuration($)
 	$config{except_file}{"config-hdr-foot-BR.tex"}     = "";
 	$config{except_file}{"current-institution.tex"}    = "";
 	$config{except_file}{"outcomes-macros.tex"}        = ""; #Util::print_warning("Danger here ... Wilcards are missing for config-hdr-foot-<LANG>.tex");
+	$config{except_file}{"program-info.tex"}		   = "";
+	$config{except_file}{"$institution.tex"}	       = "";
 	#$config{except_file}{"outcomes-macros-ES.tex"}    = "";
 	#$config{except_file}{"outcomes-macros-EN.tex"}    = "";
 	#$config{except_file}{"outcomes-macros-BR.tex"}    = "";
@@ -3343,7 +3568,7 @@ sub parse_courses()
 						{
 							print "\n";
 							Util::print_warning("Course $codcour (Sem #$course_info{$codcour}{semester},\"$course_info{$codcour}{inst_list}\"), has higher priority than $codcour (Sem #$semester, \"$inst_wildcard\")  ... ignoring the last one !!!");
-							next;
+							exit;
 						}
 					#}
 				}
@@ -3485,7 +3710,7 @@ sub filter_courses($)
 		$config{map_file_to_course}{$coursefile} = $codcour;
 	}
 
-	#print Dumper(\@codcour_list_sorted); exit;
+	#print Dumper(\@codcour_list_sorted); Util::print_message("Qui stop"); exit;
 	foreach my $codcour (@codcour_list_sorted)
 	{
 		#Util::print_message("codcour()=$codcour");
@@ -3619,7 +3844,7 @@ sub filter_courses($)
 				#Util::print_message("codcour=$codcour,codreq=$codreq");
 				my $prereq_label = get_label($codreq);
 				if($prereq_label eq "")
-				{	Util::print_error("codcour=$codcour,sem=$semester, codreq=$codreq It seems you forgot to active that prereq ($codreq) See: $input_file");	}
+				{	Util::print_error("codcour=$codcour,sem=$semester ($course_info{$codcour}{English}{course_name})\n codreq=$codreq Did you forget to activate that prereq ($codreq) See: $input_file");	}
 				$codreq = $prereq_label;
 				#Util::print_message("codcour=$codcour,codreq=$codreq");
 				$new_prerequisites .= "$sep$codreq";
@@ -3761,6 +3986,8 @@ sub filter_courses($)
 	Util::print_message("Read courses = $courses_count ($config{n_semesters} semesters)");
 #     print Dumper( \%{$config{map_file_to_course}} );
 #     exit;
+	#Util::print_message("$course_info{CS221}{prerequisites_just_codes} abc");
+	#exit;
 }
 
 sub sort_courses()
@@ -4417,18 +4644,22 @@ sub gen_bok($)
 
 sub generate_books_links()
 {
-	my $output_links = "";
 	my $tabs = "\t\t";
-	my $poster_link	 = <<"TEXT";
-		<CENTER>
-		<TABLE BORDER=0 BORDERCOLOR=RED>
-		<TR> <TD colspan="3" align="center"> <a href="$config{area}-$config{institution}-poster.pdf">
-		      <IMG SRC="$config{area}-$config{institution}-poster.png" border="1" ALT="Ver p&oacute;ster de toda la carrera en PDF" height ="280"><BR>P&oacute;ster</a>
-		      </TD>
-		</TR>
-		</TABLE>
-TEXT
-	$output_links .= $poster_link;
+	my $output_links  = "<CENTER>\n";
+	$output_links    .=	"<TABLE BORDER=0 BORDERCOLOR=RED>\n";
+	$output_links    .=	"<TR>\n";
+	foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	{
+		my $lang_prefix 	 = $Common::config{dictionaries}{$lang}{lang_prefix};
+		my $poster_link	  = "$tabs<TD align=\"center\"> <a href=\"$config{area}-$config{institution}-poster-$lang_prefix.pdf\">\n";
+		$poster_link	 .= "$tabs$tabs<IMG SRC=\"$config{area}-$config{institution}-poster-$lang_prefix-P1.png\" border=\"1\" ALT=\"Ver p&oacute;ster de toda la carrera en PDF\" height =\"280\"><BR>P&oacute;ster </a>\n";
+		$poster_link	 .= "$tabs$tabs".get_language_icon($lang)."\n";
+		$poster_link	 .= "$tabs</TD>\n";
+		$output_links .= $poster_link;
+	}
+	$output_links    .=	"</TR>\n";
+	$output_links    .=	"</TABLE>\n";
+
 	foreach my $book ("Syllabi", "Bibliography", "Descriptions")
 	{
 	      $output_links .= "$tabs<TABLE>\n";
@@ -4439,10 +4670,10 @@ TEXT
 		    my $lang_prefix 	 = $Common::config{dictionaries}{$lang}{lang_prefix};
 		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
 		    $book_link .= "$tabs\t<TD align=\"center\">\n";
-		    $book_link .= "$tabs\t\t<A HREF=\"BookOf$book-$lang_prefix.pdf\">\n";
-		    $book_link .= "$tabs\t\t<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle\n";
-		    $book_link .= "$tabs\t\t".get_language_icon($lang)."\n";
-		    $book_link .= "$tabs\t\t</A>\n";
+		    $book_link .= "$tabs$tabs<A HREF=\"BookOf$book-$lang_prefix.pdf\">\n";
+		    $book_link .= "$tabs$tabs<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle\n";
+		    $book_link .= "$tabs$tabs".get_language_icon($lang)."\n";
+		    $book_link .= "$tabs$tabs</A>\n";
 		    $book_link .= "$tabs\t</TD>\n";
 	      }
 	      $output_links .= $book_link;

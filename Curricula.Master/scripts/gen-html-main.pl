@@ -60,11 +60,13 @@ sub replace_syllabus($)
 	return ($text, $syllabus_count);
 }
 
-sub replace_outcomes_environments($$)
+sub replace_outcomes_environments($$$)
 {
-	my ($text, $label_tex) = (@_);
+	my ($text, $specific, $label_tex) = (@_);
+	my $env = $specific."outcomes";
 	my $outcomes_count = 0;
-	$text =~ s/\\begin\{outcomes\}\s*\n((.|\t|\s|\n)*?)\\end\{outcomes\}/$label_tex\n\\begin\{description\}\n$1\\end\{description\}\n/g;
+	$text =~ s/\\begin\{$env\}\s*\n((.|\t|\s|\n)*?)\\end\{$env\}/$label_tex\n\\begin\{description\}\n$1\\end\{description\}\n/g;
+	$text =~ s/\\begin\{$env\}(\{.*\})+\s*\n((.|\t|\s|\n)*?)\\end\{$env\}/$label_tex\n\\begin\{description\}\n$2\\end\{description\}\n/g;
 	return ($text, $outcomes_count);
 }
 
@@ -124,7 +126,7 @@ sub replace_environments($)
 {
 	my ($text) = (@_);
 	my ($environments_count, $syllabus_count, $justification_count, $goals_count) = (0, 0, 0, 0);
-	my ($units_count, $bib_count, $topicos_count, $objetivos_count, $outcomes_count)        = (0, 0, 0, 0, 0);
+	my ($units_count, $bib_count, $topicos_count, $objetivos_count, $outcomes_count, $specific_outcomes_count)        = (0, 0, 0, 0, 0, 0);
 
 	($text, $syllabus_count) = replace_syllabus($text);
 	Util::print_message("$Common::institution: Syllabi processed: $syllabus_count ...");
@@ -141,8 +143,11 @@ sub replace_environments($)
 	#$text =~ s/\\ExpandOutcome{(.*?)}{(.*?)}/\\item[\\ref{out:Outcome$1}) $Common::config{dictionary}{BloomLevel} $2] \\Outcome$1/g;
 	#$text =~ s/\\PrintOutcome{(.*?)}/\\ref{out:Outcome$1})~\\Outcome$1/g;
 	
-	($text, $outcomes_count) = replace_outcomes_environments($text, "\\$Common::config{subsection_label}"."{$Common::config{dictionary}{ContributionToOutcomes}}" );
+	($text, $outcomes_count) = replace_outcomes_environments($text, "", "\\$Common::config{subsection_label}"."{$Common::config{dictionary}{ContributionToOutcomes}}" );
 	Util::print_message("$Common::institution: Outcomes: $outcomes_count");
+	
+	($text, $specific_outcomes_count) = replace_outcomes_environments($text, "specific", "\\$Common::config{subsection_label}"."{$Common::config{dictionary}{ContributionToOutcomes}}" );
+	Util::print_message("$Common::institution: Specific Outcomes: $specific_outcomes_count");
 	
 	($text, $outcomes_count) = replace_competences_environments($text, "\\$Common::config{subsection_label}"."{$Common::config{dictionary}{ContributionToSkills}}" );
 	Util::print_message("$Common::institution: Outcomes: $outcomes_count");
@@ -175,6 +180,7 @@ sub replace_special_cases($)
     $maintxt =~ s/\\end\{btUnit\}//g;
     $maintxt =~ s/\\usepackage\{bibtopic\}//g;
     $maintxt =~ s/\\usepackage\{.*?syllabus\}//g;
+	$maintxt =~ s/\\usepackage\{.*?config-hdr-foot.*?\}//g; # s matches the .
     $maintxt =~ s/\\Revisado\{.*?\}//g;
     $maintxt =~ s/\\.*?\{landscape\}//g;
     $maintxt =~ s/\\pagebreak//g;
@@ -288,10 +294,10 @@ sub main()
 	#		Util::print_message("$key=$Common::config{macros}{$key}");
 	#	}
 	#}
-	#exit;
+	
 	GenSyllabi::process_syllabi();
 	Common::sort_macros();
-	
+	#Util::print_message("test"); exit;
 	my $output_file     = Common::get_template("unified-main-file");
 	my $main_file       = Common::get_template("curricula-main");
 	my $maintxt		    = Util::read_file($main_file);
@@ -341,15 +347,16 @@ sub main()
 		else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
 	}
 	$maintxt =~ s/\\xspace/ /g;
-	$maintxt =~ s/\\\\ \{/ \{/g;
 
 	($maintxt, $macros_changed) = Common::expand_macros($main_file, $maintxt);
 	foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
 	{	
+		#Util::print_message("Common::config{macros}{$learningoutcome}=$Common::config{dictionary}{$learningoutcome}");
+		#Using$Common::config{macros}{$learningoutcome}
 # 		$maintxt =~ s/\[\\$learningoutcome\s*?\]/\[\\textbf\{$Common::config{macros}{$learningoutcome}}\]/g;
-		$maintxt =~ s/\[$Common::config{macros}{$learningoutcome}\s*?\]/\[\\textbf\{$Common::config{macros}{$learningoutcome}}\]/g;
+		$maintxt =~ s/\\$learningoutcome/\\textbf\{$Common::config{dictionary}{$learningoutcome}\}/g;
 #   		$maintxt =~ s/\(\\$learningoutcome\s*?\)/\(\\textbf\{$Common::config{macros}{$learningoutcome}}\)/g;
-		$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\(\\textbf\{$Common::config{macros}{$learningoutcome}}\)/g;	
+		#$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\(\\textbf\{$Common::config{macros}{$learningoutcome}}\)/g;	
 	}
 	
 	my $books_html = Common::generate_books_links();
@@ -365,7 +372,9 @@ sub main()
 	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
 	
 	$maintxt =~ s/\\cellcolor\{.*?\}//g;
+	$maintxt =~ s/\{enumerate\}\s*\\\\\s*\\/\{enumerate\} \\/g;
 	Util::write_file($output_file, $maintxt);
+	Util::print_message("File $output_file generated OK!");
 	Util::print_message("Finishing gen-html-main.pl ... ");
 }
 

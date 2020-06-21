@@ -611,7 +611,7 @@ sub generate_curricula_in_dot($$)
 {
 	my ($size, $lang) = (@_);
 	my $output_file = Common::ExpandTags(Common::get_template("out-$size-graph-curricula-dot-file"), $lang);
-	my $course_tpl 	= Util::read_file(Common::get_template("in-$size-graph-item.dot"));
+	my $course_tpl 	= Util::read_file(Common::read_dot_template($size, $lang));
 	my $output_txt = "";
 	$output_txt .= "digraph curricula\n{\n";
 # 	$output_txt .= "\tcompound=true;\n";
@@ -710,45 +710,50 @@ sub generate_curricula_in_dot($$)
 
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
-				foreach my $req (split(",", $Common::course_info{$codcour}{prerequisites_just_codes}))
+			foreach my $req (split(",", $Common::course_info{$codcour}{prerequisites_just_codes}))
+			{
+				if( $req =~ m/$Common::institution=(.*)/ )
 				{
-							if( $req =~ m/$Common::institution=(.*)/ )
-							{
-										$output_txt .= "\"$1\"->$codcour;\t\t";
-										$output_txt .= "\"$1\" [$Common::config{ExtraDotItemStyle}];\n";
-										#if( $codcour eq "FG601" ){	Util::print_message("A");	}
-							}
-							else
-							{
-										my ($source, $target) = (Common::get_label($req), $codcour);
-										my $critical_path_style = "";
-										my $width = 4;
-										if( defined($Common::course_info{$source}{critical_path}{$target}))
-										{			$critical_path_style = " [penwidth=$width]";	}
-										$output_txt .= "$source->$codcour$critical_path_style;\n";
-										#if( $codcour eq "FG601" ){	Util::print_message("B");	}
-							}
+					$output_txt .= "\"$1\"abc->$codcour;\t\t";
+					$output_txt .= "\"$1\" [$Common::config{ExtraDotItemStyle}];\n";
 				}
-				if( $Common::config{recommended_prereq_flag} == 1 )
-				{			foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))
-							{
-								$output_txt .= Common::get_label($rec);
-								$output_txt .= "->";
-								$output_txt .= Common::get_label($codcour);
-								$output_txt .= " [$Common::config{CoRequisiteStyle}];\n";
-							}
-				}
-				if($Common::config{corequisites_flag} == 1)
+				else
 				{
-							foreach my $coreq (split(",", $Common::course_info{$codcour}{corequisites}))
-							{
-								#print "codigo = $codcour (sem=$Common::course_info{$codcour}{semester}), coreq = $coreq\n";
-								$output_txt .= Common::get_label($coreq);
-								$output_txt .= "->";
-								$output_txt .= Common::get_label($codcour);
-								$output_txt .= "[$Common::config{RecommendedRequisiteStyle}];\n";
-							}
+					my ($source, $target) = (Common::get_label($req), $codcour);
+					if($source eq "")
+					{
+						Util::print_message("Something wrong here ! codcour=$codcour, req=$req");
+						Util::print_message("$Common::course_info{$codcour}{prerequisites_just_codes}");
+						exit;
+					}
+					my $critical_path_style = "";
+					my $width = 4;
+					if( defined($Common::course_info{$source}{critical_path}{$target}))
+					{			$critical_path_style = " [penwidth=$width]";	}
+					$output_txt .= "$source->$codcour$critical_path_style;\n";
+					#if( $codcour eq "FG601" ){	Util::print_message("B");	}
 				}
+			}
+			if( $Common::config{recommended_prereq_flag} == 1 )
+			{			foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))
+						{
+							$output_txt .= Common::get_label($rec);
+							$output_txt .= "->";
+							$output_txt .= Common::get_label($codcour);
+							$output_txt .= " [$Common::config{CoRequisiteStyle}];\n";
+						}
+			}
+			if($Common::config{corequisites_flag} == 1)
+			{
+						foreach my $coreq (split(",", $Common::course_info{$codcour}{corequisites}))
+						{
+							#print "codigo = $codcour (sem=$Common::course_info{$codcour}{semester}), coreq = $coreq\n";
+							$output_txt .= Common::get_label($coreq);
+							$output_txt .= "->";
+							$output_txt .= Common::get_label($codcour);
+							$output_txt .= "[$Common::config{RecommendedRequisiteStyle}];\n";
+						}
+			}
 		}
 	}
 

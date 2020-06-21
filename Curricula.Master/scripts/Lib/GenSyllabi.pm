@@ -1117,7 +1117,7 @@ sub gen_prerequisites_map_in_dot($)
 {
     my ($lang) = (@_);
 	my $size = "big";
-	my $template_file = Common::get_template("in-$size-graph-item.dot");
+	my $template_file = Common::read_dot_template($size, $lang);
 	my $course_tpl 	= Util::read_file($template_file);
 # 	$course_tpl =~ s/<FULLNAME>/<FULLNAME> \(<SEM>\)/g;
 	#Util::print_message("course_tpl = $course_tpl ... ");
