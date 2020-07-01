@@ -471,7 +471,7 @@ sub set_global_variables()
 	system("mkdir -p $config{OutputInstDir}/syllabi");
 
 	#  ./Curricula.out/html/Peru/CS-UTEC/Plan 2018
-	$config{OutputHtmlDir} 	   = "$config{OutHtmlBase}/$config{country_without_accents}/$config{area}-$config{institution}/Plan$config{Plan}";
+	$config{OutputHtmlDir} 	   = "$config{OutHtmlBase}/$config{country_without_accents}/$config{area}-$config{institution}/$config{Plan}";
     $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/figs";
     system("mkdir -p $config{OutputHtmlFigsDir}");
 
@@ -489,26 +489,26 @@ sub set_global_variables()
 	$config{OutputBinDir} 		= "$config{OutputInstDir}/bin";
 	system("mkdir -p $config{OutputBinDir}");
 
-	$config{OutputSqlDir}        		= "$config{OutputInstDir}/gen-sql";
+	$config{OutputSqlDir}        = "$config{OutputInstDir}/gen-sql";
 	system("mkdir -p $config{OutputSqlDir}");
 
-	$config{OutputMain4FigDir}   	= "$config{OutputInstDir}/tex/main4figs";
+	$config{OutputMain4FigDir}  = "$config{OutputInstDir}/tex/main4figs";
 	system("mkdir -p $config{OutputMain4FigDir}");
 
-	$config{OutputFigDir}         = "$config{OutputInstDir}/fig";
+	$config{OutputFigDir}       = "$config{OutputInstDir}/fig";
 	system("mkdir -p $config{OutputFigDir}");
 
-	$config{OutputAdvancesDir}   		= "$config{OutputInstDir}/advances";
+	$config{OutputAdvancesDir}  = "$config{OutputInstDir}/advances";
 	system("mkdir -p $config{OutputAdvancesDir}");
 
-# 	$config{OutputPrereqDir}      	= "$config{OutputInstDir}/pre-prerequisites";
+# 	$config{OutputPrereqDir}    = "$config{OutputInstDir}/pre-prerequisites";
 # 	system("mkdir -p $config{OutputPrereqDir}");
 
 	$config{OutputScriptsDir}	= "$config{OutputInstDir}/scripts";
 	system("mkdir -p $config{OutputScriptsDir}");
 
 	$config{InLangBaseDir}	 	= "$config{in}/lang";
-	$config{InLangDir}	 	= "$config{InLangBaseDir}/$config{language_without_accents}";
+	$config{InLangDir}	 		= "$config{InLangBaseDir}/$config{language_without_accents}";
 	#$config{in_html_dir}      	= $config{InLangDir}."/templates";
 
 	$config{InPeopleDir}		= $config{in}."/people";
@@ -567,7 +567,7 @@ sub set_initial_paths()
 # OutputsDirs
 	$path_map{OutHtmlBase}				= "$config{out}/html";
 	$path_map{OutputInstDir}			= $config{OutputInstDir};
-	$path_map{OutputTexDir}				= $config{OutputTexDir}; #Plan$config{Plan}
+	$path_map{OutputTexDir}				= $config{OutputTexDir}; #$config{Plan}
 	$path_map{OutputBinDir}				= $config{OutputBinDir};
 	$path_map{OutputLogDir}				= $config{out}."/log";
 	$path_map{OutputHtmlDir}			= $config{OutputHtmlDir};
@@ -675,9 +675,9 @@ sub set_initial_paths()
 	$path_map{"in-syllabus-first-page-file"}		= $path_map{InProgramDir}."/cycle/$config{Semester}/syllabus-Page*";
 
 	$path_map{"in-syllabus-delivery-control-file"}	= $path_map{InProgramDir}."/syllabus-delivery-control.tex";
-	$path_map{"in-additional-institution-info-file"}= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}/additional-info.txt";
-	$path_map{"in-distribution-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}";
-	$path_map{"in-this-semester-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/Plan$config{Plan}";
+	$path_map{"in-additional-institution-info-file"}= $path_map{InProgramDir}."/cycle/$config{Semester}/$config{Plan}/additional-info.txt";
+	$path_map{"in-distribution-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/$config{Plan}";
+	$path_map{"in-this-semester-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/$config{Plan}";
 	$path_map{"in-distribution-file"}				= $path_map{"in-distribution-dir"}."/distribution.txt";
 	$path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
 	$path_map{"in-specific-evaluation-file"}		= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
@@ -1481,8 +1481,6 @@ sub gen_batch($$$)
 	$txt =~ s/<PLAN>/$Common::config{Plan}/g;
 	$txt =~ s/<FIRST_SEM>/$Common::config{SemMin}/g;
 	$txt =~ s/<LAST_SEM>/$Common::config{SemMax}/g;
-	
-	$txt =~ s/<PLAN>/$Common::config{Plan}/g;
 
 	Util::write_file($target, $txt);
 	Util::print_message("gen_batch: $target created successfully ...");
@@ -1526,6 +1524,10 @@ sub process_institution_info($$)
 	if($txt =~ m/\\newcommand\{\\PlanConfig\}\{(.*?)\}/)
 	{	$PlanConfig = $1;			}
 	my $PlanConfigFile = get_template("InProgramDir")."/$PlanConfig.tex";
+	if(not -e $PlanConfigFile)
+	{
+		Util::print_error("I didn't find $PlanConfigFile ... \nsee $file ...")
+	}
 	my %PlanConfigVars = read_macros($PlanConfigFile);
 
 	###################################################################################################
@@ -1541,11 +1543,12 @@ sub process_institution_info($$)
 	# Read the Active Plan
 	if( defined($PlanConfigVars{YYYY}) )
 	{	($this_inst_info{YYYY}) = ($PlanConfigVars{YYYY} =~ m/(.*)\\.*/);
-		 $this_inst_info{Plan}	=  $PlanConfigVars{YYYY} = $this_inst_info{YYYY};
+		 $PlanConfigVars{YYYY} = $this_inst_info{YYYY};
+		 $this_inst_info{Plan}	=  $config{Plan};
 	}
 	else
 	{	Util::print_error("Error (process_institution_info): there is no YYYY (Plan) configured in \"$file\"\n");	}
-	Util::print_message("YYYY=$this_inst_info{YYYY} ...");
+	Util::print_message("YYYY=$this_inst_info{YYYY}, this_inst_info{Plan}=$this_inst_info{Plan}");
 
 	###################################################################################################
 	# Read the Range of semesters to generate 
@@ -1692,7 +1695,7 @@ sub process_institution_info($$)
 
 # 	Util::print_message("After ($file)\n$txt");
 	# TODO
-	Util::print_warning("process_institution_info() I am not updating this file anymore ... See \\OutcomesList above");
+	#Util::print_warning("process_institution_info() I am not updating this file anymore ... See \\OutcomesList above");
 	#Util::write_file($file, $txt);
 	
 	Util::check_point("process_institution_info");
@@ -2026,7 +2029,8 @@ sub set_initial_configuration($)
 	$path_map{"institutions-list"}	= "$config{in}/institutions-list.txt";
 	read_institutions_list();
 	$config{discipline}	  	= $inst_list{$config{institution}}{discipline};
-
+	$config{Plan}			= $inst_list{$config{institution}}{plan};
+	Util::print_message("config{Plan}=$config{Plan}");
     #Util::print_message("inst_list{$config{institution}}{country}=$inst_list{$config{institution}}{country}");
 
 	$config{InProgramDir} 	= $path_map{InProgramDir} 	= GetProgramInDir($inst_list{$config{institution}}{country}, $config{discipline}, $config{area}, $config{institution});
@@ -2058,8 +2062,8 @@ sub set_initial_configuration($)
 	$config{equivalences} =~ s/ //g;
 # 	Util::print_message("config{equivalences} = \"$config{equivalences}\""); exit;
 
-	$config{OutputInstDir}	    	= "$config{out}/$inst_list{$config{institution}}{country}/$config{area}-$config{institution}/cycle/$config{Semester}/Plan$config{Plan}";
-	$config{LinkToCurriculaBase} 	= "http://education.spc.org.pe/$inst_list{$config{institution}}{country}/$config{area}-$config{institution}/Plan$config{Plan}";
+	$config{OutputInstDir}	    	= "$config{out}/$inst_list{$config{institution}}{country}/$config{area}-$config{institution}/cycle/$config{Semester}/$config{Plan}";
+	$config{LinkToCurriculaBase} 	= "http://education.spc.org.pe/$inst_list{$config{institution}}{country}/$config{area}-$config{institution}/$config{Plan}";
 	$config{OutHtmlBase}	    	= "$config{out}/html";
 
 	# Set global variables, first phase
@@ -2504,7 +2508,7 @@ sub read_faculty()
 	#Util::print_message("$copy_input");
 	Util::write_file($faculty_file, $copy_input);
 	Util::check_point("read_faculty");
-#    	print Dumper(\%{$config{faculty}{"ecuadros\@ucsp.edu.pe"}});
+#   print Dumper(\%{$config{faculty}{"ecuadros\@ucsp.edu.pe"}});
 }
 
 sub read_distribution()
@@ -3541,7 +3545,7 @@ sub parse_courses()
 					#else{	#Util::print_message("$inst does not match ...");	}
 				}
 				if( $count == 0 ){	 #Util::print_warning("$codcour ignored $inst_wildcard");
-					Util::print_warning("\\course$course_params ignored! (filter:$inst_list{$institution}{filter})");
+					#Util::print_warning("\\course$course_params ignored! (filter:$inst_list{$institution}{filter})");
 					next;
 				}
 
@@ -3594,11 +3598,6 @@ sub parse_courses()
 				$course_info{$codcour}{short_type}	= $config{dictionary}{ElectiveShort} if($course_info{$codcour}{course_type} eq $Common::config{dictionary}{Elective});
 				$course_info{$codcour}{alias}		= $codcour_alias;
 
-				if(not $codcour_alias eq $codcour)
-				{	print "$codcour_alias($codcour) ";	}
-				else{	print "$codcour ";	}
-				push(@codcour_list_sorted, $codcour);
-
 		# 			print ".";
 		# 		  print "*" if($courses_count % 10 == 0);
 
@@ -3650,6 +3649,11 @@ sub parse_courses()
 				$course_info{$codcour}{inst_list}      		= $inst_wildcard;
 				$course_info{$codcour}{equivalence}			= "";
 				$course_info{$codcour}{specific_evaluation}		= "";
+
+				if(not $codcour_alias eq $codcour)
+				{	print "$codcour_alias($codcour) ";	}
+				else{	Util::print_message("$codcour $course_info{$codcour}{Espanol}{course_name} ($course_info{$codcour}{prerequisites})");	}
+				push(@codcour_list_sorted, $codcour);
 			}
 			else
 			{
@@ -3668,16 +3672,15 @@ sub parse_courses()
 	}
 	else
 	{
-	    if( $config{SemMax} > $config{n_semesters} )
-	    {	$config{SemMax} = $config{n_semesters};		}
+	    #if( $config{SemMax} > $config{n_semesters} )
+	    #{	$config{SemMax} = $config{n_semesters};		}
 	}
 
-	Util::print_message("");
 	Util::print_message("config{SemMin} = $config{SemMin}, config{SemMax} = $config{SemMax}");
 	Util::check_point("parse_courses");
 	Util::print_message("Read courses = $courses_count ($config{n_semesters} semesters)");
 	my $file = Common::get_template("out-nsemesters-file");
-	Util::print_message("3312 Creating $file ...");
+	#Util::print_message("3312 Creating $file ...");
     Util::write_file($file, "$config{n_semesters}\\xspace");
 }
 
@@ -3815,6 +3818,7 @@ sub filter_courses($)
 		my $sep 						 = "";
 		$course_info{$codcour}{n_prereq} = 0;
 		my $new_prerequisites			 = "";
+		$course_info{$codcour}{prerequisites_just_codes} = "";
 		foreach my $codreq (split(",", $course_info{$codcour}{prerequisites}))
 		{
 			$codreq =~ s/ //g;
@@ -3931,7 +3935,6 @@ sub filter_courses($)
 	for($semester=1; $semester <= $config{n_semesters} ; $semester++)
 	{
         $config{credits_this_semester}{$semester} = 0;
-
 		foreach my $codcour (@{$courses_by_semester{$semester}})
 		{
 			#print Dumper( \%{$course_info{$codcour}} );
@@ -3964,7 +3967,6 @@ sub filter_courses($)
                               $counts{credits}{areas}{$axe} += $course_info{$codcour}{cr}/$course_info{$codcour}{naxes};
 			      #Util::print_message("codcour=$codcour, axe=$axe");
 			}
-
 		}
 		#Util::print_message("config{credits_this_semester}{$semester}=$config{credits_this_semester}{$semester}");
 		if( defined($config{electives}{$semester}) )
@@ -3993,10 +3995,10 @@ sub filter_courses($)
 sub sort_courses()
 {
 	@codcour_list_sorted = sort {$Common::course_info{$a}{semester} <=> $Common::course_info{$b}{semester} ||
- 				     $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
- 				     $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
-					   $a cmp $b
-				}
+								 $Common::config{prefix_priority}{$Common::course_info{$a}{prefix}} <=> $Common::config{prefix_priority}{$Common::course_info{$b}{prefix}} ||
+								 $Common::course_info{$b}{course_type} cmp $Common::course_info{$a}{course_type} ||
+								 $a cmp $b
+							}
 				@codcour_list_sorted;
 	#@{$Common::courses_by_semester{$semester}})
         #$codcour_label
@@ -4004,9 +4006,9 @@ sub sort_courses()
 	my $course_priority = 0;
 	foreach my $codcour (@codcour_list_sorted)
 	{
-	      my $semester = $course_info{$codcour}{semester};
-	      #Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
-	      if(not defined($courses_by_semester{$semester}))
+		my $semester = $course_info{$codcour}{semester};
+		#Util::print_message("$codcour, Sem:$course_info{$codcour}{semester}");
+		if(not defined($courses_by_semester{$semester}))
 		{	$courses_by_semester{$semester} = [];		}
 		push(@{$courses_by_semester{$semester}}, $codcour);
 		$codcour_list_priority{$codcour} = $course_priority++;

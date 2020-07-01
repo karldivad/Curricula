@@ -135,6 +135,7 @@ Competences	        = Competences
 ContributionToOutcomes  =Contribution to Outcomes
 ContributionToSkills    =Contribution to Computer Science Skills (IEEE)
 Skills		            = Skills
+EducationalObjectives=Educational Objectives
 Units		            =Units
 KUTitle		            =Knowledge Unit
 KUsTitle	            =Knowledge Units

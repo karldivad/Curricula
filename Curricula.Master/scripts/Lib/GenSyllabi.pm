@@ -8,6 +8,7 @@ use Scalar::Util qw(blessed dualvar isdual readonly refaddr reftype
                         # and other useful utils appearing below
 use Lib::Common;
 use strict;
+my @versioned_environments = ("outcomes", "competences", "specificoutcomes");
 
 sub get_environment($$$)
 {
@@ -179,11 +180,6 @@ sub read_syllabus_info($$$)
 	$syllabus_in 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 # 	Common::read_outcomes_involved($codcour, $fulltxt);
 
-# 	my $count_old_macros = 0;
-# 	($syllabus_in, $count_old_macros) = Common::replace_old_macros($syllabus_in);
-# 	Util::write_file($fullname, $syllabus_in);
-# 	Util::print_message("Replaced $count_old_macros old macros in file: \"$fullname\"") if($count_old_macros > 0);
-
 	my %map = ();
 	$map{SOURCE_FILE_NAME} = $fullname;
 	$Common::course_info{$codcour}{unitcount}	= 0;
@@ -199,8 +195,7 @@ sub read_syllabus_info($$$)
 						 "competences"        => "ShowCompetence",
 						 "specificoutcomes"	  => "ShowSpecificOutcome",
 						);
-	my @env_list = ("outcomes", "competences", "specificoutcomes");
-	foreach my $env (@env_list)
+	foreach my $env (@versioned_environments)
 	{
 		my $version = $Common::config{OutcomesVersionDefault};
 		my $body = "";
@@ -232,7 +227,7 @@ sub read_syllabus_info($$$)
 	#if($codcour eq "CS1D01")	{	exit;	}
 
 	my $version = $Common::config{OutcomesVersion};
-	foreach my $env (@env_list)
+	foreach my $env (@versioned_environments)
 	{
 		#print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
 		if( not defined($Common::course_info{$codcour}{$env}{$version}) )
@@ -256,9 +251,7 @@ sub read_syllabus_info($$$)
 				$Common::course_info{$codcour}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$tail}\n";
 				if( $env eq "outcomes")
 				{
-					if(not defined($Common::config{course_by_outcome}{$key}) )
-					{		$Common::config{course_by_outcome}{$key} = [];		}
-					push(@{$Common::config{course_by_outcome}{$key}}, $codcour);
+					$Common::config{course_by_outcome}{$key}{$codcour} = "";
 				}
 			}
 		}
@@ -287,6 +280,7 @@ sub read_syllabus_info($$$)
 	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{$version}{itemized};
 
 	# Specific outcomes
+	$EnvforOutcomes = $Common::config{EnvforOutcomes};
 	$map{FULL_SPECIFIC_OUTCOMES}	= "";
 	if($Common::course_info{$codcour}{specificoutcomes}{$version}{count} == 0)
 	{	Util::print_warning("Course $codcour ... no {specificoutcomes}{$version} detected ... assuming an empty one!"); 
@@ -296,6 +290,12 @@ sub read_syllabus_info($$$)
 	{	$map{FULL_SPECIFIC_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{specificoutcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
 	else{	Util::print_warning("There is no specific outcomes ($version) defined for $codcour ($fullname)"); 	}
 	$map{SPECIFIC_OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{specificoutcomes}{$version}{itemized};
+
+	#if( $codcour eq "CS1D1")
+	#{	Util::print_message("map{FULL_SPECIFIC_OUTCOMES}=$map{FULL_SPECIFIC_OUTCOMES}");
+	#	Util::print_message("map{SPECIFIC_OUTCOMES_ITEMS}=$map{SPECIFIC_OUTCOMES_ITEMS}");
+	#	exit;
+	#}
 
 	# Competences
 	$map{FULL_COMPETENCES}	= "";
@@ -957,7 +957,7 @@ sub generate_formatted_syllabus($$$)
 	my $active_version = $Common::config{OutcomesVersion};
 	my $source_txt = Util::read_file($source);
 
-	foreach my $env ("outcomes", "competences")
+	foreach my $env (@versioned_environments)
 	{
 		my $syllabus_in_copy = $source_txt;
 		while( $syllabus_in_copy =~ m/\\begin\{$env\}\{(.*?)\}\s*\n((?:.|\n)*?)\\end\{$env\}/g)

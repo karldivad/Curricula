@@ -100,30 +100,6 @@ sub copy_basic_files()
 
 sub main()
 {	
-	#my ($in, $out) 	= ("./test-in.tex", "./test-out.tex");
-	#my $file_txt 	= Util::read_file($in);
-	#$file_txt 		= Util::trim_comments($file_txt);
-	#Util::write_file($out, $file_txt);
-	##my $str = "abc {{xyz} abc} {xyz} {abc} {{xyz}} abc";
-	#my $str = $file_txt;
-	##print "$str\n";
-	#my $i = 0;
-	##my @tokens = $str =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g;
-	##foreach my $token (@tokens)
-	#while($str =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g )
-	#{	my ($token) = ($&);
-	#	print "\x1b[43m\x1b[30m$i:\x1b[39m\x1b[49m ";
-	#	print "$token\n";
-	#	$i++;
-	#}
-	##while ($str =~ /(\{(?:(?1)|[^{}]*+)++\})|[^{}\s]++/g)
-	##{	print "\x1b[43m\x1b[30m$i:\x1b[39m\x1b[49m ";
-	##	print "$&\n";
-	##	$i++;
-	##}
-	#exit;
-	#exit;
-
 	Util::begin_time();
 	Common::setup(); 
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
@@ -152,10 +128,10 @@ sub main()
 	
 	generate_general_info();
     #copy_basic_files();
-#         Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));
+#   Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));
 # 	
 # 	Common::generate_html_index_by_country();
-	   Util::print_time_elapsed();
+	Util::print_time_elapsed();
 	Util::print_message("process-curricula finished ok ...");
  	#print Dumper(\%{$Common::config{faculty}{"acuadros\@ucsp.edu.pe"}});
  	Common::shutdown();

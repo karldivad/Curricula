@@ -47,7 +47,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \newcommand{\logoheight}{<LOGO_WIDTH>}
 \newcommand{\titlesize}{0.70\textwidth}
-\newrgbcolor{royalblue}{0.25 0.41 0.88}
+\newcommand{\posterbackground}{<POSTER_RIGHT_BG>}
+
+%\newcommand{\posterbackground}{0.25,0.41,0.88}
 \newcommand{\captionsize}{\footnotesize}
 \newcommand{\OnlyMainDoc}[1]{}
 \newcommand{\OnlyPoster}[1]{#1\xspace}  
@@ -67,51 +69,42 @@
 %       \input{\OutputTexDir/all-topics-by-course}
 % \end{landscape}
 % }
-% \newpage
-
-% \vspace{-10cm}                                     
+% \newpage                                    
 \poster
 {
 	~\\
-	\begin{tabular}{m{<LOGO_WIDTH>}m{1cm}m{<TITLE_WIDTH>}}
- 		\includegraphics[width=<LOGO_WIDTH>,height=7cm]{\InCountryDir/logos/\siglas.eps} & &
- 		\begin{tabular}{m{<TITLE_WIDTH>}}
-		      \begin{tabular}{m{<DEF_WIDTH>}m{2cm}m{<DEF_WIDTH>}}
-			    \begin{minipage}{<DEF_WIDTH>}
-				    {\bf\Large \SchoolFullName<LANG>} \\
-				    {\bf \large \SchoolURL}\\
-				    \vspace{0.2cm}
-				    \Cblur{
-					    \begin{minipage}{\textwidth}
-						    {\bf \large <<Mission>>: } {\footnotesize \mission<LANG>}
-					    \end{minipage}
-				    }
-			    \end{minipage} & & 
-			    \vspace{1cm}
-			    \begin{minipage}{<DEF_WIDTH>}
-				    \Cblur{
-					    \begin{minipage}{\textwidth}
-						    {\bf \large <<Definition>>:} {\footnotesize \profile<LANG>}
-					    \end{minipage}%
-					  }
-			    \end{minipage}
-		      \end{tabular}
+	\begin{tabular}{m{<LOGO_WIDTH>}m{0.5cm}m{<TITLE_WIDTH>}}
+ 		\includegraphics[width=<LOGO_WIDTH>]{\InCountryDir/logos/\siglas.eps} & &
+		\begin{tabular}{m{<TITLE_WIDTH>}}
+			{\bf\Large \SchoolFullName<LANG>} {\bf \large \SchoolURL} \\
+			\begin{tabular}{m{<COL2>}m{1.5cm}m{<COL3>}}
+				\begin{minipage}{<COL2>}
+					\Cblur{
+						\begin{minipage}{\textwidth}
+							{\bf \large <<Mission>>: } {\footnotesize \mission<LANG>}
+						\end{minipage}
+					}
+				\end{minipage} & & 
+				\begin{minipage}{<COL3>}
+					\Cblur{
+						\begin{minipage}{\textwidth}
+							{\bf \large <<Definition>>:} {\footnotesize \profile<LANG>}
+						\end{minipage}%
+						}
+				\end{minipage}
+			\end{tabular}
  		\end{tabular}
-	\end{tabular}\\
-	\vspace*{0.7cm}
-		\Cblur{\includegraphics[width=0.975\textwidth,height=0.63\textheight]{../fig/big-graph-curricula-<LANG>.ps}} \\
+	\end{tabular}
+	
+	\Cblur{\includegraphics[width=0.975\textwidth,height=0.63\textheight]{../fig/big-graph-curricula-<LANG>.ps}} \\
 	%\vspace{0.5cm}	
 	\newcommand{\SkillsTableWidth}{0.6\textwidth}
-	%\hspace{0.05cm}
-	%\tiny
-	%\input{\OutputTexDir/all-outcomes-by-course-poster}
-	%\input{\OutputTexDir/outcomes-by-course-1}
 	\newcommand{\EducationalObjectivesWidth}{29cm}
 	\begin{tabularx}{0.975\textwidth}{Xm{.1cm}m{\EducationalObjectivesWidth}}
 			{\tiny \Cblur{\input{\OutputTexDir/all-outcomes-by-course-poster-<LANG>}} } & &
 			\Cblur{ 
 				\begin{tabularx}{\EducationalObjectivesWidth}{X}%
-				{\captionsize \bf Objetivos Educacionales ({\it Educational Objectives})} 				\\ \hline
+				{\captionsize \bf <<EducationalObjectives>>} 				\\ \hline
 				{\scriptsize \vspace{0.1cm}
 				\input{\InTexDir/educational-objectives-list} 
 				}\\ 

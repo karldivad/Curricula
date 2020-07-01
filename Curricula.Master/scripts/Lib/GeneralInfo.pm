@@ -565,19 +565,19 @@ sub process_critical_path_for_one_course    #($)
 
 sub load_critical_path(@)
 {
-			my (@critical_paths) = (@_);
-			#print Dumper(\@critical_paths);
-			foreach my $_one_path (@critical_paths)
-			{
-					my @one_path = @{$_one_path};
-					#print Dumper(\@one_path);
-					my $ncourses = scalar(@one_path);
-					for(my $i = 0; $i < $ncourses-1 ; $i++ )
-					{		#Util::print_message($one_path[$i]."->".$one_path[$i+1]." *");
-							my ($source, $target) = ($one_path[$i], $one_path[$i+1]);
-							$Common::course_info{$source}{critical_path}{$target}++;
-					}
+	my (@critical_paths) = (@_);
+	#print Dumper(\@critical_paths);
+	foreach my $_one_path (@critical_paths)
+	{
+			my @one_path = @{$_one_path};
+			#print Dumper(\@one_path);
+			my $ncourses = scalar(@one_path);
+			for(my $i = 0; $i < $ncourses-1 ; $i++ )
+			{		#Util::print_message($one_path[$i]."->".$one_path[$i+1]." *");
+					my ($source, $target) = ($one_path[$i], $one_path[$i+1]);
+					$Common::course_info{$source}{critical_path}{$target}++;
 			}
+	}
 }
 
 sub detect_critical_path()
@@ -690,12 +690,12 @@ sub generate_curricula_in_dot($$)
 				$cluster_count++;
 			}
 		}
-		if( $ncourses > 0 )
-		{
+		#if( $ncourses > 0 )
+		#{
 			$output_txt .= "\n#\t$semester $Common::config{dictionary}{Semester}\n";
 			$output_txt .= "$sem_text";
 			$rank_text .= "\n\t{ rank = same; $sem_label; $sem_rank }";
-		}
+		#}
 	}
 	$output_txt .= "$rank_text\n\n";
 
@@ -722,7 +722,7 @@ sub generate_curricula_in_dot($$)
 					my ($source, $target) = (Common::get_label($req), $codcour);
 					if($source eq "")
 					{
-						Util::print_message("Something wrong here ! codcour=$codcour, req=$req");
+						Util::print_message("Something wrong here ! codcour=$codcour (Sem: $Common::course_info{$codcour}{semester}), req=$req");
 						Util::print_message("$Common::course_info{$codcour}{prerequisites_just_codes}");
 						exit;
 					}
@@ -735,24 +735,24 @@ sub generate_curricula_in_dot($$)
 				}
 			}
 			if( $Common::config{recommended_prereq_flag} == 1 )
-			{			foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))
-						{
-							$output_txt .= Common::get_label($rec);
-							$output_txt .= "->";
-							$output_txt .= Common::get_label($codcour);
-							$output_txt .= " [$Common::config{CoRequisiteStyle}];\n";
-						}
+			{	foreach my $rec (split(",", $Common::course_info{$codcour}{recommended}))
+				{
+					$output_txt .= Common::get_label($rec);
+					$output_txt .= "->";
+					$output_txt .= Common::get_label($codcour);
+					$output_txt .= " [$Common::config{CoRequisiteStyle}];\n";
+				}
 			}
 			if($Common::config{corequisites_flag} == 1)
 			{
-						foreach my $coreq (split(",", $Common::course_info{$codcour}{corequisites}))
-						{
-							#print "codigo = $codcour (sem=$Common::course_info{$codcour}{semester}), coreq = $coreq\n";
-							$output_txt .= Common::get_label($coreq);
-							$output_txt .= "->";
-							$output_txt .= Common::get_label($codcour);
-							$output_txt .= "[$Common::config{RecommendedRequisiteStyle}];\n";
-						}
+				foreach my $coreq (split(",", $Common::course_info{$codcour}{corequisites}))
+				{
+					#print "codigo = $codcour (sem=$Common::course_info{$codcour}{semester}), coreq = $coreq\n";
+					$output_txt .= Common::get_label($coreq);
+					$output_txt .= "->";
+					$output_txt .= Common::get_label($codcour);
+					$output_txt .= "[$Common::config{RecommendedRequisiteStyle}];\n";
+				}
 			}
 		}
 	}
@@ -789,8 +789,12 @@ sub generate_poster($)
  	$Common::config{title_width} = Util::round(($total_left_width-$Common::config{logowidth}) - 1);
  	$poster_txt =~ s/<TITLE_WIDTH>/$Common::config{title_width}$Common::config{logowidth_units}/g;
 
- 	$Common::config{def_width} = $Common::config{title_width}/2-1;
- 	$poster_txt =~ s/<DEF_WIDTH>/$Common::config{def_width}$Common::config{logowidth_units}/g;
+ 	$Common::config{def_width} 	= $Common::config{title_width}/2;
+	$Common::config{COL2} 		= 0.4*$Common::config{title_width};
+	$Common::config{COL3} 		= $Common::config{title_width}-$Common::config{COL2};
+	$poster_txt =~ s/<COL2>/$Common::config{COL2}$Common::config{logowidth_units}/g;
+ 	$poster_txt =~ s/<COL3>/$Common::config{COL3}$Common::config{logowidth_units}/g;
+	$poster_txt =~ s/<POSTER_RIGHT_BG>/$Common::config{POSTER_RIGHT_BG}/g;
 
 	#Util::print_message("Common::config{title_width}=$Common::config{title_width}");
 	#Util::print_message("Common::config{def_width}=$Common::config{def_width}");
@@ -992,12 +996,13 @@ sub generate_table_topics_by_course($$$$$$$)
     #print Dumper (\%Common::map_hours_unit_by_course); exit;
 	my %list_of_valid_ku = ();
 	foreach my $ku ( keys %{$Common::map_hours_unit_by_course{$lang}})
-	{	if( not defined($Common::config{topics_priority}{$ku}) )
-		{	Util::print_color("generate_table_topics_by_course: ignoring $ku for generate_table_topics_by_course ...");	}
+	{	
+		if( not defined($Common::config{topics_priority}{$ku}) )
+		{	Util::print_color("generate_table_topics_by_course: ignoring $ku ...");	}
 		else
 		{	$list_of_valid_ku{$ku} = "";	}
 	}
-	
+
 	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %list_of_valid_ku)
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
@@ -1157,21 +1162,23 @@ sub generate_list_of_courses_by_outcome($)
 	my $version = $Common::config{OutcomesVersion};
 	foreach my $outcome (split(",", $Common::config{outcomes_list}{$version}))
 	{
-	      my $counter = 0;
-	      my $this_outcome_txt = "";
-	      foreach my $codcour (@{$Common::config{course_by_outcome}{$outcome}})
-	      {
-		    $counter++;
-		    $this_outcome_txt .= "\t\\item ". Common::get_course_link($codcour, $lang)."\n";
-	      }
-	      if($counter > 0)
-	      {
-		  $output_txt .= "\\subsection{Outcome: $outcome}\n";
-		  $output_txt .= "\\begin{itemize}\n";
-		  $output_txt .= $this_outcome_txt;
-		  $output_txt .= "\\end{itemize}\n";
-	      }
-	      $output_txt .= "\n";
+		my $counter = 0;
+		my $this_outcome_txt = "";
+		foreach my $codcour ( sort  { $Common::codcour_list_priority{$a} <=> $Common::codcour_list_priority{$b} }
+							  keys %{ $Common::config{course_by_outcome}{$outcome} } 
+							)
+		{
+			$counter++;
+			$this_outcome_txt .= "\t\\item ". Common::get_course_link($codcour, $lang)."\n";
+		}
+		if($counter > 0)
+		{
+			$output_txt .= "\\subsection{Outcome: $outcome) ".$Common::config{macros}{"outcome$outcome"}."}\n";
+			$output_txt .= "\\begin{itemize}\n";
+			$output_txt .= $this_outcome_txt;
+			$output_txt .= "\\end{itemize}\n";
+		}
+		$output_txt .= "\n";
 	}
 	my $output_file = Common::get_expanded_template("list-of-courses-by-outcome", $lang);
 	Util::print_message("Generating list_of_courses_by_outcome ok ($output_file)");
@@ -1199,6 +1206,7 @@ sub generate_outcomes_by_course($$$$$$$)
 	my $ncourses 		 = 0;
 	my $extra_header	 = "";
 	my $flag		 = 1;
+	
 	for($semester=$init_sem; $semester < $init_sem+$sem_per_page && $semester <= $Common::config{n_semesters}; $semester++)
 	{
 		$sem_per_course{$semester} = 0;
@@ -1528,8 +1536,7 @@ sub generate_background_figure_for_one_standard($$$$)
 	#(0,0)(2,3)(3,2.5)
 	my $output_polygon = "";
 	$count = 0;
- 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=>
-                               $Common::config{sub_areas_priority}{$b}}
+ 	foreach my $axe (sort {$Common::config{sub_areas_priority}{$a} <=> $Common::config{sub_areas_priority}{$b}}
                            keys %{$Common::config{dictionary}{all_areas}})
 	{
 	    my ($axe1,  $axe2) = ($count, ($count+1)%$nareas);

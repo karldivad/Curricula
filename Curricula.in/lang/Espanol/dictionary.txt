@@ -134,6 +134,7 @@ Competences	        = Competencias
 ContributionToOutcomes=Contribución a los resultados ({\it Outcomes})
 ContributionToSkills=Contribución a las habilidades de Ciencia de la Computación (IEEE)
 Skills		        = Habilidades
+EducationalObjectives=Objetivos Educacionales ({\it Educational Objectives})
 Units		        =Unidades
 KUTitle		        =Unidad de Conocimiento
 KUsTitle	        =Unidades de Conocimiento

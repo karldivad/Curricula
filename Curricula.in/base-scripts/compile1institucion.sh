@@ -85,8 +85,8 @@ if($pdf == 1) then
       #rm <AREA>-<INST>-P1.pdf;
       #mv <AREA>-<INST>-P1.png <OUTPUT_HTML_DIR>/CurriculaMain-P1.png;
       cp <AREA>-<INST>.pdf <OUTPUT_HTML_DIR>/CurriculaMain.pdf;
-      mkdir -p "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>"
-      mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/<AREA>-<INST> Plan<PLAN>.pdf";
+      mkdir -p "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>"
+      mv <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/<AREA>-<INST> <PLAN>.pdf";
 endif
 
 ./scripts/update-outcome-itemizes.pl <AREA>-<INST>
@@ -127,9 +127,8 @@ if($html == 1) then
       ./scripts/gen-faculty-info.pl <AREA>-<INST>
 endif
 
-<OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh small-graph-curricula <AREA>-<INST>-small-graph-curricula <OUTPUT_TEX_DIR>;
-
 foreach lang (<LIST_OF_LANGS>)
+    <OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh small-graph-curricula-$lang <AREA>-<INST>-small-graph-curricula <OUTPUT_TEX_DIR>;
     <OUTPUT_SCRIPTS_DIR>/gen-poster.sh $lang
 end
 
@@ -144,18 +143,18 @@ cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 #    $book = `echo $book | sed s|<OUTPUT_TEX_DIR>/||`
 #    echo $book
 #    #bibtex $auxfile
-#    <OUTPUT_SCRIPTS_DIR>/gen-book.sh  $book       	pdflatex "<AREA>-<INST> <SEM_ACAD> $book (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+#    <OUTPUT_SCRIPTS_DIR>/gen-book.sh  $book       	pdflatex "<AREA>-<INST> <SEM_ACAD> $book (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 # end
 
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-ES (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-ES (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-ES (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-EN (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 
-#       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-#       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (Plan<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+#       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+#       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 
 
 date >> <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-time.txt;

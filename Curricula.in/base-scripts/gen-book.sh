@@ -27,7 +27,7 @@ echo "mutool convert -o $MainFile-P1.png $MainFile.pdf 1-1"
 mutool convert -o $MainFile-P%d.png $MainFile.pdf 1-1
 
 cd $current_dir;
-mkdir -p <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>
-echo cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
-cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/Plan<PLAN>/.
+mkdir -p <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>
+echo cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/.
+cp <OUTPUT_TEX_DIR>/$MainFile.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/.
 
