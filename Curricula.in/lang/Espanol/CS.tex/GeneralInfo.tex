@@ -43,11 +43,19 @@ Al mismo tiempo, y de acuerdo a la ley universitaria vigente, los cursos están 
 Este documento también puede ser analizado desde el punto de vista 
 de los prerequisitos de forma gráfica.
 
-\begin{figure}[H]
-      \includegraphics[width=23cm]{\OutputFigDir/small-graph-curricula-ES.ps}
-      \label{fig:malla-curricular}
-      \caption{Malla curricular \SchoolFullName}
-\end{figure}
+\begin{latexonly}
+      \begin{figure}[H]
+            \includegraphics[width=23cm]{\OutputFigDir/small-graph-curricula-ES.ps}
+            \label{fig:malla-curricular}
+            \caption{Malla curricular \SchoolFullName}
+      \end{figure}
+\end{latexonly}
+\begin{htmlonly}
+      \begin{rawhtml}
+            <img src="./figs/big-graph-curricula-<LANG_PREFIX>.png" style="border: 0px solid ; width: 40cm;">
+      \end{rawhtml}
+\end{htmlonly}
+
 \end{landscape}
 
 \input{\InTexDir/courses-by-outcome}

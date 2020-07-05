@@ -83,10 +83,7 @@ sub generate_general_info()
 # 	generate_sql_for_new_courses();
 # 	generate_tables_for_advance();
 # 	generate_courses_for_advance();
-# 
-# 	Common::generate_bok_sql("CS-bok-macros.sty", "$Common::out_sql_dir/bok.sql");
-# 	print "gen-malla OK !\n";
-#  	print "alias de HU302 = $Common::course_info{HU302}{alias}\n";
+	Common::write_files_to_be_changed();
 }
 
 sub copy_basic_files()
@@ -105,10 +102,11 @@ sub main()
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 		Util::print_message("Generating BOK in $lang ...");
-	    #Common::generate_bok($lang);
+	    Common::generate_bok($lang);
 		#$Util::flag = 100;
 	    Util::print_message("Reading BOK in $lang ...");
 		Common::read_bok($lang);  
+		#Common::parse_bok($lang);
 	} 
 	Common::gen_only_macros();
 # 	Common::check_preconditions();

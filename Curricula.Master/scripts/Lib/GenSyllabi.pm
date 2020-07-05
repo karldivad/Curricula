@@ -99,7 +99,7 @@ sub process_syllabus_units($$$$)
 		if($unit_caption =~ m/^\\(.*)/)
 		{
 			$unit_caption = $1;
-			#Util::print_message("Course: $codcour: \\$unit_caption found ...");
+			#Util::print_message("TODO Course: $codcour: \\$unit_caption found ...");
 			#print Dumper (\%$Common::config{topics_priority}); exit;
 
 			#if( not defined($Common::config{topics_priority}{$unit_caption}) )
@@ -149,7 +149,7 @@ sub process_syllabus_units($$$$)
 		foreach my $bibitem (split(",", $unit_bibitems))
 		{	$bib_citations .= "$sep\\cite{$bibitem}";	$sep = ", ";		}
 		$map{CITATIONS} = $bib_citations;
-		$thisunit = Common::replace_tags($thisunit, "--", "--", %map);
+		$thisunit = Common::replace_tags_from_hash($thisunit, "--", "--", %map);
 		$all_units_txt .= $thisunit;
 	}
 	Util::check_point("process_syllabus_units");
@@ -513,7 +513,7 @@ sub genenerate_tex_syllabus_file($$$$$%)
 	$file_template = Common::ExpandTags($file_template, $lang);
 	for(my $i = 0 ; $i < 2; $i++ )
 	{
-	    $file_template = Common::replace_tags($file_template, "--", "--", %map);
+	    $file_template = Common::replace_tags_from_hash($file_template, "--", "--", %map);
 	    $file_template = Common::translate($file_template, $lang);
 	}
     #file_template =~ s/--.*?--//g;
@@ -1024,13 +1024,11 @@ sub gen_course_general_info($)
 	my $OutputPrereqDir = Common::get_template("OutputPrereqDir");
 	my $OutputFigDir = Common::get_template("OutputFigDir");
 
-
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
 			my $normal_header   = "\\begin{itemize}\n";
-
 			my $codcour_label = Common::get_label($codcour);
 			# Semester: 5th Sem.
 			$normal_header .= "\\item \\textbf{$Common::config{dictionary}{Semester}}: ";
@@ -1080,16 +1078,26 @@ sub gen_course_general_info($)
 
 			my $output_tex  = "";
 			$output_tex    .= "\\input{$output_file}\n\n";
-			$output_tex    .= "\\begin{figure}\n";
-			$output_tex    .= "\\centering\n";
-			$output_tex    .= "\\includegraphics[scale=0.66]{\\OutputFigDir/$codcour_label}\n";
-			$output_tex    .= "\\caption{Cursos relacionados con \\htmlref{$codcour_label}{sec:$codcour_label}}\n";
-			$output_tex    .= "\\label{fig:prereq:$codcour_label}\n";
-			$output_tex    .= "\\end{figure}\n";
+			my $map_for_course = <<'MAP';
+\begin{htmlonly}
+	\begin{rawhtml}
+		<img src="./figs/<codcour>.png" style="border: 0px solid ;">
+	\end{rawhtml}
+\end{htmlonly}
+MAP
+			#$map_for_course =~ s/<OutputFigDir>/$OutputFigDir/g;
+			$map_for_course =~ s/<codcour>/$codcour_label/g;
+			$output_tex    .= $map_for_course;
+			#$output_tex    .= "\\begin{figure}\n";
+			#$output_tex    .= "\\centering\n";
+			#$output_tex    .= "\\includegraphics[scale=0.66]{\\OutputFigDir/$codcour_label}\n";
+			#$output_tex    .= "\\caption{Cursos relacionados con xyz \\htmlref{$codcour_label}{sec:$codcour_label}}\n";
+			#$output_tex    .= "\\label{fig:prereq:$codcour_label}\n";
+			#$output_tex    .= "\\end{figure}\n";
 
 			Util::write_file("$output_file-html.tex", $output_tex);
-# 			Util::print_message("$output_file-html.tex ok!");
-
+ 			Util::print_message("$output_file-html.tex ok!");
+			#exit;
 		}
 	 }
 	 #Util::print_error("TODO: XYZ Aqui falta poner varios silabos en idiomas !");
@@ -1161,7 +1169,7 @@ sub gen_prerequisites_map_in_dot($)
  			my %map = ("FONTCOLOR"	=> "black",
                 "FILLCOLOR"	=> "yellow",
                 "BORDERCOLOR" => "black");
- 			$this_course_dot = Common::replace_tags($this_course_dot, "<", ">", %map);
+ 			$this_course_dot = Common::replace_tags_from_hash($this_course_dot, "<", ">", %map);
  			$this_course_dot = Common::generate_course_info_in_dot_with_sem($codcour, $this_course_dot, $lang)."\n";
 
  			# Map courses AFTER this course

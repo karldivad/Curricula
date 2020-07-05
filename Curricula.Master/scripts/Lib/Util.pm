@@ -13,6 +13,10 @@ our %control	= ();
 sub precondition($)
 {
 	my ($key) = (@_);
+	if(not defined($control{$key}))
+	{
+		Util::print_color("precondition $key is not fulfilled ...")
+	}
 	assert(defined($control{$key}));
 	assert($control{$key} == 1);
 }

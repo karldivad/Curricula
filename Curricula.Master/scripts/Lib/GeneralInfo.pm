@@ -42,7 +42,7 @@ sub generate_course_tables($)
  		my $course_headers= $Common::config{dictionary}{course_fields};
 		$course_headers =~ s/$begin_tag/\\textbf\{$begin_tag/g;    # aqui
 		$course_headers =~ s/$end_tag/$end_tag\}/g;
- 		$this_sem_text .= Common::replace_tags($course_headers, $begin_tag, $end_tag, %{$Common::config{dictionary}});
+ 		$this_sem_text .= Common::replace_tags_from_hash($course_headers, $begin_tag, $end_tag, %{$Common::config{dictionary}});
 
 		$this_sem_text .= "\n";
 
@@ -122,7 +122,7 @@ sub generate_course_tables($)
 			{	$this_course_info{PREREQ} = $Common::course_info{$codcour}{code_and_sem_prerequisites};
 			}
 
-			$this_line 	= Common::replace_tags($this_line, $begin_tag, $end_tag, %this_course_info);
+			$this_line 	= Common::replace_tags_from_hash($this_line, $begin_tag, $end_tag, %this_course_info);
 			$this_line 	=~ s/$begin_tag(.*?)$end_tag/~/g;
 
 			$this_sem_text .= $this_line;
@@ -272,8 +272,8 @@ sub generate_distribution_credits_by_area_by_semester()
 
 	foreach $area (sort {$Common::config{area_priority}{$a} <=> $Common::config{area_priority}{$b}} keys %{$Common::config{area_priority}})
 	{	$area_sum =~ s/$area/$Common::counts{credits}{prefix}{$area}/g;
-                my $area_percent = int(1000*$Common::counts{credits}{prefix}{$area}/$Common::config{ncredits})/10.0;
-                $percent =~ s/$area/$area_percent\\%/g;
+		my $area_percent = int(1000*$Common::counts{credits}{prefix}{$area}/$Common::config{ncredits})/10.0;
+		$percent =~ s/$area/$area_percent\\%/g;
 	}
 	$output_txt .= $table_begin;
 	$output_txt .= $areas_header;
@@ -281,7 +281,8 @@ sub generate_distribution_credits_by_area_by_semester()
 	$output_txt .= $area_sum;
 	$output_txt .= $percent;
 	$output_txt .= $table_end1;
-	$output_txt .= "\\caption{$Common::config{dictionary}{DistributionCreditsByArea}}\\label{tab:DistributionCreditsByArea}\n";
+	$output_txt .= "\\caption{$Common::config{dictionary}{DistributionCreditsByArea}}\n";
+	$output_txt .= "\\label{tab:DistributionCreditsByArea}\n";
 	$output_txt .= $table_end2;
 	Util::write_file($output_file, $output_txt);
 	Util::print_message("generate_distribution_area_by_semester ($output_file) ... OK!");
@@ -328,12 +329,12 @@ sub generate_bok_index_old()
 	    }
 	    if($cmd_full =~ m/(.*?)BOKArea$end/)
 	    {
-		$current_area = $1;
+			$current_area = $1;
 	    }
 	    elsif($cmd_full =~ m/($current_area)(.*)Def$end/)
 	    {
 		my ($this_area, $this_prefix) 	= ($1, $2);
-                $macros_order .= "$this_area$this_prefix"."Def\n";
+            $macros_order .= "$this_area$this_prefix"."Def\n";
 		my $prev_unit = "";
 		if(not $map{CMD} eq "")
 		{
@@ -346,9 +347,9 @@ sub generate_bok_index_old()
 		      $map{BOK_AREA_HOURS_LABEL}  = " ($Common::config{dictionary}{nocorehours}))" if($map{BOK_AREA_HOURS} == 0);
 		      $map{BOK_AREA_HOURS_LABEL}  = " ($map{BOK_AREA_HOURS} $Common::config{dictionary}{corehours})" if($map{BOK_AREA_HOURS} > 0);
 
-		      $prev_unit 	 = Common::replace_tags($unit_tpl, "<", ">", %map);
+		      $prev_unit 	 = Common::replace_tags_from_hash($unit_tpl, "<", ">", %map);
 		      if($map{NOBJECTIVES} > 0)
-		      {		$prev_unit 	 .= Common::replace_tags($learning_outcomes, "<", ">", %map);
+		      {		$prev_unit 	 .= Common::replace_tags_from_hash($learning_outcomes, "<", ">", %map);
 		      }
 		      $map{BOK_AREA_INDEX}    .= "\\htmlref{$map{CMD_TEXT}$map{THIS_UNIT_HOURS_LABEL}}{$map{CMD_LABEL}}";
 		      #	$map{BOK_AREA_INDEX}    .= " ($Common::config{dictionary}{Pag}~\\pageref{$map{CMD_LABEL}})";
@@ -415,9 +416,9 @@ sub generate_bok_index_old()
 	    {	next;	}
 	}
 	# Flush the last unit
-	$this_area_txt  .= Common::replace_tags($unit_tpl, "<", ">", %map);
+	$this_area_txt  .= Common::replace_tags_from_hash($unit_tpl, "<", ">", %map);
 	if($map{NOBJECTIVES} > 0)
-	{	$this_area_txt  .= Common::replace_tags($learning_outcomes, "<", ">", %map);
+	{	$this_area_txt  .= Common::replace_tags_from_hash($learning_outcomes, "<", ">", %map);
 	}
 # Begin
         $map{THIS_UNIT_HOURS_LABEL} = "";
@@ -429,7 +430,7 @@ sub generate_bok_index_old()
         $map{BOK_AREA_HOURS_LABEL}  = " ($Common::config{dictionary}{nocorehours}))" if($map{BOK_AREA_HOURS} == 0);
         $map{BOK_AREA_HOURS_LABEL}  = " ($map{BOK_AREA_HOURS} $Common::config{dictionary}{corehours})" if($map{BOK_AREA_HOURS} > 0);
 
-        my $prev_unit         = Common::replace_tags($unit_tpl, "<", ">", %map);
+        my $prev_unit         = Common::replace_tags_from_hash($unit_tpl, "<", ">", %map);
 
         $map{BOK_AREA_INDEX}    .= "\\htmlref{$map{CMD_TEXT}$map{THIS_UNIT_HOURS_LABEL}}{$map{CMD_LABEL}}";
         # $map{BOK_AREA_INDEX}    .= " ($Common::config{dictionary}{Pag}~\\pageref{$map{CMD_LABEL}})";
@@ -902,7 +903,7 @@ sub get_bigtables_by_course_caption($$$$)
 
 sub generate_table_topics_by_course($$$$$$$)
 {
-	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile,$angle, $size) = (@_);
+	my ($lang, $init_sem, $sem_per_page, $rows_per_page, $outfile, $angle, $size) = (@_);
 
 	#Util::precondition("gen_bok");
 	Util::precondition("generate_tex_syllabi_files");
@@ -936,9 +937,9 @@ sub generate_table_topics_by_course($$$$$$$)
 			$flag = 1 - $flag;
 			$col_header     	.= "$sep$extra_header"."c";
 			my $color 		 = $Common::course_info{$codcour}{bgcolor};
-			my $label 		 = "\\colorbox{$color}{\\htmlref{$codcour_label}{sec:$codcour_label}}";
+			my $label 		 = Common::format_course_label($codcour_label, $color);
 			if( $angle > 0 ) {$first_row_text .= "& \\rotatebox[origin=lb,units=360]{$angle}{$label} ";}
-			else {		  $first_row_text .= "& $codcour_label ";	}
+			else {		  $first_row_text .= "& $label ";	}
 			$row_text       .= "& --$codcour_label-- ";
 			$sum_row_text   .= "& --$codcour_label-- ";
 			$Common::data{hours_by_course}{$codcour_label} = 0;
@@ -954,7 +955,9 @@ sub generate_table_topics_by_course($$$$$$$)
 	my $final_sem = $semester-1;
 	$col_header    .= $sep."c$sep} $hline\n";
 	$sem_header    .= "& . \\\\ $hline\n";
-	$first_row_text.= "& \\rotatebox[origin=lb,units=360]{$angle}{$Common::config{dictionary}{Total}} \\\\ $hline\n";
+	if( $angle > 0 ) {$first_row_text .= "& \\rotatebox[origin=lb,units=360]{$angle}{$Common::config{dictionary}{Total}}";}
+	else 	{		  $first_row_text .= "& $Common::config{dictionary}{Total}";	}
+	$first_row_text.= " \\\\ $hline\n";
 	$row_text      .= "& <Sum> \\\\ $hline\n";
 	$sum_row_text  .= "&        \\\\ $hline\n";
 
@@ -980,30 +983,32 @@ sub generate_table_topics_by_course($$$$$$$)
 	my $row_counter = 0;
 	my $output_text = "";
 	my $table_body  = "";
-	#foreach my $main_areax (sort keys %map_hours_unit_by_course)
+	#foreach my $main_areax (sort keys %Common::map_hours_unit_by_course)
 	#{	print "\"$main_areax\"->$Common::areas_priority{$main_areax}\n";
 	#}
 	#print "Antes do foreach ...\n";
 	my $part_count = 1;
 	#print "main_area = $main_area \n";
-# 	print "priority = $Common::config{topics_priority}{DSTRESDef}\n";
-# 	print "nhoras = $Common::map_hours_unit_by_course{DSTRESDef}{CS105}\n";
+ 	#print "priority = $Common::config{topics_priority}{DSTRESDef}\n";
+ 	#print "nhoras = $Common::map_hours_unit_by_course{DSTRESDef}{CS105}\n";
 
 	my $first_backgroud_flag = $Common::config{first_backgroud_flag};
 	my $background = $first_backgroud_flag;
     
-        #Util::print_message("A");
-    #print Dumper (\%Common::map_hours_unit_by_course); exit;
+    #print Dumper (\%Common::map_hours_unit_by_course); Util::print_message("TODO"); exit;
 	my %list_of_valid_ku = ();
 	foreach my $ku ( keys %{$Common::map_hours_unit_by_course{$lang}})
 	{	
 		if( not defined($Common::config{topics_priority}{$ku}) )
-		{	Util::print_color("generate_table_topics_by_course: ignoring $ku ...");	}
+		{	Util::print_color("generate_table_topics_by_course: ignoring $ku ...");		}
 		else
 		{	$list_of_valid_ku{$ku} = "";	}
 	}
+	#Util::print_message("TODO aqui");
+	#print Dumper(\%{$Common::config{topics_priority}}); exit;
 
-	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} keys %list_of_valid_ku)
+	foreach my $ku (sort {$Common::config{topics_priority}{$a} <=> $Common::config{topics_priority}{$b}} 
+					keys %list_of_valid_ku)
 	{
 		my $ka = $Common::ku_info{$lang}{$ku}{ka};
 		#Util::print_message("ABC ka=$ka");
@@ -1027,12 +1032,26 @@ sub generate_table_topics_by_course($$$$$$$)
 		{	Util::print_error("Common::config{ref}{$ku} not defined ..."); #exit;
 		}
 		my $ContainsMandatoryHours = "~";
+		my $star_msg = <<'STAR_MESSAGE';
+	\latexhtml{<STAR_LATEX>}{}
+	\begin{htmlonly}
+		\begin{rawhtml}
+			<img src="./figs/<STAR_ICON>" style="border: 0px solid ; width: 16px; height: 16px;">
+		\end{rawhtml}
+	\end{htmlonly}
+STAR_MESSAGE
+		
 		if( $Common::bok{$lang}{$ka}{KU}{$ku}{nhTier1} > 0 || $Common::bok{$lang}{$ka}{KU}{$ku}{nhTier2} > 0 )
-		{	$current_row  =~ s/--mandatory--/\$\\bigstar\$/g;
+		{	
+			$star_msg =~ s/<STAR_LATEX>/\$\\bigstar\$/g;
+			$star_msg =~ s/<STAR_ICON>/star.gif/g;
 			#$ContainsMandatoryHours = "\$\\bigstar\$";
 		}
 		else
-		{	$current_row  =~ s/--mandatory--/~/g;	}
+		{	$star_msg =~ s/<STAR_LATEX>/~/g;
+			$star_msg =~ s/<STAR_ICON>/none.gif/g;
+		}
+		$current_row  =~ s/--mandatory--/$star_msg/g;
 
  		#my $unit_cell = "$pdflink\\htmlref{$ContainsMandatoryHours$ku_label}{$Common::config{ref}{$ku}}";
  		#my $unit_cell = "$pdflink\\htmlref{$ku_label}{$Common::config{ref}{$ku}}";
@@ -1113,7 +1132,9 @@ sub generate_all_topics_by_course($)
  	my $rows_per_page = $Common::config{topics_rows_per_page}-2;
  	my $sem_per_page  = $Common::config{topics_sem_per_page};
 
-	my $output_file		= Common::get_template("OutputTexDir")."/$prefix-by-course";
+	my $file_name_base = "$prefix-by-course";
+	my $output_file		= Common::get_template("OutputTexDir")."/$file_name_base";
+	
 	# First files for the pdf
 	my $output_txt		= "";
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
@@ -1122,6 +1143,7 @@ sub generate_all_topics_by_course($)
 		generate_table_topics_by_course($lang, $i, $sem_per_page, $rows_per_page, "$output_file-$i.tex", 90, "book");
 		$rows_per_page	= $Common::config{topics_rows_per_page};
 		$output_txt	.= "\\input{$output_file-$i}\n";
+		$Common::config{change_file}{"$file_name_base-$i"}    = "$file_name_base-$i-web";
 	}
 	Util::write_file("$output_file.tex", $output_txt);
 
@@ -1130,16 +1152,17 @@ sub generate_all_topics_by_course($)
 	$rows_per_page	= $Common::config{topics_rows_per_page};
 	for(my $i = 1; $i <= $Common::config{n_semesters} ; $i += $sem_per_page)
 	{
-		generate_table_topics_by_course($lang, $i, $sem_per_page, 500, "$output_file-$i-web.tex", 90, "book");
+		generate_table_topics_by_course($lang, $i, $sem_per_page, 500, "$output_file-$i-web.tex", 0, "book");
 		$output_txt	.= "\\input{$output_file-$i-web}\n";
 	}
 	Util::print_message("Generating $output_file-web.tex OK");
 	Util::write_file("$output_file-web.tex", $output_txt);
 
-	#exit;
 	#my $big_file 	= Common::get_template("OutputTexDir")."/all-$prefix-by-course";
 	#generate_table_topics_by_course($lang, 1, 10, 500, "$big_file.tex", 90, "poster");
 	Util::print_message("generate_all_topics_by_course() OK!");
+	#print Dumper(\%{$Common::config{change_file}});
+	#exit;
 }
 
 sub generate_list_of_outcomes()
@@ -1223,10 +1246,7 @@ sub generate_outcomes_by_course($$$$$$$)
 			if( not $color )
 			{	Util::print_error("Course $codcour (Alias: $codcour_label) ($semester Sem) has NOT color");	}
 
-			# \colorbox{cornflowerblue}{\htmlref{CS1100}{sec:CS1100}}
-			my $label 		= "\\colorbox{$color}{\\htmlref{$codcour_label}{sec:$codcour_label}}";
-			#my $label 		= "\\htmlref{$codcour_label}{sec:$codcour_label}";
-# 			$first_row_text .= "& \\cellcolor{$color} ";
+			my $label 		 = Common::format_course_label($codcour_label, $color);
 			$first_row_text .= "& ";
 			if( $angle > 0 ) {$first_row_text .= "\\rotatebox[origin=lb,units=360]{$angle}{$label} ";}
 			else {		  $first_row_text .= "$label ";	}
@@ -1723,18 +1743,12 @@ sub generate_latex_include_for_this_standard($$$)
 
 	my $output_txt .= "\\begin{figure}[H]\n";
 	$output_txt .= "\\centering\n";
-	$output_txt .= "	\\includegraphics[scale=1.0]{$output_file_without_extension}\n";
+	$output_txt .= "\\includegraphics[scale=1.0]{$output_file_without_extension}\n";
 
-	my $caption = $Common::config{dictionary}{ComparisonWithStandardCaption};
-	#Comparacin por rea de \\SchoolShortName de la \\siglas~con la propuesta de {\\it <STANDARD_LONG_NAME>} <STANDARD> de <STANDARD_REF_INSTITUTION>.
-	$caption =~ s/<STANDARD_LONG_NAME>/$Common::config{dictionary}{standards_long_name}{$standard}/g;
-	$caption =~ s/<STANDARD>/$standard/g;
-	$caption =~ s/<STANDARD_REF_INSTITUTION>/$Common::config{dictionary}{InstitutionToCompareWith}/g;
-	$caption =~ s/<AREA>/$Common::config{area}/g;
+	my $caption = Common::get_standard_title($standard);
 	$output_txt .= "	\\caption{$caption}\n";
-	# 		$output_txt .= "	\\caption{Comparacin en creditaje por rea de \\SchoolShortName de la \\siglas~con la propuesta de \\ingles{$Common::standards_long_name{$standard}} ($standard) de IEEE-CS/ACM.}\n";
 	$output_txt .= "	\\label{fig:comparing-$label}\n";
-	$output_txt .= "\\end{figure}\n\n";
+	$output_txt .= "\\end{figure}\n";
 	return $output_txt;
 }
 
@@ -1763,14 +1777,29 @@ sub generate_compatibility_with_standards($)
 		{
 			my $output_file = "$type_of_graph-$Common::area-with-$standard-$lang_prefix";
 			Util::print_color("Generating $output_file ...");
+			$output_txt .= "\\begin{latexonly}\n";
 			if($type_of_graph eq "spider" && $Common::config{type_of_graph}{spider} == 1)
-			{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigDir/$output_file", $output_file);		
-			}
+			{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");	}			
 			elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
-			{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");
-				$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigDir/$output_file", $output_file);		
-			}	
+			{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");	}
+			$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigDir/$output_file", $output_file);
+			$output_txt .= "\\end{latexonly}\n\n";	
+
+			my $one_standard = <<'STANDARD_MESSAGE';
+\begin{htmlonly}
+	\begin{rawhtml}
+		<p style="text-align:center;">
+		<img src="./figs/<STD_FIG>.png" style="border: 0px solid ; width: 20cm;">
+		<b><Figure>:</b> <STD_FIG_TITLE>
+        </p>
+	\end{rawhtml}
+\end{htmlonly}
+
+STANDARD_MESSAGE
+			my $caption = Common::get_standard_title($standard);
+			$one_standard =~ s/<STD_FIG>/$output_file/g;
+			$one_standard =~ s/<STD_FIG_TITLE>/$caption/g;
+			$output_txt .= $one_standard;
 		}
 	}
 	my $output_file = Common::get_expanded_template("out-comparing-with-standards-file", $lang);
@@ -1947,7 +1976,7 @@ sub generate_equivalence_old2new($)
 				$tags{OLD_COURSE_CREDITS} = "";
 			}
 
-			$output_txt .= Common::replace_tags($line_tpl, "<", ">", %tags);
+			$output_txt .= Common::replace_tags_from_hash($line_tpl, "<", ">", %tags);
 		}
 		$output_txt .= "$endtable";
 	}
@@ -2021,7 +2050,7 @@ sub generate_equivalence_new2old($)
 			{	$old_semester_label = "\\colorbox{honeydew3}{\\textcolor{black}{$old_semester_label}}";		}
 			$tags{OLD_COURSE_SEM}		= $old_semester_label;
 
-			$output_txt .= Common::replace_tags($line_tpl, "<", ">", %tags);
+			$output_txt .= Common::replace_tags_from_hash($line_tpl, "<", ">", %tags);
 
 		}
 # 		foreach my $old_course (@{$Common::config{equivalences}{$old_curricula}{empty_equivalences}{$semester}})

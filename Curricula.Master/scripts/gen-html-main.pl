@@ -192,13 +192,13 @@ sub replace_special_cases($)
     #$maintxt =~ s/\\newcommand{\\comment}/\%\\newcommand{\\comment}/g;
     $maintxt =~ s/\\newcommand\{$Common::institution\}\{.*?\}//g;
     my $country_without_accents = Common::get_template("country_without_accents");
-        $maintxt =~ s/\\newcommand\{$country_without_accents\}\{.*?\}//g;
+    $maintxt =~ s/\\newcommand\{$country_without_accents\}\{.*?\}//g;
     my $country = Common::get_template("country");
-        $maintxt =~ s/\\newcommand\{$country\}\{.*?\}//g;
+    $maintxt =~ s/\\newcommand\{$country\}\{.*?\}//g;
     my $language_without_accents = Common::get_template("language_without_accents");
-        $maintxt =~ s/\\newcommand\{$language_without_accents}\{.*?\}//g;
+    $maintxt =~ s/\\newcommand\{$language_without_accents}\{.*?\}//g;
     my $language = Common::get_template("language");
-        $maintxt =~ s/\\newcommand\{$language\}\{.*?\}//g;
+    $maintxt =~ s/\\newcommand\{$language\}\{.*?\}//g;
 
     $maintxt =~ s/\{inparaenum\}/\{enumerate\}/g;
     $maintxt =~ s/\{subtopics\}/\{enumerate\}/g;
@@ -277,6 +277,8 @@ sub main()
 {
 	Util::begin_time();
 	Common::setup();
+	Common::read_files_to_be_changed();
+
 	my $lang = $Common::config{language_without_accents};
 	my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
 	$outcomes_macros_file =~ s/<LANG>/$lang/g;
@@ -321,10 +323,7 @@ sub main()
 		Util::print_message("$Common::institution: Environments = $environments_count");
 # 		Util::write_file($output_file, $maintxt);
 	}
-# 	Util::print_message("Llego aqui 1!"); exit;
-#         Util::write_file($output_file, $maintxt); exit;
-        
-	#print Dumper(\%{$Common::config{Competence}}); exit;
+
 	while( $maintxt =~ m/\\Competence\{(.*?)\}/g )
 	{   my ($competence) = ($1);
 	    if( not defined($Common::config{Competence}{$1}) )
@@ -360,13 +359,14 @@ sub main()
 	}
 	
 	my $books_html = Common::generate_books_links();
-	$maintxt =~ s/<BOOKS>/\n$books_html/g;
+	$maintxt =~ s/<BOOKS>/$books_html/g;
+	#print Dumper(\%{$Common::config{meta_tags}}); exit;
+	$maintxt = Common::replace_meta_tags($maintxt, $lang);
 	$maintxt = replace_special_cases($maintxt);
-#         $maintxt = replace_outcomes_sequence($maintxt);
-# 	aqui falta;
+#   $maintxt = replace_outcomes_sequence($maintxt);
         
 	my $all_bib_items = Common::get_list_of_bib_files();
-        #$maintxt =~ s/\\xspace}/}/g;
+    #$maintxt =~ s/\\xspace}/}/g;
 	$maintxt =~ s/\\end\{document\}/\\bibliography\{$all_bib_items\}\n\\end\{document\}/g;
 	while ($maintxt =~ m/\n\n\n/){	$maintxt =~ s/\n\n\n/\n\n/g;	}
 	$maintxt = Common::replace_latex_babel_to_latex_standard($maintxt);
