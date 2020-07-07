@@ -15,7 +15,7 @@ Los cursos se encuentran codificados bajo el esquema que se muestra en la Figura
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=13cm]{\OutputFigDir/course-coding}
+   \includegraphics[width=13cm]{\OutputFigsDir/course-coding}
    \caption{Esquema de codificación para los cursos.}
    \label{fig:course-number}
 \end{figure}
@@ -45,14 +45,18 @@ de los prerequisitos de forma gráfica.
 
 \begin{latexonly}
       \begin{figure}[H]
-            \includegraphics[width=23cm]{\OutputFigDir/small-graph-curricula-ES.ps}
+            \includegraphics[width=23cm]{\OutputFigsDir/small-graph-curricula-ES.ps}
             \label{fig:malla-curricular}
             \caption{Malla curricular \SchoolFullName}
       \end{figure}
 \end{latexonly}
 \begin{htmlonly}
       \begin{rawhtml}
-            <img src="./figs/big-graph-curricula-<LANG_PREFIX>.png" style="border: 0px solid ; width: 40cm;">
+            <div class="center">
+                  <iframe scrolling="no" frameborder="0" src="./figs/big-graph-curricula-<LANG_PREFIX>.svg" width="40cm">
+                  <p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p>
+                  </iframe>
+            </div>
       \end{rawhtml}
 \end{htmlonly}
 

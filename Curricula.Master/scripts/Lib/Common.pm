@@ -502,8 +502,8 @@ sub set_global_variables()
 	$config{OutputMain4FigDir}  = "$config{OutputInstDir}/tex/main4figs";
 	system("mkdir -p $config{OutputMain4FigDir}");
 
-	$config{OutputFigDir}       = "$config{OutputInstDir}/figs";
-	system("mkdir -p $config{OutputFigDir}");
+	$config{OutputFigsDir}       = "$config{OutputInstDir}/figs";
+	system("mkdir -p $config{OutputFigsDir}");
 
 	$config{OutputAdvancesDir}  = "$config{OutputInstDir}/advances";
 	system("mkdir -p $config{OutputAdvancesDir}");
@@ -580,7 +580,7 @@ sub set_initial_paths()
 	$path_map{OutputHtmlDir}			= $config{OutputHtmlDir};
 	$path_map{OutputHtmlFigsDir}		= $config{OutputHtmlFigsDir};
 	$path_map{OutputHtmlSyllabiDir}		= $config{OutputHtmlDir}."/syllabi";
-	$path_map{OutputFigDir}             = $config{OutputFigDir};
+	$path_map{OutputFigsDir}             = $config{OutputFigsDir};
 	$path_map{OutputScriptsDir}			= $config{OutputScriptsDir};
 	$path_map{OutputPrereqDir}          = $config{OutputTexDir}."/prereq";
 	$path_map{OutputDotDir}             = $config{OutputDotDir};
@@ -740,8 +740,8 @@ sub set_initial_paths()
 	#$path_map{"in-country-small-graph-item.dot"}	= $path_map{InCountryDir}."/dot/small-graph-item$config{graph_version}.dot";
 	$path_map{"in-country-graph-item.dot"}			= $path_map{InCountryDir}."/dot/<SIZE>-graph-item$config{graph_version}.dot";
 	$path_map{"in-discipline-graph-item.dot"}		= $path_map{InDisciplineDir}."/dot/<SIZE>-graph-item$config{graph_version}.dot";
-	$path_map{"in-area-graph-item.dot"}				= $path_map{InDisciplineDir}."/<AREA>/<SIZE>-graph-item$config{graph_version}.dot";
-	$path_map{"in-institution-graph-item.dot"}		= $path_map{InProgramDir}."/<AREA>/<SIZE>-graph-item$config{graph_version}.dot";
+	$path_map{"in-area-graph-item.dot"}				= $path_map{InDisciplineDir}."/<AREA>/dot/<SIZE>-graph-item$config{graph_version}.dot";
+	$path_map{"in-institution-graph-item.dot"}		= $path_map{InProgramDir}."/dot/<SIZE>-graph-item$config{graph_version}.dot";
 	
 	$path_map{"out-small-graph-curricula-dot-file"} = $config{OutputDotDir}."/small-graph-curricula-<LANG>.dot";
 	$path_map{"out-big-graph-curricula-dot-file"}	= $config{OutputDotDir}."/big-graph-curricula-<LANG>.dot";
@@ -1430,7 +1430,7 @@ sub load_meta_tags()
 	$Common::config{meta_tags}{OUT_LOG_DIR}	= Common::get_template("OutputLogDir");
 	$Common::config{meta_tags}{OUTPUT_TEX_DIR}= Common::get_template("OutputTexDir");
 	$Common::config{meta_tags}{OUTPUT_DOT_DIR}= Common::get_template("OutputDotDir");
-	$Common::config{meta_tags}{OUTPUT_FIG_DIR}= Common::get_template("OutputFigDir");
+	$Common::config{meta_tags}{OUTPUT_FIG_DIR}= Common::get_template("OutputFigsDir");
 	$Common::config{meta_tags}{OUTPUT_SCRIPTS_DIR}= Common::get_template("OutputScriptsDir");
 	$Common::config{meta_tags}{OUTPUT_HTML_DIR}= Common::get_template("OutputHtmlDir");
 	$Common::config{meta_tags}{OUTPUT_CURRICULA_HTML_FILE}=Common::get_template("output-curricula-html-file");
@@ -4865,37 +4865,35 @@ sub generate_faculty_info()
 	foreach $concentration (sort {$Common::config{sort_areas}{$a} <=> $Common::config{sort_areas}{$b}} keys %{$Common::config{faculty_groups}})
  	{	$index_of_professors .= "<th>$concentration</th>\n";		}
 
-
 	$index_of_professors .= "<tr>\n";
  	foreach $concentration (sort {$Common::config{sort_areas}{$a} <=> $Common::config{sort_areas}{$b}} keys %{$Common::config{faculty_groups}})
  	{
-	      $index_of_professors .= "<td>\n";
-	      foreach $degreelevel ( sort {$b <=> $a} keys %{$Common::config{faculty_groups}{$concentration}} )
-	      {
-		    my $count = 0;
-		    my $this_group_txt = "";
-		    foreach $email ( @{$Common::config{faculty_groups}{$concentration}{$degreelevel}} )
-		    {
-			  if( scalar (keys %{$Common::config{faculty}{$email}{fields}{courses_assigned}}) > 0 )
-			  {
-				$this_group_txt .= "<li>";
-				$this_group_txt .= "<a href=\"#$Common::config{faculty}{$email}{fields}{emailwithoutat}\">";
-				$this_group_txt .= "$Common::config{faculty}{$email}{fields}{prefix} $Common::config{faculty}{$email}{fields}{name}";
-				$this_group_txt .= "</a>";
-				$this_group_txt .= "</li>\n";
-				$count++;
-			  }
-		    }
-		    if( $count > 0 )
-		    {
-			$index_of_professors .= "<ul>\n";
-			$index_of_professors .= $this_group_txt;
-			$index_of_professors .= "</ul>\n";
-		    }
-	      }
-	      #$Common::config{faculty}{$email}{fields}{anchor}
-
-	      $index_of_professors .= "</td>\n";
+		$index_of_professors .= "<td>\n";
+		foreach $degreelevel ( sort {$b <=> $a} keys %{$Common::config{faculty_groups}{$concentration}} )
+		{
+			my $count = 0;
+			my $this_group_txt = "";
+			foreach $email ( @{$Common::config{faculty_groups}{$concentration}{$degreelevel}} )
+			{
+				if( scalar (keys %{$Common::config{faculty}{$email}{fields}{courses_assigned}}) > 0 )
+				{
+					$this_group_txt .= "<li>";
+					$this_group_txt .= "<a href=\"#$Common::config{faculty}{$email}{fields}{emailwithoutat}\">";
+					$this_group_txt .= "$Common::config{faculty}{$email}{fields}{prefix} $Common::config{faculty}{$email}{fields}{name}";
+					$this_group_txt .= "</a>";
+					$this_group_txt .= "</li>\n";
+					$count++;
+				}
+			}
+			if( $count > 0 )
+			{
+				$index_of_professors .= "<ul>\n";
+				$index_of_professors .= $this_group_txt;
+				$index_of_professors .= "</ul>\n";
+			}
+		}
+		#$Common::config{faculty}{$email}{fields}{anchor}
+		$index_of_professors .= "</td>\n";
  	}
  	$index_of_professors .= "</tr>\n";
  	$index_of_professors .= "</table>\n";
@@ -4912,59 +4910,104 @@ sub generate_faculty_info()
 	Util::print_message("generate_faculty_info OK! ...");
 }
 
-sub generate_link_for_courses()
+sub detect_link_for_courses()
 {
-      my $html_index 	= Common::get_template("output-curricula-html-file");
-      if( not -e $html_index )
-      {		Util::print_error("File $html_index does not exist ! ... Run latex2html first ... ");
-      }
-      Util::print_message("Reading $html_index");
-      my $html_file_input 	= Util::read_file($html_index);
+	my $html_index 	= Common::get_template("output-curricula-html-file");
+	if( not -e $html_index )
+	{		Util::print_error("File $html_index does not exist ! ... Run latex2html first ... ");
+	}
+	Util::print_message("Reading $html_index");
+	my $html_file_input 	= Util::read_file($html_index);
 
-      for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
-      {
-	    Util::print_message("Sem: $semester");
-	    foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-	    {
-		  if(defined($Common::antialias_info{$codcour}))
-		  {	$codcour = $Common::antialias_info{$codcour}	}
-		  my $courselabel = Common::get_alias($codcour);
-		  my $link = "";
-#                 <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
+	for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
+	{
+		Util::print_message("Sem: $semester");
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		{
+			if(defined($Common::antialias_info{$codcour}))
+			{	$codcour = $Common::antialias_info{$codcour}	}
+			my $courselabel = Common::get_alias($codcour);
+			my $link = "";
+			#                 <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
 
-		  $Common::course_info{$codcour}{link} = "";
-# 		  <A NAME="tex2html972"
-#   HREF="5_65_CS3P2_Cloud_Computing_.html"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">65</SPAN> CS3P2. Cloud Computing (Obligatorio)</A>
-		  #print Dumper(\$Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name});
-		  my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
-		  my $coursefullname = "$courselabel. $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name} ($course_type)";
+			$Common::course_info{$codcour}{link} = "";
+			# 		  <A NAME="tex2html972"
+			#   		HREF="5_65_CS3P2_Cloud_Computing_.html"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">65</SPAN> CS3P2. Cloud Computing (Obligatorio)</A>
+			#print Dumper(\$Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name});
+			my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
+			my $coursefullname = "$courselabel. $Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name} ($course_type)";
+			printf("Searching link for: %-s ", $coursefullname);
+			my $html_file = $html_file_input;
+			if( $html_file =~ m/HREF="(.*?$courselabel.*?html)">/g)
+			{
+				$Common::course_info{$codcour}{link} = $link = $1;
+				Util::print_success("$link");
+				# 			Util::print_message("codcour=$codcour ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}), link = $link");
+			}
+			else
+			{
+				Util::print_error("Not found ($Common::course_info{$codcour}{semester} Sem) ... ");
+			}
+			#print "\n";
+		}
+	}
+	print "\n";
+	Util::check_point("detect_link_for_courses")
+#   exit;
+}
 
-		  printf("Searching link for: %-s ", $coursefullname);
-# 		  while( $html_file =~ m/HREF="(.*?$courselabel.*?html)">/g)
-# 		  {
-# 		      $link = $1;
-# 		      Util::print_soft_error("$link");
-# 		  }
-		  #exit;
-		  my $html_file = $html_file_input;
-		  if( $html_file =~ m/HREF="(.*?$courselabel.*?html)">/g)
-		  {
-			$link = $1;
-			$Common::course_info{$codcour}{link} = $link;
+sub update_dot_links()
+{
+	my $OutputDotDir = Common::get_template("OutputDotDir");
+	Util::print_message("Updating dot files @ $OutputDotDir ...");
+	foreach my $file (<$OutputDotDir/*.dot>)
+	{
+		print "Updating $file ...";
+		my $file_txt = Util::read_file($file);
+		while( $file_txt =~ m/\"URL(.*?)\"/ )
+		{
+			my $codcour = $1;
+			my $link = $Common::course_info{$codcour}{link};
+			$file_txt =~ s/\"URL$codcour\"/\"\.\.\/$link\"/g;
+		}
+		Util::write_file($file, $file_txt);
+		Util::print_success(" ok!");
+	}
+}
 
-			Util::print_success("$link");
-# 			Util::print_message("codcour=$codcour ($Common::config{dictionary}{$Common::course_info{$codcour}{course_type}}), link = $link");
-		  }
-		  else
-		  {
-		        Util::print_error("Not found ($Common::course_info{$codcour}{semester} Sem) ... ");
-		        #exit;
-		  }
-		  #print "\n";
-	    }
-       }
-      print "\n";
-#       exit;
+sub update_svg_links()
+{
+	my $OutputHtmlDir 	= Common::get_template("OutputHtmlDir");
+	my $OutputHtmlFigsDir 	= Common::get_template("OutputHtmlFigsDir");
+	Util::print_message("Updating svg links files @ $OutputHtmlDir ...");
+	for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
+	{
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		{
+			my $svg_file = "$OutputHtmlFigsDir/$codcour.svg";
+			if( -e $svg_file )
+			{
+				print "Updating $svg_file ... ";
+				my $svg_txt = Util::read_file($svg_file);
+				if ($svg_txt =~ m/<svg\s*width="(.*?)"\s*height="(.*?)"/g )
+				{	my ($width, $height) = ($1, $2);
+					Util::print_message("$svg_file: width=$width, height=$height");
+					$svg_txt =~ s/<svg\s*width=\".*?\"\s*height=\".*?\"/<svg /g;
+					Util::write_file($svg_file, $svg_txt);
+					Util::print_success("Ok!");
+					my $html_file 	= "$OutputHtmlDir/$Common::course_info{$codcour}{link}";
+					my $html_txt 	= Util::read_file($html_file);
+					$html_txt 	=~ s/$codcour.svg" width="<WIDTH>" height="<HEIGHT>">/$codcour.svg" width="$width" height="$height">/g;
+					Util::write_file($html_file, $html_txt);
+					Util::print_message($html_file);
+				}
+				else{
+					Util::print_success("No match!");
+				}
+			}
+			else{	Util::print_error("SVG missing ($svg_file)");	}
+		}
+	}
 }
 
 my %LU_info = ();

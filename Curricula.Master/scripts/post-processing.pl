@@ -16,13 +16,14 @@ sub main()
 {
 # 	Util::begin_time();
 	Common::setup(); 
-	
 	Common::read_faculty(); 
 	Common::read_distribution();
 	Common::read_aditional_info_for_silabos(); # Days, time for each class, etc.
 	
-	Common::generate_link_for_courses();
+	Common::detect_link_for_courses();
 	Common::generate_faculty_info();
+	Common::update_dot_links();
+	Common::update_svg_links();
 	
 # 	my $maintxt		= Util::read_file(Common::get_template("curricula-main"));
 # 	my $output_file = Common::get_template("unified-main-file");

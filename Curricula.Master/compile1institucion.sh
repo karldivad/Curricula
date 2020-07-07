@@ -85,12 +85,7 @@ endif
 
 ./scripts/update-outcome-itemizes.pl CS-MINEDU
 ./scripts/update-page-numbers.pl CS-MINEDU;
-foreach lang ('ES' 'EN')
-    ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-graph.sh big $lang;
-end
-
 mkdir -p ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs;
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-map-for-course.sh;
 
 if($html == 1) then
     rm unified-curricula-main* ;
@@ -116,15 +111,22 @@ if($html == 1) then
     sed 's/max-width:50em; //g' ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/unified-curricula-main.css > ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/unified-curricula-main.css1;
     mv ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/unified-curricula-main.css1 ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/unified-curricula-main.css;
 
-    mkdir -p ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs;
+    ./scripts/update-analytic-info.pl CS-MINEDU;
     cp ../Curricula.in/lang/Espanol/figs/pdf.jpeg ../Curricula.in/lang/Espanol/figs/star.gif ../Curricula.in/lang/Espanol/figs/none.gif ../Curricula.in/lang/Espanol/figs/*.png ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs/.;
     cp ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/figs/*.png ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs/.
-    cp ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/figs/*.jpg ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs/.
     cp ../Curricula.in/country/Peru/logos/MINEDU.jpg ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs/.;
-
+    
+    ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-map-for-course.sh;
+    cp ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/figs/*.svg ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs/.
+    ./scripts/post-processing.pl CS-MINEDU;
+    
     ./scripts/update-analytic-info.pl CS-MINEDU;
-    ./scripts/gen-faculty-info.pl CS-MINEDU;
 endif
+
+mkdir -p ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs;
+foreach lang ('ES' 'EN')
+    ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-graph.sh big $lang;
+end
 
 foreach lang ('ES' 'EN')
     ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/compile-simple-latex.sh small-graph-curricula-$lang CS-MINEDU-small-graph-curricula ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/tex;

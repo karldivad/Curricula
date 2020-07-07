@@ -19,7 +19,7 @@ set UnifiedMain=<UNIFIED_MAIN_FILE>
 set InTexDir=<IN_LANG_DIR>/<AREA>.tex
 set OutputInstDir=<OUTPUT_INST_DIR>
 set OutputTexDir=<OUTPUT_TEX_DIR>
-set OutputFigDir=<OUTPUT_FIG_DIR>
+set OutputFigsDir=<OUTPUT_FIG_DIR>
 set OutputHtmlDir=<OUTPUT_HTML_DIR>
 set OutputScriptsDir=.<OUTPUT_SCRIPTS_DIR>
 set Country=<COUNTRY>
@@ -35,8 +35,7 @@ if($area == "CS") then
 		    dvips -o $tmptex.ps $tmptex;
 		    ps2eps -f $tmptex.ps;
 			convert $tmptex.eps $tmptex.png;
-			xgs -dSAFER -dEPSCrop -r300 -sDEVICE=jpeg -dBATCH -dNOPAUSE -sOutputFile=$tmptex.jpg $tmptex.eps
-		    cp $tmptex.eps $tmptex.jpg  $tmptex.png $current_dir/<OUTPUT_FIG_DIR>;
+			cp $tmptex.eps $tmptex.png $current_dir/<OUTPUT_FIG_DIR>;
 		    ./scripts/updatelog "$tmptex generated";
 		    echo "******************************** File ($tmptex) ... OK ! ********************************";
 	    else
@@ -55,8 +54,7 @@ foreach tmptex ('<AREA>' 'course-levels' 'course-coding')
 		dvips -o $tmptex.ps $tmptex;
 		ps2eps -f $tmptex.ps;
 		convert $tmptex.eps $tmptex.png;
-		xgs -dSAFER -dEPSCrop -r300 -sDEVICE=jpeg -dBATCH -dNOPAUSE -sOutputFile=$tmptex.jpg $tmptex.eps
-		cp $tmptex.eps $tmptex.jpg  $tmptex.png $current_dir/<OUTPUT_FIG_DIR>;
+		cp $tmptex.eps $tmptex.png $current_dir/<OUTPUT_FIG_DIR>;
 		./scripts/updatelog "$tmptex generated";
 		echo "******************************** File ($tmptex) ... OK ! ********************************";
 	else
@@ -76,9 +74,7 @@ foreach tmptex ('pie-credits' 'pie-by-levels') # 'pie-horas'
 		echo $area-$institution;
 		ps2eps -f $tmptex.ps;
 		convert $tmptex.eps $tmptex.png;
-		xgs -dSAFER -dEPSCrop -r300 -sDEVICE=jpeg -dBATCH -dNOPAUSE -sOutputFile=$tmptex.jpg $tmptex.eps
-		cp $tmptex.eps $tmptex.jpg $current_dir/<OUTPUT_FIG_DIR>;
-		./scripts/updatelog "$tmptex generated";
+		cp $tmptex.eps $tmptex.png $current_dir/<OUTPUT_FIG_DIR>;
 		echo "******************************** File ($tmptex) ... OK ! ********************************";
 	else
 		echo "Figures $tmptex.eps $tmptex.png already exist ... jumping" ;
@@ -99,9 +95,7 @@ foreach graphtype ('curves' 'spider')
 				dvips -o $file.ps $file-main.dvi;
 				ps2eps -f $file.ps;
 				convert $file.eps $file.png;
-				xgs -dSAFER -dEPSCrop -r300 -sDEVICE=jpeg -dBATCH -dNOPAUSE -sOutputFile=$file.jpg $file.eps;
-				xgs -sDEVICE=png16m -r600 -dDownScaleFactor=3 -o $file.png $file.eps;
-				cp $file.eps $file.jpg $file.png $current_dir/<OUTPUT_FIG_DIR>;
+				cp $file.eps $file.png $current_dir/<OUTPUT_FIG_DIR>;
 				echo "******************************** File ($file) ... OK ! ********************************";
 			else
 				echo "Figures $file.ps $file.jpg already exist ... jumping" ;
@@ -112,5 +106,7 @@ foreach graphtype ('curves' 'spider')
 end
 
 cd $current_dir;
+
+#xgs -dSAFER -dEPSCrop -r300 -sDEVICE=jpeg -dBATCH -dNOPAUSE -sOutputFile=$tmptex.png $tmptex.eps
 echo "gen-eps-files.sh Done !";
 

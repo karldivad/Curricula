@@ -17,11 +17,7 @@ sub replacecodes()
 }
 
 sub generate_general_info()
-{
-	foreach my $lang (@{$Common::config{SyllabusLangsList}})
-	{
-	}
-	
+{	
 	my $lang = $Common::config{language_without_accents};
 	Common::read_all_min_max();
 	Util::precondition("gen_syllabi"); 
@@ -50,7 +46,7 @@ sub generate_general_info()
 			my $OutFile = Common::get_expanded_template("out-$size-graph-curricula-file", $lang);	# "out-small-graph-curricula-file", "out-big-graph-curricula-file"
 			Common::copy_file_expanding_tags($InFile, $OutFile, $lang);
 		}
-		GeneralInfo::generate_curricula_in_dot("big", $lang); 
+		#GeneralInfo::generate_curricula_in_dot("big", $lang); 
 		GeneralInfo::generate_poster($lang);
 		GeneralInfo::generate_all_outcomes_by_course($lang);
 	}
@@ -62,7 +58,7 @@ sub generate_general_info()
 		#error??? system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::ExpandTags(Common::get_template("out-small-graph-curricula-file"), $lang);
 		GeneralInfo::generate_curricula_in_dot("big", $lang);   
 		GeneralInfo::generate_poster($lang);
-		GeneralInfo::generate_all_outcomes_by_course($lang);
+		#GeneralInfo::generate_all_outcomes_by_course($lang);
 	}
 	
 	GeneralInfo::generate_all_topics_by_course($lang);
@@ -89,7 +85,7 @@ sub generate_general_info()
 sub copy_basic_files()
 {
 	##system("cp ".Common::get_template("out-current-institution-file")." ".Common::get_template("OutputTexDir"));
-	#system("cp ".Common::get_template("InLogosDir")."/$Common::config{institution}* ".Common::get_template("OutputFigDir"));
+	#system("cp ".Common::get_template("InLogosDir")."/$Common::config{institution}* ".Common::get_template("OutputFigsDir"));
 	#system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::get_template("OutputTexDir"));
 	##system("cp ".Common::get_template("in-pdf-icon-file")." ".Common::get_template("OutputHtmlFigsDir"));
 	#exit;

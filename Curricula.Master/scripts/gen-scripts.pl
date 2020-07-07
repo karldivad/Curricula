@@ -76,7 +76,7 @@ sub generate_institution($)
 	$output_txt .= "\\newcommand{\\InLogosDir}{\\basedir/".Common::get_template("InLogosDir")."}\n";
 
 	$output_txt .= "\\newcommand{\\OutputTexDir}{\\basedir/".Common::get_template("OutputTexDir")."}\n";
- 	$output_txt .= "\\newcommand{\\OutputFigDir}{\\basedir/".Common::get_template("OutputFigDir")."}\n";
+ 	$output_txt .= "\\newcommand{\\OutputFigsDir}{\\basedir/".Common::get_template("OutputFigsDir")."}\n";
  	$output_txt .= "\\newcommand{\\InSyllabiBaseDir}{\\basedir/".Common::get_template("InSyllabiContainerDir")."}\n";
  	$output_txt .= "\\newcommand{\\OutputPrereqDir}{\\basedir/".Common::get_template("OutputPrereqDir")."}\n";
  	$output_txt .= "\n";

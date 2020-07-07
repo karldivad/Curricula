@@ -85,12 +85,7 @@ endif
 
 ./scripts/update-outcome-itemizes.pl <AREA>-<INST>
 ./scripts/update-page-numbers.pl <AREA>-<INST>;
-foreach lang (<LIST_OF_LANGS>)
-    <OUTPUT_SCRIPTS_DIR>/gen-graph.sh big $lang;
-end
-
 mkdir -p <OUTPUT_HTML_DIR>/figs;
-<OUTPUT_SCRIPTS_DIR>/gen-map-for-course.sh;
 
 if($html == 1) then
     rm <UNIFIED_MAIN_FILE>* ;
@@ -116,15 +111,22 @@ if($html == 1) then
     sed 's/max-width:50em; //g' <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css > <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css1;
     mv <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css1 <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css;
 
-    mkdir -p <OUTPUT_HTML_DIR>/figs;
+    ./scripts/update-analytic-info.pl <AREA>-<INST>;
     cp <IN_LANG_DIR>/figs/pdf.jpeg <IN_LANG_DIR>/figs/star.gif <IN_LANG_DIR>/figs/none.gif <IN_LANG_DIR>/figs/*.png <OUTPUT_HTML_DIR>/figs/.;
     cp <OUTPUT_INST_DIR>/figs/*.png <OUTPUT_HTML_DIR>/figs/.
-    cp <OUTPUT_INST_DIR>/figs/*.jpg <OUTPUT_HTML_DIR>/figs/.
     cp <IN_COUNTRY_DIR>/logos/<INST>.jpg <OUTPUT_HTML_DIR>/figs/.;
-
+    
+    <OUTPUT_SCRIPTS_DIR>/gen-map-for-course.sh;
+    cp <OUTPUT_INST_DIR>/figs/*.svg <OUTPUT_HTML_DIR>/figs/.
+    ./scripts/post-processing.pl <AREA>-<INST>;
+    
     ./scripts/update-analytic-info.pl <AREA>-<INST>;
-    ./scripts/gen-faculty-info.pl <AREA>-<INST>;
 endif
+
+mkdir -p <OUTPUT_HTML_DIR>/figs;
+foreach lang (<LIST_OF_LANGS>)
+    <OUTPUT_SCRIPTS_DIR>/gen-graph.sh big $lang;
+end
 
 foreach lang (<LIST_OF_LANGS>)
     <OUTPUT_SCRIPTS_DIR>/compile-simple-latex.sh small-graph-curricula-$lang <AREA>-<INST>-small-graph-curricula <OUTPUT_TEX_DIR>;

@@ -1022,7 +1022,7 @@ sub gen_course_general_info($)
 {
     my ($lang) = (@_);
 	my $OutputPrereqDir = Common::get_template("OutputPrereqDir");
-	my $OutputFigDir = Common::get_template("OutputFigDir");
+	my $OutputFigsDir = Common::get_template("OutputFigsDir");
 
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
@@ -1081,16 +1081,20 @@ sub gen_course_general_info($)
 			my $map_for_course = <<'MAP';
 \begin{htmlonly}
 	\begin{rawhtml}
-		<img src="./figs/<codcour>.png" style="border: 0px solid ;">
+		<div class="center">
+            <iframe scrolling="no" frameborder="0" src="./figs/<codcour>.svg" width="<WIDTH>" height="<HEIGHT>">
+                  <p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p>
+            </iframe>
+        </div>
 	\end{rawhtml}
 \end{htmlonly}
 MAP
-			#$map_for_course =~ s/<OutputFigDir>/$OutputFigDir/g;
+			#$map_for_course =~ s/<OutputFigsDir>/$OutputFigsDir/g;
 			$map_for_course =~ s/<codcour>/$codcour_label/g;
 			$output_tex    .= $map_for_course;
 			#$output_tex    .= "\\begin{figure}\n";
 			#$output_tex    .= "\\centering\n";
-			#$output_tex    .= "\\includegraphics[scale=0.66]{\\OutputFigDir/$codcour_label}\n";
+			#$output_tex    .= "\\includegraphics[scale=0.66]{\\OutputFigsDir/$codcour_label}\n";
 			#$output_tex    .= "\\caption{Cursos relacionados con xyz \\htmlref{$codcour_label}{sec:$codcour_label}}\n";
 			#$output_tex    .= "\\label{fig:prereq:$codcour_label}\n";
 			#$output_tex    .= "\\end{figure}\n";
@@ -1111,13 +1115,13 @@ sub generate_link($$$$)
 	{
 		my ($inst, $prereq) = ($1, $2);
 		assert( $inst eq $Common::institution);
-		$output_txt .= "\t\"$prereq\"->\"$target\" [lhead=cluster$target];\n";
+		$output_txt .= "\t\"$prereq\"->\"$target\";\n";
 		return ($output_txt, 0);
 	}
 	my ($critical_path_style, $width) = ("", 4);
 	if( defined($Common::course_info{$source}{critical_path}{$target}))
 	{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
-	$output_txt .= "\t\"$source\"->\"$target\" [lhead=cluster$target$critical_path_style];\n";
+	$output_txt .= "\t\"$source\"->\"$target\" [$critical_path_style];\n";
 	return ($output_txt, 1);
 }
 
@@ -1125,19 +1129,16 @@ sub gen_prerequisites_map_in_dot($)
 {
     my ($lang) = (@_);
 	my $size = "big";
-	my $template_file = Common::read_dot_template($size, $lang);
-	my $course_tpl 	= Util::read_file($template_file);
+	my $template_file	= Common::read_dot_template($size, $lang);
+	my $course_tpl 		= Util::read_file($template_file);
 # 	$course_tpl =~ s/<FULLNAME>/<FULLNAME> \(<SEM>\)/g;
 	#Util::print_message("course_tpl = $course_tpl ... ");
-
 	Util::print_message("Reading $template_file ... (gen_prerequisites_map_in_dot)");
-
-	my $OutputDotDir  		= Common::get_template("OutputDotDir");
-	my $OutputFigDir 		= Common::get_template("OutputFigDir");
+	my $OutputDotDir  				= Common::get_template("OutputDotDir");
+	my $OutputFigsDir 				= Common::get_template("OutputFigsDir");
 	my $update_page_numbers_file 	= Common::get_template("update-page-numbers");
-
-	my $batch_replace_pages = "";
-	my $batch_txt 		= "#!/bin/csh\n\n";
+	my $batch_replace_pages 		= "";
+	my $batch_txt 					= "#!/bin/csh\n\n";
 
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
@@ -1226,12 +1227,12 @@ sub gen_prerequisites_map_in_dot($)
 			if(not $prev_courses_dot eq "")
 			{	$output_tex .= "$prev_courses_dot\n";	}
 
-			$output_tex .= "\tsubgraph cluster$codcour_label\n";
-			$output_tex .= "\t{\n";
+			#$output_tex .= "\tsubgraph cluster$codcour_label\n";
+			#$output_tex .= "\t{\n";
 # 			$output_tex .= "\t\tbgcolor=yellow;\n";
 # 			$output_tex .= "\t\tcolor=yellow;\n";
-			$output_tex .= "\t$this_course_dot\n";
-			$output_tex .= "\t}\n";
+			$output_tex .= "$this_course_dot\n";
+			#$output_tex .= "\t}\n";
 
 			if(not $post_courses_dot eq "")
 			{	$output_tex .= "$post_courses_dot\n";	}
@@ -1241,10 +1242,12 @@ sub gen_prerequisites_map_in_dot($)
 
 			Util::write_file($output_file, $output_tex);
 			Util::print_message("Generating $output_file ok! ..."); 
-			#$batch_txt	.= "dot -Gcharset=$Common::config{encoding} -Tps $output_file -o $OutputFigDir/$codcour_label.ps; \n";
-			$batch_txt	.= "dot -Tps  $output_file -o $OutputFigDir/$codcour_label.ps; \n";
-      		$batch_txt	.= "dot -Tpng $output_file -o $OutputFigDir/$codcour_label.png; \n";
-			# $batch_txt	.= "convert $OutputFigDir/$codcour_label.ps $OutputFigDir/$codcour_label.png&\n\n";
+			#$batch_txt	.= "dot -Gcharset=$Common::config{encoding} -Tps $output_file -o $OutputFigsDir/$codcour_label.ps; \n";
+			$batch_txt	.= "echo \"Generating $OutputFigsDir/$codcour_label.svg ...\"\n";
+			$batch_txt	.= "dot -Tps  $output_file -o $OutputFigsDir/$codcour_label.ps; \n";
+      		$batch_txt	.= "dot -Tsvg $output_file -o $OutputFigsDir/$codcour_label.svg; \n";
+			$batch_txt	.= "\n";
+			# $batch_txt	.= "convert $OutputFigsDir/$codcour_label.ps $OutputFigsDir/$codcour_label.png&\n\n";
 		}
 	 }
 	 my $batch_map_for_course_file = Common::get_template("out-gen-map-for-course");

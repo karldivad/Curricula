@@ -144,19 +144,20 @@ sub generate_course_tables($)
 
 		if($cred_column == 1)
 		{	$this_sem_text .= " $Common::config{credits_this_semester}{$semester} & ";
-			$this_sem_text .= "\\multicolumn{".($n_columns-$cred_column)."}{|l}{} \\\\ \\cline{$cred_column-$cred_column}\n";
+			$this_sem_text .= "\\multicolumn{".($n_columns-$cred_column)."}{|l}{}";
 		}
 		elsif($cred_column > 1 and $cred_column < $n_columns)
 		{
 			$this_sem_text .= "\\multicolumn{".($cred_column-1)."}{l|}{} & ";
 			$this_sem_text .= " $Common::config{credits_this_semester}{$semester} & ";
-			$this_sem_text .= "\\multicolumn{".($n_columns-$cred_column)."}{|l}{} \\\\ \\cline{$cred_column-$cred_column}\n";
+			$this_sem_text .= "\\multicolumn{".($n_columns-$cred_column)."}{|l}{}";
 		}
 		elsif($cred_column == $n_columns)
 		{	$this_sem_text .= "\\multicolumn{".($cred_column-1)."}{l|}{} & ";
-			$this_sem_text .= " $Common::config{credits_this_semester}{$semester} ";
-			$this_sem_text .= " \\\\ \\cline{$cred_column-$cred_column}\n";
+			$this_sem_text .= " $Common::config{credits_this_semester}{$semester}";
+			
 		}
+		$this_sem_text .= " \\\\ \\cline{$cred_column-$cred_column}\n";
 
 		$this_sem_text .= "\\end{tabularx}\n";
 		#$this_sem_text .= "\\end{table}\n";
@@ -172,13 +173,13 @@ sub generate_course_tables($)
 # 	print Dumper \%{$Common::counts{map_cred_area}{9}};
 	foreach my $semester (keys %{$Common::counts{electives}})
 	{
- 	      foreach my $group (keys %{$Common::counts{electives}{$semester}})
- 	      {
-		  #Util::print_message("Semester $semester, Group $group");
-		  #print Dumper \%{$Common::counts{electives}{$semester}{$group}}
- 		  my $area = $Common::counts{electives}{$semester}{$group}{area};
- 		  $Common::counts{map_cred_area}{$semester}{$area} += $Common::counts{electives}{$semester}{$group}{cr};
- 	      }
+		foreach my $group (keys %{$Common::counts{electives}{$semester}})
+		{
+			#Util::print_message("Semester $semester, Group $group");
+			#print Dumper \%{$Common::counts{electives}{$semester}{$group}}
+			my $area = $Common::counts{electives}{$semester}{$group}{area};
+			$Common::counts{map_cred_area}{$semester}{$area} += $Common::counts{electives}{$semester}{$group}{cr};
+		}
  	}
 	$output_txt .= "\\noindent\\textbf{$Common::config{dictionary}{TotalNumberOfCreditsMsg}: } \\input{\\OutputTexDir/ncredits}.\n";
 	Util::write_file($output_file, $output_txt);
@@ -758,21 +759,6 @@ sub generate_curricula_in_dot($$)
 		}
 	}
 
-        #my $legend = "";
-#         $legend .= "subgraph cluster1\n";
-#         $legend .= "{\n";
-#         $legend .= "      node [style=filled];\n";
-#         $legend .= "      CS [shape=box,fillcolor=cornflowerblue, label=\"CS:Ciencia de la Computacion\"];\n";
-#         $legend .= "      CB [shape=box, fillcolor=honeydew3, label=\"CB:Ciencias Básicas\"];\n";
-#         $legend .= "      HU [shape=box, fillcolor=chartreuse3, label=\"HU:Humanidades\"];\n";
-#         $legend .= "      ET [shape=box, fillcolor=tomato3, label=\"BT:Empresas de BT\"];\n";
-#         $legend .= "      CS->CB [style=\"invis\"];\n";
-#         $legend .= "      HU->ET [style=\"invis\"];\n";
-#         $legend .= "      label = \"Legenda\";\n";
-#         $legend .= "      color=black;\n";
-#         $legend .= "}\n";
-
-        #$output_txt .= $legend;
 	$output_txt .= "}\n";
 	Util::write_file($output_file, $output_txt);
 	Util::print_message("generate_curricula_in_dot($size, $lang, $output_file) OK!");
@@ -819,7 +805,7 @@ sub generate_poster($)
 	system("cp ".Common::get_template("in-poster-macros-sty-file")." ".Common::get_template("OutputTexDir")); ;
 
     my $cwd = getcwd();
-    chdir(Common::get_template("OutputFigDir"));
+    chdir(Common::get_template("OutputFigsDir"));
     system("rm Bloom.eps");
     system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom.eps");
 	system("rm Bloom-sequence.eps");
@@ -882,7 +868,7 @@ sub generate_pie($)
 	#$area_count{$Common::course_info{$codcour}{area}} += $Common::course_info{$codcour}{cr};
 	#$credit_count += $Common::course_info{$codcour}{cr};
 	Util::write_file_to_gen_fig($output_file, $output_txt);
-# 	my $fig_file = Common::get_template("OutputFigDir")."/pie-$type*";
+# 	my $fig_file = Common::get_template("OutputFigsDir")."/pie-$type*";
 # 	Util::print_message("Removing file: $fig_file ...");
 # 	system("rm $fig_file");
 # 	exit;
@@ -1769,7 +1755,7 @@ sub generate_compatibility_with_standards($)
 	$Common::config{legend_space} = 0.5;
 
 	my $OutputTexDir = Common::get_template("OutputTexDir");
-	my $OutputFigDir = Common::get_template("OutputFigDir");
+	my $OutputFigsDir = Common::get_template("OutputFigsDir");
 	my $output_txt = "";
 	foreach my $standard (split(",", $Common::config{Standards}))
 	{
@@ -1782,7 +1768,7 @@ sub generate_compatibility_with_standards($)
 			{	generate_spider_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");	}			
 			elsif($type_of_graph eq "curves" && $Common::config{type_of_graph}{curves} == 1)				
 			{	generate_curves_with_one_standard($standard, $lang, "$OutputTexDir/$output_file.tex");	}
-			$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigDir/$output_file", $output_file);
+			$output_txt .= generate_latex_include_for_this_standard($standard, "$OutputFigsDir/$output_file", $output_file);
 			$output_txt .= "\\end{latexonly}\n\n";	
 
 			my $one_standard = <<'STANDARD_MESSAGE';
