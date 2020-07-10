@@ -358,8 +358,12 @@ sub main()
 		#$maintxt =~ s/\($Common::config{macros}{$learningoutcome}\s*?\)/\(\\textbf\{$Common::config{macros}{$learningoutcome}}\)/g;	
 	}
 	
-	my $books_html = Common::generate_books_links();
+	my $books_html	= Common::generate_books_links();
 	$maintxt =~ s/<BOOKS>/$books_html/g;
+	my $pdf_name = "$Common::config{area}-$Common::config{institution} $Common::config{Plan}";
+	my $pdflink		= Common::get_link( "$pdf_name.pdf", $lang);
+	$maintxt =~ s/<PDF-LINK>/$pdflink/g;
+
 	#print Dumper(\%{$Common::config{meta_tags}}); exit;
 	$maintxt = Common::replace_meta_tags($maintxt, $lang);
 	$maintxt = replace_special_cases($maintxt);

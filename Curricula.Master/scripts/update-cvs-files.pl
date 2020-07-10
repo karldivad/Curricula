@@ -22,8 +22,12 @@ sub main()
 	Common::read_aditional_info_for_silabos(); # Days, time for each class, etc.
 	
 	Common::detect_link_for_courses();
-	Common::generate_faculty_info();
-	Common::update_dot_links();
+	#Common::generate_faculty_info();
+	Common::update_svg_links($lang);
+
+# 	my $maintxt		= Util::read_file(Common::get_template("curricula-main"));
+# 	my $output_file = Common::get_template("unified-main-file");
+#  	Util::write_file($output_file, $maintxt);
 }
 
 main();

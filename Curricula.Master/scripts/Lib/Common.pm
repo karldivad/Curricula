@@ -228,6 +228,15 @@ sub get_prefix($)
 	return "";
 }
 
+sub get_language_icon($)
+{
+    my ($lang) = (@_);
+	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+	my $link  = "<img src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	   $link .= "<img src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+    return $link;
+}
+
 sub get_syllabi_language_icons($$)
 {
     my ($prev_tex, $codcour) = (@_);
@@ -238,34 +247,22 @@ sub get_syllabi_language_icons($$)
 	    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
 	    $link .= $prev_tex;
 	    $link .= "$sep<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
-	    $link .= "<img alt=\"$codcour-$lang_prefix\" src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
-	    $link .= "<img alt=\"$codcour-$lang_prefix\" src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	    $link .= get_language_icon($lang);
 	    $link .= "</a>\n";
 	    $sep = ", ";
 	}
     return $link;
 }
 
-sub get_language_icon($)
-{
-        my ($lang) = (@_);
-	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-	my $link  = "<img src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
-	   $link .= "<img src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
-        return $link;
-}
-
 sub get_small_icon($$)
 {
-        my ($icon, $alt) = (@_);
-	my $pdflink .= "\\latexhtml{}{%\n";
-	$pdflink    .= "\t\\begin{htmlonly}\n";
-	$pdflink    .= "\t\t\\begin{rawhtml}\n";
-	$pdflink    .=  "\t\t\t<img alt=\"$alt\" src=\"./figs/$icon\" style=\"border: 0px solid ; width: 16px; height: 16px;\">\n";
-	$pdflink    .=  "\t\t\\end{rawhtml}\n";
-	$pdflink    .=  "\t\\end{htmlonly}\n";
-	$pdflink    .= "}";
-        return $pdflink;
+    my ($icon, $alt) = (@_);
+	my $pdflink .= "\\begin{htmlonly}\n";
+	$pdflink    .= "\t\\begin{rawhtml}\n";
+	$pdflink    .= "\t\t<img alt=\"$alt\" src=\"./figs/$icon\" style=\"border: 0px solid ; width: 16px; height: 16px;\">\n";
+	$pdflink    .= "\t\\end{rawhtml}\n";
+	$pdflink    .= "\\end{htmlonly}\n";
+    return $pdflink;
 }
 
 sub format_semester_label($)
@@ -290,16 +287,21 @@ sub get_course_link($$)
 	return $course_link;
 }
 
+sub get_link($$)
+{
+	my ($file, $lang) = (@_);
+	my $link .= "<a href=\"$file\">$file".get_language_icon($lang)."</a>\n";
+	return $link;
+}
+
 sub get_pdf_link($)
 {
 	my ($codcour) = (@_);
-	my $pdflink   	 = "\\latexhtml{}{%\n";
-        $pdflink	.= "\t\\begin{htmlonly}\n";
-        $pdflink .= "\t\t\\begin{rawhtml}\n";
-        $pdflink .= Common::get_syllabi_language_icons("\t\t\t", $codcour);
-        $pdflink .=  "\t\t\\end{rawhtml}\n";
-        $pdflink .=  "\t\\end{htmlonly}\n";
-	$pdflink .= "}\n";
+	my $pdflink   	 = "\t\\begin{htmlonly}\n";
+        $pdflink 	.= "\t\t\\begin{rawhtml}\n";
+        $pdflink 	.= Common::get_syllabi_language_icons("\t\t\t", $codcour);
+        $pdflink 	.=  "\t\t\\end{rawhtml}\n";
+        $pdflink 	.=  "\t\\end{htmlonly}\n";
 	return $pdflink;
 }
 
@@ -1416,26 +1418,27 @@ sub generate_index_for_this_area_old()
 
 sub load_meta_tags()
 {
-	$Common::config{meta_tags}{INST} 		= $Common::institution;
-	$Common::config{meta_tags}{FILTER}		= $Common::inst_list{$Common::institution}{filter};
-	$Common::config{meta_tags}{VERSION}		= $Common::inst_list{$Common::institution}{version};
-	$Common::config{meta_tags}{DISCIPLINE}	= $Common::config{discipline};
-	$Common::config{meta_tags}{AREA}		= $Common::inst_list{$Common::institution}{area};
-	$Common::config{meta_tags}{OUTBIN}		= Common::get_template("OutputBinDir");
-	$Common::config{meta_tags}{IN_DIR}		= Common::get_template("InDir");
-    $Common::config{meta_tags}{IN_INST_DIR}	= Common::get_template("InProgramDir");
-	$Common::config{meta_tags}{IN_COUNTRY_DIR}= Common::get_template("InCountryDir");
-	$Common::config{meta_tags}{OUTPUT_DIR}	= Common::get_template("OutDir");
-	$Common::config{meta_tags}{OUTPUT_INST_DIR}=Common::get_template("OutputInstDir");
-	$Common::config{meta_tags}{OUT_LOG_DIR}	= Common::get_template("OutputLogDir");
-	$Common::config{meta_tags}{OUTPUT_TEX_DIR}= Common::get_template("OutputTexDir");
-	$Common::config{meta_tags}{OUTPUT_DOT_DIR}= Common::get_template("OutputDotDir");
-	$Common::config{meta_tags}{OUTPUT_FIG_DIR}= Common::get_template("OutputFigsDir");
+	$Common::config{meta_tags}{INST} 			= $Common::institution;
+	$Common::config{meta_tags}{FILTER}			= $Common::inst_list{$Common::institution}{filter};
+	$Common::config{meta_tags}{VERSION}			= $Common::inst_list{$Common::institution}{version};
+	$Common::config{meta_tags}{DISCIPLINE}		= $Common::config{discipline};
+	$Common::config{meta_tags}{AREA}			= $Common::inst_list{$Common::institution}{area};
+	$Common::config{meta_tags}{OUTBIN}			= Common::get_template("OutputBinDir");
+	$Common::config{meta_tags}{IN_DIR}			= Common::get_template("InDir");
+    $Common::config{meta_tags}{IN_INST_DIR}		= Common::get_template("InProgramDir");
+	$Common::config{meta_tags}{IN_COUNTRY_DIR}	= Common::get_template("InCountryDir");
+	$Common::config{meta_tags}{OUTPUT_DIR}		= Common::get_template("OutDir");
+	$Common::config{meta_tags}{OUTPUT_INST_DIR}	= Common::get_template("OutputInstDir");
+	$Common::config{meta_tags}{OUT_LOG_DIR}		= Common::get_template("OutputLogDir");
+	$Common::config{meta_tags}{OUTPUT_TEX_DIR}	= Common::get_template("OutputTexDir");
+	$Common::config{meta_tags}{OUTPUT_DOT_DIR}	= Common::get_template("OutputDotDir");
+	$Common::config{meta_tags}{OUTPUT_FIGS_DIR}	= Common::get_template("OutputFigsDir");
 	$Common::config{meta_tags}{OUTPUT_SCRIPTS_DIR}= Common::get_template("OutputScriptsDir");
 	$Common::config{meta_tags}{OUTPUT_HTML_DIR}= Common::get_template("OutputHtmlDir");
+	$Common::config{meta_tags}{OUTPUT_HTML_FIGS_DIR}= Common::get_template("OutputHtmlFigsDir");
 	$Common::config{meta_tags}{OUTPUT_CURRICULA_HTML_FILE}=Common::get_template("output-curricula-html-file");
 	$Common::config{meta_tags}{OUTPUT_INDEX_HTML_FILE}=Common::get_template("output-index-html-file");
-	$Common::config{meta_tags}{COUNTRY}		= Common::get_template("country_without_accents");
+	$Common::config{meta_tags}{COUNTRY}			= Common::get_template("country_without_accents");
 	$Common::config{meta_tags}{LANG}			= Common::get_template("language_without_accents");
 	$Common::config{meta_tags}{IN_LANG_BASE_DIR}= Common::get_template("InLangBaseDir");
 	$Common::config{meta_tags}{IN_LANG_DIR}	= Common::get_template("InLangDir");
@@ -4975,39 +4978,65 @@ sub update_dot_links()
 	}
 }
 
-sub update_svg_links()
+sub remove_size_from_svg($$)
 {
-	my $OutputHtmlDir 	= Common::get_template("OutputHtmlDir");
+	my ($svg_file, $output_file) = (@_);
+	print "Updating $svg_file ... ";
+	my ($width, $height) = ("", "");
+	my $svg_txt = Util::read_file($svg_file);
+	if ($svg_txt =~ m/<svg\s*width="(.*?)"\s*height="(.*?)"/g )
+	{	($width, $height) = ($1, $2);
+		print("width=$width, height=$height -> $output_file");
+		$svg_txt 		  =~ s/<svg\s*width=\".*?\"\s*height=\".*?\"/<svg /g;
+		Util::write_file($output_file, $svg_txt);
+		Util::print_success("Ok!");
+	}
+	return ($width, $height);
+}
+
+sub add_size_to_svg_link($$$$)
+{
+	my ($file, $html_file, $width, $height) = (@_);				
+	my $html_txt 	= Util::read_file($html_file);
+	$html_txt 	    =~ s/$file.svg" width="<WIDTH>" height="<HEIGHT>">/$file.svg" width="$width" height="$height">/g;
+	Util::write_file($html_file, $html_txt);
+	Util::print_message("Updating $html_file ...");
+}
+
+sub update_svg_links($)
+{
+	my ($lang) = (@_);
+	my $lang_prefix			= $Common::config{dictionaries}{$lang}{lang_prefix};
+	my $OutputHtmlDir 		= Common::get_template("OutputHtmlDir");
+	my $OutputFigsDir 		= Common::get_template("OutputFigsDir");
 	my $OutputHtmlFigsDir 	= Common::get_template("OutputHtmlFigsDir");
 	Util::print_message("Updating svg links files @ $OutputHtmlDir ...");
 	for(my $semester= 1; $semester <= $Common::config{n_semesters} ; $semester++)
 	{
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
 		{
-			my $svg_file = "$OutputHtmlFigsDir/$codcour.svg";
-			if( -e $svg_file )
+			my $svg_file        = "$OutputFigsDir/$codcour.svg";
+			my $svg_output_file = "$OutputHtmlFigsDir/$codcour.svg";
+			my ($width, $height) = remove_size_from_svg($svg_file, $svg_output_file);
+			if(not $width eq "" && not $height eq "")
 			{
-				print "Updating $svg_file ... ";
-				my $svg_txt = Util::read_file($svg_file);
-				if ($svg_txt =~ m/<svg\s*width="(.*?)"\s*height="(.*?)"/g )
-				{	my ($width, $height) = ($1, $2);
-					Util::print_message("$svg_file: width=$width, height=$height");
-					$svg_txt =~ s/<svg\s*width=\".*?\"\s*height=\".*?\"/<svg /g;
-					Util::write_file($svg_file, $svg_txt);
-					Util::print_success("Ok!");
-					my $html_file 	= "$OutputHtmlDir/$Common::course_info{$codcour}{link}";
-					my $html_txt 	= Util::read_file($html_file);
-					$html_txt 	=~ s/$codcour.svg" width="<WIDTH>" height="<HEIGHT>">/$codcour.svg" width="$width" height="$height">/g;
-					Util::write_file($html_file, $html_txt);
-					Util::print_message($html_file);
-				}
-				else{
-					Util::print_success("No match!");
-				}
+				my $html_file 	= "$OutputHtmlDir/$Common::course_info{$codcour}{link}";
+				add_size_to_svg_link($codcour, $html_file, $width, $height);
 			}
-			else{	Util::print_error("SVG missing ($svg_file)");	}
+			else{
+				Util::print_success("No match!");
+			}
+			#else{	Util::print_error("SVG missing ($svg_file)");	}
 		}
 	}
+	foreach my $size ("small", "big")
+	{
+		my $input_svg_file  = "$OutputFigsDir/$size-graph-curricula-$lang_prefix.svg";
+		my $output_svg_file = "$OutputHtmlFigsDir/$size-graph-curricula-$lang_prefix.svg";
+		my ($width, $height) = remove_size_from_svg($input_svg_file, $output_svg_file);
+	}
+
+	exit;
 }
 
 my %LU_info = ();
