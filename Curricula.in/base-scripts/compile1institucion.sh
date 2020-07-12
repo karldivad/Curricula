@@ -63,7 +63,7 @@ end
 
 if($pdf == 1) then
     # latex -interaction=nonstopmode <MAIN_FILE>
-    ./scripts/clean.sh;
+    rm *.ps *.log *.dvi *.aux *.bcf *.xml *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp;
     latex <MAIN_FILE>;
 
     mkdir -p <OUT_LOG_DIR>;
@@ -83,6 +83,19 @@ endif
 ./scripts/update-page-numbers.pl <AREA>-<INST>;
 mkdir -p <OUTPUT_HTML_DIR>/figs;
 
+<OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
+
+mkdir -p "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>";
+mutool convert -o <OUTPUT_HTML_DIR>/<AREA>-<INST>-P%d.png <AREA>-<INST>.pdf 1-1;
+cp <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/<AREA>-<INST> <PLAN>.pdf";
+
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
+
 if($html == 1) then
     rm <UNIFIED_MAIN_FILE>* ;
     ./scripts/gen-html-main.pl <AREA>-<INST>;
@@ -94,8 +107,7 @@ if($html == 1) then
     latex <UNIFIED_MAIN_FILE>;
 
     dvips -o <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi;
-    ps2pdf <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.pdf;
-    rm <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi;
+    rm <UNIFIED_MAIN_FILE>.ps <UNIFIED_MAIN_FILE>.dvi <UNIFIED_MAIN_FILE>.pdf;
     rm -rf <OUTPUT_HTML_DIR>;
 
     latex2html -t "Curricula <AREA>-<INST>" \
@@ -130,22 +142,11 @@ foreach lang (<LIST_OF_LANGS>)
     <OUTPUT_SCRIPTS_DIR>/gen-poster.sh $lang;
 end
 
-<OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
 mkdir -p <OUTPUT_HTML_DIR>/syllabi;
 cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
-
-mkdir -p "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>";
-mutool convert -o <OUTPUT_HTML_DIR>/<AREA>-<INST>-P%d.png <AREA>-<INST>.pdf 1-1;
-cp <AREA>-<INST>.pdf "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/<AREA>-<INST> <PLAN>.pdf"
 mv <AREA>-<INST>.pdf "<OUTPUT_HTML_DIR>/<AREA>-<INST> <PLAN>.pdf";
+cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.pdf <OUTPUT_HTML_DIR>/.;
 
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfSyllabi-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfBibliography-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfBibliography-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-ES  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-ES (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-<OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDescriptions-EN  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDescriptions-EN (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-  
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 

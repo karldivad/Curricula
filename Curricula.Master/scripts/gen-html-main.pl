@@ -346,7 +346,6 @@ sub main()
 		else{	Util::print_message("Not defined: Common::config{Outcome}{$OutcomeShort} ... See $outcomes_macros_file !");	}
 	}
 	$maintxt =~ s/\\xspace/ /g;
-
 	($maintxt, $macros_changed) = Common::expand_macros($main_file, $maintxt);
 	foreach my $learningoutcome ("Familiarity", "Usage", "Assessment")
 	{	
@@ -361,7 +360,9 @@ sub main()
 	my $books_html	= Common::generate_books_links();
 	$maintxt =~ s/<BOOKS>/$books_html/g;
 	my $pdf_name = "$Common::config{area}-$Common::config{institution} $Common::config{Plan}";
-	my $pdflink		= Common::get_link( "$pdf_name.pdf", $lang);
+	my $OutputHtmlDir = Common::get_template("OutputHtmlDir");
+	my $size 		= Common::get_size("$OutputHtmlDir/$pdf_name.pdf");
+	my $pdflink		= Common::get_link_with_language_icon("$pdf_name.pdf ($size)", "$pdf_name.pdf", $lang);
 	$maintxt =~ s/<PDF-LINK>/$pdflink/g;
 
 	#print Dumper(\%{$Common::config{meta_tags}}); exit;

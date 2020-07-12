@@ -1051,8 +1051,8 @@ sub gen_course_general_info($)
 			my $syllabus_link = "";
 			$syllabus_link .= "\t\\begin{htmlonly}\n";
 			$syllabus_link .= "\t\\item \\textbf{$Common::config{dictionary}{Syllabus}}:\n";
-			$syllabus_link .= "\t\t\\begin{rawhtml}\n";
-			$syllabus_link .= Common::get_syllabi_language_icons("\t\t\t", $codcour_label)."-";
+			$syllabus_link .= "\t\t\\begin{rawhtml}";
+			$syllabus_link .= Common::get_syllabi_language_links("\t\t", $codcour_label)."-";
 			$syllabus_link .=  "\t\t\\end{rawhtml}\n";
 			$syllabus_link .=  "\t\\end{htmlonly}\n";
 			$normal_header .= $syllabus_link;

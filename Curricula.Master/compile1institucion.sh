@@ -63,7 +63,7 @@ end
 
 if($pdf == 1) then
     # latex -interaction=nonstopmode curricula-main
-    ./scripts/clean.sh;
+    rm *.ps *.log *.dvi *.aux *.bcf *.xml *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp;
     latex curricula-main;
 
     mkdir -p ../Curricula.out/log;
@@ -83,6 +83,19 @@ endif
 ./scripts/update-page-numbers.pl CS-SPC;
 mkdir -p ../Curricula.out/html/Peru/CS-SPC/Plan2021/figs;
 
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-syllabi.sh all;
+
+mkdir -p "../Curricula.out/pdfs/CS-SPC/Plan2021";
+mutool convert -o ../Curricula.out/html/Peru/CS-SPC/Plan2021/CS-SPC-P%d.png CS-SPC.pdf 1-1;
+cp CS-SPC.pdf "../Curricula.out/pdfs/CS-SPC/Plan2021/CS-SPC Plan2021.pdf";
+
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-SPC 2021-I BookOfSyllabi-ES (Plan2021) 1-10";
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-SPC 2021-I BookOfSyllabi-EN (Plan2021) 1-10";
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-SPC 2021-I BookOfBibliography-ES (Plan2021) 1-10";
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-SPC 2021-I BookOfBibliography-EN (Plan2021) 1-10";
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-SPC 2021-I BookOfDescriptions-ES (Plan2021) 1-10";
+../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-SPC 2021-I BookOfDescriptions-EN (Plan2021) 1-10";
+
 if($html == 1) then
     rm unified-curricula-main* ;
     ./scripts/gen-html-main.pl CS-SPC;
@@ -94,8 +107,7 @@ if($html == 1) then
     latex unified-curricula-main;
 
     dvips -o unified-curricula-main.ps unified-curricula-main.dvi;
-    ps2pdf unified-curricula-main.ps unified-curricula-main.pdf;
-    rm unified-curricula-main.ps unified-curricula-main.dvi;
+    rm unified-curricula-main.ps unified-curricula-main.dvi unified-curricula-main.pdf;
     rm -rf ../Curricula.out/html/Peru/CS-SPC/Plan2021;
 
     latex2html -t "Curricula CS-SPC" \
@@ -130,22 +142,11 @@ foreach lang ('ES' 'EN')
     ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-poster.sh $lang;
 end
 
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-syllabi.sh all;
 mkdir -p ../Curricula.out/html/Peru/CS-SPC/Plan2021/syllabi;
 cp ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/syllabi/* ../Curricula.out/html/Peru/CS-SPC/Plan2021/syllabi/.;
-
-mkdir -p "../Curricula.out/pdfs/CS-SPC/Plan2021";
-mutool convert -o ../Curricula.out/html/Peru/CS-SPC/Plan2021/CS-SPC-P%d.png CS-SPC.pdf 1-1;
-cp CS-SPC.pdf "../Curricula.out/pdfs/CS-SPC/Plan2021/CS-SPC Plan2021.pdf"
 mv CS-SPC.pdf "../Curricula.out/html/Peru/CS-SPC/Plan2021/CS-SPC Plan2021.pdf";
+cp ../Curricula.out/pdfs/CS-SPC/Plan2021/*.pdf ../Curricula.out/html/Peru/CS-SPC/Plan2021/.;
 
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-SPC 2021-I BookOfSyllabi-ES (Plan2021) 1-10";
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-SPC 2021-I BookOfSyllabi-EN (Plan2021) 1-10";
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-SPC 2021-I BookOfBibliography-ES (Plan2021) 1-10";
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-SPC 2021-I BookOfBibliography-EN (Plan2021) 1-10";
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-SPC 2021-I BookOfDescriptions-ES (Plan2021) 1-10";
-../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-SPC 2021-I BookOfDescriptions-EN (Plan2021) 1-10";
-  
 #       ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-SPC 2021-I BookOfUnitsByCourse (Plan2021) 1-10";
 #       ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-SPC 2021-I BookOfDeliveryControl (Plan2021) 1-10";
 

@@ -27,12 +27,6 @@ sub generate_course_tables($)
 		# Write the header for this table
 		my $this_sem_text = "";
 		$this_sem_text .= "\\begin{center}\n";
-# 		$this_sem_text .= "\t\\begin{htmlonly}\n";
-# 		$this_sem_text .= "\t\\begin{rawhtml}\n";
-# 		$this_sem_text .= "\t<A NAME=\"tab:$semester"."Sem\"></A>\n";
-# 		$this_sem_text .= "\t\\end{rawhtml}\n";
-# 		$this_sem_text .= "\t\\end{htmlonly}\n";
-
 		$this_sem_text .= "\\begin{tabularx}{23cm}{$Common::config{dictionary}{fields_header}}\\hline\n";
 		my $caption .= "$Common::config{dictionary}{semester_ordinal}{$semester} ";
 		   $caption .= "$Common::config{dictionary}{Semester}";
@@ -43,7 +37,6 @@ sub generate_course_tables($)
 		$course_headers =~ s/$begin_tag/\\textbf\{$begin_tag/g;    # aqui
 		$course_headers =~ s/$end_tag/$end_tag\}/g;
  		$this_sem_text .= Common::replace_tags_from_hash($course_headers, $begin_tag, $end_tag, %{$Common::config{dictionary}});
-
 		$this_sem_text .= "\n";
 
 		# 2nd Write the info for this course
@@ -62,8 +55,8 @@ sub generate_course_tables($)
 			my $pdflink 	= Common::get_pdf_link($codcour);
 
 # 			Util::print_message("codcour = $codcour, $Common::course_info{$codcour}{bgcolor}");
-			$this_course_info{COURSECODE} = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour}}{sec:$codcour}";
-			$this_course_info{COURSENAME} = Common::GetCourseNameWithLink($codcour, $lang, 1, $pdflink);
+			$this_course_info{COURSECODE}  = "\\htmlref{\\colorbox{$Common::course_info{$codcour}{bgcolor}}{$codcour}}{sec:$codcour}";
+			$this_course_info{COURSENAME} .= Common::GetCourseNameWithLink($codcour, $lang, 1, $pdflink);
 #			$this_course_info{COURSENAME} = "\\htmlref{$Common::course_info{$codcour}{$Common::config{language_without_accents}}{course_name}}{sec:$codcour}";
 # 			Util::print_message("codcour=$codcour");
 # 			print Dumper ( \%{$Common::course_info{$codcour}} );
@@ -112,10 +105,10 @@ sub generate_course_tables($)
 			}
 			else # Electives
 			{
-                                my $group = $Common::course_info{$codcour}{group};
-                                assert(not $group eq "");
+                my $group = $Common::course_info{$codcour}{group};
+                assert(not $group eq "");
 				$Common::counts{electives}{$semester}{$group}{cr}	= $Common::course_info{$codcour}{cr};
-                                $Common::counts{electives}{$semester}{$group}{area}	= $Common::course_info{$codcour}{area};
+                $Common::counts{electives}{$semester}{$group}{area}	= $Common::course_info{$codcour}{area};
 			}
 			$this_course_info{PREREQ} = "~";
 			if( not $Common::course_info{$codcour}{code_and_sem_prerequisites} eq "" )

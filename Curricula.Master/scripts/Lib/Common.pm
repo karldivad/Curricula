@@ -7,6 +7,7 @@ use Lib::Util;
 use Cwd;
 use strict;
 use Scalar::Util qw(looks_like_number);
+use Number::Bytes::Human qw(format_bytes);
 
 our $command     = "";
 our $institution = "";
@@ -228,6 +229,27 @@ sub get_prefix($)
 	return "";
 }
 
+sub get_link($$)
+{
+	my ($file, $lang) = (@_);
+	my $link .= "<a href=\"$file\">$file".get_language_icon($lang)."</a>\n";
+	return $link;
+}
+
+sub get_size($)
+{
+	my ($file) = (@_);
+	return format_bytes(-s $file); # 4.5M
+}
+
+sub get_link_and_size($$)
+{
+	my ($file, $lang) = (@_);
+	my $size = get_size($file);
+	my $link .= "<a href=\"$file\">$file ($size)".get_language_icon($lang)."</a>\n";
+	return $link;
+}
+
 sub get_language_icon($)
 {
     my ($lang) = (@_);
@@ -237,21 +259,27 @@ sub get_language_icon($)
     return $link;
 }
 
-sub get_syllabi_language_icons($$)
+sub get_link_with_language_icon($$$)
+{
+	my ($text, $link, $lang) = (@_);
+	return  "<a href=\"$link\">$text ".get_language_icon($lang)."</a>";
+}
+
+sub get_syllabi_language_links($$)
 {
     my ($prev_tex, $codcour) = (@_);
-	my $link  = "";
-	my $sep   = "";
+	my ($output_txt, $sep) 		 = ("\n", "");
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 	    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-	    $link .= $prev_tex;
-	    $link .= "$sep<a href=\"syllabi/$codcour-$lang_prefix.pdf\">";
-	    $link .= get_language_icon($lang);
-	    $link .= "</a>\n";
-	    $sep = ", ";
+		my $label 	= "$codcour-$lang_prefix.pdf";
+		my $link	= "syllabi/$label";
+		my $file    = get_template("OutputSyllabiDir")."/$label";
+		my $size	= get_size($file);
+		$output_txt .= "$sep$prev_tex".get_link_with_language_icon("", $link, $lang);
+	    $sep = ",\n";
 	}
-    return $link;
+    return $output_txt;
 }
 
 sub get_small_icon($$)
@@ -287,21 +315,14 @@ sub get_course_link($$)
 	return $course_link;
 }
 
-sub get_link($$)
-{
-	my ($file, $lang) = (@_);
-	my $link .= "<a href=\"$file\">$file".get_language_icon($lang)."</a>\n";
-	return $link;
-}
-
 sub get_pdf_link($)
 {
 	my ($codcour) = (@_);
-	my $pdflink   	 = "\t\\begin{htmlonly}\n";
-        $pdflink 	.= "\t\t\\begin{rawhtml}\n";
-        $pdflink 	.= Common::get_syllabi_language_icons("\t\t\t", $codcour);
-        $pdflink 	.=  "\t\t\\end{rawhtml}\n";
-        $pdflink 	.=  "\t\\end{htmlonly}\n";
+	my $pdflink   	 = "\n\\begin{htmlonly}\n";
+        $pdflink 	.= "\t\\begin{rawhtml}";
+        $pdflink 	.= Common::get_syllabi_language_links("\t\t", $codcour)."\n";
+        $pdflink 	.= "\t\\end{rawhtml}\n";
+        $pdflink 	.= "\\end{htmlonly}\n";
 	return $pdflink;
 }
 
@@ -521,7 +542,8 @@ sub set_global_variables()
 	#$config{in_html_dir}      	= $config{InLangDir}."/templates";
 
 	$config{InPeopleDir}		= $config{in}."/people";
-	system("mkdir -p $config{out}/pdfs");
+	$config{OutputPdfDir}		= "$config{out}/pdfs";
+	system("mkdir -p $config{OutputPdfDir}");
 	Util::check_point("set_global_variables");
 }
 
@@ -593,7 +615,10 @@ sub set_initial_paths()
 	$path_map{OutputFacultyFigDir}		= $path_map{OutputFacultyDir}."/fig";			system("mkdir -p $path_map{OutputFacultyFigDir}");
 	$path_map{OutputFacultyIconDir}		= $path_map{OutputFacultyDir}."/icon";			system("mkdir -p $path_map{OutputFacultyIconDir}");
 	$path_map{LinkToCurriculaBase}		= $config{LinkToCurriculaBase};
-
+	$path_map{OutputPdfDir}				= $config{OutputPdfDir};
+	$path_map{OutputPdfInstDir}			= "$config{OutputPdfDir}/$config{area}-$config{institution}/$config{Plan}";
+	system("mkdir -p $path_map{OutputPdfInstDir}");
+	
 ################################################################################################################################
 # Input and Output files
 
@@ -608,7 +633,6 @@ sub set_initial_paths()
 	$path_map{"out-acronym-file"}				= $path_map{OutputTexDir}."/acronyms.tex";
 	$path_map{"out-ncredits-file"}              = $path_map{OutputTexDir}."/ncredits.tex";
 	$path_map{"out-nsemesters-file"}            = $path_map{OutputTexDir}."/nsemesters.tex";
-
 
 	$path_map{"in-outcomes-macros-file"}		= $path_map{InLangBaseDir}."/<LANG-EXTENDED>/$config{area}.tex/outcomes-macros.tex";
 	$path_map{"in-bok-file"}					= $path_map{InTexDir}."/bok.tex";
@@ -625,7 +649,6 @@ sub set_initial_paths()
 	$path_map{"out-tables-foreach-semester-file"}	= $path_map{OutputTexDir}."/tables-by-semester-<LANG>.tex";
 	$path_map{"out-distribution-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-area-by-semester.tex";
 	$path_map{"out-distribution-of-credits-by-area-by-semester-file"}= $path_map{OutputTexDir}."/distribution-credits-by-area-by-semester.tex";
-
 
 	$path_map{"out-pie-credits-file"}			= $path_map{OutputTexDir}."/pie-credits.tex";
 	$path_map{"out-pie-hours-file"}				= $path_map{OutputTexDir}."/pie-hours.tex";
@@ -4641,6 +4664,7 @@ sub gen_bok($)
 
 sub generate_books_links()
 {
+	my $OutputPdfInstDir = get_template("OutputPdfInstDir");
 	my $tabs = "\t\t";
 	my $output_links  = "<CENTER>\n";
 	$output_links    .=	"<TABLE BORDER=0 BORDERCOLOR=RED>\n";
@@ -4664,11 +4688,14 @@ sub generate_books_links()
 	      my $book_link = "";
 	      foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	      {
-		    my $lang_prefix 	 = $Common::config{dictionaries}{$lang}{lang_prefix};
+		    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+			my $filename 	= "BookOf$book-$lang_prefix";
+			my $size 		= Common::get_size("$OutputPdfInstDir/$filename.pdf");
+			#my $pdflink	= Common::get_link_with_language_icon("$pdf_name.pdf ($size)", "$pdf_name.pdf", $lang);
 		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
 		    $book_link .= "$tabs\t<TD align=\"center\">\n";
-		    $book_link .= "$tabs$tabs<A HREF=\"BookOf$book-$lang_prefix.pdf\">\n";
-		    $book_link .= "$tabs$tabs<IMG SRC=\"BookOf$book-$lang_prefix-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle\n";
+		    $book_link .= "$tabs$tabs<A HREF=\"$filename.pdf\">\n";
+		    $book_link .= "$tabs$tabs<IMG SRC=\"$filename-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle ($size)\n";
 		    $book_link .= "$tabs$tabs".get_language_icon($lang)."\n";
 		    $book_link .= "$tabs$tabs</A>\n";
 		    $book_link .= "$tabs\t</TD>\n";
