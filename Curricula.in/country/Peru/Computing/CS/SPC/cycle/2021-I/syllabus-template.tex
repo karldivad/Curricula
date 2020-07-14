@@ -47,31 +47,34 @@
 
 %\AddToShipoutPictureBG{\put(15,-700){\includegraphics[width=2cm]{\InProgramDir/stamp1}}}
 
-%\begin{tabularx}{\textwidth}{p{3cm}cX}
-%\includegraphics[width=3cm]{\InLogosDir/\INST} 
-%&
+\begin{tabularx}{\textwidth}{p{2cm}cp{2cm}}
+\includegraphics[width=2cm]{\InLogosDir/\INST} 
+&
 \begin{minipage}{\textwidth}
 \begin{center}
-{  %\vspace{-3cm}
-    \noindent\Large\textbf{\University<LANG>}\\
-   %\SchoolFullNameBreak<LANG> \\
-<<Syllabus>> \Semester}
+{  \vspace{-1cm}
+   \noindent\Large\textbf{\University<LANG>}\\
+   \SchoolFullNameBreak<LANG> \\
+    <<Syllabus>> \Semester
+} 
 \end{center}
 \end{minipage}
-%\end{tabularx}
+& 
+
+\end{tabularx}
 
 %\addtocounter{SyllabiSectionCount}{1}
 %\section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
 %\addcontentsline{toc}{section}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 
+\vspace{0.3cm}
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<Course>>} \label{sec:--COURSE_CODE--}
-
 \indent --COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--) 
 
+\vspace{2mm}
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<GeneralInformation>>}
-
 \begin{tabularx}{\textwidth}{lcX}
     \indent \textbf{\arabic{SyllabiSectionCount}.1 <<Credits>>}             & : & --CREDITS-- \\
     \indent \textbf{\arabic{SyllabiSectionCount}.2 <<TheoryHours>>}         & : & --THEORY_HOURS-- \\
@@ -88,7 +91,6 @@
 
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<Professors>>}
-
 --PROFESSOR_SHORT_CVS--
 
 <<AttentionwithAppointment>>
@@ -98,19 +100,24 @@
 \addsectiontoidx{<<Introductiontothecourse>>}
 --JUSTIFICATION--
 
+\vspace{2mm}
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<Goals>>}
 --FULL_GOALS--
 
+\vspace{2mm}
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<Competences>>}
 --FULL_OUTCOMES--
 
+\vspace{2mm}
+\addtocounter{SyllabiSectionCount}{1}
+\addsectiontoidx{<<SpecificCompetences>>}
 --FULL_SPECIFIC_OUTCOMES--
 
+\vspace{2mm}
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<Topics>>}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{SyllabiUnitCount}{0}
 --BEGINUNIT--
 % A new unit begins here
@@ -140,9 +147,7 @@
 
 \addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<Workplan>>}
-
 \addsubsectiontoidx{\arabic{SyllabiSectionCount}.1 <<Methodology>>}
-
 \indent <<ORAL-SESSIONS-CONTENT>>
 
 % Comentar READING-SESSIONS para Discretas I y II
@@ -150,13 +155,11 @@
 % \vspace{2mm}
 
 \addsubsectiontoidx{\arabic{SyllabiSectionCount}.2 <<THEORY-SESSIONS>>}
-
 \indent <<THEORY-SESSIONS-CONTENT>>
 \vspace{2mm}
 
 % Descomentar PRACTICAL-SESSIONS para Discretas I y II
 \addsubsectiontoidx{\arabic{SyllabiSectionCount}.3 <<PRACTICAL-SESSIONS>>}
-
 \indent <<PRACTICAL-SESSIONS-CONTENT>>
 \vspace{2mm}
 
@@ -164,18 +167,7 @@
 % \vspace{2mm}
 
 \addtocounter{SyllabiSectionCount}{1}
-\addsectiontoidx{<<Planning>>}
-
-\begin{tabularx}{\textwidth}{|l|l|l|X|}                 \hline
-    %\multicolumn{4}{|l|}{\uppercase{Name}} \\ \hline
-    \uppercase{<<Date>>}  & \uppercase{<<Time>>} & \uppercase{<<SessionType>>} & \uppercase{<<Professor>>} \\ \hline
-     <<SeeatEDU>> & <<SeeatEDU>> & <<SeeatEDU>> & <<SeeatEDU>> \\ \hline
-\end{tabularx}
-\vspace{2mm}
-
-\addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<EVALUATION-SYSTEM>>}
-
 \begin{evaluation}
     \colorbox{yellow}{\textcolor{red}{********* EVALUATION MISSING ********}}
 \end{evaluation}
@@ -183,7 +175,6 @@
 \vspace{2mm}
 \addtocounter{SyllabiSectionCount}{1} 
 \addsectiontoidx{<<BasicBibliography>>}
-
 \defbibheading{bibliography}[\bibname]{}
 \printbibliography
 

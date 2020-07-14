@@ -1,8 +1,10 @@
 #!/bin/csh
 set pdfparam=$1
 set htmlparam=$2
+set syllabiparam=$3
 set pdf=0
 set html=0
+set syllabi=0
 
 if($pdfparam == "y" || $pdfparam == "Y" || $pdfparam == "yes" || $pdfparam == "Yes" || $pdfparam == "YES") then
     set pdf=1
@@ -21,7 +23,17 @@ else
     echo "Error in html param"
     exit
 endif
-echo "pdf=$pdf, html=$html"
+
+if($syllabiparam == "y" || $syllabiparam == "Y" || $syllabiparam == "yes" || $syllabiparam == "Yes" || $syllabiparam == "YES") then
+    set syllabi=1
+else if($syllabiparam == "n" || $syllabiparam == "N" || $syllabiparam == "no" || $syllabiparam == "No" || $syllabiparam == "NO") then
+    set syllabi=0
+else
+    echo "Error in syllabi param"
+    exit
+endif
+
+echo "pdf=$pdf, html=$html, syllabi=$syllabi"
 
 set LogDir=<OUT_LOG_DIR>
 date > <OUT_LOG_DIR>/<COUNTRY>-<AREA>-<INST>-time.txt
@@ -83,7 +95,9 @@ endif
 ./scripts/update-page-numbers.pl <AREA>-<INST>;
 mkdir -p <OUTPUT_HTML_DIR>/figs;
 
-<OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
+if($syllabi == 1) then
+    <OUTPUT_INST_DIR>/scripts/gen-syllabi.sh all;
+endif
 
 mkdir -p "<OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>";
 mutool convert -o <OUTPUT_HTML_DIR>/<AREA>-<INST>-P%d.png <AREA>-<INST>.pdf 1-1;
@@ -146,10 +160,10 @@ mkdir -p <OUTPUT_HTML_DIR>/syllabi;
 cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 mv <AREA>-<INST>.pdf "<OUTPUT_HTML_DIR>/<AREA>-<INST> <PLAN>.pdf";
 cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.pdf <OUTPUT_HTML_DIR>/.;
+cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.png <OUTPUT_HTML_DIR>/.;
 
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
-
 # Generate Books
 #
 # foreach auxbook (<OUTPUT_TEX_DIR>/BookOf*-*.tex)

@@ -131,6 +131,7 @@ LastModification    = Última modificación
 Justification	    = Justificación
 GeneralGoals	    = Objetivos Generales
 Competences	        = Competencias
+SpecificCompetences	= Competencias Específicas
 ContributionToOutcomes=Contribución a los resultados ({\it Outcomes})
 ContributionToSkills=Contribución a las habilidades de Ciencia de la Computación (IEEE)
 Skills		        = Habilidades

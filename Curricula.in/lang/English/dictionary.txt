@@ -132,6 +132,7 @@ LastModification    =Last change
 Justification	    = Justification
 GeneralGoals	    = Generales Goals
 Competences	        = Competences
+SpecificCompetences	= Specific Competences
 ContributionToOutcomes  =Contribution to Outcomes
 ContributionToSkills    =Contribution to Computer Science Skills (IEEE)
 Skills		            = Skills

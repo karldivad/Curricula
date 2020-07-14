@@ -6,8 +6,8 @@
 \newcommand{\ShowShortOutcome}[1]        { \csname Outcome#1Short\endcsname }
 
 \newcommand{\DefineSpecificOutcome}[3]      { \expandafter\def\csname SpecificOutcome#1#2\endcsname{#3} }
-\newcommand{\ShowSpecificOutcome}[3]        { \textbf{#1#2)} \csname SpecificOutcome#1#2\endcsname (\textbf{#2}) }
-\newcommand{\ShowSpecificOutcomeLetter}[2]  { \textbf{#1#2)} \csname SpecificOutcome#1#2Short\endcsname }
+\newcommand{\ShowSpecificOutcome}[3]        { \textbf{#1#2)} \csname SpecificOutcome#1#2\endcsname (\textbf{#3}) }
+\newcommand{\ShowSpecificOutcomeLetter}[2]  { \textbf{#1#2)} }
 \newcommand{\ShowSpecificOutcomeText}[2]    { \csname SpecificOutcome#1#2\endcsname }
 
 \newcommand{\DefineCompetence}[2]{ \expandafter\def\csname #1\endcsname{#2} }
@@ -16,4 +16,4 @@
 \newcommand{\ShowCompetence}[2]{ \textbf{#1.} \csname #1\endcsname \textbf{$\Rightarrow$ Outcome #2} }
 
 \newcommand{\DefineCompetenceLevel}[2]{ \expandafter\def\csname CompetenceLevel#1\endcsname{#2} }
-\newcommand{\ShowCompetenceLevel}[1]{ \csname CompetenceLevel#1\endcsname }
+\newcommand{\ShowCompetenceLevel}[1]{\csname CompetenceLevel#1\endcsname}
