@@ -8,6 +8,7 @@ use Cwd;
 use strict;
 use Scalar::Util qw(looks_like_number);
 use Number::Bytes::Human qw(format_bytes);
+use CAM::PDF;
 
 our $command     = "";
 our $institution = "";
@@ -241,6 +242,16 @@ sub get_size($)
 	my ($file) = (@_);
 	return format_bytes(-s $file); # 4.5M
 }
+
+sub getPDFnPages($)
+{
+	my ($file) = (@_);
+	my $pdf 	= CAM::PDF->new($file) or Util::print_color("Error trying to find: $file");
+	my $nPages	= $pdf->numPages();
+	Util::print_message("PDF: $file -> $nPages Pages detected ...");
+	return $nPages;
+}
+
 
 sub get_link_and_size($$)
 {

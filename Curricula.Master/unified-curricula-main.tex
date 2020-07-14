@@ -693,8 +693,8 @@
 \newcommand{\ShowShortOutcome}[1]        { \csname Outcome#1Short\endcsname }
 
 \newcommand{\DefineSpecificOutcome}[3]      { \expandafter\def\csname SpecificOutcome#1#2\endcsname{#3} }
-\newcommand{\ShowSpecificOutcome}[3]        { \textbf{#1#2)} \csname SpecificOutcome#1#2\endcsname (\textbf{#2}) }
-\newcommand{\ShowSpecificOutcomeLetter}[2]  { \textbf{#1#2)} \csname SpecificOutcome#1#2Short\endcsname }
+\newcommand{\ShowSpecificOutcome}[3]        { \textbf{#1#2)} \csname SpecificOutcome#1#2\endcsname (\textbf{#3}) }
+\newcommand{\ShowSpecificOutcomeLetter}[2]  { \textbf{#1#2)} }
 \newcommand{\ShowSpecificOutcomeText}[2]    { \csname SpecificOutcome#1#2\endcsname }
 
 \newcommand{\DefineCompetence}[2]{ \expandafter\def\csname #1\endcsname{#2} }
@@ -703,7 +703,7 @@
 \newcommand{\ShowCompetence}[2]{ \textbf{#1.} \csname #1\endcsname \textbf{$\Rightarrow$ Outcome #2} }
 
 \newcommand{\DefineCompetenceLevel}[2]{ \expandafter\def\csname CompetenceLevel#1\endcsname{#2} }
-\newcommand{\ShowCompetenceLevel}[1]{ \csname CompetenceLevel#1\endcsname }
+\newcommand{\ShowCompetenceLevel}[1]{\csname CompetenceLevel#1\endcsname}
 
 \newcommand{\ExpandItemLong}[2]{\item[\ref{out:#1})] #2}
 
@@ -827,13 +827,13 @@
     \latexhtml{\vspace{3cm}}{}
 
     \begin{huge}
-        Plan Curricular 2021  de la Escuela Profesional de Ciencia de la Computaci\'on ES\\ \htmladdnormallink{http://www.spc.org.pe}{http://www.spc.org.pe} 
+        Plan Curricular 2021  de la Programa Profesional de Ciencia de la Computaci\'on ES\\ \htmladdnormallink{http://www.spc.org.pe}{http://www.spc.org.pe} 
     \end{huge}
     \latexhtml{\vspace{3cm}}{}
 
 	\begin{htmlonly}
 		\begin{rawhtml}
-        <a href="CS-SPC Plan2021.pdf">CS-SPC Plan2021.pdf (4.0M) <img src="./figs/pdf.jpeg" style="border: 0px solid ; width: 16px; height: 16px;"><img src="./figs/ES.png" style="border: 0px solid ; width: 16px; height: 16px;"></a>
+        <a href="CS-SPC Plan2021.pdf">CS-SPC Plan2021.pdf (416 Pages, 4.0M) <img src="./figs/pdf.jpeg" style="border: 0px solid ; width: 16px; height: 16px;"><img src="./figs/ES.png" style="border: 0px solid ; width: 16px; height: 16px;"></a>
 
         <CENTER>
 <TABLE BORDER=0 BORDERCOLOR=RED>
@@ -852,13 +852,13 @@
 		<TR>
 			<TD align="center">
 				<A HREF="BookOfSyllabi-ES.pdf">
-				<IMG SRC="BookOfSyllabi-ES-P1.png" BORDER="1" BORDERCOLOR=RED ALT="Libro de S&iacute;labos" height="500"><br>Libro de S&iacute;labos (1.8M)
+				<IMG SRC="BookOfSyllabi-ES-P1.png" BORDER="1" BORDERCOLOR=RED ALT="Libro de S&iacute;labos" height="500"><br>Libro de S&iacute;labos (79M)
 				<img src="./figs/pdf.jpeg" style="border: 0px solid ; width: 16px; height: 16px;"><img src="./figs/ES.png" style="border: 0px solid ; width: 16px; height: 16px;">
 				</A>
 			</TD>
 			<TD align="center">
 				<A HREF="BookOfSyllabi-EN.pdf">
-				<IMG SRC="BookOfSyllabi-EN-P1.png" BORDER="1" BORDERCOLOR=RED ALT="Book of Syllabi" height="500"><br>Book of Syllabi (1.7M)
+				<IMG SRC="BookOfSyllabi-EN-P1.png" BORDER="1" BORDERCOLOR=RED ALT="Book of Syllabi" height="500"><br>Book of Syllabi (79M)
 				<img src="./figs/pdf.jpeg" style="border: 0px solid ; width: 16px; height: 16px;"><img src="./figs/EN.png" style="border: 0px solid ; width: 16px; height: 16px;">
 				</A>
 			</TD>
@@ -954,7 +954,7 @@ email: \textit{ecuadros@spc.org.pe}\\
 					 
  \chapter*{Resumen ejecutivo}
 Este documento representa el informe final de la nueva 
-malla curricular 2021 del Escuela Profesional de Ciencia de la Computaci\'on ES de la Sociedad Peruana de Computaci\'on (SPC)  (\textit{\htmladdnormallink{http://www.spc.org.pe}{http://www.spc.org.pe} }) 
+malla curricular 2021 del Programa Profesional de Ciencia de la Computaci\'on ES de la Sociedad Peruana de Computaci\'on (SPC)  (\textit{\htmladdnormallink{http://www.spc.org.pe}{http://www.spc.org.pe} }) 
 en la ciudad de ~-Per\'u.
 
 Todo el contenido del documento est\'a basado en la propuesta internacional denominada \textit{Computing Curricula}\footnote{http://www.sigcse.org/cc2001/} 
@@ -1030,11 +1030,14 @@ han aportado parte de su tiempo a darnos sus sugerencias. Entre ellos debemos me
 \item Alex Cuadros Vargas (UCSP, Per\'u)
 \item Yessenia Yari (UCSP, Per\'u)
 \item Yvan T\'upac (UCSP, Per\'u)
+\item Yamilet Serrano (UTEC, Per\'u)
+\item Jesus Bellido (UTEC, Per\'u)
 \item Cuerpo docente de la UTEC y de la UCSP.
 \end{itemize}
 
 Todo este equipo de trabajo asumi\'o como premisa que el centro de nuestro esfuerzo, 
-es la formaci\'on acad\'emica y humana \underline{de los estudiantes} para formar agentes de cambio positivo y disruptivo en la sociedad.
+es la formaci\'on acad\'emica y humana \underline{de los estudiantes} para formar 
+agentes de cambio positivo y disruptivo en la sociedad.
 
 A todos ellos deseamos agradecerles por su aporte que ha permitido generar 
 este documento, \'unico en su g\'enero en nuestro pa\'{i}s, que servir\'a para sentar las 
@@ -1511,7 +1514,7 @@ que sea capaz de seleccionar apropiadamente entre ellos para diferentes aplicaci
 
 \section{Perfil del ingresante}
 
-El aspirante a ingresar a la Escuela Profesional de Ciencia de la Computaci\'on ES de la Sociedad Peruana de Computaci\'on (SPC)  debe tener:
+El aspirante a ingresar a la Programa Profesional de Ciencia de la Computaci\'on ES de la Sociedad Peruana de Computaci\'on (SPC)  debe tener:
 
 \noindent Conocimientos de:
 \begin{enumerate}
@@ -9192,7 +9195,7 @@ f) & Comunicarse efectivamente.  &  &  &  & \htmlref{2}{sec:FG101} &
  g) &  Analizar el impacto local y global de la computaci\'on.  &   &   &   &   &   
 &   &   &   &   
  \\ 
-h) & Aprender de forma continua.  &  &  &  & \htmlref{2}{sec:FG101} & \htmlref{2}{sec:FG102} 
+h) & Aprender de forma continua.  &  &  &  &  & \htmlref{2}{sec:FG102} 
 &  &  &  &  
  \\ 
  i) &  Utilizar t\'ecnicas y herramientas actuales.  &   &   &   &   &   
@@ -9475,7 +9478,7 @@ de los prerequisitos de forma gr\'afica.
       \begin{figure}[H]
             \includegraphics{/Users/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/figs/small-graph-curricula-ES.ps}
             \label{fig:malla-curricular}
-            \caption{Malla curricular Escuela Profesional de Ciencia de la Computaci\'on ES}
+            \caption{Malla curricular Programa Profesional de Ciencia de la Computaci\'on ES}
       \end{figure}
 \end{latexonly}
 \begin{htmlonly}
@@ -9640,7 +9643,6 @@ de los prerequisitos de forma gr\'afica.
 
 \subsection{Outcome: h) Incorporarse a un proceso de aprendizaje profesional continuo. }
 \begin{itemize}
-	\item \htmlref{FG101. Comunicaci\'on}{sec:FG101}~(1er Sem)
 	\item \htmlref{FG102. Metodolog\'{i}a del Estudio}{sec:FG102}~(1er Sem)
 	\item \htmlref{CS311. Programaci\'on Competitiva}{sec:CS311}~(6to Sem)
 	\item \htmlref{CS391. Ingenier\'{i}a de Software III}{sec:CS391}~(7mo Sem)
@@ -10579,124 +10581,104 @@ Criptograf\'{i}a, m\'etodos formales, etc.
 
 \subsection{Justificaci\'on}
 
-The course aims to develop in students the skills to deal with models in science and engineering related to
-single variable differential calculus skills. In the course it is studied and applied concepts related to calculation
-limits, derivatives and integrals of real and vector functions of single real variables to be used as base and
-support for the study of new contents and subjects. Also seeks to achieve reasoning capabilities and
-applicability to interact with real-world problems by providing a mathematical basis for further professional
-development activities.
+El curso tiene como objetivo desarrollar en los estudiantes la capacidad de analizar modelos en ciencia e ingenier\'{i}a mediante herramientas de c\'alculo
+diferencial e integral, con funciones reales de variable real.
+En el curso se estudian y aplican conceptos relacionados con funciones, derivadas e integrales de funciones reales de una variable, las cu\'ales se utilizar\'an como base y apoyo para el estudio de nuevos contenidos y materias.
+Tambi\'en busca lograr capacidades heur\'{i}sticas, de razonamiento y comunicaci\'on para abordar problemas del mundo real mediante los conceptos y procedimientos aprendidos.
 
 \subsection{Objetivos Generales}
 \begin{enumerate}
-\item . 
-\item . 
-\item . 
-
+\item Aplicar conocimientos de matem\'aticas.
+\item Aplicar conocimientos de ingenier\'{i}a.
 \end{enumerate}
 
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
 \begin{description}
-    \item [a)] Aplicar conocimientos de computaci\'on y de matem\'aticas apropiadas para la disciplina.  (Evaluar)
-    \item [j)] Aplicar la base matem\'atica, principios de algoritmos y la teor\'{i}­a de la CS en el modelamiento y dise\~no de sistemas.  (Evaluar)
+   \item [a)] Aplicar conocimientos de computaci\'on y de matem\'aticas apropiadas para la disciplina.  (Evaluar)
+   \item [j)] Aplicar la base matem\'atica, principios de algoritmos y la teor\'{i}­a de la CS en el modelamiento y dise\~no de sistemas.  (Evaluar)
 \end{description}
 
 \subsection{Contribuci\'on a las habilidades de Ciencia de la Computaci\'on (IEEE)}
 \begin{description}
-    \item [C1)] La comprensi\'on intelectual y la capacidad de aplicar las bases matem\'aticas y la teor\'{i}­a de la inform\'atica ({\it Computer Science}). $\Rightarrow$ \textbf{Outcome: a}
-    \item [C20)] Posibilidad de conectar la teor\'{i}­a y las habilidades aprendidas en la academia a los acontecimientos del mundo real que explican su pertinencia y utilidad. $\Rightarrow$ \textbf{Outcome: j}
-    \item [C24)] Comprender la necesidad de la formaci\'on permanente y la mejora de habilidades y capacidades. $\Rightarrow$ \textbf{Outcome: j}
+   \item [C1)] La comprensi\'on intelectual y la capacidad de aplicar las bases matem\'aticas y la teor\'{i}­a de la inform\'atica ({\it Computer Science}). $\Rightarrow$ \textbf{Outcome: a}
+   \item [C20)] Posibilidad de conectar la teor\'{i}­a y las habilidades aprendidas en la academia a los acontecimientos del mundo real que explican su pertinencia y utilidad. $\Rightarrow$ \textbf{Outcome: j}
+   \item [C24)] Comprender la necesidad de la formaci\'on permanente y la mejora de habilidades y capacidades. $\Rightarrow$ \textbf{Outcome: j}
 \end{description}
 
 \subsection{Unidades}
 
-\subsubsection{N\'umeros complejos (20 horas) [Habilidades C1]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,RonLarson}
+\subsubsection{Vectores y n\'umeros complejos (20 horas) [Habilidades C1]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartCOVar,Larson}
    \textbf{Temas}
 \begin{enumerate}
-    \item . 
-    \item . 
+      \item Operaciones con n\'umeros complejos
+      \item Teorema de Moivre
    \end{enumerate}
 
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item . 
-      \item . 
+      \item Definir y operar con n\'umeros complejos, calculando su forma polar y exponencial.
+      \item Utilizar el teorema de Moivre para simplificar los c\'alculos de complejos.
+      \item Operar con vectores caracteriz\'andolo por su direcci\'on y magnitud.  Representar una funci\'on a partir de la relaci\'on de conjuntos,  dados verbal, gr\'afica y algebraicamente,  en un diagrama de Venn  y/o en el plano cartesiano proporcionando, si es posible, su regla de correspondencia  y sus principales caracter\'{i}sticas.
    \end{enumerate}
 
-\subsubsection{Functions of a single variable (10 horas) [Habilidades C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,RonLarson}
-  \textbf{Temas}
+\subsubsection{Funciones de una variable (10 horas) [Habilidades C20]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartCOVar,Larson}
+   \textbf{Temas}
 \begin{enumerate}
-    \item . 
-    \item . 
-    \item . 
-    \item . 
-    \item . 
-    \item . 
-
+      \item Definici\'on, caracter\'{i}sticas y representaci\'on gr\'afica.
+      \item \'Algebra de funciones.
+      \item Funciones lineales, polinomiales, sinusoidales, exponenciales y logar\'{i}tmicas.
+      \item Modelamiento de situaciones cercanas a la realidad usando funciones.
    \end{enumerate}
 
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
+      \item Modelar situaciones reales del entorno cercano usando funciones constantes, lineales, cuadr\'aticas y polin\'omicas, y otras resultante de las operaciones ( f+-*/g, fog  , af(bx -c)+d) entre funciones elementales, con \'enfasis en el c\'alculo, la gr\'afica y la interpretaci\'on de la pendiente y concavidad en un contexto aplicado. 
+      \item Modelar situaciones reales del entorno cercano usando funciones sinusoidales.
+      \item Usar las funciones exponenciales, logar\'{i}tmica y log\'{i}stica para modelar situaciones reales del entorno cercano que se ajustan a sus comportamientos, reconociendo sus caracter\'{i}sticas (crecimiento, decrecimiento, comportamiento asint\'otico).
+      \item Reconoce y construye funciones trigonom\'etricas.
+      \item Aplicar reglas para transformar funciones.
       \end{enumerate}
 
-\subsubsection{L\'{i}mites y derivadas (20 horas) [Habilidades C1]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,RonLarson}
+\subsubsection{Derivadas de funciones (20 horas) [Habilidades C1]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartCOVar,Larson}
    \textbf{Temas}
 \begin{enumerate}
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
+      \item Definici\'on de derivada como raz\'on de cambio y como pendiente de la tangente a la curva en un punto.
+      \item Reglas de derivaci\'on.
+      \item Aplicaciones de las derivadas en problemas de velocidades relacionadas.
+      \item Aplicaciones de las derivadas en problemas de optimizaci\'on de funciones.
    \end{enumerate}
 
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-        \end{enumerate}
+      \item Resolver problemas usando la derivada de una funci\'on como una raz\'on de cambio entre sus dos variables o como la pendiente de la recta tangente en un punto, aplicando las reglas de derivaci\'on a funciones simples. 
+      \item Aproximar funciones usando los diferenciales. $df=f'(x)dx$, aplicando las reglas de la derivaci\'on para calcular derivada de funciones compuestas e impl\'{i}citas con la notaci\'on de Leibniz.
+      \item Resolver problemas de contexto real del entorno cercano que involucran el c\'alculo de velocidades relacionadas derivando funciones simples, compuestas e impl\'{i}citamente teniendo presente el uso de los diferenciales.
+      \item Resolver problemas de optimizaci\'on analizando el comportamiento de una funci\'on mediante su primera y segunda derivada (crecimiento, decrecimiento, concavidad, extremos).
+   \end{enumerate}
 
 \subsubsection{Integrales (22 horas) [Habilidades C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,RonLarson}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartCOVar,Larson}
    \textbf{Temas}
 \begin{enumerate}
-    \item . 
-    \item . 
-    \item . 
-    \item . 
-
+      \item Integral indefinida y m\'etodos de integraci\'on (sustituci\'on, integraci\'on por partes, sustituciones trigonom\'etricas y descomposici\'on por fracciones parciales).
+      \item Suma de Riemann para estimar \'areas.
+      \item Teoremas del c\'alculo (TFC1, TFC2, TCN).
+      \item C\'alculo de \'area entre curvas y valor promedio.
+      \item Ecuaciones diferenciales que se resuelven por variables separables.
    \end{enumerate}
 
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-      \item . 
-    \end{enumerate}
+      \item Resolver integrales indefinidas mediante diversos m\'etodos (sustituci\'on, integraci\'on por partes, sustituci\'on trigonom\'etrica, descomposici\'on en fracciones parciales).
+      \item Estimar el \'area bajo una curva mediante la divisi\'on en rect\'angulos y sumas de Riemann, con interpretaciones en contextos de f\'{i}sica y otros cotidianos.  
+      \item Aplicar los teoremas del c\'alculo (TFC1, TFC2, TCN) para resolver integrales indefinidas usando diferentes m\'etodos de integraci\'on.
+      \item Resolver problemas de \'area y valor promedio de una funci\'on, con las correspondientes interpretaciones f\'{i}sicas de la integral en cinem\'atica. 
+      \item Modelar situaciones reales usando ecuaciones diferenciales y resolverlas usando m\'etodo de separaci\'on de variables. (Ley de enfriamiento de Newton, Din\'amica poblacional (Log\'{i}stica, curva de aprendizaje), etc.).
+      \item Define un n\'umero complejo y lo representa en diversas formas. Usa la f\'ormula de Moivre al c\'alculo de operaciones con complejos.
+   \end{enumerate}
 
 %
 
@@ -10725,8 +10707,15 @@ development activities.
 
 \subsection{Justificaci\'on}
 
-Para lograr una eficaz comunicaci\'on en el \'ambito personal y profesional, es prioritario el manejo adecuado de la Lengua en forma oral y escrita. Se justifica, por lo tanto, que los alumnos de la Universidad Cat\'olica San Pablo conozcan, comprendan y apliquen los aspectos conceptuales y operativos de su idioma, para el desarrollo de sus habilidades comunicativas fundamentales: Escuchar, hablar, leer y escribir.
-En consecuencia el ejercicio permanente y el aporte de los fundamentos contribuyen grandemente en la formaci\'on acad\'emica y, en el futuro, en el desempe\~no de su profesi\'on
+Para lograr una eficaz comunicaci\'on en el \'ambito personal y profesional, 
+es prioritario el manejo adecuado de la Lengua en forma oral y escrita. 
+Se justifica, por lo tanto, que los alumnos conozcan, comprendan y apliquen 
+los aspectos conceptuales y operativos de su idioma, para el desarrollo 
+de sus habilidades comunicativas fundamentales: Escuchar, hablar, leer y escribir.
+
+En consecuencia el ejercicio permanente y el aporte de los fundamentos 
+contribuyen grandemente en la formaci\'on acad\'emica y, en el futuro, 
+en el desempe\~no de su profesi\'on
 
 \subsection{Objetivos Generales}
 \begin{enumerate}
@@ -10736,8 +10725,13 @@ En consecuencia el ejercicio permanente y el aporte de los fundamentos contribuy
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
 \begin{description}
    \item [f)] Comunicarse efectivamente con audiencias diversas.  (Usar)
-   \item [h)] Incorporarse a un proceso de aprendizaje profesional continuo.  (Usar)
    \item [n)] Aplicar conocimientos de humanidades en su labor profesional.  (Usar)
+\end{description}
+
+\subsection{Contribuci\'on a los resultados ({\it Outcomes})}
+\begin{description}
+    \item \ShowSpecificOutcome{f}{1}{}
+    \item \ShowSpecificOutcome{n}{1}{}
 \end{description}
 
 \subsection{Contribuci\'on a las habilidades de Ciencia de la Computaci\'on (IEEE)}
@@ -11332,17 +11326,14 @@ diversas estructuras discretas, estructuras que ser\'an implementadas y usadas e
 
 \subsection{Justificaci\'on}
 
-El curso desarrolla en los estudiantes las habilidades para manejar modelos de habilidades de ingenier\'{i}a y ciencia. En la primera parte
-Del curso un estudio de las funciones de varias variables, derivadas parciales, integrales m\'ultiples y una
-Introducci\'on a campos vectoriales. Luego el estudiante utilizar\'a los conceptos b\'asicos de c\'alculo para modelar y resolver ecuaciones diferenciales ordinarias utilizando t\'ecnicas como las transformadas de Laplace y las series de Fourier.
+  El curso est\'a enfocado en desarrollar capacidades en comprensi\'on de problemas, entendimiento y aplicaci\'on de modelos matem\'aticos. Con este fin se desarrolla una metodolog\'{i}a activa y participativa con uso racional de la tecnolog\'{i}a y espacios de trabajo colaborativo. Las sesiones son te\'oricas y pr\'acticas asociadas a situaciones contextualizadas que motivan al estudiante a involucrarse en su entendimiento y soluci\'on.
+  EL curso tiene como finalidad abordar los siguientes temas principales el cual se monitorear\'a todas las semanas, estos temas son los siguientes: Vectores, Funciones de Varias Variables, Derivadas Parciales, Integrales dobles, Series y Ecuaciones diferenciales ordinarias de primer orden y de segundo o m\'asn orden.
 
 \subsection{Objetivos Generales}
 \begin{enumerate}
-  \item Aplicar reglas de derivaci\'on y diferenciaci\'on parcial en funciones de varias variables.
-  \item Aplicar t\'ecnicas para el c\'alculo de integrales m\'ultiples.
-  \item Comprender y utilizar los conceptos de c\'alculo vectorial.
-  \item Comprender la importancia de las series.
-  \item Identificar y resolver ecuaciones diferenciales de primer orden y sus aplicaciones en problemas qu\'{i}micos y f\'{i}sicos.
+  \item Capacidad de aplicar conocimientos de matem\'aticas.
+  \item Capacidad de aplicar conocimientos de ingenier\'{i}a.
+  \item Capacidad de aplicar conocimientos de computaci\'on y de matem\'aticas.
 \end{enumerate}
 
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
@@ -11359,87 +11350,93 @@ Introducci\'on a campos vectoriales. Luego el estudiante utilizar\'a los concept
 
 \subsection{Unidades}
 
-\subsubsection{Multi-Variable Function Differential (24 horas) [Habilidades C1,C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,DennisZ}
-   \textbf{Temas}
-\begin{enumerate}
-    \item Concepto de funciones multi-variables.
-    \item Derivados Direccionales
-    \item L\'{i}nea tangente, plano normal a l\'{i}nea de curva y plano tangente, l\'{i}nea normal a un plano de curva. Conocer para calcular sus ecuaciones.
-    \item Concepto de valor extremo y valor extremo condicional de funciones multi-variables.
-    \item Problemas de aplicaci\'on tales como modelizaci\'on de la producci\'on total de un sistema econ\'omico, velocidad del sonido a trav\'es del oc\'eano, optimizaci\'on del espesante, etc.
-      \end{enumerate}
-
-   \textbf{Objetivos de Aprendizaje}
-\begin{enumerate}
-    \item Comprender el concepto de funciones multi-variables.
-    \item Dominar el concepto y m\'etodo de c\'alculo de la derivada direccional y gradiente de la gu\'{i}a.
-    \item Dominar el m\'etodo de c\'alculo de la derivada parcial de primer orden y de segundo orden de las funciones compuestas.
-    \item DomEntender l\'{i}nea tangente, plano normal a l\'{i}nea de curva y plano tangente, l\'{i}nea normal a un plan de curva. Saber calcular sus ecuaciones.inar el m\'etodo de c\'alculo de las derivadas parciales para funciones impl\'{i}citas.
-    \item Entender l\'{i}nea tangente, plano normal a l\'{i}nea de curva y plano tangente, l\'{i}nea normal a un plan de curva. Saber calcular sus ecuaciones.
-    \item Aprenda el concepto de valor extremo y valor extremo condicional de funciones multi-variables; Saber para averiguar el valor extremo de la funci\'on binaria.
-    \item Ser capaz de resolver problemas de aplicaciones simples.
-    \end{enumerate}
-
-\subsubsection{Multi-Variable function Integral (12 horas) [Habilidades C1,C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,DennisZ}
+\subsubsection{Vectores (24 horas) [Habilidades C1,C20]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartMVar,DennisZ}
   \textbf{Temas}
 \begin{enumerate}
-    \item Integral doble, integral triple y naturaleza de la integral m\'ultiple.
-    \item M\'etodo de doble integral
-    \item L\'{i}nea integral
-    \item La Divergencia, Rotaci\'on y Laplaciano
+  \item Componentes, can\'onicos, problemas de fuerza o velocidad.
+  \item \'Angulo entre dos vectores, calcular trabajo por una fuerza constante, momento de una fuerza, volumen.
+  \item Ecuaci\'on de la recta y el plano, Dibujar planos, Distancia entre puntos, planos y rectas.
+  \item Calcular trabajo por fuerza constante, momento de una fuerza, volumen.
+  \item Dibujar funciones de dos y tres variables, curvas de nivel.
+    \end{enumerate}
+
+  \textbf{Objetivos de Aprendizaje}
+\begin{enumerate}
+  \item Expresar un vector mediante sus componentes y usar operaciones vectoriales para interpretar los resultados geom\'etricamente, utilizando las combinaciones lineales de vectores unitarios est\'andar o can\'onicos.
+  \item Entender el sistema de coordenadas rectangulares tridimensional y analizar vectores en el espacio; hallando el \'angulo entre dos vectores y el vector perpendicular entre dos vectores.
+  \item Aplicar conocimientos sobre las propiedades vectoriales en propiedades f\'{i}sicas y qu\'{i}micas.
+  \item Dar un conjunto de ecuaciones param\'etricas para una recta en el espacio.
+  \item Dar una ecuaci\'on lineal para representar un plano en el espacio, utiliz\'andolo para dibujar el plano dado por la ecuaci\'on lineal.
+  \item Hallar las distancias entre puntos, planos y rectas en el espacio.
+  \end{enumerate}
+
+\subsubsection{Derivadas e Integrales (24 horas) [Habilidades C1,C20]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartMVar,DennisZ}
+  \textbf{Temas}
+\begin{enumerate}
+    \item Interpretar las derivadas direccionales, An\'alisis de errores, regla de la cadena.
+    \item Derivada direccional, gradiente de una funci\'on de dos variables, aplicaci\'on.
+    \item Extremos absolutos y extremos relativos / criterio de las segundas derivadas parciales.
+    \item \'Areas, vol\'umenes y valores promedios.
+    \item Integrales dobles usando coordenadas polares.
+\end{enumerate}  
+
+  \textbf{Objetivos de Aprendizaje}
+\begin{enumerate}
+   \item Entender la notaci\'on para una funci\'on de varias variables, ayud\'andolo a dibujar la gr\'afica en el espacio. Realizar las gr\'aficas de curvas de nivel de una funci\'on de dos variables.
+   \item Hallar y utilizar las derivadas parciales de una funci\'on de dos o m\'as variables, para entender los conceptos de incrementos y diferenciales.
+   \item Utilizar una diferencial como aproximaci\'on y utilizar la regla de la cadena para funciones de varias variables.
+   \item Hallar y usar las derivadas direccionales de una funci\'on de dos variables, utiliz\'andolo para encontrar la gradiente de una funci\'on de dos o m\'as variables.
+   \item Hallar extremos absolutos y relativos de una funci\'on de dos variables, utilizando el criterio de las segundas derivadas parciales.
+   \item Resolver problemas de optimizaci\'on con funciones de varias variables sin y con restricciones, utilizando el m\'etodo de los multiplicadores de Lagrange.
+   \item Evaluar y utilizar una integral iterada para hallar el \'area de una regi\'on plana en coordenadas cartesianas.
+  \end{enumerate}
+
+\subsubsection{Series y Sucesiones (12 horas) [Habilidades C1,C20]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartMVar,DennisZ}
+  \textbf{Temas}
+\begin{enumerate}
+    \item Sucesiones - l\'{i}mite de una sucesi\'on-reconocimiento de patrones de una sucesi\'on.
+    \item Series infinitas series geom\'etricas-Criterio de la integral y series P.
+    \item Criterio del cociente / Polinomios de Taylor y de Maclaurin.
+    \item Series de Taylor / Maclaurin.
    \end{enumerate}
   
   \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-    \item Entender la integral doble, integral triple, y entender la naturaleza de la integral m\'ultiple.
-    \item Dominar el m\'etodo de c\'alculo de la integral doble (coordenadas cartesianas, coordenadas polares), la integral triple (coordenadas cartesianas, coordenadas cil\'{i}ndricas, coordenadas esf\'ericas).
-    \item Entender el concepto de l\'{i}nea Integral, sus propiedades y relaciones.
-    \item Saber calcular la integral de l\'{i}nea.
-    \item Dominar el c\'alculo de la rotaci\'on, la divergencia y Laplacian.
-  
+    \item Hallar la masa, el centro de masa y los momentos de inercia de una l\'amina plana utilizando una integral doble.
+    \item Determinar si una sucesi\'on converge o diverge, utilizando l\'{i}mites y regla de L'Hospital.
+    \item Entender la definici\'on de una serie infinita usando propiedades para encontrar si son convergentes o divergentes.
+    \item Emplear criterios y propiedades de las series infinita para determinar si es convergente o divergente. Encontrar aproximaciones polinomiales de las funciones mediante polinomios de Taylor y Maclaurin a funciones elementales.
+    \item Comprender la definici\'on de una serie de potencia para calcular el radio y el intervalo de convergencia. Hallar una serie de Taylor o de Maclaurin para una funci\'on.
     \end{enumerate}
 
-\subsubsection{Series (24 horas) [Habilidades C1,C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,DennisZ}
-   \textbf{Temas}
+\subsubsection{Ecuaciones Diferenciales (30 horas) [Habilidades C1,C20]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{StewartMVar,DennisZ}
+  \textbf{Temas}
 \begin{enumerate}
-    \item Serie convergente.
-    \item Serie Taylor y MacLaurin.
-    \item Funciones ortogonales.
- \end{enumerate}
-
-   \textbf{Objetivos de Aprendizaje}
-\begin{enumerate}
-    \item Dominio del c\'alculo si la serie es convergente, y si es convergente, encontrar la suma de la serie tratando de encontrar el radio de convergencia y el intervalo de convergencia de una serie de potencia.
-    \item Representa una funci\'on como una serie de potencias y encuentra la serie de Taylor y MacLaurin para estimar los valores de las funciones con la precisi\'on deseada.
-    \item Entender los conceptos de funciones ortogonales y la expansi\'on de una funci\'on dada f para encontrar su serie de Fourier.
-     \end{enumerate}
-
-\subsubsection{Ordinary Differential Equations (30 horas) [Habilidades C1,C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Stewart,DennisZ}
-   \textbf{Temas}
-\begin{enumerate}
-    \item Concepto de ecuaciones diferenciales
-    \item M\'etodos para resolver ecuaciones diferenciales
-    \item M\'etodos para resolver las ecuaciones diferenciales lineales de segundo orden
-    \item Ecuaciones diferenciales ordinarias lineales de orden superior
-    \item Problemas de aplicaciones con las transformaciones de Laplace
-      \end{enumerate}
-
-   \textbf{Objetivos de Aprendizaje}
-\begin{enumerate}
-    \item Comprender ecuaciones diferenciales, soluciones, orden, soluci\'on general, condiciones iniciales y soluciones especiales, etc.
-    \item Dominar el m\'etodo de c\'alculo para las variables ecuaci\'on separable y ecuaciones lineales de primer orden. Conocido para resolver la ecuaci\'on homog\'enea y las ecuaciones de Bernoulli (Bernoulli); Entender la sustituci\'on de la variable para resolver la ecuaci\'on.
-    \item Diminio  para resolver ecuaciones diferenciales totales.
-    \item Ser capaz de utilizar el m\'etodo de orden reducido para resolver ecuaciones.
-    \item Comprender la estructura de la ecuaci\'on diferencial lineal de segundo orden.
-    \item Dominio del c\'alculo para las ecuaciones diferenciales lineales homog\'eneas de coeficiente constante; Y comprender el m\'etodo de c\'alculo para las ecuaciones diferenciales lineales homog\'eneas de orden superior.
-    \item Saber aplicar el m\'etodo de c\'alculo de ecuaciones diferenciales para resolver problemas simples de aplicaci\'on geom\'etrica y f\'{i}sica.
-    \item Resolver correctamente ciertos tipos de ecuaciones diferenciales utilizando transformadas de Laplace.
-
+    \item Definiciones y terminolog\'{i}as / Problemas con valores iniciales.
+    \item Variable separable - Ecuaciones Lineales.
+    \item Modelos Lineales de Crecimiento (Poblacional), Decaimiento (Bacterias - Vida Media - Mezclas - Ley de Newton.)
+    \item Ecuaciones Exactas - Soluciones por sustituci\'on.
+    \item Modelos No lineales (Cadena cayendo - Crecimiento poblaci\'on log\'{i}stica - Tanque cil\'{i}ndrico con gotera - c\'onico invertido, Colector solar, Modelo de inmigraci\'on.
+    \item Series radiactivas - Mezclas - Mallas.
+    \item Concentraci\'on de nutrientes - Ley de Newton.
+    \item Problemas con valores iniciales - homog\'enea y no homog\'enea.
+    \item M\'etodo del anulador - Ecuaci\'on de Cauchy Euler.
    \end{enumerate}
+  
+  \textbf{Objetivos de Aprendizaje}
+\begin{enumerate}
+    \item Entender las definiciones y terminolog\'{i}a de ecuaciones diferenciales con y sin valores iniciales.
+    \item Explicar los modelos de ecuaciones diferenciales de 1° y 2 ° Orden.
+    \item Resolver las ecuaciones diferenciales de primer orden por el m\'etodo de variables separables.
+    \item Resolver las ecuaciones lineales diferenciales de primer orden homog\'eneas y no homog\'eneas usando el factor integrante.
+    \item Resolver ecuaciones diferenciales de primer orden exactas con y sin valores iniciales, usando factor de integraci\'on.
+    \item Obtener la soluci\'on general de una ecuaci\'on lineal homog\'enea de segundo orden con coeficientes constantes.
+    \item Resolver la ecuaci\'on de Euler de segundo orden, aplicando para analizar aplicaciones en vibraciones mec\'anicas y oscilaciones en circuitos el\'ectricos.
+    \end{enumerate}
 
 %
 
@@ -14517,7 +14514,7 @@ Que el alumno conozca y comprenda los conceptos y principios fundamentales de la
 	\item Discutir oportunidades para optimizaci\'on introducida por la traducci\'on y enfoques para alcanzar la optimizaci\'on, tales como la selecci\'on de la instrucci\'on, planificaci\'on de instruccion, asignaci\'on de registros y optimizaci\'on de tipo mirilla (\textit{peephole optimization})  [Evaluar]
 \end{enumerate}
 
-ï»¿%
+%
 
 \section{CB111. F\'{i}sica Computacional (Obligatorio)}\label{sec:CB111}
 \begin{itemize}
@@ -14547,21 +14544,14 @@ Que el alumno conozca y comprenda los conceptos y principios fundamentales de la
 
 \subsection{Justificaci\'on}
 
-F\'{i}sica I es un curso que le permitir\'a al estudiante entender
-las leyes de f\'{i}sica de macropart\'{i}culas y micropart\'{i}culas considerado desde un
-punto material hasta un sistemas de part\'{i}culas; debi\'endose tener en cuenta que los
-fen\'omenos aqu\'{i} estudiados se relacionan a la f\'{i}sica cl\'asica: Cinem\'atica, Din\'amica, Trabajo y Energ\'{i}a; 
-adem\'as se debe asociar que \'estos problemas deben ser resueltos con algoritmos computacionales.
-
-Poseer capacidad y habilidad en la interpretaci\'on de problemas cl\'asicos
-con condiciones de frontera reales que contribuyen en la elaboraci\'on de soluciones eficientes
-y factibles en diferentes \'areas de la Ciencia de la Computaci\'on.
+   El curso desarrolla los conocimientos y capacidades para reconocer, evaluar y aplicar los efectos de los fen\'omenos f\'{i}sicos relacionados a la mec\'anica en el campo de la ingenier\'{i}a. En la industria en general, el control de los procesos, el funcionamiento de las m\'aquinas, su mantenimiento, etc., siempre est\'an regidas por alg\'un tipo de manifestaci\'on f\'{i}sica. Debido a eso, es importante para el estudiante entender los fundamentos de los fen\'omenos f\'{i}sicos, las leyes que los rigen, su manifestaci\'on y la forma de detectarlos. El presente curso permitir\'a al estudiante comprender e identificar los fen\'omenos f\'{i}sicos relacionados a la mec\'anica con el fin de que puedan controlar sus efectos sobre alg\'un proceso t\'ecnico. 
 
 \subsection{Objetivos Generales}
 \begin{enumerate}
-\item Conocer los principios b\'asicos de los fen\'omenos que gobiernan la f\'{i}sica cl\'asica.
-\item Aplicar los principios b\'asicos a situaciones espec\'{i}ficas y poder asociarlos con situaciones reales.
-\item Analizar algunos de los fen\'omenos f\'{i}sicos as\'{i} como su aplicaci\'on a situaciones reales.
+\item Capacidad de aplicar los conocimientos de ciencias.
+\item Capacidad de dise\~nar y llevar a cabo experimentos.
+\item Capacidad de aplicar conocimientos de computaci\'on y de matem\'aticas.
+\item Capacidad de desarrollar principios de investigaci\'on con nivel internacional.
 \end{enumerate}
 
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
@@ -14580,113 +14570,49 @@ y factibles en diferentes \'areas de la Ciencia de la Computaci\'on.
 
 \subsection{Unidades}
 
-\subsubsection{Vectores (6 horas) [Habilidades C1]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Burbano,ResnikHalliday,SerwayJewett,TriplerMosca}
+\subsubsection{Trabajo, Energ\'{i}a y Potencia (6 horas) [Habilidades C1]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{YoFreed,Hewitt}
 \textbf{Temas}
 \begin{enumerate}
-      \item An\'alisis dimensional.
-      \item Vectores. Propiedades. Operaciones.
-      \item Caso pr\'actico: Estimaci\'on de fuerzas.
+      \item Definici\'on de trabajo y la relaci\'on entre trabajo neto y energ\'{i}a cin\'etica.
+      \item Potencia y Eficiencia
    \end{enumerate}
 
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item Entender y trabajar con las magnitudes f\'{i}sicas del SI.[Usar]
-      \item Abstraer de la naturaleza los conceptos f\'{i}sicos rigurosos y representarlos en modelos vectoriales.[Usar]
-      \item Entender y aplicar los conceptos vectoriales a problemas f\'{i}sicos reales.[Usar]
+      \item Determinar las variables que afectan la oposici\'on a la traslaci\'on y la oposici\'on a la rotaci\'on (momento de inercia) y calcular la energ\'{i}a cin\'etica de traslaci\'on y rotaci\'on.
+      \item Calcular el trabajo de una fuerza, aplicar el Teorema de trabajo neto y energ\'{i}a sobre un sistema de la vida real, y determinar la potencia y eficiencia.
    \end{enumerate}
 
-\subsubsection{Est\'atica (6 horas) [Habilidades C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Burbano,ResnikHalliday,SerwayJewett,TriplerMosca}
+\subsubsection{Cinem\'atica (6 horas) [Habilidades C20]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{YoFreed,Hewitt}
 \textbf{Temas}
 \begin{enumerate}
-      \item Primera y tercera Ley de Newton.
-      \item Diagrama de cuerpo libre.
-      \item Primera condici\'on de equilibrio.
-      \item Caso pr\'actico: Estimaci\'on de la fuerza humana.
-      \item Segunda condici\'on de equilibrio.
-      \item Torque.
-      \item Casos pr\'acticos: Aplicaciones en dispositivos mec\'anicos.
-      \item Fricci\'on.
+      \item Sistemas de referencia espacial y temporal.
+      \item Velocidad media, aceleraci\'on media, lineal y angular.
+      \item Vectores de posici\'on, velocidad y aceleraci\'on, lineal y angular.
+      \item Relaci\'on entre cinem\'atica lineal y angular.
     \end{enumerate}
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item Conocer los conceptos que rigen la primera Ley y tercera Ley de Newton.
-      \item Conocer y aplicar los conceptos de la primera y segunda condici\'on de equilibro.
-      \item Capacidad para resolver problemas de casos pr\'acticos.
-      \item Entender el concepto de fricci\'on y resolver problemas.
+      \item Entender los conceptos de cinem\'atica sistema de referencia espacial y temporal, y trayectoria y determinar la posici\'on, velocidad y aceleraci\'on lineal y angular, seg\'un un contexto f\'{i}sico o de gr\'aficos.
+      \item Descomponer la aceleraci\'on lineal, en funci\'on a un sistema de coordenadas, para poder describir la posici\'on y en aceleraci\'on radial y tangencial.
+      \item Determina la posici\'on, velocidad y aceleraci\'on, usando el c\'alculo diferencial e integral. 
    \end{enumerate}
 
-\subsubsection{Cinem\'atica (6 horas) [Habilidades C24]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Burbano,ResnikHalliday,SerwayJewett,TriplerMosca}
+\subsubsection{Las tres leyes de Newton (6 horas) [Habilidades C24]}
+\textbf{Referencias Bibliogr\'aficas}: \cite{YoFreed,Hewitt}
 \textbf{Temas}
 \begin{enumerate}
-      \item Posici\'on, Velocidad, Aceleraci\'on.
-      \item Gr\'aficas de movimiento.
-      \item Casos pr\'acticos: Representaci\'on gr\'afica de movimiento utilizando Excel.
-      \item Movimiento circular.
-      \item Velocidad angular y velocidad tangencial.
-      \item Mecanismos rotativos.
-      \item Caso pr\'actico: Operaci\'on de la caja de cambios de un autom\'ovil.
+      \item Torque de una fuerza.
+      \item Las 3 leyes de Newton y su aplicaci\'on en part\'{i}culas y s\'olidos r\'{i}gidos.
    \end{enumerate}
 
    \textbf{Objetivos de Aprendizaje}
 \begin{enumerate}
-      \item Poder determinar la posici\'on, velocidad y aceleraci\'on de un cuerpo.
-      \item Conocer el concepto de composici\'on de movimientos y saberlo aplicar, en la descripci\'on de un movimiento circular.
-      \item Conocer el significado de las componentes tangencial y normal de la aceleraci\'on y saberlas calcular en un instante determinado. 
-      \item Utilizar excel para el procesamiento de datos experimentales.
-   \end{enumerate}
-
-\subsubsection{Din\'amica (6 horas) [Habilidades C1]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Burbano,ResnikHalliday,SerwayJewett,TriplerMosca}
-\textbf{Temas}
-\begin{enumerate}
-      \item Segunda Ley de Newton.
-      \item Fuerza y movimiento.
-      \item Momento de inercia.
-   \end{enumerate}
-
-   \textbf{Objetivos de Aprendizaje}
-\begin{enumerate}
-      \item Aplicar las leyes de Newton en la soluci\'on de problemas.
-      \item Describir las diversas interacciones por sus correspondientes fuerzas.
-      \item Determinar el momento de inercia de un cuerpo usando un m\'etodo din\'amico
-   \end{enumerate}
-
-\subsubsection{Trabajo mec\'anico (6 horas) [Habilidades C20]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Burbano,ResnikHalliday,SerwayJewett,TriplerMosca}
-\textbf{Temas}
-\begin{enumerate}
-      \item Trabajo.
-      \item Fuerzas constantes.
-      \item Fuerzas variables.
-      \item Potencia.
-      \item Caso pr\'actico: Estimaci\'on de la potencia de una planta hidroel\'ectrica.
-  \end{enumerate}
-
-   \textbf{Objetivos de Aprendizaje}
-\begin{enumerate}
-      \item Comprender el concepto de Trabajo.
-      \item Comprender y aplicar el concepto de Potencia a la resoluci\'on de problemas.
-      \item Resolver problemas.
-   \end{enumerate}
-
-\subsubsection{Energ\'{i}a (6 horas) [Habilidades C24]}
-\textbf{Referencias Bibliogr\'aficas}: \cite{Burbano,ResnikHalliday,SerwayJewett,TriplerMosca}
-\textbf{Temas}
-\begin{enumerate}
-      \item Tipos de energ\'{i}a.
-      \item Conservaci\'on de la energ\'{i}a. 
-      \item Din\'amica de un sistema de part\'{i}culas.
-      \item Colisiones.
-  \end{enumerate}
-
-   \textbf{Objetivos de Aprendizaje}
-\begin{enumerate}
-      \item Conocer los tipos de energ\'{i}a que existen.
-      \item Aplicar el principio de conservaci\'on de la energ\'{i}a mec\'anica a distintas situaciones, diferenciando aquellas en las que la energ\'{i}a total no se mantiene constante. 
-      \item Aplicar los principios de conservaci\'on del momento lineal y de la energ\'{i}a a un sistema aislado de dos o m\'as part\'{i}culas interactuantes.
+      \item Plantear las ecuaciones de rotaci\'on y traslaci\'on para un s\'olido y aplicar las leyes de Newton. 
+      \item Analizar las caracter\'{i}sticas de la fuerza de fricci\'on. Calcular la fuerza radial neta y la fuerza centr\'{i}peta neta.
+      \item Calcular el centro de masa y analizar la relaci\'on entre las variables de fuerza neta, tiempo y cambio de velocidad. 
    \end{enumerate}
 
 
@@ -17987,8 +17913,8 @@ Se busca aprovechar el potencial creativo e innovador y el esfuerzo de los alumn
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
 \begin{description}
     \item \ShowSpecificOutcome{d}{4}{}
-    \item \ShowSpecificOutcome{f}{1}{}
-    \item \ShowSpecificOutcome{f}{2}{}
+    \item \ShowSpecificOutcome{f}{3}{}
+    \item \ShowSpecificOutcome{f}{4}{}
     \item \ShowSpecificOutcome{m}{1}{}
 \end{description}
 
@@ -18917,12 +18843,20 @@ En la segunda unidad se busca preparar al alumno para que este pueda llevar a ca
 \item Que el alumno adquiera las bases para formar su propia empresa de base tecnol\'ogica.
 \end{enumerate}
 
+\subsection{Contribuci\'on a los resultados ({\it Outcomes})}
+\begin{description}
+\item [d)] Trabajar efectivamente en equipos para cumplir con un objetivo com\'un.  (Evaluar)
+\item [f)] Comunicarse efectivamente con audiencias diversas.  (Evaluar)
+\item [m)] Transformar sus conocimientos del \'area de Ciencia de la Computaci\'on en emprendimientos tecnol\'ogicos.  (Usar)
+\end{description}
+
 
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
 \begin{description}
-    \item [d)] Trabajar efectivamente en equipos para cumplir con un objetivo com\'un.  (Usar)
-    \item [f)] Comunicarse efectivamente con audiencias diversas.  (Usar)
-    \item [m)] Transformar sus conocimientos del \'area de Ciencia de la Computaci\'on en emprendimientos tecnol\'ogicos.  (Evaluar)
+    \item \ShowSpecificOutcome{d}{4}{}
+    \item \ShowSpecificOutcome{f}{3}{}
+    \item \ShowSpecificOutcome{f}{4}{}
+    \item \ShowSpecificOutcome{m}{1}{}
 \end{description}
 
 
@@ -19908,9 +19842,18 @@ experiencia para llevar a buen puerto el proyecto sea un PMP.
 
 \subsection{Contribuci\'on a los resultados ({\it Outcomes})}
 \begin{description}
-    \item [d)] Trabajar efectivamente en equipos para cumplir con un objetivo com\'un.  (Usar)
-    \item [f)] Comunicarse efectivamente con audiencias diversas.  (Usar)
-    \item [m)] Transformar sus conocimientos del \'area de Ciencia de la Computaci\'on en emprendimientos tecnol\'ogicos.  (Evaluar)
+\item [d)] Trabajar efectivamente en equipos para cumplir con un objetivo com\'un.  (Evaluar)
+\item [f)] Comunicarse efectivamente con audiencias diversas.  (Evaluar)
+\item [m)] Transformar sus conocimientos del \'area de Ciencia de la Computaci\'on en emprendimientos tecnol\'ogicos.  (Usar)
+\end{description}
+
+
+\subsection{Contribuci\'on a los resultados ({\it Outcomes})}
+\begin{description}
+    \item \ShowSpecificOutcome{d}{4}{}
+    \item \ShowSpecificOutcome{f}{3}{}
+    \item \ShowSpecificOutcome{f}{4}{}
+    \item \ShowSpecificOutcome{m}{1}{}
 \end{description}
 
 
@@ -20305,6 +20248,6 @@ Software: Emuladores 8088}
 \subsubsection{ET302. Formaci\'on de Empresas de Base Tecnol\'ogica III}
 --
 
-\bibliography{../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA203,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS292,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS392,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS311,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3I1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Enterpreneurship/ET302,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS261,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB111,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG101,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB309,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS342,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS211,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS312,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG350,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS361,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS113,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS112,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG211,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS1D1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS370,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS401,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2B1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS231,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA100,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS210,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS291,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS362,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P2,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA307,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Enterpreneurship/ET201,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS271,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG203,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2S1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA101,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS212,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS111,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS272,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2H1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA308,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS221,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS251,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS281,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Enterpreneurship/ET301}
+\bibliography{../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS361,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB111,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Enterpreneurship/ET201,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2H1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS281,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3I1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS392,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA308,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA307,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS111,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS212,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS221,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS112,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG101,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS251,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS342,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2B1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA101,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS312,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB309,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS370,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG350,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS401,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS1D1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS210,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS292,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS272,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS291,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA203,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG211,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS261,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG203,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P2,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Enterpreneurship/ET302,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS271,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2S1,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS311,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA100,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS113,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS211,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Enterpreneurship/ET301,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS362,../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS231}
 \end{document}
 

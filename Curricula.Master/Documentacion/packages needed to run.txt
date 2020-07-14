@@ -26,8 +26,9 @@ sudo apt-get install graphviz; ok;
 sudo apt-get install xpdf ; ok;
 sudo apt-get install gv; ok;
 sudo apt-get install inkscape; ***completed
-brew install imagemagick
-cpan install Number::Bytes::Human
+brew install imagemagick;
+cpan install Number::Bytes::Human;
+cpan install CAM::PDF;
 
 # convert does not work correctly with default parameters
 sudo sed -i 's/\(<policy domain="coder" rights=\)"none" \(pattern="PDF" \/>\)/\1"read|write"\2/g' /etc/ImageMagick-6/policy.xml

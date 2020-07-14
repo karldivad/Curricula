@@ -360,9 +360,10 @@ sub main()
 	my $books_html	= Common::generate_books_links();
 	$maintxt =~ s/<BOOKS>/$books_html/g;
 	my $pdf_name = "$Common::config{area}-$Common::config{institution} $Common::config{Plan}";
-	my $OutputHtmlDir = Common::get_template("OutputHtmlDir");
-	my $size 		= Common::get_size("$OutputHtmlDir/$pdf_name.pdf");
-	my $pdflink		= Common::get_link_with_language_icon("$pdf_name.pdf ($size)", "$pdf_name.pdf", $lang);
+	my $OutputPdfInstDir = Common::get_template("OutputPdfInstDir");
+	my $size 		= Common::get_size("$OutputPdfInstDir/$pdf_name.pdf");
+	my $PdfnPages	= Common::getPDFnPages("$OutputPdfInstDir/$pdf_name.pdf");
+	my $pdflink		= Common::get_link_with_language_icon("$pdf_name.pdf ($PdfnPages Pages, $size)", "$pdf_name.pdf", $lang);
 	$maintxt =~ s/<PDF-LINK>/$pdflink/g;
 
 	#print Dumper(\%{$Common::config{meta_tags}}); exit;
