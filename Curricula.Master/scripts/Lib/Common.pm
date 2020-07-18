@@ -114,7 +114,7 @@ sub special_chars_to_html($)
 sub replace_special_chars($)
 {
 	my ($text) = (@_);
-	$text =~ s/\\/\\\\/g;
+	$text =~ s/\\/\\\\/g;	$text =~ s/\//\\\//g;
 	$text =~ s/\./\\./g;
 	$text =~ s/\&/\\&/g;
 	$text =~ s/\(/\\(/g;	$text =~ s/\)/\\)/g;
@@ -124,9 +124,10 @@ sub replace_special_chars($)
 	$text =~ s/\$/\\\$/g;
 	$text =~ s/\^/\\\^/g;
 	#$text =~ s/\-/\\\-/g;
+	$text =~ s/\_/\\\_/g;
 	$text =~ s/\?/\\\?/g;
 	$text =~ s/\*/\\\*/g;
-        $text =~ s/\|/\\\|/g;
+    $text =~ s/\|/\\\|/g;
 	return $text;
 }
 
@@ -335,6 +336,24 @@ sub get_pdf_link($)
         $pdflink 	.= "\t\\end{rawhtml}\n";
         $pdflink 	.= "\\end{htmlonly}\n";
 	return $pdflink;
+}
+
+sub generate_connection_between_two_courses($$$)
+{
+	my ($source, $target, $lang) = (@_);
+	my $output_txt = "";
+	if($source =~ m/(.*?)=(.*)/)
+	{
+		my ($inst, $prereq) = ($1, $2);
+		assert( $inst eq $Common::institution);
+		$output_txt .= "\t\"$prereq\"->\"$target\";\n";
+		return ($output_txt, 0);
+	}
+	my ($critical_path_style, $width) = ("", 4);
+	if( defined($Common::course_info{$source}{critical_path}{$target}))
+	{			$critical_path_style = "penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
+	$output_txt .= "\t\"$source\"->\"$target\" [$critical_path_style];\n";
+	return ($output_txt, 1);
 }
 
 sub GetCourseNameWithLink($$$$)
@@ -4969,7 +4988,7 @@ sub detect_link_for_courses()
 			{	$codcour = $Common::antialias_info{$codcour}	}
 			my $courselabel = Common::get_alias($codcour);
 			my $link = "";
-			#                 <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
+			#   <A NAME="tex2html315" HREF="4_1_CS105_Estructuras_Discr.html"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> CS105. Estructuras Discretas I (Obligatorio)</A>
 
 			$Common::course_info{$codcour}{link} = "";
 			# 		  <A NAME="tex2html972"
@@ -5016,19 +5035,20 @@ sub update_dot_links()
 	}
 }
 
-sub remove_size_from_svg($$)
+sub update_svg($$)
 {
 	my ($svg_file, $output_file) = (@_);
 	print "Updating $svg_file ... ";
-	my ($width, $height) = ("", "");
+	my ($width, $height, $count_svg) = ("", "", 0);
 	my $svg_txt = Util::read_file($svg_file);
 	if ($svg_txt =~ m/<svg\s*width="(.*?)"\s*height="(.*?)"/g )
 	{	($width, $height) = ($1, $2);
-		print("width=$width, height=$height -> $output_file");
-		$svg_txt 		  =~ s/<svg\s*width=\".*?\"\s*height=\".*?\"/<svg /g;
-		Util::write_file($output_file, $svg_txt);
-		Util::print_success("Ok!");
+		#print("width=$width, height=$height -> $output_file");
+		$count_svg = $svg_txt =~ s/<svg\s*width=\".*?\"\s*height=\".*?\"/<svg /g;
 	}
+	my $count_links = $svg_txt =~ s/(<a xlink:href=".*?\.html") (xlink:title=".*?">)/$1 target="_parent" $2>/g;
+	Util::print_color("ok! ($count_svg, $count_links)");
+	Util::write_file($output_file, $svg_txt);
 	return ($width, $height);
 }
 
@@ -5055,7 +5075,7 @@ sub update_svg_links($)
 		{
 			my $svg_file        = "$OutputFigsDir/$codcour.svg";
 			my $svg_output_file = "$OutputHtmlFigsDir/$codcour.svg";
-			my ($width, $height) = remove_size_from_svg($svg_file, $svg_output_file);
+			my ($width, $height) = update_svg($svg_file, $svg_output_file);
 			if(not $width eq "" && not $height eq "")
 			{
 				my $html_file 	= "$OutputHtmlDir/$Common::course_info{$codcour}{link}";
@@ -5071,7 +5091,7 @@ sub update_svg_links($)
 	{
 		my $input_svg_file  = "$OutputFigsDir/$size-graph-curricula-$lang_prefix.svg";
 		my $output_svg_file = "$OutputHtmlFigsDir/$size-graph-curricula-$lang_prefix.svg";
-		my ($width, $height) = remove_size_from_svg($input_svg_file, $output_svg_file);
+		my ($width, $height) = update_svg($input_svg_file, $output_svg_file);
 	}
 
 	exit;

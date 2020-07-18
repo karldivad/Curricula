@@ -105,10 +105,8 @@ sub main()
 		#Common::parse_bok($lang);
 	} 
 	Common::gen_only_macros();
-# 	Common::check_preconditions();
-# 	replacecodes();
-
-    GeneralInfo::detect_critical_path();   
+    GeneralInfo::detect_critical_path(); 
+	
 	GenSyllabi::process_syllabi();
 	
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})

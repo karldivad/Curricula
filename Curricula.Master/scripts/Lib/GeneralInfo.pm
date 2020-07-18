@@ -522,7 +522,7 @@ sub initialize_critical_path()
 		}
 }
 
-sub process_critical_path_for_one_course    #($)
+sub process_critical_path_for_one_course($)
 {
 	my ($codcour) = (@_);
 	my ($distance) = (0);
@@ -578,33 +578,29 @@ sub load_critical_path(@)
 sub detect_critical_path()
 {
 	initialize_critical_path();
-	return;
-	#my $test = "CS1D01";
-	#my ($distance_child, @path_child) = process_critical_path_for_one_course($test);
-	#Util::print_message("$test distance=$distance_child");
-	#print Dumper(\@path_child);
 	my $max_distance = 0;
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
 	{
-			foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-			{
-					my ($distance_for_this_course, @path) = process_critical_path_for_one_course($codcour);
-					if( $distance_for_this_course >= $max_distance )
-					{			#if( not defined( $critical_path{$distance_for_this_course} ) )
-								#{		@{$critical_path{$distance_for_this_course}} = [];	}
-								$max_distance = $distance_for_this_course;
-								push(@{$critical_path{$distance_for_this_course}}, @path);
-					}
+		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
+		{
+			my ($distance_for_this_course, @path) = process_critical_path_for_one_course($codcour);
+			if( $distance_for_this_course >= $max_distance )
+			{	
+				$max_distance = $distance_for_this_course;
+				push(@{$critical_path{$distance_for_this_course}}, @path);
 			}
+		}
 	}
 	load_critical_path(@{$critical_path{$max_distance}});
 	Util::check_point("detect_critical_path");
+	Util::print_color("detect_critical_path Ok!");
 }
 
 # dot
 sub generate_curricula_in_dot($$)
 {
 	my ($size, $lang) = (@_);
+	Util::check_point("detect_critical_path");
 	my $output_file = Common::ExpandTags(Common::get_template("out-$size-graph-curricula-dot-file"), $lang);
 	my $course_tpl 	= Util::read_file(Common::read_dot_template($size, $lang));
 	my $output_txt = "";
@@ -702,7 +698,6 @@ sub generate_curricula_in_dot($$)
 			{	Util::print_soft_error("Course $codcour ($Common::course_info{$codcour}{semester} Sem) has a prefix ($Common::course_info{$codcour}{prefix}) which hasn't prefix_priority defined ...\n See ./Curricula.in/lang/<LANG>/<AREA>.config/<AREA>-All.config ");
 			}
 		}
-
 		foreach my $codcour ( @{$Common::courses_by_semester{$semester}} )
 		{
 			foreach my $req (split(",", $Common::course_info{$codcour}{prerequisites_just_codes}))
@@ -721,12 +716,13 @@ sub generate_curricula_in_dot($$)
 						Util::print_message("$Common::course_info{$codcour}{prerequisites_just_codes}");
 						exit;
 					}
-					my $critical_path_style = "";
-					my $width = 4;
-					if( defined($Common::course_info{$source}{critical_path}{$target}))
-					{			$critical_path_style = " [penwidth=$width]";	}
-					$output_txt .= "$source->$codcour$critical_path_style;\n";
-					#if( $codcour eq "FG601" ){	Util::print_message("B");	}
+					my ($output_connection, $regular_course) = Common::generate_connection_between_two_courses($source, $target, $lang);
+					$output_txt .= $output_connection;
+					#my $critical_path_style = "";
+					#my $width = 4;
+					#if( defined($Common::course_info{$source}{critical_path}{$target}))
+					#{		$critical_path_style = " [penwidth=$width]";	}
+					#$output_txt .= "$source->$codcour$critical_path_style;\n";
 				}
 			}
 			if( $Common::config{recommended_prereq_flag} == 1 )
@@ -751,7 +747,6 @@ sub generate_curricula_in_dot($$)
 			}
 		}
 	}
-
 	$output_txt .= "}\n";
 	Util::write_file($output_file, $output_txt);
 	Util::print_message("generate_curricula_in_dot($size, $lang, $output_file) OK!");
@@ -1292,14 +1287,7 @@ sub generate_outcomes_by_course($$$$$$$)
 		#print "main_area = $main_area \n";
 		#print "unit_name=$unit_name ...\n";
 		$current_row = $row_text;
-
 		my $new_txt = "";
-		#@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_defs} = values %outcomes_defs;
-		#print Dumper( \%{$Common::config{macros}{outcomes}} );
-		#Util::print_message("Lang=$lang");
-		#Util::print_message("Common::config{macros}{outcomes}{$lang}{outcome$outcome}=".$Common::config{macros}{outcomes}{$lang}{"outcome$outcome"});
-		#Util::print_message("Common::config{macros}{outcomes}{$lang}{outcome$outcome"."Short}=".$Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"});
-		#exit;
 		if($background_flag == 1 && $Common::config{graph_version}>= 2)
 		{	$new_txt = "$outcome) & ". $Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"};		}
 		else{	$new_txt = "$Common::config{cell} $outcome) & $Common::config{cell} ". $Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"};		}

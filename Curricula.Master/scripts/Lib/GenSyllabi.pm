@@ -185,7 +185,7 @@ sub read_syllabus_info($$$)
 	$Common::course_info{$codcour}{unitcount}	= 0;
 	foreach my $env ("justification", "goals")
 	{
-	      $Common::course_info{$codcour}{$lang}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
+	    $Common::course_info{$codcour}{$lang}{$env}{txt} 	= get_environment($codcour, $syllabus_in, $env);
 	}
 
 	# 1st: Get general information from this syllabus
@@ -213,46 +213,49 @@ sub read_syllabus_info($$$)
 			{	$version = $Common::config{OutcomesVersionDefault};
 				$syllabus_in_copy =~ s/\\begin\{$env\}\s*.*?\s*\n((?:.|\n)*?)\\end\{$env\}/\\begin\{$env\}\{$version\}\n$body\\end\{$env\}/g;
 			}
-			$Common::course_info{$codcour}{$env}{$version}{txt} 	= $body;
-			#Util::print_message("Common::course_info{$codcour}{$env}{$version}{txt}=\n$body");
+			$Common::course_info{$codcour}{$lang}{$env}{$version}{txt} 	= $body;
+			#Util::print_message("Common::course_info{$codcour}{$lang}{$env}{$version}{txt}=\n$body");
 		}
-		if( not defined($Common::course_info{$codcour}{$env}{$version}{txt}) )
-		{	$Common::course_info{$codcour}{$env}{$version}{txt} = "";	}
+		if( not defined($Common::course_info{$codcour}{$lang}{$env}{$version}{txt}) )
+		{	$Common::course_info{$codcour}{$lang}{$env}{$version}{txt} = "";	}
 
 		$syllabus_in = $syllabus_in_copy;
-		$Common::course_info{$codcour}{$env}{$version}{itemized}	= "";
-		#$Common::course_info{$codcour}{$env}{$version}{array}	= [];
-		$Common::course_info{$codcour}{$env}{$version}{count}     	= 0;
+		$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized}	= "";
+		#$Common::course_info{$codcour}{$lang}{$env}{$version}{array}	= [];
+		$Common::course_info{$codcour}{$lang}{$env}{$version}{count}     	= 0;
 	}
-	#if($codcour eq "CS1D01")	{	exit;	}
-
 	my $version = $Common::config{OutcomesVersion};
 	foreach my $env (@versioned_environments)
 	{
 		#print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
-		if( not defined($Common::course_info{$codcour}{$env}{$version}) )
-		{	Util::print_message("read_syllabus_info($codcour, $semester, $lang): Not defined Common::course_info{$codcour}{$env}{$version}");	
+		if( not defined($Common::course_info{$codcour}{$lang}{$env}{$version}) )
+		{	Util::print_message("read_syllabus_info($codcour, $semester, $lang): Not defined Common::course_info{$codcour}{$lang}{$env}{$version}");	
 			next;		
 		}
-		$Common::course_info{$codcour}{$env}{$version}{count} = 0;
-		foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$env}{$version}{txt}) )
+		$Common::course_info{$codcour}{$lang}{$env}{$version}{count} = 0;
+		foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{$version}{txt}) )
 		{
 			my ($key, $tail)     = ("", "");
 			my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*?)\\}\\{(.*)\\}";
 			if( $one_line =~ m/$reg_exp/g )
 			{
 				($key, $tail) = ($1, $2);
-				$Common::course_info{$codcour}{$env}{$version}{$key} = $tail; # Instead of "" we must put the level of this outcome/LO
-				#push(@{$Common::course_info{$codcour}{$env}{$version}{array}}, $key); # Sequential to list later
-				$Common::course_info{$codcour}{$env}{$version}{count}++;
+				$Common::course_info{$codcour}{$lang}{$env}{$version}{$key} = $tail; # Instead of "" we must put the level of this outcome/LO
+				#push(@{$Common::course_info{$codcour}{$lang}{$env}{$version}{array}}, $key); # Sequential to list later
+				$Common::course_info{$codcour}{$lang}{$env}{$version}{count}++;
 				my $prefix	        = "";
 				if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
 				{	$prefix = $Common::config{$env."_map"}{$key};	}
-				$Common::course_info{$codcour}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$tail}\n";
+				$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$tail} \% ($codcour, $semester, $lang)\n";
 				if( $env eq "outcomes")
 				{
 					$Common::config{course_by_outcome}{$key}{$codcour} = "";
 				}
+				#if( $codcour eq "CS2S1" )
+				#{
+				#	print Dumper(\%{$Common::course_info{$codcour}{$lang}{$env}});
+				#	exit;
+				#}
 			}
 		}
 	}
@@ -274,47 +277,35 @@ sub read_syllabus_info($$$)
 	# Outcomes
 	my $EnvforOutcomes = $Common::config{EnvforOutcomes};
 	$map{FULL_OUTCOMES}	= "";
-	if( defined($Common::course_info{$codcour}{outcomes}{$version})	)
-	{	$map{FULL_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{outcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
+	if( defined($Common::course_info{$codcour}{$lang}{outcomes}{$version})	)
+	{	$map{FULL_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{$lang}{outcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
 	else{	Util::print_warning("There is no outcomes ($version) defined for $codcour ($fullname)"); 	}
-	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{outcomes}{$version}{itemized};
+	$map{OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{$lang}{outcomes}{$version}{itemized};
 
 	# Specific outcomes
 	$EnvforOutcomes = $Common::config{EnvforOutcomes};
 	$map{FULL_SPECIFIC_OUTCOMES}	= "";
-	if($Common::course_info{$codcour}{specificoutcomes}{$version}{count} == 0)
+	if($Common::course_info{$codcour}{$lang}{specificoutcomes}{$version}{count} == 0)
 	{	Util::print_warning("Course $codcour ... no {specificoutcomes}{$version} detected ... assuming an empty one!"); 
-		$Common::course_info{$codcour}{specificoutcomes}{$version}{itemized} = "\\item \\colorbox{red}{<<NoSpecificOutcomes>>}\n";
+		$Common::course_info{$codcour}{$lang}{specificoutcomes}{$version}{itemized} = "\\item \\colorbox{red}{<<NoSpecificOutcomes>>}\n";
 	}
-	if( defined($Common::course_info{$codcour}{specificoutcomes}{$version})	)
-	{	$map{FULL_SPECIFIC_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{specificoutcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
+	if( defined($Common::course_info{$codcour}{$lang}{specificoutcomes}{$version})	)
+	{	$map{FULL_SPECIFIC_OUTCOMES}	= "\\begin{$EnvforOutcomes}\n$Common::course_info{$codcour}{$lang}{specificoutcomes}{$version}{itemized}\\end{$EnvforOutcomes}";	}
 	else{	Util::print_warning("There is no specific outcomes ($version) defined for $codcour ($fullname)"); 	}
-	$map{SPECIFIC_OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{specificoutcomes}{$version}{itemized};
-
-	#if( $codcour eq "CS1D1")
-	#{	Util::print_message("map{FULL_SPECIFIC_OUTCOMES}=$map{FULL_SPECIFIC_OUTCOMES}");
-	#	Util::print_message("map{SPECIFIC_OUTCOMES_ITEMS}=$map{SPECIFIC_OUTCOMES_ITEMS}");
-	#	exit;
-	#}
+	$map{SPECIFIC_OUTCOMES_ITEMS}	= $Common::course_info{$codcour}{$lang}{specificoutcomes}{$version}{itemized};
 
 	# Competences
 	$map{FULL_COMPETENCES}	= "";
-	if( defined($Common::course_info{$codcour}{competences}{$version}) )
-	{	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{competences}{$version}{itemized}\\end{description}";	}
+	if( defined($Common::course_info{$codcour}{$lang}{competences}{$version}) )
+	{	$map{FULL_COMPETENCES}	= "\\begin{description}\n$Common::course_info{$codcour}{$lang}{competences}{$version}{itemized}\\end{description}";	}
 	else{	Util::print_warning("There is no competences ($version) defined for $codcour ($fullname)"); 	}
-	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{competences}{$version}{itemized};
+	$map{COMPETENCES_ITEMS}	= $Common::course_info{$codcour}{$lang}{competences}{$version}{itemized};
 
 	$map{EVALUATION} 	= $Common::config{general_evaluation};
 	#Util::print_message("map{EVALUATION} =\n$map{EVALUATION}");
 	if( defined($Common::course_info{$codcour}{$lang}{specific_evaluation}) )
 	{	$map{EVALUATION} = $Common::course_info{$codcour}{$lang}{specific_evaluation};	}
 
-	#if($codcour eq "CS1D01")
-	#{	#Util::print_message("Common::course_info{$codcour}{specificoutcomes}{$version}=");
-	#	print Dumper(\%map);
-	#	Util::print_message("map{SPECIFIC_OUTCOMES_ITEMS}=\"$map{SPECIFIC_OUTCOMES_ITEMS}\"...");
-	#	exit;
-	#}
 	($map{PROFESSOR_NAMES}, $map{PROFESSOR_SHORT_CVS}, $map{PROFESSOR_JUST_GRADE_AND_FULLNAME}) = ("", "", "");
 	my $sep    = "";
 	if(defined($Common::antialias_info{$codcour}))
@@ -594,7 +585,7 @@ sub process_syllabi()
 	read_sumilla_template();   # 1st Read template for sumilla
 	read_syllabus_template();  # 2nd Read the syllabus template
 	gen_course_general_info($Common::config{language_without_accents}); # 3th Generate files containing Prerequisites, etc
-	gen_prerequisites_map_in_dot($Common::config{language_without_accents});   # 4th Generate dot files
+	generate_dot_maps_for_all_courses($Common::config{language_without_accents});   # 4th Generate dot files
 
 	# 4th: Read evaluation info for this institution
 	Common::read_specific_evaluacion_info(); # It loads the field: $Common::course_info{$codcour}{specific_evaluation} for each course with specific evaluation  	
@@ -1107,152 +1098,119 @@ MAP
 	 #Util::print_error("TODO: XYZ Aqui falta poner varios silabos en idiomas !");
 }
 
-sub generate_link($$$$)
+sub get_course_dot_map($$$)
 {
-	my ($source, $target, $course_tpl, $lang) = (@_);
-	my $output_txt = "";
-	if($source =~ m/(.*?)=(.*)/)
-	{
-		my ($inst, $prereq) = ($1, $2);
-		assert( $inst eq $Common::institution);
-		$output_txt .= "\t\"$prereq\"->\"$target\";\n";
-		return ($output_txt, 0);
+	my ($codcour, $lang, $course_tpl) = (@_);
+	my $min_sem_to_show = $Common::course_info{$codcour}{semester};
+	my $max_sem_to_show = $Common::course_info{$codcour}{semester};
+
+	my %local_list_of_courses_by_semester = ();
+	push(@{$local_list_of_courses_by_semester{$Common::course_info{$codcour}{semester}}}, $codcour);
+	my $prev_courses_dot = "";
+	# Map PREVIOUS courses
+	foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
+	{	$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
+		my ($output_txt, $regular_course) = Common::generate_connection_between_two_courses($codprev, $codcour, $lang);
+		$prev_courses_dot .= $output_txt;
+		if($regular_course == 1 )
+		{	if(	$Common::course_info{$codprev}{semester} < $min_sem_to_show )
+			{	$min_sem_to_show = $Common::course_info{$codprev}{semester} ;	}
+			push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
+		}
 	}
-	my ($critical_path_style, $width) = ("", 4);
-	if( defined($Common::course_info{$source}{critical_path}{$target}))
-	{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
-	$output_txt .= "\t\"$source\"->\"$target\" [$critical_path_style];\n";
-	return ($output_txt, 1);
+	my $this_course_dot = $course_tpl;
+	my %map = ("FONTCOLOR"	  => "black",
+				"FILLCOLOR"	  => "yellow",
+				"BORDERCOLOR" => "black");
+	$this_course_dot = Common::replace_tags_from_hash($this_course_dot, "<", ">", %map);
+	$this_course_dot = Common::generate_course_info_in_dot_with_sem($codcour, $this_course_dot, $lang)."\n";
+	$this_course_dot =~ s/\s*URL="URL.*?",\s*/ /g;
+
+	# Map courses AFTER this course
+	my $post_courses_dot = "";
+	foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
+	{
+		$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
+		my ($output_txt, $regular_course) = Common::generate_connection_between_two_courses($codcour, $codpost, $lang);
+		$post_courses_dot .= $output_txt;
+		if($regular_course == 1 )
+		{	if(	$Common::course_info{$codpost}{semester} > $max_sem_to_show )
+			{	$max_sem_to_show = $Common::course_info{$codpost}{semester} ;	}
+			push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
+		}
+	}
+	my $sem_col 		= "";
+	my $sem_definitions = "";
+	my $same_rank 		= "";
+	my $sep 			= "";
+	for( my $sem_count = $min_sem_to_show; $sem_count <= $max_sem_to_show; $sem_count++)
+	{
+		my $sem_label = Common::sem_label($sem_count, $lang);
+		my $this_sem = "\t{ rank = same; $sem_label; ";
+		foreach my $one_cour (@{$local_list_of_courses_by_semester{$sem_count}})
+		{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
+		$same_rank .= "$this_sem }\n";
+		$sem_col .= "$sep$sem_label";
+# 				,fillcolor=black,style=filled,fontcolor=white
+		$sem_definitions .= "\t$sem_label [shape=box];\n";
+		$sep = "->";
+	}
+	my $output_tex  = "";
+	$output_tex .= "digraph $codcour\n";
+	$output_tex .= "{\n";
+	$output_tex .= "\tbgcolor=white;\n";
+	$output_tex .= "\tcompound=true;\n";
+	$output_tex .= "\t$sem_col;\n";
+	$output_tex .= "\n";
+	$output_tex .= $sem_definitions;
+	if(not $prev_courses_dot eq "")
+	{	$output_tex .= "$prev_courses_dot\n";	}
+
+	$output_tex .= "$this_course_dot\n";
+
+	if(not $post_courses_dot eq "")
+	{	$output_tex .= "$post_courses_dot\n";	}
+	$output_tex .= "$same_rank\n";
+
+	$output_tex .= "}\n";
+	return $output_tex;
 }
 
-sub gen_prerequisites_map_in_dot($)
+
+sub generate_course_dot_map($$$$)
+{
+	my ($codcour, $lang, $course_tpl, $output_file) = (@_);
+	my $output_tex 	= get_course_dot_map($codcour, $lang, $course_tpl);
+	Util::write_file($output_file, $output_tex);
+	Util::print_message("Generating $output_file ok! ..."); 
+}
+
+sub generate_dot_maps_for_all_courses($)
 {
     my ($lang) = (@_);
+	Util::check_point("detect_critical_path");
 	my $size = "big";
 	my $template_file	= Common::read_dot_template($size, $lang);
 	my $course_tpl 		= Util::read_file($template_file);
-# 	$course_tpl =~ s/<FULLNAME>/<FULLNAME> \(<SEM>\)/g;
-	#Util::print_message("course_tpl = $course_tpl ... ");
-	Util::print_message("Reading $template_file ... (gen_prerequisites_map_in_dot)");
+	Util::print_message("Reading $template_file ... (generate_dot_maps_for_all_courses)");
 	my $OutputDotDir  				= Common::get_template("OutputDotDir");
 	my $OutputFigsDir 				= Common::get_template("OutputFigsDir");
-	my $update_page_numbers_file 	= Common::get_template("update-page-numbers");
-	my $batch_replace_pages 		= "";
 	my $batch_txt 					= "#!/bin/csh\n\n";
-
+	
 	for(my $semester = $Common::config{SemMin}; $semester <= $Common::config{SemMax} ; $semester++)
-	{
-		$batch_txt .= "# Semester #$semester\n";
+	{	$batch_txt .= "# Semester #$semester\n";
 		foreach my $codcour (@{$Common::courses_by_semester{$semester}})
-		{
-			my $codcour_label = Common::get_label($codcour);
-			my $min_sem_to_show 	= $Common::course_info{$codcour}{semester};
-			my $max_sem_to_show 	= $Common::course_info{$codcour}{semester};
-			my %local_list_of_courses_by_semester = ();
-
-			push(@{$local_list_of_courses_by_semester{$Common::course_info{$codcour}{semester}}}, $codcour);
-
-			my $output_file = "$OutputDotDir/$codcour_label.dot";
-			my $prev_courses_dot = "";
-			# Map PREVIOUS courses
-			foreach my $codprev (@{$Common::course_info{$codcour}{prerequisites_for_this_course}})
-			{	$prev_courses_dot .= Common::generate_course_info_in_dot_with_sem($codprev, $course_tpl, $lang)."\n";
-				my ($output_txt, $regular_course) = generate_link($codprev, $codcour, $course_tpl, $lang);
-				$prev_courses_dot .= $output_txt;
-				if($regular_course == 1 )
-				{	if(	$Common::course_info{$codprev}{semester} < $min_sem_to_show )
-					{	$min_sem_to_show = $Common::course_info{$codprev}{semester} ;	}
-					push(@{$local_list_of_courses_by_semester{$Common::course_info{$codprev}{semester}}}, $codprev);
-				}
-			}
-			
- 			my $this_course_dot = $course_tpl;
- 			my %map = ("FONTCOLOR"	=> "black",
-                "FILLCOLOR"	=> "yellow",
-                "BORDERCOLOR" => "black");
- 			$this_course_dot = Common::replace_tags_from_hash($this_course_dot, "<", ">", %map);
- 			$this_course_dot = Common::generate_course_info_in_dot_with_sem($codcour, $this_course_dot, $lang)."\n";
-
- 			# Map courses AFTER this course
-			my $post_courses_dot = "";
-			foreach my $codpost (@{$Common::course_info{$codcour}{courses_after_this_course}})
-			{
-				$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
-				my ($output_txt, $regular_course) = generate_link($codcour, $codpost, $course_tpl, $lang);
-				$post_courses_dot .= $output_txt;
-				if($regular_course == 1 )
-				{	if(	$Common::course_info{$codpost}{semester} > $max_sem_to_show )
-					{	$max_sem_to_show = $Common::course_info{$codpost}{semester} ;	}
-					push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
-				}
-
-  				#my $codpost_label = Common::get_label($codpost);
-  				#$post_courses_dot .= Common::generate_course_info_in_dot_with_sem($codpost, $course_tpl, $lang)."\n";
-
-				#my ($source, $target) = ($codcour, $codpost);
-				#my ($critical_path_style, $width) = ("", 4);
-				#if( defined($Common::course_info{$source}{critical_path}{$target}))
-				#{			$critical_path_style = ",penwidth=$width,label=\"$Common::config{dictionaries}{$lang}{CriticalPath}\"";	}
-
-  				#$post_courses_dot .= "\t\"$codcour_label\"->\"$codpost_label\" [ltail=cluster$codcour_label$critical_path_style];\n";
-  				#$max_sem_to_show = $Common::course_info{$codpost}{semester} if($Common::course_info{$codpost}{semester} > $max_sem_to_show);
-  				#push(@{$local_list_of_courses_by_semester{$Common::course_info{$codpost}{semester}}}, $codpost);
-			}
-
-			my $sem_col 		= "";
-			my $sem_definitions 	= "";
-			my $same_rank 		= "";
-			my $sep 		= "";
-			for( my $sem_count = $min_sem_to_show; $sem_count <= $max_sem_to_show; $sem_count++)
-			{
-  				my $sem_label = Common::sem_label($sem_count, $lang);
-  				my $this_sem = "\t{ rank = same; $sem_label; ";
-  				foreach my $one_cour (@{$local_list_of_courses_by_semester{$sem_count}})
-  				{	$this_sem .= "\"".Common::get_label($one_cour)."\"; ";		}
-  				$same_rank .= "$this_sem }\n";
-  				$sem_col .= "$sep$sem_label";
-  # 				,fillcolor=black,style=filled,fontcolor=white
-  				$sem_definitions .= "\t$sem_label [shape=box];\n";
-  				$sep = "->";
-			}
-			my $output_tex  = "";
-			# Semester: Ej. 5th Sem.
-			$output_tex .= "digraph $codcour_label\n";
-			$output_tex .= "{\n";
-			$output_tex .= "\tbgcolor=white;\n";
-			$output_tex .= "\tcompound=true;\n";
- 			$output_tex .= "\t$sem_col;\n";
- 			$output_tex .= "\n";
-			$output_tex .= $sem_definitions;
-			if(not $prev_courses_dot eq "")
-			{	$output_tex .= "$prev_courses_dot\n";	}
-
-			#$output_tex .= "\tsubgraph cluster$codcour_label\n";
-			#$output_tex .= "\t{\n";
-# 			$output_tex .= "\t\tbgcolor=yellow;\n";
-# 			$output_tex .= "\t\tcolor=yellow;\n";
-			$output_tex .= "$this_course_dot\n";
-			#$output_tex .= "\t}\n";
-
-			if(not $post_courses_dot eq "")
-			{	$output_tex .= "$post_courses_dot\n";	}
-			$output_tex .= "$same_rank\n";
-
-			$output_tex .= "}\n";
-
-			Util::write_file($output_file, $output_tex);
-			Util::print_message("Generating $output_file ok! ..."); 
-			#$batch_txt	.= "dot -Gcharset=$Common::config{encoding} -Tps $output_file -o $OutputFigsDir/$codcour_label.ps; \n";
-			$batch_txt	.= "echo \"Generating $OutputFigsDir/$codcour_label.svg ...\"\n";
-			$batch_txt	.= "dot -Tps  $output_file -o $OutputFigsDir/$codcour_label.ps; \n";
-      		$batch_txt	.= "dot -Tsvg $output_file -o $OutputFigsDir/$codcour_label.svg; \n";
-			$batch_txt	.= "\n";
-			# $batch_txt	.= "convert $OutputFigsDir/$codcour_label.ps $OutputFigsDir/$codcour_label.png&\n\n";
+		{	my $output_file = "$OutputDotDir/$codcour.dot";
+			generate_course_dot_map($codcour, $lang, $course_tpl, $output_file);
+			$batch_txt	.= "echo \"Generating $OutputFigsDir/$codcour.svg ...\"\n";
+			$batch_txt	.= "dot -Tps  $output_file -o $OutputFigsDir/$codcour.ps; \n";
+      		$batch_txt	.= "dot -Tsvg $output_file -o $OutputFigsDir/$codcour.svg; \n\n";
 		}
 	 }
 	 my $batch_map_for_course_file = Common::get_template("out-gen-map-for-course");
 	 Util::write_file($batch_map_for_course_file, $batch_txt);
 	 system("chmod 774 $batch_map_for_course_file");
+	 Util::print_message("generate_dot_maps_for_all_courses ok!");
 }
 
 1;

@@ -141,7 +141,6 @@ if($html == 1) then
     ./scripts/post-processing.pl <AREA>-<INST>;
     <OUTPUT_SCRIPTS_DIR>/gen-map-for-course.sh;
     ./scripts/update-cvs-files.pl <AREA>-<INST>;
-    cp <OUTPUT_INST_DIR>/figs/xxxx/*.svg <OUTPUT_HTML_DIR>/figs/.
 
     ./scripts/update-analytic-info.pl <AREA>-<INST>;
 endif
