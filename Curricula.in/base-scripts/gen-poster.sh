@@ -11,4 +11,4 @@ mv "<OUTPUT_TEX_DIR>/../html/<AREA>-<INST>-poster-$lang-P1.png" "<OUTPUT_TEX_DIR
 #rm <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang-P1.pdf
 mkdir -p <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/.
 cp <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/.
-mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_HTML_DIR>/.
+mv <OUTPUT_TEX_DIR>/<AREA>-<INST>-poster-$lang.pdf <OUTPUT_HTML_DOCS_DIR>/.

@@ -156,9 +156,10 @@ foreach lang ('ES' 'EN')
 end
 
 mkdir -p ../Curricula.out/html/Peru/CS-SPC/Plan2021/syllabi;
+mkdir -p ../Curricula.out/html/Peru/CS-SPC/Plan2021/docs;
 cp ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/syllabi/* ../Curricula.out/html/Peru/CS-SPC/Plan2021/syllabi/.;
 mv CS-SPC.pdf "../Curricula.out/html/Peru/CS-SPC/Plan2021/CS-SPC Plan2021.pdf";
-cp ../Curricula.out/pdfs/CS-SPC/Plan2021/*.pdf ../Curricula.out/html/Peru/CS-SPC/Plan2021/.;
+cp ../Curricula.out/pdfs/CS-SPC/Plan2021/*.pdf ../Curricula.out/html/Peru/CS-SPC/Plan2021/docs/.;
 cp ../Curricula.out/pdfs/CS-SPC/Plan2021/*.png ../Curricula.out/html/Peru/CS-SPC/Plan2021/.;
 
 #       ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-SPC 2021-I BookOfUnitsByCourse (Plan2021) 1-10";

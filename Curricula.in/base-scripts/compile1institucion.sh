@@ -156,9 +156,10 @@ foreach lang (<LIST_OF_LANGS>)
 end
 
 mkdir -p <OUTPUT_HTML_DIR>/syllabi;
+mkdir -p <OUTPUT_HTML_DOCS_DIR>;
 cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 mv <AREA>-<INST>.pdf "<OUTPUT_HTML_DIR>/<AREA>-<INST> <PLAN>.pdf";
-cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.pdf <OUTPUT_HTML_DIR>/.;
+cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.pdf <OUTPUT_HTML_DOCS_DIR>/.;
 cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.png <OUTPUT_HTML_DIR>/.;
 
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (<PLAN>) <FIRST_SEM>-<LAST_SEM>";

@@ -533,7 +533,9 @@ sub set_global_variables()
 	#  ./Curricula.out/html/Peru/CS-UTEC/Plan 2018
 	$config{OutputHtmlDir} 	   = "$config{OutHtmlBase}/$config{country_without_accents}/$config{area}-$config{institution}/$config{Plan}";
     $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/figs";
-    system("mkdir -p $config{OutputHtmlFigsDir}");
+	system("mkdir -p $config{OutputHtmlFigsDir}");
+	$config{OutputHtmlDocsDir} = "$config{OutputHtmlDir}/docs";
+    system("mkdir -p $config{OutputHtmlDocsDir}");
 
 	my $cwd = getcwd();
 	my $cmd = "ln -f -s $cwd/$config{OutputHtmlDir} $config{OutputInstDir}/html";
@@ -632,6 +634,7 @@ sub set_initial_paths()
 	$path_map{OutputBinDir}				= $config{OutputBinDir};
 	$path_map{OutputLogDir}				= $config{out}."/log";
 	$path_map{OutputHtmlDir}			= $config{OutputHtmlDir};
+	$path_map{OutputHtmlDocsDir}		= $config{OutputHtmlDocsDir};
 	$path_map{OutputHtmlFigsDir}		= $config{OutputHtmlFigsDir};
 	$path_map{OutputHtmlSyllabiDir}		= $config{OutputHtmlDir}."/syllabi";
 	$path_map{OutputFigsDir}             = $config{OutputFigsDir};
@@ -1488,6 +1491,7 @@ sub load_meta_tags()
 	$Common::config{meta_tags}{OUTPUT_FIGS_DIR}	= Common::get_template("OutputFigsDir");
 	$Common::config{meta_tags}{OUTPUT_SCRIPTS_DIR}= Common::get_template("OutputScriptsDir");
 	$Common::config{meta_tags}{OUTPUT_HTML_DIR}= Common::get_template("OutputHtmlDir");
+	$Common::config{meta_tags}{OUTPUT_HTML_DOCS_DIR}= Common::get_template("OutputHtmlDocsDir");
 	$Common::config{meta_tags}{OUTPUT_HTML_FIGS_DIR}= Common::get_template("OutputHtmlFigsDir");
 	$Common::config{meta_tags}{OUTPUT_CURRICULA_HTML_FILE}=Common::get_template("output-curricula-html-file");
 	$Common::config{meta_tags}{OUTPUT_INDEX_HTML_FILE}=Common::get_template("output-index-html-file");
@@ -4724,7 +4728,7 @@ sub generate_books_links()
 			#my $pdflink	= Common::get_link_with_language_icon("$pdf_name.pdf ($size)", "$pdf_name.pdf", $lang);
 		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
 		    $book_link .= "$tabs\t<TD align=\"center\">\n";
-		    $book_link .= "$tabs$tabs<A HREF=\"$filename.pdf\">\n";
+		    $book_link .= "$tabs$tabs<A HREF=\"docs/$filename.pdf\">\n";
 		    $book_link .= "$tabs$tabs<IMG SRC=\"$filename-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle ($size)\n";
 		    $book_link .= "$tabs$tabs".get_language_icon($lang)."\n";
 		    $book_link .= "$tabs$tabs</A>\n";
