@@ -134,9 +134,9 @@ if($html == 1) then
     sed 's/max-width:50em; //g' <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css > <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css1;
     mv <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css1 <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css;
 
-    cp <IN_LANG_DIR>/figs/pdf.jpeg <IN_LANG_DIR>/figs/star.gif <IN_LANG_DIR>/figs/none.gif <IN_LANG_DIR>/figs/*.png <OUTPUT_HTML_DIR>/figs/.;
-    cp <OUTPUT_INST_DIR>/figs/*.png <OUTPUT_HTML_DIR>/figs/.;
-    cp <IN_COUNTRY_DIR>/logos/<INST>.jpg <OUTPUT_HTML_DIR>/figs/.;
+    cp <IN_LANG_DIR>/figs/pdf.jpeg <IN_LANG_DIR>/figs/star.gif <IN_LANG_DIR>/figs/none.gif <IN_LANG_DIR>/figs/*.png <OUTPUT_HTML_FIGS_DIR>/.;
+    cp <OUTPUT_FIGS_DIR>/*.png <OUTPUT_HTML_FIGS_DIR>/.;
+    cp <IN_COUNTRY_DIR>/logos/<INST>.jpg <OUTPUT_HTML_FIGS_DIR>/.;
     
     ./scripts/post-processing.pl <AREA>-<INST>;
     <OUTPUT_SCRIPTS_DIR>/gen-map-for-course.sh;
@@ -159,8 +159,8 @@ mkdir -p <OUTPUT_HTML_DIR>/syllabi;
 mkdir -p <OUTPUT_HTML_DOCS_DIR>;
 cp <OUTPUT_INST_DIR>/syllabi/* <OUTPUT_HTML_DIR>/syllabi/.;
 mv <AREA>-<INST>.pdf "<OUTPUT_HTML_DIR>/<AREA>-<INST> <PLAN>.pdf";
-cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.pdf <OUTPUT_HTML_DOCS_DIR>/.;
-cp <OUTPUT_DIR>/pdfs/<AREA>-<INST>/<PLAN>/*.png <OUTPUT_HTML_DIR>/.;
+cp <OUTPUT_PDF_INST_DIR>/*.pdf <OUTPUT_HTML_DOCS_DIR>/.;
+cp <OUTPUT_PDF_INST_DIR>/*.png <OUTPUT_HTML_FIGS_DIR>/.;
 
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfUnitsByCourse 	latex    "<AREA>-<INST> <SEM_ACAD> BookOfUnitsByCourse (<PLAN>) <FIRST_SEM>-<LAST_SEM>";
 #       <OUTPUT_SCRIPTS_DIR>/gen-book.sh  BookOfDeliveryControl  pdflatex "<AREA>-<INST> <SEM_ACAD> BookOfDeliveryControl (<PLAN>) <FIRST_SEM>-<LAST_SEM>";

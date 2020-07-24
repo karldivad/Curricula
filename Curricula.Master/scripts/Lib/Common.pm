@@ -265,9 +265,10 @@ sub get_link_and_size($$)
 sub get_language_icon($)
 {
     my ($lang) = (@_);
+	my $FigsDirRelativePath = Common::get_template("FigsDirRelativePath");
 	my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-	my $link  = "<img src=\"./figs/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
-	   $link .= "<img src=\"./figs/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	my $link  = "<img src=\"$FigsDirRelativePath/pdf.jpeg\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
+	   $link .= "<img src=\"$FigsDirRelativePath/$lang_prefix.png\" style=\"border: 0px solid ; width: 16px; height: 16px;\">";
     return $link;
 }
 
@@ -297,9 +298,10 @@ sub get_syllabi_language_links($$)
 sub get_small_icon($$)
 {
     my ($icon, $alt) = (@_);
+	my $OutputDocsDirRelativePath = Common::get_template("OutputDocsDirRelativePath");
 	my $pdflink .= "\\begin{htmlonly}\n";
 	$pdflink    .= "\t\\begin{rawhtml}\n";
-	$pdflink    .= "\t\t<img alt=\"$alt\" src=\"./figs/$icon\" style=\"border: 0px solid ; width: 16px; height: 16px;\">\n";
+	$pdflink    .= "\t\t<img alt=\"$alt\" src=\"./$OutputDocsDirRelativePath/$icon\" style=\"border: 0px solid ; width: 16px; height: 16px;\">\n";
 	$pdflink    .= "\t\\end{rawhtml}\n";
 	$pdflink    .= "\\end{htmlonly}\n";
     return $pdflink;
@@ -531,10 +533,12 @@ sub set_global_variables()
 	system("mkdir -p $config{OutputInstDir}/syllabi");
 
 	#  ./Curricula.out/html/Peru/CS-UTEC/Plan 2018
+	$config{OutputDocsDirRelativePath} 	= "docs";
+	$config{FigsDirRelativePath}		= "figs";
 	$config{OutputHtmlDir} 	   = "$config{OutHtmlBase}/$config{country_without_accents}/$config{area}-$config{institution}/$config{Plan}";
-    $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/figs";
+    $config{OutputHtmlFigsDir} = "$config{OutputHtmlDir}/$config{FigsDirRelativePath}";
 	system("mkdir -p $config{OutputHtmlFigsDir}");
-	$config{OutputHtmlDocsDir} = "$config{OutputHtmlDir}/docs";
+	$config{OutputHtmlDocsDir} = "$config{OutputHtmlDir}/$config{OutputDocsDirRelativePath}";
     system("mkdir -p $config{OutputHtmlDocsDir}");
 
 	my $cwd = getcwd();
@@ -557,7 +561,7 @@ sub set_global_variables()
 	$config{OutputMain4FigDir}  = "$config{OutputInstDir}/tex/main4figs";
 	system("mkdir -p $config{OutputMain4FigDir}");
 
-	$config{OutputFigsDir}       = "$config{OutputInstDir}/figs";
+	$config{OutputFigsDir}       = "$config{OutputInstDir}/$config{FigsDirRelativePath}";
 	system("mkdir -p $config{OutputFigsDir}");
 
 	$config{OutputAdvancesDir}  = "$config{OutputInstDir}/advances";
@@ -585,6 +589,9 @@ sub set_initial_paths()
 	Util::precondition("set_global_variables");
 	assert(defined($config{language_without_accents}) and defined($config{discipline}));
 
+	$path_map{OutputDocsDirRelativePath}	= $config{OutputDocsDirRelativePath};
+	$path_map{FigsDirRelativePath}			= $config{FigsDirRelativePath};
+	
 	$path_map{"curricula-main"}				= "curricula-main.tex";
 	$path_map{"unified-main-file"}			= "unified-curricula-main.tex";
     $path_map{"file_for_page_numbers"}		= "curricula-main.aux";
@@ -604,7 +611,7 @@ sub set_initial_paths()
 	$path_map{InStyAllDir}				= $path_map{InDir}."/All.sty";
 	$path_map{InSyllabiContainerDir}	= $path_map{InLangDir}."/cycle/$config{Semester}/Syllabi";
 
-    $path_map{InFigDir}                 = $path_map{InLangDir}."/figs";
+    $path_map{InFigsDir}                = $path_map{InLangDir}."/$config{FigsRelativePath}";
 	$path_map{InOthersDir}				= $path_map{InLangDir}."/$config{area}.others";
 	$path_map{InHtmlDir}				= $path_map{InLangDir}."/All.html";
 	$path_map{InTexAllDir}				= $path_map{InLangDir}."/All.tex";
@@ -637,7 +644,7 @@ sub set_initial_paths()
 	$path_map{OutputHtmlDocsDir}		= $config{OutputHtmlDocsDir};
 	$path_map{OutputHtmlFigsDir}		= $config{OutputHtmlFigsDir};
 	$path_map{OutputHtmlSyllabiDir}		= $config{OutputHtmlDir}."/syllabi";
-	$path_map{OutputFigsDir}             = $config{OutputFigsDir};
+	$path_map{OutputFigsDir}            = $config{OutputFigsDir};
 	$path_map{OutputScriptsDir}			= $config{OutputScriptsDir};
 	$path_map{OutputPrereqDir}          = $config{OutputTexDir}."/prereq";
 	$path_map{OutputDotDir}             = $config{OutputDotDir};
@@ -1484,11 +1491,13 @@ sub load_meta_tags()
     $Common::config{meta_tags}{IN_INST_DIR}		= Common::get_template("InProgramDir");
 	$Common::config{meta_tags}{IN_COUNTRY_DIR}	= Common::get_template("InCountryDir");
 	$Common::config{meta_tags}{OUTPUT_DIR}		= Common::get_template("OutDir");
+	$Common::config{meta_tags}{OUTPUT_PDF_INST_DIR}	= Common::get_template("OutputPdfInstDir");
 	$Common::config{meta_tags}{OUTPUT_INST_DIR}	= Common::get_template("OutputInstDir");
 	$Common::config{meta_tags}{OUT_LOG_DIR}		= Common::get_template("OutputLogDir");
 	$Common::config{meta_tags}{OUTPUT_TEX_DIR}	= Common::get_template("OutputTexDir");
 	$Common::config{meta_tags}{OUTPUT_DOT_DIR}	= Common::get_template("OutputDotDir");
 	$Common::config{meta_tags}{OUTPUT_FIGS_DIR}	= Common::get_template("OutputFigsDir");
+	#$Common::config{meta_tags}{OUTPUT_INST_FIGS_DIR}	= Common::get_template("OutputInstFigsDir");
 	$Common::config{meta_tags}{OUTPUT_SCRIPTS_DIR}= Common::get_template("OutputScriptsDir");
 	$Common::config{meta_tags}{OUTPUT_HTML_DIR}= Common::get_template("OutputHtmlDir");
 	$Common::config{meta_tags}{OUTPUT_HTML_DOCS_DIR}= Common::get_template("OutputHtmlDocsDir");
@@ -4699,46 +4708,50 @@ sub gen_bok($)
 sub generate_books_links()
 {
 	my $OutputPdfInstDir = get_template("OutputPdfInstDir");
+	my $OutputDocsDirRelativePath = get_template("OutputDocsDirRelativePath");
+	my $FigsDirRelativePath 	  = get_template("FigsDirRelativePath");
 	my $tabs = "\t\t";
 	my $output_links  = "<CENTER>\n";
 	$output_links    .=	"<TABLE BORDER=0 BORDERCOLOR=RED>\n";
 	$output_links    .=	"<TR>\n";
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
-		my $lang_prefix 	 = $Common::config{dictionaries}{$lang}{lang_prefix};
-		my $poster_link	  = "$tabs<TD align=\"center\"> <a href=\"$config{area}-$config{institution}-poster-$lang_prefix.pdf\">\n";
-		$poster_link	 .= "$tabs$tabs<IMG SRC=\"$config{area}-$config{institution}-poster-$lang_prefix-P1.png\" border=\"1\" ALT=\"Ver p&oacute;ster de toda la carrera en PDF\" height =\"280\"><BR>P&oacute;ster </a>\n";
+		my $lang_prefix   = $Common::config{dictionaries}{$lang}{lang_prefix};
+		my $poster_link	  = "$tabs<TD align=\"center\"> <a href=\"$OutputDocsDirRelativePath/$config{area}-$config{institution}-poster-$lang_prefix.pdf\">\n";
+		$poster_link	 .= "$tabs$tabs<IMG SRC=\"$FigsDirRelativePath/$config{area}-$config{institution}-poster-$lang_prefix-P1.png\" border=\"1\" ALT=\"Ver p&oacute;ster de toda la carrera en PDF\" height =\"280\"><BR>P&oacute;ster </a>\n";
 		$poster_link	 .= "$tabs$tabs".get_language_icon($lang)."\n";
 		$poster_link	 .= "$tabs</TD>\n";
-		$output_links .= $poster_link;
+		$output_links    .= $poster_link;
 	}
 	$output_links    .=	"</TR>\n";
 	$output_links    .=	"</TABLE>\n";
 
 	foreach my $book ("Syllabi", "Bibliography", "Descriptions")
 	{
-	      $output_links .= "$tabs<TABLE>\n";
-	      $output_links .= "$tabs<TR>\n";
-	      my $book_link = "";
-	      foreach my $lang (@{$Common::config{SyllabusLangsList}})
-	      {
-		    my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
-			my $filename 	= "BookOf$book-$lang_prefix";
-			my $size 		= Common::get_size("$OutputPdfInstDir/$filename.pdf");
-			#my $pdflink	= Common::get_link_with_language_icon("$pdf_name.pdf ($size)", "$pdf_name.pdf", $lang);
-		    my $BookTitle = special_chars_to_html("$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}");
-		    $book_link .= "$tabs\t<TD align=\"center\">\n";
-		    $book_link .= "$tabs$tabs<A HREF=\"docs/$filename.pdf\">\n";
-		    $book_link .= "$tabs$tabs<IMG SRC=\"$filename-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle ($size)\n";
-		    $book_link .= "$tabs$tabs".get_language_icon($lang)."\n";
-		    $book_link .= "$tabs$tabs</A>\n";
-		    $book_link .= "$tabs\t</TD>\n";
-	      }
-	      $output_links .= $book_link;
-	      $output_links .= "$tabs</TR>\n";
-	      $output_links .= "$tabs</TABLE>\n";
- 	      $output_links .= "$tabs<BR>\n";
-	      $output_links .= "$tabs<BR>\n\n";
+			$output_links .= "$tabs<TABLE>\n";
+			$output_links .= "$tabs<TR>\n";
+			my $book_link = "";
+			foreach my $lang (@{$Common::config{SyllabusLangsList}})
+			{
+				my $lang_prefix = $Common::config{dictionaries}{$lang}{lang_prefix};
+				my $filename 	= "BookOf$book-$lang_prefix";
+				my $size 		= Common::get_size("$OutputPdfInstDir/$filename.pdf");
+				my $PdfnPages	= Common::getPDFnPages("$OutputPdfInstDir/$filename.pdf");
+				#my $pdflink	= Common::get_link_with_language_icon("$pdf_name.pdf ($size)", "$pdf_name.pdf", $lang);
+				my $BookTitle = "$config{dictionaries}{$lang}{BookOf} $config{dictionaries}{$lang}{$book}";
+				$book_link .= "$tabs\t<TD align=\"center\">\n";
+				$book_link .= "$tabs$tabs<A HREF=\"$OutputDocsDirRelativePath/$filename.pdf\">\n";
+				$book_link .= "$tabs$tabs<IMG SRC=\"$FigsDirRelativePath/$filename-P1.png\" BORDER=\"1\" BORDERCOLOR=RED ALT=\"$BookTitle\" height=\"500\"><br>$BookTitle ($PdfnPages $config{dictionaries}{$lang}{pages}, $size)\n";
+				$book_link .= "$tabs$tabs".get_language_icon($lang)."\n";
+				$book_link .= "$tabs$tabs</A>\n";
+				$book_link .= "$tabs\t</TD>\n";
+				$book_link  = Common::special_chars_to_html($book_link);
+			}
+			$output_links .= $book_link;
+			$output_links .= "$tabs</TR>\n";
+			$output_links .= "$tabs</TABLE>\n";
+			$output_links .= "$tabs<BR>\n";
+			$output_links .= "$tabs<BR>\n\n";
 	}
 	$output_links .= "</CENTER>";
 	return $output_links;
