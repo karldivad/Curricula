@@ -1508,6 +1508,7 @@ sub load_meta_tags()
 	$Common::config{meta_tags}{LANG}			= Common::get_template("language_without_accents");
 	$Common::config{meta_tags}{IN_LANG_BASE_DIR}= Common::get_template("InLangBaseDir");
 	$Common::config{meta_tags}{IN_LANG_DIR}	= Common::get_template("InLangDir");
+	#$Common::config{meta_tags}{IN_TEX_DIR}	= Common::get_template("InTexDir");
 	$Common::config{meta_tags}{HTML_FOOTNOTE}	= $Common::config{HTMLFootnote};
 	$Common::config{meta_tags}{SEM_ACAD}		= $Common::config{Semester};
 	$Common::config{meta_tags}{PLAN}			= $Common::config{Plan};
@@ -2154,7 +2155,6 @@ sub set_initial_configuration($)
 	%{$config{dictionary}} = read_config_file(get_template("dictionary"));
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
-		
 		my $lang_prefix = "";
 		if( $lang =~ m/(..)/g )
 		{		$lang_prefix = uc($1);	      }
@@ -2201,21 +2201,31 @@ sub set_initial_configuration($)
 		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
 
-	#foreach my $lang (@{$config{SyllabusLangsList}})
-	my $lang = $config{language_without_accents};
-	#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
-	my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
-	Util::print_message("Reading outcomes ($outcomes_macros_file)");
-	my %outcomes_macros = read_outcomes($outcomes_macros_file);
-	@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
-	foreach my $key (keys %outcomes_macros)
-	{	$Common::config{macros}{$key} = $outcomes_macros{$key};		}
-	#@{$Common::config{macros}{keys %outcomes_macros}}        = values %outcomes_macros;
-	#if( $config{language_without_accents} eq $lang )
-	#my %outcomes_defs = read_outcomes($outcomes_macros_file);
-	@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
-	#print Dumper( \%outcomes_defs );
+	my $this_lang = $config{language_without_accents};
+	foreach my $lang (@{$config{SyllabusLangsList}})
+	{	
+		#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
+		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
+		Util::print_message("Reading outcomes ($outcomes_macros_file)");
+		my %outcomes_macros = read_outcomes($outcomes_macros_file);
 
+		@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
+		if($lang eq $this_lang)
+		{
+			foreach my $key (keys %outcomes_macros)
+			{	$Common::config{macros}{$key} = $outcomes_macros{$key};		}
+		}
+		#@{$Common::config{macros}{keys %outcomes_macros}}        = values %outcomes_macros;
+		#if( $config{language_without_accents} eq $lang )
+		#my %outcomes_defs = read_outcomes($outcomes_macros_file);
+		@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
+		#print Dumper( \%outcomes_defs );
+		#print Dumper(\%{$Common::config{macros}{outcomes}{$lang}});
+		#print Dumper( \%outcomes_macros );
+		#Util::print_color("*************************");
+	}
+	
+	#exit;
 	if(-e Common::get_template("out-current-institution-file"))
 	{	my %macros = read_macros(Common::get_template("out-current-institution-file"));
 		@{$Common::config{macros}}{keys %macros} = values %macros;

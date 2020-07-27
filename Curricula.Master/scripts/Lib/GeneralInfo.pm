@@ -793,12 +793,12 @@ sub generate_poster($)
 	system("cp ".Common::get_template("in-poster-macros-sty-file")." ".Common::get_template("OutputTexDir")); ;
 
     my $cwd = getcwd();
-    chdir(Common::get_template("OutputFigsDir"));
-    system("rm Bloom.eps");
-    system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom.eps");
-	system("rm Bloom-sequence.eps");
-    system("ln -s $cwd/".Common::get_template("InFigDir")."/Bloom-sequence.eps");
-    chdir($cwd);
+    #chdir(Common::get_template("OutputFigsDir"));
+    #system("rm Bloom.eps");
+    #system("ln -s $cwd/".Common::get_template("InFigsDir")."/Bloom.eps");
+	#system("rm Bloom-sequence.eps");
+    #system("ln -s $cwd/".Common::get_template("InFigsDir")."/Bloom-sequence.eps");
+    #chdir($cwd);
 	Util::print_message("generate_poster($lang) OK! $OutPosterFile");
 }
 
@@ -1286,29 +1286,31 @@ sub generate_outcomes_by_course($$$$$$$)
 	{
 		#print "main_area = $main_area \n";
 		#print "unit_name=$unit_name ...\n";
-		$current_row = $row_text;
+		$current_row = $row_text; 
 		my $new_txt = "";
+		my $outcome_label = $Common::config{macros}{$lang}{"outcome$outcome"."Short"};
 		if($background_flag == 1 && $Common::config{graph_version}>= 2)
-		{	$new_txt = "$outcome) & ". $Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"};		}
-		else{	$new_txt = "$Common::config{cell} $outcome) & $Common::config{cell} ". $Common::config{macros}{outcomes}{$lang}{"outcome$outcome"."Short"};		}
+									   #$Common::config{macros}{$lang}}{keys %outcomes_macros}
+		{	$new_txt = "$outcome) & ". $outcome_label;		}
+		#{	$new_txt = "$outcome) & ". $Common::config{macros}{$lang}{outcomes}{"outcome$outcome"."Short"};		}
+		else{	$new_txt = "$Common::config{cell} $outcome) & $Common::config{cell} ". $outcome_label;		}
 
 		$current_row =~ s/--outcome--/$new_txt/g;
 		my $sum_row = 1;
 		while($current_row =~ m/--(.*?)--/g)
 		{
+			my $codcour = $1;
 			my $background_color = "$Common::config{cell} ";
 			if($background_flag == 1 && $Common::config{graph_version}>= 2)
 			{	$background_color = "";	}
-			my $codcour = $1;
-			#my $codcour_label = Common::get_label($codcour);
-			my $codcour_label = $codcour;
-# 			            $Common::course_info{$codcour}{$env}{$version}{$key} = $2;
-			if( defined($Common::course_info{$codcour}{outcomes}{$version}{$outcome}) )
+				# ERNESTO TODO
+						#$Common::course_info{$codcour}{$lang}{$env}{$version}{$params[0]}
+					    #$Common::course_info{$codcour}{$lang}{$env}{$version}{$specificoutcome} = $params[2];
+						#$Common::course_info{$codcour}{$lang}{outcomes}{$version}{specificoutcomes}{$specificoutcome} = $params[2];
+			if( defined($Common::course_info{$codcour}{$lang}{outcomes}{$version}{$outcome}) )
 			{
-                                #$current_row =~ s/--$codcour--/\$\\checkmark\$/;
-                                $current_row =~ s/--$codcour--/$background_color\\htmlref{$Common::course_info{$codcour}{outcomes}{$version}{$outcome}}{sec:$codcour_label}/;
-                                #Util::print_error("Porque llego aqui si nunca se está cargando lo que esta en este if");
-                                #Util::print_message("Common::course_info{$codcour}{outcomes}{$outcome}=$Common::course_info{$codcour}{outcomes}{$version}{$outcome}");
+				#$current_row =~ s/--$codcour--/\$\\checkmark\$/;		  $Common::config{macros}{$lang}}{keys %outcomes_macros}
+				$current_row =~ s/--$codcour--/$background_color\\htmlref{$Common::course_info{$codcour}{$lang}{outcomes}{$version}{$outcome}}{sec:$codcour}/;
 			}
 			else # There is no information for this cell
 			{	$current_row =~ s/--$codcour--/$background_color/;

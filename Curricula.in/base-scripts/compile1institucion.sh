@@ -125,10 +125,12 @@ if($html == 1) then
     rm -rf <OUTPUT_HTML_DIR>;
 
     latex2html -t "Curricula <AREA>-<INST>" \
-    -dir "<OUTPUT_HTML_DIR>/" -mkdir \
-    -toc_stars -local_icons -no_footnode -show_section_numbers -long_title 5 \
+    -dir "<OUTPUT_HTML_DIR>/" -mkdir -toc_depth 4 \
+    -toc_stars -local_icons -no_footnode \
+    -show_section_numbers -long_title 5 \
     -address "<HTML_FOOTNOTE>" \
     -white <UNIFIED_MAIN_FILE>;
+
     mkdir -p <OUTPUT_HTML_DIR>/figs;
     cp "<OUTPUT_CURRICULA_HTML_FILE>" "<OUTPUT_INDEX_HTML_FILE>";
     sed 's/max-width:50em; //g' <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css > <OUTPUT_HTML_DIR>/<UNIFIED_MAIN_FILE>.css1;

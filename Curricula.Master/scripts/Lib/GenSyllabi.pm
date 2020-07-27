@@ -6,9 +6,10 @@ use Scalar::Util qw(blessed dualvar isdual readonly refaddr reftype
                         tainted weaken isweak isvstring looks_like_number
                         set_prototype);
                         # and other useful utils appearing below
+use Switch;
 use Lib::Common;
 use strict;
-my @versioned_environments = ("outcomes", "competences", "specificoutcomes");
+my @versioned_environments = ("outcomes", "specificoutcomes", "competences");
 
 sub get_environment($$$)
 {
@@ -236,30 +237,55 @@ sub read_syllabus_info($$$)
 		foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{$version}{txt}) )
 		{
 			my ($key, $tail)     = ("", "");
-			my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*?)\\}\\{(.*)\\}";
+			my $reg_exp =  "\\\\".$macro_for_env{$env}."(.*)";
 			if( $one_line =~ m/$reg_exp/g )
 			{
-				($key, $tail) = ($1, $2);
-				$Common::course_info{$codcour}{$lang}{$env}{$version}{$key} = $tail; # Instead of "" we must put the level of this outcome/LO
+				($tail) = ($1);
+				my @params = $tail =~ m/\{(.*?)\}/g;
+				switch($env)
+				{	case ["outcomes", "competences"]
+					{ 	#print $env;
+					   	$Common::course_info{$codcour}{$lang}{$env}{$version}{$params[0]} = $params[1];
+					}	#\% ($codcour, $semester, $lang)
+					case "specificoutcomes"  
+					{	# Save the specific outcome
+						my $specificoutcome = "$params[0]$params[1]";
+						$Common::course_info{$codcour}{$lang}{$env}{$version}{$specificoutcome} = $params[2];
+						$Common::course_info{$codcour}{$lang}{outcomes}{$version}{specificoutcomes}{$specificoutcome} = $params[2];
+					}
+				}
+				$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized}  	.= "\\item \\".$macro_for_env{$env}."\n";
+				foreach my $param (@params)
+				{	$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized} .= "{$param}";		}
+				$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized}		.= "\n";
+				#print "($codcour, $semester, $lang)\n";
+				#print Dumper(\@params);
+				
 				#push(@{$Common::course_info{$codcour}{$lang}{$env}{$version}{array}}, $key); # Sequential to list later
 				$Common::course_info{$codcour}{$lang}{$env}{$version}{count}++;
 				my $prefix	        = "";
 				if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
 				{	$prefix = $Common::config{$env."_map"}{$key};	}
-				$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$tail} \% ($codcour, $semester, $lang)\n";
 				if( $env eq "outcomes")
-				{
-					$Common::config{course_by_outcome}{$key}{$codcour} = "";
-				}
-				#if( $codcour eq "CS2S1" )
-				#{
-				#	print Dumper(\%{$Common::course_info{$codcour}{$lang}{$env}});
-				#	exit;
-				#}
+				{	$Common::config{course_by_outcome}{$key}{$codcour} = "";	}
 			}
+			#my $reg_exp =  "\\\\".$macro_for_env{$env}."\\{(.*?)\\}\\{(.*)\\}";
+			#if( $one_line =~ m/$reg_exp/g )
+			#{
+		#		($key, $tail) = ($1, $2);
+		#		$Common::course_info{$codcour}{$lang}{$env}{$version}{$key} = $tail; # Instead of "" we must put the level of this outcome/LO
+		#		#push(@{$Common::course_info{$codcour}{$lang}{$env}{$version}{array}}, $key); # Sequential to list later
+		#		$Common::course_info{$codcour}{$lang}{$env}{$version}{count}++;
+		#		my $prefix	        = "";
+		#		if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
+		#		{	$prefix = $Common::config{$env."_map"}{$key};	}
+		#		$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized} .= "\\item \\".$macro_for_env{$env}."{$key}{$tail} \% ($codcour, $semester, $lang)\n";
+		#		if( $env eq "outcomes")
+		#		{	$Common::config{course_by_outcome}{$key}{$codcour} = "";	}
+		#	}
 		}
 	}
-
+	#exit;
 	$map{COURSE_CODE} 	= $codcour;
 	$map{COURSE_NAME} 	= $course_name;
 	$map{COURSE_TYPE}	= $Common::config{dictionaries}{$lang}{$Common::course_info{$codcour}{course_type}};

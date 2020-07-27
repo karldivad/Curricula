@@ -101,19 +101,19 @@
 	\newcommand{\SkillsTableWidth}{0.6\textwidth}
 	\newcommand{\EducationalObjectivesWidth}{29cm}
 	\begin{tabularx}{0.975\textwidth}{Xm{.1cm}m{\EducationalObjectivesWidth}}
-			{\tiny \Cblur{\input{\OutputTexDir/all-outcomes-by-course-poster-<LANG>}} } & &
-			\Cblur{ 
-				\begin{tabularx}{\EducationalObjectivesWidth}{X}%
-				{\captionsize \bf <<EducationalObjectives>>} 				\\ \hline
-				{\scriptsize \vspace{0.1cm}
-				\input{\InTexDir/educational-objectives-list} 
-				}\\ 
-				\end{tabularx}%
-			}
-			%\Cblur{\includegraphics[height=10cm]{../figs/Bloom-sequence}}
-			%\Cblur{\includegraphics[height=10cm]{../figs/Bloom}}
-			%{\captionsize Competencias por disciplina} &
-			%{\captionsize Pirámide del Aprendizaje} \\
+	{	\tiny \Cblur{\input{\OutputTexDir/all-outcomes-by-course-poster-<LANG>}} } & &
+		\Cblur{ 
+			\begin{tabularx}{\EducationalObjectivesWidth}{X}%
+			{\captionsize \textbf{<<EducationalObjectives>>}} \\ \hline
+			{\scriptsize \vspace{0.1cm}
+			\input{\InTexDir/educational-objectives-list} 
+			}\\ 
+			\end{tabularx}%
+		}
+		%\Cblur{\includegraphics[height=10cm]{../figs/Bloom-sequence}}
+		%\Cblur{\includegraphics[height=10cm]{../figs/Bloom}}
+		%{\captionsize Competencias por disciplina} &
+		%{\captionsize Pirámide del Aprendizaje} \\
 	\end{tabularx}
 }
 {	
@@ -163,21 +163,21 @@
 		% 		\Cblur{\includegraphics[heigth=6.55cm]{../figs/pie-by-levels.eps}} \\
 		%		\Cblur{\includegraphics[height=6.55cm]{../figs/pie-credits.eps}} & & \Cblur{\includegraphics[height=6.55cm]{../figs/pie-by-levels.eps}} \\
 		%		\color{white}{\captionsize \bf Créditos por área} 				& & \color{white}{\captionsize \bf Créditos por nivel}
-				&
-				\begin{minipage}{0.4\textwidth}
-					\centering
-					\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={height=6.1cm}]{../figs/pie-credits.eps}}
-					\color{white}{\captionsize \bf Créditos por área}
-				\end{minipage}
-				& &
-				\begin{minipage}{0.6\textwidth}
-					\centering 
-					% colback=olive
-					\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={height=6.1cm}]{../figs/pie-by-levels.eps}} \\
-					\color{white}{\captionsize \bf Créditos por nivel}
-				\end{minipage}
-				&
-			 \end{tabularx}
+		&
+		\begin{minipage}{0.4\textwidth}
+			\centering
+			\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={height=6.1cm}]{../figs/pie-credits.eps}}
+			\color{white}{\captionsize \bf Créditos por área}
+		\end{minipage}
+		& &
+		\begin{minipage}{0.6\textwidth}
+			\centering 
+			% colback=olive
+			\Cblur{\tcbincludegraphics[hbox,colframe=white,boxrule=0pt,arc=0pt,outer arc=0pt,colback=white,graphics options={height=6.1cm}]{../figs/pie-by-levels.eps}} \\
+			\color{white}{\captionsize \bf Créditos por nivel}
+		\end{minipage}
+		&
+	\end{tabularx}
 }
 
 \Cblur{ 
