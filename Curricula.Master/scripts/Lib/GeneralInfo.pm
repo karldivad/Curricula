@@ -771,6 +771,7 @@ sub generate_poster($)
  	$poster_txt =~ s/<COL3>/$Common::config{COL3}$Common::config{logowidth_units}/g;
 	$poster_txt =~ s/<POSTER_RIGHT_BG>/$Common::config{POSTER_RIGHT_BG}/g;
 
+	$poster_txt = Common::replace_meta_tags($poster_txt, $lang);
 	#Util::print_message("Common::config{title_width}=$Common::config{title_width}");
 	#Util::print_message("Common::config{def_width}=$Common::config{def_width}");
 	#Util::print_message("Common::config{logowidth}=$Common::config{logowidth}");

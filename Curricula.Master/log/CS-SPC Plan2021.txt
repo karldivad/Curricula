@@ -1,0 +1,197 @@
+Course=CB111
+	English (Computational Physics)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/CB111.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Física Computacional)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB111.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CB309
+	English (Bioinformatics)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/CB309.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Bioinformática)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB309.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS211
+	English (Theory of Computation)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS211.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Teoría de la Computación)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS211.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS231
+	English (Networking and Communication)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS231.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Redes y Comunicación)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS231.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS251
+	English (Computer graphics )
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS251.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Computación Gráfica)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS251.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS281
+	English (Computing in Society)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS281.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Computación en la Sociedad)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS281.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS2H01
+	English (User Experience (UX))
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS2H1.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Experiencia de Usuario )
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2H1.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS312
+	English (Advanced Data Structures )
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS312.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Estructuras de Datos Avanzadas)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS312.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS351
+	English (Topics in Computer Graphics)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS351.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Tópicos en Computación Gráfica)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS351.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS361
+	English (Topics in Artificial Intelligence)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS361.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Tópicos en Inteligencia Artificial)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS361.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS362
+	English (Robotics)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS362.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Robótica)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS362.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS370
+	English (Big Data)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS370.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Big Data)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS370.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS391
+	Espanol (Ingeniería de Software III)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS391.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS392
+	English (Tópicos en Ingeniería de Software)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS392.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Tópicos en Ingeniería de Software)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS392.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS3I1
+	English (Computer Security)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3I1.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Seguridad en Computación)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3I1.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS3P2
+	English (Cloud Computing)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P2.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Cloud Computing)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P2.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=CS3P3
+	English (Internet of Things )
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P3.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Internet de las Cosas)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P3.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=FG102
+	English (Study Methodology)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG102.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Metodología del Estudio)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG102.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=FG106
+	English (Theater)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG106.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Teatro)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG106.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=FG203
+	English (Oratory)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG203.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Oratoria)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG203.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=FG211
+	English (Professional Ethics)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG211.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Ética Profesional)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG211.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=FG350
+	English (Leadership and Performance)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG350.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Liderazgo y Desempeño)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG350.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=MA203
+	English (Statistics and Probabilities)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/MA203.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Estadística y Probabilidades)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA203.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=MA307
+	English (Mathematics applied to computing)
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/MA307.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Matemática aplicada a la computación)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA307.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+
+Course=MA308
+	English (Exploratory Spatial Data Analysis  )
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/MA308.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+	Espanol (Análisis Exploratorio de Datos Espaciales)
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA308.tex
+		specificoutcomes=I did not find specificoutcomes{V1}
+

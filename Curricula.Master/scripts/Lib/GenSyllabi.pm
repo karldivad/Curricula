@@ -229,10 +229,6 @@ sub read_syllabus_info($$$)
 	foreach my $env (@versioned_environments)
 	{
 		#print Dumper(\%{$Common::course_info{$codcour}{outcomes}});
-		if( not defined($Common::course_info{$codcour}{$lang}{$env}{$version}) )
-		{	Util::print_message("read_syllabus_info($codcour, $semester, $lang): Not defined Common::course_info{$codcour}{$lang}{$env}{$version}");	
-			next;		
-		}
 		$Common::course_info{$codcour}{$lang}{$env}{$version}{count} = 0;
 		foreach my $one_line ( split("\n", $Common::course_info{$codcour}{$lang}{$env}{$version}{txt}) )
 		{
@@ -283,6 +279,11 @@ sub read_syllabus_info($$$)
 		#		if( $env eq "outcomes")
 		#		{	$Common::config{course_by_outcome}{$key}{$codcour} = "";	}
 		#	}
+		}
+		if( $Common::course_info{$codcour}{$lang}{$env}{$version}{count} == 0 )
+		{
+			$Common::error{$codcour}{$lang}{file} = $fullname;
+			$Common::error{$codcour}{$lang}{$env} = "I did not find $env"."{$version}";
 		}
 	}
 	#exit;

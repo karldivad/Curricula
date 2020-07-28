@@ -39,28 +39,31 @@ sub generate_general_info()
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})
 	{
 		Util::print_color("Generating Posters in $lang ...");
-		foreach my $size ("small")
+		foreach my $size ("small", "big")
 		{	
 			GeneralInfo::generate_curricula_in_dot($size, $lang);
-			my $InFile  = Common::get_template("in-$size-graph-curricula-file"); 					# "in-small-graph-curricula-file",	"in-big-graph-curricula-file"
-			my $OutFile = Common::get_expanded_template("out-$size-graph-curricula-file", $lang);	# "out-small-graph-curricula-file", "out-big-graph-curricula-file"
-			Common::copy_file_expanding_tags($InFile, $OutFile, $lang);
+			if( $size eq "small" )
+			{
+				my $InFile  = Common::get_template("in-$size-graph-curricula-file"); 					# "in-small-graph-curricula-file",	"in-big-graph-curricula-file"
+				my $OutFile = Common::get_expanded_template("out-$size-graph-curricula-file", $lang);	# "out-small-graph-curricula-file", "out-big-graph-curricula-file"
+				Common::copy_file_expanding_tags($InFile, $OutFile, $lang);
+			}
 		}
 		#GeneralInfo::generate_curricula_in_dot("big", $lang); 
 		GeneralInfo::generate_poster($lang);
+		Util::print_color("Common::config{meta_tags}{IN_TEX_DIR}=$Common::config{meta_tags}{IN_TEX_DIR}");
+		Util::print_color("Common::config{meta_tags}{OUTPUT_TEX_DIR}=$Common::config{meta_tags}{OUTPUT_TEX_DIR}");
 		GeneralInfo::generate_all_outcomes_by_course($lang);
 	}
-
-	foreach my $lang (@{$Common::config{SyllabusLangsList}})
-	{
-		Util::print_color("Generating Posters in $lang ...");
-		GeneralInfo::generate_curricula_in_dot("small", $lang);
-		#error??? system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::ExpandTags(Common::get_template("out-small-graph-curricula-file"), $lang);
-		GeneralInfo::generate_curricula_in_dot("big", $lang);   
-		GeneralInfo::generate_poster($lang);
-		#GeneralInfo::generate_all_outcomes_by_course($lang);
-	}
-	
+	#foreach my $lang (@{$Common::config{SyllabusLangsList}})
+	#{
+	#	Util::print_color("Generating Posters in $lang ...");
+	#	GeneralInfo::generate_curricula_in_dot("small", $lang);
+	#	#error??? system("cp ".Common::get_template("in-small-graph-curricula-file")." ".Common::ExpandTags(Common::get_template("out-small-graph-curricula-file"), $lang);
+	#	GeneralInfo::generate_curricula_in_dot("big", $lang);   
+	#	GeneralInfo::generate_poster($lang);
+	#	#GeneralInfo::generate_all_outcomes_by_course($lang);
+	#}
 	GeneralInfo::generate_all_topics_by_course($lang);
 	#Util::print_message("Check point ... generate_general_info() ...");  exit;
 	GeneralInfo::generate_list_of_outcomes();
@@ -117,8 +120,9 @@ sub main()
 	    GenSyllabi::gen_book_of_bibliography($lang);
 	    GenSyllabi::generate_team_file($lang);
 	}
-	
 	generate_general_info();
+	Common::dump_errors();
+
     #copy_basic_files();
 #   Util::generate_batch_to_gen_figs(Common::get_template("out-batch-to-gen-figs-file"));
 # 	

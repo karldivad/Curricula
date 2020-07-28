@@ -22,6 +22,9 @@ our $inst_list_file 		= "";
 our %list_of_areas			= ();
 our %list_of_courses_per_area   = ();
 our %config 				= ();
+our %error 					= ();
+			#$Common::error{"$codcour-$lang"}{file} = $fullname;
+			#$Common::error{"$codcour-$lang"}{$env} = "I did not find $env";
 our %general_info			= ();
 our %dictionary				= ();
 our %path_map				= ();
@@ -657,6 +660,7 @@ sub set_initial_paths()
 	$path_map{LinkToCurriculaBase}		= $config{LinkToCurriculaBase};
 	$path_map{OutputPdfDir}				= $config{OutputPdfDir};
 	$path_map{OutputPdfInstDir}			= "$config{OutputPdfDir}/$config{area}-$config{institution}/$config{Plan}";
+	$path_map{OutputLogDir}				= "./log";
 	system("mkdir -p $path_map{OutputPdfInstDir}");
 	
 ################################################################################################################################
@@ -836,7 +840,7 @@ sub set_initial_paths()
 	$path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
 
 	$path_map{"OutputDisciplinesList-file"}			= $path_map{OutHtmlBase}."/disciplines.html";
-
+	$path_map{"output-errors-file"}					= $path_map{OutputLogDir}."/$config{area}-$config{institution} $config{Plan}.txt";
 	Util::check_point("set_initial_paths");
 }
 
@@ -5469,6 +5473,29 @@ sub generate_bok($)
 		else
 		{	Util::print_error("generate_bok($lang): I have not BOK for $config{area} ($bok_in_file) ...");	}
 	}
+}
+
+sub dump_errors()
+{
+	my $output_txt = "";
+	foreach my $codcour (sort {$a cmp $b} keys %error)
+	{
+		#$Common::error{"$codcour-$lang"}{file} = $fullname;
+		$output_txt .= "Course=$codcour\n";
+		#$output_txt .= "\tfile=$Common::error{$codcour}{file}\n";
+		foreach my $lang (sort {$a cmp $b} keys %{$Common::error{$codcour}})
+		{	
+			$output_txt .= "\t$lang ($course_info{$codcour}{$lang}{course_name})\n";
+			foreach my $env (sort {$a cmp $b} keys %{$Common::error{$codcour}{$lang}})
+			{
+				$output_txt .= ("\t"x2)."$env=$Common::error{$codcour}{$lang}{$env}\n";
+			}
+		}
+		$output_txt .= "\n";
+	}
+	my $output_errors_file = get_template("output-errors-file");
+	Util::write_file($output_errors_file, $output_txt);
+	Util::print_message("Dumped errors !");
 }
 
 sub process_courses()
