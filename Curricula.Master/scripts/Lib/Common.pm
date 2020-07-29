@@ -2165,11 +2165,11 @@ sub set_initial_configuration($)
 		%{$config{dictionaries}{$lang}} 		= read_dictionary_file($lang);
 		$config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
 		#Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
+		foreach my $key (%{$config{dictionaries}{$lang}})
+		{	$config{dictionaries}{terms}{$key} = "";	}
+		#print Dumper(\%{$config{dictionaries}{terms}});
 	}
-
-# 	print Dumper(\%{$config{dictionary}});
-# 	print Dumper(\%{$config{dictionaries}{Espanol}});
-# 	print Dumper(\%{$config{dictionaries}{English}});
+	dump_dictionary_errors();
 
 	# Read specific config for its country
 	my %countryvars = read_config_file(get_template("in-country-config-file"));
@@ -5475,7 +5475,25 @@ sub generate_bok($)
 	}
 }
 
-sub dump_errors()
+sub dump_dictionary_errors()
+{
+	my $output_txt = "Dictionaries\n";
+	foreach my $lang (@{$config{SyllabusLangsList}})
+	{
+		$output_txt .= "$lang\n";
+		foreach my $key (keys %{$config{dictionaries}{terms}})
+		{
+			if( not defined($config{dictionaries}{$lang}{$key}) )
+			{
+				$output_txt .= "\t$key is missing here\n";
+			}
+		}
+	}
+	$output_txt .= "\n";
+	return $output_txt;
+}
+
+sub dump_course_errors()
 {
 	my $output_txt = "";
 	foreach my $codcour (sort {$a cmp $b} keys %error)
@@ -5493,6 +5511,14 @@ sub dump_errors()
 		}
 		$output_txt .= "\n";
 	}
+	return $output_txt;
+}
+
+sub dump_errors()
+{
+	my $output_txt = "";
+	$output_txt .= dump_course_errors();
+	$output_txt .= dump_dictionary_errors();
 	my $output_errors_file = get_template("output-errors-file");
 	Util::write_file($output_errors_file, $output_txt);
 	Util::print_message("Dumped errors !");
