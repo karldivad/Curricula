@@ -22,14 +22,6 @@ Course=CS281
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS281.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=CS2H01
-	English (User Experience (UX))
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS2H1.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Experiencia de Usuario )
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS2H1.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Course=CS361
 	English (Topics in Artificial Intelligence)
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS361.tex
@@ -66,9 +58,6 @@ Course=CS3P2
 	English (Cloud Computing)
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P2.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Cloud Computing)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P2.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
 
 Course=CS3P3
 	English (Internet of Things )
@@ -102,653 +91,69 @@ Course=MA308
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA308.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Dictionaries
+Dictionaries (Missing keys)
 Espanol
-	Bibliografía por curso is missing here
-	Correo Electrónico  is missing here
-	Oral Presentations is missing here
-	Ninguno is missing here
-	TYPE OF COURSE is missing here
-	sumillas is missing here
-	HASH(0x7fe652675960) is missing here
-	Objetivos Generales is missing here
-	ESCUELA/DEPARTAMENTO is missing here
-	The practical sessions are held in class where a series of exercises and/or practical concepts are developed through problem solving, problem solving, specific exercises and/or in application contexts. is missing here
-	NF  is missing here
-	Co-Requisites. is missing here
-	Unidad de Conocimiento is missing here
-	horas como mínimo is missing here
-	Topics of this course is missing here
-	It consists of the average scores of the individual short exams, rounded up (this note is about 9). is missing here
-	Set of problems is missing here
-	HL is missing here
-	HASH(0x7fe6509a46c8) is missing here
-	hr(s) is missing here
-	Book of is missing here
-	Methodology and system evaluation is missing here
-	Requisitos is missing here
-	Brief Description Of Course Content. is missing here
-	Consiste en el resultado de los problemas de esfuerzo individual redondeada hacia arriba (esta nota es sobre 2). is missing here
-	Horas por Sesión is missing here
-	Throughout the course different readings are provided, which are evaluated. The average of the notes in the readings is considered as the mark of a qualified practice. The use of the UTEC Online virtual campus allows each student to access the course information, and interact outside the classroom with the teacher and with the other students. is missing here
-	Brief description about the course is missing here
-	Sílabo is missing here
-	Curso is missing here
-	PT is missing here
-	Competences (IEEE) is missing here
-	Bibliografía básica is missing here
-	HASH(0x7fe652675c30) is missing here
-	Unidad no definida is missing here
-	Core Tier2 is missing here
-	Planificación is missing here
-	Título. is missing here
-	Nivel de Aprendizaje Esperado is missing here
-	Meetings after coordination with the professor is missing here
-	hora is missing here
-	Obligatorio is missing here
-	Resumen del libro is missing here
-	Lecturas is missing here
-	Unit Not Defined is missing here
-	Learning Outcomes is missing here
-	Theory evaluation is missing here
-	TYPE DE CURSO is missing here
-	Evaluaciones Teóricas is missing here
-	spanish is missing here
-	Bibliography by course is missing here
-	HASH(0x7fe6509a4818) is missing here
-	OBJETIVO GENERAL is missing here
-	Objetivos Educacionales ({\it Educational Objectives}) is missing here
-	Objetivos is missing here
-	GeneralObjective is missing here
-	SCHOOL/DEPARTMENT is missing here
-	Periodo Académico is missing here
-	It consists of the average grades of group practice, rounded up (this note is about 9). is missing here
-	Camino crítico is missing here
-	Área is missing here
-	english is missing here
-	Tipo de Sesión is missing here
-	Las sesiones de teoría se llevan a cabo en clases magistrales donde se realizarán actividades que propicien un aprendizaje activo, con dinámicas que permitan a los estudiantes interiorizar los conceptos. is missing here
-	Reporte Final is missing here
-	Area is missing here
-	Competencias esperadas is missing here
-	DEPARTAMENTO is missing here
-	Contribución a las habilidades de Ciencia de la Computación (IEEE) is missing here
-	Información del curso is missing here
-	Créditos is missing here
-	Comparación <AREA>-<INST>~Vs. <STANDARD> de <STANDARD_REF_INSTITUTION>. is missing here
-	Total Hours  is missing here
-	Horas Totales  is missing here
-	Competencias is missing here
-	Code and Name is missing here
-	Unidades de Conocimiento is missing here
-	Master en is missing here
-	HASH(0x7fe652675858) is missing here
-	Horario is missing here
-	Metodología y método de evaluación is missing here
-	Definición is missing here
-	No core hours is missing here
-	Electivo is missing here
-	Sumillas is missing here
-	Practical Sessions is missing here
-	Bloom Level is missing here
-	Course Information. is missing here
-	More courses (<NFREECREDITS> <CREDITS>) may be added here is missing here
-	Laboratorio is missing here
-	Metodologia y sistema de evaluación is missing here
-	Unidad obligatoria is missing here
-	Outcomes by course <BEGIN_SEM> to <END_SEM> <SEMESTER> is missing here
-	CONTRIBUCIÓN A LA RESULTADOS (OUTCOMES) is missing here
-	Sílabos is missing here
-	Introducción al curso is missing here
-	Co-Requisitos is missing here
-	Hour of this course is missing here
-	Contribution to outcomes is missing here
-	Courses that a teacher could dictate this semester is missing here
-	Code is missing here
-	Información general is missing here
-	Specific goals of the Course is missing here
-	FUNDAMENTACIÓN DEL CURSO is missing here
-	Metodologia y Evaluación is missing here
-	Competences for Computer Science is missing here
-	Teoría is missing here
-	Bibliografía is missing here
-	Libro is missing here
-	Theory Hours is missing here
-	Competencias para Ciencia de la Computación is missing here
-	páginas is missing here
-	See at EDU is missing here
-	Generales Goals is missing here
-	Semipresencial (Blended) is missing here
-	Habilidades is missing here
-	P is missing here
-	Sesiones de Laboratorio is missing here
-	Hours per Session is missing here
-	Autor is missing here
-	Tópicos del curso is missing here
-	Cr is missing here
-	Knowledge Units is missing here
-	Professor(s), email and schedule to attend students is missing here
-	Atención previa coordinación con el profesor is missing here
-	Competencias específicas del curso. is missing here
-	Consiste en el promedio de notas de los exámenes cortos individuales, redondeada hacia arriba (esta nota es sobre 9). is missing here
-	Length Of Period  is missing here
-	Semestres is missing here
-	HASH(0x7fe6526757b0) is missing here
-	HORAS is missing here
-	Pág is missing here
-	Condición is missing here
-	Mandatory Unit is missing here
-	Syllabus of Course is missing here
-	Sillabus de is missing here
-	It consists of the result of individual effort problems rounded up (this note is about 2). is missing here
-	HP is missing here
-	Learning Level Expected is missing here
-	Código is missing here
-	Final Report is missing here
-	Competencias Específicas is missing here
-	HASH(0x7fe652675ba0) is missing here
-	Temas is missing here
-	Examen is missing here
-	IEEE-CS/ACM is missing here
-	HT is missing here
-	Contenido is missing here
-	UNIDAD is missing here
-	PC is missing here
-	Electivos is missing here
-	Justificación is missing here
-	Código del curso y nombre is missing here
-	Las sesiones prácticas se llevan en clase donde se desarrollan una serie de ejercicios y/o conceptos prácticos mediante planteamiento de problemas, la resolución de problemas, ejercicios puntuales y/o en contextos aplicativos. is missing here
-	CONTENIDOS is missing here
-	Dpto is missing here
-	Introduction to the course is missing here
-	SEMESTRE is missing here
-	Doctor en is missing here
-	Silabus de is missing here
-	Practical Test is missing here
-	Topics by course from <BEGIN_SEM> to <END_SEM> <SEMESTER> is missing here
-	Contribution to Outcomes is missing here
-	L is missing here
-	Modalidad is missing here
-	HASH(0x7fe65099f268) is missing here
-	Última modificación is missing here
-	Competencia is missing here
-	Si is missing here
-	HASH(0x7fe65099f310) is missing here
-	Objetivos de Aprendizaje is missing here
-	Type of Course is missing here
-	Nombre. is missing here
-	A lo largo del curso se proporcionan diferentes lecturas, las cuales podrían ser evaluadas. El uso de herramientas Online permite a cada estudiante acceder a la información del curso, e interactuar fuera de aula con el profesor y con los otros estudiantes. is missing here
-	Horas de teoría is missing here
-	INFORMACIÓN GENERAL is missing here
-	Contribución a los resultados ({\it Outcomes}) is missing here
-	Performance in class is missing here
-	Unidad is missing here
-	Semestre is missing here
-	Evaluar is missing here
-	GENERAL INFORMATION is missing here
-	Unidades is missing here
-	EN is missing here
-	Core Hours is missing here
-	Familiarizarse is missing here
-	Horas de práctica is missing here
-	Face to face is missing here
-	Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso. is missing here
-	HASH(0x7fe65099f538) is missing here
-	Lab Sessions is missing here
-	Semanal is missing here
-	Años de Publicación  is missing here
-	Distribution by areas is missing here
-	Para verificar que los alumnos hayan alcanzado el logro planteado para cada una de las unidades de aprendizaje, realizarán actividades que les permita aplicar los conocimientos adquiridos durante las sesiones de teoría y se les propondrá retos que permitan evaluar el desempeño de los alumnos. is missing here
-	CRÉDITOS is missing here
-	Plan de trabajo is missing here
-	Competences Expected is missing here
-	Tipo de Curso is missing here
-	Se recomienda que el alumno haya llevado is missing here
-	Hours of theory and Lab is missing here
-	Información del curso. is missing here
-	Páginas is missing here
-	Misión is missing here
-	HASH(0x7fe65099f418) is missing here
-	Contribution to Computer Science Skills (IEEE) is missing here
-	Hours Of Attention Of The Instructor Or Coordinator Of The Course . is missing here
-	In order to verify their competences, several activities including active learning and roleplay will be developed during lab sessions. is missing here
-	Lab experiments is missing here
-	Information about the course is missing here
-	Consultar en EDU is missing here
-	HASH(0x7fe652675a80) is missing here
-	Academic Period   is missing here
-	Last change is missing here
-	Competencias (IEEE) is missing here
-	Coordinador is missing here
-	LAB is missing here
-	Theory Sessions is missing here
-	Professor skilled to teach a course is missing here
-	Docente is missing here
-	Distribución de cursos por áreas is missing here
-	Referencias Bibliográficas is missing here
-	short descriptions by course is missing here
-	Proyecto is missing here
-	Methodology and Evaluation is missing here
-	Evaluación Continua is missing here
-	Specific Competences Of TheCourse. is missing here
-	Sesiones Prácticas is missing here
-	HASH(0x7fe6509a4758) is missing here
-	Cursos que un profesor tiene habilitación is missing here
-	Tópicos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER> is missing here
-	Usar is missing here
-	Comparing <AREA>-<INST>~Vs. <STANDARD> of <STANDARD_REF_INSTITUTION>. is missing here
-	C is missing here
-	Consiste en el promedio de notas de las practicas calificadas grupales, redondeada hacia arriba (esta nota es sobre 9). is missing here
-	Pg. is missing here
-	Sistema de Evaluación is missing here
-	MSc in is missing here
-	Horas de Teoría y Laboratorio is missing here
-	Nombre is missing here
-	Otros Textos  is missing here
-	CURSO is missing here
-	Silabo del curso is missing here
-	~ is missing here
-	General information is missing here
-	semanas is missing here
-	Objetivos del curso. is missing here
-	Evaluación is missing here
-	HASH(0x7fe6509a2100) is missing here
-	Exposiciones individuales o grupales is missing here
-	Duration of the period is missing here
-	Task Force is missing here
-	Duración del periodo is missing here
-	Horas del curso is missing here
-	E is missing here
-	Session type is missing here
-	Metodología is missing here
-	Esta carrera is missing here
-	Prerrequisites is missing here
-	Reading is missing here
-	Competencias para Ingeniería is missing here
-	Specific Competences is missing here
-	General Objective is missing here
-	Practice Hours is missing here
-	Breve descripción del contenido del curso. is missing here
-	Profesor(es) del curso, email y horario de atención  is missing here
-	Sillabus is missing here
-	Sesiones Teóricas is missing here
-	Core Tier1 is missing here
-	Lista de temas a estudiar durante el curso. is missing here
-	horas is missing here
-	Otros cursos (<NFREECREDITS> <CREDITS>) podrían ser agregados aquí is missing here
-	Book Summaries is missing here
-	Breve descripción del curso  is missing here
-	Desempeño en la clase is missing here
-	TIPO is missing here
-	Equipo de Trabajo is missing here
-	ES is missing here
-	Profesores is missing here
-	Evaluation System is missing here
-	Práctica is missing here
-	Educational Objectives is missing here
-	Department is missing here
-	PERIODO is missing here
-	Conjuntos de problemas is missing here
-	Donde is missing here
-	The theory sessions are held in master classes with activities including active learning and roleplay to allow students to internalize the concepts. is missing here
-	Methodology and Method of Evaluation is missing here
-	Course name is missing here
-	Individual and team participation is encouraged to present their ideas, motivating them with additional points in the different stages of the course evaluation. is missing here
-	Goals of the Course is missing here
-	Práctica Calificada is missing here
-	O is missing here
-	Type of course is missing here
-	PhD in is missing here
-	Nivel Bloom is missing here
-	Sin mínimo de horas is missing here
-	This School  is missing here
-	Profesor capacitado para enseñar por curso is missing here
-	M is missing here
-	Basic Bibliography is missing here
-	Short descriptions is missing here
-	Resultados esperados por curso <BEGIN_SEM> al <END_SEM> <SEMESTER> is missing here
-	-- is missing here
-	Libro de is missing here
-	Objetivos específicos del curso. is missing here
-	Critical path is missing here
-	Competences for Engineering is missing here
-	Duración del Período  is missing here
-	Years of publication is missing here
-	RATIONALE OF THE COURSE is missing here
-	Prerrequisitos is missing here
-	Horas de Atención del Instructor o coordinador del curso is missing here
-	E-mail.  is missing here
-	Presencial is missing here
-	Other Texts is missing here
-	Curriculo is missing here
-	Continuous Assessment is missing here
-	Fecha is missing here
-	Knowledge Unit is missing here
-	List Of Subjects To Study During TheCourse. is missing here
-	Total credits is missing here
-	Total de créditos de la carrera is missing here
+	This language is complete !
 English
-	Bibliografía por curso is missing here
-	Correo Electrónico  is missing here
-	Oral Presentations is missing here
-	Ninguno is missing here
-	TYPE OF COURSE is missing here
-	sumillas is missing here
-	HASH(0x7fe652675960) is missing here
-	Objetivos Generales is missing here
-	ESCUELA/DEPARTAMENTO is missing here
-	The practical sessions are held in class where a series of exercises and/or practical concepts are developed through problem solving, problem solving, specific exercises and/or in application contexts. is missing here
-	NF  is missing here
-	Co-Requisites. is missing here
-	Unidad de Conocimiento is missing here
-	horas como mínimo is missing here
-	Topics of this course is missing here
-	It consists of the average scores of the individual short exams, rounded up (this note is about 9). is missing here
-	Set of problems is missing here
-	HL is missing here
-	HASH(0x7fe6509a46c8) is missing here
-	hr(s) is missing here
-	Book of is missing here
-	Methodology and system evaluation is missing here
-	Requisitos is missing here
-	Brief Description Of Course Content. is missing here
-	Consiste en el resultado de los problemas de esfuerzo individual redondeada hacia arriba (esta nota es sobre 2). is missing here
-	Horas por Sesión is missing here
-	Throughout the course different readings are provided, which are evaluated. The average of the notes in the readings is considered as the mark of a qualified practice. The use of the UTEC Online virtual campus allows each student to access the course information, and interact outside the classroom with the teacher and with the other students. is missing here
-	Brief description about the course is missing here
-	Sílabo is missing here
-	Curso is missing here
-	PT is missing here
-	Competences (IEEE) is missing here
-	Bibliografía básica is missing here
-	HASH(0x7fe652675c30) is missing here
-	Unidad no definida is missing here
-	Core Tier2 is missing here
-	Planificación is missing here
-	Título. is missing here
-	Nivel de Aprendizaje Esperado is missing here
-	Meetings after coordination with the professor is missing here
-	hora is missing here
-	Obligatorio is missing here
-	Resumen del libro is missing here
-	Lecturas is missing here
-	Unit Not Defined is missing here
-	Learning Outcomes is missing here
-	Theory evaluation is missing here
-	TYPE DE CURSO is missing here
-	Evaluaciones Teóricas is missing here
-	spanish is missing here
-	Bibliography by course is missing here
-	HASH(0x7fe6509a4818) is missing here
-	OBJETIVO GENERAL is missing here
-	Objetivos Educacionales ({\it Educational Objectives}) is missing here
-	Objetivos is missing here
-	SCHOOL/DEPARTMENT is missing here
-	Periodo Académico is missing here
-	It consists of the average grades of group practice, rounded up (this note is about 9). is missing here
-	Camino crítico is missing here
-	Área is missing here
-	english is missing here
-	Tipo de Sesión is missing here
-	Las sesiones de teoría se llevan a cabo en clases magistrales donde se realizarán actividades que propicien un aprendizaje activo, con dinámicas que permitan a los estudiantes interiorizar los conceptos. is missing here
-	Reporte Final is missing here
-	Area is missing here
-	Competencias esperadas is missing here
-	DEPARTAMENTO is missing here
-	Contribución a las habilidades de Ciencia de la Computación (IEEE) is missing here
-	Información del curso is missing here
-	Créditos is missing here
-	Comparación <AREA>-<INST>~Vs. <STANDARD> de <STANDARD_REF_INSTITUTION>. is missing here
-	Total Hours  is missing here
-	Horas Totales  is missing here
-	Competencias is missing here
-	Code and Name is missing here
-	Unidades de Conocimiento is missing here
-	Master en is missing here
-	HASH(0x7fe652675858) is missing here
-	Horario is missing here
-	Metodología y método de evaluación is missing here
-	Definición is missing here
-	No core hours is missing here
-	Electivo is missing here
-	Sumillas is missing here
-	Practical Sessions is missing here
-	Bloom Level is missing here
-	Course Information. is missing here
-	More courses (<NFREECREDITS> <CREDITS>) may be added here is missing here
-	Laboratorio is missing here
-	Metodologia y sistema de evaluación is missing here
-	Unidad obligatoria is missing here
-	Outcomes by course <BEGIN_SEM> to <END_SEM> <SEMESTER> is missing here
-	CONTRIBUCIÓN A LA RESULTADOS (OUTCOMES) is missing here
-	Sílabos is missing here
-	Introducción al curso is missing here
-	Co-Requisitos is missing here
-	Hour of this course is missing here
-	Contribution to outcomes is missing here
-	Courses that a teacher could dictate this semester is missing here
-	Code is missing here
-	Información general is missing here
-	Specific goals of the Course is missing here
-	FUNDAMENTACIÓN DEL CURSO is missing here
-	Metodologia y Evaluación is missing here
-	Competences for Computer Science is missing here
-	Teoría is missing here
-	Bibliografía is missing here
-	Libro is missing here
-	Theory Hours is missing here
-	Competencias para Ciencia de la Computación is missing here
-	páginas is missing here
-	See at EDU is missing here
-	Generales Goals is missing here
-	Semipresencial (Blended) is missing here
-	Habilidades is missing here
-	P is missing here
-	Sesiones de Laboratorio is missing here
-	Hours per Session is missing here
-	Autor is missing here
-	Tópicos del curso is missing here
-	Cr is missing here
-	Knowledge Units is missing here
-	Professor(s), email and schedule to attend students is missing here
-	Atención previa coordinación con el profesor is missing here
-	Competencias específicas del curso. is missing here
-	Consiste en el promedio de notas de los exámenes cortos individuales, redondeada hacia arriba (esta nota es sobre 9). is missing here
-	Length Of Period  is missing here
-	Semestres is missing here
-	HASH(0x7fe6526757b0) is missing here
-	HORAS is missing here
-	Pág is missing here
-	Condición is missing here
-	Mandatory Unit is missing here
-	Syllabus of Course is missing here
-	Sillabus de is missing here
-	It consists of the result of individual effort problems rounded up (this note is about 2). is missing here
-	HP is missing here
-	Learning Level Expected is missing here
-	Código is missing here
-	Final Report is missing here
-	Competencias Específicas is missing here
-	HASH(0x7fe652675ba0) is missing here
-	Temas is missing here
-	Examen is missing here
-	IEEE-CS/ACM is missing here
-	HT is missing here
-	Contenido is missing here
-	UNIDAD is missing here
-	GENERALOBJECTIVE is missing here
-	PC is missing here
-	Electivos is missing here
-	Justificación is missing here
-	Código del curso y nombre is missing here
-	Las sesiones prácticas se llevan en clase donde se desarrollan una serie de ejercicios y/o conceptos prácticos mediante planteamiento de problemas, la resolución de problemas, ejercicios puntuales y/o en contextos aplicativos. is missing here
-	CONTENIDOS is missing here
-	Dpto is missing here
-	Introduction to the course is missing here
-	SEMESTRE is missing here
-	Doctor en is missing here
-	Silabus de is missing here
-	Practical Test is missing here
-	Topics by course from <BEGIN_SEM> to <END_SEM> <SEMESTER> is missing here
-	Contribution to Outcomes is missing here
-	L is missing here
-	Modalidad is missing here
-	HASH(0x7fe65099f268) is missing here
-	Última modificación is missing here
-	Competencia is missing here
-	Si is missing here
-	HASH(0x7fe65099f310) is missing here
-	Objetivos de Aprendizaje is missing here
-	Type of Course is missing here
-	Nombre. is missing here
-	A lo largo del curso se proporcionan diferentes lecturas, las cuales podrían ser evaluadas. El uso de herramientas Online permite a cada estudiante acceder a la información del curso, e interactuar fuera de aula con el profesor y con los otros estudiantes. is missing here
-	Horas de teoría is missing here
-	INFORMACIÓN GENERAL is missing here
-	Contribución a los resultados ({\it Outcomes}) is missing here
-	Performance in class is missing here
-	Unidad is missing here
-	Semestre is missing here
-	Evaluar is missing here
-	GENERAL INFORMATION is missing here
-	Unidades is missing here
-	EN is missing here
-	Core Hours is missing here
-	Familiarizarse is missing here
-	Horas de práctica is missing here
-	Face to face is missing here
-	Se fomenta la participación individual y en equipo para exponer sus ideas, motivándolos con puntos adicionales en las diferentes etapas de la evaluación del curso. is missing here
-	HASH(0x7fe65099f538) is missing here
-	Lab Sessions is missing here
-	Semanal is missing here
-	Años de Publicación  is missing here
-	Distribution by areas is missing here
-	Para verificar que los alumnos hayan alcanzado el logro planteado para cada una de las unidades de aprendizaje, realizarán actividades que les permita aplicar los conocimientos adquiridos durante las sesiones de teoría y se les propondrá retos que permitan evaluar el desempeño de los alumnos. is missing here
-	CRÉDITOS is missing here
-	Plan de trabajo is missing here
-	Competences Expected is missing here
-	Tipo de Curso is missing here
-	Se recomienda que el alumno haya llevado is missing here
-	Hours of theory and Lab is missing here
-	Información del curso. is missing here
-	Páginas is missing here
-	Misión is missing here
-	HASH(0x7fe65099f418) is missing here
-	Contribution to Computer Science Skills (IEEE) is missing here
-	Hours Of Attention Of The Instructor Or Coordinator Of The Course . is missing here
-	In order to verify their competences, several activities including active learning and roleplay will be developed during lab sessions. is missing here
-	Lab experiments is missing here
-	Information about the course is missing here
-	Consultar en EDU is missing here
-	HASH(0x7fe652675a80) is missing here
-	Academic Period   is missing here
-	Last change is missing here
-	Competencias (IEEE) is missing here
-	Coordinador is missing here
-	LAB is missing here
-	Theory Sessions is missing here
-	Professor skilled to teach a course is missing here
-	Docente is missing here
-	Distribución de cursos por áreas is missing here
-	Referencias Bibliográficas is missing here
-	short descriptions by course is missing here
-	Proyecto is missing here
-	Methodology and Evaluation is missing here
-	Evaluación Continua is missing here
-	Specific Competences Of TheCourse. is missing here
-	Sesiones Prácticas is missing here
-	HASH(0x7fe6509a4758) is missing here
-	Cursos que un profesor tiene habilitación is missing here
-	Tópicos por curso del <BEGIN_SEM> al <END_SEM> <SEMESTER> is missing here
-	Usar is missing here
-	Comparing <AREA>-<INST>~Vs. <STANDARD> of <STANDARD_REF_INSTITUTION>. is missing here
-	C is missing here
-	Consiste en el promedio de notas de las practicas calificadas grupales, redondeada hacia arriba (esta nota es sobre 9). is missing here
-	Pg. is missing here
-	Sistema de Evaluación is missing here
-	MSc in is missing here
-	Horas de Teoría y Laboratorio is missing here
-	Nombre is missing here
-	Otros Textos  is missing here
-	CURSO is missing here
-	Silabo del curso is missing here
-	~ is missing here
-	General information is missing here
-	semanas is missing here
-	Objetivos del curso. is missing here
-	Evaluación is missing here
-	HASH(0x7fe6509a2100) is missing here
-	Exposiciones individuales o grupales is missing here
-	Duration of the period is missing here
-	Task Force is missing here
-	Duración del periodo is missing here
-	Horas del curso is missing here
-	E is missing here
-	Session type is missing here
-	Metodología is missing here
-	Esta carrera is missing here
-	Prerrequisites is missing here
-	Reading is missing here
-	Competencias para Ingeniería is missing here
-	Specific Competences is missing here
-	General Objective is missing here
-	Practice Hours is missing here
-	Breve descripción del contenido del curso. is missing here
-	Profesor(es) del curso, email y horario de atención  is missing here
-	Sillabus is missing here
-	Sesiones Teóricas is missing here
-	Core Tier1 is missing here
-	Lista de temas a estudiar durante el curso. is missing here
-	horas is missing here
-	Otros cursos (<NFREECREDITS> <CREDITS>) podrían ser agregados aquí is missing here
-	Book Summaries is missing here
-	Breve descripción del curso  is missing here
-	Desempeño en la clase is missing here
-	TIPO is missing here
-	Equipo de Trabajo is missing here
-	ES is missing here
-	Profesores is missing here
-	Evaluation System is missing here
-	Práctica is missing here
-	Educational Objectives is missing here
-	Department is missing here
-	PERIODO is missing here
-	Conjuntos de problemas is missing here
-	Donde is missing here
-	The theory sessions are held in master classes with activities including active learning and roleplay to allow students to internalize the concepts. is missing here
-	Methodology and Method of Evaluation is missing here
-	Course name is missing here
-	Individual and team participation is encouraged to present their ideas, motivating them with additional points in the different stages of the course evaluation. is missing here
-	Goals of the Course is missing here
-	Práctica Calificada is missing here
-	O is missing here
-	Type of course is missing here
-	PhD in is missing here
-	Nivel Bloom is missing here
-	Sin mínimo de horas is missing here
-	This School  is missing here
-	Profesor capacitado para enseñar por curso is missing here
-	M is missing here
-	Basic Bibliography is missing here
-	Short descriptions is missing here
-	Resultados esperados por curso <BEGIN_SEM> al <END_SEM> <SEMESTER> is missing here
-	-- is missing here
-	Libro de is missing here
-	Objetivos específicos del curso. is missing here
-	Critical path is missing here
-	Competences for Engineering is missing here
-	Duración del Período  is missing here
-	Years of publication is missing here
-	RATIONALE OF THE COURSE is missing here
-	Prerrequisitos is missing here
-	Horas de Atención del Instructor o coordinador del curso is missing here
-	E-mail.  is missing here
-	Presencial is missing here
-	Other Texts is missing here
-	Curriculo is missing here
-	Continuous Assessment is missing here
-	Fecha is missing here
-	Knowledge Unit is missing here
-	List Of Subjects To Study During TheCourse. is missing here
-	Total credits is missing here
-	Total de créditos de la carrera is missing here
+	This language is complete !
+
+Outcomes (Missing keys)
+Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
+	This language is complete !
+English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
+	specificoutcomea28
+	specificoutcomea29
+	specificoutcomea30
+	specificoutcomea31
+	specificoutcomea32
+	specificoutcomea33
+	specificoutcomea34
+	specificoutcomea35
+	specificoutcomea36
+	specificoutcomea37
+	specificoutcomea38
+	specificoutcomea39
+	specificoutcomea40
+	specificoutcomea41
+	specificoutcomea42
+	specificoutcomeb11
+	specificoutcomeb12
+	specificoutcomeb13
+	specificoutcomeb14
+	specificoutcomeb15
+	specificoutcomec12
+	specificoutcomec13
+	specificoutcomec14
+	specificoutcomec15
+	specificoutcomec16
+	specificoutcomec17
+	specificoutcomec18
+	specificoutcomec19
+	specificoutcomec20
+	specificoutcomed6
+	specificoutcomed7
+	specificoutcomed8
+	specificoutcomef21
+	specificoutcomef22
+	specificoutcomef23
+	specificoutcomef24
+	specificoutcomef25
+	specificoutcomef26
+	specificoutcomef27
+	specificoutcomef28
+	specificoutcomei7
+	specificoutcomei8
+	specificoutcomei9
+	specificoutcomej10
+	specificoutcomej11
+	specificoutcomej12
+	specificoutcomej7
+	specificoutcomej8
+	specificoutcomej9
+	specificoutcomel2
+	specificoutcomel3
+	specificoutcomen2
+	specificoutcomen3
+	specificoutcomen4
+	specificoutcomeñ1
 

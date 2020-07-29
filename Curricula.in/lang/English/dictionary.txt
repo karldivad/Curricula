@@ -14,7 +14,7 @@ GeneralInformation=General information
 CourseCodeandName=Code and Name
 HoursTheoryAndLab=Hours of theory and Lab
 RATIONALEOFTHECOURSE=RATIONALE OF THE COURSE
-GeneralObjective=General Objective
+GENERALOBJECTIVE=General Objective
 
 CONTRIBUTIONTOOUTCOMES=Contribution to outcomes
 SyllabusofCourse=Syllabus of Course

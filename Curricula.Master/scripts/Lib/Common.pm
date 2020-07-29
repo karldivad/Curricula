@@ -1116,14 +1116,19 @@ sub read_outcomes($)
 {
     my ($file_name) = (@_);
     my $txt 	= Util::read_file($file_name);
-	my %macros 	= parse_macros($txt);
+	#my %macros = parse_macros($txt);
+	my %macros 	= ();
 	#Util::print_message("file_name=$file_name ...");
 	#print Dumper(\%macros); exit;
-
     my $count = 0;
     while($txt =~ m/\\Define(.*?)\{(.*?)\}\{/g)
     {
 		my ($cmd, $code)  = (lc $1, $2);
+		if( $cmd eq "specificoutcome")
+		{	$txt =~ m/(.*?)\}\{/g;
+			$code .= $1;
+			#Util::print_message("SpecificOutcome $code detected ...");
+		}
 		my $cPar   = 1;
 		my $body   = "";
 		while($cPar > 0)
@@ -1134,8 +1139,6 @@ sub read_outcomes($)
 			$body      .= $1 if($cPar > 0);
 		}
 		$macros{"$cmd$code"} = $body;
-	# 	if( $cmd eq "SPONEAllTopics")
-	# 	{	Util::print_message("*****\n$body\n*****");	exit;	}
 		$count++;
     }
     Util::print_message("read_outcomes ($file_name) $count macros processed ... OK!");
@@ -2162,14 +2165,14 @@ sub set_initial_configuration($)
 		my $lang_prefix = "";
 		if( $lang =~ m/(..)/g )
 		{		$lang_prefix = uc($1);	      }
-		%{$config{dictionaries}{$lang}} 		= read_dictionary_file($lang);
+		%{$config{dictionaries}{$lang}} 		  = read_dictionary_file($lang);
 		$config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
 		#Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
-		foreach my $key (%{$config{dictionaries}{$lang}})
+		foreach my $key (keys %{$config{dictionaries}{$lang}})
 		{	$config{dictionaries}{terms}{$key} = "";	}
 		#print Dumper(\%{$config{dictionaries}{terms}});
 	}
-	dump_dictionary_errors();
+	#dump_dictionary_errors();
 
 	# Read specific config for its country
 	my %countryvars = read_config_file(get_template("in-country-config-file"));
@@ -2212,23 +2215,23 @@ sub set_initial_configuration($)
 		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
 		Util::print_message("Reading outcomes ($outcomes_macros_file)");
 		my %outcomes_macros = read_outcomes($outcomes_macros_file);
-
+		foreach my $key (keys %outcomes_macros)
+		{	$Common::config{macros}{outcomes}{$lang}{$key} = $outcomes_macros{$key};
+			$Common::config{outcomes_keys}{$key} = "";	
+		}
 		@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
 		if($lang eq $this_lang)
-		{
-			foreach my $key (keys %outcomes_macros)
+		{	foreach my $key (keys %outcomes_macros)
 			{	$Common::config{macros}{$key} = $outcomes_macros{$key};		}
 		}
 		#@{$Common::config{macros}{keys %outcomes_macros}}        = values %outcomes_macros;
 		#if( $config{language_without_accents} eq $lang )
 		#my %outcomes_defs = read_outcomes($outcomes_macros_file);
-		@{$Common::config{macros}{outcomes}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
 		#print Dumper( \%outcomes_defs );
 		#print Dumper(\%{$Common::config{macros}{outcomes}{$lang}});
-		#print Dumper( \%outcomes_macros );
+		#print Dumper(\%outcomes_macros);
 		#Util::print_color("*************************");
 	}
-	
 	#exit;
 	if(-e Common::get_template("out-current-institution-file"))
 	{	my %macros = read_macros(Common::get_template("out-current-institution-file"));
@@ -5477,17 +5480,48 @@ sub generate_bok($)
 
 sub dump_dictionary_errors()
 {
-	my $output_txt = "Dictionaries\n";
+	my $output_txt = "Dictionaries (Missing keys)\n";
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
 		$output_txt .= "$lang\n";
+		my $count = 0;
 		foreach my $key (keys %{$config{dictionaries}{terms}})
 		{
 			if( not defined($config{dictionaries}{$lang}{$key}) )
 			{
-				$output_txt .= "\t$key is missing here\n";
+				$output_txt .= sprintf("\t%-15s\n", $key);
+				$count++;
 			}
 		}
+		if( $count == 0 )
+		{	$output_txt .= "\tThis language is complete !\n";	}
+	}
+	$output_txt .= "\n";
+	return $output_txt;
+}
+
+sub dump_outcomes_errors()
+{
+	#foreach my $key (keys %outcomes_macros)
+	#	{	$Common::config{outcomes_keys}{$key} = "";	}
+	#	@{$Common::config{macros}{$lang}}{keys %outcomes_macros} = values %outcomes_macros;
+
+	my $output_txt = "Outcomes (Missing keys)\n";
+	foreach my $lang (@{$config{SyllabusLangsList}})
+	{
+		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
+		$output_txt .= "$lang ($outcomes_macros_file)\n";
+		my $count = 0;
+		foreach my $key (sort {$a cmp $b} keys %{$Common::config{outcomes_keys}})
+		{
+			if( not defined($Common::config{macros}{outcomes}{$lang}{$key}) )
+			{
+				$output_txt .= sprintf("\t%-15s\n", $key);
+				$count++;
+			}
+		}
+		if( $count == 0 )
+		{	$output_txt .= "\tThis language is complete !\n";	}
 	}
 	$output_txt .= "\n";
 	return $output_txt;
@@ -5519,6 +5553,7 @@ sub dump_errors()
 	my $output_txt = "";
 	$output_txt .= dump_course_errors();
 	$output_txt .= dump_dictionary_errors();
+	$output_txt .= dump_outcomes_errors();
 	my $output_errors_file = get_template("output-errors-file");
 	Util::write_file($output_errors_file, $output_txt);
 	Util::print_message("Dumped errors !");
