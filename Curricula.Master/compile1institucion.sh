@@ -35,8 +35,8 @@ endif
 
 echo "pdf=$pdf, html=$html, syllabi=$syllabi"
 
-set LogDir=../Curricula.out/log
-date > ../Curricula.out/log/Peru-CS-SPC-time.txt
+set LogDir=./log
+date > ./log/Peru-CS-SPC-time.txt
 #--BEGIN-FILTERS--
 set institution=SPC
 setenv CC_Institution SPC
@@ -66,7 +66,7 @@ rm *.ps *.pdf *.log *.dvi *.aux *.bcf *.xml *.bbl *.blg *.toc *.out *.xref *.lof
 # sudo addgroup curricula
 #sudo chown -R ecuadros:curricula ./Curricula
 
-mkdir -p ../Curricula.out/log;
+mkdir -p ./log;
 ./scripts/process-curricula.pl CS-SPC ;
 ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-eps-files.sh;
 foreach lang ('ES' 'EN')
@@ -78,8 +78,8 @@ if($pdf == 1) then
     rm *.ps *.log *.dvi *.aux *.bcf *.xml *.bbl *.blg *.toc *.out *.xref *.lof *.log *.lot *.brf *~ *.tmp;
     latex curricula-main;
 
-    mkdir -p ../Curricula.out/log;
-    ./scripts/compbib.sh curricula-main > ../Curricula.out/log/Peru-CS-SPC-errors-bib.txt;
+    mkdir -p ./log;
+    ./scripts/compbib.sh curricula-main > ./log/Peru-CS-SPC-errors-bib.txt;
 
     latex curricula-main;
     latex curricula-main;
@@ -176,8 +176,8 @@ cp ../Curricula.out/pdfs/CS-SPC/Plan2021/*.png ../Curricula.out/html/Peru/CS-SPC
 #    ../Curricula.out/Peru/CS-SPC/cycle/2021-I/Plan2021/scripts/gen-book.sh  $book       	pdflatex "CS-SPC 2021-I $book (Plan2021) 1-10";
 # end
 
-date >> ../Curricula.out/log/Peru-CS-SPC-time.txt;
-more ../Curricula.out/log/Peru-CS-SPC-time.txt;
+date >> ./log/Peru-CS-SPC-time.txt;
+more ./log/Peru-CS-SPC-time.txt;
 #./scripts/testenv.pl
 beep;
 beep;
