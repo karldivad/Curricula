@@ -77,12 +77,5 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	specificoutcomea45
-	specificoutcomeb0
-	specificoutcomeb0A
-	specificoutcomeb0B
-	specificoutcomeb17
-	specificoutcomec22
-	specificoutcomeg9
-	specificoutcomel4
+	This language is complete !
 
