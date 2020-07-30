@@ -30,11 +30,6 @@ Course=CS370
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS370.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=CS3P2
-	English (Cloud Computing)
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P2.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Course=CS3P3
 	English (Internet of Things )
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P3.tex
@@ -77,5 +72,6 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomeb18
+	specificoutcomeg10
 
