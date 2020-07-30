@@ -22,14 +22,6 @@ Course=CS361
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS361.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=CS362
-	English (Robotics)
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS362.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Robótica)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS362.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Course=CS370
 	English (Big Data)
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS370.tex
@@ -85,5 +77,12 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomea45
+	specificoutcomeb0
+	specificoutcomeb0A
+	specificoutcomeb0B
+	specificoutcomeb17
+	specificoutcomec22
+	specificoutcomeg9
+	specificoutcomel4
 

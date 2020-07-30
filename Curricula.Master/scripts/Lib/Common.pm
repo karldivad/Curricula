@@ -1125,7 +1125,7 @@ sub read_outcomes($)
     {
 		my ($cmd, $code)  = (lc $1, $2);
 		if( $cmd eq "specificoutcome")
-		{	$txt =~ m/(.*?)\}\{/g;
+		{	$txt =~ m/(.*?)\}\{(.*?)\}\{/g;
 			$code .= $1;
 			#Util::print_message("SpecificOutcome $code detected ...");
 		}
