@@ -14,14 +14,6 @@ Course=CB309
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB309.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=CS281
-	English (Computing in Society)
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS281.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Computación en la Sociedad)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS281.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Course=CS361
 	English (Topics in Artificial Intelligence)
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS361.tex
@@ -44,14 +36,6 @@ Course=CS370
 		specificoutcomes=I did not find specificoutcomes{V1}
 	Espanol (Big Data)
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS370.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
-Course=CS3I1
-	English (Computer Security)
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3I1.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Seguridad en Computación)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3I1.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
 Course=CS3P2
@@ -101,5 +85,20 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomea43
+	specificoutcomea44
+	specificoutcomeb16
+	specificoutcomec21
+	specificoutcomed9
+	specificoutcomee3
+	specificoutcomee4
+	specificoutcomee5
+	specificoutcomeg3
+	specificoutcomeg4
+	specificoutcomeg5
+	specificoutcomeg6
+	specificoutcomeg7
+	specificoutcomeg8
+	specificoutcomeh3
+	specificoutcomei10
 
