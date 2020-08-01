@@ -43,7 +43,8 @@ English
 
 Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomeb4
+	specificoutcomeb5
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomeb\DefineSpecificOutcome{b
 
