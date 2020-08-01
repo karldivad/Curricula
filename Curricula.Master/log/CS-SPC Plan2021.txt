@@ -14,11 +14,6 @@ Course=CB309
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB309.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=CS3P1
-	English (Parallel and Distributed Computing )
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P1.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Course=CS3P3
 	English (Internet of Things )
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/Computing/CS/CS3P3.tex
@@ -39,17 +34,6 @@ Course=FG211
 	English (Professional Ethics)
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG211.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Ética Profesional)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG211.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
-Course=MA308
-	English (Exploratory Spatial Data Analysis  )
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/MA308.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Análisis Exploratorio de Datos Espaciales)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/MA308.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
 
 Dictionaries (Missing keys)
 Espanol
@@ -61,5 +45,10 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomea47
+	specificoutcomea5A
+	specificoutcomea5B
+	specificoutcomed10
+	specificoutcomee6
+	specificoutcomee7
 
