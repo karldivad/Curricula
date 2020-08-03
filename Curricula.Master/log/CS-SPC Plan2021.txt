@@ -1,9 +1,11 @@
 Course=CB111
 	English (Computational Physics)
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/BasicSciences/CB111.tex
+		outcomes=I did not find outcomes{V1}
 		specificoutcomes=I did not find specificoutcomes{V1}
 	Espanol (Física Computacional)
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/BasicSciences/CB111.tex
+		outcomes=I did not find outcomes{V1}
 		specificoutcomes=I did not find specificoutcomes{V1}
 
 Course=CB309
