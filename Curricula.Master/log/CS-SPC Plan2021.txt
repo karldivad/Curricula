@@ -19,11 +19,6 @@ Course=FG102
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG102.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=FG211
-	English (Professional Ethics)
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG211.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Dictionaries (Missing keys)
 Espanol
 	This language is complete !
@@ -34,5 +29,6 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomee8
+	specificoutcomee9
 
