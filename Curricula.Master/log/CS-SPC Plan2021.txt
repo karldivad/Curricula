@@ -6,14 +6,6 @@ Course=CS3P3
 		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/Computing/CS/CS3P3.tex
 		specificoutcomes=I did not find specificoutcomes{V1}
 
-Course=FG102
-	English (Study Methodology)
-		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/GeneralEducation/FG102.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-	Espanol (Metodología del Estudio)
-		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/GeneralEducation/FG102.tex
-		specificoutcomes=I did not find specificoutcomes{V1}
-
 Dictionaries (Missing keys)
 Espanol
 	This language is complete !
@@ -24,5 +16,12 @@ Outcomes (Missing keys)
 Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
 	This language is complete !
 English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
-	This language is complete !
+	specificoutcomeh4
+	specificoutcomeh5
+	specificoutcomei16
+	specificoutcomel10
+	specificoutcomel6
+	specificoutcomel7
+	specificoutcomel8
+	specificoutcomel9
 
