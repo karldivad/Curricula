@@ -58,7 +58,7 @@ sub generate_institution($)
 	$output_txt .= "\\newcommand{\\basedir}{".getcwd()."}\n";
 	$output_txt .= "\\newcommand{\\InDir}{\\basedir/".Common::get_template("InDir")."}\n";
 	$output_txt .= "\\newcommand{\\InLangBaseDir}{\\basedir/".Common::get_template("InLangBaseDir")."}\n";
-	$output_txt .= "\\newcommand{\\InLangDir}{\\basedir/".Common::get_template("InLangDir")."}\n";
+	$output_txt .= "\\newcommand{\\InLangDefaultDir}{\\basedir/".Common::get_template("InLangDefaultDir")."}\n";
 	$output_txt .= "\\newcommand{\\InAllTexDir}{\\basedir/".Common::get_template("InAllTexDir")."}\n";
 	$output_txt .= "\\newcommand{\\InTexDir}{\\basedir/".Common::get_expanded_template("InTexDir", $lang)."}\n";
 	$output_txt .= "\\newcommand{\\InStyDir}{\\basedir/".Common::get_template("InStyDir")."}\n";

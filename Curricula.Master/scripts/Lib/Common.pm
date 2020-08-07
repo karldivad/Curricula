@@ -577,8 +577,8 @@ sub set_global_variables()
 	system("mkdir -p $config{OutputScriptsDir}");
 
 	$config{InLangBaseDir}	 	= "$config{in}/lang";
-	$config{InLangDir}	 		= "$config{InLangBaseDir}/$config{language_without_accents}";
-	#$config{in_html_dir}      	= $config{InLangDir}."/templates";
+	$config{InLangDefaultDir}	= "$config{InLangBaseDir}/$config{language_without_accents}";
+	$config{InLangCommonDir}	= "$config{InLangBaseDir}/Common";
 
 	$config{InPeopleDir}		= $config{in}."/people";
 	$config{OutputPdfDir}		= "$config{out}/pdfs";
@@ -606,18 +606,20 @@ sub set_initial_paths()
 
 ################################################################################################################
 # InputsDirs
-	$path_map{InLangDir}				= $config{InLangDir};
 	$path_map{InLangBaseDir}			= $config{InLangBaseDir};
+	$path_map{InLangCommonDir}			= $config{InLangCommonDir};
+	$path_map{InLangDefaultDir}			= $config{InLangDefaultDir};
+	$path_map{InLangDir}				= $path_map{InDir}."/lang/<LANG-EXTENDED>";
 	$path_map{InAllTexDir}				= $path_map{InDir}."/All.tex";
 	$path_map{InTexDir}					= $path_map{InDir}."/lang/<LANG-EXTENDED>/$config{area}.tex";
-	$path_map{InStyDir}					= $path_map{InLangDir}."/$config{area}.sty";
+	$path_map{InStyDir}					= $path_map{InLangDefaultDir}."/$config{area}.sty";
 	$path_map{InStyAllDir}				= $path_map{InDir}."/All.sty";
-	$path_map{InSyllabiContainerDir}	= $path_map{InLangDir}."/cycle/$config{Semester}/Syllabi";
+	$path_map{InSyllabiContainerDir}	= $path_map{InLangDefaultDir}."/cycle/$config{Semester}/Syllabi";
 
-    $path_map{InFigsDir}                = $path_map{InLangDir}."/$config{FigsRelativePath}";
-	$path_map{InOthersDir}				= $path_map{InLangDir}."/$config{area}.others";
-	$path_map{InHtmlDir}				= $path_map{InLangDir}."/All.html";
-	$path_map{InTexAllDir}				= $path_map{InLangDir}."/All.tex";
+    $path_map{InFigsDir}                = $path_map{InLangDefaultDir}."/$config{FigsRelativePath}";
+	$path_map{InOthersDir}				= $path_map{InLangDefaultDir}."/$config{area}.others";
+	$path_map{InHtmlDir}				= $path_map{InLangDefaultDir}."/All.html";
+	$path_map{InTexAllDir}				= $path_map{InLangDefaultDir}."/All.tex";
 	$path_map{InDisciplinesBaseDir}		= $path_map{InDir}."/Disciplines";
 	$path_map{InDisciplineDir}			= $path_map{InDisciplinesBaseDir}."/$config{discipline}";
 	$path_map{InScriptsDir}				= "./scripts";
@@ -830,13 +832,13 @@ sub set_initial_paths()
 	# Config files
 	$path_map{"all-config"}							= $path_map{InDir}."/config/all.config";
 	$path_map{"colors"}								= $path_map{InDir}."/config/colors.config";
-	$path_map{"discipline-config"}		   			= $path_map{InLangDir}."/$config{discipline}.config/$config{discipline}.config";
-	$path_map{"in-area-all-config-file"}			= $path_map{InLangDir}."/$config{area}.config/All.config";
-	$path_map{"in-area-config-file"}				= $path_map{InLangDir}."/$config{area}.config/Area.config";
+	$path_map{"discipline-config"}		   			= $path_map{InLangDefaultDir}."/$config{discipline}.config/$config{discipline}.config";
+	$path_map{"in-area-all-config-file"}			= $path_map{InLangDefaultDir}."/$config{area}.config/All.config";
+	$path_map{"in-area-config-file"}				= $path_map{InLangDefaultDir}."/$config{area}.config/Area.config";
 	$path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
 	$path_map{"in-institution-config-file"}			= $path_map{InInstConfigDir}."/$config{institution}.config";
 	$path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
-	$path_map{"dictionary"}							= $path_map{InLangDir}."/dictionary.txt";
+	$path_map{"dictionary"}							= $path_map{InLangDefaultDir}."/dictionary.txt";
 	$path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
 
 	$path_map{"OutputDisciplinesList-file"}			= $path_map{OutHtmlBase}."/disciplines.html";
@@ -1220,11 +1222,11 @@ sub process_config_vars()
 {
 #  	print "config{macros_file} = \"$config{macros_file}\"\n";
         my $InStyDir = get_template("InStyDir");
-	my $InLangDir = get_template("InLangDir");
+	my $InLangDefaultDir = get_template("InLangDefaultDir");
 	foreach my $file (split(",", $config{macros_file}))
 	{
 		$file =~ s/<STY-AREA>/$InStyDir/g;
-		$file =~ s/<LANG-AREA>/$InLangDir/g;
+		$file =~ s/<LANG-AREA>/$InLangDefaultDir/g;
 	}
 
 # 	PrefixPriority=CS,IS,SE,HW,IT,MC,OG,CB,CF,CM,CQ,HU,ET,ID
@@ -1514,7 +1516,7 @@ sub load_meta_tags()
 	$Common::config{meta_tags}{COUNTRY}			= Common::get_template("country_without_accents");
 	$Common::config{meta_tags}{LANG}			= Common::get_template("language_without_accents");
 	$Common::config{meta_tags}{IN_LANG_BASE_DIR}= Common::get_template("InLangBaseDir");
-	$Common::config{meta_tags}{IN_LANG_DIR}	= Common::get_template("InLangDir");
+	$Common::config{meta_tags}{IN_LANG_DIR}	= Common::get_template("InLangDefaultDir");
 	#$Common::config{meta_tags}{IN_TEX_DIR}	= Common::get_template("InTexDir");
 	$Common::config{meta_tags}{HTML_FOOTNOTE}	= $Common::config{HTMLFootnote};
 	$Common::config{meta_tags}{SEM_ACAD}		= $Common::config{Semester};
@@ -2198,12 +2200,12 @@ sub set_initial_configuration($)
 	read_crossed_references();
 
 	my $InStyDir = get_template("InStyDir");
-	my $InLangDir = get_template("InLangDir");
+	my $InLangDefaultDir = get_template("InLangDefaultDir");
 
 	foreach my $file (split(",", $config{macros_file})) # read_bok is here
 	{
 		$file =~ s/<STY-AREA>/$InStyDir/g;
-		$file =~ s/<LANG-AREA>/$InLangDir/g;
+		$file =~ s/<LANG-AREA>/$InLangDefaultDir/g;
 		my %macros = read_macros($file);
 		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
