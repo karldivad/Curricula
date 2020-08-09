@@ -312,6 +312,7 @@ sub get_prerrequisites_info($$)
         }
         $map{PREREQUISITES} 			= $output;
 	}
+	return ($map{PREREQUISITES_JUST_CODES}, $map{PREREQUISITES});
 }
 
 sub get_formatted_skills($$$$$)
