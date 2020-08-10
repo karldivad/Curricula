@@ -3,6 +3,11 @@ Course=ID201
 		competences=I did not find competences{V1}
 		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/ForeignLanguages/ID103.tex
 
+Course=ID204
+	Espanol (Inglés VI)
+		competences=I did not find competences{V1}
+		file=../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/ForeignLanguages/ID106.tex
+
 Dictionaries (Missing keys)
 Espanol
 	This language is complete !

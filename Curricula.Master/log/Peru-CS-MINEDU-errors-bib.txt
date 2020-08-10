@@ -190,6 +190,8 @@ Warning--I didn't find a database entry for "introPerforComp"
 Warning--I didn't find a database entry for "wenmei"
 Warning--I didn't find a database entry for "sanders"
 Warning--I didn't find a database entry for "quinn"
+Warning--I didn't find a database entry for "12"
+Warning--I didn't find a database entry for "15"
 (There were 5 error messages)
 bibtex curricula-main1
 This is BibTeX, Version 0.99d (TeX Live 2016)
@@ -562,6 +564,11 @@ Database file #1: /Users/ecuadros/Articles/Curricula/Curricula.Master/../Curricu
 Warning--can't use both author and editor fields in introPerforComp
 Warning--empty publisher in introPerforComp
 (There were 2 warnings)
+bibtex curricula-main38
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: curricula-main38.aux
+The style file: apalike.bst
+Database file #1: /Users/ecuadros/Articles/Curricula/Curricula.Master/../Curricula.in/lang/Espanol/cycle/2021-I/Syllabi/ForeignLanguages/ID101.bib
 bibtex curricula-main4
 This is BibTeX, Version 0.99d (TeX Live 2016)
 The top-level auxiliary file: curricula-main4.aux
