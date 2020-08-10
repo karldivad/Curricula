@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{multirow}
 \usepackage[texcoord=true]{eso-pic}
+\usepackage[document]{ragged2e}
 \usepackage{\InStyAllDir/syllabus-final}
 \pagestyle{myheadings}
 \setcounter{tocdepth}{2}
@@ -65,24 +66,24 @@
 %\addcontentsline{toc}{section}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
 
 \addtocounter{SyllabiSectionCount}{1}
-\addsectiontoidx{<<Course>>} \label{sec:--COURSE_CODE--}
-\indent --COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--) 
-
-\addtocounter{SyllabiSectionCount}{1}
 \addsectiontoidx{<<GeneralInformation>>}
 
+\begin{flushleft}
 \begin{tabularx}{\textwidth}{lcX}
-    \indent \textbf{\arabic{SyllabiSectionCount}.1 <<Credits>>}             & : & --CREDITS-- \\
-    \indent \textbf{\arabic{SyllabiSectionCount}.2 <<TheoryHours>>}         & : & --THEORY_HOURS-- \\
-    \indent \textbf{\arabic{SyllabiSectionCount}.3 <<LabHours>>}            & : & --LAB_HOURS-- \\
-    \indent \textbf{\arabic{SyllabiSectionCount}.4 <<Durationoftheperiod>>} & : & 16 <<weeks>> \\
-    \indent \textbf{\arabic{SyllabiSectionCount}.5 <<Condition>>}           & : & --COURSE_TYPE--  \\
-    \indent \textbf{\arabic{SyllabiSectionCount}.6 <<Modality>>}            & : & <<FaceToFace>>  \\
-    \indent \textbf{\arabic{SyllabiSectionCount}.7 <<Prerequisites>>}       & : & 
+\textbf{\arabic{SyllabiSectionCount}.1 <<Course>>}              & : & --COURSE_CODE--. --COURSE_NAME-- \\
+\textbf{\arabic{SyllabiSectionCount}.2 <<TypeOfCourse>>}        & : & --COURSE_TYPE-- \\
+\textbf{\arabic{SyllabiSectionCount}.3 <<Credits>>}             & : & --CREDITS-- \\
+\textbf{\arabic{SyllabiSectionCount}.4 <<TheoryHours>>}         & : & --THEORY_HOURS-- \\
+\textbf{\arabic{SyllabiSectionCount}.5 <<LabHours>>}            & : & --LAB_HOURS-- \\
+\textbf{\arabic{SyllabiSectionCount}.6 <<Durationoftheperiod>>} & : & 16 <<weeks>> \\
+\textbf{\arabic{SyllabiSectionCount}.7 <<Condition>>}           & : & --COURSE_TYPE--  \\
+\textbf{\arabic{SyllabiSectionCount}.8 <<Modality>>}            & : & <<Blended>>  \\
+\textbf{\arabic{SyllabiSectionCount}.9 <<Prerequisites>>}       & : & 
         \begin{minipage}{0.95\textwidth}
             --PREREQUISITES--
         \end{minipage} \\
 \end{tabularx}
+\end{flushleft}
 \vspace{2mm}  
 
 \addtocounter{SyllabiSectionCount}{1}
@@ -119,7 +120,7 @@
 \addtocounter{SyllabiUnitCount}{1}
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|X|}                 \hline
-\multicolumn{2}{|l|}{\textbf{<<Unit>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS--) }} \\ \hline
+\multicolumn{2}{|l|}{\textbf{<<Unit>> \arabic{SyllabiUnitCount}: --UNIT_TITLE-- (--HOURS-- <<hours>>) }} \\ \hline
 \multicolumn{2}{|l|}{\textbf{<<CompetencesExpected>>: --LEVEL_OF_COMPETENCE--}} \\ \hline
 \textbf{<<Topics>>}  &  \textbf{<<LearningOutcomes>>} \\ \hline
 --UNIT_CONTENT-- 
