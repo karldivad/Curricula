@@ -190,8 +190,6 @@ Warning--I didn't find a database entry for "introPerforComp"
 Warning--I didn't find a database entry for "wenmei"
 Warning--I didn't find a database entry for "sanders"
 Warning--I didn't find a database entry for "quinn"
-Warning--I didn't find a database entry for "12"
-Warning--I didn't find a database entry for "15"
 (There were 5 error messages)
 bibtex curricula-main1
 This is BibTeX, Version 0.99d (TeX Live 2016)
