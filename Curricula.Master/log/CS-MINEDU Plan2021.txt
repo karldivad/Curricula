@@ -1,0 +1,17 @@
+Course=ID201
+	English (Technical and professional English III)
+		competences=I did not find competences{V1}
+		file=../Curricula.in/lang/English/cycle/2021-I/Syllabi/ForeignLanguages/ID103.tex
+
+Dictionaries (Missing keys)
+Espanol
+	This language is complete !
+English
+	This language is complete !
+
+Outcomes (Missing keys)
+Espanol (../Curricula.in/lang/Espanol/CS.tex/outcomes-macros.tex)
+	This language is complete !
+English (../Curricula.in/lang/English/CS.tex/outcomes-macros.tex)
+	This language is complete !
+

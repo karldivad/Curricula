@@ -296,5 +296,3 @@ FG=NF
 
 CompetencesForEngineering=Competencias para Ingeniería
 CompetencesForCS=Competencias para Ciencia de la Computación
-
-Compendio de Sumillas

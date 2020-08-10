@@ -2209,6 +2209,8 @@ sub set_initial_configuration($)
 		my %macros = read_macros($file);
 		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
+	#Util::print_message("Common::config{macros}{LearningOutcomesTxtEsFamiliarity}=$Common::config{macros}{LearningOutcomesTxtEsFamiliarity}");
+	#exit;
 
 	my $this_lang = $config{language_without_accents};
 	foreach my $lang (@{$config{SyllabusLangsList}})
@@ -2226,14 +2228,11 @@ sub set_initial_configuration($)
 		{	foreach my $key (keys %outcomes_macros)
 			{	$Common::config{macros}{$key} = $outcomes_macros{$key};		}
 		}
-		#@{$Common::config{macros}{keys %outcomes_macros}}        = values %outcomes_macros;
-		#if( $config{language_without_accents} eq $lang )
-		#my %outcomes_defs = read_outcomes($outcomes_macros_file);
-		#print Dumper( \%outcomes_defs );
-		#print Dumper(\%{$Common::config{macros}{outcomes}{$lang}});
-		#print Dumper(\%outcomes_macros);
-		#Util::print_color("*************************");
+		my %macros = read_macros($outcomes_macros_file);
+		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
+	#Util::print_message("Common::config{macros}{LearningOutcomesTxtEsFamiliarity}=$Common::config{macros}{LearningOutcomesTxtEsFamiliarity}");
+	#exit;
 	#exit;
 	if(-e Common::get_template("out-current-institution-file"))
 	{	my %macros = read_macros(Common::get_template("out-current-institution-file"));

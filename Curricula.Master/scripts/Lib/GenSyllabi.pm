@@ -354,7 +354,8 @@ sub read_syllabus_info($$$)
 	my $syllabus_in	= Util::read_file($fullname);
 	init_course_units_vars($codcour);
 	my $version = $Common::config{OutcomesVersion};
- 	#Util::print_message("GenSyllabi::read_syllabus_info $codcour ..."); exit;
+ 	#if($codcour =~ m/CS2H/g)
+	#{	Util::print_message("GenSyllabi::read_syllabus_info $codcour ...");  }
 
 	my $CommonTexFile = get_common_file($fullname, $codcour, $lang);
 	if( -e $CommonTexFile )
@@ -368,13 +369,13 @@ sub read_syllabus_info($$$)
 	$syllabus_in = Common::replace_accents($syllabus_in);
 	while($syllabus_in =~ m/\n\n\n/)
 	{	$syllabus_in =~ s/\n\n\n/\n\n/g;	}
-# 	my $codcour_label       = get_alias($codcour);
+ 	#my $codcour     = Common::get_alias($codcour);
 	my $course_name = $Common::course_info{$codcour}{$lang}{course_name};
-	my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
-	my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour}\n";
-	$header        .= "% Source file: $fullname\n";
-	my $newhead 	= "\\begin{syllabus}\n$header\n\\begin{justification}";
-	$syllabus_in 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
+	#my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
+	#my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour}\n";
+	#$header        .= "% Source file: $fullname\n";
+	#my $newhead 	= "\\begin{syllabus}\n$header\n\\begin{justification}";
+	#$syllabus_in 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 # 	Common::read_outcomes_involved($codcour, $fulltxt);
 
 	my %map = ();
@@ -916,20 +917,20 @@ sub generate_tex_syllabi_files()
 			my $codcour_label = Common::get_label($codcour);
 			foreach my $lang (@{$Common::config{SyllabusLangsList}})
 			{
-			      my %map = read_syllabus_info($codcour, $semester, $lang);
-			      $map{AREA}			= $Common::config{area};
+				my %map = read_syllabus_info($codcour, $semester, $lang);
+				$map{AREA}			= $Common::config{area};
 
-			      my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
-			      #Util::print_message("Generating Syllabus: $output_file");
-			      genenerate_tex_syllabus_file($codcour_label, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
+				my $output_file = "$OutputTexDir/$codcour_label-$Common::config{dictionaries}{$lang}{lang_prefix}.tex";
+				#Util::print_message("Generating Syllabus: $output_file");
+				genenerate_tex_syllabus_file($codcour_label, $Common::config{syllabus_template}, "UNITS_SYLLABUS", $output_file, $lang, %map);
+				
+				# Copy bib files
+				my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
+				#Util::print_message("cp $syllabus_bib $OutputTexDir");
+				eval { system("cp $syllabus_bib $OutputTexDir"); }
 
-			      # Copy bib files
-			      my $syllabus_bib = Common::get_template("InSyllabiContainerDir")."/$map{IN_BIBFILE}.bib";
-			      #Util::print_message("cp $syllabus_bib $OutputTexDir");
-			      eval { system("cp $syllabus_bib $OutputTexDir"); }
-
-			      #eval { system("cp $syllabus_bib $OutputTexDir"); }
-			      #warn $@ if $@;
+				#eval { system("cp $syllabus_bib $OutputTexDir"); }
+				#warn $@ if $@;
 			}
 # 			genenerate_tex_syllabus_file($codcour, $Common::config{sumilla_template} , "UNITS_SUMILLA" , "$OutputTexDir/$codcour-sumilla.tex", %map);
 		}
@@ -1240,11 +1241,18 @@ sub generate_team_file($)
 # 	Util::print_message("gen_list_of_units_by_course $file_name ($count courses) OK!");
 # }
 
-sub generate_formatted_syllabus($$$)
+sub generate_formatted_syllabus($$$$)
 {
-	my ($codcour, $source, $target) = (@_);
+	my ($codcour, $source, $target, $lang) = (@_);
 	my $active_version = $Common::config{OutcomesVersion};
 	my $source_txt = Util::read_file($source);
+
+	my $course_name = $Common::course_info{$codcour}{$lang}{course_name};
+	my $course_type = $Common::config{dictionary}{$Common::course_info{$codcour}{course_type}};
+	my $header      = "\n\\course{$codcour. $course_name}{$course_type}{$codcour}\n";
+	$header        .= "% Source file: $source\n";
+	my $newhead 	= "\\begin{syllabus}\n$header\n\\begin{justification}";
+	$source_txt 	=~ s/\\begin\{syllabus\}\s*((?:.|\n)*?)\\begin\{justification\}/$newhead/g;
 
 	foreach my $env (@versioned_environments)
 	{
@@ -1266,7 +1274,7 @@ sub generate_formatted_syllabus($$$)
 	Util::print_message("$source -> $target (OK)");
 	Util::write_file($target, $source_txt);
 	#if($codcour eq "IN0054")
-	#{	Util::print_message("generate_formatted_syllabus($codcour, $source, $target)");
+	#{	Util::print_message("generate_formatted_syllabus($codcour, $source, $target, $lang)");
 	#	exit;	
 	#}
 }
@@ -1293,11 +1301,16 @@ sub generate_syllabi_include()
 			my $lang 		= Common::get_template("language_without_accents");
 			my $lang_prefix	= $Common::config{dictionaries}{$lang}{lang_prefix};
 			my $course_fullpath = Common::get_syllabus_full_path($codcour, $semester, $lang);
-			generate_formatted_syllabus($codcour, $course_fullpath, "$OutputTexDir/$codcour-orig-$lang_prefix.tex");
+			generate_formatted_syllabus($codcour, $course_fullpath, "$OutputTexDir/$codcour-orig-$lang_prefix.tex", $lang);
+			#if($codcour =~ m/CS2H/g)
+			#	{	Util::print_message("GenSyllabi::generate_formatted_syllabus $codcour ...");  exit; }
 
 			$course_fullpath =~ s/(.*)\.tex/$1/g;
 			$output_tex .= "$newpage\\input{$OutputTexDir/$codcour-orig-$lang_prefix}";
 			$output_tex .= "% $codcour $Common::course_info{$codcour}{$lang}{course_name}\n";
+			#if($codcour =~ m/CS2H/g)
+			#	{	Util::print_message("GenSyllabi::read_syllabus_info $codcour ...");  exit; }
+
 			$ncourses++;
 			$newpage = "\\newpage";
 		}
