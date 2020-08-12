@@ -705,6 +705,7 @@ sub set_initial_paths()
 	$path_map{"in-all-outcomes-by-course-poster"}	= $path_map{OutputTexDir}."/all-outcomes-by-course-poster-<LANG>.tex";
 	$path_map{"out-list-of-outcomes"}			= $path_map{OutputTexDir}."/list-of-outcomes.tex";
 	$path_map{"list-of-courses-by-outcome"}		= $path_map{OutputTexDir}."/courses-by-outcome-<LANG>.tex";
+	$path_map{"list-of-courses-by-specific-outcome"}	= $path_map{OutputTexDir}."/courses-by-specific-outcome-<LANG>.tex";
 
 	$path_map{"out-list-of-syllabi-include-file"}   = $path_map{OutputTexDir}."/list-of-syllabi.tex";
 	$path_map{"out-laboratories-by-course-file"}	= $path_map{OutputTexDir}."/laboratories-by-course.tex";
@@ -1114,9 +1115,9 @@ sub read_macros($)
 	return parse_macros($txt);
 }
 
-sub read_outcomes($)
+sub read_outcomes($$)
 {
-    my ($file_name) = (@_);
+    my ($file_name, $lang) = (@_);
     my $txt 	= Util::read_file($file_name);
 	#my %macros = parse_macros($txt);
 	my %macros 	= ();
@@ -1126,9 +1127,13 @@ sub read_outcomes($)
     while($txt =~ m/\\Define(.*?)\{(.*?)\}\{/g)
     {
 		my ($cmd, $code)  = (lc $1, $2);
+		my ($outcome, $number) = ($code, "");
 		if( $cmd eq "specificoutcome")
 		{	$txt =~ m/(.*?)\}\{(.*?)\}\{/g;
-			$code .= $1;
+			$number = $1;
+			$code .= $number;
+			$config{specificoutcome}{$lang}{$outcome}{$number}{label} = $2;
+			$config{specificoutcome}{$lang}{$outcome}{$number}{priority} = $count;
 			#Util::print_message("SpecificOutcome $code detected ...");
 		}
 		my $cPar   = 1;
@@ -1141,9 +1146,12 @@ sub read_outcomes($)
 			$body      .= $1 if($cPar > 0);
 		}
 		$macros{"$cmd$code"} = $body;
+		if( $cmd eq "specificoutcome")
+		{	$config{specificoutcome}{$lang}{$outcome}{$number}{txt} = $body;
+		}
 		$count++;
     }
-    Util::print_message("read_outcomes ($file_name) $count macros processed ... OK!");
+    Util::print_message("read_outcomes ($file_name, $lang) $count macros processed ... OK!");
 	return %macros;
 }
 
@@ -2026,9 +2034,9 @@ sub read_specific_evaluacion_info()
 		      {
 			    Util::print_error("Specific Evaluation for $cc($codcour) out of format?\nfile: $specific_evaluation_file ");
 		      }
-
 	      }
 	}
+	Util::print_message("Reading specific evaluation file ($specific_evaluation_file) ok !...");
 }
 
 # ok
@@ -2218,7 +2226,7 @@ sub set_initial_configuration($)
 		#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
 		my $outcomes_macros_file = Common::get_expanded_template("in-outcomes-macros-file", $lang);
 		Util::print_message("Reading outcomes ($outcomes_macros_file)");
-		my %outcomes_macros = read_outcomes($outcomes_macros_file);
+		my %outcomes_macros = read_outcomes($outcomes_macros_file, $lang);
 		foreach my $key (keys %outcomes_macros)
 		{	$Common::config{macros}{outcomes}{$lang}{$key} = $outcomes_macros{$key};
 			$Common::config{outcomes_keys}{$key} = "";	

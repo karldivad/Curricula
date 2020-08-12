@@ -68,6 +68,7 @@ sub generate_general_info()
 	#Util::print_message("Check point ... generate_general_info() ...");  exit;
 	GeneralInfo::generate_list_of_outcomes();
 	GeneralInfo::generate_list_of_courses_by_outcome($lang);
+	GeneralInfo::generate_list_of_courses_by_specific_outcome($lang);
  
 	GeneralInfo::generate_list_of_courses_by_area($lang);
 	foreach my $lang (@{$Common::config{SyllabusLangsList}})

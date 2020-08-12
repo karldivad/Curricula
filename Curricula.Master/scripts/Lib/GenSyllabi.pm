@@ -207,12 +207,18 @@ sub parse_environments_in_header($$$$)
 					{	case ["outcomes", "competences"]
 						{ 	#print $env;
 							$Common::course_info{$codcour}{$lang}{$env}{$version}{$params[0]} = $params[1];
+							$Common::config{course_by_outcome}{$params[0]}{$codcour} = "";
+							#Util::print_message("Common::config{course_by_outcome}{$params[0]}{$codcour}=$Common::config{course_by_outcome}{$params[0]}{$codcour}");
+							#exit;
 						}	#\% ($codcour, $semester, $lang)
 						case "specificoutcomes"  
 						{	# Save the specific outcome
 							my $specificoutcome = "$params[0]$params[1]";
 							$Common::course_info{$codcour}{$lang}{$env}{$version}{$specificoutcome} = $params[2];
 							$Common::course_info{$codcour}{$lang}{outcomes}{$version}{specificoutcomes}{$specificoutcome} = $params[2];
+							$Common::config{course_by_specificoutcome}{$params[0]}{$params[1]}{$codcour} = "";
+							#$config{specificoutcome}{$code}{$number}{label}    = $2;
+							#$config{specificoutcome}{$code}{$number}{priority} 
 						}
 					}
 					$Common::course_info{$codcour}{$lang}{$env}{$version}{itemized}  	.= "\\item \\".$macro_for_env{$env};
@@ -569,6 +575,9 @@ sub read_syllabus_info_old($$$)
 				{	case ["outcomes", "competences"]
 					{ 	#print $env;
 					   	$Common::course_info{$codcour}{$lang}{$env}{$version}{$params[0]} = $params[1];
+						$Common::config{course_by_outcome}{$params[0]}{$codcour} = "";
+						Util::print_message("Common::config{course_by_outcome}{$params[0]}{$codcour}=$Common::config{course_by_outcome}{$params[0]}{$codcour}");
+						exit;
 					}	#\% ($codcour, $semester, $lang)
 					case "specificoutcomes"  
 					{	# Save the specific outcome
@@ -585,8 +594,6 @@ sub read_syllabus_info_old($$$)
 				my $prefix	        = "";
 				if(defined($Common::config{$env."_map"}) and defined($Common::config{$env."_map"}{$key}) ) # outcome: a), b), c) ... Competence
 				{	$prefix = $Common::config{$env."_map"}{$key};	}
-				if( $env eq "outcomes")
-				{	$Common::config{course_by_outcome}{$key}{$codcour} = "";	}
 			}
 		}
 		if( $Common::course_info{$codcour}{$lang}{$env}{$version}{count} == 0 )
