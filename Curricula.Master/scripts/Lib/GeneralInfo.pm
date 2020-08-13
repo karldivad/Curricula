@@ -1196,7 +1196,7 @@ sub generate_list_of_courses_by_specific_outcome($)
 	foreach my $outcome (split(",", $Common::config{outcomes_list}{$version}))
 	{
 		my $this_outcome  = "";
-		   #$this_outcome .= "\\section{Outcome: $outcome ".$Common::config{macros}{"outcome$outcome"}."}\n";
+		#$this_outcome .= "\\section{Outcome: $outcome ".$Common::config{macros}{$lang}{"outcome$outcome"}."}\n";
 		foreach my $number  ( sort  {$Common::config{specificoutcome}{$lang}{$outcome}{$a}{priority} <=> $Common::config{specificoutcome}{$lang}{$outcome}{$b}{priority}}
 							  keys %{$Common::config{course_by_specificoutcome}{$outcome}}
 							)
@@ -1211,18 +1211,18 @@ sub generate_list_of_courses_by_specific_outcome($)
 				$list_of_courses .= "\t\\item ". Common::get_course_link($codcour, $lang)."\n";
 			}
 			#Util::print_message("ABC outcome=$outcome ($courses_counter)...");
-			if($courses_counter > 0)
-			{
-				$this_specific_outcome_txt .= "\\subsection{Specific Outcome: $Common::config{specificoutcome}{$lang}{$outcome}{$number}{label}) $Common::config{specificoutcome}{$lang}{$outcome}{$number}{txt}}\n";
+			#if($courses_counter > 0)
+			#{
+				$this_specific_outcome_txt .= "\\subsection{$Common::config{specificoutcome}{$lang}{$outcome}{$number}{label}) $Common::config{specificoutcome}{$lang}{$outcome}{$number}{txt}}\n";
 				$this_specific_outcome_txt .= "\\begin{itemize}\n";
 				$this_specific_outcome_txt .= $list_of_courses;
 				$this_specific_outcome_txt .= "\\end{itemize}\n";
 				$this_specific_outcome_txt .= "\n";
 				
 				$this_outcome .= $this_specific_outcome_txt;
-			}
+			#}
 		}
-		$output_txt .= "\\subsection{Outcome: $outcome) ".$Common::config{macros}{"outcome$outcome"}."}\n";
+		$output_txt .= "\\section{$outcome) ".$Common::config{macros}{"outcome$outcome"}."}\n";
 		$output_txt .= $this_outcome;
 	}
 	my $output_file = Common::get_expanded_template("list-of-courses-by-specific-outcome", $lang);

@@ -3,22 +3,22 @@ This is BibTeX, Version 0.99d (TeX Live 2016)
 The top-level auxiliary file: curricula-main.aux
 The style file: apalike.bst
 Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
----line 3069 of file curricula-main.aux
+---line 3103 of file curricula-main.aux
  : \citation{stroustrup2013
  :                         }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
----line 3075 of file curricula-main.aux
+---line 3109 of file curricula-main.aux
  : \citation{stroustrup2013
  :                         }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
----line 3080 of file curricula-main.aux
+---line 3114 of file curricula-main.aux
  : \citation{stroustrup2013
  :                         }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
----line 3082 of file curricula-main.aux
+---line 3116 of file curricula-main.aux
  : \citation{stroustrup2013
  :                         }
 I'm skipping whatever remains of this command
