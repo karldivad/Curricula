@@ -1,3 +1,230 @@
+bibtex curricula-main
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: curricula-main.aux
+The style file: apalike.bst
+Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
+---line 3103 of file curricula-main.aux
+ : \citation{stroustrup2013
+ :                         }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
+---line 3109 of file curricula-main.aux
+ : \citation{stroustrup2013
+ :                         }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
+---line 3114 of file curricula-main.aux
+ : \citation{stroustrup2013
+ :                         }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys stroustrup2013 and Stroustrup2013
+---line 3116 of file curricula-main.aux
+ : \citation{stroustrup2013
+ :                         }
+I'm skipping whatever remains of this command
+I found no \bibdata command---while reading file curricula-main.aux
+Warning--I didn't find a database entry for "ComputingCurricula2005"
+Warning--I didn't find a database entry for "CS2013"
+Warning--I didn't find a database entry for "ComputerEngineering2004"
+Warning--I didn't find a database entry for "InformationSystemsCurricula2010"
+Warning--I didn't find a database entry for "InformationSystems2002Journal"
+Warning--I didn't find a database entry for "SoftwareEngineering2004"
+Warning--I didn't find a database entry for "InformationTechnology2005"
+Warning--I didn't find a database entry for "IEEECompetences"
+Warning--I didn't find a database entry for "Brookshear2019"
+Warning--I didn't find a database entry for "Guttag13"
+Warning--I didn't find a database entry for "Zelle10"
+Warning--I didn't find a database entry for "Grimaldi03"
+Warning--I didn't find a database entry for "Rosen2007"
+Warning--I didn't find a database entry for "howToProve"
+Warning--I didn't find a database entry for "Scheinerman12"
+Warning--I didn't find a database entry for "StewartCOVar"
+Warning--I didn't find a database entry for "Larson"
+Warning--I didn't find a database entry for "Real"
+Warning--I didn't find a database entry for "Bibliografï¿½a"
+Warning--I didn't find a database entry for "Rodriguez"
+Warning--I didn't find a database entry for "Pereza"
+Warning--I didn't find a database entry for "Quintana"
+Warning--I didn't find a database entry for "Chaveza"
+Warning--I didn't find a database entry for "Flores"
+Warning--I didn't find a database entry for "de2002marco"
+Warning--I didn't find a database entry for "Stroustrup2013"
+Warning--I didn't find a database entry for "Deitel17"
+Warning--I didn't find a database entry for "Johnsonbaugh99"
+Warning--I didn't find a database entry for "StewartMVar"
+Warning--I didn't find a database entry for "DennisZ"
+Warning--I didn't find a database entry for "Majorana"
+Warning--I didn't find a database entry for "PAVIS"
+Warning--I didn't find a database entry for "DVandervoorde1"
+Warning--I didn't find a database entry for "StanleyB13"
+Warning--I didn't find a database entry for "stroustrup13"
+Warning--I didn't find a database entry for "Weert16"
+Warning--I didn't find a database entry for "PPai18"
+Warning--I didn't find a database entry for "Williams11"
+Warning--I didn't find a database entry for "Nakariakov2013"
+Warning--I didn't find a database entry for "Harris12"
+Warning--I didn't find a database entry for "Sanjay05"
+Warning--I didn't find a database entry for "Patterson2004"
+Warning--I didn't find a database entry for "Ashenden07"
+Warning--I didn't find a database entry for "Hennessy2006"
+Warning--I didn't find a database entry for "Parhami2005"
+Warning--I didn't find a database entry for "Stallings2010"
+Warning--I didn't find a database entry for "Pong06"
+Warning--I didn't find a database entry for "grove2009web"
+Warning--I didn't find a database entry for "annuzzi2013introduction"
+Warning--I didn't find a database entry for "Cornez2015"
+Warning--I didn't find a database entry for "fielding2000fielding"
+Warning--I didn't find a database entry for "freeman2011head"
+Warning--I didn't find a database entry for "martin2017clean"
+Warning--I didn't find a database entry for "Sheldon"
+Warning--I didn't find a database entry for "Menden"
+Warning--I didn't find a database entry for "Monroe"
+Warning--I didn't find a database entry for "Cormen2009"
+Warning--I didn't find a database entry for "Fager2014"
+Warning--I didn't find a database entry for "Knuth97"
+Warning--I didn't find a database entry for "Knuth98"
+Warning--I didn't find a database entry for "Jmartin10"
+Warning--I didn't find a database entry for "Linz11"
+Warning--I didn't find a database entry for "Sipser12"
+Warning--I didn't find a database entry for "Hopcroft93"
+Warning--I didn't find a database entry for "Brookshear93"
+Warning--I didn't find a database entry for "rob04"
+Warning--I didn't find a database entry for "elmasri04"
+Warning--I didn't find a database entry for "Raghu02"
+Warning--I didn't find a database entry for "Eifrem15"
+Warning--I didn't find a database entry for "Date11"
+Warning--I didn't find a database entry for "korth02"
+Warning--I didn't find a database entry for "simsion04"
+Warning--I didn't find a database entry for "whitehorn01"
+Warning--I didn't find a database entry for "dietrich01"
+Warning--I didn't find a database entry for "celko05"
+Warning--I didn't find a database entry for "silberschatz2012"
+Warning--I didn't find a database entry for "stallings2005"
+Warning--I didn't find a database entry for "tanenbaum2006"
+Warning--I didn't find a database entry for "tanenbaum2001"
+Warning--I didn't find a database entry for "TAnderson14"
+Warning--I didn't find a database entry for "Cardona"
+Warning--I didn't find a database entry for "Ferreiro"
+Warning--I didn't find a database entry for "Dianine"
+Warning--I didn't find a database entry for "DSouza"
+Warning--I didn't find a database entry for "Sonnenfeld"
+Warning--I didn't find a database entry for "Wilkinson"
+Warning--I didn't find a database entry for "Huete"
+Warning--I didn't find a database entry for "Chinchilla"
+Warning--I didn't find a database entry for "Goleman"
+Warning--I didn't find a database entry for "CardonaP"
+Warning--I didn't find a database entry for "Hersey"
+Warning--I didn't find a database entry for "Hunsaker"
+Warning--I didn't find a database entry for "Hawkins"
+Warning--I didn't find a database entry for "Ginebra"
+Warning--I didn't find a database entry for "KT2005"
+Warning--I didn't find a database entry for "DPV2006"
+Warning--I didn't find a database entry for "CLRS2009"
+Warning--I didn't find a database entry for "S2013"
+Warning--I didn't find a database entry for "K1997"
+Warning--I didn't find a database entry for "A1999"
+Warning--I didn't find a database entry for "S2011"
+Warning--I didn't find a database entry for "GT2009"
+Warning--I didn't find a database entry for "T1983"
+Warning--I didn't find a database entry for "R1992"
+Warning--I didn't find a database entry for "kurose2013computer"
+Warning--I didn't find a database entry for "SDNFV"
+Warning--I didn't find a database entry for "Graphs"
+Warning--I didn't find a database entry for "Castro06"
+Warning--I didn't find a database entry for "Ponce14"
+Warning--I didn't find a database entry for "Nilsson01"
+Warning--I didn't find a database entry for "Russell03"
+Warning--I didn't find a database entry for "Goldberg89"
+Warning--I didn't find a database entry for "Koller09"
+Warning--I didn't find a database entry for "Mitchell98"
+Warning--I didn't find a database entry for "Murphy12"
+Warning--I didn't find a database entry for "Freeman14"
+Warning--I didn't find a database entry for "Hans03"
+Warning--I didn't find a database entry for "Dix2004"
+Warning--I didn't find a database entry for "Stone2005"
+Warning--I didn't find a database entry for "Sharp2011"
+Warning--I didn't find a database entry for "Mathis2011"
+Warning--I didn't find a database entry for "Donald2004"
+Warning--I didn't find a database entry for "Buxton2007"
+Warning--I didn't find a database entry for "Johnson2010"
+Warning--I didn't find a database entry for "Leavitt2006"
+Warning--I didn't find a database entry for "Wigdor2011"
+Warning--I didn't find a database entry for "YoFreed"
+Warning--I didn't find a database entry for "Hewitt"
+Warning--I didn't find a database entry for "Pressman04"
+Warning--I didn't find a database entry for "Blum92"
+Warning--I didn't find a database entry for "Schach04"
+Warning--I didn't find a database entry for "Wang00"
+Warning--I didn't find a database entry for "Keyes04"
+Warning--I didn't find a database entry for "Windle02"
+Warning--I didn't find a database entry for "Priest01"
+Warning--I didn't find a database entry for "Montangero96"
+Warning--I didn't find a database entry for "Ambriola01"
+Warning--I didn't find a database entry for "Conradi00"
+Warning--I didn't find a database entry for "Oquendo03"
+Warning--I didn't find a database entry for "Steven09"
+Warning--I didn't find a database entry for "Kulikov09"
+Warning--I didn't find a database entry for "SkienaRevilla:PC:2003"
+Warning--I didn't find a database entry for "Laaksonen17"
+Warning--I didn't find a database entry for "aziz2012elements"
+Warning--I didn't find a database entry for "Cuadros2004Implementing"
+Warning--I didn't find a database entry for "Knuth2007TAOCP-V-I"
+Warning--I didn't find a database entry for "Knuth2007TAOCP-V-II"
+Warning--I didn't find a database entry for "Gamma94"
+Warning--I didn't find a database entry for "Bjornander:CByExample:2018"
+Warning--I didn't find a database entry for "VanJosGreg:Templates:2018"
+Warning--I didn't find a database entry for "Samet2004SAM-MAM"
+Warning--I didn't find a database entry for "Gaede98multidimensional"
+Warning--I didn't find a database entry for "Chavez:01"
+Warning--I didn't find a database entry for "Traina00SlimTree"
+Warning--I didn't find a database entry for "Zezula07"
+Warning--I didn't find a database entry for "Indyk06"
+Warning--I didn't find a database entry for "Sommerville2010"
+Warning--I didn't find a database entry for "Pressman2014"
+Warning--I didn't find a database entry for "Kenneth17"
+Warning--I didn't find a database entry for "stallings2014computer"
+Warning--I didn't find a database entry for "peterpacheco"
+Warning--I didn't find a database entry for "matloff"
+Warning--I didn't find a database entry for "quinnz"
+Warning--I didn't find a database entry for "introPerforComp"
+Warning--I didn't find a database entry for "wenmei"
+Warning--I didn't find a database entry for "sanders"
+Warning--I didn't find a database entry for "quinn"
+(There were 5 error messages)
+bibtex curricula-main1
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: curricula-main1.aux
+The style file: apalike.bst
+Database file #1: curricula-main.bib
+"," immediately follows an entry type---line 21 of file curricula-main.bib
+ : %%  email      = "ecuadros@utec.edu.pe
+ :                                       , ecuadros@icmc.usp.br"
+I'm skipping whatever remains of this entry
+""" immediately follows an entry type---line 21 of file curricula-main.bib
+ : %%  email      = "ecuadros@utec.edu.pe, ecuadros@icmc.usp.br
+ :                                                             "
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `)'---line 3875 of file curricula-main.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 4701 of file curricula-main.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `)'---line 9625 of file curricula-main.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Illegal end of database file---line 11124 of file curricula-main.bib
+ : 
+ : 
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 6 error messages)
 bibtex curricula-main10
 This is BibTeX, Version 0.99d (TeX Live 2019/dev/Debian)
 The top-level auxiliary file: curricula-main10.aux
@@ -676,7 +903,7 @@ Warning--I didn't find a database entry for "Scheinerman12"
 Warning--I didn't find a database entry for "StewartCOVar"
 Warning--I didn't find a database entry for "Larson"
 Warning--I didn't find a database entry for "Real"
-Warning--I didn't find a database entry for "Bibliografía"
+Warning--I didn't find a database entry for "Bibliografï¿½a"
 Warning--I didn't find a database entry for "Rodriguez"
 Warning--I didn't find a database entry for "Pereza"
 Warning--I didn't find a database entry for "Quintana"

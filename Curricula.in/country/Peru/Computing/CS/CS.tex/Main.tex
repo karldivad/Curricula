@@ -42,11 +42,15 @@
 \chapter{Contenido detallado por curso}\label{chap:syllabi}
 \input{\OutputTexDir/list-of-syllabi}
 
-\NotUTEC{\input{\InTexDir/equivalence}}
+\OnlyUCSP{\input{\InTexDir/equivalence}}
  
 \input{\InTexDir/Laboratories}
 
-\input{\InTexDir/professors-and-courses}
+\OnlySPC{\input{\InTexDir/professors-and-courses}}
+\OnlyMINEDU{\input{\InTexDir/professors-and-courses}}
 
-\chapter{Resultados específicos por curso}
-\input{\OutputTexDir/courses-by-specific-outcome-\LANG}
+\OnlySPC{\chapter{Resultados específicos por curso}\label{sec:specific-outcomes-by-course}
+\input{\OutputTexDir/courses-by-specific-outcome-\LANG}}
+
+\OnlyMINEDU{\chapter{Resultados específicos por curso}\label{sec:specific-outcomes-by-course}
+\input{\OutputTexDir/courses-by-specific-outcome-\LANG}}
