@@ -103,12 +103,12 @@ mkdir -p "../Curricula.out/pdfs/CS-MINEDU/Plan2021";
 mutool convert -o ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/CS-MINEDU-P%d.png CS-MINEDU.pdf 1-1;
 cp CS-MINEDU.pdf "../Curricula.out/pdfs/CS-MINEDU/Plan2021/CS-MINEDU Plan2021.pdf";
 
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-MINEDU 2021-I BookOfSyllabi-ES (Plan2021) 1-10";
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-MINEDU 2021-I BookOfSyllabi-EN (Plan2021) 1-10";
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-MINEDU 2021-I BookOfBibliography-ES (Plan2021) 1-10";
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-MINEDU 2021-I BookOfBibliography-EN (Plan2021) 1-10";
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-MINEDU 2021-I BookOfDescriptions-ES (Plan2021) 1-10";
-../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-MINEDU 2021-I BookOfDescriptions-EN (Plan2021) 1-10";
+../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-ES  	 pdflatex "CS-MINEDU 2021-I BookOfSyllabi-ES (Plan2021) 1-6";
+../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfSyllabi-EN  	 pdflatex "CS-MINEDU 2021-I BookOfSyllabi-EN (Plan2021) 1-6";
+../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-ES  pdflatex "CS-MINEDU 2021-I BookOfBibliography-ES (Plan2021) 1-6";
+../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfBibliography-EN  pdflatex "CS-MINEDU 2021-I BookOfBibliography-EN (Plan2021) 1-6";
+../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-ES  pdflatex "CS-MINEDU 2021-I BookOfDescriptions-ES (Plan2021) 1-6";
+../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDescriptions-EN  pdflatex "CS-MINEDU 2021-I BookOfDescriptions-EN (Plan2021) 1-6";
 
 if($html == 1) then
     rm unified-curricula-main* ;
@@ -164,8 +164,8 @@ mv CS-MINEDU.pdf "../Curricula.out/html/Peru/CS-MINEDU/Plan2021/CS-MINEDU Plan20
 cp ../Curricula.out/pdfs/CS-MINEDU/Plan2021/*.pdf ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/docs/.;
 cp ../Curricula.out/pdfs/CS-MINEDU/Plan2021/*.png ../Curricula.out/html/Peru/CS-MINEDU/Plan2021/figs/.;
 
-#       ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-MINEDU 2021-I BookOfUnitsByCourse (Plan2021) 1-10";
-#       ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-MINEDU 2021-I BookOfDeliveryControl (Plan2021) 1-10";
+#       ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfUnitsByCourse 	latex    "CS-MINEDU 2021-I BookOfUnitsByCourse (Plan2021) 1-6";
+#       ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  BookOfDeliveryControl  pdflatex "CS-MINEDU 2021-I BookOfDeliveryControl (Plan2021) 1-6";
 # Generate Books
 #
 # foreach auxbook (../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/tex/BookOf*-*.tex)
@@ -173,7 +173,7 @@ cp ../Curricula.out/pdfs/CS-MINEDU/Plan2021/*.png ../Curricula.out/html/Peru/CS-
 #    $book = `echo $book | sed s|../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/tex/||`
 #    echo $book
 #    #bibtex $auxfile
-#    ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  $book       	pdflatex "CS-MINEDU 2021-I $book (Plan2021) 1-10";
+#    ../Curricula.out/Peru/CS-MINEDU/cycle/2021-I/Plan2021/scripts/gen-book.sh  $book       	pdflatex "CS-MINEDU 2021-I $book (Plan2021) 1-6";
 # end
 
 date >> ./log/Peru-CS-MINEDU-time.txt;
