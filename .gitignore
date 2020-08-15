@@ -24,4 +24,12 @@ escritorio
 .DS_Store
 Curricula.Master/delete/temp.tex
 Curricula.Master/unified-curricula-main.*
+Curricula.Master/log/*
+
+Curricula.in/.DS_Store
+Curricula.in/country/.DS_Store
+Curricula.in/country/Peru/.DS_Store
+Curricula.in/country/Peru/Computing/.DS_Store
+Curricula.in/country/Peru/Computing/CS/.DS_Store
 Curricula.Master/log/Peru-CS-MINEDU-time.txt
+Curricula.Master/log/Peru-CS-SPC-time.txt

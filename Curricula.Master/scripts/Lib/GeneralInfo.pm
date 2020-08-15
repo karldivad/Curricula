@@ -33,7 +33,9 @@ sub generate_course_tables($)
 		$this_sem_text .= "\\multicolumn{$n_columns}{|l|}{\\textbf{$caption}} \\\\ \\hline \n";
 
 # 		$this_sem_text .= "Code & Course & Area & HT & HP & HL & Cr & T & Prerequisites             \\\\ \\hline\n";
- 		my $course_headers= $Common::config{dictionary}{course_fields};
+ 		my $course_headers= $Common::config{course_fields};
+		#Util::print_color("GeneralInfo:course_fields=$course_headers");
+		#exit;
 		$course_headers =~ s/$begin_tag/\\textbf\{$begin_tag/g;    # aqui
 		$course_headers =~ s/$end_tag/$end_tag\}/g;
  		$this_sem_text .= Common::replace_tags_from_hash($course_headers, $begin_tag, $end_tag, %{$Common::config{dictionary}});
@@ -1245,7 +1247,7 @@ sub generate_outcomes_by_course($$$$$$$$)
 	my $row_text       = "<color>--outcome-- ";
 	my $first_row_text = "";
 # 	$first_row_text  = "$Common::config{row2} " if($Common::config{graph_version}>= 2);
-	$first_row_text .= "& \\textbf{$Common::config{dictionaries}{$lang}{Skill}/$Common::config{dictionaries}{$lang}{COURSENAME}} ";
+	$first_row_text .= "& \\textbf{$Common::config{dictionaries}{$lang}{Skill}/$Common::config{dictionaries}{$lang}{Course}} ";
 	#my $sum_row_text   = "Total ";
 	my %sem_per_course = ();
 

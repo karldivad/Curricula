@@ -749,6 +749,7 @@ sub set_initial_paths()
 
 	$path_map{"in-sumilla-template-file"}			= $path_map{InProgramDir}."/sumilla-template.tex";
 	$path_map{"in-syllabus-template-file"}			= $path_map{InProgramDir}."/syllabus-template.tex";
+	$path_map{"in-institution-dictionary"}			= $path_map{InProgramDir}."/lang/<LANG-EXTENDED>.txt";
 	$path_map{"in-syllabus-program-template-file"}	= $path_map{InProgramDir}."/cycle/$config{Semester}/syllabus-template.tex";
 	$path_map{"in-syllabus-first-page-file"}		= $path_map{InProgramDir}."/cycle/$config{Semester}/syllabus-Page*";
 
@@ -756,6 +757,7 @@ sub set_initial_paths()
 	$path_map{"in-additional-institution-info-file"}= $path_map{InProgramDir}."/cycle/$config{Semester}/$config{Plan}/additional-info.txt";
 	$path_map{"in-distribution-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/$config{Plan}";
 	$path_map{"in-this-semester-dir"}				= $path_map{InProgramDir}."/cycle/$config{Semester}/$config{Plan}";
+
 	$path_map{"in-distribution-file"}				= $path_map{"in-distribution-dir"}."/distribution.txt";
 	$path_map{"in-this-semester-evaluation-dir"}	= $path_map{"in-this-semester-dir"}."/evaluation";
 	$path_map{"in-specific-evaluation-file"}		= $path_map{"in-distribution-dir"}."/Specific-Evaluation.tex";
@@ -1005,6 +1007,15 @@ sub read_dictionary_file($)
 	my ($lang) = (@_);
 	my $filename = get_expanded_template("dictionary", $lang);
 	return read_config_file_details($filename);
+}
+
+sub read_customized_dictionary_for_this_institution($)
+{
+	my ($filename) = (@_);
+	if(-e $filename)
+	{	return read_config_file_details($filename);	}
+	else
+	{	return ();	}
 }
 
 # ok
@@ -2173,6 +2184,8 @@ sub set_initial_configuration($)
 	%{$config{temp_colors}} = read_config_file(get_template("colors"));
 
 	# Read dictionary for this language
+	$config{DefaultLang} = $config{language_without_accents};
+	my $this_lang = $config{DefaultLang};
 	%{$config{dictionary}} = read_config_file(get_template("DefaultDictionary"));
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
@@ -2181,6 +2194,22 @@ sub set_initial_configuration($)
 		{		$lang_prefix = uc($1);	      }
 		%{$config{dictionaries}{$lang}} 		  = read_dictionary_file($lang);
 		$config{dictionaries}{$lang}{lang_prefix} = $lang_prefix;
+
+		my $filename = get_expanded_template("in-institution-dictionary", $lang);
+		my %institution_dictionary = read_customized_dictionary_for_this_institution($filename);
+		foreach my $key (keys %institution_dictionary)
+		{
+			if(defined($config{dictionaries}{$lang}{$key}))
+			{	$config{dictionaries}{$lang}{$key} = $institution_dictionary{$key};
+				if($lang eq $config{DefaultLang})
+				{	$config{dictionary}{$key} = $institution_dictionary{$key};
+				}
+			}
+			else
+			{	Util::print_error("Defining new unkonwn term \"$key\" in $lang for this institution ... See: $filename ...");
+				exit;
+			}
+		}
 		#Util::print_message("config{dictionaries}{$lang}{lang_prefix} = $config{dictionaries}{$lang}{lang_prefix}");
 		foreach my $key (keys %{$config{dictionaries}{$lang}})
 		{	$config{dictionaries}{terms}{$key} = "";	}
@@ -2198,9 +2227,12 @@ sub set_initial_configuration($)
 	if( -e $inst_config_file )
 	{
 	    my %instvars = read_config_file(get_template("in-institution-config-file"));
+		#print Dumper(\%instvars);
 	    while ( my ($key, $value) = each(%instvars) )
 	    {	$config{$key} = $value; 	}
 	}
+	#Util::print_color("Common::config{course_fields}=$Common::config{course_fields}");
+	#exit;
 	#Util::print_message("config{COL4LABS}=$config{COL4LABS}"); exit;
 	$config{"country-environments-to-insert"} = "";
 	my $file_to_insert = Common::get_template("in-country-environments-to-insert-file");
@@ -2224,7 +2256,6 @@ sub set_initial_configuration($)
 	#Util::print_message("Common::config{macros}{LearningOutcomesTxtEsFamiliarity}=$Common::config{macros}{LearningOutcomesTxtEsFamiliarity}");
 	#exit;
 
-	my $this_lang = $config{language_without_accents};
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{	
 		#my $lang_prefix = $config{dictionaries}{$lang}{lang_prefix};
@@ -2243,9 +2274,7 @@ sub set_initial_configuration($)
 		my %macros = read_macros($outcomes_macros_file);
 		@{$Common::config{macros}}{keys %macros} = values %macros;
 	}
-	#Util::print_message("Common::config{macros}{LearningOutcomesTxtEsFamiliarity}=$Common::config{macros}{LearningOutcomesTxtEsFamiliarity}");
-	#exit;
-	#exit;
+
 	if(-e Common::get_template("out-current-institution-file"))
 	{	my %macros = read_macros(Common::get_template("out-current-institution-file"));
 		@{$Common::config{macros}}{keys %macros} = values %macros;
