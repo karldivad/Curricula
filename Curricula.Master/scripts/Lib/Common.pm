@@ -839,7 +839,8 @@ sub set_initial_paths()
 	$path_map{"in-country-config-file"}				= GetInCountryBaseDir($config{country_without_accents})."/country.config";
 	$path_map{"in-institution-config-file"}			= $path_map{InInstConfigDir}."/$config{institution}.config";
 	$path_map{"in-country-environments-to-insert-file"}	= GetInCountryBaseDir($config{country_without_accents})."/country-environments-to-insert.tex";
-	$path_map{"dictionary"}							= $path_map{InLangDefaultDir}."/dictionary.txt";
+	$path_map{"DefaultDictionary"}					= $path_map{InLangDefaultDir}."/dictionary.txt";
+	$path_map{"dictionary"}							= $path_map{InLangBaseDir}."/<LANG-EXTENDED>/dictionary.txt";
 	$path_map{SpiderChartInfoDir}					= $path_map{InDisciplineDir}."/SpiderChartInfo";
 
 	$path_map{"OutputDisciplinesList-file"}			= $path_map{OutHtmlBase}."/disciplines.html";
@@ -1002,7 +1003,7 @@ sub read_config_file($)
 sub read_dictionary_file($)
 {
 	my ($lang) = (@_);
-	my $filename = get_template("InLangBaseDir")."/$lang/dictionary.txt";
+	my $filename = get_expanded_template("dictionary", $lang);
 	return read_config_file_details($filename);
 }
 
@@ -1132,7 +1133,7 @@ sub read_outcomes($$)
 		{	$txt =~ m/(.*?)\}\{(.*?)\}\{/g;
 			$number = $1;
 			$code .= $number;
-			$config{specificoutcome}{$lang}{$outcome}{$number}{label} = $2;
+			$config{specificoutcome}{$lang}{$outcome}{$number}{label}    = $2;
 			$config{specificoutcome}{$lang}{$outcome}{$number}{priority} = $count;
 			#Util::print_message("SpecificOutcome $code detected ...");
 		}
@@ -1152,6 +1153,9 @@ sub read_outcomes($$)
 		$count++;
     }
     Util::print_message("read_outcomes ($file_name, $lang) $count macros processed ... OK!");
+	Util::print_color("config{specificoutcome}{$lang}");
+	#print Dumper(\%{$config{specificoutcome}{$lang}{a}});
+	#exit;
 	return %macros;
 }
 
@@ -2169,7 +2173,7 @@ sub set_initial_configuration($)
 	%{$config{temp_colors}} = read_config_file(get_template("colors"));
 
 	# Read dictionary for this language
-	%{$config{dictionary}} = read_config_file(get_template("dictionary"));
+	%{$config{dictionary}} = read_config_file(get_template("DefaultDictionary"));
 	foreach my $lang (@{$config{SyllabusLangsList}})
 	{
 		my $lang_prefix = "";

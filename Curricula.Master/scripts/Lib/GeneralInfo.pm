@@ -1186,8 +1186,8 @@ sub generate_list_of_courses_by_outcome($)
 }
 
 #$Common::config{course_by_specificoutcome}{$params[0]}{$params[1]}{$codcour} = "";
-#$config{specificoutcome}{$code}{$number}{label}    = $2;
-#$config{specificoutcome}{$code}{$number}{priority} 
+#$config{specificoutcome}{$lang}{$outcome}{$number}{label}    = $2;
+#$config{specificoutcome}{$lang}{$outcome}{$number}{priority} 
 sub generate_list_of_courses_by_specific_outcome($)
 {
     my ($lang) = (@_);
@@ -1203,6 +1203,10 @@ sub generate_list_of_courses_by_specific_outcome($)
 		{
 			my $courses_counter = 0;
 			my ($this_specific_outcome_txt, $list_of_courses) = ("", "");
+			my @courses = keys %{ $Common::config{course_by_specificoutcome}{$outcome}{$number} };
+			#Util::print_message("Outcome $outcome, suboutcome: $Common::config{specificoutcome}{$lang}{$outcome}{$number}{label}, priority=$Common::config{specificoutcome}{$lang}{$outcome}{$number}{priority}");
+			#print Dumper (\@courses);
+			
 			foreach my $codcour ( sort  { $Common::codcour_list_priority{$a} <=> $Common::codcour_list_priority{$b} }
 								  keys %{ $Common::config{course_by_specificoutcome}{$outcome}{$number} } 
 								)
@@ -1228,6 +1232,7 @@ sub generate_list_of_courses_by_specific_outcome($)
 	my $output_file = Common::get_expanded_template("list-of-courses-by-specific-outcome", $lang);
 	Util::print_message("Generating list_of_courses_by_specific_outcome ok ($output_file, $lang)");
 	Util::write_file($output_file, $output_txt);
+	#exit;
 }
 
 # ok
