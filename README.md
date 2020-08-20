@@ -25,7 +25,9 @@ sudo apt-get install texlive-science texlive-latex-extra texlive-bibtex-extra te
 #### Instalando modulo PERL necesario:
 
 ```
+sudo apt-get install libnumber-bytes-human-perl
 sudo cpan install Clone
+sudo cpan install CAM::PDF
 ```
 
 #### **Solo en Ubuntu 18.04**
