@@ -8,7 +8,7 @@ use Data::Dumper;
 
 if(defined($ARGV[0])) { $Common::command = shift or Util::halt("There is no command to process (i.e. AREA-INST)");	}
 
-# ok, Here we replace \'a by Ã¡, etc 
+# ok, Here we replace \'a by á, etc 
 sub replacecodes()
 {
 	Util::precondition("parse_courses");
@@ -54,7 +54,10 @@ sub generate_general_info()
 	GeneralInfo::generate_list_of_courses_by_area($lang);
 	GeneralInfo::generate_compatibility_with_standards();
 
+	GeneralInfo::generate_courses_by_professor();
+	
 # 	GeneralInfo::generate_faculty_info();
+	GeneralInfo::generate_courses_by_professor();
  	GeneralInfo::process_equivalences();
 
 # 	generate_sql_for_new_courses();

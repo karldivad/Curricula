@@ -48,8 +48,8 @@ FG107->storres@fraternas.org,miriamberriosg@gmail.com
 FG350->azegarral@ucsp.edu.pe
 % CB111(CB111). Física I (Obligatorio)
 CB111->rubel7523@hotmail.com
-% Semester #4 .
-% CS211T(CS211T). Teoría de la Computación (Obligatorio)
+%  Semester #4 .
+%  CS211T(CS211T). TeorÃ­a de la Computación (Obligatorio)
 CS211T->dennisbarrios@gmail.com
 % CS103O(CS103O). Algoritmos y Estructuras de Datos (Obligatorio)
 CS103O->alex.jcv@gmail.com,jpenarrieta@ucsp.edu.pe
@@ -64,7 +64,7 @@ CS270T->rtherrera@ucsp.edu.pe,glovon@ucsp.edu.pe
 CS210T->criloal23@gmail.com
 % CS290T(CS290T). Ingeniería de Software I (Obligatorio)
 CS290T->jcano@bcp.com.pe
-% CB306(CB306). Análisis Numérico (Obligatorio)
+%  CB306(CB306). Análisis Numérico (Obligatorio)
 CB306->xortix@gmail.com
 % CS220T(CS220T). Arquitectura de Computadores (Obligatorio)
 CS220T->racosta@ucsp.edu.pe,yvantv@gmail.com
@@ -89,7 +89,7 @@ CS343->apaz@ucsp.edu.pe
 CB307->l.diaz@usp.edu.pe
 % FG204(FG204). Formación cristiana (Obligatorio)
 FG204->egordillo@ucsp.edu.pe
-% CS250W(CS250W). Interacción Humano Computador (Obligatorio)
+%  CS250W(CS250W). Interacción Humano Computador (Obligatorio)
 CS250W->lpachecoa@ucsp.edu.pe
 % CS401(CS401). Proyecto I (Obligatorio)
 CS401->criloal23@gmail.com,jcgutierrezc@gmail.com

@@ -10,6 +10,8 @@ CS-UTEC   : Peru	: Computing  : UTEC       : Plan2017 : final
 CS-ANR    : Peru	: Computing  : SPC        : Plan2010 : final
 CS-UNAM   : Peru	: Computing  : UNSA,SPC   : Plan2014 : final
 CS-UNMSM  : Peru    : Computing  : UNMSM      : Plan2019 : final
+CS-UNFV   : Peru    : Computing  : UNFV       : Plan2019 : final
+CS-MINEDU : Peru    : Computing  : MINEDU     : Plan2019 : final
 
 CS-SBC    : Brasil	: Computing  : SPC        : Plan2018 : final
 

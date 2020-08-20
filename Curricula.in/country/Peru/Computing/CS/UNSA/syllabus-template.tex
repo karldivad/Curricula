@@ -1,195 +1,161 @@
-\documentclass[final]{article}
-% This file was generated based on: --SOURCE_FILE_NAME--
-\input{preamble0}
-\input{current-institution}
-\usepackage[utf8]{inputenc} 
-% \usepackage[--lang--]{babel}
-\usepackage{ae}
-\usepackage{csquotes}
-\usepackage{amsmath}
-\usepackage{\InStyAllDir/syllabus-final}
-\input{\InLangBaseDir/--LANG--/--AREA--.tex/outcomes-macros}
-\usepackage{\InLangBaseDir/--LANG--/--AREA--.sty/bok-macros}                % Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
-% \usepackage{\InStyDir/bok-macros}                             % Macros for the Body of Knowledge: /Curricula.in/lang/English/CS.sty
-
-\usepackage{enumitem} 
-% \usepackage[backend=bibtex,style=alphabetic]{biblatex}
-\usepackage[style=alphabetic]{biblatex}
-% \bibliographystyle{apalike}
-\addbibresource{--BIBFILE--}
-
-
-\newcommand{\INST}{}
-\newcommand{\AREA}{}
+\documentclass[a4paper,8pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{../../silabus}
 
 \begin{document}
 
-\begin{tabularx}{\textwidth}{p{3cm}cX}
-\includegraphics[width=1.5cm]{\InLogosDir/\INST} &
-\begin{minipage}{0.75\textwidth}
-\begin{center}
-{\Large \vspace{-1.5cm}\University\\ VICE RECTORADO ACADÉMICO \\ \medskip SILABO}
-\end{center}
-\end{minipage}
-\end{tabularx}
+%%Setear variables
+\setPeriodoAcademico{2018-B}
+\setNombreAsignatura{--COURSE_NAME--}
+\setNombreProfesor{--PROFESSOR_NAMES--}
+\setGradoProfesorAbreviado{--PROFESSOR_SHORT_CVS--}
+\sylabusHeader
 
-% \begin{tabularx}{\textwidth}{p{3cm}cX}
-% \includegraphics[width=3cm]{\InLogosDir/\INST}
-% &
-% \begin{minipage}{0.75\textwidth}
-% \begin{center}
-% {\noindent\Large\bf\University\\ \SchoolFullNameBreak \\SILABO}
-% \section*{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}\label{sec:--COURSE_CODE--}%
-% \addcontentsline{toc}{subsection}{--COURSE_CODE--. --COURSE_NAME-- (--COURSE_TYPE--)}%
-% \end{center}
-% \end{minipage}
-% \end{tabularx}
+\academicaTable
+{Ciencia de la Computación} %Escuela Profesional
+{--COURSE_CODE--} %Código de la asignatura
+{--SEMESTER--} %Número del semestre
+{Semestral} %Características
+{17 Semanas} %Duración
+{--THEORY_HOURS--} %Número de horas teóricas
+{--PRACTICE_HOURS--} %Número de horas prácticas
+{0} %Número de horas seminarios
+{--LAB_HOURS--}  %Número de horas laboratorio
+{2} %Número de horas Teórico-práctico
+{--CREDITS--} %Número de créditos
+{--PREREQUISITES_JUST_CODES--} % Prerrequisitos (separados por comas)
 
-%\medskip
+\administrativaTable
+{Doctor} %Grado académico del profesor
+{Ingeniería de Sistemas e Informática} %Departamento académico
+{6} %Número de horas totales
+{2} %Número de horas - lunes
+{-} %Número de horas - martes
+{2} %Número de horas - miercoles
+{2} %Número de horas - jueves
+{-} %Número de horas - viernes
+{101} %Aula de clase - lunes
+{-} %Aula de clase - martes
+{101} %Aula de clase - miercoles
+{101} %Aula de clase - jueves
+{-} %Aula de clase - viernes
 
-\begin{flushright}
-CODIGO DEL CURSO: --COURSE_CODE--
-\end{flushright}
 
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Datos Generales}
-\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|} \hline
-\multicolumn{8}{|l|}{\textbf{FACULTAD :} \FacultadName}\\ \hline
-\multicolumn{4}{|X|}{\textbf{DEPARTAMENTO :}{\DepartmentShortName} }&
-\multicolumn{4}{|X|}{\textbf{ESCUELA :} \SchoolShortName}\\ \hline
-\multicolumn{8}{|l|}{\textbf{PROFESOR :} --PROFESSOR_NAMES--}\\
-\multicolumn{8}{|l|}{\textbf{TÍTULO :} --PROFESSOR_SHORT_CVS--}\\ \hline
-\multicolumn{8}{|l|}{\textbf{ASIGNATURA :} --COURSE_NAME--}\\ \hline
-
-\multicolumn{2}{|l|}{\textbf{PREREQUISITO:}}&
-\multicolumn{2}{|l|}{\textbf{CREDITOS:}}&
-\multicolumn{2}{|l|}{\textbf{Año}: \Semester}&
-\multicolumn{2}{|l|}{\textbf{Total Horas:} --HOURS--}\\ \cline{5-8}
-
-\multicolumn{2}{|l|}{--PREREQUISITES_JUST_CODES--}&
-\multicolumn{2}{|l|}{--CREDITS--}&
-\multicolumn{2}{|l|}{\textbf{Sem:} --SEMESTER--}& --THEORY_HOURS-- & --PRACTICE_HOURS-- --LAB_HOURS-- \\ \hline
-\multicolumn{2}{|c|}{\textbf{Horario}}&Lun&Mar&Mie&Jue&Vie&Sab\\ \cline{3-8}
-\multicolumn{2}{|l|}{\textbf{Total Semanal}} & --DIA1-- & --DIA2-- & --DIA3-- & --DIA4-- & --DIA5-- & --DIA6-- \\ \hline
-\multicolumn{2}{|r|}{\textbf{Aula}} & --AULA1-- & --AULA2-- & --AULA3-- & --AULA4-- & --AULA5-- & --AULA6--\\ \hline
-\end{tabularx}
-
-\bigskip
-
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Exposición de Motivos}
-\begin{tabularx}{\textwidth}{|X|}\hline
+\begin{fundamentacion}
 --JUSTIFICATION--
-\\ \hline
-\end{tabularx}
+\end{fundamentacion}
 
-{\bf \arabic{SyllabiSectionCount} Competencias}
-\begin{tabularx}{\textwidth}{|X|} \hline
---GOAL--
-\\ \hline
-\end{tabularx}
+\begin{sumilla}
+--SHORT_DESCRIPTION_WITHOUT_ENUM--
+\end{sumilla}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Contenido Temático}
-\setcounter{SyllabiUnitCount}{0}
+\begin{competenciasAsignatura}
+--COMPETENCES_ITEMS--
+\end{competenciasAsignatura}
+
+\begin{contenidos}
+
+
 --BEGINUNIT--
-% Inicio unidad
-\addtocounter{SyllabiUnitCount}{1}
-{\bf \arabic{SyllabiSectionCount} --UNIT_TITLE-- (--HOURS--)}
-\begin{tabularx}{\textwidth}{|X|X|c|c|c|} \hline
-\textbf{Objetivos Específicos} & \textbf{Contenidos} & \textbf{Horas} & \textbf{Fecha} & \textbf{Avance \%} \\ \hline
---UNIT_GOAL-- &
---UNIT_CONTENT--
---CITATIONS-- &
-&
-&
---PERCENTAGE--\% \\ \hline
-\end{tabularx}
+
+
+%inicio unidad
+\nextUnidad{--UNIT_TITLE--}
+\nextCapitulo{--UNIT_TITLE--}
+--UNIT_CONTENT_WITHOUT--
+--CITATIONS-- 
+
 
 --ENDUNIT--
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{description}
-%\item[Examen Parcial] Capítulos 1,2,3
-%\item[Examen Final] Todos los capítulos
-%\end{description}
 
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Actividades}
-\begin{itemize}
-\item Asignaciones
-\item Controles de Lectura
-\item Exposiciones
-\end{itemize}
+\end{contenidos}
 
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Recursos Materiales}
-\begin{itemize}
-\item Apuntes del curso
-\item Libro(s) de la bibliografía
-\end{itemize}
 
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Metodología}
-\begin{itemize}
-\item Clase Magistral.
-\item Taller didáctico.
-\item Social Constructivismo.
-\item Prácticas personales y en grupo.
-\end{itemize}
 
-\addtocounter{SyllabiSectionCount}{1}
-{\bf \arabic{SyllabiSectionCount} Evaluación}
 
-\begin{evaluation}
-\item La nota final ($NF$) se obtiene de la siguiente manera:
-\begin{description}
-\item[NE] Nota de Exámenes 60\%, esta nota se divide en
-\begin{itemize}
-\item Examen Parcial 40\%
-\item Examen Final 60\%
-\end{itemize}
-\item[NT] Nota de Trabajos e Intervención en clase 40\%
-\end{description}
-\begin{displaymath}
-NF = 0.6*NE + 0.4*NT
-\end{displaymath}
-\end{evaluation}
+\begin{estrategiasEnsenanza}
+    \begin{metodos}
+        Método expositivo en las clases teóricas \\
+        Método de elaboración conjunta en los seminarios taller y en la elaboración del proyecto de investigación.
+    \end{metodos}
+    \begin{medios}
+        Pizarra acrílica, plumones, cañón multimedia, material de laboratorio, videos, software.
+    \end{medios}
+    \begin{formasOrganizacion}
+        %Se pone los que se necesiten
+        \newItemFO{Clases Teóricas}{Desarrollo de los conceptos teóricos}
+        \newItemFO{Seminarios}{Algo...}
+        \newItemFO{Prácticas}{Algo...}
+        \newItemFO{Laboratorio}{Aplicación de los conceptos vistos es clases teóricas.}
+        \newItemFO{Otros}{Algo...}
+    \end{formasOrganizacion}
+    \begin{programacion}
+        \newItemFO{Investigación Formativa}{Implementación de Sistema Computacional Web usando una base de datos relacional normalizada}
+        \newItemFO{Responsabilidad Social}{Generar videos para la enseñanza de implementación de bases de datos y que sean disponibilizados de la población}
+    \end{programacion}
+    \begin{segumientoAprendizaje}
+        Aquí va el seguimiento del aprendizaje
+    \end{segumientoAprendizaje}
+\end{estrategiasEnsenanza}
 
-%\bibliographystyle{--BIBSTYLE--}
-\bibliographystyle{plain}
+
+\begin{cronogramaAcademico}
+    \newItemCA{Tema1}{Edward Hinojosa Cárdenas}{10}  %Tema/Evaluación - Docente - Porcentaje acumulado
+    \newItemCA{Tema2}{Edward Hinojosa Cárdenas}{16}
+    \newItemCA{Tema3}{Edward Hinojosa Cárdenas}{20}
+    \newItemCA{Tema4}{Edward Hinojosa Cárdenas}{25}
+    \newItemCA{Tema5}{Edward Hinojosa Cárdenas}{33}
+    \newItemCA{Tema6}{Edward Hinojosa Cárdenas}{37}
+    \newItemCA{Tema7}{Edward Hinojosa Cárdenas}{40}
+    \newItemCA{Tema8}{Edward Hinojosa Cárdenas}{45}
+    \newItemCA{Tema9}{Edward Hinojosa Cárdenas}{50}
+    \newItemCA{Tema10}{Edward Hinojosa Cárdenas}{53}
+    \newItemCA{Tema11}{Edward Hinojosa Cárdenas}{58}
+    \newItemCA{Tema12}{Edward Hinojosa Cárdenas}{64}
+    \newItemCA{Tema13}{Edward Hinojosa Cárdenas}{69}
+    \newItemCA{Tema14}{Edward Hinojosa Cárdenas}{76}
+    \newItemCA{Tema15}{Edward Hinojosa Cárdenas}{84}
+    \newItemCA{Tema16}{Edward Hinojosa Cárdenas}{93}
+    \newItemCA{Tema17}{Edward Hinojosa Cárdenas}{100}
+\end{cronogramaAcademico}
+
+\begin{estrategiasEvaluacion}
+    \begin{evaluacionContinua}
+        Práctica y Laboratorios en cada clase sobre los temas realizados, tanto para el primer parcial (EC1), segundo parcial (EC2) y tercer parcial (EC3).
+    \end{evaluacionContinua}
+    \begin{evaluacionPeriodica}
+        \newItemEP{Primer Examen}{ponderación}
+        \newItemEP{Segundo Examen}{ponderación}
+        \newItemEP{Tercer Examen}{}
+    \end{evaluacionPeriodica}
+    \begin{cronogramaEvaluacion}
+        \newItemCE{11/5/2019}{11/5/2019}{11/5/2019}{30\%}
+        \newItemCE{11/8/2019}{11/8/2019}{11/8/2019}{30\%}
+        \newItemCE{11/12/2019}{11/12/2019}{11/12/2019}{40\%}
+    \end{cronogramaEvaluacion}
+    \begin{tipoEvaluacion}
+        Tipo de evaluación
+    \end{tipoEvaluacion}
+    \begin{instrumentosEvaluacion}
+        Instrumentos de evaluación
+    \end{instrumentosEvaluacion}
+\end{estrategiasEvaluacion}
+
+\begin{requisitosAprobacion}
+\item El alumno tendrá derecho a observar o en su defecto a ratificar las notas consignadas en sus evaluaciones, después de ser entregadas las mismas por parte del profesor, salvo el vencimiento de plazos para culminación del semestre académico, luego del mismo, no se admitirán reclamaciones,
+alumno que no se haga presente en el día establecido, perderá su derecho a reclamo.
+\item Para aprobar ...
+\end{requisitosAprobacion}
+
 \bibliography{--BIBFILE--}
+\bibliographystyle{apalike}
 
-%\addtocounter{SyllabiSectionCount}{1}
-% {\bf \arabic{SyllabiSectionCount} Recursos Bibliográficos}
-%\renewcommand{\refnameobl}{}
-%\renewcommand{\refnamesug}{}
-
-%\subsection*{Obligatoria}
-%\vspace{-0.8cm}
-%\bibliographyobl{silaboADA}
-
-%\bibliographystylesug{plain}
-%\subsection*{Sugerida}
-%\vspace{-0.8cm}
-%\bibliographysug{silaboADA}
-
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-
-\begin{tabularx}{\textwidth}{XX}
-\cline{2-2}
-&
-\begin{center}
---PROFESSOR_NAMES--~\\
-Docente del curso
-
-\end{center}\\
-\end{tabularx}
+\fecha
+\firma
 
 \end{document}
+
+
