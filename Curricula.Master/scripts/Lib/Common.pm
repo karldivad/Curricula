@@ -413,7 +413,7 @@ sub InsertSeparator($)
     {
         my $c    = $1;
         if($c eq "p")
-        {       if($input =~ m/({.*?})/g)
+        {       if($input =~ m/(\{.*?\})/g)
                 {   $output .= "$c$1|";       }
         }
         else
@@ -616,7 +616,6 @@ sub set_initial_paths()
 	$path_map{InStyAllDir}				= $path_map{InDir}."/All.sty";
 	$path_map{InSyllabiContainerDir}	= $path_map{InLangDefaultDir}."/cycle/$config{Semester}/Syllabi";
 
-    $path_map{InFigsDir}                = $path_map{InLangDefaultDir}."/$config{FigsRelativePath}";
 	$path_map{InOthersDir}				= $path_map{InLangDefaultDir}."/$config{area}.others";
 	$path_map{InHtmlDir}				= $path_map{InLangDefaultDir}."/All.html";
 	$path_map{InTexAllDir}				= $path_map{InLangDefaultDir}."/All.tex";
@@ -3029,6 +3028,10 @@ sub replace_tags_from_hash($$$%)
  	my ($txt, $before, $after, %map) = (@_);
 	my $count = 1;
 
+	if(not defined($txt)){
+		return undef
+	}
+
 	#Util::print_color("replace_tags_from_hash ...");
 	#print Dumper(\%map);
 	foreach my $key (keys %map)
@@ -3610,7 +3613,7 @@ sub parse_courses()
 	$config{n_semesters}	= 0;
 	$file_txt =~ s/\r/\n/g;
 	foreach my $onecourse (split("\n", $file_txt))
-	{		
+	{
 		if($onecourse =~ m/\\course(.*)/)
 		{
 			my ($course_params) = ($1);
@@ -3859,7 +3862,7 @@ sub filter_courses($)
 			$config{number_of_used_prefix}++;
 		}
 		my $area_pie = $course_info{$codcour}{area_pie};
-		if(not defined($config{used_area_pie}{$area_pie}))   # YES HERE
+		if(length($area_pie) > 0 and not defined($config{used_area_pie}{$area_pie}))   # YES HERE
 		{
 			$config{used_area_pie}{$area_pie} = "";
 			$config{number_of_used_area_pie}++;
